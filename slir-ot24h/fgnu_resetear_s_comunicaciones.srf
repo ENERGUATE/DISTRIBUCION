@@ -1,0 +1,77 @@
+HA$PBExportHeader$fgnu_resetear_s_comunicaciones.srf
+global type fgnu_resetear_s_comunicaciones from function_object
+end type
+
+forward prototypes
+global function integer fgnu_resetear_s_comunicaciones (ref u_generico_comunicaciones pu_comunic)
+end prototypes
+
+global function integer fgnu_resetear_s_comunicaciones (ref u_generico_comunicaciones pu_comunic);////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fgnu_resetear_s_comunicaciones
+// 
+// Objetivo: Resetea variables de estructura de comunicaci$$HEX1$$f300$$ENDHEX$$n.
+//           
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada:  pu_comunic
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	
+//
+/////////////////////////////////////////////////////////////////////
+
+
+
+setnull(pu_comunic.is_comunic.intval1)
+setnull(pu_comunic.is_comunic.intval2)
+setnull(pu_comunic.is_comunic.intval3)
+setnull(pu_comunic.is_comunic.intval4)
+setnull(pu_comunic.is_comunic.intval5)
+setnull(pu_comunic.is_comunic.intval6)
+setnull(pu_comunic.is_comunic.intval7)
+setnull(pu_comunic.is_comunic.intval8)
+setnull(pu_comunic.is_comunic.intval9)
+setnull(pu_comunic.is_comunic.intval10)
+setnull(pu_comunic.is_comunic.intval11)
+setnull(pu_comunic.is_comunic.longval1)
+setnull(pu_comunic.is_comunic.longval2)
+setnull(pu_comunic.is_comunic.longval3)
+setnull(pu_comunic.is_comunic.longval4)
+setnull(pu_comunic.is_comunic.longval5)
+
+setnull(pu_comunic.is_comunic.strval1)
+setnull(pu_comunic.is_comunic.strval2)
+setnull(pu_comunic.is_comunic.strval3)
+setnull(pu_comunic.is_comunic.strval4)
+setnull(pu_comunic.is_comunic.strval5)
+setnull(pu_comunic.is_comunic.strval6)
+setnull(pu_comunic.is_comunic.strval7)
+setnull(pu_comunic.is_comunic.strval8)
+setnull(pu_comunic.is_comunic.strval9)
+setnull(pu_comunic.is_comunic.strval10)
+
+
+setnull(pu_comunic.is_comunic.datval1)
+setnull(pu_comunic.is_comunic.datval2)
+
+setnull(pu_comunic.is_comunic.decval1)
+setnull(pu_comunic.is_comunic.decval2)
+
+setnull(pu_comunic.is_comunic.datawindow1)
+
+setnull(pu_comunic.is_comunic.programa_llamante)
+setnull(pu_comunic.is_comunic.accion_llamada)
+setnull(pu_comunic.is_comunic.accion_retorno)
+setnull(pu_comunic.is_comunic.programa_retorno)
+
+
+
+return 1
+end function
+

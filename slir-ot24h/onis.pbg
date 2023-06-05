@@ -1,0 +1,24 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "onis.pbl" "";
+@end;
+@begin Objects
+ "dw_lista_entidad.srd" "onis.pbl";
+ "fg_codigo_visible.srf" "onis.pbl";
+ "w_espera_grafica.srw" "onis.pbl";
+ "dw_ayuda_entidades.srd" "onis.pbl";
+ "dw_instalacion.srd" "onis.pbl";
+ "d_lista_tipo_tramo.srd" "onis.pbl";
+ "d_lista_tramo.srd" "onis.pbl";
+ "fg_sgi-bdi.srf" "onis.pbl";
+ "w_alfa_criterio.srw" "onis.pbl";
+ "d_man_tramo.srd" "onis.pbl";
+ "ddw_t_tramo.srd" "onis.pbl";
+ "w_sel_instala.srw" "onis.pbl";
+ "dw_ayuda_lista_instalaciones_alta.srd" "onis.pbl";
+ "u_lista_tramos.sru" "onis.pbl";
+ "w_seleccion_capas2.srw" "onis.pbl";
+ "fg_mostrar.srf" "onis.pbl";
+ "u_enlace.sru" "onis.pbl";
+ "dw_lista_entidad_alta.srd" "onis.pbl";
+@end;

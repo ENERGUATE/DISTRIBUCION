@@ -1,0 +1,75 @@
+HA$PBExportHeader$d_ins_2010_pr_lista_dat_tecnicos.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=88 color="-1" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(39) updatewhereclause=yes name=nom_instalacion dbname="nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_instalacion dbname="sgd_instalacion.tipo_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="sgd_instalacion.nro_instalacion" )
+ column=(type=char(4000) updatewhereclause=yes name=fase_instalacion dbname="fase_instalacion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_inst_padre dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion_padre dbname="sgd_instalacion.nro_instalacion" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="sgd_interrupcion.f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="sgd_interrupcion.f_reposicion" )
+ column=(type=number updatewhereclause=yes name=ctipo_subestacion_at dbname="sgd_instalacion.ctipo_subestacion_at" )
+ column=(type=number updatewhereclause=yes name=ctipo_salida_at dbname="sgd_instalacion.ctipo_salida_at" )
+ column=(type=number updatewhereclause=yes name=ctipo_subestacion dbname="sgd_instalacion.ctipo_subestacion" )
+ column=(type=number updatewhereclause=yes name=ctipo_salida_mt dbname="sgd_instalacion.ctipo_salida_mt" )
+ column=(type=number updatewhereclause=yes name=ctipo_ct dbname="sgd_instalacion.ctipo_ct" )
+ column=(type=number updatewhereclause=yes name=ctipo_transformador dbname="sgd_instalacion.ctipo_transformador" )
+ column=(type=number updatewhereclause=yes name=ctipo_salida_de_baja dbname="sgd_instalacion.ctipo_salida_de_baja" )
+ retrieve="  SELECT ~"INSTALACION_A~".~"NOM_INSTALACION~" || DECODE(~"INSTALACION_A~".~"TIPO_INSTALACION~", 
+																	  TRUNC(:pi_tipo_ct,0), DECODE(~"INSTALACION_A~".~"TIPO_AREA~", 'C', ' (Ciudad)',
+																																		'U', ' (Urbano)',
+																																		'R', ' (Rural)', '' ), '') NOM_INSTALACION,   
+         ~"INSTALACION_A~".~"TIPO_INSTALACION~", 
+         ~"INSTALACION_A~".~"NRO_INSTALACION~",   
+			FGCI_FASE_INSTALACION(NVL(~"INSTALACION_A~".~"TIPO_CONEXION~",15)) FASE_INSTALACION,
+         ~"INSTALACION_B~".~"NOM_INSTALACION~",
+			~"INSTALACION_B~".~"NRO_INSTALACION~",
+			~"SGD_INTERRUPCION~".~"F_ALTA~",   
+         ~"SGD_INTERRUPCION~".~"F_REPOSICION~",
+			:pfgci_tipo_subestacion_at ctipo_subestacion_at,
+			:pfgci_tipo_salida_at ctipo_salida_at,
+			:pfgci_tipo_subestacion ctipo_subestacion,
+			:pfgci_tipo_salida_mt ctipo_salida_mt,
+			:pfgci_tipo_ct ctipo_ct,
+			:pfgci_tipo_transformador ctipo_transformador,
+			:pfgci_tipo_salida_de_baja ctipo_salida_de_baja
+    FROM ~"SGD_INSTALACION~" ~"INSTALACION_A~",   
+         ~"SGD_INTERRUPCION~",   
+         ~"SGD_INSTALACION~" ~"INSTALACION_B~"  
+   WHERE ( ~"INSTALACION_A~".~"NRO_INSTALACION~" = ~"SGD_INTERRUPCION~".~"NRO_INSTALACION~" ) and
+         ( ~"INSTALACION_A~".~"BDI_JOB~" = 0 ) and
+         ( ~"INSTALACION_A~".~"NRO_INST_PADRE~" = ~"INSTALACION_B~".~"NRO_INSTALACION~" ) and  
+         ( ~"INSTALACION_B~".~"BDI_JOB~" = 0 ) and
+         ( ( ~"SGD_INTERRUPCION~".~"IND_OTRAS_INS~" = 1 ) AND  
+         ( ~"SGD_INTERRUPCION~".~"NRO_INCIDENCIA~" = :pl_nro_incid ) )    
+" arguments=(("pl_nro_incid", number),("pi_tipo_ct", number),("pfgci_tipo_subestacion_at", number),("pfgci_tipo_salida_at", number),("pfgci_tipo_subestacion", number),("pfgci_tipo_salida_mt", number),("pfgci_tipo_ct", number),("pfgci_tipo_transformador", number),("pfgci_tipo_salida_de_baja", number)) )
+text(band=header alignment="2" text="" border="6" color="0" x="9" y="8" height="64" width="133" html.valueishtml="0"  name=c_icono_num_t  tag="bmp" visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Alimentada por" border="6" color="0" x="1504" y="4" height="68" width="1047" html.valueishtml="0"  name=nom_inst_padre_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nombre" border="6" color="0" x="160" y="4" height="68" width="1326" html.valueishtml="0"  name=nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="X" border="0" color="8388608" x="14" y="4" height="56" width="46" html.valueishtml="0"  name=t_1 visible="1~tif (isnull(f_reposicion) and not isnull(f_alta),1,0)"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="if (isnull(f_reposicion),1,0)"border="0" color="0" x="14" y="108" height="64" width="110" format="[general]" html.valueishtml="0"  name=c_icono_num visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="tipo_instalacion + if (IsNull( f_reposicion) and not IsNull( f_alta), 200, if (not IsNull(f_reposicion), 300,0)) 
+"border="0" color="8388608" x="1504" y="100" height="64" width="416" format="[general]" html.valueishtml="0"  name=tipo_int visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+bitmap(band=detail filename="rct1.bmp" x="73" y="0" height="60" width="69" border="0"  name=rct1 visible="1~tif (tipo_int = ctipo_ct+300,1,0)" )
+bitmap(band=detail filename="nsalta.bmp" x="73" y="0" height="60" width="69" border="0"  name=nsalta visible="1~tif (tipo_int = ctipo_salida_at + 200,1,0)" )
+bitmap(band=detail filename="nSUBESTaca.bmp" x="73" y="0" height="60" width="69" border="0"  name=nsubestaca visible="1~tif (tipo_int =  ctipo_subestacion_at + 200,1,0)" )
+bitmap(band=detail filename="nsalbaj.bmp" x="73" y="0" height="60" width="69" border="0"  name=nsalbaj visible="1~tif (tipo_int = ctipo_salida_de_baja+200,1,0)" )
+bitmap(band=detail filename="ntransfor.bmp" x="73" y="0" height="60" width="69" border="0"  name=ntransfor visible="1~tif (tipo_int = ctipo_transformador+200,1,0)" )
+bitmap(band=detail filename="rsal_tra1.bmp" x="73" y="0" height="60" width="69" border="0"  name=rsal_tra1 visible="1~tif (tipo_int = ctipo_salida_mt+300,1,0)" )
+bitmap(band=detail filename="nsubest.bmp" x="73" y="0" height="60" width="69" border="0"  name=nsubest visible="1~tif (tipo_int = ctipo_subestacion + 200,1,0)" )
+bitmap(band=detail filename="rtransfor.bmp" x="73" y="0" height="60" width="69" border="0"  name=rtransfor visible="1~tif (tipo_int = ctipo_transformador+300,1,0)" )
+bitmap(band=detail filename="rsalbaj.bmp" x="73" y="0" height="60" width="69" border="0"  name=rsalbaj visible="1~tif (tipo_int = ctipo_salida_de_baja+300,1,0)" )
+bitmap(band=detail filename="nsal_tra1.bmp" x="73" y="0" height="60" width="69" border="0"  name=nsal_tra1 visible="1~tif (tipo_int = ctipo_salida_mt+200,1,0)" )
+bitmap(band=detail filename="nct1.bmp" x="73" y="0" height="60" width="69" border="0"  name=nct1 visible="1~tif (tipo_int = ctipo_ct+200,1,0)" )
+bitmap(band=detail filename="rsubest.bmp" x="73" y="0" height="60" width="69" border="0"  name=rsubest visible="1~tif (tipo_int = ctipo_subestacion + 300,1,0)" )
+bitmap(band=detail filename="rsalta.bmp" x="73" y="0" height="60" width="69" border="0"  name=rsalta visible="1~tif (tipo_int = ctipo_salida_at+300,1,0)" )
+bitmap(band=detail filename="rSUBESTaca.bmp" x="73" y="0" height="60" width="69" border="0"  name=rsubestaca visible="1~tif (tipo_int = ctipo_subestacion_at + 300,1,0)" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="1518" y="4" height="56" width="1029" format="[general]" html.valueishtml="0"  name=nom_inst_padre visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400~t$$HEX1$$d000$$ENDHEX$$$$HEX1$$a800$$ENDHEX$$isnull(f_reposicion) and not isnull(f_alta),800,10)"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="160" y="4" height="56" width="1321" format="[general]" html.valueishtml="0"  name=nom_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="0"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

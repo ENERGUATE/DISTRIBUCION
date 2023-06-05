@@ -1,0 +1,17 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "ot24hw.pbl" "";
+@end;
+@begin Objects
+ "dw_01reporte_llamadas.srd" "ot24hw.pbl";
+ "dw_01detalle_llamadas.srd" "ot24hw.pbl";
+ "dw_01top_llamadas.srd" "ot24hw.pbl";
+ "w_msg.srw" "ot24hw.pbl";
+ "dw_01causa_reclamos.srd" "ot24hw.pbl";
+ "w_reporte_datos.srw" "ot24hw.pbl";
+ "w_dash0.srw" "ot24hw.pbl";
+ "w_ot24h1.srw" "ot24hw.pbl";
+ "dw_ot24h1.srd" "ot24hw.pbl";
+ "dw_ot24h2.srd" "ot24hw.pbl";
+ "dw_ot24h3.srd" "ot24hw.pbl";
+@end;

@@ -1,0 +1,52 @@
+HA$PBExportHeader$gf_bloquear_activos.srf
+global type gf_bloquear_activos from function_object
+end type
+
+forward prototypes
+global function integer gf_bloquear_activos (long pl_nro_incidencia, boolean pb_bloqueo)
+end prototypes
+
+global function integer gf_bloquear_activos (long pl_nro_incidencia, boolean pb_bloqueo);
+long ll_cont, ll_rows, ll_activo, ll_status
+long ll_return= 0
+string ls_mensaje
+datastore lds_activos
+
+lds_activos = CREATE datastore
+lds_activos.dataobject = "d_bloquear_activos_de_incidencia"
+lds_activos.SetTransObject(SQLCA)
+lds_activos.Retrieve(pl_nro_incidencia)
+
+ll_rows = lds_activos.RowCount()
+
+ll_status = 1 
+ll_cont = 1
+
+do while ( (ll_cont <= ll_rows) and (ll_return = 0 ) )
+	ll_activo = lds_activos.object.nro_instalacion[ll_cont]
+
+	if pb_bloqueo then 
+		ll_status = gu_rf_servidor_operacion.of_bloquea("SGD_DISPONIBILIDAD", ll_activo, ls_mensaje)
+		if ll_status = 0 then 
+			messagebox("", ls_mensaje, Exclamation!, ok!)	
+			ll_return = -1
+		end if
+		
+	else
+		//desbloqueo	
+		ll_status = gu_rf_servidor_operacion.of_desbloquea("SGD_DISPONIBILIDAD", ll_activo, ls_mensaje)
+		if ll_status = 0 and ls_mensaje <> 'Error. Disponibilidad no bloqueada' then 
+			messagebox("", ls_mensaje, Exclamation!, ok!)
+			ll_return = -1
+		end if
+		
+	end if	
+	ll_cont++
+
+LOOP
+
+DESTROY lds_activos
+
+return ll_return
+end function
+

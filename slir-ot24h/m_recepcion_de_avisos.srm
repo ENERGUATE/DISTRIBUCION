@@ -1,0 +1,1274 @@
+HA$PBExportHeader$m_recepcion_de_avisos.srm
+$PBExportComments$Menu principal de recepcion de avisos
+forward
+global type m_recepcion_de_avisos from menu
+end type
+type m_archivo from menu within m_recepcion_de_avisos
+end type
+type m_agregar from menu within m_archivo
+end type
+type m_eliminar from menu within m_archivo
+end type
+type m_cerrar from menu within m_archivo
+end type
+type m_- from menu within m_archivo
+end type
+type m_grabar from menu within m_archivo
+end type
+type m_imprimir from menu within m_archivo
+end type
+type m_seleccionarimpresora from menu within m_archivo
+end type
+type m_-2 from menu within m_archivo
+end type
+type m_preferencias from menu within m_archivo
+end type
+type m_-3 from menu within m_archivo
+end type
+type m_salir from menu within m_archivo
+end type
+type m_archivo from menu within m_recepcion_de_avisos
+m_agregar m_agregar
+m_eliminar m_eliminar
+m_cerrar m_cerrar
+m_- m_-
+m_grabar m_grabar
+m_imprimir m_imprimir
+m_seleccionarimpresora m_seleccionarimpresora
+m_-2 m_-2
+m_preferencias m_preferencias
+m_-3 m_-3
+m_salir m_salir
+end type
+type m_editar from menu within m_recepcion_de_avisos
+end type
+type m_deshacer from menu within m_editar
+end type
+type m_-7 from menu within m_editar
+end type
+type m_cortar from menu within m_editar
+end type
+type m_copiar from menu within m_editar
+end type
+type m_pegar from menu within m_editar
+end type
+type m_-8 from menu within m_editar
+end type
+type m_iralcomienzo from menu within m_editar
+end type
+type m_iralfinal from menu within m_editar
+end type
+type m_editar from menu within m_recepcion_de_avisos
+m_deshacer m_deshacer
+m_-7 m_-7
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-8 m_-8
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+end type
+type m_consultas from menu within m_recepcion_de_avisos
+end type
+type m_avisos from menu within m_consultas
+end type
+type m_pendientes from menu within m_avisos
+end type
+type m_resueltos from menu within m_avisos
+end type
+type m_estadisticasdeavisos from menu within m_avisos
+end type
+type m_pendientesintervalohorario from menu within m_avisos
+end type
+type m_avisos from menu within m_consultas
+m_pendientes m_pendientes
+m_resueltos m_resueltos
+m_estadisticasdeavisos m_estadisticasdeavisos
+m_pendientesintervalohorario m_pendientesintervalohorario
+end type
+type m_-89 from menu within m_consultas
+end type
+type m_incidencias from menu within m_consultas
+end type
+type m_porcliente2 from menu within m_incidencias
+end type
+type m_cortesprogramados from menu within m_incidencias
+end type
+type m_cargadetrabajoporzona from menu within m_incidencias
+end type
+type m_incidencias from menu within m_consultas
+m_porcliente2 m_porcliente2
+m_cortesprogramados m_cortesprogramados
+m_cargadetrabajoporzona m_cargadetrabajoporzona
+end type
+type m_-90 from menu within m_consultas
+end type
+type m_controldetrabajo from menu within m_consultas
+end type
+type m_situacionclimatologica from menu within m_consultas
+end type
+type m_-6 from menu within m_consultas
+end type
+type m_infdelcliente from menu within m_consultas
+end type
+type m_-114 from menu within m_consultas
+end type
+type m_consultas from menu within m_recepcion_de_avisos
+m_avisos m_avisos
+m_-89 m_-89
+m_incidencias m_incidencias
+m_-90 m_-90
+m_controldetrabajo m_controldetrabajo
+m_situacionclimatologica m_situacionclimatologica
+m_-6 m_-6
+m_infdelcliente m_infdelcliente
+m_-114 m_-114
+end type
+type m_ventana from menu within m_recepcion_de_avisos
+end type
+type m_cascada from menu within m_ventana
+end type
+type m_mosaico from menu within m_ventana
+end type
+type m_organizar from menu within m_ventana
+end type
+type m_ventana from menu within m_recepcion_de_avisos
+m_cascada m_cascada
+m_mosaico m_mosaico
+m_organizar m_organizar
+end type
+type m_56 from menu within m_recepcion_de_avisos
+end type
+type m_acercadelopensgi from menu within m_56
+end type
+type m_56 from menu within m_recepcion_de_avisos
+m_acercadelopensgi m_acercadelopensgi
+end type
+end forward
+
+shared variables
+
+end variables
+
+global type m_recepcion_de_avisos from menu
+m_archivo m_archivo
+m_editar m_editar
+m_consultas m_consultas
+m_ventana m_ventana
+m_56 m_56
+end type
+global m_recepcion_de_avisos m_recepcion_de_avisos
+
+type variables
+
+end variables
+
+forward prototypes
+public function integer f_habilitar (string ps_menu, boolean pb_estado)
+public function integer fpa_presentarse (string ps_menu, string ps_etiqueta, string ps_toolbartex)
+public function integer f_cambiar_nombre (string ps_menu, string ps_etiqueta, string ps_toolbartex)
+end prototypes
+
+public function integer f_habilitar (string ps_menu, boolean pb_estado);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  f_habilitar
+// 
+// Objetivo: Habilita y Deshabilita las distintas opciones de men$$HEX2$$fa002000$$ENDHEX$$de 
+//	acuerdo a los par$$HEX1$$e100$$ENDHEX$$metros que recibe
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_menu (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_estado (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//		14/7/95		SAS		Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en archivo o en editar
+i_cant_menu = UpperBound(m_archivo.item[])
+ps_menu = Upper(ps_menu)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_archivo.item[i_aux].tag = ps_menu THEN
+		m_archivo.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+i_cant_menu = UpperBound(m_editar.item[])
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_editar.item[i_aux].tag = ps_menu THEN
+		m_editar.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+
+RETURN -1
+end function
+
+public function integer fpa_presentarse (string ps_menu, string ps_etiqueta, string ps_toolbartex);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  fpa_presentarse
+// 
+// Objetivo: Habilita y Deshabilita las distintas opciones de men$$HEX2$$fa002000$$ENDHEX$$de 
+//	acuerdo a los par$$HEX1$$e100$$ENDHEX$$metros que recibe
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_menu (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_estado (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//		14/7/95		SAS		Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux,i_aa
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en archivo o en editar
+i_aa = upperbound(m_recepcion_de_avisos.item[])
+for i_aux = 1 to i_aa
+	//messagebox("kdkdk",m_recepcion_de_avisos.item[i_aux].text)
+next
+i_cant_menu = UpperBound(m_archivo.item[])
+ps_menu = Upper(ps_menu)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_archivo.item[i_aux].tag = ps_menu THEN
+		m_archivo.item[i_aux].text = ps_etiqueta
+		m_archivo.item[i_aux].toolbaritemtext=ps_toolbartex
+		RETURN 1
+	END IF
+NEXT
+
+i_cant_menu = UpperBound(m_editar.item[])
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_editar.item[i_aux].tag = ps_menu THEN
+		m_editar.item[i_aux].text = ps_etiqueta
+		m_editar.item[i_aux].toolbaritemtext=ps_toolbartex
+		RETURN 1
+	END IF
+NEXT
+
+
+RETURN -1
+end function
+
+public function integer f_cambiar_nombre (string ps_menu, string ps_etiqueta, string ps_toolbartex);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  f_habilitar
+// 
+// Objetivo: Habilita y Deshabilita las distintas opciones de men$$HEX2$$fa002000$$ENDHEX$$de 
+//	acuerdo a los par$$HEX1$$e100$$ENDHEX$$metros que recibe
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_menu (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_estado (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//		14/7/95		SAS		Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux,i_aa
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en archivo o en editar
+i_aa = upperbound(m_recepcion_de_avisos.item[])
+//for i_aux = 1 to i_aa
+//	messagebox("kdkdk",m_recepcion_de_avisos.item[i_aux].text)
+//next
+m_recepcion_de_avisos.m_archivo.m_agregar.text = "Juancito"
+RETURN 1
+i_cant_menu = UpperBound(m_archivo.item[])
+ps_menu = Upper(ps_menu)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_archivo.item[i_aux].tag = ps_menu THEN
+		m_archivo.item[i_aux].text = ps_etiqueta
+		m_archivo.item[i_aux].toolbaritemtext=ps_toolbartex
+		RETURN 1
+	END IF
+NEXT
+
+i_cant_menu = UpperBound(m_editar.item[])
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_editar.item[i_aux].tag = ps_menu THEN
+		m_editar.item[i_aux].text = ps_etiqueta
+		m_editar.item[i_aux].toolbaritemtext=ps_toolbartex
+		RETURN 1
+	END IF
+NEXT
+
+
+RETURN -1
+end function
+
+on m_recepcion_de_avisos.create
+m_recepcion_de_avisos=this
+this.m_archivo=create m_archivo
+this.m_editar=create m_editar
+this.m_consultas=create m_consultas
+this.m_ventana=create m_ventana
+this.m_56=create m_56
+this.Item[]={this.m_archivo, &
+this.m_editar, &
+this.m_consultas, &
+this.m_ventana, &
+this.m_56}
+end on
+
+on m_recepcion_de_avisos.destroy
+destroy(this.m_archivo)
+destroy(this.m_editar)
+destroy(this.m_consultas)
+destroy(this.m_ventana)
+destroy(this.m_56)
+end on
+
+type m_archivo from menu within m_recepcion_de_avisos
+m_agregar m_agregar
+m_eliminar m_eliminar
+m_cerrar m_cerrar
+m_- m_-
+m_grabar m_grabar
+m_imprimir m_imprimir
+m_seleccionarimpresora m_seleccionarimpresora
+m_-2 m_-2
+m_preferencias m_preferencias
+m_-3 m_-3
+m_salir m_salir
+end type
+
+on m_archivo.create
+this.Text="&Archivo"
+this.Tag="ARCHIVO"
+this.m_agregar=create m_agregar
+this.m_eliminar=create m_eliminar
+this.m_cerrar=create m_cerrar
+this.m_-=create m_-
+this.m_grabar=create m_grabar
+this.m_imprimir=create m_imprimir
+this.m_seleccionarimpresora=create m_seleccionarimpresora
+this.m_-2=create m_-2
+this.m_preferencias=create m_preferencias
+this.m_-3=create m_-3
+this.m_salir=create m_salir
+this.Item[]={this.m_agregar, &
+this.m_eliminar, &
+this.m_cerrar, &
+this.m_-, &
+this.m_grabar, &
+this.m_imprimir, &
+this.m_seleccionarimpresora, &
+this.m_-2, &
+this.m_preferencias, &
+this.m_-3, &
+this.m_salir}
+end on
+
+on m_archivo.destroy
+destroy(this.m_agregar)
+destroy(this.m_eliminar)
+destroy(this.m_cerrar)
+destroy(this.m_-)
+destroy(this.m_grabar)
+destroy(this.m_imprimir)
+destroy(this.m_seleccionarimpresora)
+destroy(this.m_-2)
+destroy(this.m_preferencias)
+destroy(this.m_-3)
+destroy(this.m_salir)
+end on
+
+type m_agregar from menu within m_archivo
+end type
+
+on clicked;w_prin.triggerevent("ue_agregar")
+end on
+
+on m_agregar.create
+this.Text="&Agregar~tCtrl+A"
+this.Microhelp="Ingresar un Nuevo Aviso"
+this.Tag="AGREGAR"
+this.ToolBarItemName="Insert!"
+this.ToolBarItemText="Agregar"
+this.Shortcut=321
+end on
+
+type m_eliminar from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Eliminar los datos seleccionados o desplegados de la 
+//				  base de datos
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+ParentWindow.TriggerEvent("ue_arch_eliminar")
+end on
+
+on m_eliminar.create
+this.Text="&Eliminar~tCtrl+E"
+this.Microhelp="Eliminar los datos en uso"
+this.Tag="ELIMINAR"
+this.ToolBarItemName="Custom094!"
+this.ToolBarItemText="Eliminar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=325
+end on
+
+type m_cerrar from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Cierra la ventana activa. Triggea el CloseQuery
+//	
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+Close(ParentWindow)
+end on
+
+on m_cerrar.create
+this.Text="&Cerrar~tCtrl+F4"
+this.Microhelp="Cerrar ventana actual"
+this.Tag="CERRAR"
+this.ToolBarItemName="RunWindow!"
+this.ToolBarItemText="Cerrar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=371
+end on
+
+type m_- from menu within m_archivo
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_grabar from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Grabar en la base de datos las modificaciones realizadas 
+//				  por el usuario con los datos.
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+ParentWindow.TriggerEvent("ue_arch_grabar")
+end on
+
+on m_grabar.create
+this.Text="&Grabar~tCtrl+G"
+this.Microhelp="Grabar en la base de datos las modificaciones realizadas"
+this.Tag="GRABAR"
+this.ToolBarItemName="Update!"
+this.ToolBarItemText="Grabar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=327
+end on
+
+type m_imprimir from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Imprimir los datos desplegados en la ventana.
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+ParentWindow.TriggerEvent("ue_arch_imprimir")
+end on
+
+on m_imprimir.create
+this.Text="&Imprimir~tF5"
+this.Microhelp="Imprimir"
+this.Tag="IMPRIMIR"
+this.ToolBarItemName="Report!"
+this.ToolBarItemText="Imprimir"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=116
+end on
+
+type m_seleccionarimpresora from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Llama al programa de seteo de impresora
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+PrintSetup()
+end on
+
+on m_seleccionarimpresora.create
+this.Text="Se&leccionar Impresora~tAlt+S"
+this.Microhelp="Seleccionar una impresora y cambiar las especificaciones"
+this.Tag="SELECCIONAR_IMPRESORA"
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Seleccionar Impresora"
+this.Shortcut=595
+end on
+
+type m_-2 from menu within m_archivo
+end type
+
+on m_-2.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_preferencias from menu within m_archivo
+end type
+
+on m_preferencias.create
+this.Text="&Preferencias"
+this.Microhelp="Seleccionar Preferencia de Trabajo por defecto"
+this.Tag="PREFERENCIAS"
+this.ToolBarItemName="SelectReturn!"
+this.ToolBarItemText="Preferencia"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.Enabled=false
+end on
+
+type m_-3 from menu within m_archivo
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_salir from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Salir de la aplicaci$$HEX1$$f300$$ENDHEX$$n
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+//close(ParentWindow)
+
+Do while IsValid(w_prin.GetActiveSheet()) and message.returnvalue <> 1
+   close(w_prin.GetActiveSheet())
+loop
+if message.returnvalue = 0 then
+      disconnect;
+      halt
+end if
+
+end on
+
+on m_salir.create
+this.Text="&Salir~tAlt+F4"
+this.Microhelp="Salir del Sistema"
+this.Tag="SALIR"
+this.ToolBarItemText="Salir"
+this.ToolBarItemVisible=false
+this.Shortcut=627
+end on
+
+type m_editar from menu within m_recepcion_de_avisos
+m_deshacer m_deshacer
+m_-7 m_-7
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-8 m_-8
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+end type
+
+on m_editar.create
+this.Text="&Edici$$HEX1$$f300$$ENDHEX$$n"
+this.Tag="EDITAR"
+this.m_deshacer=create m_deshacer
+this.m_-7=create m_-7
+this.m_cortar=create m_cortar
+this.m_copiar=create m_copiar
+this.m_pegar=create m_pegar
+this.m_-8=create m_-8
+this.m_iralcomienzo=create m_iralcomienzo
+this.m_iralfinal=create m_iralfinal
+this.Item[]={this.m_deshacer, &
+this.m_-7, &
+this.m_cortar, &
+this.m_copiar, &
+this.m_pegar, &
+this.m_-8, &
+this.m_iralcomienzo, &
+this.m_iralfinal}
+end on
+
+on m_editar.destroy
+destroy(this.m_deshacer)
+destroy(this.m_-7)
+destroy(this.m_cortar)
+destroy(this.m_copiar)
+destroy(this.m_pegar)
+destroy(this.m_-8)
+destroy(this.m_iralcomienzo)
+destroy(this.m_iralfinal)
+end on
+
+type m_deshacer from menu within m_editar
+end type
+
+on m_deshacer.create
+this.Text="&Deshacer~tCtrl+Z"
+this.Microhelp="Deshacer el $$HEX1$$fa00$$ENDHEX$$ltimo cambio realizado"
+this.Tag="DESHACER"
+this.ToolBarItemName="Undo!"
+this.ToolBarItemText="Deshacer"
+this.ToolBarItemVisible=false
+this.ToolBarItemSpace=3
+this.Enabled=false
+this.Shortcut=346
+end on
+
+type m_-7 from menu within m_editar
+end type
+
+on m_-7.create
+this.Text="-"
+end on
+
+type m_cortar from menu within m_editar
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Mover el texto seleccionado al portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Cut()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Cut()
+End choose
+
+end on
+
+on m_cortar.create
+this.Text="&Cortar~tCtrl+X"
+this.Microhelp="Mover el texto seleccionado al porta-papeles "
+this.Tag="CORTAR"
+this.ToolBarItemName="Cut!"
+this.ToolBarItemText="Cortar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=344
+end on
+
+type m_copiar from menu within m_editar
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Copiar el texto seleccionado en el portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Copy()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Copy()
+End choose
+
+end on
+
+on m_copiar.create
+this.Text="C&opiar~tCtrl+C"
+this.Microhelp="Copiar"
+this.Tag="COPIAR"
+this.ToolBarItemName="Copy!"
+this.ToolBarItemText="Copiar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=323
+end on
+
+type m_pegar from menu within m_editar
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Insertar el texto del portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Paste()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Paste()
+End choose
+end on
+
+on m_pegar.create
+this.Text="&Pegar~tCtrl+V"
+this.Microhelp="Insertar el contenido del porta-papeles"
+this.Tag="PEGAR"
+this.ToolBarItemName="Paste!"
+this.ToolBarItemText="Pegar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=342
+end on
+
+type m_-8 from menu within m_editar
+end type
+
+on m_-8.create
+this.Text="-"
+end on
+
+type m_iralcomienzo from menu within m_editar
+end type
+
+on m_iralcomienzo.create
+this.Text="Ir al Co&mienzo~tCtrl+K"
+this.Microhelp="Ir al primer dato en uso"
+this.Tag="IR_AL_COMIENZO"
+this.ToolBarItemName="VCRFirst!"
+this.ToolBarItemText="Comienzo"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=331
+end on
+
+type m_iralfinal from menu within m_editar
+end type
+
+on clicked;// nada
+end on
+
+on m_iralfinal.create
+this.Text="Ir al &Final~tCtrl+J"
+this.Microhelp="Ir al $$HEX1$$fa00$$ENDHEX$$ltimo dato en uso"
+this.Tag="IR_AL_FINAL"
+this.ToolBarItemName="VCRLast!"
+this.ToolBarItemText="Final"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=330
+end on
+
+type m_consultas from menu within m_recepcion_de_avisos
+m_avisos m_avisos
+m_-89 m_-89
+m_incidencias m_incidencias
+m_-90 m_-90
+m_controldetrabajo m_controldetrabajo
+m_situacionclimatologica m_situacionclimatologica
+m_-6 m_-6
+m_infdelcliente m_infdelcliente
+m_-114 m_-114
+end type
+
+on m_consultas.create
+this.Text="&Consultas"
+this.Microhelp="Consultas de Avisos"
+this.Tag="CONSULTAS"
+this.m_avisos=create m_avisos
+this.m_-89=create m_-89
+this.m_incidencias=create m_incidencias
+this.m_-90=create m_-90
+this.m_controldetrabajo=create m_controldetrabajo
+this.m_situacionclimatologica=create m_situacionclimatologica
+this.m_-6=create m_-6
+this.m_infdelcliente=create m_infdelcliente
+this.m_-114=create m_-114
+this.Item[]={this.m_avisos, &
+this.m_-89, &
+this.m_incidencias, &
+this.m_-90, &
+this.m_controldetrabajo, &
+this.m_situacionclimatologica, &
+this.m_-6, &
+this.m_infdelcliente, &
+this.m_-114}
+end on
+
+on m_consultas.destroy
+destroy(this.m_avisos)
+destroy(this.m_-89)
+destroy(this.m_incidencias)
+destroy(this.m_-90)
+destroy(this.m_controldetrabajo)
+destroy(this.m_situacionclimatologica)
+destroy(this.m_-6)
+destroy(this.m_infdelcliente)
+destroy(this.m_-114)
+end on
+
+type m_avisos from menu within m_consultas
+m_pendientes m_pendientes
+m_resueltos m_resueltos
+m_estadisticasdeavisos m_estadisticasdeavisos
+m_pendientesintervalohorario m_pendientesintervalohorario
+end type
+
+on m_avisos.create
+this.Text="&Avisos~tAlt+A"
+this.Microhelp="Consulta de Avisos Ingresados al Sistema"
+this.Tag="AVISOS"
+this.ToolBarItemVisible=false
+this.ToolBarItemSpace=6
+this.Shortcut=577
+this.m_pendientes=create m_pendientes
+this.m_resueltos=create m_resueltos
+this.m_estadisticasdeavisos=create m_estadisticasdeavisos
+this.m_pendientesintervalohorario=create m_pendientesintervalohorario
+this.Item[]={this.m_pendientes, &
+this.m_resueltos, &
+this.m_estadisticasdeavisos, &
+this.m_pendientesintervalohorario}
+end on
+
+on m_avisos.destroy
+destroy(this.m_pendientes)
+destroy(this.m_resueltos)
+destroy(this.m_estadisticasdeavisos)
+destroy(this.m_pendientesintervalohorario)
+end on
+
+type m_pendientes from menu within m_avisos
+end type
+
+on clicked;	w_prin.triggerevent("ue_avisos_pendientes")
+
+end on
+
+on m_pendientes.create
+this.Text="Pen&dientes~tAlt+D"
+this.Microhelp="Consulta de Avisos Pendientes"
+this.Tag="PENDIENTES"
+this.ToolBarItemName="Custom027!"
+this.ToolBarItemText="Avisos Pendientes"
+this.ToolBarItemSpace=3
+this.Shortcut=580
+end on
+
+on m_pendientes.destroy
+end on
+
+type m_resueltos from menu within m_avisos
+end type
+
+on clicked;		w_prin.triggerevent("ue_avisos_resueltos")
+end on
+
+on m_resueltos.create
+this.Text="&Resueltos~tAlt+R"
+this.Microhelp="Consulta de Avisos Resueltos"
+this.Tag="RESUELTOS"
+this.ToolBarItemName="Custom026!"
+this.ToolBarItemText="Avisos Resueltos"
+this.Shortcut=594
+end on
+
+type m_estadisticasdeavisos from menu within m_avisos
+end type
+
+on clicked;w_prin.triggerevent("ue_estadistica_avisos")
+end on
+
+on m_estadisticasdeavisos.create
+this.Text="&Ingresadas Int. Horario~tAlt+I"
+this.Microhelp="Avisos ingresados al sistema por intervalo horario"
+this.Tag="ESTADISTICAS_DE_AVISOS"
+this.ToolBarItemName="Custom056!"
+this.ToolBarItemText="Avisos Ingresados Int. Horario"
+this.Shortcut=585
+end on
+
+on m_estadisticasdeavisos.destroy
+end on
+
+type m_pendientesintervalohorario from menu within m_avisos
+end type
+
+on clicked;w_prin.triggerevent("ue_estadistica_avi_pen")
+
+
+end on
+
+on m_pendientesintervalohorario.create
+this.Text="&Pendientes Int. Horario~tAlt+P"
+this.Microhelp="Avisos pendientes por intervalo horario"
+this.Tag="PENDIENTES_INTERVALO_HORARIO"
+this.ToolBarItemName="Custom015!"
+this.ToolBarItemText="Avisos Pendientes Int. Horario"
+this.Shortcut=592
+end on
+
+type m_-89 from menu within m_consultas
+end type
+
+on m_-89.create
+this.Text="-"
+end on
+
+type m_incidencias from menu within m_consultas
+m_porcliente2 m_porcliente2
+m_cortesprogramados m_cortesprogramados
+m_cargadetrabajoporzona m_cargadetrabajoporzona
+end type
+
+on m_incidencias.create
+this.Text="&Incidencias~tCtrl+I"
+this.Microhelp="Consultas de incidencias ingresadas al Sistema"
+this.Tag="INCIDENCIAS"
+this.ToolBarItemVisible=false
+this.Shortcut=329
+this.m_porcliente2=create m_porcliente2
+this.m_cortesprogramados=create m_cortesprogramados
+this.m_cargadetrabajoporzona=create m_cargadetrabajoporzona
+this.Item[]={this.m_porcliente2, &
+this.m_cortesprogramados, &
+this.m_cargadetrabajoporzona}
+end on
+
+on m_incidencias.destroy
+destroy(this.m_porcliente2)
+destroy(this.m_cortesprogramados)
+destroy(this.m_cargadetrabajoporzona)
+end on
+
+type m_porcliente2 from menu within m_incidencias
+end type
+
+on clicked;
+w_prin.TriggerEvent("ue_consulta_incidencias_imprevistas")
+
+		
+
+
+
+end on
+
+on m_porcliente2.create
+this.Text="&Imprevistas~tAlt+M"
+this.Microhelp="Consulta de Incidencias Imprevistas"
+this.Tag="POR_CLIENTE_2"
+this.ToolBarItemName="Custom037!"
+this.ToolBarItemText="Inc. Imprevistas"
+this.ToolBarItemSpace=1
+this.Shortcut=589
+end on
+
+on m_porcliente2.destroy
+end on
+
+type m_cortesprogramados from menu within m_incidencias
+end type
+
+on clicked;w_prin.triggerevent("ue_incidencias_programadas")
+end on
+
+on m_cortesprogramados.create
+this.Text="&Programados~tAlt+C"
+this.Microhelp="Consulta de Cortes Programados"
+this.Tag="CORTES_PROGRAMADOS"
+this.ToolBarItemName="AddWatch!"
+this.ToolBarItemText="Inc. Programados"
+this.Shortcut=579
+end on
+
+type m_cargadetrabajoporzona from menu within m_incidencias
+end type
+
+on clicked;w_prin.triggerevent("ue_car_tra_zona")
+end on
+
+on m_cargadetrabajoporzona.create
+this.Text="&Situaci$$HEX1$$f300$$ENDHEX$$n Actual~tAlt+Q"
+this.Microhelp="Carga de Trabajo del CMD"
+this.Tag="CARGA_TRABAJO_POR_ZONA"
+this.ToolBarItemName="Preferences!"
+this.ToolBarItemText="Situaci$$HEX1$$f300$$ENDHEX$$n Actual"
+this.Shortcut=593
+end on
+
+on m_cargadetrabajoporzona.destroy
+end on
+
+type m_-90 from menu within m_consultas
+end type
+
+on m_-90.create
+this.Text="-"
+end on
+
+type m_controldetrabajo from menu within m_consultas
+end type
+
+on clicked;w_prin.triggerevent("ue_control_trabajo")
+end on
+
+on m_controldetrabajo.create
+this.Text="Control de &Trabajo~tCtrl+T"
+this.Microhelp="Control de trabajo de las Telefonistas"
+this.Tag="CONTROL_DE_TRABAJO"
+this.ToolBarItemName="Custom084!"
+this.ToolBarItemText="Control de Trabajo"
+this.ToolBarItemSpace=1
+this.Shortcut=340
+end on
+
+type m_situacionclimatologica from menu within m_consultas
+end type
+
+on clicked;w_prin.triggerevent("ue_sit_clima")
+
+end on
+
+on m_situacionclimatologica.create
+this.Text="&Reporte Climatol$$HEX1$$f300$$ENDHEX$$gico~tCtrl+S"
+this.Microhelp="Consultas de la Situaci$$HEX1$$f300$$ENDHEX$$n Climatol$$HEX1$$f300$$ENDHEX$$gica del d$$HEX1$$ed00$$ENDHEX$$a"
+this.Tag="SITUACION_CLIMATOLOGICA"
+this.ToolBarItemName="Comment!"
+this.ToolBarItemText="Reporte Climatol$$HEX1$$f300$$ENDHEX$$gico"
+this.ToolBarItemSpace=1
+this.Shortcut=339
+end on
+
+type m_-6 from menu within m_consultas
+end type
+
+on m_-6.create
+this.Text="-"
+this.Visible=false
+this.Enabled=false
+end on
+
+type m_infdelcliente from menu within m_consultas
+end type
+
+on clicked;w_prin.triggerevent("ue_inf_cliente")
+end on
+
+on m_infdelcliente.create
+this.Text="In&formaci$$HEX1$$f300$$ENDHEX$$n del Cliente~tCtrl+F"
+this.Microhelp="Informaci$$HEX1$$f300$$ENDHEX$$n de avisos e incidencias de un cliente"
+this.Tag="INF_DEL_CLIENTE"
+this.ToolBarItemName="Picture!"
+this.ToolBarItemText="Inf.Cliente"
+this.Shortcut=326
+end on
+
+on m_infdelcliente.destroy
+end on
+
+type m_-114 from menu within m_consultas
+end type
+
+on m_-114.create
+this.Text="-"
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+type m_ventana from menu within m_recepcion_de_avisos
+m_cascada m_cascada
+m_mosaico m_mosaico
+m_organizar m_organizar
+end type
+
+on m_ventana.create
+this.Text="&Ventana"
+this.Tag="VENTANA"
+this.m_cascada=create m_cascada
+this.m_mosaico=create m_mosaico
+this.m_organizar=create m_organizar
+this.Item[]={this.m_cascada, &
+this.m_mosaico, &
+this.m_organizar}
+end on
+
+on m_ventana.destroy
+destroy(this.m_cascada)
+destroy(this.m_mosaico)
+destroy(this.m_organizar)
+end on
+
+type m_cascada from menu within m_ventana
+end type
+
+on m_cascada.create
+this.Text="&Cascada"
+this.Microhelp="Ordenar las ventanas para que se sobrepongan"
+this.Tag="CASCADA"
+this.ToolBarItemVisible=false
+this.Enabled=false
+end on
+
+type m_mosaico from menu within m_ventana
+end type
+
+on m_mosaico.create
+this.Text="&Mosaico"
+this.Microhelp="Ordenar las ventanas de modo que se vean todas"
+this.Tag="MOSAICO"
+this.ToolBarItemVisible=false
+this.Enabled=false
+end on
+
+type m_organizar from menu within m_ventana
+end type
+
+on m_organizar.create
+this.Text="&Organizar"
+this.Tag="ORGANIZAR"
+this.ToolBarItemVisible=false
+this.Enabled=false
+end on
+
+type m_56 from menu within m_recepcion_de_avisos
+m_acercadelopensgi m_acercadelopensgi
+end type
+
+on m_56.create
+this.Text="A&yuda"
+this.m_acercadelopensgi=create m_acercadelopensgi
+this.Item[]={this.m_acercadelopensgi}
+end on
+
+on m_56.destroy
+destroy(this.m_acercadelopensgi)
+end on
+
+type m_acercadelopensgi from menu within m_56
+end type
+
+event clicked;//w_prin.triggerevent("ue_acerca_de")
+open(w_acerca_de_sgi)
+end event
+
+on m_acercadelopensgi.create
+this.Text="&Acerca del OPEN SGI"
+this.Microhelp="Mostrar la informacion de la licencia del OPEN SGI"
+this.ToolBarItemVisible=false
+end on
+

@@ -1,0 +1,51 @@
+HA$PBExportHeader$fgnu_estado_incidencia.srf
+global type fgnu_estado_incidencia from function_object
+end type
+
+forward prototypes
+global function string fgnu_estado_incidencia (integer pi_estado)
+end prototypes
+
+global function string fgnu_estado_incidencia (integer pi_estado);////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fgnu_estado_incidencia
+// 
+// Objetivo: Retorna el camino de un bmp seg$$HEX1$$fa00$$ENDHEX$$n estado de la incidencia 
+//           correspondiente.
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada: pi_estado
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	
+//
+/////////////////////////////////////////////////////////////////////
+
+
+CHOOSE CASE pi_estado
+	CASE fgci_incidencia_pendiente
+		return "inci_pt.BMP"
+	CASE  fgci_incidencia_enviado_brigada
+		return "inci_eb.BMP"
+	CASE  fgci_incidencia_causa_localizada
+		return "inci_cl.BMP"
+	CASE  fgci_incidencia_en_reposicion
+		return "inci_er.BMP"
+	CASE  fgci_incidencia_servicio_repuesto
+		return "inci_sr.BMP"
+	CASE  fgci_incidencia_resuelta
+		return "inci_rs.BMP"
+	CASE ELSE
+		return STRING(PI_ESTADO)
+END CHOOSE
+
+
+
+end function
+

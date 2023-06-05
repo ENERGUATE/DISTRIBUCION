@@ -1,0 +1,34 @@
+HA$PBExportHeader$s_direccion_cliente.srs
+$PBExportComments$Estructura con datos de dir. y cli. usada para cargar los datos obtenidos con las identificaciones, tanto geogr$$HEX1$$e100$$ENDHEX$$fica como de cliente, y pasarselos a la ventana llamante.
+global type s_direccion_cliente from structure
+	string		gs_prov
+	string		gs_depto
+	string		gs_munic
+	string		gs_local
+	string		gs_calle
+	long		gl_numero
+	string		gs_duplic
+	string		gs_pisodpto
+	long		gl_codcalle
+	long		gl_codloc
+	long		gl_codmun
+	long		gl_codprov
+	long		gl_coddepto
+	long		gl_nis
+	long		gl_nif
+	string		gs_esq_cond
+	string		gs_ape1
+	string		gs_ape2
+	string		gs_nom
+	string		gs_doc
+	string		gs_tipo_doc
+	string		gs_pais
+	string		gs_telefono
+	string		gs_co_pais
+	long		gl_cod_cli
+	string		gs_ref
+	string		gs_poblacion
+	integer		gi_nro_area
+	string		gs_area
+end type
+

@@ -1,0 +1,23 @@
+HA$PBExportHeader$ddw_elementos_corte.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=matricula dbname="sgd_fusib.matricula" )
+ column=(type=number updatewhereclause=yes name=codigo dbname="codigo" )
+ retrieve="  SELECT ~"SGD_FUSIB~".~"MATRICULA~" ,TO_NUMBER(~"SGD_FUSIB~".~"CODIGO~" || '1') CODIGO  
+	FROM ~"SGD_FUSIB~"
+	WHERE INSTALACION_ORIGEN = :pl_instalacion_origen   
+UNION
+  SELECT ~"SGD_INTERR~".~"MATRICULA~" , TO_NUMBER(~"SGD_INTERR~".~"CODIGO~" || '2') CODIGO 
+    FROM ~"SGD_INTERR~"   
+	WHERE INSTALACION_ORIGEN = :pl_instalacion_origen   
+UNION
+  SELECT ~"SGD_SECCI~".~"MATRICULA~" , TO_NUMBER(~"SGD_SECCI~".~"CODIGO~" || '3') CODIGO 
+    FROM ~"SGD_SECCI~"   
+	WHERE INSTALACION_ORIGEN = :pl_instalacion_origen   
+" update="SGD_FUSIB" updatewhere=0 updatekeyinplace=no arguments=(("pl_instalacion_origen", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="14" y="0" height="76" width="1262" format="[general]"  name=matricula edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1275" y="0" height="64" width="1376" format="[general]"  name=codigo edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

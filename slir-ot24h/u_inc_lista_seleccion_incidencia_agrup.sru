@@ -1,0 +1,12 @@
+HA$PBExportHeader$u_inc_lista_seleccion_incidencia_agrup.sru
+forward
+global type u_inc_lista_seleccion_incidencia_agrup from u_gen_0000_lista
+end type
+end forward
+
+global type u_inc_lista_seleccion_incidencia_agrup from u_gen_0000_lista
+int Width=850
+string DataObject="d_inc_lista_seleccion_incidencia_agrup"
+end type
+global u_inc_lista_seleccion_incidencia_agrup u_inc_lista_seleccion_incidencia_agrup
+

@@ -1,0 +1,1418 @@
+HA$PBExportHeader$md_ingreso_incidencias.srm
+forward
+global type md_ingreso_incidencias from menu
+end type
+type m_archivo from menu within md_ingreso_incidencias
+end type
+type m_cerrar from menu within m_archivo
+end type
+type m_- from menu within m_archivo
+end type
+type m_grabar from menu within m_archivo
+end type
+type m_-2 from menu within m_archivo
+end type
+type m_salir from menu within m_archivo
+end type
+type m_archivo from menu within md_ingreso_incidencias
+m_cerrar m_cerrar
+m_- m_-
+m_grabar m_grabar
+m_-2 m_-2
+m_salir m_salir
+end type
+type m_editar from menu within md_ingreso_incidencias
+end type
+type m_deshacer from menu within m_editar
+end type
+type m_-7 from menu within m_editar
+end type
+type m_cortar from menu within m_editar
+end type
+type m_copiar from menu within m_editar
+end type
+type m_pegar from menu within m_editar
+end type
+type m_editar from menu within md_ingreso_incidencias
+m_deshacer m_deshacer
+m_-7 m_-7
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+end type
+type m_consultar from menu within md_ingreso_incidencias
+end type
+type m_instalacionafectada from menu within m_consultar
+end type
+type m_-1 from menu within m_consultar
+end type
+type m_avisos from menu within m_consultar
+end type
+type m_situacinclimatolgica from menu within m_consultar
+end type
+type m_suministrosimportantes from menu within m_consultar
+end type
+type m_operacion from menu within m_consultar
+end type
+type m_incidenciasagrupadas from menu within m_consultar
+end type
+type m_-3 from menu within m_consultar
+end type
+type m_descargoasociado from menu within m_consultar
+end type
+type m_interrupcionesdeldescargo from menu within m_consultar
+end type
+type m_generarintdescargo from menu within m_consultar
+end type
+type m_consultar from menu within md_ingreso_incidencias
+m_instalacionafectada m_instalacionafectada
+m_-1 m_-1
+m_avisos m_avisos
+m_situacinclimatolgica m_situacinclimatolgica
+m_suministrosimportantes m_suministrosimportantes
+m_operacion m_operacion
+m_incidenciasagrupadas m_incidenciasagrupadas
+m_-3 m_-3
+m_descargoasociado m_descargoasociado
+m_interrupcionesdeldescargo m_interrupcionesdeldescargo
+m_generarintdescargo m_generarintdescargo
+end type
+type m_ventana from menu within md_ingreso_incidencias
+end type
+type m_cascada from menu within m_ventana
+end type
+type m_mosaico from menu within m_ventana
+end type
+type m_organizar from menu within m_ventana
+end type
+type m_ventana from menu within md_ingreso_incidencias
+m_cascada m_cascada
+m_mosaico m_mosaico
+m_organizar m_organizar
+end type
+type m_56 from menu within md_ingreso_incidencias
+end type
+type m_acercadelopensgi from menu within m_56
+end type
+type m_56 from menu within md_ingreso_incidencias
+m_acercadelopensgi m_acercadelopensgi
+end type
+global type md_ingreso_incidencias from menu
+m_archivo m_archivo
+m_editar m_editar
+m_consultar m_consultar
+m_ventana m_ventana
+m_56 m_56
+end type
+end forward
+
+shared variables
+
+end variables
+
+global type md_ingreso_incidencias from menu
+m_archivo m_archivo
+m_editar m_editar
+m_consultar m_consultar
+m_ventana m_ventana
+m_56 m_56
+end type
+global md_ingreso_incidencias md_ingreso_incidencias
+
+type variables
+
+end variables
+
+forward prototypes
+public function integer f_habilitar (string ps_menu, boolean pb_estado)
+end prototypes
+
+public function integer f_habilitar (string ps_menu, boolean pb_estado);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  f_habilitar
+// 
+// Objetivo: Habilita e inhabilita las distintas opciones de men$$HEX2$$fa002000$$ENDHEX$$de 
+//	acuerdo a los par$$HEX1$$e100$$ENDHEX$$metros que recibe
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_menu (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_estado (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//		14/7/95		SAS		Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en archivo o en editar
+i_cant_menu = UpperBound(m_archivo.item[])
+ps_menu = Upper(ps_menu)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_archivo.item[i_aux].tag = ps_menu THEN
+		m_archivo.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+i_cant_menu = UpperBound(m_editar.item[])
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_editar.item[i_aux].tag = ps_menu THEN
+		m_editar.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+
+RETURN -1
+end function
+
+on md_ingreso_incidencias.create
+md_ingreso_incidencias=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_archivo=create m_archivo
+this.m_editar=create m_editar
+this.m_consultar=create m_consultar
+this.m_ventana=create m_ventana
+this.m_56=create m_56
+this.Item[UpperBound(this.Item)+1]=this.m_archivo
+this.Item[UpperBound(this.Item)+1]=this.m_editar
+this.Item[UpperBound(this.Item)+1]=this.m_consultar
+this.Item[UpperBound(this.Item)+1]=this.m_ventana
+this.Item[UpperBound(this.Item)+1]=this.m_56
+end on
+
+on md_ingreso_incidencias.destroy
+call super::destroy
+destroy(this.m_archivo)
+destroy(this.m_editar)
+destroy(this.m_consultar)
+destroy(this.m_ventana)
+destroy(this.m_56)
+end on
+
+type m_archivo from menu within md_ingreso_incidencias
+m_cerrar m_cerrar
+m_- m_-
+m_grabar m_grabar
+m_-2 m_-2
+m_salir m_salir
+end type
+
+on m_archivo.create
+call super::create
+this.text = "&Archivo"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_cerrar=create m_cerrar
+this.m_-=create m_-
+this.m_grabar=create m_grabar
+this.m_-2=create m_-2
+this.m_salir=create m_salir
+this.Item[UpperBound(this.Item)+1]=this.m_cerrar
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_grabar
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_salir
+end on
+
+on m_archivo.destroy
+call super::destroy
+destroy(this.m_cerrar)
+destroy(this.m_-)
+destroy(this.m_grabar)
+destroy(this.m_-2)
+destroy(this.m_salir)
+end on
+
+type m_cerrar from menu within m_archivo
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Cierra la ventana activa. Triggea el CloseQuery
+//	
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+w_2301_form_incidencia lw_ventana
+lw_ventana = ParentWindow
+lw_ventana.tab_1.tabpage_seguimiento.d_seguimiento_operaciones.Accepttext()
+//lw_ventana.tab_1.ib_inc_finalizada=FALSE
+Close(ParentWindow)
+end event
+
+on m_cerrar.create
+call super::create
+this.tag = "CERRAR"
+this.text = "&Cerrar~tCtrl+F4"
+this.shortcut = 371
+this.microhelp = "Cerrar ventana actual"
+this.toolbaritemname = "runwindow!"
+this.toolbaritemtext = "Cerrar"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cerrar.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_archivo
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_grabar from menu within m_archivo
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Grabar en la base de datos las modificaciones realizadas 
+//				  por el usuario con los datos.
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+//ParentWindow.TriggerEvent("ue_arch_grabar")
+w_2301_form_incidencia lw_ventana
+lw_ventana = ParentWindow
+lw_ventana.tab_1.tabpage_seguimiento.d_seguimiento_operaciones.Accepttext()
+//lw_ventana.tab_1.ib_inc_finalizada=FALSE
+ParentWindow.TriggerEvent("ue_grabar")
+end event
+
+on m_grabar.create
+call super::create
+this.tag = "GRABAR"
+this.visible = false
+this.text = "&Grabar~tCtrl+G"
+this.shortcut = 327
+this.microhelp = "Grabar en la base de datos las modificaciones realizadas"
+this.toolbaritemvisible = false
+this.toolbaritemname = "update!"
+this.toolbaritemtext = "Grabar"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_grabar.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_archivo
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_salir from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Salir de la aplicaci$$HEX1$$f300$$ENDHEX$$n
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+close(ParentWindow)
+
+//Do while IsValid(w_prin.GetActiveSheet()) and message.returnvalue <> 1
+//   close(w_prin.GetActiveSheet())
+//loop
+//if message.returnvalue = 0 then
+//      disconnect;
+//      halt
+//end if
+
+end on
+
+on m_salir.create
+call super::create
+this.text = "&Salir~tAlt+F4"
+this.enabled = false
+this.shortcut = 627
+this.microhelp = "Salir del Sistema"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Salir"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_salir.destroy
+call super::destroy
+end on
+
+type m_editar from menu within md_ingreso_incidencias
+m_deshacer m_deshacer
+m_-7 m_-7
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+end type
+
+on m_editar.create
+call super::create
+this.text = "&Edici$$HEX1$$f300$$ENDHEX$$n"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_deshacer=create m_deshacer
+this.m_-7=create m_-7
+this.m_cortar=create m_cortar
+this.m_copiar=create m_copiar
+this.m_pegar=create m_pegar
+this.Item[UpperBound(this.Item)+1]=this.m_deshacer
+this.Item[UpperBound(this.Item)+1]=this.m_-7
+this.Item[UpperBound(this.Item)+1]=this.m_cortar
+this.Item[UpperBound(this.Item)+1]=this.m_copiar
+this.Item[UpperBound(this.Item)+1]=this.m_pegar
+end on
+
+on m_editar.destroy
+call super::destroy
+destroy(this.m_deshacer)
+destroy(this.m_-7)
+destroy(this.m_cortar)
+destroy(this.m_copiar)
+destroy(this.m_pegar)
+end on
+
+type m_deshacer from menu within m_editar
+end type
+
+on m_deshacer.create
+call super::create
+this.text = "&Deshacer~tCtrl+Z"
+this.shortcut = 346
+this.microhelp = "Deshacer el $$HEX1$$fa00$$ENDHEX$$ltimo cambio realizado"
+this.toolbaritemvisible = false
+this.toolbaritemname = "undo!"
+this.toolbaritemtext = "Deshacer"
+this.toolbaritemspace = 3
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deshacer.destroy
+call super::destroy
+end on
+
+type m_-7 from menu within m_editar
+end type
+
+on m_-7.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-7.destroy
+call super::destroy
+end on
+
+type m_cortar from menu within m_editar
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Mover el texto seleccionado al portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+EditMask  campo_inc   //campo Incidencia
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Cut()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Cut()
+case EditMask!
+	 campo_inc= go_which_control
+	 campo_inc.Cut()
+End choose
+
+end event
+
+on m_cortar.create
+call super::create
+this.text = "&Cortar~tCtrl+X"
+this.shortcut = 344
+this.microhelp = "Mover el texto seleccionado al porta-papeles "
+this.toolbaritemvisible = false
+this.toolbaritemname = "cut!"
+this.toolbaritemtext = "Cortar"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cortar.destroy
+call super::destroy
+end on
+
+type m_copiar from menu within m_editar
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Copiar el texto seleccionado en el portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+EditMask  campo_inc   //campo Incidencia
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Copy()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Copy()
+case EditMask!
+	 campo_inc= go_which_control
+	 campo_inc.Copy()
+End choose
+
+end event
+
+on m_copiar.create
+call super::create
+this.text = "C&opiar~tCtrl+C"
+this.shortcut = 323
+this.microhelp = "Copiar"
+this.toolbaritemvisible = false
+this.toolbaritemname = "copy!"
+this.toolbaritemtext = "Copiar"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_copiar.destroy
+call super::destroy
+end on
+
+type m_pegar from menu within m_editar
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Insertar el texto del portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+EditMask  campo_inc   //campo Incidencia
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Paste()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Paste()
+case EditMask!
+	 campo_inc= go_which_control
+	 campo_inc.Paste()
+End choose
+end event
+
+on m_pegar.create
+call super::create
+this.text = "&Pegar~tCtrl+V"
+this.shortcut = 342
+this.microhelp = "Insertar el contenido del porta-papeles"
+this.toolbaritemvisible = false
+this.toolbaritemname = "paste!"
+this.toolbaritemtext = "Pegar"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_pegar.destroy
+call super::destroy
+end on
+
+type m_consultar from menu within md_ingreso_incidencias
+m_instalacionafectada m_instalacionafectada
+m_-1 m_-1
+m_avisos m_avisos
+m_situacinclimatolgica m_situacinclimatolgica
+m_suministrosimportantes m_suministrosimportantes
+m_operacion m_operacion
+m_incidenciasagrupadas m_incidenciasagrupadas
+m_-3 m_-3
+m_descargoasociado m_descargoasociado
+m_interrupcionesdeldescargo m_interrupcionesdeldescargo
+m_generarintdescargo m_generarintdescargo
+end type
+
+on m_consultar.create
+call super::create
+this.text = "&Consultar"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_instalacionafectada=create m_instalacionafectada
+this.m_-1=create m_-1
+this.m_avisos=create m_avisos
+this.m_situacinclimatolgica=create m_situacinclimatolgica
+this.m_suministrosimportantes=create m_suministrosimportantes
+this.m_operacion=create m_operacion
+this.m_incidenciasagrupadas=create m_incidenciasagrupadas
+this.m_-3=create m_-3
+this.m_descargoasociado=create m_descargoasociado
+this.m_interrupcionesdeldescargo=create m_interrupcionesdeldescargo
+this.m_generarintdescargo=create m_generarintdescargo
+this.Item[UpperBound(this.Item)+1]=this.m_instalacionafectada
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_avisos
+this.Item[UpperBound(this.Item)+1]=this.m_situacinclimatolgica
+this.Item[UpperBound(this.Item)+1]=this.m_suministrosimportantes
+this.Item[UpperBound(this.Item)+1]=this.m_operacion
+this.Item[UpperBound(this.Item)+1]=this.m_incidenciasagrupadas
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_descargoasociado
+this.Item[UpperBound(this.Item)+1]=this.m_interrupcionesdeldescargo
+this.Item[UpperBound(this.Item)+1]=this.m_generarintdescargo
+end on
+
+on m_consultar.destroy
+call super::destroy
+destroy(this.m_instalacionafectada)
+destroy(this.m_-1)
+destroy(this.m_avisos)
+destroy(this.m_situacinclimatolgica)
+destroy(this.m_suministrosimportantes)
+destroy(this.m_operacion)
+destroy(this.m_incidenciasagrupadas)
+destroy(this.m_-3)
+destroy(this.m_descargoasociado)
+destroy(this.m_interrupcionesdeldescargo)
+destroy(this.m_generarintdescargo)
+end on
+
+type m_instalacionafectada from menu within m_consultar
+end type
+
+event clicked;parentwindow.triggerevent("ue_instalacion_afectada")
+end event
+
+on m_instalacionafectada.create
+call super::create
+this.visible = false
+this.text = "Ins&talacion Afectada"
+this.toolbaritemvisible = false
+this.toolbaritemname = "regenerate!"
+this.toolbaritemdownname = "Instalacion Afectada"
+this.toolbaritemtext = "Instalacion Afectada"
+this.toolbaritemspace = 3
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_instalacionafectada.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_consultar
+end type
+
+on m_-1.create
+call super::create
+this.visible = false
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_avisos from menu within m_consultar
+end type
+
+event clicked;parentwindow.triggerevent("ue_consulta_avisos")
+end event
+
+on m_avisos.create
+call super::create
+this.text = "A&visos~tCtrl+R"
+this.shortcut = 338
+this.microhelp = "Consulta de los avisos asociadas a la incidencia"
+this.toolbaritemname = "custom020!"
+this.toolbaritemtext = "Avisos Asociados"
+this.toolbaritemspace = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_avisos.destroy
+call super::destroy
+end on
+
+type m_situacinclimatolgica from menu within m_consultar
+end type
+
+event clicked;parentwindow.triggerevent("ue_sit_clima")
+end event
+
+on m_situacinclimatolgica.create
+call super::create
+this.visible = false
+this.text = "&Situaci$$HEX1$$f300$$ENDHEX$$n Climatol$$HEX1$$f300$$ENDHEX$$gica~tCtrl+S"
+this.shortcut = 339
+this.microhelp = "Situaci$$HEX1$$f300$$ENDHEX$$n Climatol$$HEX1$$f300$$ENDHEX$$gica de la Incidencia"
+this.toolbaritemvisible = false
+this.toolbaritemname = "comment!"
+this.toolbaritemtext = "Situaci$$HEX1$$f300$$ENDHEX$$n Climatol$$HEX1$$f300$$ENDHEX$$gica"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_situacinclimatolgica.destroy
+call super::destroy
+end on
+
+type m_suministrosimportantes from menu within m_consultar
+end type
+
+event clicked;parentwindow.TriggerEvent("ue_suministros_importantes")
+end event
+
+on m_suministrosimportantes.create
+call super::create
+this.visible = false
+this.text = "Suministros &Importantes~tCtrl+I"
+this.shortcut = 329
+this.microhelp = "Consulta de Suministros Importantes afectados por la Incidencia"
+this.toolbaritemvisible = false
+this.toolbaritemname = "custom076!"
+this.toolbaritemtext = "Sum. Importantes"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_suministrosimportantes.destroy
+call super::destroy
+end on
+
+type m_operacion from menu within m_consultar
+end type
+
+event clicked;parentwindow.triggerevent("ue_operacion")
+end event
+
+on m_operacion.create
+call super::create
+this.visible = false
+this.text = "&Mostrar en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.enabled = false
+this.microhelp = "Consultar en Open Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.toolbaritemvisible = false
+this.toolbaritemname = "globals!"
+this.toolbaritemtext = "Consultar en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_operacion.destroy
+call super::destroy
+end on
+
+type m_incidenciasagrupadas from menu within m_consultar
+end type
+
+event clicked;ParentWindow.triggerevent("ue_agrupacion")
+end event
+
+on m_incidenciasagrupadas.create
+call super::create
+this.text = "Incidencias A&grupadas~tCtrl+A"
+this.shortcut = 321
+this.microhelp = "Consulta de las incidencias agrupadas"
+this.toolbaritemname = "export5!"
+this.toolbaritemtext = "Incidencias Agrupadas"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_incidenciasagrupadas.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_consultar
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_descargoasociado from menu within m_consultar
+end type
+
+event clicked;ParentWindow.triggerevent("ue_descargos")
+end event
+
+on m_descargoasociado.create
+call super::create
+this.visible = false
+this.text = "&Descargo Asociado~tCtrl+D"
+this.enabled = false
+this.shortcut = 324
+this.microhelp = "Consulta del Descargo que ha generado la Incidencia"
+this.toolbaritemvisible = false
+this.toolbaritemname = "descargo.bmp"
+this.toolbaritemtext = "Descargos Asociados"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_descargoasociado.destroy
+call super::destroy
+end on
+
+type m_interrupcionesdeldescargo from menu within m_consultar
+end type
+
+event clicked;ParentWindow.triggerevent("ue_int_descargos")
+end event
+
+on m_interrupcionesdeldescargo.create
+call super::create
+this.visible = false
+this.text = "Interru&pciones del Descargo~tCtrl+T"
+this.enabled = false
+this.shortcut = 340
+this.microhelp = "Consulta de las interrupciones previstas"
+this.toolbaritemvisible = false
+this.toolbaritemname = "desc_int.bmp"
+this.toolbaritemtext = "Interrupciones previstas"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_interrupcionesdeldescargo.destroy
+call super::destroy
+end on
+
+type m_generarintdescargo from menu within m_consultar
+end type
+
+event clicked;ParentWindow.TriggerEvent("ue_alta_int_descargos")
+end event
+
+on m_generarintdescargo.create
+call super::create
+this.visible = false
+this.text = "Generar Int. Descargo~tCtrl+E"
+this.shortcut = 325
+this.microhelp = "Genera las interrupciones del Descargo"
+this.toolbaritemvisible = false
+this.toolbaritemname = "cut!"
+this.toolbaritemtext = "Generar Interrupciones Descargo"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_generarintdescargo.destroy
+call super::destroy
+end on
+
+type m_ventana from menu within md_ingreso_incidencias
+m_cascada m_cascada
+m_mosaico m_mosaico
+m_organizar m_organizar
+end type
+
+on m_ventana.create
+call super::create
+this.text = "&Ventana"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_cascada=create m_cascada
+this.m_mosaico=create m_mosaico
+this.m_organizar=create m_organizar
+this.Item[UpperBound(this.Item)+1]=this.m_cascada
+this.Item[UpperBound(this.Item)+1]=this.m_mosaico
+this.Item[UpperBound(this.Item)+1]=this.m_organizar
+end on
+
+on m_ventana.destroy
+call super::destroy
+destroy(this.m_cascada)
+destroy(this.m_mosaico)
+destroy(this.m_organizar)
+end on
+
+type m_cascada from menu within m_ventana
+end type
+
+on m_cascada.create
+call super::create
+this.text = "&Cascada"
+this.microhelp = "Ordenar las ventanas para que se sobrepongan"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cascada.destroy
+call super::destroy
+end on
+
+type m_mosaico from menu within m_ventana
+end type
+
+on m_mosaico.create
+call super::create
+this.text = "&Mosaico"
+this.microhelp = "Ordenar las ventanas de modo que se vean todas"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_mosaico.destroy
+call super::destroy
+end on
+
+type m_organizar from menu within m_ventana
+end type
+
+on m_organizar.create
+call super::create
+this.text = "&Organizar"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_organizar.destroy
+call super::destroy
+end on
+
+type m_56 from menu within md_ingreso_incidencias
+m_acercadelopensgi m_acercadelopensgi
+end type
+
+on m_56.create
+call super::create
+this.text = "A&yuda"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_acercadelopensgi=create m_acercadelopensgi
+this.Item[UpperBound(this.Item)+1]=this.m_acercadelopensgi
+end on
+
+on m_56.destroy
+call super::destroy
+destroy(this.m_acercadelopensgi)
+end on
+
+type m_acercadelopensgi from menu within m_56
+end type
+
+event clicked;open(w_acerca_de_sgi)
+end event
+
+on m_acercadelopensgi.create
+call super::create
+this.text = "&Acerca del OPEN SGI"
+this.microhelp = "Mostrar la informacion de la licencia del OPEN SGI"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_acercadelopensgi.destroy
+call super::destroy
+end on
+

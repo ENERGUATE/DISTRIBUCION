@@ -1,0 +1,40 @@
+HA$PBExportHeader$dw_bloque_inst_desc.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_descargo dbname="sgd_interrupcion_descargo.nro_descargo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_instalacion dbname="sgd_interrupcion_descargo.cod_instalacion" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_inicio dbname="sgd_interrupcion_descargo.f_inicio" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_fin dbname="sgd_interrupcion_descargo.f_fin" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_alta dbname="sgd_interrupcion_descargo.f_alta" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_interrupcion_descargo.programa" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="sgd_interrupcion_descargo.usuario" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_oop dbname="sgd_interrupcion_descargo.ind_oop" initial="0" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_instalacion dbname="sgd_instalacion.tipo_instalacion" )
+ retrieve="  SELECT ~"SGD_INTERRUPCION_DESCARGO~".~"NRO_DESCARGO~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"COD_INSTALACION~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"F_INICIO~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"F_FIN~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"F_ALTA~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"PROGRAMA~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"USUARIO~",
+~"SGD_INTERRUPCION_DESCARGO~".~"IND_OOP~",
+			~"SGD_INSTALACION~".~"NOM_INSTALACION~",
+			~"SGD_INSTALACION~".~"TIPO_INSTALACION~"
+    FROM ~"SGD_INTERRUPCION_DESCARGO~",
+			~"SGD_INSTALACION~"
+	WHERE ~"SGD_INTERRUPCION_DESCARGO~".~"NRO_DESCARGO~"=:pl_nro_descargo	
+	AND ~"SGD_INSTALACION~".~"NRO_INSTALACION~" = ~"SGD_INTERRUPCION_DESCARGO~".~"COD_INSTALACION~"
+	AND ~"SGD_INSTALACION~".~"BDI_JOB~"=0
+	
+		" arguments=(("pl_nro_descargo", number)) )
+text(band=header alignment="0" text="                       Instalacion" border="6" color="0" x="9" y="8" height="64" width="1943" html.valueishtml="0"  name=nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="bitmap(case(  tipo_instalacion when 1 then  ~"SUBESTaca.bmp~" 
+when 2 then ~"salta.bmp~" when 3 then ~"subest.bmp~" when 4 then ~"sal_tra1.bmp~" when 5 then ~"ct1.bmp~" when 6 then ~"transfor.bmp~" when 7 then ~"salbaj.bmp~" when 9 then ~"centroref.bmp~"))"border="0" color="0" x="14" y="12" height="64" width="78" format="[general]" html.valueishtml="0"  name=icono visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="105" y="12" height="64" width="1865" format="[general]" html.valueishtml="0"  name=nom_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,1886 @@
+HA$PBExportHeader$md_lista_mante.srm
+forward
+global type md_lista_mante from md_consultas_estandar
+end type
+type m_avisosasociados from menu within m_consultar
+end type
+type m_observaciones from menu within m_consultar
+end type
+type m_callesafectadas from menu within m_consultar
+end type
+type m_grafico from menu within m_consultar
+end type
+type m_ventanagrfica from menu within m_grafico
+end type
+type m_localizacion from menu within m_grafico
+end type
+type m_quitarblink from menu within m_grafico
+end type
+type m_selecciondecapas from menu within m_grafico
+end type
+type m_gestion from menu within m_grafico
+end type
+type m_aceptar from menu within m_grafico
+end type
+type m_cancelar from menu within m_grafico
+end type
+type m_salirdeltrabajo from menu within m_grafico
+end type
+type m_grafico from menu within m_consultar
+m_ventanagrfica m_ventanagrfica
+m_localizacion m_localizacion
+m_quitarblink m_quitarblink
+m_selecciondecapas m_selecciondecapas
+m_gestion m_gestion
+m_aceptar m_aceptar
+m_cancelar m_cancelar
+m_salirdeltrabajo m_salirdeltrabajo
+end type
+type m_listadodetramos from menu within m_consultar
+end type
+type m_instalacion from menu within m_ordenar
+end type
+type m_mantenimientogrfico from menu within md_lista_mante
+end type
+type m_digitalizar from menu within m_mantenimientogrfico
+end type
+type m_subestacion from menu within m_digitalizar
+end type
+type m_ct from menu within m_digitalizar
+end type
+type m_tramo from menu within m_digitalizar
+end type
+type m_bajatension from menu within m_tramo
+end type
+type m_mediatension from menu within m_tramo
+end type
+type m_tramo from menu within m_digitalizar
+m_bajatension m_bajatension
+m_mediatension m_mediatension
+end type
+type m_digitalizar from menu within m_mantenimientogrfico
+m_subestacion m_subestacion
+m_ct m_ct
+m_tramo m_tramo
+end type
+type m_seleccion from menu within m_mantenimientogrfico
+end type
+type m_grfica from menu within m_seleccion
+end type
+type m_alfanumrica from menu within m_seleccion
+end type
+type m_seleccion from menu within m_mantenimientogrfico
+m_grfica m_grfica
+m_alfanumrica m_alfanumrica
+end type
+type m_modificacioninstalacion from menu within m_mantenimientogrfico
+end type
+type m_borrado from menu within m_modificacioninstalacion
+end type
+type m_mover from menu within m_modificacioninstalacion
+end type
+type m_trasladar from menu within m_modificacioninstalacion
+end type
+type m_modificacioninstalacion from menu within m_mantenimientogrfico
+m_borrado m_borrado
+m_mover m_mover
+m_trasladar m_trasladar
+end type
+type m_mantenimientogrfico from menu within md_lista_mante
+m_digitalizar m_digitalizar
+m_seleccion m_seleccion
+m_modificacioninstalacion m_modificacioninstalacion
+end type
+type m_ventana1 from menu within md_lista_mante
+end type
+type m_cascada1 from menu within m_ventana1
+end type
+type m_mosaico1 from menu within m_ventana1
+end type
+type m_organizar1 from menu within m_ventana1
+end type
+type m_ventana1 from menu within md_lista_mante
+m_cascada1 m_cascada1
+m_mosaico1 m_mosaico1
+m_organizar1 m_organizar1
+end type
+type m_ayuda from menu within md_lista_mante
+end type
+type m_acercadelopensgi1 from menu within m_ayuda
+end type
+type m_ayuda from menu within md_lista_mante
+m_acercadelopensgi1 m_acercadelopensgi1
+end type
+end forward
+
+type ist_devuelve from structure
+        integer         mod
+        long            class_mem
+end type
+
+global type md_lista_mante from md_consultas_estandar
+m_mantenimientogrfico m_mantenimientogrfico
+m_ventana1 m_ventana1
+m_ayuda m_ayuda
+end type
+global md_lista_mante md_lista_mante
+
+type prototypes
+
+end prototypes
+
+type variables
+boolean ib_modificaciones
+string is_rotulo
+long il_linea
+
+end variables
+
+forward prototypes
+public subroutine fm_salir_trabajo (boolean pb_mostrar)
+public subroutine fm_aceptar (boolean pb_mostrar)
+public subroutine fm_listado_tramos (boolean pb_mostrar)
+public subroutine fm_alfanumerico ()
+public subroutine f_graba_cambios ()
+public function integer f_salvar ()
+end prototypes
+
+public subroutine fm_salir_trabajo (boolean pb_mostrar);//pb_mostrar ---> true : saliendo del trabajo (No mantenimiento)
+//                                              false: entrando en un trabajo (Modificando)
+
+if pb_mostrar then
+        md_lista_mante.m_consultar.m_grafico.m_aceptar.toolbaritemvisible=false
+        md_lista_mante.m_consultar.m_grafico.m_cancelar.toolbaritemvisible=false
+        md_lista_mante.m_consultar.m_grafico.m_ventanagrfica.enabled=true
+        md_lista_mante.m_consultar.m_grafico.m_selecciondecapas.enabled=true
+        md_lista_mante.m_mantenimientogrfico.enabled=false
+        md_lista_mante.m_consultar.m_grafico.m_gestion.enabled=true
+        md_lista_mante.m_consultar.m_grafico.m_selecciondecapas.enabled=true
+        md_lista_mante.m_consultar.m_grafico.m_localizacion.enabled=true
+        md_lista_mante.m_consultar.m_grafico.m_quitarblink.enabled=true
+        md_lista_mante.m_consultar.m_grafico.m_salirdeltrabajo.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_subestacion.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_ct.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_tramo.m_bajatension.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_tramo.m_mediatension.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_seleccion.m_grfica.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_seleccion.m_alfanumrica.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.m_borrado.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.m_mover.toolbaritemvisible=false 
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.m_trasladar.toolbaritemvisible=false
+else
+
+        md_lista_mante.m_mantenimientogrfico.enabled=true
+        md_lista_mante.m_consultar.m_grafico.m_gestion.enabled=false
+        md_lista_mante.m_consultar.m_grafico.m_localizacion.enabled=false
+        md_lista_mante.m_consultar.m_grafico.m_quitarblink.enabled=false
+        md_lista_mante.m_consultar.m_grafico.m_salirdeltrabajo.toolbaritemvisible=true
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_subestacion.toolbaritemvisible=true
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_ct.toolbaritemvisible=true
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_tramo.m_bajatension.toolbaritemvisible=true
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_tramo.m_mediatension.toolbaritemvisible=true
+        md_lista_mante.m_mantenimientogrfico.m_seleccion.m_grfica.toolbaritemvisible=true
+        md_lista_mante.m_mantenimientogrfico.m_seleccion.m_alfanumrica.toolbaritemvisible=true
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.m_borrado.toolbaritemvisible=true
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.m_mover.toolbaritemvisible=true  
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.m_trasladar.toolbaritemvisible=true
+end if
+end subroutine
+
+public subroutine fm_aceptar (boolean pb_mostrar);      md_lista_mante.m_consultar.m_grafico.m_aceptar.toolbaritemvisible=pb_mostrar
+        md_lista_mante.m_consultar.m_grafico.m_cancelar.toolbaritemvisible=pb_mostrar
+end subroutine
+
+public subroutine fm_listado_tramos (boolean pb_mostrar);md_lista_mante.m_consultar.m_listadodetramos.toolbaritemvisible=pb_mostrar
+md_lista_mante.m_consultar.m_listadodetramos.visible=pb_mostrar
+
+
+end subroutine
+
+public subroutine fm_alfanumerico ();   md_lista_mante.m_consultar.m_grafico.m_ventanagrfica.enabled=false
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.enabled=false
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.enabled=false
+        md_lista_mante.m_mantenimientogrfico.m_seleccion.m_grfica.enabled=false
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_subestacion.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_ct.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_tramo.m_bajatension.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_digitalizar.m_tramo.m_mediatension.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_seleccion.m_grfica.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.m_borrado.toolbaritemvisible=false
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.m_mover.toolbaritemvisible=false 
+        md_lista_mante.m_mantenimientogrfico.m_modificacioninstalacion.m_trasladar.toolbaritemvisible=false
+        md_lista_mante.m_consultar.m_grafico.m_selecciondecapas.enabled=false
+end subroutine
+
+public subroutine f_graba_cambios ();int li_retorno
+long ll_tvi, ll_codigo
+treeviewitem l_elemento
+
+
+        setpointer(hourglass!)
+        CHOOSE CASE onis.is_tipo_mod
+                                CASE "ALTA" // ALTA GRAFICA
+                                li_retorno=onis.of_graba_digitaliza(onis.instalaciones[1].class_id,ll_codigo)
+                                CASE "MOD" // MODIFICACION GRAFICA
+                                        li_retorno=onis.of_graba_modificacion()
+
+                        
+                        CASE 'BAJA'
+                                li_retorno=onis.of_graba_borra()
+                                if li_retorno=1 then  //  SE ABRE LA RAMA PARA VER LA MODIFICICACION EFECTUADA
+                                        w_man_instalacion.fw_expande_rama(onis.instalaciones[1].class_mem)
+                                        
+                        elseif li_retorno=2 then
+                                        // SE BORRA UNA INSTALACION CON ESTADO=32
+                                                                        
+                                        if not onis.instalaciones[1].grafico then 
+                                                        // ELEMENTO GRAFICO--> TODAVIA NO TIENE PADRE --> NO SE HACE NADA
+                                                        // ELEMENTO ALFANUMERICO --->  TIENE PADRE DEFINIDO
+                                                        // ABRIMOS LA RAMA PARA VER EL ARBOL
+                                                        // Y BORRAMOS EL ITEM CORRESPONDIENTE
+                                                        w_man_instalacion.fw_expande_rama(onis.instalaciones[1].class_mem)
+                                                        ll_tvi = w_man_instalacion.tv_1.FindItem(CurrentTreeItem!, 0)
+                                                        w_man_instalacion.tv_1.getitem(ll_tvi,l_elemento)
+                                                        ll_codigo=long(l_elemento.data)
+                                                        if ll_codigo=onis.instalaciones[1].class_mem then 
+                                                                w_man_instalacion.tv_1.deleteitem(ll_tvi)
+                                                        end if
+                                        end if  
+                                        gnu_u_transaction.uf_commit();
+                        end if
+                                
+
+                        END CHOOSE
+                        if li_retorno<1 then
+                                fg_mostrar(false)
+                                gnv_msg.f_mensaje("EX06","","",OK!) 
+                                fg_mostrar(true)
+                                onis.of_abandona()
+                        end if
+                        
+                        ib_modificaciones=false
+                        fm_aceptar(false)
+end subroutine
+
+public function integer f_salvar ();//1 ---> Se graba o abandonan los  cambios y se siguen con la operacion en curso
+//0 ---> No se hace nada y no se sigue con la operacion en curso.
+        
+        
+if w_man_instalacion.ib_modificado or ib_modificaciones then
+
+        choose case gnv_msg.f_mensaje("CG01","","",YesNoCancel!)
+        case 1
+                setpointer(hourglass!)  
+                if w_man_instalacion.ib_modificado then 
+       if w_man_instalacion.ib_busqueda_padre and w_man_instalacion.il_padre=0 and w_man_instalacion.dw_1.dataobject<>'d_man_subestac' then
+                        gnv_msg.f_mensaje("AX05","","",Ok!)
+                        return 0
+                end if
+                
+                w_man_instalacion.dw_1.accepttext()     
+                if w_man_instalacion.validar_campos(w_man_instalacion.dw_1.dataobject) = true then
+                        return 0
+                end if
+        
+                w_man_instalacion.cb_aceptar.triggerEvent(clicked!)
+                end if
+                if ib_modificaciones then f_graba_cambios()                     
+                case 3
+                        return 0
+                case 2
+                setpointer(hourglass!)  
+                if w_man_instalacion.ib_modificado then         w_man_instalacion.cb_cancelar.triggerEvent(clicked!)
+                if ib_modificaciones then 
+                        onis.of_abandona()
+                        ib_modificaciones=false
+                        fm_aceptar(false)
+                end if
+        end choose
+end if  
+
+return 1
+end function
+
+on md_lista_mante.create
+md_lista_mante=this
+call super::create
+this.m_mantenimientogrfico=create m_mantenimientogrfico
+this.m_ventana1=create m_ventana1
+this.m_ayuda=create m_ayuda
+this.Item[UpperBound(this.item)+1]=this.m_mantenimientogrfico
+this.Item[UpperBound(this.item)+1]=this.m_ventana1
+this.Item[UpperBound(this.item)+1]=this.m_ayuda
+end on
+
+on md_lista_mante.destroy
+call super::destroy
+destroy(this.m_mantenimientogrfico)
+destroy(this.m_ventana1)
+destroy(this.m_ayuda)
+end on
+
+on m_archivo.create
+call super::create
+this.Tag="ARCHIVO"
+end on
+
+event m_agregar::clicked;w_7101_consulta_descargos.TriggerEvent("ue_arch_agregar")
+end event
+
+on m_agregar.create
+call super::create
+this.Microhelp="Ingresar una Incidencia"
+this.Visible=false
+this.Enabled=true
+end on
+
+event m_eliminar::clicked;call super::clicked;w_7101_consulta_descargos.TriggerEvent("ue_eliminar")
+end event
+
+on m_eliminar.create
+call super::create
+this.Visible=false
+this.Enabled=true
+end on
+
+on m_cerrar.create
+call super::create
+this.ToolBarItemVisible=true
+end on
+
+on m_-.create
+call super::create
+this.Visible=false
+end on
+
+on m_grabar.create
+call super::create
+this.Visible=false
+end on
+
+on m_imprimir.create
+call super::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_seleccionarimpresora.create
+call super::create
+this.Tag="SELECCIONARIMPRESORA"
+this.ToolBarItemVisible=false
+end on
+
+on m_preferencias.create
+call super::create
+this.Tag="PREFERENCIAS"
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_salir.create
+call super::create
+this.Tag="SALIR"
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_editar.create
+call super::create
+this.Tag="EDITAR"
+end on
+
+on m_deshacer.create
+call super::create
+this.Tag="DESHACER"
+end on
+
+on m_cortar.create
+call super::create
+this.Tag="CORTAR"
+end on
+
+on m_copiar.create
+call super::create
+this.Tag="COPIAR"
+end on
+
+on m_pegar.create
+call super::create
+this.Tag="PEGAR"
+end on
+
+on m_iralcomienzo.create
+call super::create
+this.Tag="IRALCOMIENZO"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemSpace=3
+end on
+
+on m_iralfinal.create
+call super::create
+this.Tag="IRALFINAL"
+this.Visible=false
+this.Enabled=true
+this.ToolBarItemVisible=false
+end on
+
+event m_buscar::clicked;md_lista_ot.m_consultar.m_grafico.m_localizacion.enabled=false
+md_lista_ot.m_consultar.m_grafico.m_quitarblink.enabled=false
+w_6208_consulta_ot.fw_buscar()
+end event
+
+on m_buscar.create
+call super::create
+this.Tag="BUSCAR"
+this.Visible=false
+this.ToolBarItemOrder=1
+this.ToolBarItemVisible=false
+this.ToolBarItemSpace=3
+end on
+
+type m_consultar from md_consultas_estandar`m_consultar within md_lista_mante
+m_avisosasociados m_avisosasociados
+m_observaciones m_observaciones
+m_callesafectadas m_callesafectadas
+m_grafico m_grafico
+m_listadodetramos m_listadodetramos
+end type
+
+on m_consultar.create
+call super::create
+this.Text="&Consultas"
+this.Tag="CONSULTAR"
+this.Enabled=true
+this.ToolBarItemVisible=false
+this.ToolBarItemSpace=2
+this.m_avisosasociados=create m_avisosasociados
+this.m_observaciones=create m_observaciones
+this.m_callesafectadas=create m_callesafectadas
+this.m_grafico=create m_grafico
+this.m_listadodetramos=create m_listadodetramos
+this.Item[UpperBound(this.item)+1]=this.m_avisosasociados
+this.Item[UpperBound(this.item)+1]=this.m_observaciones
+this.Item[UpperBound(this.item)+1]=this.m_callesafectadas
+this.Item[UpperBound(this.item)+1]=this.m_grafico
+this.Item[UpperBound(this.item)+1]=this.m_listadodetramos
+end on
+
+on m_consultar.destroy
+call super::destroy
+destroy(this.m_avisosasociados)
+destroy(this.m_observaciones)
+destroy(this.m_callesafectadas)
+destroy(this.m_grafico)
+destroy(this.m_listadodetramos)
+end on
+
+on m_descripcin.create
+call super::create
+this.Text="&Descripci$$HEX1$$f300$$ENDHEX$$n~tCtrl+A"
+this.Tag="DESCRIPCION"
+this.Enabled=true
+this.Checked=false
+this.Shortcut=321
+end on
+
+on m_informacindeot.create
+call super::create
+this.Text="&Informaci$$HEX1$$f300$$ENDHEX$$n de OT~tCtrl+O"
+this.Tag="INFORMACIONOT"
+this.Shortcut=335
+end on
+
+on m_brigadistas.create
+call super::create
+this.Text="&Brigadistas~tCtrl+B"
+this.Tag="BRIGADISTAS"
+this.Shortcut=322
+end on
+
+on m_reclamaciones.create
+call super::create
+this.Text="&Avisos~tCtrl+R"
+this.Tag="RECLAMACIONES"
+this.Shortcut=338
+end on
+
+event m_situacinclimatolgica::clicked;call super::clicked;w_7101_consulta_descargos.TriggerEvent("ue_sit_clima")
+end event
+
+on m_situacinclimatolgica.create
+call super::create
+this.Text="Situaci$$HEX1$$f300$$ENDHEX$$n &Climatol$$HEX1$$f300$$ENDHEX$$gica~tCtrl+S"
+this.Tag="SITUACIONCLIMATOLOGICA"
+this.ToolBarItemSpace=3
+this.Shortcut=339
+end on
+
+event m_suministrosimportantes::clicked;call super::clicked;w_7101_consulta_descargos.TriggerEvent("ue_sum_imp")
+end event
+
+on m_suministrosimportantes.create
+call super::create
+this.Text="S&uministros Importantes~tCtrl+I"
+this.Tag="SUMINISTROSIMPORTANTES"
+this.Enabled=true
+this.Shortcut=329
+end on
+
+type m_ordenar from md_consultas_estandar`m_ordenar within md_lista_mante
+m_instalacion m_instalacion
+end type
+
+on m_ordenar.create
+call super::create
+this.Tag="ORDENAR"
+this.Enabled=true
+this.m_instalacion=create m_instalacion
+this.Item[UpperBound(this.item)+1]=this.m_instalacion
+end on
+
+on m_ordenar.destroy
+call super::destroy
+destroy(this.m_instalacion)
+end on
+
+event m_duracin::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 1
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_duracin.create
+call super::create
+this.Microhelp="Permite ordenar la Lista por la Duraci$$HEX1$$f300$$ENDHEX$$n de los Avisos"
+this.Tag="DURACION"
+this.ToolBarItemSpace=3
+end on
+
+event m_prioridad::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 3
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_prioridad.create
+call super::create
+this.Text="&Instalacion~tShift+F1"
+this.Microhelp="Permite ordenar la lista por la Prioridad de los Avisos"
+this.Tag="PRIORIDAD"
+this.Visible=true
+this.Enabled=true
+this.Shortcut=1136
+end on
+
+event m_d::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 4
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_d.create
+call super::create
+this.Text="&Solicitante~tShift+F2"
+this.Microhelp="Permite ordenar la Llsta por la Direcci$$HEX1$$f300$$ENDHEX$$n de los Avisos"
+this.Visible=true
+this.Enabled=true
+this.Shortcut=1137
+end on
+
+event m_importante::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 2
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_importante.create
+call super::create
+this.Text="&Estado~tShift+F3"
+this.Microhelp="Permite ordenar la lista de acuerdo al Estado en que se encuentre en Operaciones."
+this.Tag="IMPORTANTE"
+this.ToolBarItemName="oper.bmp"
+this.ToolBarItemText="Ord. Est. Oper."
+this.Visible=true
+this.Enabled=true
+this.Shortcut=1138
+end on
+
+event m_peligro::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 4
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_peligro.create
+call super::create
+this.Text="Estado &Mantenimiento~tShift+F5"
+this.Microhelp="Permite ordenar la lista de acuerdo al Estado en que se encuentre en Mantenimiento."
+this.Tag="PELIGRO"
+this.ToolBarItemName="mante.bmp"
+this.ToolBarItemText="Ord. Est. Mant."
+this.Shortcut=1140
+end on
+
+event m_incidenciaasociada::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 7
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_incidenciaasociada.create
+call super::create
+this.Text="F&echa de Resoluci$$HEX1$$f300$$ENDHEX$$n~tShift+F6"
+this.Microhelp="Permite ordenar la lista de acuerdo a la Fecha de Resoluci$$HEX1$$f300$$ENDHEX$$n de la Incidencia."
+this.Tag="INCIDENCIAASOCIADA"
+this.ToolBarItemName="alta_pro.bmp"
+this.ToolBarItemText="Ord. Fec. Res."
+this.Shortcut=1141
+end on
+
+event m_fechaderesuelto::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 8
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_fechaderesuelto.create
+call super::create
+this.Text="&Fecha de Detecci$$HEX1$$f300$$ENDHEX$$n~tShift+F7"
+this.Microhelp="Permite ordenar la lista de acuerdo a la Fecha de Detecci$$HEX1$$f300$$ENDHEX$$n de la Incidencia."
+this.Tag="FECHADERESUELTO"
+this.ToolBarItemText="Ord. Fec. Detec."
+this.Shortcut=1142
+end on
+
+on m_ventana.create
+call super::create
+this.Tag="VENTANA"
+this.Visible=false
+end on
+
+on m_cascada.create
+call super::create
+this.Tag="CASCADA"
+end on
+
+on m_mosaico.create
+call super::create
+this.Tag="MOSAICO"
+end on
+
+on m_organizar.create
+call super::create
+this.Tag="ORGANIZAR"
+end on
+
+on m_56.create
+call super::create
+this.Visible=false
+end on
+
+type m_avisosasociados from menu within m_consultar
+end type
+
+event clicked;w_7101_consulta_descargos.TriggerEvent("ue_avisos_asociados")
+end event
+
+on m_avisosasociados.create
+this.Text="A&visos Asociados~tCtrl+U"
+this.Microhelp="Avisos Asociados a la Incidencia"
+this.Tag="ASOCIARAVISOS"
+this.ToolBarItemName="Custom020!"
+this.ToolBarItemText="avisos asociados"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=341
+end on
+
+type m_observaciones from menu within m_consultar
+end type
+
+event clicked;w_7101_consulta_descargos.TriggerEvent("ue_observaciones")
+end event
+
+on m_observaciones.create
+this.Text="&Observaciones~tCtrl+E"
+this.Microhelp="Observaci$$HEX1$$f300$$ENDHEX$$nes de la incidendcia"
+this.Tag="OBSERVACIONES"
+this.ToolBarItemName="ScriptYes!"
+this.ToolBarItemText="Observaciones"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=325
+end on
+
+type m_callesafectadas from menu within m_consultar
+end type
+
+on m_callesafectadas.create
+this.Text="&Calles Afectadas"
+this.ToolBarItemName="ruta.bmp"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemSpace=4
+this.Enabled=false
+end on
+
+event clicked;w_7101_consulta_descargos.TriggerEvent("ue_calles_afectadas")
+end event
+
+type m_grafico from menu within m_consultar
+m_ventanagrfica m_ventanagrfica
+m_localizacion m_localizacion
+m_quitarblink m_quitarblink
+m_selecciondecapas m_selecciondecapas
+m_gestion m_gestion
+m_aceptar m_aceptar
+m_cancelar m_cancelar
+m_salirdeltrabajo m_salirdeltrabajo
+end type
+
+on m_grafico.create
+this.Text="&Graficas"
+this.Microhelp="Consulta gr$$HEX1$$e100$$ENDHEX$$fica"
+this.ToolBarItemText="Consulta gr$$HEX1$$e100$$ENDHEX$$fica"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=3
+this.ToolBarItemSpace=3
+this.m_ventanagrfica=create m_ventanagrfica
+this.m_localizacion=create m_localizacion
+this.m_quitarblink=create m_quitarblink
+this.m_selecciondecapas=create m_selecciondecapas
+this.m_gestion=create m_gestion
+this.m_aceptar=create m_aceptar
+this.m_cancelar=create m_cancelar
+this.m_salirdeltrabajo=create m_salirdeltrabajo
+this.Item[]={this.m_ventanagrfica, &
+this.m_localizacion, &
+this.m_quitarblink, &
+this.m_selecciondecapas, &
+this.m_gestion, &
+this.m_aceptar, &
+this.m_cancelar, &
+this.m_salirdeltrabajo}
+end on
+
+on m_grafico.destroy
+destroy(this.m_ventanagrfica)
+destroy(this.m_localizacion)
+destroy(this.m_quitarblink)
+destroy(this.m_selecciondecapas)
+destroy(this.m_gestion)
+destroy(this.m_aceptar)
+destroy(this.m_cancelar)
+destroy(this.m_salirdeltrabajo)
+end on
+
+type m_ventanagrfica from menu within m_grafico
+end type
+
+event clicked;fg_mostrar(true)
+end event
+
+on m_ventanagrfica.create
+this.Text="&Ventana gr$$HEX1$$e100$$ENDHEX$$fica"
+this.Microhelp="Muestra la ventana gr$$HEX1$$e100$$ENDHEX$$fica"
+this.ToolBarItemName="Picture5!"
+this.ToolBarItemText="Ventana gr$$HEX1$$e100$$ENDHEX$$fica"
+this.ToolBarItemOrder=2
+this.ToolBarItemSpace=3
+end on
+
+type m_localizacion from menu within m_grafico
+end type
+
+event clicked;
+int li_retorno
+
+        setpointer(hourglass!)
+        
+        if isvalid(onis) then 
+                onis.of_quita_blink()
+        if gl_instalacion_afectada>0 then 
+                                        li_retorno=onis.of_muestra_elemento(gl_instalacion_afectada,true)
+        
+              if li_retorno=1 then
+                                //onis.of_carga_simbologia()                    
+                        fg_mostrar(true)                
+                        else
+                        fg_mostrar(false)       
+                                gnv_msg.f_mensaje("EX20","","",OK!)
+                        fg_mostrar(true)                
+                        end if  
+                else
+                        fg_mostrar(true)                
+                end if  
+        end if
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+end event
+
+on m_localizacion.create
+this.Text="&Localizaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Localizaci$$HEX1$$f300$$ENDHEX$$n de la instalacion seleccionada"
+this.ToolBarItemName="Custom065!"
+this.ToolBarItemText="Localizaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemOrder=2
+end on
+
+type m_quitarblink from menu within m_grafico
+end type
+
+event clicked;int retorno
+setpointer(HourGlass!)
+if isvalid(onis) then 
+        onis.of_quita_blink()
+        fg_mostrar(true)
+end if
+
+
+        
+end event
+
+on m_quitarblink.create
+this.Text="&Quitar blink"
+this.Microhelp="Quitar blink"
+this.ToolBarItemName="desmar.bmp"
+this.ToolBarItemText="Quitar blink"
+this.ToolBarItemOrder=2
+end on
+
+type m_selecciondecapas from menu within m_grafico
+end type
+
+event clicked;int retorno
+setpointer(HourGlass!)
+if isvalid(onis) then 
+if  (onis.of_Selecciona_capa()>0) then
+        setpointer(HourGlass!)
+        retorno=onis.of_trata_capa()
+        if retorno=0 then
+                fg_mostrar(false)               
+                gnv_msg.f_mensaje("EX21","","",OK!)
+        end if
+        fg_mostrar(true)
+end if
+end if
+        
+end event
+
+on m_selecciondecapas.create
+this.Text="&Selecci$$HEX1$$f300$$ENDHEX$$n de capas"
+this.Microhelp="Selecci$$HEX1$$f300$$ENDHEX$$n de capas cartogr$$HEX1$$e100$$ENDHEX$$ficas"
+this.ToolBarItemName="capas2.bmp"
+this.ToolBarItemText="Selecci$$HEX1$$f300$$ENDHEX$$n de capas "
+this.ToolBarItemOrder=2
+end on
+
+type m_gestion from menu within m_grafico
+end type
+
+on m_gestion.create
+this.Text="&Gesti$$HEX1$$f300$$ENDHEX$$n de trabajos"
+this.Microhelp="Gesti$$HEX1$$f300$$ENDHEX$$n de trabajos"
+this.ToolBarItemName="Move!"
+this.ToolBarItemText="Gesti$$HEX1$$f300$$ENDHEX$$n de trabajos"
+this.ToolBarItemOrder=2
+end on
+
+event clicked;long ll_centro,ll_cmd,ll_mesa
+
+if isvalid(w_man_instalacion) then
+        ll_centro = w_man_instalacion.dw_ambito.getitemnumber(1,"nro_centro")
+        ll_cmd = w_man_instalacion.dw_ambito.getitemnumber(1,"nro_cmd")
+        ll_mesa = w_man_instalacion.dw_ambito.getitemnumber(1,"nro_mesa")
+end if
+if ll_centro=0 or ll_cmd=0 or ll_mesa=0 then
+        gnv_msg.f_mensaje("AX06","","",Ok!)
+        return
+        
+end if
+
+
+
+if md_lista_mante.m_consultar.m_listadodetramos.checked then md_lista_mante.m_consultar.m_listadodetramos.triggerEvent(Clicked!)        
+fm_listado_tramos(false)
+open(w_gestion_trabajos)
+setpointer(hourglass!)
+ if Message.DoubleParm>0 then
+        w_man_instalacion.ib_saliendo=false
+        if Message.DoubleParm=1 then // GRAFICO
+                 fm_salir_trabajo(false) 
+                 fg_mostrar(true)
+        else
+                fm_salir_trabajo(false) 
+                fm_alfanumerico() // ALFANUMERICO
+        end if
+else
+        w_man_instalacion.tv_1.deleteitem(0)    
+        w_man_instalacion.tv_1.TriggerEvent("ue_cargar")        
+end if
+ 
+end event
+
+on m_gestion.destroy
+end on
+
+type m_aceptar from menu within m_grafico
+end type
+
+on m_aceptar.create
+this.Text="&Aceptar"
+this.Microhelp="Aceptar la operaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemName="Save!"
+this.ToolBarItemText="Aceptar"
+this.Visible=false
+this.ToolBarItemOrder=7
+this.ToolBarItemSpace=3
+end on
+
+event clicked;int li_retorno
+long ll_tvi, ll_codigo
+treeviewitem l_elemento
+
+
+if gnv_msg.f_mensaje("CG12","","",YesNo!)=1 then
+        f_graba_cambios()       
+end if  
+
+   
+
+
+
+
+
+end event
+
+type m_cancelar from menu within m_grafico
+end type
+
+on m_cancelar.create
+this.Text="&Cancelar"
+this.Microhelp="Cancelar la operaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemName="Custom080!"
+this.ToolBarItemText="Cancelar"
+this.Visible=false
+this.ToolBarItemOrder=7
+end on
+
+event clicked;if gnv_msg.f_mensaje("CG14","","",YesNo!)=1 then
+//if messagebox("Aviso","$$HEX1$$bf00$$ENDHEX$$Desea abandonar los cambios efectuados?",Question!,YesNo!,1)=1  then
+        onis.of_abandona()
+        fm_aceptar(false)
+        ib_modificaciones=false
+end if  
+fg_mostrar(true)
+
+
+
+
+end event
+
+type m_salirdeltrabajo from menu within m_grafico
+end type
+
+on m_salirdeltrabajo.create
+this.Text="Sali&r del trabajo"
+this.Microhelp="Salir del trabajo"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Salir del trabajo"
+this.Visible=false
+this.ToolBarItemOrder=8
+this.ToolBarItemSpace=3
+end on
+
+event clicked;long ll_codigo
+long ll_retorno
+
+if gb_bdi and gb_hay_sesion  then
+        w_man_instalacion.ib_saliendo=true
+        if f_salvar()=1  then 
+                ll_retorno=onis.of_sal_trabajo()
+                if ll_retorno<>1 then gnv_msg.f_mensaje("EX29","","",Ok!) // NO SE PUDO SALIR DEL TRABAJO
+                fm_salir_trabajo(true)
+        end if  
+end if
+
+
+
+
+
+
+end event
+
+type m_listadodetramos from menu within m_consultar
+end type
+
+on m_listadodetramos.create
+this.Text="&Listado de tramos"
+this.Microhelp="Listado de los tramos de la linea"
+this.ToolBarItemName="SetNextStatement!"
+this.ToolBarItemText="Listado de los tramos de la linea"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=3
+this.ToolBarItemSpace=3
+end on
+
+event clicked;long ll_class_id
+
+
+
+checked=not checked
+if checked then 
+        ll_class_id=onis.of_busca_class_id(gl_instalacion_afectada)
+        if ll_class_id=onis.CSMT then // tramo de media
+                w_man_instalacion.dw_2.dataobject="d_lista_tramo"
+        else //TRAMO DE  BAJA
+                w_man_instalacion.dw_2.dataobject="d_lista_tramo_bt"            
+        end if
+        w_man_instalacion.dw_2.settransobject(sqlca)
+        w_man_instalacion.dw_2.reset()
+        if w_man_instalacion.dw_2.retrieve(gl_instalacion_afectada)<1 then
+                                gnv_msg.f_mensaje("IX06","","",Ok!)
+                                checked=false
+        else
+                is_rotulo=w_man_instalacion.gb_2.text
+                il_linea=gl_instalacion_afectada
+                w_man_instalacion.dw_2.visible=true
+                w_man_instalacion.dw_1.visible=false
+                if ll_class_id=onis.CSMT then // tramo de media
+                        w_man_instalacion.gb_2.text = "Tramos de la Salida de Media: "+string(gl_instalacion_afectada)
+                else
+                        w_man_instalacion.gb_2.text = "Tramos de la Salida de Baja: "+string(gl_instalacion_afectada)                   
+                end if
+        end if
+else
+        w_man_instalacion.gb_2.text=is_rotulo
+        gl_instalacion_afectada=il_linea
+        w_man_instalacion.dw_1.visible=true     
+        w_man_instalacion.dw_2.visible=false
+end if
+end event
+
+type m_instalacion from menu within m_ordenar
+end type
+
+event clicked;gu_comunic.is_comunic.intval9 = 9
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_instalacion.create
+this.Text="Instalacion~tShift+F2"
+this.Visible=false
+this.Enabled=false
+this.Shortcut=1137
+end on
+
+type m_mantenimientogrfico from menu within md_lista_mante
+m_digitalizar m_digitalizar
+m_seleccion m_seleccion
+m_modificacioninstalacion m_modificacioninstalacion
+end type
+
+on m_mantenimientogrfico.create
+this.Text="&Mantenimiento gr$$HEX1$$e100$$ENDHEX$$fico"
+this.m_digitalizar=create m_digitalizar
+this.m_seleccion=create m_seleccion
+this.m_modificacioninstalacion=create m_modificacioninstalacion
+this.Item[]={this.m_digitalizar, &
+this.m_seleccion, &
+this.m_modificacioninstalacion}
+end on
+
+on m_mantenimientogrfico.destroy
+destroy(this.m_digitalizar)
+destroy(this.m_seleccion)
+destroy(this.m_modificacioninstalacion)
+end on
+
+type m_digitalizar from menu within m_mantenimientogrfico
+m_subestacion m_subestacion
+m_ct m_ct
+m_tramo m_tramo
+end type
+
+on m_digitalizar.create
+this.Text="&Digitalizacion"
+this.m_subestacion=create m_subestacion
+this.m_ct=create m_ct
+this.m_tramo=create m_tramo
+this.Item[]={this.m_subestacion, &
+this.m_ct, &
+this.m_tramo}
+end on
+
+on m_digitalizar.destroy
+destroy(this.m_subestacion)
+destroy(this.m_ct)
+destroy(this.m_tramo)
+end on
+
+type m_subestacion from menu within m_digitalizar
+end type
+
+on m_subestacion.create
+this.Text="&Subestaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Digitaliza subestaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemName="SUBEST.bmp"
+this.ToolBarItemText="Digitaliza subestaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemOrder=4
+this.ToolBarItemSpace=3
+end on
+
+event clicked;int li_retorno
+if isvalid(onis) then
+        if f_salvar()=1  then 
+
+        fg_mostrar(true)
+
+        li_retorno=onis.of_digitaliza(onis.CSUB,"dig_nodo")
+        if li_retorno=1 then //CORRECTO
+                ib_modificaciones=true
+                fm_aceptar(true)
+                onis.is_tipo_mod="ALTA"
+                onis.instalaciones[1].class_id=onis.CSUB
+        else
+                // NO SE PUEDE DIGITALIZAR LA INSTALACION
+                fg_mostrar(false)
+                gnv_msg.f_mensaje("EX31","","",Ok!)
+                fg_mostrar(true)
+                onis.of_abandona()
+                ib_modificaciones=false
+                fm_aceptar(false)
+        end if
+end if
+
+
+end if
+
+
+
+
+end event
+
+type m_ct from menu within m_digitalizar
+end type
+
+on m_ct.create
+this.Text="&Ct"
+this.Microhelp="Digitaliza ct"
+this.ToolBarItemName="ct1.bmp"
+this.ToolBarItemText="Digitaliza ct"
+this.ToolBarItemOrder=4
+end on
+
+event clicked;int li_retorno
+if isvalid(onis) then
+
+if f_salvar()=1  then 
+
+        
+        fg_mostrar(true)
+        
+                
+                li_retorno=onis.of_digitaliza(onis.CCT,"dig_nodo")
+                if li_retorno=1 then //CORRECTO
+                        ib_modificaciones=true
+                        fm_aceptar(true)
+                        onis.is_tipo_mod="ALTA"
+                        onis.instalaciones[1].class_id=onis.CCT
+                else
+                        // NO SE PUEDE DIGITALIZAR LA INSTALACION
+                        fg_mostrar(false)
+                        gnv_msg.f_mensaje("EX31","","",Ok!)
+                        fg_mostrar(true)
+                        onis.of_abandona()
+                        ib_modificaciones=false
+                        fm_aceptar(false)
+                end if
+        end if  
+end if
+
+
+
+
+end event
+
+type m_tramo from menu within m_digitalizar
+m_bajatension m_bajatension
+m_mediatension m_mediatension
+end type
+
+on m_tramo.create
+this.Text="&Tramo"
+this.m_bajatension=create m_bajatension
+this.m_mediatension=create m_mediatension
+this.Item[]={this.m_bajatension, &
+this.m_mediatension}
+end on
+
+on m_tramo.destroy
+destroy(this.m_bajatension)
+destroy(this.m_mediatension)
+end on
+
+type m_bajatension from menu within m_tramo
+end type
+
+on m_bajatension.create
+this.Text="&Baja Tensi$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Digitaliza tramo bt"
+this.ToolBarItemName="SALBAJ.bmp"
+this.ToolBarItemText="Digitaliza tramo bt"
+this.ToolBarItemOrder=4
+end on
+
+event clicked;int li_retorno
+if isvalid(onis) then
+        if f_salvar()=1  then 
+                
+                        fg_mostrar(true)
+                
+                        
+                        li_retorno=onis.of_digitaliza(onis.CTB,"dig_linea")
+                        if li_retorno=1 then //CORRECTO
+                                ib_modificaciones=true
+                                fm_aceptar(true)
+                                onis.is_tipo_mod="ALTA"
+                                onis.instalaciones[1].class_id=onis.CTB
+                        else
+                                // NO SE PUEDE DIGITALIZAR LA INSTALACION
+                                fg_mostrar(false)
+                                gnv_msg.f_mensaje("EX31","","",Ok!)
+                                fg_mostrar(true)
+                                onis.of_abandona()
+                                ib_modificaciones=false
+                                fm_aceptar(false)
+                        end if
+        end if
+end if
+
+
+
+end event
+
+type m_mediatension from menu within m_tramo
+end type
+
+on m_mediatension.create
+this.Text="&Media tensi$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Digitaliza tramo mt"
+this.ToolBarItemName="Sal_tra1.bmp"
+this.ToolBarItemText="Digitaliza tramo mt"
+this.ToolBarItemOrder=4
+end on
+
+event clicked;int li_retorno
+if isvalid(onis) then
+if f_salvar()=1  then 
+
+
+fg_mostrar(true)
+
+        
+        li_retorno=onis.of_digitaliza(onis.CTM,"dig_linea")
+        if li_retorno=1 then //CORRECTO
+                ib_modificaciones=true
+                fm_aceptar(true)
+                onis.is_tipo_mod="ALTA"
+                onis.instalaciones[1].class_id=onis.CTM
+        else
+                // NO SE PUEDE DIGITALIZAR LA INSTALACION
+                fg_mostrar(false)
+                gnv_msg.f_mensaje("EX31","","",Ok!)
+                fg_mostrar(true)
+                onis.of_abandona()
+                ib_modificaciones=false
+                fm_aceptar(false)
+        end if
+end if
+end if
+
+
+
+
+end event
+
+type m_seleccion from menu within m_mantenimientogrfico
+m_grfica m_grfica
+m_alfanumrica m_alfanumrica
+end type
+
+on m_seleccion.create
+this.Text="&Selecci$$HEX1$$f300$$ENDHEX$$n instalaciones"
+this.m_grfica=create m_grfica
+this.m_alfanumrica=create m_alfanumrica
+this.Item[]={this.m_grfica, &
+this.m_alfanumrica}
+end on
+
+on m_seleccion.destroy
+destroy(this.m_grfica)
+destroy(this.m_alfanumrica)
+end on
+
+type m_grfica from menu within m_seleccion
+end type
+
+on m_grfica.create
+this.Text="&Gr$$HEX1$$e100$$ENDHEX$$fica"
+this.Microhelp="Selecci$$HEX1$$f300$$ENDHEX$$n gr$$HEX1$$e100$$ENDHEX$$fica para el mantenimiento alfanum$$HEX1$$e900$$ENDHEX$$rico"
+this.ToolBarItemName="SingletonReturn!"
+this.ToolBarItemText="Selecci$$HEX1$$f300$$ENDHEX$$n gr$$HEX1$$e100$$ENDHEX$$fica"
+this.ToolBarItemOrder=5
+this.ToolBarItemSpace=3
+end on
+
+event clicked;int li_retorno
+long ll_codigo
+long trabajo_instalacion
+datawindowchild ddw_propiedad
+int li_centro,li_cmd,li_puesto
+long ll_bdijob
+
+
+if f_salvar()=1  then 
+fg_mostrar(true)
+li_retorno=onis.of_selecciona(ll_codigo)
+if li_retorno=1 then 
+        
+fg_mostrar(false)
+trabajo_instalacion=0
+
+SELECT max(bdi_job)
+ INTO :trabajo_instalacion
+ FROM "SGD_INSTALACION"  
+WHERE "SGD_INSTALACION"."NRO_INSTALACION" = :ll_codigo;
+
+        if trabajo_instalacion <> onis.trabajo and trabajo_instalacion<>0 then 
+                fg_mostrar(false)
+                gnv_msg.f_mensaje("EX07","","",Ok!)             
+                fg_mostrar(true)
+//              messagebox("Error","La instalacion seleccionada esta siendo modificada por otro trabajo",StopSign!)
+                return
+        end if  
+
+  
+        
+onis.instalaciones[1].class_mem=ll_codigo
+onis.instalaciones[1].class_id=onis.of_busca_class_id(ll_codigo)
+         //CASO TRAMOS
+                        w_man_instalacion.dw_1.setredraw(false)
+                        if onis.instalaciones[1].class_id=onis.CTM then  //TRAMO DE MEDIA
+                                w_man_instalacion.dw_1.dataobject='d_man_tramo'
+                                w_man_instalacion.dw_1.SettransObject(sqlca)
+                                w_man_instalacion.st_1.visible = false
+                           w_man_instalacion.gb_2.text = "Tramo de media:"+string(onis.instalaciones[1].class_mem)
+                                w_man_instalacion.dw_1.retrieve(onis.instalaciones[1].class_mem)
+                        elseif onis.instalaciones[1].class_id=onis.CTB then  //TRAMO DE BAJA
+                                w_man_instalacion.dw_1.dataobject='d_man_tramo_bt'
+                                w_man_instalacion.dw_1.SettransObject(sqlca)
+                                w_man_instalacion.st_1.visible = false
+                           w_man_instalacion.gb_2.text = "Tramo de baja:"+string(onis.instalaciones[1].class_mem)
+                                w_man_instalacion.dw_1.retrieve(onis.instalaciones[1].class_mem)
+                                
+                        else    
+                                if w_man_instalacion.fw_expande_rama(onis.instalaciones[1].class_mem)=0 then 
+                                        // NO SE ENCUENTRA $$HEX1$$b400$$ENDHEX$$---> INSTALACION NUEVA SIN PADRE DEFINIDO
+
+                                                li_centro = w_man_instalacion.dw_1.getitemnumber(1,"nro_centro")
+                                                li_cmd = w_man_instalacion.dw_1.getitemnumber(1,"nro_cmd")
+                                                li_puesto = w_man_instalacion.dw_1.getitemnumber(1,"nro_mesa")
+                                                w_man_instalacion.dw_modifi.reset()
+                                                w_man_instalacion.dw_modifi.show()
+                                                w_man_instalacion.dw_modifi.f_insertar_fila()
+                                                w_man_instalacion.st_3.show()
+                                                
+                                                //Conecto las DDDW del objeto "modifi"
+                                                // filtro todos sus campos y seteo a los mismos con todos
+                                                
+                                                w_man_instalacion.dw_modifi.fpr_crea_dddw()
+                                                w_man_instalacion.dw_modifi.fnu_filtro_centro()
+                                                w_man_instalacion.dw_modifi.setitem(1,"nro_centro",li_centro)
+                                                w_man_instalacion.dw_modifi.fpr_filtro_cmd()
+                                                w_man_instalacion.dw_modifi.setitem(1,"nro_cmd",li_cmd)
+                                                w_man_instalacion.dw_modifi.fpr_filtro_mesa()
+                                                w_man_instalacion.dw_modifi.setitem(1,"nro_mesa",li_puesto)
+                                                w_man_instalacion.setredraw(true)
+                                                w_man_instalacion.dw_1.setredraw(true)
+                                                w_man_instalacion.dw_modifi.setredraw(true)
+                                                
+                                                if onis.instalaciones[1].class_id=onis.CSUB then // SUBESTACION
+                                                                w_man_instalacion.dw_modifi.fpr_deshab_puesto(w_man_instalacion.dw_modifi)
+                                                                w_man_instalacion.dw_modifi.fpr_hab_centro(w_man_instalacion.dw_modifi)
+                                                                w_man_instalacion.dw_modifi.fnu_deshab_cmd(w_man_instalacion.dw_modifi)
+                                                else
+                                                                w_man_instalacion.dw_modifi.fpr_hab_puesto(w_man_instalacion.dw_modifi)
+                                                                w_man_instalacion.dw_modifi.fnu_deshab_centro(w_man_instalacion.dw_modifi)
+                                                                w_man_instalacion.dw_modifi.fnu_deshab_cmd(w_man_instalacion.dw_modifi)
+                                                
+                                                end if
+
+                                                CHOOSE CASE onis.instalaciones[1].class_id
+                                                        CASE onis.CSUB  // SUBESTACION
+                                                          w_man_instalacion.st_1.visible = true
+                                                          w_man_instalacion.st_1.bringtotop = true
+                                                          w_man_instalacion.dw_1.DataObject = 'd_man_subestac'
+                                                          w_man_instalacion.gb_2.text = "Subestaci$$HEX1$$f300$$ENDHEX$$n"
+                                                          w_man_instalacion.cb_aceptar.enabled=true
+                                                          w_man_instalacion.ib_busqueda_padre=true
+                                                          w_man_instalacion.cb_cancelar.enabled=true 
+                        
+                                                        CASE onis.CCT
+                                                                w_man_instalacion.st_1.visible = true
+                                                                w_man_instalacion.st_1.bringtotop = true
+                                                                w_man_instalacion.dw_1.DataObject = 'd_man_ct'
+                                                                w_man_instalacion.gb_2.text = "Centro de Transformaci$$HEX1$$f300$$ENDHEX$$n"
+                                                                w_man_instalacion.ib_busqueda_padre=true
+                        
+                        
+                                                        CASE onis.CTM
+                                                        w_man_instalacion.st_1.visible = false
+                                                        w_man_instalacion.dw_1.DataObject = 'd_man_tramo'
+                                                        w_man_instalacion.gb_2.text = "Tramo"
+                                                        w_man_instalacion.ib_busqueda_padre=true
+                        
+                                                END CHOOSE
+                                                w_man_instalacion.dw_1.getchild('propiedad',ddw_propiedad)
+                                                ddw_propiedad.settransobject(sqlca)
+                                                ddw_propiedad.retrieve()
+                                                w_man_instalacion.dw_1.setredraw(true)
+                                                w_man_instalacion.dw_1.settransobject(sqlca)
+                                                w_man_instalacion.fw_habilitar_campos(w_man_instalacion.dw_1,true)
+                                                w_man_instalacion.dw_1.retrieve(onis.instalaciones[1].class_mem)
+                                                w_man_instalacion.tv_1.deleteitem(0)
+                                                w_man_instalacion.tv_1.triggerEvent("ue_cargar")
+                                                
+                                                                
+                                end if  
+                        end if
+                        w_man_instalacion.fw_habilitar_campos(w_man_instalacion.dw_1,true)
+                        ll_bdijob=w_man_instalacion.dw_1.getitemnumber(w_man_instalacion.dw_1.getrow(),"bdi_job")
+                        if ll_bdijob=0 then // DUPLICAMOS EL REGISTRO
+                        w_man_instalacion.dw_1.Saveas("c:\windows\temp\dw1.txt",Text!,FALSE)
+                                w_man_instalacion.dw_1.DBCancel( ) 
+                                w_man_instalacion.dw_1.Reset( )  
+                                w_man_instalacion.dw_1.ImportFile("c:\windows\temp\dw1.txt")
+                                w_man_instalacion.dw_1.ScrollToRow(w_man_instalacion.dw_1.rowcount())
+                        end if  
+                        w_man_instalacion.dw_1.setredraw(true)
+                        w_man_instalacion.ib_busqueda_padre=true
+                        onis.instalaciones[1].class_id=onis.of_busca_class_id(onis.instalaciones[1].class_mem)
+                   if onis.instalaciones[1].class_id=onis.CSUB then // SUBESTACION NO TIENE PADRE
+                        w_man_instalacion.cb_aceptar.enabled=true 
+                                w_man_instalacion.cb_cancelar.enabled=true 
+        end if 
+                        w_man_instalacion.cb_cancelar.enabled=true 
+                        w_man_instalacion.tv_1.deleteitem(0)
+                        w_man_instalacion.tv_1.triggerEvent("ue_cargar")
+                        w_man_instalacion.ib_modificado=true
+                        w_man_instalacion.il_padre=0
+                w_operaciones.setfocus()
+                        w_man_instalacion.dw_1.setfocus() 
+else
+        fg_mostrar(false)
+        // No se puede seleccionar la instalacion solicitada
+        gnv_msg.f_mensaje("EX19","","",Ok!)             
+        fg_mostrar(true)
+end if
+end if
+end event
+
+type m_alfanumrica from menu within m_seleccion
+end type
+
+on m_alfanumrica.create
+this.Text="&Alfanum$$HEX1$$e900$$ENDHEX$$rica"
+this.Microhelp="Selecci$$HEX1$$f300$$ENDHEX$$n alfanum$$HEX1$$e900$$ENDHEX$$rica para el mantenimiento alfanum$$HEX1$$e900$$ENDHEX$$rico"
+this.ToolBarItemName="DosEdit5!"
+this.ToolBarItemText="Selecci$$HEX1$$f300$$ENDHEX$$n alfanum$$HEX1$$e900$$ENDHEX$$rica"
+this.ToolBarItemOrder=5
+end on
+
+event clicked;DatawindowChild ddw_propiedad
+
+long ll_bdijob
+long li_nro_puesto, li_nro_centro,li_nro_cmd
+
+if f_salvar()=1  then 
+
+
+open(w_alfa_criterio)
+//messagebox(onis.is_tipo_mod,string(onis.instalaciones[1].class_mem))
+
+
+if onis.instalaciones[1].class_mem<>-1 then  // INSTALACION OK
+
+CHOOSE CASE onis.is_tipo_mod
+        CASE "3"  //BAJA  DE INSTALACIONES
+                gnv_msg.f_mensaje("IX05",string(onis.instalaciones[1].class_mem),"",Ok!)
+                if onis.of_borra(onis.instalaciones[1].class_mem)=1 then // OK
+                                        IF onis.of_permiso_borrar(onis.instalaciones[1].class_mem)<>0 then // NO SE PUEDE BORRAR
+                                                onis.of_abandona()
+                                                fm_aceptar(false)
+                                                ib_modificaciones=false
+                                        else  // TODO OK 
+                                fm_aceptar(true)
+                                        ib_modificaciones=true
+                                                onis.is_tipo_mod="BAJA"
+                                        end if
+                end if
+                
+        CASE ELSE //ALTA O MODIFICACION 
+        w_man_instalacion.cb_aceptar.enabled=false
+        w_man_instalacion.cb_cancelar.enabled=true
+                if onis.is_tipo_mod="2" then //modificacion
+                        w_man_instalacion.dw_1.setredraw(false)
+                        onis.instalaciones[1].class_id=onis.of_busca_class_id(onis.instalaciones[1].class_mem)
+                        if onis.instalaciones[1].class_id=Onis.CTM then  //TRAMO DE MEDIA
+                                w_man_instalacion.dw_1.dataobject='d_man_tramo'
+                                w_man_instalacion.dw_1.SettransObject(sqlca)
+                                w_man_instalacion.st_1.visible = false
+                           w_man_instalacion.gb_2.text = "Tramo de media"
+                                w_man_instalacion.dw_1.retrieve(onis.instalaciones[1].class_mem)
+                        elseif onis.instalaciones[1].class_id=onis.CTB then  //TRAMO DE BAJA
+                                w_man_instalacion.dw_1.dataobject='d_man_tramo_bt'
+                                w_man_instalacion.dw_1.SettransObject(sqlca)
+                                w_man_instalacion.st_1.visible = false
+                           w_man_instalacion.gb_2.text = "Tramo de baja"
+                                w_man_instalacion.dw_1.retrieve(onis.instalaciones[1].class_mem)
+                        else    
+                                w_man_instalacion.fw_expande_rama(onis.instalaciones[1].class_mem)
+                        end if
+                        w_man_instalacion.fw_habilitar_campos(w_man_instalacion.dw_1,true)
+                        ll_bdijob=w_man_instalacion.dw_1.getitemnumber(w_man_instalacion.dw_1.getrow(),"bdi_job")
+                        if ll_bdijob=0 then // DUPLICAMOS EL REGISTRO
+								 w_man_instalacion.dw_1.ResetUpdate()
+								 w_man_instalacion.dw_1.setitemstatus(w_man_instalacion.dw_1.getrow(),0,PRIMARY!,NEW!)
+//                        w_man_instalacion.dw_1.Saveas("c:\temp\dw1.txt",Text!,FALSE)
+//                                w_man_instalacion.dw_1.DBCancel( ) 
+//                                w_man_instalacion.dw_1.Reset( )  
+//                                w_man_instalacion.dw_1.ImportFile("c:\temp\dw1.txt")
+//                                w_man_instalacion.dw_1.ScrollToRow(w_man_instalacion.dw_1.rowcount())
+                        end if  
+                        w_man_instalacion.dw_1.setredraw(true)
+                        w_man_instalacion.ib_busqueda_padre=true
+                        if onis.instalaciones[1].class_id=onis.CSUB then // SUBESTACION NO TIENE PADRE
+                        w_man_instalacion.cb_aceptar.enabled=true 
+                                w_man_instalacion.cb_cancelar.enabled=true 
+        end if 
+                        w_man_instalacion.tv_1.deleteitem(0)
+                        w_man_instalacion.tv_1.triggerEvent("ue_cargar")
+                else  // ALTA
+
+
+                        li_nro_centro = w_man_instalacion.dw_1.getitemnumber(1,"nro_centro")
+                        li_nro_cmd = w_man_instalacion.dw_1.getitemnumber(1,"nro_cmd")
+                        li_nro_puesto = w_man_instalacion.dw_1.getitemnumber(1,"nro_mesa")
+                        w_man_instalacion.dw_modifi.reset()
+                        w_man_instalacion.dw_modifi.show()
+                        w_man_instalacion.dw_modifi.f_insertar_fila()
+                        w_man_instalacion.st_3.show()
+                        
+                        //Conecto las DDDW del objeto "modifi"
+                        // filtro todos sus campos y seteo a los mismos con todos
+                        
+                        w_man_instalacion.dw_modifi.fpr_crea_dddw()
+                        w_man_instalacion.dw_modifi.fnu_filtro_centro()
+                        w_man_instalacion.dw_modifi.setitem(1,"nro_centro",li_nro_centro)
+                        w_man_instalacion.dw_modifi.fpr_filtro_cmd()
+                        w_man_instalacion.dw_modifi.setitem(1,"nro_cmd",li_nro_cmd)
+                        w_man_instalacion.dw_modifi.fpr_filtro_mesa()
+                        w_man_instalacion.dw_modifi.setitem(1,"nro_mesa",li_nro_puesto)
+                        w_man_instalacion.setredraw(true)
+                        w_man_instalacion.dw_1.setredraw(true)
+                        w_man_instalacion.dw_modifi.setredraw(true)
+                        
+                        if onis.is_tipo_mod="11" then // SUBESTACION
+                                        w_man_instalacion.dw_modifi.fpr_deshab_puesto(w_man_instalacion.dw_modifi)
+                                        w_man_instalacion.dw_modifi.fpr_hab_centro(w_man_instalacion.dw_modifi)
+                                        w_man_instalacion.dw_modifi.fnu_deshab_cmd(w_man_instalacion.dw_modifi)
+                        else
+                                        w_man_instalacion.dw_modifi.fpr_hab_puesto(w_man_instalacion.dw_modifi)
+                                        w_man_instalacion.dw_modifi.fnu_deshab_centro(w_man_instalacion.dw_modifi)
+                                        w_man_instalacion.dw_modifi.fnu_deshab_cmd(w_man_instalacion.dw_modifi)
+                        
+                        end if
+                        onis.instalaciones[1].class_mem=0
+                        CHOOSE CASE onis.is_tipo_mod
+                                CASE "11"  // SUBESTACION
+                                  w_man_instalacion.st_1.visible = true
+                                  w_man_instalacion.st_1.bringtotop = true
+                                  w_man_instalacion.dw_1.DataObject = 'd_man_subestac'
+                                  w_man_instalacion.gb_2.text = "Subestaci$$HEX1$$f300$$ENDHEX$$n"
+                                  w_man_instalacion.cb_aceptar.enabled=true
+                                  w_man_instalacion.ib_busqueda_padre=true
+                                  w_man_instalacion.cb_cancelar.enabled=true 
+                        onis.instalaciones[1].class_id=onis.CSUB
+                                CASE "12"
+                                        w_man_instalacion.st_1.visible = false
+                                        w_man_instalacion.dw_1.DataObject = 'd_man_salmt'
+                                   w_man_instalacion.gb_2.text = "Salida Media Tensi$$HEX1$$f300$$ENDHEX$$n"         
+                                        w_man_instalacion.ib_busqueda_padre=true
+                                onis.instalaciones[1].class_id=onis.CSMT
+                           CASE "13"
+                                        w_man_instalacion.st_1.visible = true
+                                        w_man_instalacion.st_1.bringtotop = true
+                                        w_man_instalacion.dw_1.DataObject = 'd_man_ct'
+                                   w_man_instalacion.gb_2.text = "Centro de Transformaci$$HEX1$$f300$$ENDHEX$$n"
+                                        w_man_instalacion.ib_busqueda_padre=true
+                                onis.instalaciones[1].class_id=onis.CCT
+                                CASE "14"
+                                        w_man_instalacion.st_1.visible = false
+                                        w_man_instalacion.dw_1.DataObject = 'd_man_trafo_mb'
+                                   w_man_instalacion.gb_2.text = "Transformador Media - Baja"
+                                        w_man_instalacion.ib_busqueda_padre=true
+                                onis.instalaciones[1].class_id=onis.CTRM
+                                CASE "15"
+                                        w_man_instalacion.st_1.visible = false
+                                        w_man_instalacion.dw_1.DataObject = 'd_man_salbt'
+                                   w_man_instalacion.gb_2.text = "Salida Baja Tensi$$HEX1$$f300$$ENDHEX$$n"
+                                        w_man_instalacion.ib_busqueda_padre=true
+                                onis.instalaciones[1].class_id=onis.CSBT
+                                CASE "17"
+                                w_man_instalacion.st_1.visible = false
+                                w_man_instalacion.dw_1.DataObject = 'd_man_tramo'
+                           w_man_instalacion.gb_2.text = "Tramo de media"
+                                w_man_instalacion.ib_busqueda_padre=true
+                        onis.instalaciones[1].class_id=onis.CTM
+                                CASE "18"
+                                w_man_instalacion.st_1.visible = false
+                                w_man_instalacion.dw_1.DataObject = 'd_man_tramo_bt'
+                           w_man_instalacion.gb_2.text = "Tramo de baja"
+                                w_man_instalacion.ib_busqueda_padre=true
+                        onis.instalaciones[1].class_id=onis.CTB  
+                                  
+                                  
+                                  
+                                  
+                        END CHOOSE
+                        w_man_instalacion.dw_1.getchild('propiedad',ddw_propiedad)
+                        ddw_propiedad.settransobject(sqlca)
+                        ddw_propiedad.retrieve()
+                        w_man_instalacion.dw_1.setredraw(true)
+                        w_man_instalacion.dw_1.settransobject(sqlca)
+                        w_man_instalacion.fw_habilitar_campos(w_man_instalacion.dw_1,true)
+								w_man_instalacion.il_modifi=2
+                        w_man_instalacion.dw_1.InsertRow(0)
+                        w_man_instalacion.tv_1.deleteitem(0)
+                        w_man_instalacion.tv_1.triggerEvent("ue_cargar")
+                end if  
+           w_man_instalacion.cb_cancelar.enabled=true 
+                w_man_instalacion.dw_1.setfocus()
+                w_man_instalacion.ib_modificado=true
+                w_man_instalacion.il_padre=0
+END CHOOSE
+end if
+end if
+end event
+
+type m_modificacioninstalacion from menu within m_mantenimientogrfico
+m_borrado m_borrado
+m_mover m_mover
+m_trasladar m_trasladar
+end type
+
+on m_modificacioninstalacion.create
+this.Text="&Modificaci$$HEX1$$f300$$ENDHEX$$n instalaci$$HEX1$$f300$$ENDHEX$$n"
+this.m_borrado=create m_borrado
+this.m_mover=create m_mover
+this.m_trasladar=create m_trasladar
+this.Item[]={this.m_borrado, &
+this.m_mover, &
+this.m_trasladar}
+end on
+
+on m_modificacioninstalacion.destroy
+destroy(this.m_borrado)
+destroy(this.m_mover)
+destroy(this.m_trasladar)
+end on
+
+type m_borrado from menu within m_modificacioninstalacion
+end type
+
+on m_borrado.create
+this.Text="&Borrar"
+this.Microhelp="Borrado de instalaciones gr$$HEX1$$e100$$ENDHEX$$ficas"
+this.ToolBarItemName="Clear!"
+this.ToolBarItemText="Borrar"
+this.ToolBarItemOrder=6
+this.ToolBarItemSpace=3
+end on
+
+event clicked;int li_retorno
+long ll_codigo
+if isvalid(onis) then
+if f_salvar()=1  then 
+                fg_mostrar(true)
+                this.Show()
+                // DEBE SELECCIONAR LA INSTALACION GRAFICAMENTE
+                ll_codigo=0
+                if onis.of_borra(ll_codigo)=1 then // OK
+                                fg_mostrar(false)
+                                IF onis.of_permiso_borrar(onis.instalaciones[1].class_mem)<>0 then // NO SE PUEDE BORRAR
+                                        onis.of_abandona()
+                                        fm_aceptar(false)
+                                        ib_modificaciones=false
+                                else  // TODO OK 
+                                        fm_aceptar(true)
+                                        ib_modificaciones=true
+                                        onis.is_tipo_mod="BAJA"
+                                end if
+                else // ERROR AL SELECCIONAR
+                        fg_mostrar(false)
+                        gnv_msg.f_mensaje("EX19","","",Ok!)
+                        fg_mostrar(true)
+                end if
+end if
+
+end if
+end event
+
+type m_mover from menu within m_modificacioninstalacion
+end type
+
+on m_mover.create
+this.Text="&Mover"
+this.Microhelp="Mover instalaciones gr$$HEX1$$e100$$ENDHEX$$ficas"
+this.ToolBarItemName="Query!"
+this.ToolBarItemText="Mover"
+this.ToolBarItemOrder=6
+end on
+
+event clicked;int li_retorno
+long ll_codigo
+if isvalid(onis) then
+if f_salvar()=1  then 
+        fg_mostrar(true)
+        
+        li_retorno=onis.of_mueve()
+                        if li_retorno=1 then 
+                                fm_aceptar(true)
+                                ib_modificaciones=true
+                                onis.is_tipo_mod="MOD"
+                        else
+                                 onis.of_abandona()
+                                 fg_mostrar(false)
+                                 gnv_msg.f_mensaje("EX37","","",Ok!)
+                                 fg_mostrar(true)
+                        end if  
+        
+end if
+
+end if
+
+
+
+
+end event
+
+type m_trasladar from menu within m_modificacioninstalacion
+end type
+
+on m_trasladar.create
+this.Text="&Trasladar"
+this.Microhelp="Trasladar instalaciones gr$$HEX1$$e100$$ENDHEX$$ficas"
+this.ToolBarItemName="Continue!"
+this.ToolBarItemText="Trasladar"
+this.ToolBarItemOrder=6
+end on
+
+event clicked;int li_retorno
+long ll_codigo
+if isvalid(onis) then
+if f_salvar()=1  then 
+
+fg_mostrar(true)
+
+li_retorno=onis.of_traslada()
+                if li_retorno=1 then 
+                        fm_aceptar(true)
+                ib_modificaciones=true
+                        onis.is_tipo_mod="MOD"
+                else
+                         onis.of_abandona()
+          fg_mostrar(false)
+                         gnv_msg.f_mensaje("EX37","","",Ok!)
+                         fg_mostrar(true)
+                end if  
+        
+end if
+
+end if
+end event
+
+type m_ventana1 from menu within md_lista_mante
+m_cascada1 m_cascada1
+m_mosaico1 m_mosaico1
+m_organizar1 m_organizar1
+end type
+
+on m_ventana1.create
+this.Text="&Ventana"
+this.m_cascada1=create m_cascada1
+this.m_mosaico1=create m_mosaico1
+this.m_organizar1=create m_organizar1
+this.Item[]={this.m_cascada1, &
+this.m_mosaico1, &
+this.m_organizar1}
+end on
+
+on m_ventana1.destroy
+destroy(this.m_cascada1)
+destroy(this.m_mosaico1)
+destroy(this.m_organizar1)
+end on
+
+type m_cascada1 from menu within m_ventana1
+end type
+
+on m_cascada1.create
+this.Text="&Cascada"
+end on
+
+type m_mosaico1 from menu within m_ventana1
+end type
+
+on m_mosaico1.create
+this.Text="&Mosaico"
+end on
+
+type m_organizar1 from menu within m_ventana1
+end type
+
+on m_organizar1.create
+this.Text="&Organizar"
+end on
+
+type m_ayuda from menu within md_lista_mante
+m_acercadelopensgi1 m_acercadelopensgi1
+end type
+
+on m_ayuda.create
+this.Text="&Ayuda"
+this.m_acercadelopensgi1=create m_acercadelopensgi1
+this.Item[]={this.m_acercadelopensgi1}
+end on
+
+on m_ayuda.destroy
+destroy(this.m_acercadelopensgi1)
+end on
+
+type m_acercadelopensgi1 from menu within m_ayuda
+end type
+
+on m_acercadelopensgi1.create
+this.Text="&Acerca del OPENSGI"
+end on
+

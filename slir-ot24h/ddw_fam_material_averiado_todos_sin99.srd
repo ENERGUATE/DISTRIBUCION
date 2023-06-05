@@ -1,0 +1,11 @@
+HA$PBExportHeader$ddw_fam_material_averiado_todos_sin99.srd
+release 5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=1 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=89 color="536870912" )
+table(column=(type=char(6) updatewhereclause=yes name=mat_averiado dbname="cod_objeto" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=descripcion dbname="descripcion" )
+ retrieve="SELECT ~"SGD_ORG_MAT~".~"COD_OBJETO~", ~"SGD_ORG_MAT~".~"DESCRIPCION~" FROM ~"SGD_ORG_MAT~" WHERE ~"SGD_ORG_MAT~".~"COD_OBJETO~" LIKE '0101%' AND ~"SGD_ORG_MAT~".~"COD_OBJETO~" <> '010100'" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="1" y="12" height="77" width="677" format="[general]"  name=descripcion edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

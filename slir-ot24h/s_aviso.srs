@@ -1,0 +1,53 @@
+HA$PBExportHeader$s_aviso.srs
+global type s_aviso from structure
+	long		ll_nro_aviso
+	string		ls_usuario
+	datetime		ldt_f_actual
+	string		ls_etiq_vol
+	string		ls_nombre_cli
+	string		ls_ape1
+	string		ls_ape2
+	string		ls_doc_id
+	string		ls_tip_doc
+	string		ls_co_pais
+	long		ll_aleatorio1
+	long		ll_aleatorio2
+	integer		li_ind_pel
+	string		ls_tlfno
+	integer		li_prior
+	string		ls_observacion
+	integer		li_ayuda
+	string		ls_dupli
+	long		ll_num_puerta
+	long		ll_calle
+	long		ll_coloc
+	long		ll_cod_munic
+	long		ll_cod_prov
+	long		ll_depto
+	string		ls_cgv
+	integer		li_nro_centro
+	long		ll_nro_instalacion
+	integer		li_nro_cmd
+	integer		li_nro_mesa
+	integer		li_ind_imp
+	string		ls_nom_calle
+	string		ls_nom_prov
+	string		ls_nom_depto
+	string		ls_nom_munic
+	string		ls_nom_loc
+	long		ll_aleatorio3
+	long		ll_aleatorio4
+	long		ll_nis
+	long		ll_nro_acometida
+	long		ll_cod_cli
+	integer		li_ind_calidad
+	integer		li_clase_aviso
+	string		ls_etiq_vol_corto
+	integer		gi_tipo_red
+	integer		li_est_aviso
+	long		ll_instalacion_int
+	string		ls_fase
+	long		ll_incidencia
+	datetime		ldt_f_problema
+end type
+

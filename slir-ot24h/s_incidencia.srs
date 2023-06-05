@@ -1,0 +1,43 @@
+HA$PBExportHeader$s_incidencia.srs
+global type s_incidencia from structure
+	long		gstr_nro_incidencia
+	string		gstr_usuario
+	string		gstr_programa
+	datetime		gstr_h_actual
+	datetime		gstr_f_actual
+	long		gstr_primer_aviso
+	string		gstr_des_incidencia
+	integer		gstr_est_actual
+	datetime		gstr_f_deteccion
+	datetime		gstr_h_deteccion
+	datetime		gstr_f_est_res
+	datetime		gstr_h_est_res
+	integer		gstr_tip_tension
+	integer		gstr_tip_incidencia
+	integer		gstr_cod_causa
+	datetime		gstr_f_alta
+	datetime		gstr_h_alta
+	long		gstr_nro_centro
+	long		gstr_nro_cmd
+	long		gstr_nro_mesa
+	decimal {0}	gstr_nro_inst_afectada
+	decimal {0}	gstr_nro_inst_origen
+	decimal {1}	gstr_pot_afectada
+	decimal {1}	gstr_pot_contratada
+	long		gstr_ccli_afec
+	long		gstr_mat_averiado
+	long		gstr_nro_brigada
+	long		gstr_nro_brigada_mant
+	integer		gstr_ind_suministro
+	string		gstr_observacion
+	long		gstr_ot
+	integer		gstr_cod_est_clima
+	integer		gstr_estado_mantenimiento
+	long		gstr_centro_alta
+	long		gstr_cmd_alta
+	long		gstr_puesto_alta
+	long		gstr_can_avisos
+	long		gstr_can_cli
+	integer		gstr_resuelve_mant
+end type
+

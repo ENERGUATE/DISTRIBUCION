@@ -1,0 +1,10 @@
+HA$PBExportHeader$d_7003_interrupcion_descargo.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=cod_instalacion dbname="sgd_interrupcion_descargo.cod_instalacion" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sgd_interrupcion_descargo~" ) COLUMN(NAME=~"sgd_interrupcion_descargo.cod_instalacion~")WHERE(    EXP1 =~"~~~"SGD_INTERRUPCION_DESCARGO~~~".~~~"NRO_DESCARGO~~~"~"   OP =~"=~"    EXP2 =~":pl_nro_descargo~" ) ) ARG(NAME = ~"pl_nro_descargo~" TYPE = number) " arguments=(("pl_nro_descargo", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="52" width="370" format="[general]"  name=cod_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

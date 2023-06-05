@@ -1,0 +1,34 @@
+HA$PBExportHeader$str_atributos_str_ext.srs
+global type str_atributos_str_ext from structure
+	long		pl_tipo_reporte
+	long		pl_codigo_evento
+	string		ps_agente
+	long		pl_subestacion
+	long		pl_tipo_activo
+	long		pl_activo
+	long		pl_tipo_movimiento
+	datetime		pdt_tiempo_ocurrencia
+	datetime		pdt_tiempo_reporte
+	datetime		pdt_tiempo_instruccion
+	long		pl_disponibilidad_act
+	long		pl_causa
+	long		pl_causa_categoria
+	long		pl_causa_detallada
+	datetime		pdt_fecha_causa
+	long		pl_consignacion_nac_check
+	string		ps_consignacion_nacional
+	long		pl_psm
+	long		pl_demora_justificada
+	string		ps_descripcion_demora
+	long		pl_activo_causante
+	string		ps_observaciones
+	string		ps_observaciones_cabecera
+	datetime		pdt_fecha_bypass
+	datetime		pdt_tiempo_instruccion_despeje
+	datetime		pdt_tiempo_ocurrencia_despeje
+	datetime		pdt_tiempo_reporte_despeje
+	datetime		pdt_tiempo_instruccion_tierra
+	datetime		pdt_tiempo_ocurrencia_tierra
+	datetime		pdt_tiempo_reporte_tierra
+end type
+

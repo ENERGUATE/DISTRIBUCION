@@ -1,0 +1,1056 @@
+HA$PBExportHeader$m_hist_inc_desc.srm
+forward
+global type m_hist_inc_desc from menu
+end type
+type m_archivo from menu within m_hist_inc_desc
+end type
+type m_cerrar from menu within m_archivo
+end type
+type m_archivo from menu within m_hist_inc_desc
+m_cerrar m_cerrar
+end type
+type m_editar from menu within m_hist_inc_desc
+end type
+type m_cortar from menu within m_editar
+end type
+type m_copiar from menu within m_editar
+end type
+type m_pegar from menu within m_editar
+end type
+type m_-8 from menu within m_editar
+end type
+type m_iralcomienzo from menu within m_editar
+end type
+type m_iralfinal from menu within m_editar
+end type
+type m_buscar from menu within m_editar
+end type
+type m_- from menu within m_editar
+end type
+type m_agruparincidencia from menu within m_editar
+end type
+type m_desagruparincidencias from menu within m_editar
+end type
+type m_-1 from menu within m_editar
+end type
+type m_anularincidencias from menu within m_editar
+end type
+type m_deshaceranulacin from menu within m_editar
+end type
+type m_editar from menu within m_hist_inc_desc
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-8 m_-8
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+m_buscar m_buscar
+m_- m_-
+m_agruparincidencia m_agruparincidencia
+m_desagruparincidencias m_desagruparincidencias
+m_-1 m_-1
+m_anularincidencias m_anularincidencias
+m_deshaceranulacin m_deshaceranulacin
+end type
+type m_consultar from menu within m_hist_inc_desc
+end type
+type m_consultaincidencia from menu within m_consultar
+end type
+type m_-456 from menu within m_consultar
+end type
+type m_grafica from menu within m_consultar
+end type
+type m_localizacin from menu within m_consultar
+end type
+type m_quitarblink from menu within m_consultar
+end type
+type m_seleccioncapas from menu within m_consultar
+end type
+type m_imprimir from menu within m_consultar
+end type
+type m_informedeincidencias from menu within m_consultar
+end type
+type m_datosanulacion from menu within m_consultar
+end type
+type m_obligadas from menu within m_consultar
+end type
+type m_observaciones from menu within m_consultar
+end type
+type m_consultar from menu within m_hist_inc_desc
+m_consultaincidencia m_consultaincidencia
+m_-456 m_-456
+m_grafica m_grafica
+m_localizacin m_localizacin
+m_quitarblink m_quitarblink
+m_seleccioncapas m_seleccioncapas
+m_imprimir m_imprimir
+m_informedeincidencias m_informedeincidencias
+m_datosanulacion m_datosanulacion
+m_obligadas m_obligadas
+m_observaciones m_observaciones
+end type
+type m_ventana from menu within m_hist_inc_desc
+end type
+type m_cascada from menu within m_ventana
+end type
+type m_mosaico from menu within m_ventana
+end type
+type m_organizar from menu within m_ventana
+end type
+type m_ventana from menu within m_hist_inc_desc
+m_cascada m_cascada
+m_mosaico m_mosaico
+m_organizar m_organizar
+end type
+type m_56 from menu within m_hist_inc_desc
+end type
+type m_acercadelopensgi from menu within m_56
+end type
+type m_56 from menu within m_hist_inc_desc
+m_acercadelopensgi m_acercadelopensgi
+end type
+global type m_hist_inc_desc from menu
+m_archivo m_archivo
+m_editar m_editar
+m_consultar m_consultar
+m_ventana m_ventana
+m_56 m_56
+end type
+end forward
+
+shared variables
+
+end variables
+
+global type m_hist_inc_desc from menu
+m_archivo m_archivo
+m_editar m_editar
+m_consultar m_consultar
+m_ventana m_ventana
+m_56 m_56
+end type
+global m_hist_inc_desc m_hist_inc_desc
+
+type variables
+
+end variables
+
+forward prototypes
+public function integer f_habilitar (string ps_menu, boolean pb_estado)
+end prototypes
+
+public function integer f_habilitar (string ps_menu, boolean pb_estado);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  f_habilitar
+// 
+// Objetivo: Habilita e inhabilita las distintas opciones de men$$HEX2$$fa002000$$ENDHEX$$de 
+//	acuerdo a los par$$HEX1$$e100$$ENDHEX$$metros que recibe
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_menu (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_estado (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//		14/7/95		SAS		Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en archivo o en editar
+i_cant_menu = UpperBound(m_archivo.item[])
+ps_menu = Upper(ps_menu)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_archivo.item[i_aux].tag = ps_menu THEN
+		m_archivo.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+i_cant_menu = UpperBound(m_editar.item[])
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_editar.item[i_aux].tag = ps_menu THEN
+		m_editar.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+
+RETURN -1
+end function
+
+on m_hist_inc_desc.create
+m_hist_inc_desc=this
+call super::create
+this.m_archivo=create m_archivo
+this.m_editar=create m_editar
+this.m_consultar=create m_consultar
+this.m_ventana=create m_ventana
+this.m_56=create m_56
+this.Item[UpperBound(this.Item)+1]=this.m_archivo
+this.Item[UpperBound(this.Item)+1]=this.m_editar
+this.Item[UpperBound(this.Item)+1]=this.m_consultar
+this.Item[UpperBound(this.Item)+1]=this.m_ventana
+this.Item[UpperBound(this.Item)+1]=this.m_56
+end on
+
+on m_hist_inc_desc.destroy
+call super::destroy
+destroy(this.m_archivo)
+destroy(this.m_editar)
+destroy(this.m_consultar)
+destroy(this.m_ventana)
+destroy(this.m_56)
+end on
+
+type m_archivo from menu within m_hist_inc_desc
+m_cerrar m_cerrar
+end type
+
+on m_archivo.create
+call super::create
+this.text = "&Archivo"
+this.m_cerrar=create m_cerrar
+this.Item[UpperBound(this.Item)+1]=this.m_cerrar
+end on
+
+on m_archivo.destroy
+call super::destroy
+destroy(this.m_cerrar)
+end on
+
+type m_cerrar from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Cierra la ventana activa. Triggea el CloseQuery
+//	
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+Close(ParentWindow)
+end on
+
+on m_cerrar.create
+call super::create
+this.tag = "CERRAR"
+this.text = "&Cerrar~tCtrl+F4"
+this.shortcut = 371
+this.microhelp = "Cerrar ventana actual"
+this.toolbaritemname = "RunWindow!"
+this.toolbaritemtext = "Cerrar"
+end on
+
+on m_cerrar.destroy
+call super::destroy
+end on
+
+type m_editar from menu within m_hist_inc_desc
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-8 m_-8
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+m_buscar m_buscar
+m_- m_-
+m_agruparincidencia m_agruparincidencia
+m_desagruparincidencias m_desagruparincidencias
+m_-1 m_-1
+m_anularincidencias m_anularincidencias
+m_deshaceranulacin m_deshaceranulacin
+end type
+
+on m_editar.create
+call super::create
+this.text = "&Edici$$HEX1$$f300$$ENDHEX$$n"
+this.m_cortar=create m_cortar
+this.m_copiar=create m_copiar
+this.m_pegar=create m_pegar
+this.m_-8=create m_-8
+this.m_iralcomienzo=create m_iralcomienzo
+this.m_iralfinal=create m_iralfinal
+this.m_buscar=create m_buscar
+this.m_-=create m_-
+this.m_agruparincidencia=create m_agruparincidencia
+this.m_desagruparincidencias=create m_desagruparincidencias
+this.m_-1=create m_-1
+this.m_anularincidencias=create m_anularincidencias
+this.m_deshaceranulacin=create m_deshaceranulacin
+this.Item[UpperBound(this.Item)+1]=this.m_cortar
+this.Item[UpperBound(this.Item)+1]=this.m_copiar
+this.Item[UpperBound(this.Item)+1]=this.m_pegar
+this.Item[UpperBound(this.Item)+1]=this.m_-8
+this.Item[UpperBound(this.Item)+1]=this.m_iralcomienzo
+this.Item[UpperBound(this.Item)+1]=this.m_iralfinal
+this.Item[UpperBound(this.Item)+1]=this.m_buscar
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_agruparincidencia
+this.Item[UpperBound(this.Item)+1]=this.m_desagruparincidencias
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_anularincidencias
+this.Item[UpperBound(this.Item)+1]=this.m_deshaceranulacin
+end on
+
+on m_editar.destroy
+call super::destroy
+destroy(this.m_cortar)
+destroy(this.m_copiar)
+destroy(this.m_pegar)
+destroy(this.m_-8)
+destroy(this.m_iralcomienzo)
+destroy(this.m_iralfinal)
+destroy(this.m_buscar)
+destroy(this.m_-)
+destroy(this.m_agruparincidencia)
+destroy(this.m_desagruparincidencias)
+destroy(this.m_-1)
+destroy(this.m_anularincidencias)
+destroy(this.m_deshaceranulacin)
+end on
+
+type m_cortar from menu within m_editar
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Mover el texto seleccionado al portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Cut()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Cut()
+End choose
+
+end on
+
+on m_cortar.create
+call super::create
+this.text = "&Cortar~tCtrl+X"
+this.enabled = false
+this.shortcut = 344
+this.microhelp = "Mover el texto seleccionado al porta-papeles "
+this.toolbaritemvisible = false
+this.toolbaritemname = "Cut!"
+this.toolbaritemtext = "Cortar"
+end on
+
+on m_cortar.destroy
+call super::destroy
+end on
+
+type m_copiar from menu within m_editar
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Copiar el texto seleccionado en el portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Copy()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Copy()
+End choose
+
+end on
+
+on m_copiar.create
+call super::create
+this.text = "C&opiar~tCtrl+C"
+this.enabled = false
+this.shortcut = 323
+this.microhelp = "Copiar"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Copy!"
+this.toolbaritemtext = "Copiar"
+end on
+
+on m_copiar.destroy
+call super::destroy
+end on
+
+type m_pegar from menu within m_editar
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Insertar el texto del portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Paste()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Paste()
+End choose
+end on
+
+on m_pegar.create
+call super::create
+this.text = "&Pegar~tCtrl+V"
+this.enabled = false
+this.shortcut = 342
+this.microhelp = "Insertar el contenido del porta-papeles"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Paste!"
+this.toolbaritemtext = "Pegar"
+end on
+
+on m_pegar.destroy
+call super::destroy
+end on
+
+type m_-8 from menu within m_editar
+end type
+
+on m_-8.create
+call super::create
+this.text = "-"
+end on
+
+on m_-8.destroy
+call super::destroy
+end on
+
+type m_iralcomienzo from menu within m_editar
+end type
+
+on m_iralcomienzo.create
+call super::create
+this.text = "Ir al Co&mienzo~tCtrl+K"
+this.enabled = false
+this.shortcut = 331
+this.microhelp = "Ir al primer dato en uso"
+this.toolbaritemname = "VCRFirst!"
+this.toolbaritemtext = "Comienzo"
+this.toolbaritemorder = 1
+end on
+
+event clicked;ParentWindow.triggerevent("ue_comienzo")
+end event
+
+on m_iralcomienzo.destroy
+call super::destroy
+end on
+
+type m_iralfinal from menu within m_editar
+end type
+
+on m_iralfinal.create
+call super::create
+this.text = "Ir al &Final~tCtrl+J"
+this.enabled = false
+this.shortcut = 330
+this.microhelp = "Ir al $$HEX1$$fa00$$ENDHEX$$ltimo dato en uso"
+this.toolbaritemname = "VCRLast!"
+this.toolbaritemtext = "Final"
+this.toolbaritemorder = 2
+end on
+
+event clicked;ParentWindow.triggerevent("ue_final")
+end event
+
+on m_iralfinal.destroy
+call super::destroy
+end on
+
+type m_buscar from menu within m_editar
+end type
+
+on m_buscar.create
+call super::create
+this.text = "&Buscar~tCtrl+B"
+this.shortcut = 322
+this.microhelp = "Buscar informaci$$HEX1$$f300$$ENDHEX$$n por el Criterio Seleccionado"
+this.toolbaritemname = "Search!"
+this.toolbaritemtext = "Buscar"
+this.toolbaritemorder = 3
+end on
+
+event clicked;
+ParentWindow.triggerevent("ue_armar_sql")
+end event
+
+on m_buscar.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_editar
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_agruparincidencia from menu within m_editar
+end type
+
+event clicked;ParentWindow.triggerevent("ue_agrupacion")
+end event
+
+on m_agruparincidencia.create
+call super::create
+this.text = "A&grupar Incidencia"
+this.enabled = false
+this.microhelp = "Agrupaci$$HEX1$$f300$$ENDHEX$$n de la Incidencia"
+this.toolbaritemname = "Import5!"
+this.toolbaritemtext = "Agrupar Incidencia"
+this.toolbaritemorder = 4
+end on
+
+on m_agruparincidencia.destroy
+call super::destroy
+end on
+
+type m_desagruparincidencias from menu within m_editar
+end type
+
+event clicked;ParentWindow.triggerevent("ue_desagrupacion")
+end event
+
+on m_desagruparincidencias.create
+call super::create
+this.text = "De&sagrupar Incidencias"
+this.enabled = false
+this.microhelp = "Desagrupaci$$HEX1$$f300$$ENDHEX$$n de Incidencias"
+this.toolbaritemname = "Export5!"
+this.toolbaritemtext = "Desagrupar Incidencia"
+this.toolbaritemorder = 4
+end on
+
+on m_desagruparincidencias.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_editar
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_anularincidencias from menu within m_editar
+end type
+
+event clicked;parentwindow.triggerevent("ue_anulacion")
+end event
+
+on m_anularincidencias.create
+call super::create
+this.text = "Anular Incidencias"
+this.microhelp = "Anular Incidencias Seleccionadas"
+end on
+
+on m_anularincidencias.destroy
+call super::destroy
+end on
+
+type m_deshaceranulacin from menu within m_editar
+end type
+
+event clicked;parentwindow.triggerevent("ue_desanular")
+end event
+
+on m_deshaceranulacin.create
+call super::create
+this.text = "Deshacer Anulaci$$HEX1$$f300$$ENDHEX$$n"
+this.microhelp = "Deshacer anulaci$$HEX1$$f300$$ENDHEX$$n "
+end on
+
+on m_deshaceranulacin.destroy
+call super::destroy
+end on
+
+type m_consultar from menu within m_hist_inc_desc
+m_consultaincidencia m_consultaincidencia
+m_-456 m_-456
+m_grafica m_grafica
+m_localizacin m_localizacin
+m_quitarblink m_quitarblink
+m_seleccioncapas m_seleccioncapas
+m_imprimir m_imprimir
+m_informedeincidencias m_informedeincidencias
+m_datosanulacion m_datosanulacion
+m_obligadas m_obligadas
+m_observaciones m_observaciones
+end type
+
+on m_consultar.create
+call super::create
+this.text = "&Consultar"
+this.m_consultaincidencia=create m_consultaincidencia
+this.m_-456=create m_-456
+this.m_grafica=create m_grafica
+this.m_localizacin=create m_localizacin
+this.m_quitarblink=create m_quitarblink
+this.m_seleccioncapas=create m_seleccioncapas
+this.m_imprimir=create m_imprimir
+this.m_informedeincidencias=create m_informedeincidencias
+this.m_datosanulacion=create m_datosanulacion
+this.m_obligadas=create m_obligadas
+this.m_observaciones=create m_observaciones
+this.Item[UpperBound(this.Item)+1]=this.m_consultaincidencia
+this.Item[UpperBound(this.Item)+1]=this.m_-456
+this.Item[UpperBound(this.Item)+1]=this.m_grafica
+this.Item[UpperBound(this.Item)+1]=this.m_localizacin
+this.Item[UpperBound(this.Item)+1]=this.m_quitarblink
+this.Item[UpperBound(this.Item)+1]=this.m_seleccioncapas
+this.Item[UpperBound(this.Item)+1]=this.m_imprimir
+this.Item[UpperBound(this.Item)+1]=this.m_informedeincidencias
+this.Item[UpperBound(this.Item)+1]=this.m_datosanulacion
+this.Item[UpperBound(this.Item)+1]=this.m_obligadas
+this.Item[UpperBound(this.Item)+1]=this.m_observaciones
+end on
+
+on m_consultar.destroy
+call super::destroy
+destroy(this.m_consultaincidencia)
+destroy(this.m_-456)
+destroy(this.m_grafica)
+destroy(this.m_localizacin)
+destroy(this.m_quitarblink)
+destroy(this.m_seleccioncapas)
+destroy(this.m_imprimir)
+destroy(this.m_informedeincidencias)
+destroy(this.m_datosanulacion)
+destroy(this.m_obligadas)
+destroy(this.m_observaciones)
+end on
+
+type m_consultaincidencia from menu within m_consultar
+end type
+
+on m_consultaincidencia.create
+call super::create
+this.visible = false
+this.text = "C&onsulta Incidencia"
+this.enabled = false
+this.microhelp = "Consulta de Incidencia"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Watcom!"
+this.toolbaritemtext = "Consulta de Incidencia"
+this.toolbaritemspace = 1
+end on
+
+event clicked;parentwindow.triggerevent("ue_cons_inci")
+end event
+
+on m_consultaincidencia.destroy
+call super::destroy
+end on
+
+type m_-456 from menu within m_consultar
+end type
+
+on m_-456.create
+call super::create
+this.visible = false
+this.text = "-"
+end on
+
+on m_-456.destroy
+call super::destroy
+end on
+
+type m_grafica from menu within m_consultar
+end type
+
+on m_grafica.create
+call super::create
+this.text = "&Graficas~tCtrl+G"
+this.shortcut = 327
+this.microhelp = "Mostrar Gr$$HEX1$$e100$$ENDHEX$$ficas"
+this.toolbaritemname = "Graph!"
+this.toolbaritemtext = "Gr$$HEX1$$e100$$ENDHEX$$fica"
+this.toolbaritemorder = 5
+end on
+
+event clicked;if not this.checked then
+	this.checked = true
+	parentwindow.triggerevent("ue_grafica")
+else
+	this.checked = false
+	parentwindow.triggerevent("ue_notgrafica")
+end if
+	
+end event
+
+on m_grafica.destroy
+call super::destroy
+end on
+
+type m_localizacin from menu within m_consultar
+end type
+
+event clicked;
+
+int li_retorno
+setpointer(hourglass!)
+if isvalid(onis) then 
+	onis.of_quita_blink()
+	if gl_instalacion_afectada>0 then 
+		li_retorno=onis.of_muestra_elemento(gl_instalacion_afectada,true)
+		if li_retorno=1 then
+			//onis.of_carga_simbologia()			
+			fg_mostrar(true)		
+		else
+			fg_mostrar(false)	
+			gnv_msg.f_mensaje("EX20","","",OK!)
+			fg_mostrar(true)		
+		end if	
+	else
+		fg_mostrar(true)		
+	end if	
+end if
+end event
+
+on m_localizacin.create
+call super::create
+this.visible = false
+this.text = "Localizaci$$HEX1$$f300$$ENDHEX$$n"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Picture5!"
+end on
+
+on m_localizacin.destroy
+call super::destroy
+end on
+
+type m_quitarblink from menu within m_consultar
+end type
+
+event clicked;setpointer(HourGlass!)
+if isvalid(onis) then 
+	onis.of_quita_blink()
+	fg_mostrar(true)
+end if
+
+
+	
+end event
+
+on m_quitarblink.create
+call super::create
+this.visible = false
+this.text = "Quitar Blink"
+this.toolbaritemvisible = false
+this.toolbaritemname = "desmar.bmp"
+end on
+
+on m_quitarblink.destroy
+call super::destroy
+end on
+
+type m_seleccioncapas from menu within m_consultar
+end type
+
+event clicked;int retorno
+setpointer(HourGlass!)
+if isvalid(onis) then 
+if  (onis.of_Selecciona_capa()>0) then
+	setpointer(HourGlass!)
+	retorno=onis.of_trata_capa()
+	if retorno=0 then
+		fg_mostrar(false)		
+		gnv_msg.f_mensaje("EX21","","",OK!)
+	end if
+	fg_mostrar(true)
+end if
+end if
+	
+end event
+
+on m_seleccioncapas.create
+call super::create
+this.visible = false
+this.text = "Selecci$$HEX1$$f300$$ENDHEX$$n Capas"
+this.toolbaritemvisible = false
+this.toolbaritemname = "capas2.bmp"
+end on
+
+on m_seleccioncapas.destroy
+call super::destroy
+end on
+
+type m_imprimir from menu within m_consultar
+end type
+
+event clicked;ParentWindow.TriggerEvent("ue_arch_imprimir")
+end event
+
+on m_imprimir.create
+call super::create
+this.text = "&Imprimir"
+this.microhelp = "Imprimir lista"
+this.toolbaritemname = "Print!"
+this.toolbaritemtext = "Imprimir lista"
+this.toolbaritemorder = 6
+end on
+
+on m_imprimir.destroy
+call super::destroy
+end on
+
+type m_informedeincidencias from menu within m_consultar
+end type
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	20/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+ParentWindow.TriggerEvent ("ue_imp_reporte_inc")
+//***************************************
+//**  OSGI 2001.1  	20/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_informedeincidencias.create
+call super::create
+this.text = "Informe de Inci&dencias"
+this.toolbaritemname = "Report!"
+this.toolbaritemtext = "Imprimir Informe"
+this.toolbaritemorder = 7
+this.toolbaritemspace = 1
+end on
+
+on m_informedeincidencias.destroy
+call super::destroy
+end on
+
+type m_datosanulacion from menu within m_consultar
+end type
+
+event clicked;parentwindow.Triggerevent("ue_consultar_anulacion")
+end event
+
+on m_datosanulacion.create
+call super::create
+this.text = "Datos &Anulacion"
+this.microhelp = "Datos de Anulacion"
+this.toolbaritemname = "Help!"
+this.toolbaritemtext = "Datos de Anulacion"
+this.toolbaritemorder = 4
+end on
+
+on m_datosanulacion.destroy
+call super::destroy
+end on
+
+type m_obligadas from menu within m_consultar
+end type
+
+event clicked;if this.checked = false then
+   this.checked = true
+else
+	this.checked = false
+end if
+end event
+
+on m_obligadas.create
+call super::create
+this.tag = "OBLIGADAS"
+this.visible = false
+this.text = "Obli&gadas"
+this.microhelp = "Consultar Incidencias Obligadas"
+this.toolbaritemvisible = false
+this.toolbaritemname = "RELOJ_OB3.bmp"
+this.toolbaritemtext = "Consultar Incidencias Obligadas"
+this.toolbaritemorder = 8
+end on
+
+on m_obligadas.destroy
+call super::destroy
+end on
+
+type m_observaciones from menu within m_consultar
+end type
+
+on m_observaciones.create
+call super::create
+this.text = "Observaciones"
+this.microhelp = "Consulta de Observaciones"
+this.toolbaritemname = "ScriptYes!"
+this.toolbaritemtext = "Consultar Observaciones"
+this.toolbaritemspace = 1
+end on
+
+on m_observaciones.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.TriggerEvent("ue_observaciones")
+end event
+
+type m_ventana from menu within m_hist_inc_desc
+m_cascada m_cascada
+m_mosaico m_mosaico
+m_organizar m_organizar
+end type
+
+on m_ventana.create
+call super::create
+this.text = "&Ventana"
+this.m_cascada=create m_cascada
+this.m_mosaico=create m_mosaico
+this.m_organizar=create m_organizar
+this.Item[UpperBound(this.Item)+1]=this.m_cascada
+this.Item[UpperBound(this.Item)+1]=this.m_mosaico
+this.Item[UpperBound(this.Item)+1]=this.m_organizar
+end on
+
+on m_ventana.destroy
+call super::destroy
+destroy(this.m_cascada)
+destroy(this.m_mosaico)
+destroy(this.m_organizar)
+end on
+
+type m_cascada from menu within m_ventana
+end type
+
+on m_cascada.create
+call super::create
+this.text = "&Cascada"
+this.microhelp = "Ordenar las ventanas para que se sobrepongan"
+this.toolbaritemvisible = false
+end on
+
+on m_cascada.destroy
+call super::destroy
+end on
+
+type m_mosaico from menu within m_ventana
+end type
+
+on m_mosaico.create
+call super::create
+this.text = "&Mosaico"
+this.microhelp = "Ordenar las ventanas de modo que se vean todas"
+this.toolbaritemvisible = false
+end on
+
+on m_mosaico.destroy
+call super::destroy
+end on
+
+type m_organizar from menu within m_ventana
+end type
+
+on m_organizar.create
+call super::create
+this.text = "&Organizar"
+this.toolbaritemvisible = false
+end on
+
+on m_organizar.destroy
+call super::destroy
+end on
+
+type m_56 from menu within m_hist_inc_desc
+m_acercadelopensgi m_acercadelopensgi
+end type
+
+on m_56.create
+call super::create
+this.text = "&Ayuda"
+this.m_acercadelopensgi=create m_acercadelopensgi
+this.Item[UpperBound(this.Item)+1]=this.m_acercadelopensgi
+end on
+
+on m_56.destroy
+call super::destroy
+destroy(this.m_acercadelopensgi)
+end on
+
+type m_acercadelopensgi from menu within m_56
+end type
+
+on m_acercadelopensgi.create
+call super::create
+this.text = "&Acerca del OPEN SGI"
+end on
+
+event clicked;Open(w_acerca_de_sgi)
+end event
+
+on m_acercadelopensgi.destroy
+call super::destroy
+end on
+

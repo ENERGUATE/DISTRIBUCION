@@ -1,0 +1,83 @@
+HA$PBExportHeader$m_mante_brigadistas.srm
+forward
+global type m_mante_brigadistas from md_consultas_estandar
+end type
+end forward
+
+global type m_mante_brigadistas from md_consultas_estandar
+end type
+global m_mante_brigadistas m_mante_brigadistas
+
+on m_mante_brigadistas.create
+m_mante_brigadistas=this
+call md_consultas_estandar::create
+end on
+
+on m_mante_brigadistas.destroy
+call md_consultas_estandar::destroy
+end on
+
+on m_agregar::clicked;
+w_6203_mantenimiento_brigadistas.TriggerEvent("ue_alta")
+
+end on
+
+on m_agregar.create
+call md_consultas_estandar`m_agregar::create
+this.Microhelp="Ingresar un Nuevo Brigadista"
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_eliminar::clicked;w_6203_mantenimiento_brigadistas.TriggerEvent("ue_arch_eliminar")
+end on
+
+on m_eliminar.create
+call md_consultas_estandar`m_eliminar::create
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_cerrar.create
+call md_consultas_estandar`m_cerrar::create
+this.ToolBarItemVisible=true
+end on
+
+on m_imprimir.create
+call md_consultas_estandar`m_imprimir::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_seleccionarimpresora.create
+call md_consultas_estandar`m_seleccionarimpresora::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_preferencias.create
+call md_consultas_estandar`m_preferencias::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_salir.create
+call md_consultas_estandar`m_salir::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_iralcomienzo.create
+call md_consultas_estandar`m_iralcomienzo::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_iralfinal.create
+call md_consultas_estandar`m_iralfinal::create
+this.ToolBarItemVisible=false
+end on
+
+on m_buscar::clicked;call md_consultas_estandar`m_buscar::clicked;w_6203_mantenimiento_brigadistas.TriggerEvent("ue_retrieve")
+end on
+

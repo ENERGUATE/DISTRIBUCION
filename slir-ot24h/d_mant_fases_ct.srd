@@ -1,0 +1,84 @@
+HA$PBExportHeader$d_mant_fases_ct.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=140 color="536870912" )
+summary(height=8 color="536870912" )
+footer(height=64 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="gi_ct_fase_conexion.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_ct_fase_conexion.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_ct_fase_conexion.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=tipo_ct dbname="gi_ct_fase_conexion.tipo_ct" )
+ column=(type=char(1) updatewhereclause=yes name=fase_a_ent dbname="fase_a_ent" initial="'0'" values="	1/	0" )
+ column=(type=char(1) updatewhereclause=yes name=fase_b_ent dbname="fase_b_ent" initial="'0'" values="	1/	0" )
+ column=(type=char(1) updatewhereclause=yes name=fase_c_ent dbname="fase_c_ent" initial="'0'" values="	1/	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fase_a_sal dbname="gi_ct_fase_conexion.fase_a_sal" initial="0" values="	1/	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fase_b_sal dbname="gi_ct_fase_conexion.fase_b_sal" initial="0" values="	1/	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fase_c_sal dbname="gi_ct_fase_conexion.fase_c_sal" initial="0" values="	1/	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fase_ab_sal dbname="gi_ct_fase_conexion.fase_ab_sal" initial="0" values="	1/	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fase_ac_sal dbname="gi_ct_fase_conexion.fase_ac_sal" initial="0" values="	1/	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fase_bc_sal dbname="gi_ct_fase_conexion.fase_bc_sal" initial="0" values="	1/	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fase_abc_sal dbname="gi_ct_fase_conexion.fase_abc_sal" initial="0" values="	1/	0" )
+ column=(type=char(15) update=yes updatewhereclause=yes key=yes name=fase_ent dbname="gi_ct_fase_conexion.fase_ent" initial="'000'" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=fase_sal dbname="gi_ct_fase_conexion.fase_sal" initial="'000'" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=orden dbname="gi_ct_fase_conexion.orden" initial="0" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=fase_sal_bin dbname="gi_ct_fase_conexion.fase_sal_bin" initial="'000'" )
+ column=(type=number updatewhereclause=yes name=mostrar dbname="gi_ct_fase_conexion.mostrar" initial="0" )
+ retrieve="  SELECT ~"GI_CT_FASE_CONEXION~".~"USUARIO~",    
+         ~"GI_CT_FASE_CONEXION~".~"F_ACTUAL~",   
+         ~"GI_CT_FASE_CONEXION~".~"PROGRAMA~",   
+         ~"GI_CT_FASE_CONEXION~".~"TIPO_CT~",   
+         SUBSTR(~"GI_CT_FASE_CONEXION~".~"FASE_ENT~",1,1) FASE_A_ENT,
+         SUBSTR(~"GI_CT_FASE_CONEXION~".~"FASE_ENT~",2,1) FASE_B_ENT,   
+         SUBSTR(~"GI_CT_FASE_CONEXION~".~"FASE_ENT~",3,1) FASE_C_ENT,
+        	~"GI_CT_FASE_CONEXION~".~"FASE_A_SAL~",
+        	~"GI_CT_FASE_CONEXION~".~"FASE_B_SAL~",
+        	~"GI_CT_FASE_CONEXION~".~"FASE_C_SAL~" ,
+        	~"GI_CT_FASE_CONEXION~".~"FASE_AB_SAL~",
+        	~"GI_CT_FASE_CONEXION~".~"FASE_AC_SAL~",
+        	~"GI_CT_FASE_CONEXION~".~"FASE_BC_SAL~" ,
+       	~"GI_CT_FASE_CONEXION~".~"FASE_ABC_SAL~",
+	 	~"GI_CT_FASE_CONEXION~".~"FASE_ENT~",
+		~"GI_CT_FASE_CONEXION~".~"FASE_SAL~",
+		~"GI_CT_FASE_CONEXION~".~"ORDEN~", 
+		~"GI_CT_FASE_CONEXION~".~"FASE_SAL_BIN~",  	
+		1 ~"MOSTRAR~"
+    FROM ~"GI_CT_FASE_CONEXION~" 
+    WHERE ~"GI_CT_FASE_CONEXION~".~"TIPO_CT~" = :tipo_ct    
+    ORDER BY ~"GI_CT_FASE_CONEXION~".~"TIPO_CT~",~"GI_CT_FASE_CONEXION~".~"ORDEN~"" update="GI_CT_FASE_CONEXION" updatewhere=0 updatekeyinplace=yes arguments=(("tipo_ct", number)) )
+text(band=header alignment="2" text="FASE PRIMARIA ABIERTA" border="6" color="0" x="9" y="4" height="52" width="768" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="FASES DE SALIDA AFECTADAS" border="6" color="0" x="795" y="4" height="52" width="1746" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="786" y1="64" x2="786" y2="312"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="R" border="0" color="0" x="969" y="84" height="52" width="46" html.valueishtml="0"  name=s_r visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="S" border="0" color="0" x="1189" y="84" height="52" width="41" html.valueishtml="0"  name=s_s visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="T" border="0" color="0" x="1422" y="84" height="52" width="37" html.valueishtml="0"  name=s_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="RS" border="0" color="0" x="1632" y="84" height="52" width="87" html.valueishtml="0"  name=s_rs visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="RT" border="0" color="0" x="1856" y="84" height="52" width="82" html.valueishtml="0"  name=s_rt visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ST" border="0" color="0" x="2080" y="84" height="52" width="78" html.valueishtml="0"  name=s_st visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="RST" border="0" color="0" x="2295" y="84" height="52" width="123" html.valueishtml="0"  name=s_rst visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="R" border="0" color="0" x="160" y="84" height="52" width="46" html.valueishtml="0"  name=e_r visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="S" border="0" color="0" x="366" y="84" height="52" width="41" html.valueishtml="0"  name=e_s visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="T" border="0" color="0" x="576" y="84" height="52" width="37" html.valueishtml="0"  name=e_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="12632256" x="3552" y="0" height="52" width="992" format="[General]" html.valueishtml="0"  name=fase_ab_sal visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="12632256" x="4544" y="0" height="52" width="992" format="[General]" html.valueishtml="0"  name=fase_ac_sal visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="12632256" x="5536" y="0" height="52" width="992" format="[General]" html.valueishtml="0"  name=fase_bc_sal visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="12632256" x="6528" y="0" height="52" width="992" format="[General]" html.valueishtml="0"  name=fase_abc_sal visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=detail x1="786" y1="0" x2="786" y2="248"  name=l_2 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="12632256" x="155" y="24" height="52" width="114" format="[general]" html.valueishtml="0"  name=fase_a_ent visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="12632256" x="352" y="24" height="52" width="101" format="[general]" html.valueishtml="0"  name=fase_b_ent visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="12632256" x="558" y="24" height="52" width="73" format="[general]" html.valueishtml="0"  name=fase_c_ent visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=8 alignment="0" tabsequence=10 border="0" color="0" x="960" y="24" height="52" width="73" format="[general]" html.valueishtml="0"  name=fase_a_sal visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=20 border="0" color="0" x="1175" y="24" height="52" width="73" format="[general]" html.valueishtml="0"  name=fase_b_sal visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=30 border="0" color="0" x="1403" y="24" height="52" width="69" format="[general]" html.valueishtml="0"  name=fase_c_sal visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=40 border="0" color="0" x="1641" y="24" height="60" width="73" format="[general]" html.valueishtml="0"  name=fase_ab_sal_1 visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=50 border="0" color="0" x="1865" y="24" height="52" width="69" format="[general]" html.valueishtml="0"  name=fase_ac_sal_1 visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=60 border="0" color="0" x="2089" y="24" height="52" width="59" format="[general]" html.valueishtml="0"  name=fase_bc_sal_1 visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=70 border="0" color="0" x="2322" y="24" height="60" width="82" format="[general]" html.valueishtml="0"  name=fase_abc_sal_1 visible="1~tif(  mostrar = 1, 1, 0 )" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="12632256" x="7520" y="0" height="52" width="1152" format="[general]" html.valueishtml="0"  name=fase_sal_bin visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=footer x="1157" y="12" height="48" width="50"  name=r_1 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="0" )
+text(band=footer alignment="2" text="$$HEX1$$d600$$ENDHEX$$" border="0" color="0" x="1157" y="8" height="52" width="46" html.valueishtml="0"  name=t_3 visible="1"  font.face="Symbol" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="2" background.mode="1" background.color="553648127" )
+text(band=footer alignment="2" text="La carga se ve afectada" border="0" color="0" x="1230" y="8" height="52" width="631" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+rectangle(band=footer x="1906" y="12" height="48" width="50"  name=r_2 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="0" )
+text(band=footer alignment="2" text="La carga no se afecta" border="0" color="0" x="1947" y="8" height="52" width="635" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

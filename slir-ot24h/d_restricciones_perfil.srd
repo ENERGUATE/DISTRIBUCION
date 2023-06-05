@@ -1,0 +1,17 @@
+HA$PBExportHeader$d_restricciones_perfil.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(15) update=yes updatewhereclause=yes key=yes name=opcion dbname="gi_opciones.opcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=restric dbname="gi_opciones.restric" )
+ retrieve="  SELECT ~"GI_OPCIONES~".~"OPCION~",   
+         ~"GI_OPCIONES~".~"RESTRIC~"  
+    FROM ~"GI_OPCIONES~"  " update="GI_OPCIONES" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Opcion"border="0" color="0" x="5" y="4" height="52" width="366"  name=opcion_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Restric"border="0" color="0" x="375" y="4" height="52" width="274"  name=restric_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="0" x="649" y="0" height="76" width="480"  name=opcion  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="1129" y="0" height="76" width="1376"  name=restric  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

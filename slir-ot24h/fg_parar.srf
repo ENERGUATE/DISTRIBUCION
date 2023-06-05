@@ -1,0 +1,12 @@
+HA$PBExportHeader$fg_parar.srf
+global type fg_parar from function_object
+end type
+
+forward prototypes
+global subroutine fg_parar ()
+end prototypes
+
+global subroutine fg_parar ();int i
+i=1
+end subroutine
+

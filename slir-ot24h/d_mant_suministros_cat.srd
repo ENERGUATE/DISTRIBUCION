@@ -1,0 +1,31 @@
+HA$PBExportHeader$d_mant_suministros_cat.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nis_rad dbname="gi_avi_f_color.nis_rad" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="gi_avi_f_color.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_avi_f_color.f_actual" )
+ column=(type=datetime update=yes updatewhereclause=yes name=h_actual dbname="gi_avi_f_color.h_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_avi_f_color.programa" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=descripcion dbname="gi_avi_f_color.descripcion" )
+ column=(type=number update=yes updatewhereclause=yes name=cod_categoria dbname="gi_avi_f_color.cod_categoria" )
+ retrieve="  SELECT ~"GI_AVI_F_COLOR~".~"NIS_RAD~",   
+         ~"GI_AVI_F_COLOR~".~"USUARIO~",   
+         ~"GI_AVI_F_COLOR~".~"F_ACTUAL~",   
+         ~"GI_AVI_F_COLOR~".~"H_ACTUAL~",   
+         ~"GI_AVI_F_COLOR~".~"PROGRAMA~",   
+         ~"GI_AVI_F_COLOR~".~"DESCRIPCION~",   
+         ~"GI_AVI_F_COLOR~".~"COD_CATEGORIA~"  
+    FROM ~"GI_AVI_F_COLOR~"   
+" update="GI_AVI_F_COLOR" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Nis Rad" border="6" color="0" x="5" y="4" height="68" width="389" html.valueishtml="0"  name=t_nis_rad visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Descripcion" border="6" color="0" x="411" y="4" height="68" width="1426" html.valueishtml="0"  name=t_descripcion visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="2" text="Cod Categoria" border="6" color="0" x="1851" y="4" height="68" width="494" html.valueishtml="0"  name=t_cod_categoria visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="8388608" x="114" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=nis_rad visible="1" editmask.mask="#######" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=20 border="5" color="8388608" x="407" y="4" height="72" width="1426" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=80 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=30 border="5" color="8388608" x="1847" y="4" height="72" width="498" format="[general]" html.valueishtml="0"  name=cod_categoria visible="1" dddw.name=dw_lista_categorias dddw.displaycolumn=descripcion_categoria dddw.datacolumn=cod_categoria dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

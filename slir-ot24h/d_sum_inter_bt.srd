@@ -1,0 +1,55 @@
+HA$PBExportHeader$d_sum_inter_bt.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="gi_afec_parcial_sum.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_afec_parcial_sum.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_afec_parcial_sum.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nis_rad dbname="gi_afec_parcial_sum.nis_rad" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_incidencia dbname="gi_afec_parcial_sum.nro_incidencia" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_instalacion dbname="gi_afec_parcial_sum.nro_instalacion" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=f_alta dbname="gi_afec_parcial_sum.f_alta" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=medidor dbname="gi_afec_parcial_sum.medidor" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=nombre dbname="gi_afec_parcial_sum.nombre" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=ape1 dbname="gi_afec_parcial_sum.ape1" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=ape2 dbname="gi_afec_parcial_sum.ape2" )
+ retrieve="  SELECT ~"GI_AFEC_PARCIAL_SUM~".~"USUARIO~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"F_ACTUAL~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"PROGRAMA~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"NIS_RAD~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"NRO_INCIDENCIA~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"NRO_INSTALACION~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"F_ALTA~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"MEDIDOR~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"NOMBRE~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"APE1~",   
+         ~"GI_AFEC_PARCIAL_SUM~".~"APE2~"  
+    FROM ~"GI_AFEC_PARCIAL_SUM~"   
+WHERE ~"GI_AFEC_PARCIAL_SUM~".~"NRO_INCIDENCIA~" = :pl_nro_incidencia
+" update="GI_AFEC_PARCIAL_SUM" updatewhere=1 updatekeyinplace=yes arguments=(("pl_nro_incidencia", number)) )
+text(band=header alignment="2" text="Usuario"border="0" color="0" x="5" y="4" height="52" width="407"  name=usuario_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Programa"border="0" color="0" x="416" y="4" height="52" width="480"  name=f_actual_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Programa"border="0" color="0" x="901" y="4" height="52" width="407"  name=programa_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nis Rad"border="0" color="0" x="1312" y="4" height="52" width="274"  name=nis_rad_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nro Instalacion"border="0" color="0" x="1591" y="4" height="52" width="325"  name=nro_incidencia_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nro Incid"border="0" color="0" x="1920" y="4" height="52" width="293"  name=nro_instalacion_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="F Alta"border="0" color="0" x="2217" y="4" height="52" width="480"  name=f_alta_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Medidor"border="0" color="0" x="2702" y="4" height="52" width="526"  name=medidor_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nombre"border="0" color="0" x="3232" y="4" height="52" width="750"  name=nombre_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ape1"border="0" color="0" x="3986" y="4" height="52" width="526"  name=ape1_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ape2"border="0" color="0" x="4521" y="4" height="52" width="526"  name=ape2_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="5" y="4" height="52" width="407" format="[general]"  name=usuario edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="416" y="4" height="52" width="480" format="[shortdate] [time]"  name=f_actual edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="901" y="4" height="52" width="407" format="[general]"  name=programa edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="0" color="0" x="1312" y="4" height="52" width="274" format="[General]"  name=nis_rad edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=50 border="0" color="0" x="1911" y="8" height="52" width="270" format="[General]"  name=nro_incidencia edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=60 border="0" color="0" x="1600" y="8" height="52" width="293" format="[General]"  name=nro_instalacion edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="0" x="2217" y="4" height="52" width="480" format="[shortdate] [time]"  name=f_alta edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="0" color="0" x="2702" y="4" height="52" width="526" format="[general]"  name=medidor edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=90 border="0" color="0" x="3232" y="4" height="52" width="750" format="[general]"  name=nombre edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=100 border="0" color="0" x="3986" y="4" height="52" width="526" format="[general]"  name=ape1 edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="0" color="0" x="4521" y="4" height="52" width="526" format="[general]"  name=ape2 edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

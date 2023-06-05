@@ -1,0 +1,25 @@
+HA$PBExportHeader$ddw_cmd_2.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=sgd_centro_nro_centro dbname="sgd_centro.nro_centro" )
+ column=(type=char(25) updatewhereclause=yes name=sgd_centro_nom_centro dbname="sgd_centro.nom_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_relacion_centro_centro_resp dbname="sgd_relacion_centro.centro_resp" )
+ retrieve="  SELECT DISTINCT ~"SGD_CENTRO~".~"NRO_CENTRO~",   
+         ~"SGD_CENTRO~".~"NOM_CENTRO~",   
+         ~"SGD_RELACION_CENTRO~".~"CENTRO_RESP~"  
+    FROM ~"SGD_CENTRO~",   
+         ~"SGD_RELACION_CENTRO~"  
+   WHERE ( ~"SGD_CENTRO~".~"NRO_CENTRO~" = ~"SGD_RELACION_CENTRO~".~"CENTRO_DEPEN~" ) and
+			( ~"SGD_RELACION_CENTRO~".~"CENTRO_RESP~" IN (98,0) ) and
+			( ~"SGD_RELACION_CENTRO~".~"TIP_CENTRO~" IN (2,0) ) and
+         ( (~"SGD_CENTRO~".~"TIP_CENTRO~" = 2 OR  
+         ~"SGD_CENTRO~".~"NRO_CENTRO~" = 0) AND  
+         ( ~"SGD_CENTRO~".~"NRO_CENTRO~" <> 98) AND  
+         ( ~"SGD_CENTRO~".~"NRO_CENTRO~" <> 99 ) )    and
+				  ( ~"SGD_CENTRO~".~"VIGENTE~" >= :pl_vigente )  " arguments=(("pl_vigente", number)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="80" width="2455" format="[general]" html.valueishtml="0"  name=sgd_centro_nom_centro visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

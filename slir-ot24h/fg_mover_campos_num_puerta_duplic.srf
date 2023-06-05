@@ -1,0 +1,30 @@
+HA$PBExportHeader$fg_mover_campos_num_puerta_duplic.srf
+global type fg_mover_campos_num_puerta_duplic from function_object
+end type
+
+forward prototypes
+global subroutine fg_mover_campos_num_puerta_duplic (datawindow adw_dw)
+end prototypes
+
+global subroutine fg_mover_campos_num_puerta_duplic (datawindow adw_dw);//**************************************************
+//**  JPE PM003 MOSTRAR TIPOS DE VIAS 13/03/2002  **
+//**************************************************
+If gb_tipos_de_via Then
+	Long ll_numero_x, ll_duplic_x, ll_duplic_length, ll_separador
+			
+	ll_numero_x = Long(adw_dw.Describe("numero.x"))
+	//ll_numero_length = Long(adw_dw.Describe("numero.Width"))
+	ll_duplic_x = Long(adw_dw.Describe("duplic.x"))
+	
+	ll_duplic_length = Long(adw_dw.Describe("duplic.Width"))
+	ll_separador = ll_numero_x + ll_duplic_length + (ll_duplic_x - (ll_numero_x + Long(adw_dw.Describe("numero.Width"))))
+		
+	adw_dw.Modify("numero.x = '" + String(ll_separador) + "'")
+	adw_dw.Modify("duplic.x = '" + String(ll_numero_x) + "'")
+End If
+//**************************************************
+//**  JPE PM003 MOSTRAR TIPOS DE VIAS 13/03/2002  **
+//**************************************************
+
+end subroutine
+

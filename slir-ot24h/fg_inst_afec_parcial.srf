@@ -1,0 +1,40 @@
+HA$PBExportHeader$fg_inst_afec_parcial.srf
+global type fg_inst_afec_parcial from function_object
+end type
+
+forward prototypes
+global function long fg_inst_afec_parcial ()
+end prototypes
+
+global function long fg_inst_afec_parcial ();long ll_tipo_instalacion
+
+//*******************************************************
+//**  AFECTACION PARCIAL VERSION UNIFICADA 06/08/2002  **
+//*******************************************************
+
+  SELECT "GI_PARAMETROS"."VALOR"  
+    INTO :ll_tipo_instalacion  
+    FROM "GI_PARAMETROS",   
+         "GI_PARAMETROS_EXT"  
+   WHERE ( "GI_PARAMETROS"."COD_PARAMETRO" = to_number("GI_PARAMETROS_EXT"."VALOR") ) and  
+         ( ( "GI_PARAMETROS_EXT"."TIPO" = 'COD' ) AND  
+         ( "GI_PARAMETROS_EXT"."COD_PARAMETRO" = 0 ) AND  
+         ( "GI_PARAMETROS_EXT"."DESCRIPCION" = 'AFECTACION PARCIAL' ) )   ;
+			
+//////////////////////////////////////////////////////////////////////
+
+if isnull(ll_tipo_instalacion)  then ll_tipo_instalacion = 0
+
+if gb_operaciones = true and ll_tipo_instalacion > 0 then 
+	
+	IF ll_tipo_instalacion < fgci_tipo_salida_de_baja then
+		ll_tipo_instalacion = fgci_tipo_transformador
+	else
+	  ll_tipo_instalacion = fgci_tipo_salida_de_baja
+   end if
+end if
+
+
+Return ll_tipo_instalacion
+end function
+

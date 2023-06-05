@@ -1,0 +1,34 @@
+HA$PBExportHeader$fgcd_fecha_con_seg.srf
+global type fgcd_fecha_con_seg from function_object
+end type
+
+forward prototypes
+global function datetime fgcd_fecha_con_seg ()
+end prototypes
+
+global function datetime fgcd_fecha_con_seg ();///////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fgcd_fecha_con_Seg
+//
+// Objetivo: Retorna fecha correspondiente al d$$HEX1$$ed00$$ENDHEX$$a.
+//
+// Ambito : Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//			Entrada: --
+//			Salida: --
+// 
+// Devuelve:
+//
+// Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+// -----		-----------		---------
+//
+////////////////////////////////////////////////////
+
+DateTime ld_fecha
+
+SELECT sysdate INTO :ld_fecha FROM DUAL;
+
+RETURN ld_fecha
+end function
+

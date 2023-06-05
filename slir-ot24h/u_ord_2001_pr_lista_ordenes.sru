@@ -1,0 +1,12 @@
+HA$PBExportHeader$u_ord_2001_pr_lista_ordenes.sru
+forward
+global type u_ord_2001_pr_lista_ordenes from u_ord_0000_generico_ordenes
+end type
+end forward
+
+global type u_ord_2001_pr_lista_ordenes from u_ord_0000_generico_ordenes
+int Width=2401
+string DataObject="d_ord_2001_pr_lista_ordenes"
+end type
+global u_ord_2001_pr_lista_ordenes u_ord_2001_pr_lista_ordenes
+

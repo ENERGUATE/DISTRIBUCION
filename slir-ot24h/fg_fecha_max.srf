@@ -1,0 +1,50 @@
+HA$PBExportHeader$fg_fecha_max.srf
+global type fg_fecha_max from function_object
+end type
+
+forward prototypes
+global function date fg_fecha_max (integer ai_mes, integer ai_annio)
+end prototypes
+
+global function date fg_fecha_max (integer ai_mes, integer ai_annio);//////////////////////////////////////////////////////////////////////////////////////////////////
+// Funci$$HEX1$$f300$$ENDHEX$$n: 	fg_fecha_max.
+// 
+// Objetivo:
+//	Obtiene la fecha completa del periodo seleccionado.
+//
+// Ambito:	Global.
+//
+// Parametros:
+//	Entrada:  ai_mes, ai_annio.
+//	Salida  :  
+//						
+// Devuelve:	
+//
+//  Fecha	   Responsable	     Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+// 24/11/99	    OENR		      Versi$$HEX1$$f300$$ENDHEX$$n Original
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+integer li_dia
+date ldt_return
+
+CHOOSE CASE ai_mes
+	CASE 1, 3, 5, 7, 8, 10, 12
+			li_dia = 31	
+		   ldt_return = Date(String(li_dia) + "/" + String(ai_mes) + "/" + String(ai_annio))
+	CASE 2
+
+			ldt_return = Date("01/03/" + String(ai_annio))
+			ldt_return = RelativeDate(ldt_return, -1)
+	CASE 4, 6, 9, 11
+			li_dia = 30
+		
+		   ldt_return = Date(String(li_dia) + "/" + String(ai_mes) + "/" + String(ai_annio))
+		
+END CHOOSE
+
+Return ldt_return
+
+
+end function
+

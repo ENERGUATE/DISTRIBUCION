@@ -1,0 +1,13 @@
+HA$PBExportHeader$d_estadisticas_pendienes_impr.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=5 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=272 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=0 color="536870912"  height.autosize=yes)
+table(column=(type=char(10) updatewhereclause=yes name=a dbname="a" )
+ unbound = "yes")
+bitmap(band=header filename="sgd.bmp" x="59" y="24" height="208" width="379" border="0"  name=bitmap_t )
+text(band=header alignment="0" text="text"border="0" color="0" x="571" y="76" height="80" width="110"  name=titulo_t  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+report(band=detail dataobject="d_avi_2032_pr_est_avisos_pend" x="46" y="20" height="120" width="3451" border="0"  height.autosize=yes criteria="" trail_footer = yes  name=d_pendientes  slideup=directlyabove )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

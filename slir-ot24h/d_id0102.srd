@@ -1,0 +1,12 @@
+HA$PBExportHeader$d_id0102.srd
+$PBExportComments$Lista de municipios del  departamento
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=cod_munic dbname="municipios.cod_munic" )
+ column=(type=char(30) updatewhereclause=yes name=nom_munic dbname="municipios.nom_munic" )
+ retrieve="PBSELECT(TABLE(NAME=~"municipios~" ) COLUMN(NAME=~"municipios.cod_munic~") COLUMN(NAME=~"municipios.nom_munic~") WHERE ( EXP1 =~"~~~"MUNICIPIOS~~~".~~~"COD_DEPTO~~~"~" OP =~"=~" EXP2 =~":depto~" ) ) ORDER(NAME=~"municipios.nom_munic~" ASC=yes ) " arguments=(("depto", number)) )
+compute(band=detail alignment="0" expression="wordcap( nom_munic )"border="0" color="8388608" x="14" y="4" height="64" width="850" format="[GENERAL]"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,10 @@
+HA$PBExportHeader$u_bri_2001_rn_form_ingreso_brigada.sru
+forward
+global type u_bri_2001_rn_form_ingreso_brigada from nonvisualobject
+end type
+end forward
+
+global type u_bri_2001_rn_form_ingreso_brigada from nonvisualobject
+end type
+global u_bri_2001_rn_form_ingreso_brigada u_bri_2001_rn_form_ingreso_brigada
+

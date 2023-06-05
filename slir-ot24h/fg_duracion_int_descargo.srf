@@ -1,0 +1,84 @@
+HA$PBExportHeader$fg_duracion_int_descargo.srf
+global type fg_duracion_int_descargo from function_object
+end type
+
+forward prototypes
+global function string fg_duracion_int_descargo (long pl_nro_descargo)
+end prototypes
+
+global function string fg_duracion_int_descargo (long pl_nro_descargo);///////////////////////////////////////////////////////
+//									
+// Funcion/Evento: fg_duracion_int_descargo
+// 
+// Objetivo: Utilizada para el c$$HEX1$$e100$$ENDHEX$$lculo estimado de Potencia por tiempo
+//				 y clientes por tiempo en los descargos
+// Responsable: JPE, YB
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: long pl_nro_descargo,
+//					
+//					 
+//					
+//					
+//					
+//    Salida : --
+//
+// Devuelve: string
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 11/07/2000   JPE, YB
+//
+///////////////////////////////////////////////////////
+
+String ls_return, ls_sql_historico
+Long   ll_cxt, ll_c, ll_row
+Double ld_pxt, ld_p
+
+DataStore lds_duracion
+
+lds_duracion = CREATE DATASTORE 
+lds_duracion.DataObject = "dw_duracion_int_descargo"
+
+lds_duracion.SettransObject(Sqlca)
+ll_row = lds_duracion.Retrieve(pl_nro_descargo)
+
+
+If ll_row <= 0 then
+	ls_sql_historico = lds_duracion.Describe("DataWindow.Table.Select")
+	fg_replace_text(ls_sql_historico, "SGD_INTERRUPCION_DESCARGO", "GI_HIST_INTERRUPCION_DESCARGOS")
+
+	lds_duracion.Modify("DataWindow.Table.Select=' " + ls_sql_historico + " ' ")
+	ll_row = lds_duracion.Retrieve(pl_nro_descargo)
+End If
+
+
+If ll_row > 0 Then
+   ll_cxt = lds_duracion.GetItemNumber(1,"cxt") / 60
+	ld_pxt = lds_duracion.GetItemNumber(1,"pxt") / 60
+	
+
+   ll_c = lds_duracion.GetItemNumber(1,"c_cli")
+	ld_p = lds_duracion.GetItemNumber(1,"c_pot")
+	
+	If IsNull(ll_cxt) Then ll_cxt = 0
+	If IsNull(ld_pxt) Then ld_pxt = 0
+	If IsNull(ll_c) Then ll_c = 0
+	If IsNull(ld_p) Then ld_p = 0
+	
+	//CAMBIO SGI PMS INT 2000  	ls_return = String(ll_cxt) + "~t" + String(ld_pxt)
+	ls_return = String(ll_cxt) + "~t" + String(ld_pxt) + "~t" + String(ll_c) + "~t" + String(ld_p)
+Else
+	ls_return = " "
+End If	
+
+Return ls_return 
+
+
+
+//CREO QUE ES ASI: pd_dw.Describe("DataWindow.Table.Select")
+//
+//pd_dw.Modify("DataWindow.Table.Select=' " + ls_select1 + ls_select2 + ls_select3 + " ' ")
+
+end function
+

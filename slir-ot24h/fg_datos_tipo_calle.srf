@@ -1,0 +1,36 @@
+HA$PBExportHeader$fg_datos_tipo_calle.srf
+global type fg_datos_tipo_calle from function_object
+end type
+
+forward prototypes
+global function string fg_datos_tipo_calle (datawindow adw_dw, long al_cod_calle, long al_nro_aviso)
+end prototypes
+
+global function string fg_datos_tipo_calle (datawindow adw_dw, long al_cod_calle, long al_nro_aviso);//**************************************************
+//**  JPE PM003 MOSTRAR TIPOS DE VIAS 13/03/2002  **
+//**************************************************
+String ls_desc_tipos
+
+
+If gb_tipos_de_via Then
+	If al_nro_aviso > 0 Or IsNull(al_nro_aviso) Then
+		Select cod_calle Into :al_cod_calle from gi_avisos where nro_aviso = :al_nro_aviso ;
+	End If
+
+	Select Distinct NVL(desc_tipo, '') Into :ls_desc_tipos from tipos, callejero where tip_via = tipo and cod_calle = :al_cod_calle ;
+
+	If IsNull(ls_desc_tipos) Then ls_desc_tipos = ''
+
+	adw_dw.SetItem(adw_dw.GetRow(), "c_desc_tipo", ls_desc_tipos)
+	adw_dw.AcceptText()
+Else
+	ls_desc_tipos = ''
+End If
+
+Return ls_desc_tipos
+//**************************************************
+//**  JPE PM003 MOSTRAR TIPOS DE VIAS 13/03/2002  **
+//**************************************************
+ 
+end function
+

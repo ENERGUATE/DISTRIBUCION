@@ -1,0 +1,103 @@
+HA$PBExportHeader$d_avi_2015_pr_form_obs2.srd
+$PBExportComments$LFE
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=884 color="553648127" )
+table(column=(type=decimal(0) updatewhereclause=yes name=tip_aviso dbname="gi_avisos.tip_aviso" )
+ column=(type=decimal(0) updatewhereclause=yes name=co_alcance dbname="gi_avisos.co_alcance" )
+ column=(type=char(15) updatewhereclause=yes name=tfno_cli dbname="gi_avisos.tfno_cli" )
+ column=(type=char(500) update=yes updatewhereclause=yes name=obs_telegestiones dbname="gi_avisos.obs_telegestiones" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=obs_cmd dbname="gi_avisos.obs_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_aviso dbname="gi_avisos.nro_aviso" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prioridad dbname="gi_avisos.prioridad" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_centro dbname="gi_avisos.nro_centro" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_cmd dbname="gi_avisos.nro_cmd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_mesa dbname="gi_avisos.nro_mesa" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="gi_avisos.f_alta" )
+ column=(type=char(15) updatewhereclause=yes name=nro_telefonista dbname="gi_avisos.nro_telefonista" )
+ column=(type=decimal(0) updatewhereclause=yes name=est_aviso dbname="gi_avisos.est_aviso" )
+ column=(type=datetime updatewhereclause=yes name=fecha_res dbname="gi_avisos.fecha_res" )
+ column=(type=decimal(0) updatewhereclause=yes name=ind_improcedente dbname="gi_avisos.ind_improcedente" values="NO	0/SI	1/" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_llamadas dbname="gi_avisos.nro_llamadas" )
+ column=(type=datetime updatewhereclause=yes name=fecha_problema dbname="gi_avisos.fecha_problema" )
+ column=(type=decimal(0) updatewhereclause=yes name=nis_rad dbname="gi_avisos.nis_rad" )
+ column=(type=datetime updatewhereclause=yes name=fecha_ultimo_aviso dbname="gi_avisos.f_ultimo_aviso" )
+ column=(type=number updatewhereclause=yes name=saifi_oc dbname="saifi_oc" )
+ column=(type=number updatewhereclause=yes name=saidi_oc dbname="saidi_oc" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0022 dbname="compute_0022" )
+ column=(type=datetime updatewhereclause=yes name=f_elim_peligro dbname="gi_ot.f_elim_peligro" )
+ column=(type=decimal(6) updatewhereclause=yes name=coordenada_x dbname="gi_avisos.coordenada_x" )
+ column=(type=decimal(6) updatewhereclause=yes name=coordenada_y dbname="gi_avisos.coordenada_y" )
+ retrieve="  SELECT ~"GI_AVISOS~".~"TIP_AVISO~",   
+         ~"GI_AVISOS~".~"CO_ALCANCE~",   
+         ~"GI_AVISOS~".~"TFNO_CLI~",   
+         ~"GI_AVISOS~".~"OBS_TELEGESTIONES~",   
+         ~"GI_AVISOS~".~"OBS_CMD~",   
+         ~"GI_AVISOS~".~"NRO_AVISO~",   
+         ~"GI_AVISOS~".~"PRIORIDAD~",   
+         ~"GI_AVISOS~".~"NRO_CENTRO~",   
+         ~"GI_AVISOS~".~"NRO_CMD~",   
+         ~"GI_AVISOS~".~"NRO_MESA~",   
+         ~"GI_AVISOS~".~"F_ALTA~",   
+         ~"GI_AVISOS~".~"NRO_TELEFONISTA~",   
+         ~"GI_AVISOS~".~"EST_AVISO~",   
+         ~"GI_AVISOS~".~"FECHA_RES~",   
+         ~"GI_AVISOS~".~"IND_IMPROCEDENTE~",   
+         ~"GI_AVISOS~".~"NRO_LLAMADAS~",   
+         ~"GI_AVISOS~".~"FECHA_PROBLEMA~",   
+         ~"GI_AVISOS~".~"NIS_RAD~",
+         ~"GI_AVISOS~".~"F_ULTIMO_AVISO~",
+         NVL(~"GI_INDICES_AVISO~".~"SAIFI_OC~",0) AS SAIFI_OC,
+         NVL(~"GI_INDICES_AVISO~".~"SAIDI_OC~",0) AS SAIDI_OC,
+         fgnu_duracion_segundos( ~"GI_AVISOS~".~"F_ALTA~",~"GI_AVISOS~".~"FECHA_RES~",1),
+         ~"GI_OT~".~"F_ELIM_PELIGRO~",
+         ~"GI_AVISOS~".~"COORDENADA_X~",
+         ~"GI_AVISOS~".~"COORDENADA_Y~"
+    FROM ~"GI_AVISOS~", ~"GI_INDICES_AVISO~", ~"GI_OT~"
+   WHERE ( ~"GI_AVISOS~".~"NRO_AVISO~" = :nro_aviso )    AND
+           ~"GI_AVISOS~".~"NRO_AVISO~" = ~"GI_OT~".~"NRO_AVISO~" (+) AND
+           ~"GI_AVISOS~".~"NRO_AVISO~" = ~"GI_INDICES_AVISO~".~"NRO_AVISO~" (+)" arguments=(("nro_aviso", number)) )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="8388608" x="1317" y="276" height="68" width="599" format="[general]" html.valueishtml="0"  name=prioridad visible="1" dddw.name=ddw_prioridad dddw.displaycolumn=descripcion dddw.datacolumn=prioridad dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Improcedente:" border="0" color="0" x="1033" y="364" height="64" width="663" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="1" tabsequence=32766 border="5" color="8388608" x="1710" y="364" height="60" width="206" format="[general]" html.valueishtml="0"  name=ind_improcedente visible="1" ddlb.limit=0 ddlb.sorted=yes ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Prioridad:" border="0" color="0" x="1038" y="284" height="64" width="265" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Tipo :" border="0" color="0" x="1038" y="196" height="64" width="265" html.valueishtml="0"  name=tip_aviso_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Alcance:" border="0" color="0" x="1038" y="108" height="64" width="265" html.valueishtml="0"  name=co_alcance_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Estado:" border="0" color="0" x="1038" y="24" height="64" width="265" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="8388608" x="1317" y="192" height="68" width="599" format="[general]" html.valueishtml="0"  name=tip_aviso visible="1" dddw.name=ddw_tipo_aviso dddw.displaycolumn=descripcion dddw.datacolumn=tip_aviso dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="8388608" x="1317" y="28" height="64" width="599" format="[general]" html.valueishtml="0"  name=est_aviso visible="1" dddw.name=ddw_estado_aviso dddw.displaycolumn=descripcion dddw.datacolumn=est_aviso dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="8388608" x="1317" y="108" height="68" width="599" format="[general]" html.valueishtml="0"  name=co_alcance visible="1" dddw.name=ddw_alcance_aviso dddw.displaycolumn=descripcion dddw.datacolumn=co_alcance dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Llam. Previas:" border="0" color="0" x="1952" y="188" height="64" width="718" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="F. Detecci$$HEX1$$f300$$ENDHEX$$n:" border="0" color="0" x="1952" y="272" height="64" width="416" html.valueishtml="0"  name=t_6 visible="1~tif (isnull( fecha_problema) ,0, 1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Ingresado:" border="0" color="0" x="1952" y="100" height="64" width="416" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Nro Aviso" border="0" color="0" x="1952" y="16" height="64" width="416" html.valueishtml="0"  name=st_nro_aviso visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Resuelto:" border="0" color="0" x="1952" y="352" height="64" width="416" html.valueishtml="0"  name=txt_fec_res visible="1~tif( isnull( fecha_res)  ,0, 1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=17 alignment="2" tabsequence=32766 border="5" color="8388608" x="2327" y="268" height="64" width="507" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_problema visible="1~tif (isnull( fecha_problema) ,0, 1 )" editmask.mask="dd/mm/yyyy hh:mm:ss" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="5" color="8388608" x="2327" y="16" height="64" width="507" format="[general]" html.valueishtml="0"  name=nro_aviso visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="2" tabsequence=32766 border="5" color="8388608" x="2327" y="100" height="64" width="507" format="[shortdate] [time]" html.valueishtml="0"  name=f_alta visible="1" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="1" tabsequence=32766 border="5" color="8388608" x="2629" y="184" height="64" width="206" format="[general]" html.valueishtml="0"  name=nro_llamadas visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="SAIFI(OC):" border="0" color="0" x="2885" y="80" height="64" width="293" html.valueishtml="0"  name=saifi_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="5" color="8388608" x="3200" y="84" height="64" width="210" format="[general]" html.valueishtml="0"  name=saifi_oc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="SAIDI(OC):" border="0" color="0" x="2885" y="168" height="64" width="302" html.valueishtml="0"  name=saidi_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="5" color="8388608" x="3200" y="168" height="64" width="210" format="[general]" html.valueishtml="0"  name=saidi_oc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+groupbox(band=detail text="Indicadores"border="5" color="0" x="2871" y="4" height="256" width="553"  name=gb_indicadores visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="2" tabsequence=32766 border="5" color="8388608" x="2327" y="348" height="60" width="507" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_res visible="1~tif( isnull( fecha_res)  ,0, 1 )" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="F. Ult. Aviso:" border="0" color="0" x="1952" y="352" height="64" width="416" html.valueishtml="0"  name=txt_f_ultimo_aviso visible="0~tif( isnull( fecha_res)  ,1, 0 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="2" tabsequence=32766 border="5" color="8388608" x="2327" y="348" height="60" width="507" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_ultimo_aviso visible="0~tif( isnull( fecha_res)  ,1, 0 )" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Duraci$$HEX1$$f300$$ENDHEX$$n:" border="0" color="0" x="1033" y="448" height="64" width="416" html.valueishtml="0"  name=t_8 visible="1~tif( isnull( fecha_res)  ,0, 1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="5" color="8388608" x="1413" y="444" height="60" width="507" format="[general]" html.valueishtml="0"  name=compute_0022 visible="1~tif( isnull( fecha_res)  ,0, 1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Elim. Peligro:" border="0" color="0" x="1952" y="432" height="64" width="357" html.valueishtml="0"  name=t_9 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="8388608" x="3438" y="0" height="64" width="192" format="[shortdate] [time]" html.valueishtml="0"  name=gi_ot_f_elim_peligro visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=23 alignment="2" tabsequence=32766 border="5" color="8388608" x="2322" y="428" height="64" width="512" format="[shortdate] [time]" html.valueishtml="0"  name=f_elim_peligro visible="1~tif (isnull( f_elim_peligro ) ,0, 1 )" editmask.mask="dd/mm/yyyy hh:mm:ss" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="5" color="8388608" x="1463" y="524" height="64" width="462" format="[general]" html.valueishtml="0"  name=coordenada_x visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="5" color="8388608" x="2373" y="520" height="64" width="466" format="[general]" html.valueishtml="0"  name=coordenada_y visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Coordenada X:" border="0" color="0" x="1033" y="528" height="64" width="416" html.valueishtml="0"  name=t_coordenada_x visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Coordenada Y:" border="0" color="0" x="1947" y="524" height="64" width="425" html.valueishtml="0"  name=t_coordenada_y visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=10 border="5" color="8388608" x="18" y="664" height="200" width="1595" format="[general]" html.valueishtml="0"  name=obs_telegestiones visible="1" edit.limit=500 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autovscroll=yes edit.imemode=0 edit.vscrollbar=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="8388608" x="1650" y="664" height="204" width="1787" format="[general]" html.valueishtml="0"  name=obs_cmd visible="1" edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autovscroll=yes edit.imemode=0 edit.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Observaciones Telegestiones" border="0" color="0" x="18" y="596" height="52" width="887" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Observaciones CMD" border="0" color="0" x="1646" y="600" height="52" width="608" html.valueishtml="0"  name=obs_cmd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

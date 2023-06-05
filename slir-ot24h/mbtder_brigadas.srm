@@ -1,0 +1,62 @@
+HA$PBExportHeader$mbtder_brigadas.srm
+forward
+global type mbtder_brigadas from menu
+end type
+type m_asignartarea from menu within mbtder_brigadas
+end type
+type m_asignartarea from menu within mbtder_brigadas
+end type
+type m_eliminartarea from menu within mbtder_brigadas
+end type
+type m_eliminartarea from menu within mbtder_brigadas
+end type
+end forward
+
+global type mbtder_brigadas from menu
+m_asignartarea m_asignartarea
+m_eliminartarea m_eliminartarea
+end type
+global mbtder_brigadas mbtder_brigadas
+
+on mbtder_brigadas.create
+mbtder_brigadas=this
+this.m_asignartarea=create m_asignartarea
+this.m_eliminartarea=create m_eliminartarea
+this.Item[]={this.m_asignartarea, &
+this.m_eliminartarea}
+end on
+
+on mbtder_brigadas.destroy
+destroy(this.m_asignartarea)
+destroy(this.m_eliminartarea)
+end on
+
+type m_asignartarea from menu within mbtder_brigadas
+end type
+
+event clicked;
+w_6205_consulta_tareas.TriggerEvent("ue_nueva_tarea")
+
+
+end event
+
+on m_asignartarea.create
+this.Text="AsignarTarea"
+end on
+
+on m_asignartarea.destroy
+end on
+
+type m_eliminartarea from menu within mbtder_brigadas
+end type
+
+event clicked;w_6205_consulta_tareas.TriggerEvent("ue_arch_eliminar")
+end event
+
+on m_eliminartarea.create
+this.Text="Eliminar Tarea"
+end on
+
+on m_eliminartarea.destroy
+end on
+

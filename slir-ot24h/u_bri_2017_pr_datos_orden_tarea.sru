@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_bri_2017_pr_datos_orden_tarea.sru
+forward
+global type u_bri_2017_pr_datos_orden_tarea from u_ot_0000_generico_orden_de_trabajo
+end type
+end forward
+
+global type u_bri_2017_pr_datos_orden_tarea from u_ot_0000_generico_orden_de_trabajo
+int Width=2469
+int Height=341
+string DataObject="d_bri_2017_pr_datos_orden_tarea"
+end type
+global u_bri_2017_pr_datos_orden_tarea u_bri_2017_pr_datos_orden_tarea
+

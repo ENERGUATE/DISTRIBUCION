@@ -1,0 +1,25 @@
+HA$PBExportHeader$d_inc_2040_clase_materiales.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(6) update=yes updatewhereclause=yes key=yes name=cod_objeto dbname="sgd_org_mat.cod_objeto" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=descripcion dbname="sgd_org_mat.descripcion" )
+ column=(type=char(7) updatewhereclause=yes name=clase_hijos dbname="clase_hijos" )
+ retrieve="  SELECT ~"SGD_ORG_MAT~".~"COD_OBJETO~",   
+         ~"SGD_ORG_MAT~".~"DESCRIPCION~",
+			Concat(cod_objeto , '%') ~"clase_hijos~"
+    FROM ~"SGD_ORG_MAT~",~"GI_PARAMETROS~"   
+   WHERE ~"GI_PARAMETROS~".~"COD_PARAMETRO~" = 100 AND
+			((~"SGD_ORG_MAT~".~"COD_OBJETO~" like ('0'|| to_char(valor) ||'01%') and
+		   ~"SGD_ORG_MAT~".~"COD_OBJETO~" not like ('0'|| to_char(valor) ||'0100') and
+			~"SGD_ORG_MAT~".~"COD_OBJETO~" not like ('0'|| to_char(valor) ||'0101%') and valor=1) or
+			(~"SGD_ORG_MAT~".~"COD_OBJETO~" not like '%00' and sgd_org_mat.ind_correctivo=1 and valor=0 and
+			~"SGD_ORG_MAT~".~"COD_OBJETO~" like :ps_clase   ))	
+
+" update="SGD_ORG_MAT" updatewhere=0 updatekeyinplace=yes arguments=(("ps_clase", string)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="56" width="498" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="690" y="8" height="56" width="750" format="[general]" html.valueishtml="0"  name=clase_hijos visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

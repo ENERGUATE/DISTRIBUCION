@@ -1,0 +1,76 @@
+HA$PBExportHeader$d_7003_calles_afectadas.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=aco_sum_cod_calle dbname="cod_calle" )
+ column=(type=char(30) updatewhereclause=yes name=nom_depto dbname="nom_depto" )
+ column=(type=char(50) updatewhereclause=yes name=nom_local dbname="nom_local" )
+ column=(type=char(30) updatewhereclause=yes name=nom_prov dbname="nom_prov" )
+ column=(type=char(30) updatewhereclause=yes name=nom_munic dbname="nom_munic" )
+ column=(type=number updatewhereclause=yes name=num_puerta_min dbname="num_puerta_min" )
+ column=(type=number updatewhereclause=yes name=num_puerta_max dbname="num_puerta_max" )
+ column=(type=char(30) updatewhereclause=yes name=nom_calle dbname="nom_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="nro_instalacion" )
+ retrieve="  SELECT 
+  ACO_SUM.COD_CALLE,
+  DEPTOS.NOM_DEPTO,
+  LOCALIDADES.NOM_LOCAL,
+  PROVINCIAS.NOM_PROV,
+  MUNICIPIOS.NOM_MUNIC,
+  MIN(ACO_SUM.NUM_PUERTA) NUM_PUERTA_MIN,
+  MAX(ACO_SUM.NUM_PUERTA) NUM_PUERTA_MAX,
+  CALLEJERO.NOM_CALLE,
+  INST_AFECTADAS.NRO_INSTALACION
+FROM 
+  CALLEJERO,
+  ACO_SUM,
+  SGD_ACOMETIDA,
+  DEPTOS,
+  PROVINCIAS,
+  MUNICIPIOS,
+  LOCALIDADES,
+  (SELECT  NRO_INSTALACION,
+  		   NOM_INSTALACION
+   FROM SGD_INSTALACION
+   WHERE  SGD_INSTALACION.TIPO_INSTALACION = 7   		
+   START WITH  SGD_INSTALACION.NRO_INSTALACION in (SELECT SGD_INTERRUPCION_DESCARGO.COD_INSTALACION   			   
+   		 	   								   	   FROM SGD_INTERRUPCION_DESCARGO   			   
+												   WHERE NRO_DESCARGO = :pl_nro_descargo)   		
+   			   AND SGD_INSTALACION.BDI_JOB = 0   		
+  CONNECT BY PRIOR  SGD_INSTALACION.NRO_INSTALACION = SGD_INSTALACION.NRO_INST_PADRE   					
+  		  	 		and  bdi_job = 0) INST_AFECTADAS       
+WHERE ( ACO_SUM.COD_CALLE = CALLEJERO.COD_CALLE ) and
+	  ( SGD_ACOMETIDA.INSTALACION_ORIGEN = INST_AFECTADAS.NRO_INSTALACION ) and
+  	  ( SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA ) and
+  	  ( SGD_ACOMETIDA.BDI_JOB = 0 ) and
+	  DEPTOS.COD_DEPTO = ACO_SUM.COD_DEPTO and
+	  PROVINCIAS.COD_PROV = ACO_SUM.COD_PROV and
+	  MUNICIPIOS.COD_MUNIC = ACO_SUM.COD_MUNIC AND
+	  LOCALIDADES.COD_LOCAL = ACO_SUM.COD_LOC 
+GROUP BY   			
+	  ACO_SUM.COD_CALLE,  			
+	  DEPTOS.NOM_DEPTO,
+  	  LOCALIDADES.NOM_LOCAL,
+ 	  PROVINCIAS.NOM_PROV,
+  	  MUNICIPIOS.NOM_MUNIC,  			
+	  CALLEJERO.NOM_CALLE,      			
+	  INST_AFECTADAS.NRO_INSTALACION
+" arguments=(("pl_nro_descargo", number)) )
+text(band=header alignment="2" text="Nro. Min."border="6" color="0" x="864" y="8" height="64" width="311"  name=num_puerta_min_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Nro. Max."border="6" color="0" x="1193" y="8" height="64" width="297"  name=num_puerta_max_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Calle"border="6" color="0" x="14" y="8" height="64" width="837"  name=nom_calle_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Provincia"border="6" color="0" x="1509" y="8" height="64" width="585"  name=nom_prov_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Departamento"border="6" color="0" x="2112" y="8" height="64" width="553"  name=nom_depto_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Municipio"border="6" color="0" x="2683" y="8" height="64" width="576"  name=nom_munic_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Localidad"border="6" color="0" x="3278" y="8" height="64" width="699"  name=nom_local_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="14" y="4" height="64" width="837" format="[general]"  name=nom_calle edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="864" y="4" height="64" width="315" format="[general]"  name=num_puerta_min edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="1189" y="4" height="64" width="311" format="[general]"  name=num_puerta_max edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8388608" x="1509" y="4" height="64" width="585" format="[general]"  name=nom_prov edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="2112" y="4" height="64" width="553" format="[general]"  name=nom_depto edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="2683" y="4" height="64" width="576" format="[general]"  name=nom_munic edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="3278" y="4" height="64" width="699" format="[general]"  name=nom_local edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,64 @@
+HA$PBExportHeader$d_hist_interrupciones_operacion_reen.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="nro_instalacion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="gi_hist_int_reenganche.nom_instalacion" )
+ column=(type=number updatewhereclause=yes name=cant_clientes_afectados dbname="cant_clientes_afectados" )
+ column=(type=number updatewhereclause=yes name=cant_cli dbname="cant_cli" )
+ column=(type=number updatewhereclause=yes name=pot_instalada dbname="pot_instalada" )
+ column=(type=number updatewhereclause=yes name=pot_inst_afec dbname="pot_inst_afec" )
+ column=(type=number updatewhereclause=yes name=pot_contratada dbname="pot_contratada" )
+ column=(type=number updatewhereclause=yes name=pot_contr_afec dbname="pot_contr_afec" )
+ column=(type=char(30) updatewhereclause=yes name=nombre_salmt dbname="gi_hist_int_reenganche.nombre_salmt" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0010 dbname="compute_0010" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="f_reposicion" )
+ retrieve="SELECT DISTINCT(GI_HIST_INT_REENGANCHE.NRO_INSTALACION), 
+	   GI_HIST_INT_REENGANCHE.NOM_INSTALACION, 
+	   NVL(SUM(GI_HIST_INT_REENGANCHE.CCLI_AFEC),0) CANT_CLIENTES_AFECTADOS, 
+	   NVL(GI_HIST_INT_REENGANCHE.CANT_CLI,0) CANT_CLI,
+	   NVL(GI_HIST_INT_REENGANCHE.POT_INSTALADA,0) POT_INSTALADA,
+	   NVL(SUM(GI_HIST_INT_REENGANCHE.POT_INST_AFEC),0) POT_INST_AFEC,
+	   NVL(GI_HIST_INT_REENGANCHE.POT_CONTRATADA,0) POT_CONTRATADA,
+	   NVL(SUM(GI_HIST_INT_REENGANCHE.POT_CONTR_AFEC),0) POT_CONTR_AFEC,
+		GI_HIST_INT_REENGANCHE.NOMBRE_SALMT,
+		MAX(FGCI_FASE_INSTALACION(GI_HIST_INT_REENGANCHE.TIPO_CONEXION) ),
+		TO_DATE(NULL) F_ALTA,
+		TO_DATE(NULL) F_REPOSICION
+FROM GI_HIST_INT_REENGANCHE,SGD_SALMT
+WHERE GI_HIST_INT_REENGANCHE.NRO_INCIDENCIA = :pl_nro_incidencia
+		  AND SGD_SALMT.CODIGO=GI_HIST_INT_REENGANCHE.CABECERA_MT
+		  AND SGD_SALMT.BDI_JOB=0 
+GROUP BY GI_HIST_INT_REENGANCHE.NRO_INSTALACION, 
+	   GI_HIST_INT_REENGANCHE.NOM_INSTALACION, 
+	   GI_HIST_INT_REENGANCHE.CANT_CLI,
+	   GI_HIST_INT_REENGANCHE.POT_INSTALADA,
+	   GI_HIST_INT_REENGANCHE.POT_CONTRATADA,
+		GI_HIST_INT_REENGANCHE.NOMBRE_SALMT" retrieve.asneeded=yes arguments=(("pl_nro_incidencia", number)) )
+text(band=header alignment="2" text="Nombre del CT"border="6" color="0" x="14" y="20" height="64" width="1166"  name=nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Fase del CT"border="6" color="0" x="1198" y="20" height="64" width="471"  name=compute_0010_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Salida de Media Tensi$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="1687" y="20" height="64" width="823"  name=nombre_salmt_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Alta"border="6" color="0" x="2528" y="20" height="64" width="535"  name=f_alta_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Reposicion"border="6" color="0" x="3081" y="20" height="64" width="471"  name=f_reposicion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Cant. Clientes"border="6" color="0" x="3570" y="20" height="64" width="443"  name=cant_cli_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Cli. Afectados"border="6" color="0" x="4032" y="20" height="64" width="453"  name=cant_clientes_afectados_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Instalada"border="6" color="0" x="4503" y="20" height="64" width="434"  name=pot_instalada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Inst. Afect."border="6" color="0" x="4955" y="20" height="64" width="462"  name=pot_inst_afect_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Contratada"border="6" color="0" x="5435" y="20" height="64" width="494"  name=pot_contratada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Contr. Afect."border="6" color="0" x="5947" y="20" height="64" width="517"  name=pot_contr_afec_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="14" y="4" height="60" width="1166" format="[general]"  name=nom_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="8388608" x="1198" y="4" height="60" width="471" format="[general]"  name=compute_0010 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608" x="1687" y="4" height="60" width="823" format="[general]"  name=nombre_salmt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=11 alignment="2" tabsequence=32766 border="0" color="8388608" x="2528" y="4" height="60" width="535" format="[general]"  name=f_alta editmask.mask="DD/MM/YYYY HH:MM" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=12 alignment="2" tabsequence=32766 border="0" color="8388608" x="3081" y="4" height="60" width="471" format="[general]"  name=f_reposicion editmask.mask="DD/MM/YYYY HH:MM" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="8388608" x="3570" y="4" height="60" width="443" format="[general]"  name=cant_cli edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="8388608" x="4032" y="4" height="60" width="453" format="[general]"  name=cant_clientes_afectados edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="8388608" x="4503" y="4" height="60" width="434" format="[general]"  name=pot_instalada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="8388608" x="4955" y="4" height="60" width="462" format="[general]"  name=pot_inst_afec edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="8388608" x="5431" y="4" height="60" width="494" format="[general]"  name=pot_contratada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="8388608" x="5947" y="4" height="60" width="517" format="[general]"  name=pot_contr_afec edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

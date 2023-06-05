@@ -1,0 +1,47 @@
+HA$PBExportHeader$d_gen_2002_identificacion_instalacion.srd
+$PBExportComments$Lista de instalacion seleccionada
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="-1" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_instalacion dbname="sgd_instalacion.tipo_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="sgd_instalacion.nro_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_centro dbname="sgd_instalacion.nro_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_mesa dbname="sgd_instalacion.nro_mesa" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_cmd dbname="sgd_instalacion.nro_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_calle dbname="sgd_instalacion.cod_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=num_puerta dbname="sgd_instalacion.num_puerta" )
+ column=(type=char(2) updatewhereclause=yes name=duplicador dbname="sgd_instalacion.duplicador" )
+ column=(type=decimal(0) updatewhereclause=yes name=instalacion_co_nivel dbname="sgd_instalacion.co_nivel" )
+ column=(type=decimal(0) updatewhereclause=yes name=instalacion_nro_inst_padre dbname="sgd_instalacion.nro_inst_padre" )
+ column=(type=decimal(1) updatewhereclause=yes name=instalacion_pot_instalada dbname="sgd_instalacion.pot_instalada" )
+ column=(type=decimal(1) updatewhereclause=yes name=instalacion_pot_contratada dbname="sgd_instalacion.pot_contratada" )
+ column=(type=decimal(0) updatewhereclause=yes name=instalacion_cant_cli dbname="sgd_instalacion.cant_cli" )
+ column=(type=decimal(0) updatewhereclause=yes name=instalacion_tension dbname="sgd_instalacion.tension" )
+ column=(type=decimal(0) updatewhereclause=yes name=kwh dbname="sgd_instalacion.kwh" )
+ retrieve="  SELECT ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         ~"SGD_INSTALACION~".~"TIPO_INSTALACION~",   
+         ~"SGD_INSTALACION~".~"NRO_INSTALACION~",   
+         ~"SGD_INSTALACION~".~"NRO_CENTRO~",   
+         ~"SGD_INSTALACION~".~"NRO_MESA~",   
+         ~"SGD_INSTALACION~".~"NRO_CMD~",   
+         ~"SGD_INSTALACION~".~"COD_CALLE~",   
+         ~"SGD_INSTALACION~".~"NUM_PUERTA~",   
+         ~"SGD_INSTALACION~".~"DUPLICADOR~",   
+         ~"SGD_INSTALACION~".~"CO_NIVEL~",   
+         ~"SGD_INSTALACION~".~"NRO_INST_PADRE~",   
+         ~"SGD_INSTALACION~".~"POT_INSTALADA~",   
+         ~"SGD_INSTALACION~".~"POT_CONTRATADA~",   
+         ~"SGD_INSTALACION~".~"CANT_CLI~",   
+         ~"SGD_INSTALACION~".~"TENSION~",   
+         ~"SGD_INSTALACION~".~"KWH~"  
+    FROM ~"SGD_INSTALACION~"  
+   WHERE ( ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" = :Tipo_instalacion ) AND  
+         ( ~"SGD_INSTALACION~".~"BDI_JOB~" = 0 )    
+" retrieve.asneeded=yes arguments=(("Tipo_instalacion", number)) )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n a Seleccionar"border="6" color="0" x="9" y="0" height="64" width="1687"  name=nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="23" y="4" height="56" width="1678" format="[general]"  name=nom_instalacion edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

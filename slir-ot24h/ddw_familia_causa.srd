@@ -1,0 +1,12 @@
+HA$PBExportHeader$ddw_familia_causa.srd
+$PBExportComments$nueva utilzada en reportes incidencia
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=gpo_causa dbname="gi_familia_causas.gpo_causa" )
+ column=(type=char(50) updatewhereclause=yes name=descripcion dbname="gi_familia_causas.descripcion" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"gi_familia_causas~" )  TABLE(NAME=~"gi_causa~" ) COLUMN(NAME=~"gi_familia_causas.gpo_causa~") COLUMN(NAME=~"gi_familia_causas.descripcion~")    JOIN (LEFT=~"gi_familia_causas.gpo_causa~"    OP =~"=~"RIGHT=~"gi_causa.gpo_causa~" )WHERE(    EXP1 =~"~~~"GI_CAUSA~~~".~~~"COD_CAUSA~~~"~"   OP =~"in~" NEST = PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"gi_causa_x_incidencia~" ) COLUMN(NAME=~"gi_causa_x_incidencia.gi_causa~")WHERE(    EXP1 =~"~~~"GI_CAUSA_X_INCIDENCIA~~~".~~~"GI_TIPO~~~"~"   OP =~"=~"    EXP2 =~":ai_tipo_inc~" ) )   LOGIC =~"or~" ) WHERE(    EXP1 =~":ai_tipo_inc~"   OP =~"=~"    EXP2 =~"0~" ) ) ARG(NAME = ~"ai_tipo_inc~" TYPE = number) " arguments=(("ai_tipo_inc", number))  sort="descripcion A " )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="0" y="4" height="76" width="1152" format="[general]"  name=descripcion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

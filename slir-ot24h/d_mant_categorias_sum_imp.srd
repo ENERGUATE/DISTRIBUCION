@@ -1,0 +1,30 @@
+HA$PBExportHeader$d_mant_categorias_sum_imp.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=112 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes key=yes name=cod_categoria dbname="gi_categoria.cod_categoria" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="gi_categoria.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_categoria.f_actual" )
+ column=(type=datetime update=yes updatewhereclause=yes name=h_actual dbname="gi_categoria.h_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_categoria.programa" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=descripcion_categoria dbname="gi_categoria.descripcion_categoria" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=color dbname="gi_categoria.color" values="MAROON	128/PURPLE	8388736/AQUA	16776960/LIME	65280/OLIVE	32896/TEAL	8421376/MINT	12639424/SKY	15780518/FUCHSIA	16711935/CREAM	15793151/" )
+ retrieve="  SELECT ~"GI_CATEGORIA~".~"COD_CATEGORIA~",   
+         ~"GI_CATEGORIA~".~"USUARIO~",   
+         ~"GI_CATEGORIA~".~"F_ACTUAL~",   
+         ~"GI_CATEGORIA~".~"H_ACTUAL~",   
+         ~"GI_CATEGORIA~".~"PROGRAMA~",   
+         ~"GI_CATEGORIA~".~"DESCRIPCION_CATEGORIA~",   
+         ~"GI_CATEGORIA~".~"COLOR~"  
+    FROM ~"GI_CATEGORIA~"  
+ORDER BY ~"GI_CATEGORIA~".~"COD_CATEGORIA~" ASC   
+" update="GI_CATEGORIA" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n Categoria" border="6" color="0" x="0" y="0" height="64" width="1394" html.valueishtml="0"  name=t_descripcion_categoria visible="1"  slideup=directlyabove  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256"  height.autosize=yes)
+text(band=header alignment="2" text="Color" border="6" color="0" x="1408" y="0" height="64" width="590" html.valueishtml="0"  name=t_color visible="1"  slideup=directlyabove  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256"  height.autosize=yes)
+column(band=detail id=6 alignment="0" tabsequence=10 border="5" color="8388608" x="119" y="0" height="76" width="1275" format="[general]" html.valueishtml="0"  name=descripcion_categoria visible="1" edit.limit=80 edit.case=upper edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=20 border="5" color="8388608" x="1408" y="4" height="72" width="585" format="[general]" html.valueishtml="0"  name=color visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

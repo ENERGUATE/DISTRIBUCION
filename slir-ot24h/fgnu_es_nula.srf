@@ -1,0 +1,23 @@
+HA$PBExportHeader$fgnu_es_nula.srf
+global type fgnu_es_nula from function_object
+end type
+
+forward prototypes
+global function boolean fgnu_es_nula (datetime pdt_fecha)
+end prototypes
+
+global function boolean fgnu_es_nula (datetime pdt_fecha);DateTime ldt_fecha
+String buffer
+String buffer2
+DateTime ldt_fecha_valida
+buffer=String(pdt_fecha)
+buffer2=String(ldt_fecha)
+IF buffer=buffer2 THEN
+	return true
+END IF
+IF isnull(pdt_fecha) then
+	return true
+END IF
+return false
+end function
+

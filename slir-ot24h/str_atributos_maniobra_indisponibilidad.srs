@@ -1,0 +1,15 @@
+HA$PBExportHeader$str_atributos_maniobra_indisponibilidad.srs
+global type str_atributos_maniobra_indisponibilidad from structure
+	string		ps_tipo_modificacion
+	datawindow		pdw_indisponibilidad
+	datastore		pds_atributos_maniobra
+	long		pl_row
+	long		pl_cod_instalacion
+	long		pl_cod_incidencia
+	long		pl_cod_maniobra
+	long		pl_enr
+	string		ps_nombre_causa_modificada
+	boolean		pb_ind_modificaciones
+	string		ps_accion_llamada
+end type
+

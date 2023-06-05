@@ -1,0 +1,17 @@
+HA$PBExportHeader$d_7002_mante_estado.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=estado dbname="sgd_descargos.estado" )
+ column=(type=decimal(0) updatewhereclause=yes name=activado dbname="sgd_descargos.activado" values="	1/	0" )
+ column=(type=datetime updatewhereclause=yes name=f_activado dbname="sgd_descargos.f_activado" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sgd.sgd_descargos~" ) COLUMN(NAME=~"sgd.sgd_descargos.estado~") COLUMN(NAME=~"sgd.sgd_descargos.activado~") COLUMN(NAME=~"sgd.sgd_descargos.f_activado~")) " )
+text(band=detail alignment="1" text="Fecha Activado:"border="0" color="0" x="0" y="12" height="64" width="466"  name=f_alta_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Estado del Descargo:"border="0" color="0" x="1042" y="8" height="64" width="635"  name=estado_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="5" color="0" x="485" y="12" height="64" width="544" format="[shortdate] [time]"  name=f_activado editmask.spin=yes editmask.mask="mm/dd/yy hh:mm:ss" editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="0" x="1687" y="12" height="72" width="329" format="[general]"  name=estado edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Activar Descargo:"border="0" color="0" x="2025" y="12" height="64" width="521"  name=activado_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="2551" y="20" height="52" width="59" format="[general]"  name=activado checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,52 @@
+HA$PBExportHeader$d_afec_parcial_sum.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=108 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nis_rad dbname="sumcon.nis_rad" )
+ column=(type=char(20) updatewhereclause=yes name=medidor dbname="apmedida_ap.medidor" )
+ column=(type=char(30) updatewhereclause=yes name=nombre dbname="clientes.nombre" )
+ column=(type=char(20) updatewhereclause=yes name=ape1 dbname="clientes.ape1" )
+ column=(type=char(20) updatewhereclause=yes name=ape2 dbname="clientes.ape2" )
+ column=(type=number updatewhereclause=yes name=seleccionado dbname="clientes.seleccionado" values="	1/	0" )
+ column=(type=number updatewhereclause=yes name=ind_aviso dbname="ind_aviso" )
+ retrieve="select sumcon.nis_rad,
+	   num_apa as medidor, 
+	   clientes.nom_cli as nombre,
+	   clientes.ape1_cli as ape1,
+	   clientes.ape2_cli as ape2,
+	   0 as seleccionado,
+	   decode(gi_avisos.nro_aviso, null, 0, 1) as ind_aviso
+from clientes, sumcon, sgd_acometida, aco_sum, apmedida_ap, gi_avisos
+where sgd_acometida.instalacion_origen in (select nro_instalacion
+	  								   	   from sgd_instalacion
+										   start with nro_instalacion = :pl_nro_instalacion and bdi_job = 0
+										   connect by prior nro_instalacion = nro_inst_padre and bdi_job = 0)
+	and sgd_acometida.codigo = aco_sum.nro_acometida 
+	and sgd_acometida.bdi_job = 0 
+	and aco_sum.nis_rad = sumcon.nis_rad 
+	and sumcon.cod_cli = clientes.cod_cli
+	and sumcon.nis_rad = apmedida_ap.nis_rad (+)
+	and sumcon.nis_rad = gi_avisos.nis_rad (+)
+	and sumcon.est_sum in ('EC012', 'EC013', 'EC014')
+	and gi_avisos.est_aviso (+)  < 5
+
+" arguments=(("pl_nro_instalacion", number))  sort="ind_aviso D " )
+text(band=header alignment="2" text="Nis Rad" border="6" color="0" x="9" y="4" height="76" width="251" html.valueishtml="0"  name=nis_rad_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Medidor" border="6" color="0" x="279" y="4" height="76" width="603" html.valueishtml="0"  name=medidor_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nombre" border="6" color="0" x="901" y="4" height="76" width="800" html.valueishtml="0"  name=nombre_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Apellido 1$$HEX1$$ba00$$ENDHEX$$" border="6" color="0" x="1719" y="4" height="76" width="832" html.valueishtml="0"  name=ape1_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Apellido 2$$HEX1$$ba00$$ENDHEX$$" border="6" color="0" x="2569" y="4" height="76" width="727" html.valueishtml="0"  name=ape2_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sel." border="6" color="0" x="3314" y="4" height="76" width="201" html.valueishtml="0"  name=seleccionado_t  tag="bmp" visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="12" height="72" width="251" format="[general]" html.valueishtml="0"  name=nis_rad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="279" y="12" height="72" width="603" format="[general]" html.valueishtml="0"  name=medidor visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="901" y="12" height="72" width="791" format="[general]" html.valueishtml="0"  name=nombre visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1719" y="12" height="72" width="832" format="[general]" html.valueishtml="0"  name=ape1 visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2583" y="12" height="72" width="709" format="[general]" html.valueishtml="0"  name=ape2 visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3191" y="124" height="64" width="398" format="[general]" html.valueishtml="0"  name=ind_aviso visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+bitmap(band=detail filename="AB_AVI.bmp" x="3328" y="12" height="72" width="82" border="0"  name=p_1 visible="1~tind_aviso" )
+column(band=detail id=6 alignment="1" tabsequence=10 border="0" color="0" x="3438" y="20" height="72" width="78" format="[general]" html.valueishtml="0"  name=seleccionado visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

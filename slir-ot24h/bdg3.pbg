@@ -1,0 +1,16 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "bdg3.pbl" "";
+@end;
+@begin Objects
+ "u_bdg_1002_nu_generico.sru" "bdg3.pbl";
+ "u_bdg_1003_rn_generico.sru" "bdg3.pbl";
+ "u_bdg_lista_alarmas.sru" "bdg3.pbl";
+ "w_4008_brigadas.srw" "bdg3.pbl";
+ "w_4006_tipos_aviso.srw" "bdg3.pbl";
+ "w_print_bdg.srw" "bdg3.pbl";
+ "w_4007_energia_perdida_corte.srw" "bdg3.pbl";
+ "m_energia_perdida_corte.srm" "bdg3.pbl";
+ "m_tipos_aviso.srm" "bdg3.pbl";
+ "m_brigadas.srm" "bdg3.pbl";
+@end;

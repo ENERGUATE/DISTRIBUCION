@@ -1,0 +1,62 @@
+HA$PBExportHeader$d_stn_indicadores_ds.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=anio dbname="gi_indicadores_stn.anio" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=mes dbname="gi_indicadores_stn.mes" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=codigo_activo dbname="gi_indicadores_stn.codigo_activo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=enr dbname="gi_indicadores_stn.enr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sce dbname="gi_indicadores_stn.sce" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cpsm dbname="gi_indicadores_stn.cpsm" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mhaia dbname="gi_indicadores_stn.mhaia" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=indice_disponibilidad dbname="gi_indicadores_stn.indice_disponibilidad" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=imr dbname="gi_indicadores_stn.imr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_updated dbname="gi_indicadores_stn.ind_updated" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_indicadores_stn.f_actual" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=usuario dbname="gi_indicadores_stn.usuario" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_indicadores_stn.programa" )
+ retrieve="SELECT  ~"GI_INDICADORES_STN~".~"ANIO~" ,
+           ~"GI_INDICADORES_STN~".~"MES~" ,
+           ~"GI_INDICADORES_STN~".~"CODIGO_ACTIVO~" ,
+           ~"GI_INDICADORES_STN~".~"ENR~" ,
+           ~"GI_INDICADORES_STN~".~"SCE~", 
+           ~"GI_INDICADORES_STN~".~"CPSM~" ,
+           ~"GI_INDICADORES_STN~".~"MHAIA~" ,
+           ~"GI_INDICADORES_STN~".~"INDICE_DISPONIBILIDAD~" ,
+           ~"GI_INDICADORES_STN~".~"IMR~" ,
+           ~"GI_INDICADORES_STN~".~"IND_UPDATED~" ,
+           ~"GI_INDICADORES_STN~".~"F_ACTUAL~" ,
+           ~"GI_INDICADORES_STN~".~"USUARIO~" ,
+           ~"GI_INDICADORES_STN~".~"PROGRAMA~"     
+        FROM ~"GI_INDICADORES_STN~"    " update="GI_INDICADORES_STN" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Anio" border="0" color="33554432" x="9" y="8" height="52" width="274" html.valueishtml="0"  name=anio_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mes" border="0" color="33554432" x="293" y="8" height="52" width="274" html.valueishtml="0"  name=mes_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Codigo Activo" border="0" color="33554432" x="576" y="8" height="52" width="302" html.valueishtml="0"  name=codigo_activo_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Enr" border="0" color="33554432" x="887" y="8" height="52" width="274" html.valueishtml="0"  name=enr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mhaia" border="0" color="33554432" x="1175" y="8" height="52" width="274" html.valueishtml="0"  name=mhaia_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Indice Disponibilidad" border="0" color="33554432" x="1458" y="8" height="52" width="443" html.valueishtml="0"  name=indice_disponibilidad_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Imr" border="0" color="33554432" x="1911" y="8" height="52" width="274" html.valueishtml="0"  name=imr_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="F Actual" border="0" color="33554432" x="2199" y="8" height="52" width="503" html.valueishtml="0"  name=f_actual_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Usuario" border="0" color="33554432" x="2711" y="8" height="52" width="206" html.valueishtml="0"  name=usuario_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Programa" border="0" color="33554432" x="2926" y="8" height="52" width="366" html.valueishtml="0"  name=programa_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="33554432" x="9" y="8" height="72" width="274" format="[general]" html.valueishtml="0"  name=anio visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="33554432" x="293" y="8" height="72" width="274" format="[general]" html.valueishtml="0"  name=mes visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="0" color="33554432" x="576" y="8" height="72" width="302" format="[general]" html.valueishtml="0"  name=codigo_activo visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="0" color="33554432" x="887" y="8" height="72" width="274" format="[general]" html.valueishtml="0"  name=enr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=60 border="0" color="33554432" x="1175" y="8" height="72" width="274" format="[general]" html.valueishtml="0"  name=mhaia visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=70 border="0" color="33554432" x="1458" y="8" height="72" width="443" format="[general]" html.valueishtml="0"  name=indice_disponibilidad visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=80 border="0" color="33554432" x="1911" y="8" height="72" width="274" format="[general]" html.valueishtml="0"  name=imr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=100 border="0" color="33554432" x="2199" y="8" height="72" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=f_actual visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=110 border="0" color="33554432" x="2711" y="8" height="72" width="206" format="[general]" html.valueishtml="0"  name=usuario visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=120 border="0" color="33554432" x="2926" y="8" height="72" width="366" format="[general]" html.valueishtml="0"  name=programa visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=0 border="0" color="33554432" x="3305" y="0" height="60" width="978" html.valueishtml="0"  name=sce visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Sce" border="0" color="0" x="3301" y="4" height="76" width="983" html.valueishtml="0"  name=sce_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=0 border="0" color="33554432" x="4297" y="0" height="60" width="978" html.valueishtml="0"  name=cpsm visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Cpsm" border="0" color="0" x="4293" y="4" height="76" width="983" html.valueishtml="0"  name=cpsm_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=0 border="0" color="33554432" x="5289" y="0" height="60" width="978" html.valueishtml="0"  name=ind_updated visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Ind Updated" border="0" color="0" x="5285" y="4" height="76" width="983" html.valueishtml="0"  name=ind_updated_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,98 @@
+HA$PBExportHeader$fg_desencriptar.srf
+global type fg_desencriptar from function_object
+end type
+
+forward prototypes
+global function string fg_desencriptar (string as_cadena)
+end prototypes
+
+global function string fg_desencriptar (string as_cadena);//LSH INI 17/10/2013 Mejora DEO13-00000754
+
+//String ls_cadena, ls_resultado
+//Long 	 ll_i, ll_len, ll_digitos, ll_segundos, ll_digitos2, ll_segundos2, ll_i2, ll_letra, ll_ult_ll_i2
+//String ls_letras[]	= {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9','0'}
+//String ls_simbolos[] = {'!','#','"',')','$$HEX1$$ed00$$ENDHEX$$','_',']','$$HEX1$$b700$$ENDHEX$$','<',':','}','{','=','*','@','&','$$HEX1$$e900$$ENDHEX$$','$','>','/','\','|','(','$$HEX1$$bf00$$ENDHEX$$','?','-','$$HEX1$$ba00$$ENDHEX$$','$$HEX1$$aa00$$ENDHEX$$',';','.','$$HEX1$$c700$$ENDHEX$$','^',"'",'$$HEX1$$a100$$ENDHEX$$','[','%'}
+//
+//
+//ls_cadena = as_cadena
+//
+//ll_len = Len(as_cadena)
+//
+//For ll_i = 1 To ll_len
+//	If Not IsNumber(Mid(ls_cadena, ll_i, 1)) Then
+//		ll_digitos  = Long(Mid(ls_cadena, ll_i - 1, 1))
+//		ll_segundos = Long(Mid(ls_cadena, ll_i - 1 - ll_digitos, ll_digitos))
+//
+//		For ll_i2 = ll_i + 1 To ll_len
+//			If Not IsNumber(Mid(ls_cadena, ll_i2, 1)) Then
+//				ll_digitos2   = Long(Mid(ls_cadena, ll_i2 - 1, 1))
+//				ll_segundos2  = Long(Mid(ls_cadena, ll_i2 - 1 - ll_digitos2, ll_digitos2))
+//				ll_letra 	  = Long(Mid(ls_cadena, ll_i + 1, ll_i2 - 1 - ll_digitos2 - (ll_i + 1)))
+//				
+//				If (ll_letra - ll_segundos) > UpperBound(ls_letras[]) Or (ll_letra - ll_segundos) < 1 Then
+//					MessageBox("Error", "El usuario/clave no es un texto v$$HEX1$$e100$$ENDHEX$$lido. Verificar el archivo ini de la aplicaci$$HEX1$$f300$$ENDHEX$$n.")
+//					Return ""
+//				End If
+//				
+//				ls_resultado += ls_letras[ll_letra - ll_segundos]
+//				ll_ult_ll_i2 = ll_i2
+//				Exit
+//			End If
+//		Next
+//	End If
+//Next
+//
+//ll_letra 	  = Long(Mid(ls_cadena, ll_ult_ll_i2 + 1))
+//
+//If (ll_letra - ll_segundos2) > UpperBound(ls_letras[]) Or (ll_letra - ll_segundos2) < 1 Then
+//	MessageBox("Error", "El usuario/clave no es un texto v$$HEX1$$e100$$ENDHEX$$lido. Verificar el archivo ini de la aplicaci$$HEX1$$f300$$ENDHEX$$n.")
+//	Return ""
+//End If
+//
+//ls_resultado += ls_letras[ll_letra - ll_segundos2]
+//
+//Return ls_resultado
+
+
+
+
+//////////////////////////////////////////////////////////////////////////
+//	Funci$$HEX1$$f300$$ENDHEX$$n	:	fg_desencriptar(as_cadena)
+//
+// Objetivo	:	Devuelve el valor de la clave de usuario desencritada para
+//					ser gestionada por la conexion a base de datos del sgi
+// 
+//	Salida:   string as_cadena
+//						
+// Fecha               Responsable             				Actuaci$$HEX1$$f300$$ENDHEX$$n
+// -----               -----------             				---------
+//	17/10/2013			  LSH											 SGI
+//
+//////////////////////////////////////////////////////////////////////////
+integer i, j
+string ls_encchar, ls_temp, ls_unasstr = "Error de Encriptaci$$HEX1$$f300$$ENDHEX$$n"
+boolean lb_ok = true
+CONSTANT string CRYPT_KEY = "$#@%&#%@&*"
+
+j = len(as_cadena)
+
+IF NOT Mod(j, 2) = 1 THEN
+   ls_temp = ""
+   FOR i = 2 TO (j + 1) STEP 2
+      ls_encchar = Mid(as_cadena, i - 1, 1)
+      IF mid(CRYPT_KEY, Mod(i / 2, 10) + 1, 1) <> ls_encchar THEN
+        lb_ok = FALSE
+        EXIT
+      END IF     
+      ls_encchar = Mid(as_cadena, i, 1)
+      ls_temp += string(char(255 - asc(ls_encchar)))
+   NEXT
+END IF
+
+IF lb_ok THEN ls_unasstr = ls_temp
+
+RETURN LS_UNASSTR
+
+//LSH FIN 17/10/2013 Mejora DEO13-00000754
+end function
+

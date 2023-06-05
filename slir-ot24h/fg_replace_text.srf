@@ -1,0 +1,48 @@
+HA$PBExportHeader$fg_replace_text.srf
+global type fg_replace_text from function_object
+end type
+
+forward prototypes
+global subroutine fg_replace_text (ref string as_cadena, string as_replace, string as_replace_with)
+end prototypes
+
+global subroutine fg_replace_text (ref string as_cadena, string as_replace, string as_replace_with);///////////////////////////////////////////////////////
+//
+// Funcion/Evento: gf_replace_text
+// 
+// Objetivo: Reemplaza valores de una cadena por otro.
+//
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: string as_cadena,
+//					string as_replace,
+//					string as_replace_with
+//
+//    Salida : string as_cadena
+//
+// Devuelve: --
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 29/04/2000   JPE
+//
+///////////////////////////////////////////////////////
+
+Long ll_pos, ll_len
+String ls_cadena, ls_replace, ls_replace_with
+
+
+ls_cadena		 = Upper(as_cadena)
+ls_replace		 = Upper(as_replace)
+ls_replace_with = Upper(as_replace_with)
+ll_pos			 = Pos(ls_cadena, ls_replace)
+ll_len			 = Len(ls_replace)
+
+DO WHILE ll_pos > 0
+	as_cadena = Replace(as_cadena, ll_pos, ll_len, as_replace_with)
+	ls_cadena = Replace(ls_cadena, ll_pos, ll_len, ls_replace_with)
+	ll_pos = Pos(ls_cadena, ls_replace)
+LOOP
+end subroutine
+

@@ -1,0 +1,71 @@
+HA$PBExportHeader$d_ins_2010_pr_lista_int_res.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="-1" )
+summary(height=0 color="-1" )
+footer(height=0 color="-1" )
+detail(height=84 color="-1" )
+table(column=(type=char(30) updatewhereclause=yes name=instalacion_nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=instalacion_co_nivel dbname="sgd_instalacion.co_nivel" )
+ column=(type=decimal(1) updatewhereclause=yes name=instalacion_pot_instalada dbname="sgd_instalacion.pot_instalada" )
+ column=(type=decimal(1) updatewhereclause=yes name=instalacion_pot_contratada dbname="sgd_instalacion.pot_contratada" )
+ column=(type=decimal(0) updatewhereclause=yes name=instalacion_cant_cli dbname="sgd_instalacion.cant_cli" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_instalacion dbname="sgd_instalacion.tipo_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="sgd_instalacion.nro_instalacion" )
+ column=(type=datetime updatewhereclause=yes name=f_repos_interrup dbname="sgd_instalacion.f_actual" )
+ column=(type=datetime updatewhereclause=yes name=f_alta_interrup dbname="sgd_instalacion.h_actual" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=instalacion_nro_inst_padre dbname="sgd_instalacion.nro_inst_padre" )
+ column=(type=char(15) updatewhereclause=yes name=t_tipo_ins_nomenclatura dbname="sgd_valor.valor" )
+ column=(type=datetime updatewhereclause=yes name=interrupcion_f_reposicion dbname="sgd_interrupcion.f_reposicion" )
+ column=(type=datetime updatewhereclause=yes name=interrupcion_f_alta dbname="sgd_interrupcion.f_alta" )
+ column=(type=decimal(1) updatewhereclause=yes name=interrupcion_pot_instalada dbname="sgd_interrupcion.pot_instalada" )
+ column=(type=decimal(1) updatewhereclause=yes name=interrupcion_pot_contratada dbname="sgd_interrupcion.pot_contratada" )
+ column=(type=decimal(0) updatewhereclause=yes name=interrupcion_kwh dbname="sgd_interrupcion.kwh" )
+ column=(type=decimal(0) updatewhereclause=yes name=interrupcion_ccli_afec dbname="sgd_interrupcion.ccli_afec" )
+ column=(type=decimal(1) updatewhereclause=yes name=interrupcion_pot_inst_afec dbname="sgd_interrupcion.pot_inst_afec" )
+ column=(type=decimal(1) updatewhereclause=yes name=interrupcion_pot_contr_afec dbname="sgd_interrupcion.pot_contr_afec" )
+ column=(type=decimal(0) updatewhereclause=yes name=interrupcion_cant_cli dbname="sgd_interrupcion.cant_cli" )
+ retrieve="  SELECT  ~"INSTALACION_A~".~"NOM_INSTALACION~" ,
+           ~"INSTALACION_A~".~"CO_NIVEL~" ,
+           ~"INSTALACION_A~".~"POT_INSTALADA~" ,
+           ~"INSTALACION_A~".~"POT_CONTRATADA~" ,
+           ~"INSTALACION_A~".~"CANT_CLI~" ,
+           ~"INSTALACION_A~".~"TIPO_INSTALACION~" ,
+           ~"INSTALACION_A~".~"NRO_INSTALACION~" ,
+           ~"INSTALACION_A~".~"F_ACTUAL~" ,
+           ~"INSTALACION_A~".~"H_ACTUAL~" ,
+           ~"PADRE~".~"NOM_INSTALACION~" ,
+           ~"INSTALACION_A~".~"NRO_INST_PADRE~" ,
+           ~"SGD_VALOR~".~"VALOR~" ,
+           ~"SGD_INTERRUPCION~".~"F_REPOSICION~" ,
+           ~"SGD_INTERRUPCION~".~"F_ALTA~" ,
+           ~"SGD_INTERRUPCION~".~"POT_INSTALADA~" ,
+           ~"SGD_INTERRUPCION~".~"POT_CONTRATADA~" ,
+           ~"SGD_INTERRUPCION~".~"KWH~" ,
+           ~"SGD_INTERRUPCION~".~"CCLI_AFEC~" ,
+           ~"SGD_INTERRUPCION~".~"POT_INST_AFEC~" ,
+           ~"SGD_INTERRUPCION~".~"POT_CONTR_AFEC~" ,
+           ~"SGD_INTERRUPCION~".~"CANT_CLI~"     
+        FROM ~"SGD_INSTALACION~" ~"INSTALACION_A~" ,
+           ~"SGD_INSTALACION~" ~"PADRE~" ,
+           ~"SGD_INTERRUPCION~" ,
+           ~"SGD_VALOR~"     
+        WHERE ( ~"SGD_INTERRUPCION~".~"TIPO_INSTALACION~" = ~"SGD_VALOR~".~"CODIGO~" (+)) and
+				( ~"SGD_VALOR~".~"CODIF~" = 'T_IN') and
+          ( ~"SGD_INTERRUPCION~".~"NRO_INSTALACION~" = ~"INSTALACION_A~".~"NRO_INSTALACION~" ) and
+          ( ~"INSTALACION_A~".~"BDI_JOB~" = 0 ) and 
+          ( ~"INSTALACION_A~".~"NRO_INST_PADRE~" = ~"PADRE~".~"NRO_INSTALACION~" ) and
+          ( ~"PADRE~".~"BDI_JOB~" = 0 ) and 
+          ( ( ~"SGD_INTERRUPCION~".~"IND_OTRAS_INS~" = 0 ) and
+          ( ~"SGD_INTERRUPCION~".~"NRO_INCIDENCIA~" = :pl_nro_incid ) )  
+" arguments=(("pl_nro_incid", number)) )
+text(band=header alignment="2" text="Instalacion Afectada"border="6" color="0" x="9" y="4" height="64" width="763"  name=instalacion_nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Tipo"border="6" color="0" x="791" y="4" height="64" width="146"  name=t_tipo_ins_nomenclatura_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Nivel"border="6" color="0" x="955" y="4" height="64" width="169"  name=instalacion_co_nivel_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Alimentada por"border="6" color="0" x="1143" y="4" height="64" width="521"  name=nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="8" height="68" width="773" format="[general]"  name=instalacion_nom_instalacion edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="8388608" x="795" y="8" height="68" width="137" format="[general]"  name=t_tipo_ins_nomenclatura edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="8388608" x="1019" y="8" height="68" width="110" format="[general]"  name=instalacion_co_nivel edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="8388608" x="1170" y="8" height="68" width="773" format="[general]"  name=nom_instalacion edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

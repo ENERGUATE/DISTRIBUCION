@@ -1,0 +1,49 @@
+HA$PBExportHeader$d_lista_hist_reenganche.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_incidencia dbname="gi_hist_reenganches.nro_incidencia" )
+ column=(type=datetime updatewhereclause=yes name=f_deteccion dbname="gi_hist_reenganches.f_deteccion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tip_tension dbname="gi_hist_reenganches.tip_tension" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_inst_afectada dbname="gi_hist_reenganches.nro_inst_afectada" )
+ column=(type=datetime updatewhereclause=yes name=fec_resolucion dbname="gi_hist_reenganches.fec_resolucion" )
+ column=(type=char(30) updatewhereclause=yes name=usuario dbname="gi_hist_reenganches.usuario" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(50) updatewhereclause=yes name=tension dbname="sgd_valor.tension" )
+ column=(type=char(50) updatewhereclause=yes name=tipo_instalacion dbname="sgd_valor.tipo_instalacion" )
+ retrieve="  SELECT ~"GI_HIST_REENGANCHES~".~"NRO_INCIDENCIA~",   
+         ~"GI_HIST_REENGANCHES~".~"F_DETECCION~",   
+         ~"GI_HIST_REENGANCHES~".~"TIP_TENSION~",   
+         ~"GI_HIST_REENGANCHES~".~"NRO_INST_AFECTADA~",   
+         ~"GI_HIST_REENGANCHES~".~"FEC_RESOLUCION~", 
+			~"GI_HIST_REENGANCHES~".~"USUARIO~", 
+		~"SGD_INSTALACION~".~"NOM_INSTALACION~",
+		A.~"DESCRIPCION~" TENSION,
+		B.~"DESCRIPCION~" TIPO_INSTALACION
+    FROM ~"GI_HIST_REENGANCHES~" , ~"SGD_INSTALACION~", ~"SGD_VALOR~" A, ~"SGD_VALOR~" B
+WHERE ~"GI_HIST_REENGANCHES~".~"NRO_INST_AFECTADA~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~"  AND
+			~"GI_HIST_REENGANCHES~".~"TIP_TENSION~" =  A.~"CODIGO~" AND
+			A.~"CODIF~" = 'TENS' AND 
+			~"SGD_INSTALACION~".~"TIPO_INSTALACION~" = B.~"CODIGO~" AND
+			B.~"CODIF~" = 'T_IN' 
+" )
+text(band=header alignment="2" text="Nom. Instalacion" border="6" color="0" x="2409" y="8" height="64" width="1207" html.valueishtml="0"  name=nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Tipo Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="1586" y="8" height="64" width="805" html.valueishtml="0"  name=tipo_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Tensi$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="3634" y="8" height="64" width="603" html.valueishtml="0"  name=tension_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="F Resoluci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="1088" y="8" height="64" width="480" html.valueishtml="0"  name=fec_resolucion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="F Detecci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="603" y="8" height="64" width="466" html.valueishtml="0"  name=f_deteccion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Nro. Reenganche" border="6" color="0" x="14" y="8" height="64" width="571" html.valueishtml="0"  name=nro_incidencia_t  tag="bmp" visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Usuario" border="6" color="0" x="4256" y="8" height="64" width="576" html.valueishtml="0"  name=usuario_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+bitmap(band=detail filename="Reenganche.bmp" x="27" y="4" height="64" width="73" border="0"  name=p_1 visible="1" )
+column(band=detail id=1 alignment="3" tabsequence=32766 border="0" color="8388608" x="119" y="4" height="64" width="439" format="[general]" html.valueishtml="0"  name=nro_incidencia visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="603" y="4" height="64" width="466" format="[shortdate] [time]" html.valueishtml="0"  name=f_deteccion visible="1" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="1088" y="4" height="64" width="480" format="[shortdate] [time]" html.valueishtml="0"  name=fec_resolucion visible="1" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608" x="1586" y="4" height="64" width="805" format="[general]" html.valueishtml="0"  name=tipo_instalacion visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="2409" y="4" height="64" width="1207" format="[general]" html.valueishtml="0"  name=nom_instalacion visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="3634" y="4" height="64" width="603" format="[general]" html.valueishtml="0"  name=tension visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="4256" y="4" height="64" width="576" format="[general]" html.valueishtml="0"  name=usuario visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

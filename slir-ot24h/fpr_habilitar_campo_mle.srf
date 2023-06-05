@@ -1,0 +1,44 @@
+HA$PBExportHeader$fpr_habilitar_campo_mle.srf
+global type fpr_habilitar_campo_mle from function_object
+end type
+
+forward prototypes
+global function integer fpr_habilitar_campo_mle (ref multilineedit psle_campo, boolean pb_condicion)
+end prototypes
+
+global function integer fpr_habilitar_campo_mle (ref multilineedit psle_campo, boolean pb_condicion);/////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fpr_habilitar_campo_sle
+//
+// Objetivo: Habilita o Deshabilita el campo SingleLineEdit.
+//           
+// Ambito: Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//        Entrada: psle_campo, pb_condicion
+//        Salida:  --
+//
+// Devuelve:
+//
+// Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ----- 	-----------		---------
+//
+////////////////////////////////////////////////////////////////////
+
+IF pb_condicion THEN
+// Modificado por Sgo. Unificaci$$HEX1$$f300$$ENDHEX$$n.
+//	psle_campo.BackColor = (65536*255+256*255+255)
+	psle_campo.BackColor = long(gs_blanco)
+// Fin. Sgo.
+	psle_campo.DisplayOnly = False
+ELSE
+// Modificado por Sgo. Unificaci$$HEX1$$f300$$ENDHEX$$n.
+//	psle_campo.BackColor = (65536*192+256*192+192)
+	psle_campo.BackColor = long(gs_gris)
+// Fin. Sgo.
+	psle_campo.DisplayOnly = True
+END IF
+
+RETURN 1
+end function
+

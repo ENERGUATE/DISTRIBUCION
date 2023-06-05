@@ -1,0 +1,32 @@
+HA$PBExportHeader$dw_descargo.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=276 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_descargo dbname="sgd_interrupcion_descargo.nro_descargo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=cod_instalacion dbname="sgd_interrupcion_descargo.cod_instalacion" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_inicio dbname="sgd_interrupcion_descargo.f_inicio" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_fin dbname="sgd_interrupcion_descargo.f_fin" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_alta dbname="sgd_interrupcion_descargo.f_alta" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_interrupcion_descargo.programa" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="sgd_interrupcion_descargo.usuario" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_oop dbname="sgd_interrupcion_descargo.ind_oop" )
+ retrieve="  SELECT ~"SGD_INTERRUPCION_DESCARGO~".~"NRO_DESCARGO~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"COD_INSTALACION~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"F_INICIO~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"F_FIN~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"F_ALTA~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"PROGRAMA~",   
+         ~"SGD_INTERRUPCION_DESCARGO~".~"USUARIO~",
+		~"SGD_INTERRUPCION_DESCARGO~".~"IND_OOP~"
+    FROM ~"SGD_INTERRUPCION_DESCARGO~"  
+   WHERE ~"SGD_INTERRUPCION_DESCARGO~".~"NRO_DESCARGO~" = :ll_descargo    
+" update="SGD_INTERRUPCION_DESCARGO" updatewhere=0 updatekeyinplace=yes arguments=(("ll_descargo", number)) )
+text(band=detail alignment="0" text="Inicio Interrupci$$HEX1$$f300$$ENDHEX$$n" border="0" color="0" x="18" y="4" height="64" width="576" html.valueishtml="0"  name=f_ini_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Fin Interrupci$$HEX1$$f300$$ENDHEX$$n" border="0" color="0" x="768" y="4" height="64" width="526" html.valueishtml="0"  name=f_fin_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Tiempo Interrupci$$HEX1$$f300$$ENDHEX$$n" border="0" color="0" x="389" y="204" height="64" width="649" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="5" color="8388608" x="18" y="92" height="64" width="594" format="[shortdate] [time]" html.valueishtml="0"  name=f_inicio visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="5" color="8388608" x="763" y="92" height="64" width="594" format="[shortdate] [time]" html.valueishtml="0"  name=f_fin visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

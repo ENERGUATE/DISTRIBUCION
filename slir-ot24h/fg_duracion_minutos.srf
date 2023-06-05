@@ -1,0 +1,58 @@
+HA$PBExportHeader$fg_duracion_minutos.srf
+global type fg_duracion_minutos from function_object
+end type
+
+forward prototypes
+global function decimal fg_duracion_minutos (datetime pd_fecha_desde, datetime pd_fecha_hasta)
+end prototypes
+
+global function decimal fg_duracion_minutos (datetime pd_fecha_desde, datetime pd_fecha_hasta);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_duracion_minutos
+// 
+// Objetivo: Calcula el tiempo de duraci$$HEX1$$f300$$ENDHEX$$n transcurrido(en minutos),
+//				 entre los valores pasados como par$$HEX1$$e100$$ENDHEX$$metro.
+//           
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada: pd_fecha_desde, pd_fecha_hasta
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	11/07/96		  HMA			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int li_cant_horas
+date ld_fecha_desde 
+ld_fecha_desde =  date(pd_fecha_desde)
+
+time ld_hora_desde
+ld_hora_desde =  time(pd_fecha_desde)
+
+date ld_fecha_hasta
+ld_fecha_hasta  = date(pd_fecha_hasta)
+
+time ld_hora_hasta
+ld_hora_hasta = time(pd_fecha_hasta)
+
+decimal li_duracion
+string ls_duracion
+decimal li_duracion_dias
+decimal li_duracion_horas
+decimal{0} ldec_duracion_min
+
+li_duracion = daysafter(ld_fecha_desde,ld_fecha_hasta)
+
+ldec_duracion_min = (li_duracion * 24 * 60)  + (secondsafter(ld_hora_desde,ld_hora_hasta) / 60)
+
+RETURN ldec_duracion_min
+
+
+end function
+

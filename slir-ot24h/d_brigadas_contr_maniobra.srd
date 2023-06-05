@@ -1,0 +1,29 @@
+HA$PBExportHeader$d_brigadas_contr_maniobra.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=112 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(40) updatewhereclause=yes name=nombre dbname="gi_brigada.nombre" )
+ column=(type=char(8) updatewhereclause=yes name=tipo dbname="tipo" )
+ retrieve="SELECT GI_BRIGADA.NOMBRE,
+		 'Brigada' TIPO
+FROM GI_MANIOBRA_BRIGADA, GI_BRIGADA
+WHERE GI_MANIOBRA_BRIGADA.COD_MANIOBRA = :pl_cod_maniobra 
+		AND GI_MANIOBRA_BRIGADA.TIPO = 1 
+	   AND GI_MANIOBRA_BRIGADA.NRO_BRIGADA = GI_BRIGADA.NRO_BRIGADA   
+UNION
+SELECT GI_CONTRATAS.NOMBRE,
+		 'Contrata' TIPO
+FROM GI_MANIOBRA_BRIGADA, GI_CONTRATAS
+WHERE GI_MANIOBRA_BRIGADA.COD_MANIOBRA = :pl_cod_maniobra 
+		AND GI_MANIOBRA_BRIGADA.TIPO = 2 
+	   AND GI_MANIOBRA_BRIGADA.NRO_BRIGADA = GI_CONTRATAS.NRO_CONTRATA   
+
+" arguments=(("pl_cod_maniobra", number)) )
+text(band=header alignment="2" text="Tipo"border="6" color="0" x="1627" y="4" height="64" width="562"  name=tipo_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Brigada / Contrata"border="6" color="0" x="9" y="4" height="64" width="1600"  name=nombre_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1627" y="4" height="64" width="562" format="[general]"  name=tipo edit.limit=8 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="1600" format="[general]"  name=nombre edit.limit=40 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

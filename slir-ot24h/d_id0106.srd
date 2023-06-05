@@ -1,0 +1,47 @@
+HA$PBExportHeader$d_id0106.srd
+$PBExportComments$Lista de suministros del inmueble
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=88 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(76) updatewhereclause=yes name=compute_0001 dbname="compute_0001" )
+ column=(type=char(6) updatewhereclause=yes name=suministros_cgv_sum dbname="sumcon.cgv_sum" )
+ column=(type=decimal(0) updatewhereclause=yes name=nis dbname="sumcon.nis_rad" )
+ column=(type=char(80) updatewhereclause=yes name=codigos_desc_cod dbname="codigos.desc_cod" )
+ column=(type=char(20) updatewhereclause=yes name=clientes_ape1_cli dbname="clientes.ape1_cli" )
+ column=(type=char(20) updatewhereclause=yes name=clientes_ape2_cli dbname="clientes.ape2_cli" )
+ column=(type=char(30) updatewhereclause=yes name=clientes_nom_cli dbname="clientes.nom_cli" )
+ column=(type=char(22) updatewhereclause=yes name=clientes_tfno_cli dbname="clientes.tfno_cli" )
+ column=(type=char(20) updatewhereclause=yes name=clientes_doc_id dbname="clientes.doc_id" )
+ column=(type=char(5) updatewhereclause=yes name=clientes_co_pais dbname="clientes.co_pais" )
+ column=(type=char(5) updatewhereclause=yes name=clientes_tip_doc dbname="clientes.tip_doc" )
+ column=(type=number updatewhereclause=yes name=c_nic dbname="sumcon.c_nic" )
+ column=(type=char(5) updatewhereclause=yes name=c_tip_serv dbname="c_tip_serv" )
+ retrieve="  SELECT Concat(Concat(Concat(ape1_cli,' , '),Concat(ape2_cli,' , ')),nom_cli),   
+         ~"SUMCON~".~"CGV_SUM~",   
+         ~"SUMCON~".~"NIS_RAD~",   
+         ~"CODIGOS~".~"DESC_COD~",   
+         ~"CLIENTES~".~"APE1_CLI~",   
+         ~"CLIENTES~".~"APE2_CLI~",   
+         ~"CLIENTES~".~"NOM_CLI~",   
+         ~"CLIENTES~".~"TFNO_CLI~",   
+         ~"CLIENTES~".~"DOC_ID~",   
+         ~"CLIENTES~".~"CO_PAIS~",   
+         ~"CLIENTES~".~"TIP_DOC~",   
+         0 As c_nic,   
+         '     ' As c_tip_serv  
+    FROM ~"SUMCON~",   
+         ~"CLIENTES~",   
+         ~"CODIGOS~"  
+   WHERE ( ~"SUMCON~".~"COD_CLI~" = ~"CLIENTES~".~"COD_CLI~" ) and  
+         ( ~"CLIENTES~".~"CO_PAIS~" = ~"CODIGOS~".~"COD~" ) and  
+         ( ~"SUMCON~".~"NIF~" = :nif )" retrieve.asneeded=yes arguments=(("nif", number)) )
+text(band=header alignment="2" text="Cliente"border="6" color="0" x="23" y="0" height="64" width="1705"  name=compute_0001_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="0" text="Piso-Dpto"border="6" color="0" x="1746" y="0" height="64" width="329"  name=suministros_cgv_sum_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text=" N.I.S."border="6" color="0" x="2094" y="0" height="64" width="379"  name=nis_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="4" height="64" width="1714" format="[general]"  name=compute_0001 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="2094" y="4" height="64" width="379" format="[general]"  name=nis edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="8388608" x="1742" y="4" height="64" width="334"  name=suministros_cgv_sum  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

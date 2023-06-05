@@ -1,0 +1,57 @@
+HA$PBExportHeader$fg_referencia.srf
+global type fg_referencia from function_object
+end type
+
+forward prototypes
+global function string fg_referencia (long argl_codlocal, long argl_nif, string as_referencia)
+end prototypes
+
+global function string fg_referencia (long argl_codlocal, long argl_nif, string as_referencia);///////////////////////////////////////////////////////
+//									
+// Funcion/Evento: fg_referencia
+// 
+// Objetivo: devolver la referencia del nif
+// Responsable: LOC
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: argl_codlocal, argl_nif
+//    Salida : --
+//
+// Devuelve: ls_ref
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 03/04/2001   LOC
+//
+///////////////////////////////////////////////////////
+
+long ll_nif
+string ls_ref
+
+
+
+ls_ref = as_referencia
+
+If IsNull(ls_ref) Then ls_ref = ' '
+
+If fg_verifica_parametro('referencia_recepcion_avisos') Then
+	SELECT 	DISTINCT "FINCAS"."REF_DIR", 
+				"FINCAS"."NIF"		 	
+		INTO :ls_ref,
+			  :ll_nif
+	FROM "CALLEJERO", "FINCAS", "SUMCON" 
+	WHERE 	( "CALLEJERO"."COD_CALLE" = "FINCAS"."COD_CALLE" ) 
+		  and	( "FINCAS"."NIF" = "SUMCON"."NIF" (+)) 
+		  and	( "CALLEJERO"."COD_LOCAL" = :argl_codlocal ) 
+		  AND	( "CALLEJERO"."COD_CALLE" <> 0 ) 
+		  AND	("FINCAS"."NIF" = :argl_nif) 
+		  AND	( length(ltrim(rtrim("FINCAS"."REF_DIR"))) > 0 ) 
+	ORDER BY "FINCAS"."REF_DIR";
+	
+	If IsNull(ls_ref) Then ls_ref = ' '
+End If
+	
+
+return ls_ref
+end function
+

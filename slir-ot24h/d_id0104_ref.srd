@@ -1,0 +1,44 @@
+HA$PBExportHeader$d_id0104_ref.srd
+$PBExportComments$Lista de las referencias de las fincas de una localidad.
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(60) updatewhereclause=yes name=ref_dir dbname="fincas.ref_dir" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_calle dbname="callejero.cod_calle" )
+ column=(type=char(30) updatewhereclause=yes name=nom_calle dbname="callejero.nom_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=fincas_num_puerta dbname="fincas.num_puerta" )
+ column=(type=char(10) updatewhereclause=yes name=fincas_duplicador dbname="fincas.duplicador" )
+ column=(type=char(6) updatewhereclause=yes name=suministros_cgv_sum dbname="sumcon.cgv_sum" )
+ column=(type=char(50) updatewhereclause=yes name=fincas_acc_finca dbname="fincas.acc_finca" )
+ column=(type=decimal(0) updatewhereclause=yes name=nif dbname="fincas.nif" )
+ retrieve="SELECT 	DISTINCT ~"FINCAS~".~"REF_DIR~", 
+			~"CALLEJERO~".~"COD_CALLE~",
+  		   ~"CALLEJERO~".~"NOM_CALLE~",
+ 		   ~"FINCAS~".~"NUM_PUERTA~",	
+  		   ~"FINCAS~".~"DUPLICADOR~",
+  		   ~"SUMCON~".~"CGV_SUM~",	
+ 		   ~"FINCAS~".~"ACC_FINCA~" ,		
+	      ~"FINCAS~".~"NIF~"		
+ 	      
+FROM ~"CALLEJERO~", ~"FINCAS~", ~"SUMCON~" 
+WHERE 	( ~"CALLEJERO~".~"COD_CALLE~" = ~"FINCAS~".~"COD_CALLE~" ) 
+     and	( ~"FINCAS~".~"NIF~" = ~"SUMCON~".~"NIF~" (+)) 
+     and	( ~"CALLEJERO~".~"COD_LOCAL~" = :local ) 
+     AND	( ~"CALLEJERO~".~"COD_CALLE~" <> 0 ) 
+     AND	(UPPER(~"FINCAS~".~"REF_DIR~") like :referencia) 
+     AND	( length(ltrim(rtrim(~"FINCAS~".~"REF_DIR~"))) > 0 ) 
+ORDER BY ~"FINCAS~".~"REF_DIR~"" retrieve.asneeded=yes arguments=(("local", number),("referencia", string)) )
+text(band=header alignment="2" text="Referencia"border="6" color="0" x="9" y="0" height="64" width="1326"  name=ref_dir_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Puerta"border="6" color="0" x="2331" y="0" height="64" width="274"  name=fincas_num_puerta_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Calle"border="6" color="0" x="1353" y="0" height="64" width="969"  name=nom_calle_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text=" C.G.V. "border="6" color="0" x="3008" y="0" height="64" width="215"  name=suministros_cgv_sum_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text=" Duplicador "border="6" color="0" x="2624" y="0" height="64" width="370"  name=fincas_duplicador_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8388608" x="2331" y="4" height="64" width="288" format="[general]"  name=fincas_num_puerta edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="8388608" x="2633" y="4" height="64" width="347" format="[general]"  name=fincas_duplicador edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="2994" y="4" height="64" width="229" format="[general]"  name=suministros_cgv_sum edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="1353" y="4" height="64" width="969" format="[general]"  name=nom_calle edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="4" height="64" width="1335" format="[general]"  name=ref_dir edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

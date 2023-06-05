@@ -1,0 +1,22 @@
+HA$PBExportHeader$d_lista_padres.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=28 color="536870912" )
+detail(height=144 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="nro_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=bdi_job dbname="bdi_job" )
+ column=(type=decimal(0) updatewhereclause=yes name=co_nivel dbname="co_nivel" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_inst_padre dbname="nro_inst_padre" )
+ retrieve="	SELECT ~"SGD_INSTALACION~".~"NRO_INSTALACION~",BDI_JOB, CO_NIVEL,NRO_INST_PADRE
+	FROM ~"SGD_INSTALACION~"
+	START WITH ~"SGD_INSTALACION~".~"NRO_INSTALACION~" = :pl_codigo_instalacion 
+	CONNECT BY PRIOR ~"SGD_INSTALACION~".~"NRO_INST_PADRE~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" 
+                    AND ~"SGD_INSTALACION~".~"NRO_INSTALACION~"<>:pl_aviso_con_alimentacion
+                  
+" arguments=(("pl_codigo_instalacion", number),("pl_aviso_con_alimentacion", number))  sort="co_nivel D " )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="1" color="0" x="96" y="16" height="76" width="329" format="[general]"  name=nro_instalacion edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="503" y="24" height="64" width="1161" format="[general]"  name=bdi_job edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1682" y="24" height="64" width="1161" format="[general]"  name=co_nivel edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2843" y="24" height="64" width="1161" format="[general]"  name=nro_inst_padre edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

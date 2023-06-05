@@ -1,0 +1,17 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "aploper.pbl" "";
+@end;
+@begin Objects
+ "w_prin.srw" "aploper.pbl";
+ "w_arranque_operaciones.srw" "aploper.pbl";
+ "d_inc_multiples_inter.srd" "aploper.pbl";
+ "w_arranque_bdg.srw" "aploper.pbl";
+ "p_opensgi_exe.srj" "aploper.pbl";
+ "d_prueba_cons_avisos.srd" "aploper.pbl";
+ "w_arranque_operaciones_new.srw" "aploper.pbl";
+ "md_operaciones.srm" "aploper.pbl";
+ "w_operaciones.srw" "aploper.pbl";
+ "opensgi.sra" "aploper.pbl";
+ "d_2001_pr_ingreso_usuario.srd" "aploper.pbl";
+@end;

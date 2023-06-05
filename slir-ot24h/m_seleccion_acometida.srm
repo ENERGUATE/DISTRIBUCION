@@ -1,0 +1,171 @@
+HA$PBExportHeader$m_seleccion_acometida.srm
+forward
+global type m_seleccion_acometida from menu
+end type
+type m_opciones from menu within m_seleccion_acometida
+end type
+type m_acometida from menu within m_opciones
+end type
+type m_opciones from menu within m_seleccion_acometida
+m_acometida m_acometida
+end type
+end forward
+
+global type m_seleccion_acometida from menu
+m_opciones m_opciones
+end type
+global m_seleccion_acometida m_seleccion_acometida
+
+type variables
+// ventana a la que llama
+w_2120_identificacion_instalacion iw_2120_identif_instal
+// constantes
+//int fgci_nivel_max
+end variables
+
+forward prototypes
+public function integer f_visible (string ps_nivel, boolean pb_cond)
+public function integer fm_abrir_hasta (integer pi_nivel_hasta)
+end prototypes
+
+public function integer f_visible (string ps_nivel, boolean pb_cond);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  f_visible
+// 
+// Objetivo: Hace visible o invisible la opci$$HEX1$$f300$$ENDHEX$$n del men$$HEX2$$fa002000$$ENDHEX$$pasado, de
+//				 acuerdo al valor del par$$HEX1$$e100$$ENDHEX$$metro.
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_nivel (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_cond (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	22/03/96		HMA			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en m_btder_gestion_avisos
+i_cant_menu = UpperBound(This.item[])
+ps_nivel = Upper(ps_nivel)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF This.item[i_aux].tag = ps_nivel THEN
+		This.item[i_aux].visible = pb_cond
+		RETURN 1
+	END IF
+NEXT
+
+RETURN -1
+end function
+
+public function integer fm_abrir_hasta (integer pi_nivel_hasta);/////////////////////////////////////////////////////////////////////
+//
+// Funcion:  fm_abrir_hasta
+// 
+// Objetivo: Expande el jerarquizador hasta el nivel deseado.
+//	 		      
+// Ambito:   P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: pi_nivel_hasta
+//		Salida : --
+//
+// Devuelve:
+//
+// Fecha      Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------	   -----------   ---------
+//
+//
+///////////////////////////////////////////////////////
+
+// definicion de constantes
+//fm_def_constantes()
+
+w_1105_avisos_con_alim.dw_lista_instal.SetRedraw(False)
+
+SetPointer(HourGlass!)
+
+int li_co_nivel, li_fila
+
+w_1105_avisos_con_alim.ii_nivel_abrir = pi_nivel_hasta
+li_fila		= w_1105_avisos_con_alim.ii_fila					//_clickeada
+
+IF w_1105_avisos_con_alim.dw_lista_instal.GetItemNumber(li_fila,"expandido")&
+		<> 1 THEN
+
+	w_1105_avisos_con_alim.is_accion    = "e_apertura"
+	w_1105_avisos_con_alim.ii_visible   = 1
+	w_1105_avisos_con_alim.ii_expandido = 1
+
+	IF w_1105_avisos_con_alim.ii_nivel_abrir <= w_1105_avisos_con_alim.ii_co_nivel_orig THEN
+		gnv_msg.f_mensaje("EA03","","", OK!)
+	ELSE
+		li_co_nivel = w_1105_avisos_con_alim.ii_co_nivel_orig
+
+		DO UNTIL (li_co_nivel = w_1105_avisos_con_alim.ii_nivel_abrir) OR &
+				(li_fila > w_1105_avisos_con_alim.dw_lista_instal.RowCount())
+			w_1105_avisos_con_alim.ii_co_nivel_actual = li_co_nivel
+			w_1105_avisos_con_alim.tv_1.TriggerEvent("ue_abrir")
+
+//			// Ordeno las carpetas
+//			w_1105_avisos_con_alim.tv_1.TriggerEvent("ue_ordenar_jerarq")
+//
+			li_co_nivel ++
+			li_fila ++
+		LOOP				
+	END IF
+
+END IF
+
+w_1105_avisos_con_alim.dw_lista_instal.SetRedraw(True)
+
+RETURN 1
+
+
+end function
+
+on m_seleccion_acometida.create
+m_seleccion_acometida=this
+this.m_opciones=create m_opciones
+this.Item[]={this.m_opciones}
+end on
+
+on m_seleccion_acometida.destroy
+destroy(this.m_opciones)
+end on
+
+type m_opciones from menu within m_seleccion_acometida
+m_acometida m_acometida
+end type
+
+on m_opciones.create
+this.Text="Opciones"
+this.m_acometida=create m_acometida
+this.Item[]={this.m_acometida}
+end on
+
+on m_opciones.destroy
+destroy(this.m_acometida)
+end on
+
+type m_acometida from menu within m_opciones
+end type
+
+on m_acometida.create
+this.Text="Seleccionar una Acometida"
+this.Microhelp="Permite seleccionar una Acometida de la Instalaci$$HEX1$$f300$$ENDHEX$$n seleccionada"
+end on
+
+event clicked;gu_comunic.is_comunic.intval9 = 1
+end event
+

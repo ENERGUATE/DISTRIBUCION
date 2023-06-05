@@ -1,0 +1,119 @@
+HA$PBExportHeader$d_inc_2002_pr_lista_incidencia_sin_histo.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="-1" )
+summary(height=28 color="-1" )
+footer(height=0 color="-1" )
+detail(height=76 color="-1" )
+table(column=(type=char(2) updatewhereclause=yes name=cs_instalacion_afectada dbname="compute_0001" )
+ column=(type=char(2) updatewhereclause=yes name=cs_duracion dbname="compute_0002" )
+ column=(type=char(2) updatewhereclause=yes name=cb_estado_incidencia dbname="compute_0003" )
+ column=(type=decimal(5) updatewhereclause=yes name=ci_duracion dbname="compute_0004" )
+ column=(type=datetime updatewhereclause=yes name=f_deteccion dbname="gi_hist_incidencias.f_deteccion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_centro dbname="gi_hist_incidencias.nro_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_cmd dbname="gi_hist_incidencias.nro_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_mesa dbname="gi_hist_incidencias.nro_mesa" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_afectada dbname="gi_hist_incidencias.pot_afectada" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_inst_afectada dbname="gi_hist_incidencias.nro_inst_afectada" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_contratada dbname="gi_hist_incidencias.pot_contratada" )
+ column=(type=decimal(0) updatewhereclause=yes name=ccli_afec dbname="gi_hist_incidencias.ccli_afec" )
+ column=(type=decimal(0) updatewhereclause=yes name=tip_tension dbname="gi_hist_incidencias.tip_tension" )
+ column=(type=decimal(0) updatewhereclause=yes name=est_actual dbname="gi_hist_incidencias.est_actual" )
+ column=(type=decimal(0) updatewhereclause=yes name=estado_mantenimiento dbname="gi_hist_incidencias.estado_mantenimiento" )
+ column=(type=datetime updatewhereclause=yes name=h_deteccion dbname="gi_hist_incidencias.h_deteccion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_incidencia dbname="gi_hist_incidencias.nro_incidencia" )
+ column=(type=datetime updatewhereclause=yes name=f_est_res dbname="gi_hist_incidencias.f_est_res" )
+ column=(type=decimal(0) updatewhereclause=yes name=tip_incidencia dbname="gi_hist_incidencias.tip_incidencia" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_hist_incidencias_alcance dbname="gi_hist_incidencias.alcance" )
+ column=(type=char(1) updatewhereclause=yes name=compute_0021 dbname="compute_0021" )
+ column=(type=char(250) updatewhereclause=yes name=observacion dbname="gi_hist_incidencias.observacion" )
+ column=(type=datetime updatewhereclause=yes name=fec_resolucion dbname="gi_hist_incidencias.fec_resolucion" )
+ column=(type=char(50) updatewhereclause=yes name=dir_aviso dbname="gi_hist_incidencias.dir_aviso" )
+ column=(type=char(1) updatewhereclause=yes name=compute_0025 dbname="compute_0025" )
+ column=(type=char(80) updatewhereclause=yes name=desc_incidencia dbname="gi_hist_incidencias.desc_incidencia" )
+ column=(type=char(2) updatewhereclause=yes name=cb_estado_incidencia_mant dbname="compute_0027" )
+ column=(type=char(2) updatewhereclause=yes name=cb_tension_suministro dbname="compute_0028" )
+ column=(type=char(2) updatewhereclause=yes name=cb_tipo_incidencia dbname="compute_0029" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0030 dbname="compute_0030" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0031 dbname="compute_0031" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0032 dbname="compute_0032" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0033 dbname="compute_0033" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0034 dbname="compute_0034" )
+ column=(type=number updatewhereclause=yes name=cll_duracion dbname="cl_duracion" )
+ column=(type=char(100) updatewhereclause=yes name=nombre_instalacion dbname="compute_0036" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0037 dbname="compute_0037" )
+ retrieve="			SELECT   
+						'  ',  
+						'  ',  
+						'  ',   
+						1,  
+						gi_hist_incidencias.F_DETECCION,  
+						gi_hist_incidencias.NRO_CENTRO,  
+						gi_hist_incidencias.NRO_CMD,  
+						gi_hist_incidencias.NRO_MESA,  
+						gi_hist_incidencias.POT_AFECTADA,  
+						gi_hist_incidencias.NRO_INST_AFECTADA,  
+						gi_hist_incidencias.POT_CONTRATADA,  
+						gi_hist_incidencias.CCLI_AFEC,  
+						gi_hist_incidencias.TIP_TENSION,  
+						gi_hist_incidencias.EST_ACTUAL,  
+						gi_hist_incidencias.ESTADO_MANTENIMIENTO,  
+						gi_hist_incidencias.H_DETECCION,  
+						gi_hist_incidencias.NRO_INCIDENCIA,  
+						gi_hist_incidencias.F_EST_RES,  
+						gi_hist_incidencias.TIP_INCIDENCIA,  
+						gi_hist_incidencias.ALCANCE,  
+						' ',  
+						gi_hist_incidencias.OBSERVACION,  
+						gi_hist_incidencias.FEC_RESOLUCION,  
+						gi_hist_incidencias.DIR_AVISO,  
+						' ',  
+						gi_hist_incidencias.DESC_INCIDENCIA ,  
+						'  ',  
+						'  ',  
+						'  ',  
+						Fgnu_Est_Inc2(gi_hist_incidencias.EST_ACTUAL, gi_hist_incidencias.ALCANCE, gi_hist_incidencias.TIP_INCIDENCIA),  
+						Fgnu_Est_Man(estado_mantenimiento),  
+						Fgnu_Ten_Inc(tip_tension) ,  
+						Fgnu_Tip_Inc(tip_incidencia) ,  
+						Fgnu_Duracion_Str(f_deteccion,fec_resolucion),  
+						Fg_Duracion_Int(f_deteccion,fec_resolucion) CL_DURACION ,  
+						gi_hist_avisos.nom_calle||'  N$$HEX2$$ba002000$$ENDHEX$$'||gi_hist_avisos.num_puerta||' -  '||gi_hist_avisos.duplicador, 
+						fgci_hist_nombre_ot(gi_hist_incidencias.ot)
+FROM gi_hist_incidencias, gi_hist_avisos    
+WHERE 				 (gi_hist_incidencias.ALCANCE		 	= fgnu_alcance_suministro OR gi_hist_incidencias.TIP_INCIDENCIA = fgnu_tipo_calidad)
+						 AND gi_hist_avisos.NIS_RAD 					= :ll_nis_rad
+					    AND gi_hist_avisos.NRO_INCIDENCIA 		= gi_hist_incidencias.NRO_INCIDENCIA 
+						 AND TO_CHAR(gi_hist_incidencias.f_deteccion,'YYYYMMDD') >=  :ls_f_desde  
+						 AND TO_CHAR(gi_hist_incidencias.f_deteccion,'YYYYMMDD') <=  :ls_f_hasta   
+    
+
+    " arguments=(("ls_f_desde", string),("ls_f_hasta", string),("ll_nis_rad", number)) )
+text(band=header alignment="2" text="TIP"border="6" color="0" x="2432" y="12" height="64" width="91"  name=compute_0033_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Detecci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="2542" y="12" height="64" width="512"  name=f_deteccion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n/Calle Afectada"border="6" color="0" x="1015" y="12" height="64" width="1019"  name=nombre_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="OP"border="6" color="0" x="2053" y="12" height="64" width="105"  name=compute_0030_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="MA"border="6" color="0" x="2176" y="12" height="64" width="96"  name=compute_0031_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Duraci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="3072" y="12" height="64" width="503"  name=compute_0034_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="P. Afec."border="6" color="0" x="3593" y="12" height="64" width="293"  name=pot_afectada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="TEN"border="6" color="0" x="2290" y="12" height="64" width="123"  name=compute_0032_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="C.Afec."border="6" color="0" x="3904" y="12" height="64" width="297"  name=ccli_afec_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Brigada Encargada / Contrata"border="6" color="0" x="5" y="12" height="64" width="997"  name=brigada_nombre_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="128" x="2066" y="8" height="64" width="87" format="[general]"  name=compute_0030 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="128" x="2181" y="8" height="64" width="87" format="[general]"  name=compute_0031 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="128" x="2309" y="8" height="64" width="87" format="[general]"  name=compute_0032 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="128" x="2441" y="8" height="64" width="87" format="[general]"  name=compute_0033 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="8388608" x="2542" y="8" height="64" width="517" format="[shortdate] [time]"  name=f_deteccion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="8388608" x="3104" y="8" height="64" width="466" format="[general]"  name=compute_0034 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608" x="3584" y="8" height="64" width="302" format="[general]"  name=pot_afectada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=23 alignment="2" tabsequence=32766 border="0" color="8388608" x="4215" y="8" height="64" width="517" format="[shortdate] [time]"  name=fec_resolucion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="8388608" x="3904" y="8" height="64" width="293" format="[general]"  name=ccli_afec edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="8388608" x="1010" y="8" height="64" width="1010" format="[general]"  name=nombre_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="8388608" x="5" y="8" height="64" width="997" format="[general]"  name=compute_0037 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text=" Descripci$$HEX1$$f300$$ENDHEX$$n de la Incidencia"border="6" color="0" x="4750" y="12" height="64" width="1902"  name=desc_incidencia_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Resoluci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="4219" y="12" height="64" width="512"  name=fec_resolucion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="8388608" x="4754" y="8" height="64" width="1577" format="[general]"  name=desc_incidencia edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="0" x="6345" y="8" height="64" width="261" format="[general]"  name=cll_duracion visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="8388608" x="6615" y="8" height="64" width="32" format="[general]"  name=compute_0021 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="8388608" x="6647" y="8" height="64" width="32" format="[general]"  name=compute_0025 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

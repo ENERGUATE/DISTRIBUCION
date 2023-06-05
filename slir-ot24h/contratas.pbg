@@ -1,0 +1,31 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "contratas.pbl" "";
+@end;
+@begin Objects
+ "u_gen_0002_pr_generico.sru" "contratas.pbl";
+ "d_contratas_cal.srd" "contratas.pbl";
+ "d_direccion2.srd" "contratas.pbl";
+ "u_contratas_cal.sru" "contratas.pbl";
+ "fg_obtener_ultimo.srf" "contratas.pbl";
+ "u_gen_0000_nu_filtro.sru" "contratas.pbl";
+ "con_obj_man_0000.sru" "contratas.pbl";
+ "dir_obj_man_0000.sru" "contratas.pbl";
+ "gen_int_ds_0000.sru" "contratas.pbl";
+ "gen_int_dir_0002.sru" "contratas.pbl";
+ "gen_int_stt_0001.sru" "contratas.pbl";
+ "d_contratas_calendario_rango_fechas.srd" "contratas.pbl";
+ "d_codif.srd" "contratas.pbl";
+ "gen_obj_0000.sru" "contratas.pbl";
+ "gen_int_0001.sru" "contratas.pbl";
+ "d_con_0001_ing_contratas.srd" "contratas.pbl";
+ "d_con_2004_pr_lista_contratas.srd" "contratas.pbl";
+ "w_con_0002_ing_contratas.srw" "contratas.pbl";
+ "d_con_2002_pr_list_contratas_ot.srd" "contratas.pbl";
+ "w_con_0001_mant_contratas.srw" "contratas.pbl";
+ "d_con_0001_filtro_contratas.srd" "contratas.pbl";
+ "d_con_0002_filtro_contratas.srd" "contratas.pbl";
+ "u_con_0001_pr_filtro_contratas.sru" "contratas.pbl";
+ "d_con_0001_pr_mant_contratas.srd" "contratas.pbl";
+ "d_con_2018_datos_contrata.srd" "contratas.pbl";
+@end;

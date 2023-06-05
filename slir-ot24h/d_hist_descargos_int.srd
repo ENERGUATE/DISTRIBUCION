@@ -1,0 +1,21 @@
+HA$PBExportHeader$d_hist_descargos_int.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(40) updatewhereclause=yes name=nom_instalacion dbname="nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_instalacion dbname="sgd_instalacion.tipo_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="sgd_interrupcion_descargo.nro_instalacion" )
+ retrieve="SELECT NVL(SGD_INSTALACION.NOM_INSTALACION  ,SGD_INSTALACION.NRO_INSTALACION) NOM_INSTALACION,
+	SGD_INSTALACION.TIPO_INSTALACION,
+	SGD_INTERRUPCION_DESCARGO.COD_INSTALACION NRO_INSTALACION
+	FROM SGD_INTERRUPCION_DESCARGO,   		
+	SGD_INSTALACION
+	WHERE ( SGD_INTERRUPCION_DESCARGO.NRO_DESCARGO = :pl_nro_descargo ) AND   		
+	( SGD_INSTALACION.NRO_INSTALACION = SGD_INTERRUPCION_DESCARGO.COD_INSTALACION)" arguments=(("pl_nro_descargo", number)) )
+compute(band=detail alignment="0" expression="bitmap(case(  tipo_instalacion when 1 then  ~"rSUBESTaca.bmp~" 
+when 2 then ~"rsalta.bmp~" when 3 then ~"rsubest.bmp~" when 4 then ~"rsal_tra1.bmp~" when 5 then ~"rct1.bmp~" when 6 then ~"rtransfor.bmp~" when 7 then ~"rsalbaj.bmp~"))
+"border="0" color="0" x="9" y="4" height="72" width="91" format="[general]"  name=co_ico  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="110" y="4" height="64" width="1216" format="[general]"  name=nom_instalacion edit.limit=40 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

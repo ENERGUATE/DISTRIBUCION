@@ -1,0 +1,33 @@
+HA$PBExportHeader$fpr_llenar_campo_sle.srf
+global type fpr_llenar_campo_sle from function_object
+end type
+
+forward prototypes
+global function integer fpr_llenar_campo_sle (ref singlelineedit psle_campo, string ps_valor)
+end prototypes
+
+global function integer fpr_llenar_campo_sle (ref singlelineedit psle_campo, string ps_valor);/////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fpr_llenar_campo_sle
+//
+// Objetivo: Carga en el SingleLineEdit el valor del par$$HEX1$$e100$$ENDHEX$$metro pasado.
+//           
+// Ambito: Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//        Entrada: psle_campo, ps_valor
+//        Salida:  --
+//
+// Devuelve:
+//
+// Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ----- 	-----------		---------
+//
+////////////////////////////////////////////////////////////////////
+
+
+psle_campo.text = ps_valor
+
+RETURN 1
+end function
+

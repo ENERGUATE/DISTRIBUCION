@@ -1,0 +1,51 @@
+HA$PBExportHeader$dw_datos_indisponibilidades_historico.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=408 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=usuario dbname="gi_hist_indisponibilidad.usuario" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="gi_hist_indisponibilidad.nro_instalacion" )
+ column=(type=char(15) updatewhereclause=yes name=programa dbname="gi_hist_indisponibilidad.programa" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="gi_hist_indisponibilidad.f_reposicion" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="gi_hist_indisponibilidad.f_alta" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_incidencia dbname="gi_hist_indisponibilidad.nro_incidencia" )
+ column=(type=char(1) updatewhereclause=yes name=tip_interrupcion dbname="gi_hist_indisponibilidad.tip_interrupcion" values="El$$HEX1$$e900$$ENDHEX$$ctrica	0/Comercial	1/" )
+ column=(type=decimal(0) updatewhereclause=yes name=manual dbname="gi_hist_indisponibilidad.manual" values="Manual	1/Manual	0" )
+ column=(type=char(1) updatewhereclause=yes name=maniobrado dbname="gi_hist_indisponibilidad.maniobrado" )
+ column=(type=decimal(0) updatewhereclause=yes name=class_id dbname="gi_hist_indisponibilidad.class_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_causa dbname="gi_hist_indisponibilidad.cod_causa" )
+ column=(type=decimal(0) updatewhereclause=yes name=fam_causa dbname="gi_hist_indisponibilidad.fam_causa" )
+ column=(type=decimal(0) updatewhereclause=yes name=t_mapertura dbname="gi_hist_indisponibilidad.maniobra_apertura" )
+ column=(type=decimal(0) updatewhereclause=yes name=t_mcierre dbname="gi_hist_indisponibilidad.maniobra_cierre" )
+ retrieve="SELECT GI_HIST_INDISPONIBILIDAD.USUARIO, 
+          GI_HIST_INDISPONIBILIDAD.NRO_INSTALACION,    
+          GI_HIST_INDISPONIBILIDAD.PROGRAMA,    
+          GI_HIST_INDISPONIBILIDAD.F_REPOSICION,    
+          GI_HIST_INDISPONIBILIDAD.F_ALTA,   
+          GI_HIST_INDISPONIBILIDAD.NRO_INCIDENCIA,    
+          GI_HIST_INDISPONIBILIDAD.TIP_INTERRUPCION,    
+          GI_HIST_INDISPONIBILIDAD.MANUAL,    
+          GI_HIST_INDISPONIBILIDAD.MANIOBRADO,    
+          GI_HIST_INDISPONIBILIDAD.CLASS_ID,    
+          GI_HIST_INDISPONIBILIDAD.COD_CAUSA,    
+          GI_HIST_INDISPONIBILIDAD.FAM_CAUSA,
+			 GI_HIST_INDISPONIBILIDAD.MANIOBRA_APERTURA,
+			 GI_HIST_INDISPONIBILIDAD.MANIOBRA_CIERRE
+     FROM GI_HIST_INDISPONIBILIDAD  
+    WHERE nro_incidencia = :pl_nro_incidencia   " arguments=(("pl_nro_incidencia", number)) )
+text(band=detail alignment="0" text="Repuesta en:" border="0" color="33554432" x="41" y="96" height="64" width="475" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="617" y="196" height="184" width="416" format="[general]" html.valueishtml="0"  name=tip_interrupcion visible="1" radiobuttons.columns=1 radiobuttons.scale=no radiobuttons.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="1047" y="328" height="68" width="663" format="[general]" html.valueishtml="0"  name=manual visible="1" checkbox.text="Manual" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554432" x="503" y="96" height="64" width="530" format="[shortdate] [time]" html.valueishtml="0"  name=f_reposicion visible="1" editmask.spin=yes editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="33554432" x="503" y="16" height="64" width="530" format="[shortdate] [time]" html.valueishtml="0"  name=f_alta visible="1" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Dada en:" border="0" color="33554432" x="41" y="16" height="64" width="338" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Causa:" border="0" color="128" x="1047" y="208" height="64" width="439" html.valueishtml="0"  name=causa_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" font.underline="1" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="Tipo Interrupci$$HEX1$$f300$$ENDHEX$$n:" border="0" color="0" x="27" y="208" height="64" width="562" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="M. apertura:" border="0" color="0" x="1047" y="16" height="64" width="393" html.valueishtml="0"  name=t_mapertura_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="M. cierre:" border="0" color="0" x="1047" y="96" height="64" width="306" html.valueishtml="0"  name=t_mcierre_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="" border="5" color="0" x="1417" y="208" height="64" width="544" html.valueishtml="0"  name=st_causa visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=13 alignment="0" tabsequence=0 border="5" color="33554432" x="1417" y="16" height="60" width="544" format="[general]" html.valueishtml="0"  name=t_mapertura visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=14 alignment="0" tabsequence=0 border="5" color="33554432" x="1417" y="96" height="64" width="544" format="[general]" html.valueishtml="0"  name=t_mcierre visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

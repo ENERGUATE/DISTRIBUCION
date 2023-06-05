@@ -1,0 +1,19 @@
+HA$PBExportHeader$fw_escribe_log.srf
+global type fw_escribe_log from function_object
+end type
+
+forward prototypes
+global subroutine fw_escribe_log (string ps_datos)
+end prototypes
+
+global subroutine fw_escribe_log (string ps_datos);integer li_FileNum
+
+if gb_log_comunica then
+	li_FileNum = FileOpen( &
+		"C:\COMUNICACION_SGI.TXT", &
+		lineMode!, Write!, Shared!, append!)
+	FileWrite(li_FileNum, ps_datos)
+	Fileclose(li_FileNum)
+end if
+end subroutine
+

@@ -1,0 +1,22 @@
+HA$PBExportHeader$fw_escribe_log_avisos.srf
+global type fw_escribe_log_avisos from function_object
+end type
+
+forward prototypes
+global subroutine fw_escribe_log_avisos (string ps_datos)
+end prototypes
+
+global subroutine fw_escribe_log_avisos (string ps_datos);integer li_FileNum
+string ls_datos
+
+ls_datos = 	string(fgnu_fecha_Actual()) + " -" + ps_datos
+
+if gb_log_avisos then
+	li_FileNum = FileOpen( &
+		"C:\AVISOS_SGI.LOG", &
+		lineMode!, Write!, Shared!, append!)
+	FileWrite(li_FileNum, ls_datos)
+	Fileclose(li_FileNum)
+end if
+end subroutine
+

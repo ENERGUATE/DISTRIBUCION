@@ -1,0 +1,128 @@
+HA$PBExportHeader$d_inc_multiples_inter.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=172 color="536870912" )
+summary(height=16 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=nro_instalacion dbname="nro_instalacion" )
+ column=(type=char(4000) updatewhereclause=yes name=nom_instalacion_2 dbname="compute_0002" )
+ column=(type=number updatewhereclause=yes name=avisos_pt dbname="compute_0003" )
+ column=(type=char(3) updatewhereclause=yes name=fase_instalacion dbname="fase_instalacion" )
+ column=(type=char(4000) updatewhereclause=yes name=fase_instalacion_letra dbname="fase_instalacion_letra" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_instalacion dbname="sgd_instalacion.tipo_instalacion" )
+ column=(type=char(5) updatewhereclause=yes name=tipo_area dbname="sgd_instalacion.tipo_area" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_ct dbname="sgd_instalacion.tipo_ct" )
+ column=(type=number updatewhereclause=yes name=tipo_conexion dbname="tipo_conexion" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_alta_fase_a dbname="f_alta_fase_a" )
+ column=(type=datetime updatewhereclause=yes name=f_alta_fase_b dbname="f_alta_fase_b" )
+ column=(type=datetime updatewhereclause=yes name=f_alta_fase_c dbname="f_alta_fase_c" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion_fase_a dbname="f_reposicion_fase_a" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion_fase_b dbname="f_reposicion_fase_b" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion_fase_c dbname="f_reposicion_fase_c" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="f_reposicion" )
+ column=(type=datetime updatewhereclause=yes name=fecha_min_aviso_a dbname="fecha_min_aviso_a" )
+ column=(type=datetime updatewhereclause=yes name=fecha_min_aviso_b dbname="fecha_min_aviso_b" )
+ column=(type=datetime updatewhereclause=yes name=fecha_min_aviso_c dbname="fecha_min_aviso_c" )
+ column=(type=datetime updatewhereclause=yes name=fecha_min_aviso_gen dbname="fecha_min_aviso_gen" )
+ column=(type=number updatewhereclause=yes name=estado_int dbname="estado_int" )
+ retrieve="SELECT DISTINCT((DECODE(SGD_INSTALACION.NRO_INST_UNIFICADA,0,SGD_INSTALACION.NRO_INSTALACION,DECODE (SGD_INSTALACION.TIPO_INSTALACION,4,SGD_INSTALACION.NRO_INSTALACION,7,SGD_INSTALACION.NRO_INSTALACION,NRO_INST_UNIFICADA)))) NRO_INSTALACION, 
+		NVL(Fgci_nombre_instalacion(SGD_INSTALACION.NRO_INSTALACION,SGD_INSTALACION.NRO_INST_UNIFICADA,SGD_INSTALACION.TIPO_INSTALACION),DECODE(SGD_INSTALACION.NRO_INST_UNIFICADA,0,SGD_INSTALACION.NRO_INSTALACION,DECODE (SGD_INSTALACION.TIPO_INSTALACION,4,SGD_INSTALACION.NRO_INSTALACION,7,SGD_INSTALACION.NRO_INSTALACION,NRO_INST_UNIFICADA))),  
+	   fg_cantidad_avisos(DECODE(SGD_INSTALACION.NRO_INST_UNIFICADA,0,SGD_INSTALACION.NRO_INSTALACION,DECODE (SGD_INSTALACION.TIPO_INSTALACION,4,SGD_INSTALACION.NRO_INSTALACION,7,SGD_INSTALACION.NRO_INSTALACION,NRO_INST_UNIFICADA)), 1),
+		nvl(GI_CAMBIO_FORMATO_FASE.FASE_AFECTADA,'ABC') FASE_INSTALACION,
+		nvl(FGCI_FASE_INSTALACION(SGD_INSTALACION.TIPO_CONEXION),'ABC') FASE_INSTALACION_LETRA,
+		SGD_INSTALACION.TIPO_INSTALACION,
+		SGD_INSTALACION.TIPO_AREA, 
+		SGD_INSTALACION.TIPO_CT,
+		NVL(SGD_INSTALACION.TIPO_CONEXION,0) tipo_conexion,
+		TO_DATE(null) as F_ALTA,
+		TO_DATE(null) as F_ALTA_FASE_A,
+		TO_DATE(null) as F_ALTA_FASE_B,
+		TO_DATE(null) as F_ALTA_FASE_C,
+		TO_DATE(null) as F_REPOSICION_FASE_A,
+		TO_DATE(null) as F_REPOSICION_FASE_B,
+		TO_DATE(null) as F_REPOSICION_FASE_C,
+		TO_DATE(null) as F_REPOSICION,
+		decode(nvl(AV_PT.NRO_INSTALACION,0),0,TO_DATE(NULL),
+		fg_fecha_min_aviso(DECODE(SGD_INSTALACION.NRO_INST_UNIFICADA,0,SGD_INSTALACION.NRO_INSTALACION,DECODE (SGD_INSTALACION.TIPO_INSTALACION,4,SGD_INSTALACION.NRO_INSTALACION,7,SGD_INSTALACION.NRO_INSTALACION,NRO_INST_UNIFICADA)), :pi_dias_antiguedad, '100', 1)) fecha_min_aviso_a,
+		decode(nvl(AV_PT.NRO_INSTALACION,0),0,TO_DATE(NULL),
+		fg_fecha_min_aviso(DECODE(SGD_INSTALACION.NRO_INST_UNIFICADA,0,SGD_INSTALACION.NRO_INSTALACION,DECODE (SGD_INSTALACION.TIPO_INSTALACION,4,SGD_INSTALACION.NRO_INSTALACION,7,SGD_INSTALACION.NRO_INSTALACION,NRO_INST_UNIFICADA)), :pi_dias_antiguedad, '010', 1)) fecha_min_aviso_b,
+		decode(nvl(AV_PT.NRO_INSTALACION,0),0,TO_DATE(NULL),
+		fg_fecha_min_aviso(DECODE(SGD_INSTALACION.NRO_INST_UNIFICADA,0,SGD_INSTALACION.NRO_INSTALACION,DECODE (SGD_INSTALACION.TIPO_INSTALACION,4,SGD_INSTALACION.NRO_INSTALACION,7,SGD_INSTALACION.NRO_INSTALACION,NRO_INST_UNIFICADA)), :pi_dias_antiguedad,'001', 1)) fecha_min_aviso_c,
+		decode(nvl(AV_PT.NRO_INSTALACION,0),0,TO_DATE(NULL),
+		fg_fecha_min_aviso(DECODE(SGD_INSTALACION.NRO_INST_UNIFICADA,0,SGD_INSTALACION.NRO_INSTALACION,DECODE (SGD_INSTALACION.TIPO_INSTALACION,4,SGD_INSTALACION.NRO_INSTALACION,7,SGD_INSTALACION.NRO_INSTALACION,NRO_INST_UNIFICADA)), :pi_dias_antiguedad, '111', 1)) fecha_min_aviso_gen,
+		2 ESTADO_INT
+FROM SGD_INSTALACION, 
+	  GI_AVISOS_INSTALACION AV_PT, 
+	  GI_CAMBIO_FORMATO_FASE 
+WHERE (SGD_INSTALACION.NRO_INST_PADRE = :pl_padre ) AND
+	  SGD_INSTALACION.BDI_JOB = 0 AND
+	  SGD_INSTALACION.ESTADO = 0 AND
+	DECODE(SGD_INSTALACION.NRO_INST_UNIFICADA,0,SGD_INSTALACION.NRO_INSTALACION,DECODE (SGD_INSTALACION.TIPO_INSTALACION,4,SGD_INSTALACION.NRO_INSTALACION,7,SGD_INSTALACION.NRO_INSTALACION,NRO_INST_UNIFICADA)) = AV_PT.NRO_INSTALACION (+) AND
+	  AV_PT.EST_AVISO (+) = 1 AND
+	  GI_CAMBIO_FORMATO_FASE.TIPO_CONEXION = NVL(SGD_INSTALACION.TIPO_CONEXION,:pi_dias_antiguedad) 
+	  
+" filter="  nom_instalacion_2 <> '0'"arguments=(("pl_padre", number),("pl_nro_incidencia", number),("ps_fase_a", string),("ps_fase_b", string),("ps_fase_c", string),("pi_dias_antiguedad", number),("pi_red_trifasica", number),("pi_tipo_ct", number),("pfgci_tipo_subestacion_at", number),("pfgci_tipo_salida_at", number),("pfgci_tipo_subestacion", number),("pfgci_tipo_salida_mt", number),("pfgci_tipo_ct", number),("pfgci_tipo_transformador", number),("pfgci_tipo_salida_de_baja", number),("pi_tabla_decision", number),("pfgci_tipo_centroref", number),("pl_inst_unificada", number)) )
+text(band=header alignment="2" text="Fases Interr." border="6" color="0" x="1509" y="8" height="148" width="320" html.valueishtml="0"  name=fases_interrumpidas_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fases Pendientes" border="6" color="0" x="1847" y="8" height="148" width="357" html.valueishtml="0"  name=fase_afectada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nombre de la Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="9" y="8" height="148" width="1486" html.valueishtml="0"  name=nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Avisos Pendientes" border="6" color="0" x="1513" y="8" height="148" width="421" html.valueishtml="0"  name=avisos_pt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="" border="6" color="0" x="1934" y="4" height="64" width="37" html.valueishtml="0"  name=fecha_min_aviso_t visible="1~tpi_red_trifasica"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha M$$HEX1$$ed00$$ENDHEX$$n. Aviso (C)" border="6" color="0" x="1952" y="8" height="148" width="498" html.valueishtml="0"  name=fecha_min_aviso_c_t visible="1~t1 - pi_red_trifasica"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha Min. Aviso (A)" border="6" color="0" x="1952" y="8" height="148" width="498" html.valueishtml="0"  name=fecha_min_aviso_a_t visible="1~t1 - pi_red_trifasica"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha M$$HEX1$$ed00$$ENDHEX$$n. Aviso (B)" border="6" color="0" x="1952" y="8" height="148" width="498" html.valueishtml="0"  name=fecha_min_aviso_b_t visible="1~t1 - pi_red_trifasica"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="X" border="0" color="8388608" x="14" y="8" height="60" width="46" html.valueishtml="0"  name=t_1 visible="1~tif (isnull(f_reposicion) and not isnull(f_alta),1,0)"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="if( isnull( f_alta_fase_a ), ~"~", ps_fase_a ) + 
+if( isnull( f_alta_fase_b ), ~"~", ps_fase_b ) + 
+if( isnull( f_alta_fase_c ), ~"~", ps_fase_c ) "border="0" color="8388608~tIf(  avisos_pt = 0, 8388608, 128 )" x="1536" y="8" height="64" width="160" format="[general]" html.valueishtml="0"  name=fases_interrumpidas visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="if( isnull( f_alta_fase_a ), ~"~", if (isnull( f_reposicion_fase_a ), ps_fase_a, ~"~" ) ) + 
+if( isnull( f_alta_fase_b ), ~"~", if (isnull( f_reposicion_fase_b ), ps_fase_b, ~"~" ) ) + 
+if( isnull( f_alta_fase_c ), ~"~", if (isnull( f_reposicion_fase_c ), ps_fase_c, ~"~" ) ) "border="0" color="8388608~tIf(  avisos_pt = 0, 8388608, 128 )" x="1861" y="8" height="64" width="160" format="[general]" html.valueishtml="0"  name=fase_afectada visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="nom_instalacion_2 + fase_instalacion_letra2 + if ( tipo_instalacion =  pi_tipo_ct , case(tipo_area when 'C' then ' Ciudad' when 'U' then ' Urbano' when 'R' then ' Rural' else '') , '')  "border="0" color="8388608" x="155" y="8" height="64" width="1335" format="[general]" html.valueishtml="0"  name=nom_instalacion visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="tipo_instalacion + if (IsNull( f_reposicion) and not IsNull( f_alta), 200, if (not IsNull(f_reposicion), 300,0)) 
+"border="0" color="8388608" x="901" y="156" height="64" width="416" format="[general]" html.valueishtml="0"  name=tipo_int visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="219" y="96" height="64" width="635" format="[general]" html.valueishtml="0"  name=fase_instalacion_letra visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="if( pi_red_trifasica=1, '', ' (' + fase_instalacion_letra + ')')"border="0" color="8388608" x="210" y="180" height="64" width="256" format="[general]" html.valueishtml="0"  name=fase_instalacion_letra2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression=" if (isSelected(),  fecha_min_aviso_gen , datetime('null')) "border="0" color="0" x="901" y="188" height="76" width="256" format="[general]" html.valueishtml="0"  name=fecha_aviso_sel_gen visible="1~t0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" if (isSelected(),  fecha_min_aviso_a , datetime('null')) "border="0" color="0" x="901" y="292" height="76" width="256" format="[general]" html.valueishtml="0"  name=fecha_aviso_sel_a visible="1~t0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" if (isSelected(),  fecha_min_aviso_b , datetime('')) "border="0" color="0" x="901" y="296" height="76" width="256" format="[general]" html.valueishtml="0"  name=fecha_aviso_sel_b visible="1~t0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" if (isSelected(),  fecha_min_aviso_c , datetime('null')) "border="0" color="0" x="901" y="400" height="76" width="256" format="[general]" html.valueishtml="0"  name=fecha_aviso_sel_c visible="1~t0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="8388608~tIf(  avisos_pt = 0, 8388608, 128 )" x="1513" y="8" height="64" width="421" format="[general]" html.valueishtml="0"  name=avisos_pt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="2" tabsequence=32766 border="0" color="8388608~tIf(  avisos_pt = 0, 8388608, 128 )" x="1952" y="8" height="64" width="498" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_min_aviso_gen visible="1~tif (not isnull(fecha_min_aviso_gen),  pi_red_trifasica, 0)" editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="2" tabsequence=32766 border="0" color="8388608~tIf(  avisos_pt = 0, 8388608, 128 )" x="1952" y="8" height="64" width="498" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_min_aviso_a visible="1~tif (not isnull(fecha_min_aviso_a),  1 - pi_red_trifasica, 0)" editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="2" tabsequence=32766 border="0" color="8388608~tIf(  avisos_pt = 0, 8388608, 128 )" x="1952" y="8" height="64" width="498" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_min_aviso_b visible="1~tif (not isnull(fecha_min_aviso_b),  1 - pi_red_trifasica, 0)" editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="2" tabsequence=32766 border="0" color="8388608~tIf(  avisos_pt = 0, 8388608, 128 )" x="1952" y="8" height="64" width="498" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_min_aviso_c visible="1~tif (not isnull(fecha_min_aviso_c),  1 - pi_red_trifasica, 0)" editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+bitmap(band=detail filename="centroref.bmp" x="64" y="8" height="64" width="73" border="0"  name=centroref visible="1~tif (tipo_int = pfgci_tipo_centroref,1,0)" )
+bitmap(band=detail filename="salat.bmp" x="64" y="8" height="64" width="73" border="0"  name=salat visible="1~tif (tipo_int = pfgci_tipo_salida_at,1,0)" )
+bitmap(band=detail filename="SUBESTaca.bmp" x="64" y="8" height="64" width="73" border="0"  name=subestaca visible="1~tif (tipo_int =  pfgci_tipo_subestacion_at ,1,0)" )
+bitmap(band=detail filename="rsalta.bmp" x="64" y="8" height="64" width="73" border="0"  name=rsalta visible="1~tif (tipo_int = pfgci_tipo_salida_at+300,1,0)" )
+bitmap(band=detail filename="rSUBESTaca.bmp" x="64" y="8" height="64" width="73" border="0"  name=rsubestaca visible="1~tif (tipo_int = pfgci_tipo_subestacion_at + 300,1,0)" )
+bitmap(band=detail filename="salbaj.bmp" x="64" y="8" height="64" width="73" border="0"  name=salbaj visible="1~tif (tipo_int = pfgci_tipo_salida_de_baja,1,0)" )
+bitmap(band=detail filename="transfor.bmp" x="64" y="8" height="64" width="73" border="0"  name=transfor visible="1~tif (tipo_int =pfgci_tipo_transformador,1,0)" )
+bitmap(band=detail filename="transfor.bmp" x="64" y="8" height="64" width="73" border="0"  name=p_1 visible="1~tif (tipo_int =pfgci_tipo_transformador,1,0)" )
+bitmap(band=detail filename="transfor.bmp" x="64" y="8" height="64" width="73" border="0"  name=p_2 visible="1~tif (tipo_int =pfgci_tipo_transformador,1,0)" )
+bitmap(band=detail filename="transfor.bmp" x="64" y="8" height="64" width="73" border="0"  name=p_3 visible="1~tif (tipo_int =pfgci_tipo_transformador,1,0)" )
+bitmap(band=detail filename="ct1.bmp" x="64" y="8" height="64" width="73" border="0"  name=ct1 visible="1~tif (tipo_int = pfgci_tipo_ct,1,0)" )
+bitmap(band=detail filename="sal_tra1.bmp" x="64" y="8" height="64" width="73" border="0"  name=sal_tra1 visible="1~tif (tipo_int = pfgci_tipo_salida_mt,1,0)" )
+bitmap(band=detail filename="subest.bmp" x="64" y="8" height="64" width="73" border="0"  name=subest visible="1~tif (tipo_int = pfgci_tipo_subestacion,1,0)" )
+bitmap(band=detail filename="rsal_tra1.bmp" x="64" y="8" height="64" width="73" border="0"  name=rsal_tra1 visible="1~tif (tipo_int = pfgci_tipo_salida_mt+300,1,0)" )
+bitmap(band=detail filename="rsubest.bmp" x="64" y="8" height="64" width="73" border="0"  name=rsubest visible="1~tif (tipo_int = pfgci_tipo_subestacion + 300,1,0)" )
+bitmap(band=detail filename="nsalbaj.bmp" x="64" y="8" height="64" width="73" border="0"  name=nsalbaj visible="1~tif (tipo_int = pfgci_tipo_salida_de_baja+200,1,0)" )
+bitmap(band=detail filename="ntransfor.bmp" x="64" y="8" height="64" width="73" border="0"  name=ntransfor visible="1~tif (tipo_int = pfgci_tipo_transformador+200,1,0)" )
+bitmap(band=detail filename="nct1.bmp" x="64" y="8" height="64" width="73" border="0"  name=nct1 visible="1~tif (tipo_int = pfgci_tipo_ct+200,1,0)" )
+bitmap(band=detail filename="nsal_tra1.bmp" x="64" y="8" height="64" width="73" border="0"  name=nsal_tra1 visible="1~tif (tipo_int = pfgci_tipo_salida_mt+200,1,0)" )
+bitmap(band=detail filename="nsubest.bmp" x="64" y="8" height="64" width="73" border="0"  name=nsubest visible="1~tif (tipo_int = pfgci_tipo_subestacion + 200,1,0)" )
+bitmap(band=detail filename="nsalta.bmp" x="64" y="8" height="64" width="73" border="0"  name=nsalta visible="1~tif (tipo_int = pfgci_tipo_salida_at + 200,1,0)" )
+bitmap(band=detail filename="nSUBESTaca.bmp" x="64" y="8" height="64" width="73" border="0"  name=nsubestaca visible="1~tif (tipo_int =  pfgci_tipo_subestacion_at + 200,1,0)" )
+bitmap(band=detail filename="rcentroref.bmp" x="64" y="8" height="64" width="73" border="0"  name=rcentroref visible="1~tif (tipo_int = pfgci_tipo_centroref + 300,1,0)" )
+bitmap(band=detail filename="ncentroref.bmp" x="64" y="8" height="64" width="73" border="0"  name=ncentroref visible="1~tif (tipo_int =  pfgci_tipo_centroref + 200,1,0)" )
+bitmap(band=detail filename="rtransfor.bmp" x="64" y="8" height="64" width="73" border="0"  name=rtransfor visible="1~tif (tipo_int = pfgci_tipo_transformador+300,1,0)" )
+bitmap(band=detail filename="rsalbaj.bmp" x="64" y="8" height="64" width="73" border="0"  name=rsalbaj visible="1~tif (tipo_int = pfgci_tipo_salida_de_baja+300,1,0)" )
+bitmap(band=detail filename="rct1.bmp" x="64" y="8" height="64" width="73" border="0"  name=rct1 visible="1~tif (tipo_int = pfgci_tipo_ct+300,1,0)" )
+compute(band=footer alignment="0" expression="min(  fecha_aviso_sel_gen  for all ) "border="0" color="0" x="1829" y="104" height="76" width="256" format="[general]" html.valueishtml="0"  name=fecha_minima_gen visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="0" expression="min(  fecha_aviso_sel_a  for all ) "border="0" color="0" x="1833" y="192" height="76" width="256" format="[general]" html.valueishtml="0"  name=fecha_minima_a visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="0" expression="min(  fecha_aviso_sel_c  for all ) "border="0" color="0" x="1819" y="388" height="76" width="256" format="[general]" html.valueishtml="0"  name=fecha_minima_c visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="0" expression="min(  fecha_aviso_sel_b  for all ) "border="0" color="0" x="1810" y="540" height="76" width="256" format="[general]" html.valueishtml="0"  name=fecha_minima_b visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,286 @@
+HA$PBExportHeader$m_btder_gestion_avisos.srm
+$PBExportComments$Es un menu especifico para Gestion de avisos. Se despliega mediante el boton derecho del mouse
+forward
+global type m_btder_gestion_avisos from menu
+end type
+type m_opciones from menu within m_btder_gestion_avisos
+end type
+type m_asignarbrigada from menu within m_opciones
+end type
+type m_cambioalimentacin from menu within m_opciones
+end type
+type m_crearincidencia from menu within m_opciones
+end type
+type m_maniobrarlnea from menu within m_opciones
+end type
+type m_mostrarlnea from menu within m_opciones
+end type
+type m_mostrarensimplificado from menu within m_opciones
+end type
+type m_opciones from menu within m_btder_gestion_avisos
+m_asignarbrigada m_asignarbrigada
+m_cambioalimentacin m_cambioalimentacin
+m_crearincidencia m_crearincidencia
+m_maniobrarlnea m_maniobrarlnea
+m_mostrarlnea m_mostrarlnea
+m_mostrarensimplificado m_mostrarensimplificado
+end type
+end forward
+
+global type m_btder_gestion_avisos from menu
+m_opciones m_opciones
+end type
+global m_btder_gestion_avisos m_btder_gestion_avisos
+
+type variables
+// ventana a la que llama
+w_2120_identificacion_instalacion iw_2120_identif_instal
+// constantes
+//int fgci_nivel_max
+end variables
+
+forward prototypes
+public function integer f_visible (string ps_nivel, boolean pb_cond)
+public function integer fm_abrir_hasta (integer pi_nivel_hasta)
+end prototypes
+
+public function integer f_visible (string ps_nivel, boolean pb_cond);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  f_visible
+// 
+// Objetivo: Hace visible o invisible la opci$$HEX1$$f300$$ENDHEX$$n del men$$HEX2$$fa002000$$ENDHEX$$pasado, de
+//				 acuerdo al valor del par$$HEX1$$e100$$ENDHEX$$metro.
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_nivel (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_cond (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	22/03/96		HMA			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en m_btder_gestion_avisos
+i_cant_menu = UpperBound(This.item[])
+ps_nivel = Upper(ps_nivel)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF This.item[i_aux].tag = ps_nivel THEN
+		This.item[i_aux].visible = pb_cond
+		RETURN 1
+	END IF
+NEXT
+
+RETURN -1
+end function
+
+public function integer fm_abrir_hasta (integer pi_nivel_hasta);/////////////////////////////////////////////////////////////////////
+//
+// Funcion:  fm_abrir_hasta
+// 
+// Objetivo: Expande el jerarquizador hasta el nivel deseado.
+//	 		      
+// Ambito:   P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: pi_nivel_hasta
+//		Salida : --
+//
+// Devuelve:
+//
+// Fecha      Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------	   -----------   ---------
+//
+//
+///////////////////////////////////////////////////////
+
+// definicion de constantes
+//fm_def_constantes()
+
+w_1105_avisos_con_alim.dw_lista_instal.SetRedraw(False)
+
+SetPointer(HourGlass!)
+
+int li_co_nivel, li_fila
+
+w_1105_avisos_con_alim.ii_nivel_abrir = pi_nivel_hasta
+li_fila		= w_1105_avisos_con_alim.ii_fila					//_clickeada
+
+IF w_1105_avisos_con_alim.dw_lista_instal.GetItemNumber(li_fila,"expandido")&
+		<> 1 THEN
+
+	w_1105_avisos_con_alim.is_accion    = "e_apertura"
+	w_1105_avisos_con_alim.ii_visible   = 1
+	w_1105_avisos_con_alim.ii_expandido = 1
+
+	IF w_1105_avisos_con_alim.ii_nivel_abrir <= w_1105_avisos_con_alim.ii_co_nivel_orig THEN
+		gnv_msg.f_mensaje("EA03","","", OK!)
+	ELSE
+		li_co_nivel = w_1105_avisos_con_alim.ii_co_nivel_orig
+
+		DO UNTIL (li_co_nivel = w_1105_avisos_con_alim.ii_nivel_abrir) OR &
+				(li_fila > w_1105_avisos_con_alim.dw_lista_instal.RowCount())
+			w_1105_avisos_con_alim.ii_co_nivel_actual = li_co_nivel
+			w_1105_avisos_con_alim.tv_1.TriggerEvent("ue_abrir")
+
+//			// Ordeno las carpetas
+//			w_1105_avisos_con_alim.tv_1.TriggerEvent("ue_ordenar_jerarq")
+//
+			li_co_nivel ++
+			li_fila ++
+		LOOP				
+	END IF
+
+END IF
+
+w_1105_avisos_con_alim.dw_lista_instal.SetRedraw(True)
+
+RETURN 1
+
+
+end function
+
+on m_btder_gestion_avisos.create
+m_btder_gestion_avisos=this
+this.m_opciones=create m_opciones
+this.Item[]={this.m_opciones}
+end on
+
+on m_btder_gestion_avisos.destroy
+destroy(this.m_opciones)
+end on
+
+type m_opciones from menu within m_btder_gestion_avisos
+m_asignarbrigada m_asignarbrigada
+m_cambioalimentacin m_cambioalimentacin
+m_crearincidencia m_crearincidencia
+m_maniobrarlnea m_maniobrarlnea
+m_mostrarlnea m_mostrarlnea
+m_mostrarensimplificado m_mostrarensimplificado
+end type
+
+on m_opciones.create
+this.Text="Opciones"
+this.m_asignarbrigada=create m_asignarbrigada
+this.m_cambioalimentacin=create m_cambioalimentacin
+this.m_crearincidencia=create m_crearincidencia
+this.m_maniobrarlnea=create m_maniobrarlnea
+this.m_mostrarlnea=create m_mostrarlnea
+this.m_mostrarensimplificado=create m_mostrarensimplificado
+this.Item[]={this.m_asignarbrigada, &
+this.m_cambioalimentacin, &
+this.m_crearincidencia, &
+this.m_maniobrarlnea, &
+this.m_mostrarlnea, &
+this.m_mostrarensimplificado}
+end on
+
+on m_opciones.destroy
+destroy(this.m_asignarbrigada)
+destroy(this.m_cambioalimentacin)
+destroy(this.m_crearincidencia)
+destroy(this.m_maniobrarlnea)
+destroy(this.m_mostrarlnea)
+destroy(this.m_mostrarensimplificado)
+end on
+
+type m_asignarbrigada from menu within m_opciones
+end type
+
+on clicked;//
+//Open(w_6201_asignacion_de_brigada)
+//
+//// Se carga la estructura de comunicaciones con la que
+//// trabaj$$HEX2$$f3002000$$ENDHEX$$la ventana anteriormente llamada en nuestra estructura local.
+// 
+//gu_comunic = gu_comunic1
+//
+//
+
+gu_comunic.is_comunic.intval9 = 1
+end on
+
+on m_asignarbrigada.create
+this.Text="Orden de Trabajo"
+this.Microhelp="Asigna una Brigada a la Instalaci$$HEX1$$f300$$ENDHEX$$n y genera la OT correspondiente"
+this.ToolBarItemName="reconex.bmp"
+end on
+
+on m_asignarbrigada.destroy
+end on
+
+type m_cambioalimentacin from menu within m_opciones
+end type
+
+on clicked;//// se carga la estructura de comunicaciones con la que
+//// trabaja la ventana que se quiere abrir  
+// 
+//gu_comunic = gu_comunic2
+//
+//
+//Open(w_2120_identificacion_instalacion)
+//
+//
+gu_comunic.is_comunic.intval9 = 2
+
+end on
+
+on m_cambioalimentacin.create
+this.Text="Cambio de alimentaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Permite efectuar el cambio de alimentaci$$HEX1$$f300$$ENDHEX$$n "
+this.Visible=false
+end on
+
+type m_crearincidencia from menu within m_opciones
+end type
+
+on clicked;gu_comunic.is_comunic.intval9 = 3
+end on
+
+on m_crearincidencia.create
+this.Text="Crear/Modificar  Incidencia"
+this.Microhelp="Permite crear una incidencia "
+end on
+
+type m_maniobrarlnea from menu within m_opciones
+end type
+
+on m_maniobrarlnea.create
+this.Text="Maniobrar l$$HEX1$$ed00$$ENDHEX$$nea en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemName="Globals!"
+end on
+
+event clicked;gu_comunic.is_comunic.intval9 = 4
+end event
+
+type m_mostrarlnea from menu within m_opciones
+end type
+
+on m_mostrarlnea.create
+this.Text="Mostrar L$$HEX1$$ed00$$ENDHEX$$nea en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemName="Globals!"
+end on
+
+event clicked;gu_comunic.is_comunic.intval9 = 5
+end event
+
+type m_mostrarensimplificado from menu within m_opciones
+end type
+
+event clicked;gu_comunic.is_comunic.intval9 = 6
+end event
+
+on m_mostrarensimplificado.create
+this.Text="Mostrar en Simplificado"
+end on
+

@@ -1,0 +1,27 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "menu.pbl" "";
+@end;
+@begin Objects
+ "md_suministros_importantes.srm" "menu.pbl";
+ "md_ingreso_incidencias.srm" "menu.pbl";
+ "md_lista_incidencia.srm" "menu.pbl";
+ "md_consultas_estandar.srm" "menu.pbl";
+ "md_mante_brigadas.srm" "menu.pbl";
+ "m_disponibilidades.srm" "menu.pbl";
+ "m_recepcion_de_avisos.srm" "menu.pbl";
+ "m_no_operatividad.srm" "menu.pbl";
+ "m_mante_brigadistas.srm" "menu.pbl";
+ "md_inf_avisos_inc.srm" "menu.pbl";
+ "md_gestion_avisos.srm" "menu.pbl";
+ "m_btder_gestion_avisos.srm" "menu.pbl";
+ "m_btder_gestion_avisos2.srm" "menu.pbl";
+ "m_btder_otras_inst.srm" "menu.pbl";
+ "md_lista_descargos.srm" "menu.pbl";
+ "md_actualizacion_incidencia.srm" "menu.pbl";
+ "md_lista_avisos.srm" "menu.pbl";
+ "m_mantenimientos_tablas.srm" "menu.pbl";
+ "m_descargos.srm" "menu.pbl";
+ "md_ing_avisos.srm" "menu.pbl";
+ "m_man_inst.srm" "menu.pbl";
+@end;

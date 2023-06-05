@@ -1,0 +1,56 @@
+HA$PBExportHeader$d_at0113_a13.srd
+$PBExportComments$Id. de clientes.  Busqueda por 1er  Apellido y Nombre. Con Soundex
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=nom_cli dbname="clientes.nom_cli" )
+ column=(type=char(42) updatewhereclause=yes name=ape1_cli dbname="ape1_cli" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_calle dbname="clientes.cod_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=num_puerta dbname="clientes.num_puerta" )
+ column=(type=char(10) updatewhereclause=yes name=duplicador dbname="clientes.duplicador" )
+ column=(type=char(6) updatewhereclause=yes name=cgv_cli dbname="clientes.cgv_cli" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_cli dbname="clientes.cod_cli" )
+ column=(type=char(0) updatewhereclause=yes name=ape1_cli dbname="compute_0008" )
+ column=(type=char(30) updatewhereclause=yes name=nom_calle dbname="callejero.nom_calle" )
+ column=(type=char(4000) updatewhereclause=yes name=cdireccion dbname="cdireccion" )
+ column=(type=char(60) updatewhereclause=yes name=ref_dir dbname="fincas.ref_dir" )
+ column=(type=char(25) updatewhereclause=yes name=nom_centro dbname="sgd_centro.nom_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=c_nis_rad dbname="sumcon.c_nis_rad" )
+ column=(type=number updatewhereclause=yes name=c_nic dbname="clientes.c_nic" )
+ column=(type=char(5) updatewhereclause=yes name=c_tip_serv dbname="c_tip_serv" )
+ retrieve="SELECT ~"CLIENTES~".~"NOM_CLI~",
+   	 ~"CLIENTES~".~"APE1_CLI~"||'  '||~"CLIENTES~".~"APE2_CLI~" APE1_CLI, 
+       ~"CLIENTES~".~"COD_CALLE~", 
+       ~"CLIENTES~".~"NUM_PUERTA~", 
+       ~"CLIENTES~".~"DUPLICADOR~", 
+       ~"CLIENTES~".~"CGV_CLI~", 
+       ~"CLIENTES~".~"COD_CLI~" ,'' ,~"CALLEJERO~".~"NOM_CALLE~", 
+       fgnu_calle_referencia(callejero.nom_calle, fincas.num_puerta, fincas.duplicador, 0, callejero.cod_calle, 0, '', 0, '') cdireccion ,
+		 ~"FINCAS~".~"REF_DIR~",
+		 ~"SGD_CENTRO~".~"NOM_CENTRO~",
+		 ~"SUMCON~".~"NIS_RAD~" AS C_NIS_RAD,
+		 0 AS C_NIC,
+		 '     ' AS C_TIP_SERV
+FROM ~"CLIENTES~" ,~"CALLEJERO~",~"FINCAS~",~"SUMCON~",~"GI_CENTRO_LOC~",~"SGD_CENTRO~" 
+WHERE	 (SOUNDEX( ~"CLIENTES~".~"APE1_CLI~")= SOUNDEX(:ape1_1) ) AND 
+		 (DECODE(:ape2_2,NULL,~"CLIENTES~".~"APE2_CLI~",SOUNDEX( ~"CLIENTES~".~"APE2_CLI~"))= DECODE(:ape2_2,NULL,~"CLIENTES~".~"APE2_CLI~",SOUNDEX(:ape2_2)) ) AND
+       (~"CLIENTES~".~"NOM_CLI~" like :inic_1 ) AND
+		 (~"CLIENTES~".~"COD_CLI~" = ~"SUMCON~".~"COD_CLI~") AND
+		 (~"SUMCON~".~"NIF~" = ~"FINCAS~".~"NIF~") AND
+       (~"FINCAS~".~"COD_CALLE~" = ~"CALLEJERO~".~"COD_CALLE~") AND
+       (~"CALLEJERO~".~"COD_LOCAL~" = ~"GI_CENTRO_LOC~".~"COD_LOC~" ) AND  
+       (~"GI_CENTRO_LOC~".~"NRO_CENTRO~"=~"SGD_CENTRO~".~"NRO_CENTRO~" ) AND
+		 (~"SGD_CENTRO~".~"TIP_CENTRO~" = 1) 
+		 	
+   		
+   		" retrieve.asneeded=yes arguments=(("ape1_1", string),("ape2_2", string),("inic_1", string)) )
+text(band=header alignment="2" text="Nombre"border="6" color="0" x="0" y="8" height="64" width="576"  name=nom_cli_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Apellidos"border="6" color="0" x="594" y="8" height="64" width="1134"  name=ape_1_cli_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Direcci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="1746" y="8" height="64" width="1513"  name=cdireccion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="0" y="4" height="64" width="576" format="[general]"  name=nom_cli edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="594" y="4" height="64" width="1134" format="[general]"  name=ape1_cli edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="8388608" x="1746" y="4" height="64" width="1513" format="[general]"  name=cdireccion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

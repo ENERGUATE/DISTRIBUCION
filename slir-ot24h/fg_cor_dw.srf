@@ -1,0 +1,70 @@
+HA$PBExportHeader$fg_cor_dw.srf
+global type fg_cor_dw from function_object
+end type
+
+forward prototypes
+global function string fg_cor_dw (readonly string as_cadena, readonly string as_replace_text)
+end prototypes
+
+global function string fg_cor_dw (readonly string as_cadena, readonly string as_replace_text);///////////////////////////////////////////////////////
+//
+// Funcion/Evento: fg_cor2
+// 
+// Objetivo: Reemplaza valores de una cadena por otro.
+//
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: string as_cadena,
+//					string as_replace,
+//
+//    Salida : --
+//
+// Devuelve: String
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 02/04/2001   JPE
+//
+///////////////////////////////////////////////////////
+
+Long ll_pos, ll_len
+String ls_cadena, ls_replace, ls_replace_with, ls_replace_with_orig, ls_return
+
+
+
+
+ls_return = as_cadena
+
+
+If Not fg_verifica_parametro('COR') Then Return ls_return
+
+
+SELECT NVL("GI_PARAMETROS_EXT"."DESCRIPCION", '') As c_valor  
+  INTO :ls_replace_with_orig  
+  FROM "GI_PARAMETROS_EXT"  
+ WHERE ( "GI_PARAMETROS_EXT"."COD_PARAMETRO" = 0 ) AND  
+		 ( Upper("GI_PARAMETROS_EXT"."TIPO") = 'COR' ) ;
+
+
+
+If Len(Trim(ls_replace_with_orig)) > 0 Then
+
+	ls_cadena		 = Upper(as_cadena)
+	ls_replace		 = Upper(as_replace_text)
+	ls_replace_with = Upper(ls_replace_with_orig)
+	ll_pos			 = Pos(ls_cadena, ls_replace)
+	ll_len			 = Len(ls_replace)
+	
+	DO WHILE ll_pos > 0
+		ls_return = Replace(ls_return, ll_pos, ll_len, ls_replace_with)
+		ls_cadena = Replace(ls_cadena, ll_pos, ll_len, ls_replace_with_orig)
+		ll_pos = Pos(ls_cadena, ls_replace)
+	LOOP
+End If
+	
+//ClipBoard(ClipBoard() + ls_return + " - ")
+
+Return ls_return
+end function
+

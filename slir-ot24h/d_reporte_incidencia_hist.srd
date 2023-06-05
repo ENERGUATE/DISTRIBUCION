@@ -1,0 +1,70 @@
+HA$PBExportHeader$d_reporte_incidencia_hist.srd
+release 6;
+datawindow(units=2 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 1 print.margin.left = 11000 print.margin.right = 11000 print.margin.top = 8500 print.margin.bottom = 8500 print.paper.source = 0 print.paper.size = 1 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=1052 color="536870912" )
+summary(height=239 color="536870912" )
+footer(height=250 color="536870912" )
+detail(height=208 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=gi_hist_interrupcion_nom_instalacion dbname="gi_hist_interrupcion.nom_instalacion" )
+ column=(type=datetime updatewhereclause=yes name=gi_hist_interrupcion_f_alta dbname="gi_hist_interrupcion.f_alta" )
+ column=(type=datetime updatewhereclause=yes name=gi_hist_interrupcion_f_reposicion dbname="gi_hist_interrupcion.f_reposicion" )
+ column=(type=number updatewhereclause=yes name=duracion dbname="duracion" )
+ column=(type=decimal(1) updatewhereclause=yes name=gi_hist_interrupcion_pot_inst_afec dbname="gi_hist_interrupcion.pot_inst_afec" )
+ column=(type=number updatewhereclause=yes name=pot_afectada_x_tiempo dbname="pot_afectada_x_tiempo" )
+ column=(type=char(50) updatewhereclause=yes name=gi_hist_incidencias_nom_causa dbname="gi_hist_incidencias.nom_causa" )
+ column=(type=char(50) updatewhereclause=yes name=gi_hist_incidencias_agente dbname="gi_hist_incidencias.agente" )
+ retrieve=" SELECT  gi_hist_interrupcion.nom_instalacion ,
+			gi_hist_interrupcion.f_alta , 
+         gi_hist_interrupcion.f_reposicion ,
+         NVL(fgnu_tiempo_interrupcion_3(
+            gi_hist_interrupcion.F_REPOSICION,  gi_hist_interrupcion.F_ALTA,
+				gi_hist_interrupcion.F_ALTA_FASE_A,
+				gi_hist_interrupcion.F_ALTA_FASE_B,
+				gi_hist_interrupcion.F_ALTA_FASE_C,
+				gi_hist_interrupcion.F_REPOSICION_FASE_A,
+				gi_hist_interrupcion.F_REPOSICION_FASE_B,
+				gi_hist_interrupcion.F_REPOSICION_FASE_C),0) duracion, 
+         gi_hist_interrupcion.pot_inst_afec ,
+         (gi_hist_interrupcion.pot_inst_afec * NVL(fgnu_tiempo_interrupcion_3(
+            gi_hist_interrupcion.F_REPOSICION,  gi_hist_interrupcion.F_ALTA,
+				gi_hist_interrupcion.F_ALTA_FASE_A,
+				gi_hist_interrupcion.F_ALTA_FASE_B,
+				gi_hist_interrupcion.F_ALTA_FASE_C,
+				gi_hist_interrupcion.F_REPOSICION_FASE_A,
+				gi_hist_interrupcion.F_REPOSICION_FASE_B,
+				gi_hist_interrupcion.F_REPOSICION_FASE_C),0)) pot_afectada_x_tiempo,
+         gi_hist_incidencias.nom_causa, gi_hist_incidencias.agente     
+    FROM gi_hist_incidencias,
+         gi_hist_interrupcion    
+   WHERE ( gi_hist_incidencias.nro_incidencia  = gi_hist_interrupcion.nro_incidencia )
+ 	  AND ( gi_hist_incidencias.nro_centro = :gi_nro_centro or :gi_nro_centro = 0)
+	  AND ( nvl(gi_hist_interrupcion.afec_parcial,0) = 0 )
+		and ( gi_hist_interrupcion.tipo_instalacion = 4 )
+		and ( to_date(gi_hist_interrupcion.F_ALTA) between :fecha and :hasta )" arguments=(("fecha", date),("hasta", date),("gi_nro_centro", number)) )
+text(band=header alignment="2" text="Interrupciones diaria de Circuitos"border="4" color="0" x="2718" y="41" height="302" width="4760"  font.face="MS Sans Serif" font.height="-18" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="2" expression="''"border="0" color="0" x="2708" y="447" height="166" width="4791" format="[general]"  name=c_fecha_act  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n"border="4" color="0" x="354" y="697" height="135" width="739"  name=sgd_instalacion_nom_instalacion_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="302" y1="1020" x2="10395" y2="1020" pen.style="0" pen.width="10" pen.color="0"  background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="(m)"border="0" color="0" x="4177" y="875" height="135" width="208"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="(kVA)"border="0" color="0" x="4791" y="875" height="135" width="322"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Potencia x Tiempo"border="4" color="0" x="5468" y="697" height="135" width="1291"  name=compute_0006_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="(kVA h)"border="0" color="0" x="5947" y="875" height="135" width="447"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Causa"border="4" color="0" x="6843" y="697" height="135" width="427"  name=gi_causa_descripcion_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Agente"border="4" color="0" x="8645" y="697" height="135" width="458"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha de Salida"border="4" color="0" x="1645" y="697" height="135" width="1083"  name=sgd_interrupcion_f_alta_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha de Entrada"border="4" color="0" x="2750" y="697" height="135" width="1177"  name=sgd_interrupcion_h_reposicion_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Potencia Inst."border="4" color="0" x="4572" y="697" height="135" width="916"  name=sgd_interrupcion_pot_inst_afec_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Duraci$$HEX1$$f300$$ENDHEX$$n"border="4" color="0" x="3979" y="697" height="135" width="604"  name=sgd_interrupcion_tiempo_interrupcion_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="312" y="21" height="166" width="1270" format="[general]"  name=gi_hist_interrupcion_nom_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="1645" y="21" height="166" width="1083" format="[shortdate] [time]"  name=gi_hist_interrupcion_f_reposicion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2750" y="21" height="166" width="1177" format="[shortdate] [time]"  name=gi_hist_interrupcion_f_alta edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="4625" y="21" height="166" width="833" format="[general]"  name=gi_hist_interrupcion_pot_inst_afec edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="8625" y="21" height="166" width="1781" format=""  name=gi_hist_incidencias_agente edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=summary alignment="1" text="Total de Interrupciones:"border="0" color="0" x="8208" y="42" height="135" width="1593"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="0" expression="rowcount()"border="0" color="0" x="9875" y="32" height="166" width="479" format="[general]"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=footer x1="375" y1="11" x2="10375" y2="11" pen.style="0" pen.width="10" pen.color="0"  background.mode="1" background.color="536870912" )
+compute(band=footer alignment="1" expression="'P$$HEX1$$e100$$ENDHEX$$g. ' + page() + ' de ' + pageCount()"border="0" color="0" x="8593" y="52" height="187" width="1760" format="[general]"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="2" tabsequence=0 border="0" color="0" x="3968" y="21" height="166" width="614"  name=duracion  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="6843" y="21" height="166" width="1750" format="[general]"  name=gi_hist_incidencias_nom_causa edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="1" tabsequence=0 border="0" color="0" x="5541" y="21" height="166" width="1135"  name=pot_afectada_x_tiempo  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

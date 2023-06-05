@@ -1,0 +1,6 @@
+HA$PBExportHeader$st_gestion.srs
+global type st_gestion from structure
+	string		l_desc_gestion
+	string		l_id_gestion
+end type
+

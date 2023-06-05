@@ -1,0 +1,32 @@
+HA$PBExportHeader$s_cliente.srs
+$PBExportComments$Estructura que se utiliza para identificaci$$HEX1$$f300$$ENDHEX$$n de clientes
+global type s_cliente from structure
+	string		gs_usuario
+	date		gd_f_actual
+	string		gs_programa
+	long		gl_cod_cli
+	string		gs_ape1_cli
+	string		gs_ape2_cli
+	string		gs_nom_cli
+	string		gs_tfno_cli
+	long		gl_cod_calle
+	long		gl_num_puerta
+	string		gs_duplicador
+	string		gs_cgv_cli
+	string		gs_doc_id
+	string		gs_tip_doc
+	string		gs_co_pais
+	integer		gi_tip_cli
+	date		gd_f_alta
+	date		gd_f_baja
+	integer		gi_nrh
+	integer		gi_nrh_far
+	integer		gi_nrh_pen
+	long		gl_fax_cli
+	string		gs_num_ingresos_brutos
+	string		gs_pers_contacto
+	string		gs_co_cond_fiscal
+	string		gs_soundex_ap1
+	string		gs_soundex_ap2
+end type
+

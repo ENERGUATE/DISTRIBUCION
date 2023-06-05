@@ -1,0 +1,12 @@
+HA$PBExportHeader$dw_co_cliente_imp_instalacion_padre.sru
+forward
+global type dw_co_cliente_imp_instalacion_padre from u_gen_0000_lista
+end type
+end forward
+
+global type dw_co_cliente_imp_instalacion_padre from u_gen_0000_lista
+int Width=4434
+int Height=1128
+end type
+global dw_co_cliente_imp_instalacion_padre dw_co_cliente_imp_instalacion_padre
+

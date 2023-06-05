@@ -1,0 +1,60 @@
+HA$PBExportHeader$d_lista_hist_indisponibilidades_x_activo.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_instalacion dbname="gi_hist_disponibilidad.nro_instalacion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_causa dbname="gi_hist_disponibilidad.cod_causa" )
+ column=(type=datetime update=yes updatewhereclause=yes name=tiempo_ocurrencia dbname="gi_hist_disponibilidad.tiempo_ocurrencia" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=disponibilidad_act dbname="gi_hist_disponibilidad.disponibilidad_act" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=consignacion_nacional dbname="gi_hist_disponibilidad.consignacion_nacional" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=secuencial dbname="gi_hist_disponibilidad.secuencial" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo_psm dbname="gi_hist_disponibilidad.tipo_psm" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_maniobra dbname="gi_hist_disponibilidad.ind_maniobra" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=activo_causante dbname="gi_hist_disponibilidad.activo_causante" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo_movimiento dbname="gi_hist_disponibilidad.tipo_movimiento" )
+ column=(type=datetime updatewhereclause=yes name=fec_cambio_disp dbname="gi_hist_disponibilidad.fec_cambio_disp" )
+ retrieve="  SELECT ~"GI_HIST_DISPONIBILIDAD~".~"NRO_INSTALACION~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"COD_CAUSA~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"TIEMPO_OCURRENCIA~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"DISPONIBILIDAD_ACT~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"CONSIGNACION_NACIONAL~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"SECUENCIAL~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"TIPO_PSM~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"IND_MANIOBRA~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"ACTIVO_CAUSANTE~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"TIPO_MOVIMIENTO~",   
+         ~"GI_HIST_DISPONIBILIDAD~".~"FEC_CAMBIO_DISP~"  
+    FROM ~"GI_HIST_DISPONIBILIDAD~"  
+   WHERE ( ~"GI_HIST_DISPONIBILIDAD~".~"NRO_INSTALACION~" = :pl_nro_instalacion ) AND  
+         ( ~"GI_HIST_DISPONIBILIDAD~".~"TIEMPO_OCURRENCIA~" >= :pdate_fecha_desde ) AND  
+         ( ~"GI_HIST_DISPONIBILIDAD~".~"TIEMPO_OCURRENCIA~" < :pdate_fecha_hasta )   
+ORDER BY ~"GI_HIST_DISPONIBILIDAD~".~"TIEMPO_OCURRENCIA~" ASC,   
+         ~"GI_HIST_DISPONIBILIDAD~".~"SECUENCIAL~" ASC   
+" update="GI_HIST_DISPONIBILIDAD" updatewhere=1 updatekeyinplace=no arguments=(("pl_nro_instalacion", number),("pdate_fecha_desde", date),("pdate_fecha_hasta", date)) )
+text(band=header alignment="2" text="Nro Instalacion" border="0" color="33554432" x="9" y="8" height="52" width="325" html.valueishtml="0"  name=nro_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cod Causa" border="0" color="33554432" x="343" y="8" height="52" width="274" html.valueishtml="0"  name=cod_causa_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tiempo Ocurrencia" border="0" color="33554432" x="626" y="8" height="52" width="503" html.valueishtml="0"  name=tiempo_ocurrencia_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Disponibilidad Act" border="0" color="33554432" x="1138" y="8" height="52" width="384" html.valueishtml="0"  name=disponibilidad_act_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Consignacion Nacional" border="0" color="33554432" x="1531" y="8" height="52" width="498" html.valueishtml="0"  name=consignacion_nacional_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Secuencial" border="0" color="33554432" x="2039" y="8" height="52" width="274" html.valueishtml="0"  name=secuencial_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tipo Psm" border="0" color="33554432" x="2322" y="8" height="52" width="274" html.valueishtml="0"  name=tipo_psm_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ind Maniobra" border="0" color="33554432" x="2606" y="8" height="52" width="283" html.valueishtml="0"  name=ind_maniobra_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Activo Causante" border="0" color="33554432" x="2898" y="8" height="52" width="357" html.valueishtml="0"  name=activo_causante_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tipo Movimiento" border="0" color="33554432" x="3264" y="8" height="52" width="357" html.valueishtml="0"  name=tipo_movimiento_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Fec Cambio Disp" border="0" color="0" x="3630" y="4" height="76" width="128" html.valueishtml="0"  name=fec_cambio_disp_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="33554432" x="9" y="8" height="72" width="325" format="[general]" html.valueishtml="0"  name=nro_instalacion visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="33554432" x="343" y="8" height="72" width="274" format="[general]" html.valueishtml="0"  name=cod_causa visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="33554432" x="626" y="8" height="72" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=tiempo_ocurrencia visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="0" color="33554432" x="1138" y="8" height="72" width="384" format="[general]" html.valueishtml="0"  name=disponibilidad_act visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="33554432" x="1531" y="8" height="72" width="498" format="[general]" html.valueishtml="0"  name=consignacion_nacional visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=60 border="0" color="33554432" x="2039" y="8" height="72" width="274" format="[general]" html.valueishtml="0"  name=secuencial visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=70 border="0" color="33554432" x="2322" y="8" height="72" width="274" format="[general]" html.valueishtml="0"  name=tipo_psm visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=80 border="0" color="33554432" x="2606" y="8" height="72" width="283" format="[general]" html.valueishtml="0"  name=ind_maniobra visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=90 border="0" color="33554432" x="2898" y="8" height="72" width="357" format="[general]" html.valueishtml="0"  name=activo_causante visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=100 border="0" color="33554432" x="3264" y="8" height="72" width="357" format="[general]" html.valueishtml="0"  name=tipo_movimiento visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="33554432" x="3630" y="8" height="60" width="128" format="[shortdate] [time]" html.valueishtml="0"  name=fec_cambio_disp visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,54 @@
+HA$PBExportHeader$d_avi_2034_estadistica_avisos_tel.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=76 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(7) updatewhereclause=yes name=mes dbname="mes" )
+ column=(type=number updatewhereclause=yes name=total_cnt dbname="total_cnt" )
+ column=(type=number updatewhereclause=yes name=average_user dbname="average_user" )
+ column=(type=number updatewhereclause=yes name=peligros dbname="peligros" )
+ column=(type=number updatewhereclause=yes name=normal dbname="normal" )
+ column=(type=number updatewhereclause=yes name=ayuda dbname="ayuda" )
+ column=(type=number updatewhereclause=yes name=alumbrado dbname="alumbrado" )
+ column=(type=number updatewhereclause=yes name=calidad dbname="calidad" )
+ retrieve="  SELECT 
+          to_char(~"GI_AVISOS~".~"F_ALTA~", 'MM/YYYY') mes, 
+         count(*) total_cnt,
+         round(count(*)/:ps_users,1) average_user,
+         sum(~"GI_AVISOS~".~"IND_PELIGRO~") peligros,   
+         sum(decode(~"GI_AVISOS~".~"IND_AYUDA~",0,1,0)) normal,
+         sum(decode(~"GI_AVISOS~".~"IND_AYUDA~",1,1,0)) ayuda,
+         sum(decode(~"GI_AVISOS~".~"IND_AYUDA~",2,1,0)) alumbrado,
+         sum(decode(~"GI_AVISOS~".~"IND_CALIDAD~",1,1,0)) calidad
+    FROM ~"GI_AVISOS~" 
+WHERE trunc(~"GI_AVISOS~".~"F_ALTA~") between trunc(:f_desde) and trunc(:f_hasta)
+GROUP BY to_char(~"GI_AVISOS~".~"F_ALTA~", 'MM/YYYY')
+
+" arguments=(("f_desde", datetime),("f_hasta", datetime),("ps_users", number)) )
+text(band=header alignment="2" text="Mes"border="6" color="0" x="9" y="8" height="64" width="233"  name=mes_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Total"border="6" color="0" x="251" y="8" height="64" width="411"  name=total_cnt_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Promedio por Telefonista"border="6" color="0" x="672" y="8" height="64" width="818"  name=average_user_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Peligros"border="6" color="0" x="1499" y="8" height="64" width="329"  name=peligros_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Normales"border="6" color="0" x="1838" y="8" height="64" width="357"  name=normal_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ayuda"border="6" color="0" x="2203" y="8" height="64" width="352"  name=ayuda_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Alumbrado"border="6" color="0" x="2565" y="8" height="64" width="366"  name=alumbrado_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Calidad"border="6" color="0" x="2939" y="8" height="64" width="439"  name=calidad_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="8" height="64" width="233" format="[general]"  name=mes edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="8388608" x="251" y="8" height="64" width="411" format="[general]"  name=total_cnt edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="8388608" x="672" y="8" height="64" width="818" format="[general]"  name=average_user edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="8388608" x="1499" y="8" height="64" width="329" format="[general]"  name=peligros edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="8388608" x="1838" y="8" height="64" width="357" format="[general]"  name=normal edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="8388608" x="2203" y="8" height="64" width="352" format="[general]"  name=ayuda edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="8388608" x="2565" y="8" height="64" width="366" format="[general]"  name=alumbrado edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="8388608" x="2939" y="8" height="64" width="439" format="[general]"  name=calidad edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=summary alignment="1" text="Total: "border="0" color="0" x="9" y="8" height="64" width="233"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum(  total_cnt  for all )"border="0" color="0" x="251" y="8" height="64" width="411" format="[general]"  name=sum_total_cnt  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum(  average_user  for all )"border="0" color="0" x="672" y="8" height="64" width="818" format="[general]"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum(  peligros   for all )"border="0" color="0" x="1499" y="8" height="64" width="329" format="[general]"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum(  normal  for all )"border="0" color="0" x="1838" y="8" height="64" width="357" format="[general]"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum(  ayuda  for all )"border="0" color="0" x="2203" y="8" height="64" width="352" format="[general]"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum(  alumbrado  for all )"border="0" color="0" x="2565" y="8" height="64" width="366" format="[general]"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum( calidad  for all )"border="0" color="0" x="2939" y="8" height="64" width="439" format="[general]"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

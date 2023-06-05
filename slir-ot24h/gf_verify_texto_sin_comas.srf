@@ -1,0 +1,28 @@
+HA$PBExportHeader$gf_verify_texto_sin_comas.srf
+global type gf_verify_texto_sin_comas from function_object
+end type
+
+forward prototypes
+global function long gf_verify_texto_sin_comas (string ps_string)
+end prototypes
+
+global function long gf_verify_texto_sin_comas (string ps_string);long ll_return
+string ls_auxiliar
+
+ls_auxiliar = ','
+ll_return = Pos(ps_string, ls_auxiliar)
+
+if ll_return >0 then 
+	Messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n", "No puede utilizarse ninguna coma en el texto", Exclamation!, OK!)
+else
+	ls_auxiliar = "~r~n"
+	ll_return = Pos(ps_string, ls_auxiliar)
+	if ll_return >0 then 
+		Messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n", "No puede utilizarse ning$$HEX1$$fa00$$ENDHEX$$n salto de l$$HEX1$$ed00$$ENDHEX$$nea en el texto", Exclamation!, OK!)
+	end if
+end if
+
+return ll_return
+
+end function
+

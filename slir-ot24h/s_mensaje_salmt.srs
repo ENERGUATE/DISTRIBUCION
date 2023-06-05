@@ -1,0 +1,9 @@
+HA$PBExportHeader$s_mensaje_salmt.srs
+global type s_mensaje_salmt from structure
+	long		nro_instalacion
+	string		mensaje
+	string		imagen
+	string		titulo
+	integer		opcion
+end type
+

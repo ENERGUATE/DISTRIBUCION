@@ -1,0 +1,15 @@
+HA$PBExportHeader$u_bri_2012_pr_brigadistas_asignados.sru
+forward
+global type u_bri_2012_pr_brigadistas_asignados from u_gen_0000_lista
+end type
+end forward
+
+global type u_bri_2012_pr_brigadistas_asignados from u_gen_0000_lista
+int Width=1025
+int Height=641
+int TabOrder=1
+string DataObject="d_bri_2012_brigadistas_asignados"
+boolean LiveScroll=true
+end type
+global u_bri_2012_pr_brigadistas_asignados u_bri_2012_pr_brigadistas_asignados
+

@@ -1,0 +1,94 @@
+HA$PBExportHeader$d_avi_1211_interrup_hist.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=nro_instalacion dbname="gi_hist_interrupcion.nro_instalacion" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="gi_hist_interrupcion.f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="gi_hist_interrupcion.f_reposicion" )
+ column=(type=number updatewhereclause=yes name=nro_incidencia dbname="gi_hist_interrupcion.nro_incidencia" )
+ column=(type=char(80) updatewhereclause=yes name=desc_incidencia dbname="gi_hist_incidencias.desc_incidencia" )
+ column=(type=char(130) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(4000) updatewhereclause=yes name=diferencia dbname="compute_0007" )
+ column=(type=number updatewhereclause=yes name=est_fac dbname="gi_hist_interrupcion.est_fac" )
+ column=(type=char(3) updatewhereclause=yes name=fase_afectada dbname="gi_hist_interrupcion.fase_afectada" )
+ retrieve="SELECT GI_HIST_INTERRUPCION.NRO_INSTALACION,
+       GI_HIST_INTERRUPCION.F_ALTA,
+       GI_HIST_INTERRUPCION.F_REPOSICION,
+       GI_HIST_INTERRUPCION.NRO_INCIDENCIA,
+       GI_HIST_INCIDENCIAS.DESC_INCIDENCIA,
+       SGD_INSTALACION.NOM_INSTALACION,
+      fgnu_duracion_str(GI_HIST_INTERRUPCION.F_ALTA,GI_HIST_INTERRUPCION.F_reposicion),
+       GI_HIST_INTERRUPCION.KWH_ESTIMADO est_fac , 
+		GI_HIST_INTERRUPCION.FASE_AFECTADA 
+FROM GI_HIST_INCIDENCIAS ,GI_HIST_INTERRUPCION,SGD_INSTALACION 
+WHERE GI_HIST_INTERRUPCION.NRO_INCIDENCIA = GI_HIST_INCIDENCIAS.NRO_INCIDENCIA 
+AND TO_CHAR(GI_HIST_INTERRUPCION.F_ALTA,'YYYYMMDD') >=  :ps_f_desde  
+AND TO_CHAR(GI_HIST_INTERRUPCION.F_ALTA,'YYYYMMDD') <=  :ps_f_hasta  
+AND NVL(GI_HIST_INTERRUPCION.AFEC_PARCIAL,0) = DECODE(:li_afec_parcial, 0, NVL(GI_HIST_INTERRUPCION.AFEC_PARCIAL,0),0)
+AND GI_HIST_INTERRUPCION.NRO_INSTALACION = SGD_INSTALACION.NRO_INSTALACION 
+AND GI_HIST_INTERRUPCION.NRO_INSTALACION IN 
+    (SELECT SGD_INSTALACION.NRO_INSTALACION 
+     FROM SGD_INSTALACION START WITH BDI_JOB =0 AND NRO_INSTALACION = 
+            (SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN 
+             FROM SGD_ACOMETIDA WHERE BDI_JOB=0 AND SGD_ACOMETIDA.CODIGO = 
+                  (SELECT ACO_SUM.NRO_ACOMETIDA  
+     FROM ACO_SUM WHERE ACO_SUM.NIS_RAD = :pl_nro_nis ))
+    CONNECT BY PRIOR NRO_INST_PADRE = NRO_INSTALACION AND BDI_JOB=0)
+UNION
+SELECT GI_HIST_INTERRUPCION.NRO_INSTALACION,
+       GI_HIST_INTERRUPCION.F_ALTA,
+       GI_HIST_INTERRUPCION.F_REPOSICION,
+       GI_HIST_INTERRUPCION.NRO_INCIDENCIA,
+       GI_HIST_INCIDENCIAS.DESC_INCIDENCIA,
+       SGD_INSTALACION.NOM_INSTALACION,
+      fgnu_duracion_str(GI_HIST_INTERRUPCION.F_ALTA,GI_HIST_INTERRUPCION.F_reposicion),
+      GI_HIST_INTERRUPCION.KWH_ESTIMADO est_fac , 
+		GI_HIST_INTERRUPCION.FASE_AFECTADA
+FROM GI_HIST_INCIDENCIAS ,GI_HIST_INTERRUPCION, SGD_INSTALACION, GI_HIST_AFEC_PARCIAL_SUM
+WHERE GI_HIST_AFEC_PARCIAL_SUM.NIS_RAD = :pl_nro_nis
+	  AND GI_HIST_AFEC_PARCIAL_SUM.NRO_INCIDENCIA = GI_HIST_INTERRUPCION.NRO_INCIDENCIA
+	  AND GI_HIST_AFEC_PARCIAL_SUM.NRO_INSTALACION = GI_HIST_INTERRUPCION.NRO_INSTALACION
+	  AND GI_HIST_INTERRUPCION.NRO_INCIDENCIA = GI_HIST_INCIDENCIAS.NRO_INCIDENCIA
+	  AND GI_HIST_INCIDENCIAS.EST_ACTUAL < 11 
+	  AND TO_CHAR(GI_HIST_INTERRUPCION.F_ALTA,'YYYYMMDD') >=  :ps_f_desde  
+	  AND TO_CHAR(GI_HIST_INTERRUPCION.F_ALTA,'YYYYMMDD') <=  :ps_f_hasta   
+	  AND SGD_INSTALACION.NRO_INSTALACION = GI_HIST_INTERRUPCION.NRO_INSTALACION
+	  AND SGD_INSTALACION.BDI_JOB = 0
+ UNION 
+	 SELECT GI_HIST_INTERRUPCION.NRO_INSTALACION,
+      GI_HIST_INTERRUPCION.F_ALTA,
+       GI_HIST_INTERRUPCION.F_REPOSICION,
+       GI_HIST_INTERRUPCION.NRO_INCIDENCIA,
+       GI_HIST_INCIDENCIAS.DESC_INCIDENCIA,
+       NVL(SGD_ACOMETIDA.DESCRIPCION,CODIGO),
+      fgnu_duracion_str(GI_HIST_INTERRUPCION.F_ALTA,GI_HIST_INTERRUPCION.F_reposicion),
+       GI_HIST_INTERRUPCION.KWH_ESTIMADO est_fac , 
+		 GI_HIST_INTERRUPCION.FASE_AFECTADA 
+FROM GI_HIST_INCIDENCIAS ,GI_HIST_INTERRUPCION,SGD_ACOMETIDA, ACO_SUM 
+WHERE GI_HIST_INTERRUPCION.NRO_INCIDENCIA = GI_HIST_INCIDENCIAS.NRO_INCIDENCIA 
+AND TO_CHAR(GI_HIST_INTERRUPCION.F_ALTA,'YYYYMMDD') >=  :ps_f_desde  
+AND TO_CHAR(GI_HIST_INTERRUPCION.F_ALTA,'YYYYMMDD') <=  :ps_f_hasta  
+AND NVL(GI_HIST_INTERRUPCION.AFEC_PARCIAL,0) = DECODE(:li_afec_parcial, 0, NVL(GI_HIST_INTERRUPCION.AFEC_PARCIAL,0),0)
+AND GI_HIST_INTERRUPCION.NRO_INSTALACION = SGD_ACOMETIDA.CODIGO 
+AND GI_HIST_INTERRUPCION.CABECERA_BT > 0 
+AND SGD_ACOMETIDA.BDI_JOB= 0 
+AND  SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA  
+AND ACO_SUM.NIS_RAD = :pl_nro_nis" arguments=(("pl_nro_nis", number),("ps_f_desde", string),("ps_f_hasta", string),("li_afec_parcial", number)) )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="8388608" x="1938" y="4" height="64" width="549" format="[shortdate] [time]"  name=f_reposicion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="2514" y="4" height="64" width="462" format="[general]"  name=diferencia edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="3049" y="4" height="64" width="544" format="[general]"  name=est_fac edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="3621" y="4" height="64" width="1358" format="[general]"  name=desc_incidencia edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="8388608" x="1381" y="4" height="64" width="530" format="[shortdate] [time]"  name=f_alta edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608" x="1115" y="4" height="64" width="247" format="[general]"  name=fase_afectada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="5" y="4" height="64" width="1093" format="[general]"  name=nom_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Nombre Instalaci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="0" y="8" height="64" width="1093"  name=nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Fase"border="6" color="0" x="1111" y="8" height="64" width="247"  name=fase_afectada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Desde"border="6" color="0" x="1376" y="8" height="64" width="535"  name=f_alta_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Hasta"border="6" color="0" x="1929" y="8" height="64" width="535"  name=f_reposicion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Duraci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="2482" y="8" height="64" width="535"  name=diferencia_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Est Facturado"border="6" color="0" x="3035" y="8" height="64" width="558"  name=est_fac_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n Incid"border="6" color="0" x="3611" y="8" height="64" width="1371"  name=desc_incidencia_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

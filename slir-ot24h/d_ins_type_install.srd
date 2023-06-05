@@ -1,0 +1,13 @@
+HA$PBExportHeader$d_ins_type_install.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=124 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes name=type_inst dbname="detalles_instalacion.type_inst" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=installation_no dbname="detalles_instalacion.installation_no" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=company_no dbname="detalles_instalacion.company_no" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"detalles_instalacion~" ) COLUMN(NAME=~"detalles_instalacion.type_inst~") COLUMN(NAME=~"detalles_instalacion.installation_no~") COLUMN(NAME=~"detalles_instalacion.company_no~")WHERE(    EXP1 =~"~~~"DETALLES_INSTALACION~~~".~~~"INSTALLATION_NO~~~"~"   OP =~"=~"    EXP2 =~":numinst~" ) ) ARG(NAME = ~"numinst~" TYPE = number) " update="DETALLES_INSTALACION" updatewhere=0 updatekeyinplace=yes arguments=(("numinst", number)) )
+text(band=detail alignment="1" text="Tipo Inst:"border="0" color="0" x="9" y="20" height="64" width="274"  name=type_inst_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="8388608" x="320" y="20" height="68" width="626" format="[general]"  name=type_inst editmask.mask="XXXXXXXXXX" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33554431" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

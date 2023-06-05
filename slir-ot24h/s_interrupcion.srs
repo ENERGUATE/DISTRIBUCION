@@ -1,0 +1,30 @@
+HA$PBExportHeader$s_interrupcion.srs
+global type s_interrupcion from structure
+	string		gs_usuario
+	datetime		gdt_f_actual
+	datetime		gdt_h_actual
+	string		gs_programa
+	string		gs_tip_int
+	integer		gi_ind_otras_ins
+	datetime		gdt_f_repos
+	datetime		gdt_h_repos
+	datetime		gdt_f_alta
+	datetime		gdt_h_alta
+	long		gl_nro_incid
+	decimal {1}	gl_pot_inst
+	decimal {1}	gl_pot_contr
+	long		gl_kwh
+	long		gl_cant_cli_afec
+	integer		gi_ind_ult_nivel
+	string		gs_ind_ficticio
+	decimal {0}	gdec_nro_inst
+	decimal {0}	gdec_nro_inst_padre
+	integer		gi_tipo_inst
+	integer		gi_co_nivel
+	integer		gi_tipo_inst_padre
+	integer		gi_co_nivel_padre
+	decimal {1}	gl_pot_inst_afec
+	decimal {1}	gl_pot_contr_afec
+	long		gl_cant_cli
+end type
+

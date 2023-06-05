@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_bri_2010_pr_lista_brigada_centro.sru
+forward
+global type u_bri_2010_pr_lista_brigada_centro from u_gen_0000_lista
+end type
+end forward
+
+global type u_bri_2010_pr_lista_brigada_centro from u_gen_0000_lista
+int Width=2652
+int Height=701
+string DataObject="d_bri_2010_pr_lista_brigadas_centro"
+end type
+global u_bri_2010_pr_lista_brigada_centro u_bri_2010_pr_lista_brigada_centro
+

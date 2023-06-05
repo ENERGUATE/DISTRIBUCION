@@ -1,0 +1,75 @@
+HA$PBExportHeader$fg_valida_ot_antig.srf
+global type fg_valida_ot_antig from function_object
+end type
+
+forward prototypes
+global function integer fg_valida_ot_antig (readonly long al_nro_ot, readonly integer ai_opcion)
+end prototypes
+
+global function integer fg_valida_ot_antig (readonly long al_nro_ot, readonly integer ai_opcion);//*******************************************
+//**  OSGI 2001.2  	16/07/2002				 **
+//**  Jair Padilla / Soluziona PANAMA  	 **
+//**  PM001 RESTRICCION N DIAS ANTIG$$HEX1$$dc00$$ENDHEX$$EDAD  **
+//*******************************************
+///////////////////////////////////////////////////////
+//									
+// Funcion/Evento: fg_valida_ot_antig
+// 
+// Objetivo: Busca la fecha de la OT y determina si la fecha
+//				 est$$HEX2$$e1002000$$ENDHEX$$por encima del valor de antig$$HEX1$$fc00$$ENDHEX$$edad permitido
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: long al_nro_ot,
+//					integer ai_opcion
+//    Salida : --
+//
+// Devuelve: integer
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 04/09/2002   JPE
+//
+///////////////////////////////////////////////////////
+Date ldt_fecha_EB_ot
+String ls_opcion
+
+
+
+If al_nro_ot > 0 Then
+	
+//	mESSAGEbOX("al_nro_ot", al_nro_ot)
+	SELECT Min("GI_OT"."F_DESDE")  
+	  INTO :ldt_fecha_EB_ot
+	  FROM "GI_OT"  
+	 WHERE "GI_OT"."NRO_OT" = :al_nro_ot AND
+			 ( Trunc(((sysdate-"GI_OT"."F_DESDE")), 0) >= :gi_dias_antiguedad AND :gi_dias_antiguedad > 0 ) ;
+	
+	If sqlca.sqlcode = 0 And &
+		gb_inc_antig And &
+		gi_dias_antiguedad > 0 And &
+		Not IsNull(ldt_fecha_EB_ot) And &
+		IsDate(String(Date(ldt_fecha_EB_ot))) Then
+		
+		If ai_opcion = 1 Then
+			ls_opcion = " esta OT para esta instalaci$$HEX1$$f300$$ENDHEX$$n.  "
+		Else
+			ls_opcion = " este aviso.  "
+		End If
+
+		MessageBox("Aviso", "Esta instalaci$$HEX1$$f300$$ENDHEX$$n tiene una OT con una brigada " + &
+								  "con fecha de inicio de trabajos mayor a " + &
+								  String(gi_dias_antiguedad) + " d$$HEX1$$ed00$$ENDHEX$$as.  No podr$$HEX2$$e1002000$$ENDHEX$$" + &
+								  "crear una incidencia con " + ls_opcion + "N$$HEX1$$fa00$$ENDHEX$$mero de OT: " + String(al_nro_ot) + ".")
+		Return 1
+	End If
+End If
+
+Return 0
+//*******************************************
+//**  OSGI 2001.2  	16/07/2002				 **
+//**  Jair Padilla / Soluziona PANAMA  	 **
+//**  PM001 RESTRICCION N DIAS ANTIG$$HEX1$$dc00$$ENDHEX$$EDAD  **
+//*******************************************
+end function
+

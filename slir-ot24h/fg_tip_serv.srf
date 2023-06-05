@@ -1,0 +1,104 @@
+HA$PBExportHeader$fg_tip_serv.srf
+global type fg_tip_serv from function_object
+end type
+
+forward prototypes
+global function string fg_tip_serv ()
+end prototypes
+
+global function string fg_tip_serv ();//******************************************
+//**  OSGI 2001.2  	09/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+///////////////////////////////////////////////////////
+//									
+// Funcion/Evento: fg_tip_serv
+// 
+// Objetivo: Verifica si el par$$HEX1$$e100$$ENDHEX$$metro de busqueda de suministros
+//				 por NIC est$$HEX2$$e1002000$$ENDHEX$$activado y filtra los registro por los
+//				 tipos de servicios que se encuentren registrados(parametrizable)".
+//				 Lo que define los tipos de servicios registrados es:
+//				 Tabla: gi_parametros_ext con descripci$$HEX1$$f300$$ENDHEX$$n igual a: 'SUMCON_TIP_SERV'
+//				 El dato de la columna valor es el par$$HEX1$$e100$$ENDHEX$$metro con que se han
+//				 registrado los tipos de servicios, con columna = 0 y en tipo
+//				 una secuencia num$$HEX1$$e900$$ENDHEX$$rica.
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: --
+//					
+//    Salida : --
+//
+// Devuelve: String
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 09/09/2002   JPE
+//
+///////////////////////////////////////////////////////
+String ls_return, ls_sql, ls_tipo_servicio
+Integer li_mensaje
+Long ll_fetch
+
+
+
+li_mensaje = fg_valida_nic_tip_serv()
+
+
+If li_mensaje < 0 Then
+	ls_return = " AND rownum < 0 "
+ElseIf li_mensaje = 1 And fg_verifica_parametro('SUMCON_TIP_SERV')Then
+	DECLARE lcur_sumcon_tip_serv CURSOR FOR
+	SELECT GI_PARAMETROS_EXT.VALOR
+	  FROM GI_PARAMETROS,
+			 GI_PARAMETROS_EXT
+	 WHERE GI_PARAMETROS_EXT.COD_PARAMETRO = GI_PARAMETROS.COD_PARAMETRO And
+			 GI_PARAMETROS_EXT.COLUMNA = 0 AND
+			 GI_PARAMETROS.COD_PARAMETRO = ( SELECT Max(to_number(GI_PARAMETROS_EXT.VALOR))
+														  FROM GI_PARAMETROS_EXT
+														 WHERE GI_PARAMETROS_EXT.DESCRIPCION = 'SUMCON_TIP_SERV' AND
+																 GI_PARAMETROS_EXT.TIPO = 'COD' AND
+																 GI_PARAMETROS_EXT.COD_PARAMETRO = 0 ) ;
+	OPEN lcur_sumcon_tip_serv;
+
+	ls_return = " AND SUMCON.TIP_SERV IN ( "
+
+	If SQLCA.SQLCODE = 0 Then
+		DO WHILE SQLCA.SQLCODE = 0
+			FETCH lcur_sumcon_tip_serv INTO :ls_tipo_servicio ;
+
+			If SQLCA.SQLCODE = 0 Then
+				ls_return += "'" + ls_tipo_servicio + "', "
+				ll_fetch ++
+			Else
+				ls_return = Left(ls_return, Len(ls_return) - 2)
+				ls_return += ") "
+			End If
+
+			If ll_fetch > 250 Then
+				ls_return = " AND ROWNUM <= 0 "
+
+				MessageBox("Aviso", "Se han encontrado muchos registros para los tipos de servicios.")
+				Exit							
+			End If
+		LOOP
+	Else
+		SetNull(ls_return)
+	End If
+	
+	CLOSE lcur_sumcon_tip_serv ;
+Else
+	ls_return = " "
+End If
+
+If IsNull(ls_return) Then ls_return = " "
+
+Return ls_return
+//******************************************
+//**  OSGI 2001.2  	09/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+end function
+

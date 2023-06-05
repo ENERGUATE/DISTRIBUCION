@@ -1,0 +1,34 @@
+HA$PBExportHeader$d_lista_tramo.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(12) updatewhereclause=yes name=matricula dbname="sgd_valor.matricula" )
+ column=(type=decimal(3) updatewhereclause=yes name=longitud dbname="sgd_valor.longitud" )
+ column=(type=char(50) updatewhereclause=yes name=descripcion dbname="sgd_valor.descripcion" )
+ column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="sgd_tramo.codigo" )
+ column=(type=decimal(0) updatewhereclause=yes name=bdi_job dbname="sgd_valor.bdi_job" )
+ retrieve="  SELECT ~"MATRICULA~",   
+         ~"LONGITUD~",   
+         ~"SGD_VALOR~".~"DESCRIPCION~",   
+         ~"A~".~"CODIGO~",   
+         ~"BDI_JOB~"  
+    FROM ~"SGD_VALOR~",
+         ~"SGD_TRAMO~" ~"A~"
+   WHERE ( ~"SGD_VALOR~".~"VALOR~" = ~"A~".~"TIPO_TRAMO~" ) and  
+       ( ( ~"A~".~"INSTALACION_ORIGEN~" = :ll_codigo ) AND  
+        ( ~"SGD_VALOR~".~"CODIF~" = 'T_TR' )) AND
+         BDI_JOB=(SELECT MAX(BDI_JOB) FROM SGD_TRAMO WHERE A.CODIGO=CODIGO)   
+" arguments=(("ll_codigo", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="9" y="4" height="64" width="384" format="[general]" html.valueishtml="0"  name=matricula visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="421" y="4" height="64" width="315" format="[general]" html.valueishtml="0"  name=longitud visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="754" y="4" height="64" width="1097" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="1874" y="4" height="64" width="302" format="[general]" html.valueishtml="0"  name=bdi_job visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Trabajo" border="6" color="0" x="1874" y="12" height="64" width="302" html.valueishtml="0"  name=sgd_tramo_bdi_job_t pointer="" visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Tipo" border="6" color="0" x="759" y="12" height="64" width="1097" html.valueishtml="0"  name=sgd_valor_descripcion_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Longitud" border="6" color="0" x="421" y="12" height="64" width="325" html.valueishtml="0"  name=sgd_tramo_longitud_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Matr$$HEX1$$ed00$$ENDHEX$$cula" border="6" color="0" x="9" y="12" height="64" width="393" html.valueishtml="0"  name=sgd_tramo_matricula_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,33 @@
+HA$PBExportHeader$d_bri_2004_pr_lista_brigadas_disp.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(25) updatewhereclause=yes name=brigada dbname="gi_brigada.nombre" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_mesa dbname="gi_brigada.nro_mesa" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_cmd dbname="gi_brigada.nro_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_centro dbname="gi_brigada.nro_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=ind_disponible dbname="gi_brigada.ind_disponible" )
+ column=(type=char(10) updatewhereclause=yes name=movil dbname="gi_brigada.movil" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=nro_brigada dbname="gi_brigada.nro_brigada" )
+ column=(type=char(8) updatewhereclause=yes name=frec_radio dbname="gi_brigada.frec_radio" )
+ column=(type=decimal(0) updatewhereclause=yes name=ind_previsto dbname="gi_brigada.ind_previsto" )
+ column=(type=decimal(0) updatewhereclause=yes name=tip_brigada dbname="gi_brigada.tip_brigada" )
+ retrieve="  SELECT DISTINCT ~"GI_BRIGADA~".~"NOMBRE~",   
+         ~"GI_BRIGADA~".~"NRO_MESA~",   
+         ~"GI_BRIGADA~".~"NRO_CMD~",   
+         ~"GI_BRIGADA~".~"NRO_CENTRO~",   
+         ~"GI_BRIGADA~".~"IND_DISPONIBLE~",   
+         ~"GI_BRIGADA~".~"MOVIL~",   
+         ~"GI_BRIGADA~".~"NRO_BRIGADA~",   
+         ~"GI_BRIGADA~".~"FREC_RADIO~",   
+         ~"GI_BRIGADA~".~"IND_PREVISTO~",  
+			~"GI_BRIGADA~".~"TIP_BRIGADA~"
+    FROM ~"GI_BRIGADA~"  
+   WHERE ( ~"GI_BRIGADA~".~"IND_DISPONIBLE~" = 1 and ~"GI_BRIGADA~".~"NRO_BRIGADA~" not in (select nro_brigada from gi_brigada_ot where nro_ot = :pi_nro_ot)) 
+         " update="GI_BRIGADA" updatewhere=0 updatekeyinplace=no arguments=(("pi_nro_ot", number)) )
+text(band=header alignment="2" text="Brigadas"border="6" color="0" x="9" y="8" height="64" width="2080"  name=brigada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="27" y="4" height="64" width="1614" format="[general]"  name=brigada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

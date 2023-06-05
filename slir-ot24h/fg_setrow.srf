@@ -1,0 +1,36 @@
+HA$PBExportHeader$fg_setrow.srf
+global type fg_setrow from function_object
+end type
+
+forward prototypes
+global function integer fg_setrow (ref datawindow pd_dw)
+end prototypes
+
+global function integer fg_setrow (ref datawindow pd_dw);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_setrow
+// 
+// Objetivo: Selecciona la fila donde se cliquea.
+//           
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada:  pd_dw
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	23/1/96		SAB			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+pd_dw.SetRow(pd_dw.GetRow())
+
+Return 1
+
+end function
+

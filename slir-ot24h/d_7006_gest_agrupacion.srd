@@ -1,0 +1,33 @@
+HA$PBExportHeader$d_7006_gest_agrupacion.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_descargo dbname="sgd_descargos_agrupados.nro_descargo" )
+ column=(type=char(30) updatewhereclause=yes name=sgd_instalacion_nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(80) updatewhereclause=yes name=sgd_descargos_agrupados_observaciones dbname="sgd_descargos_agrupados.observaciones" )
+ column=(type=decimal(5) updatewhereclause=yes name=seleccionada dbname="compute_0004" )
+ column=(type=datetime updatewhereclause=yes name=f_ini_solicitado dbname="sgd_descargos.f_ini_solicitado" )
+ column=(type=datetime updatewhereclause=yes name=f_fin_solicitado dbname="sgd_descargos.f_fin_solicitado" )
+ retrieve="  SELECT ~"SGD_DESCARGOS_AGRUPADOS~".~"NRO_DESCARGO~",   
+         ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         ~"SGD_DESCARGOS_AGRUPADOS~".~"OBSERVACIONES~",
+			2,
+			~"SGD_DESCARGOS~".~"F_INI_SOLICITADO~",
+  			~"SGD_DESCARGOS~".~"F_FIN_SOLICITADO~"
+    FROM ~"SGD_DESCARGOS_AGRUPADOS~",   
+         ~"SGD_INSTALACION~",
+			~"SGD_DESCARGOS~"
+   WHERE ( ~"SGD_DESCARGOS_AGRUPADOS~".~"NRO_INSTALACION_AFECTADA~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" ) and  
+         ( ( ~"SGD_DESCARGOS_AGRUPADOS~".~"NRO_AGRUPACION~" = :nro_agrupacion ) )    AND
+				~"SGD_DESCARGOS~".~"NRO_DESCARGO~" = ~"SGD_DESCARGOS_AGRUPADOS~".~"NRO_DESCARGO~"
+" arguments=(("nro_agrupacion", number)) )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0~tif (seleccionada = 1, 255,0)" x="9" y="4" height="76" width="471" format="[general]"  name=nro_descargo edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0~tif (seleccionada = 1, 255,0)" x="494" y="4" height="76" width="635" format="[general]"  name=sgd_instalacion_nom_instalacion edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0~tif (seleccionada = 1, 255,0)" x="1138" y="4" height="76" width="1234" format="[general]"  name=sgd_descargos_agrupados_observaciones edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nro Descargo"border="6" color="0" x="5" y="8" height="64" width="471"  name=nro_descargo_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Nom Instalacion"border="6" color="0" x="494" y="8" height="64" width="626"  name=sgd_instalacion_nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Observaciones"border="6" color="0" x="1138" y="8" height="64" width="1230"  name=sgd_descargos_agrupados_observaciones_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

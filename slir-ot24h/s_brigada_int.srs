@@ -1,0 +1,5 @@
+HA$PBExportHeader$s_brigada_int.srs
+global type s_brigada_int from structure
+	boolean		respuesta
+end type
+

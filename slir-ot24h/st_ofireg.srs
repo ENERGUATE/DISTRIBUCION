@@ -1,0 +1,6 @@
+HA$PBExportHeader$st_ofireg.srs
+global type st_ofireg from structure
+	string		oficina
+	string		region
+end type
+

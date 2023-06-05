@@ -1,0 +1,38 @@
+HA$PBExportHeader$fg_duracion_aviso_str.srf
+global type fg_duracion_aviso_str from function_object
+end type
+
+forward prototypes
+global function string fg_duracion_aviso_str (datetime pd_fecha_alta, datetime pd_fecha_res)
+end prototypes
+
+global function string fg_duracion_aviso_str (datetime pd_fecha_alta, datetime pd_fecha_res);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_duracion_aviso_str
+// 
+// Objetivo: Calcula el tiempo de duraci$$HEX1$$f300$$ENDHEX$$n entre dos fechas.
+//           
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada:  pd_fecha_alta, pd_fecha_res
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+string retorno
+
+if isnull(pd_fecha_res) then
+	 retorno =  fg_duracion_str(pd_fecha_alta,fgnu_fecha_actual(),1)
+else
+	retorno =  fg_duracion_str(pd_fecha_alta,pd_fecha_res,1)
+end if
+return retorno
+end function
+

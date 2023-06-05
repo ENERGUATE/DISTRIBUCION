@@ -1,0 +1,26 @@
+HA$PBExportHeader$su_drag_brigada_ot.srs
+global type su_drag_brigada_ot from structure
+	string		brigada
+	long		nro_brigada
+	long		nro_ot
+	string		movil
+	datetime		f_desde
+	datetime		h_desde
+	datetime		f_hasta
+	datetime		h_hasta
+	integer		turno
+	integer		ind_disponible
+	integer		ind_responsable
+	long		click_row
+	string		usuario
+	datetime		f_actual
+	datetime		h_actual
+	string		programa
+	string		frec_radio
+	string		pers_contacta
+	long		cantidad_ot
+	long		cantidad_tp
+	long		estado
+	integer		tip_brigada
+end type
+

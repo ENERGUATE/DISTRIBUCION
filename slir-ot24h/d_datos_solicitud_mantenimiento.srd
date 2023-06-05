@@ -1,0 +1,33 @@
+HA$PBExportHeader$d_datos_solicitud_mantenimiento.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=cod_incidencia dbname="gm_solicitudes.cod_incidencia" )
+ column=(type=datetime updatewhereclause=yes name=fecha_inicio dbname="gm_solicitudes.fecha_inicio" )
+ column=(type=datetime updatewhereclause=yes name=fecha_fin dbname="gm_solicitudes.fecha_fin" )
+ column=(type=char(3) updatewhereclause=yes name=cod_estado dbname="gm_solicitudes.cod_estado" )
+ column=(type=char(90) updatewhereclause=yes name=cod_solicitud dbname="cod_solicitud" )
+ column=(type=char(256) updatewhereclause=yes name=descripcion dbname="gm_solicitudes.descripcion" )
+ retrieve="SELECT s.cod_incidencia, 
+	   	s.fecha_inicio, 
+	   	s.fecha_fin, 
+	   	s.cod_estado, 
+	   	s.tipo_red||s.PLAN||s.cod_base||substr('00000'||cod_solicitud, length('00000'||cod_solicitud) - 4, 5)||cod_incidencia cod_solicitud,
+			s.descripcion
+FROM gm_solicitudes s
+WHERE cod_incidencia = :nro_incidencia" arguments=(("nro_incidencia", number)) )
+text(band=header alignment="2" text="C$$HEX1$$f300$$ENDHEX$$digo de la solicitud" border="6" color="33554432" x="9" y="8" height="52" width="919" html.valueishtml="0"  name=compute_0005_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha Inicio" border="6" color="33554432" x="933" y="8" height="52" width="517" html.valueishtml="0"  name=fecha_inicio_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha Fin" border="6" color="33554432" x="1467" y="8" height="52" width="503" html.valueishtml="0"  name=fecha_fin_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Estado" border="6" color="33554432" x="1989" y="8" height="52" width="366" html.valueishtml="0"  name=cod_estado_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cod Incidencia" border="6" color="33554432" x="2373" y="8" height="52" width="453" html.valueishtml="0"  name=cod_incidencia_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="52" width="919" format="[general]" html.valueishtml="0"  name=cod_solicitud visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="933" y="8" height="52" width="517" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_inicio visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="1467" y="8" height="52" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_fin visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1989" y="8" height="52" width="366" format="[general]" html.valueishtml="0"  name=cod_estado visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="2373" y="8" height="52" width="453" format="[general]" html.valueishtml="0"  name=cod_incidencia visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

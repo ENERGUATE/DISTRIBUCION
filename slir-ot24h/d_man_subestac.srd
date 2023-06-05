@@ -1,0 +1,111 @@
+HA$PBExportHeader$d_man_subestac.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=832 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=codigo dbname="sgd_subestac.codigo" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=usuario dbname="sgd_subestac.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="sgd_subestac.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_subestac.programa" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=matricula dbname="sgd_subestac.matricula" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=nombre dbname="sgd_subestac.nombre" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=descripcion dbname="sgd_subestac.descripcion" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=propiedad dbname="sgd_subestac.propiedad" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=potencia_instalada dbname="sgd_subestac.potencia_instalada" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_centro dbname="sgd_subestac.nro_centro" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_cmd dbname="sgd_subestac.nro_cmd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_mesa dbname="sgd_subestac.nro_mesa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_calle dbname="sgd_subestac.nro_calle" )
+ column=(type=number updatewhereclause=yes name=sgd_subestac_no_eq_incen dbname="sgd_subestac.no_eq_incen" )
+ column=(type=char(1) updatewhereclause=yes name=sgd_subestac_ups dbname="sgd_subestac.ups" )
+ column=(type=char(1) updatewhereclause=yes name=sgd_subestac_cuadromando dbname="sgd_subestac.cuadromando" )
+ column=(type=datetime updatewhereclause=yes name=sgd_subestac_fechaser dbname="sgd_subestac.fechaser" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=acceso dbname="sgd_subestac.acceso" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tel_exterior dbname="sgd_subestac.tel_exterior" )
+ column=(type=decimal(2) updatewhereclause=yes name=sgd_subestac_tension dbname="sgd_subestac.tension" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=superficie dbname="sgd_subestac.superficie" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=cedida_a dbname="sgd_subestac.cedida_a" )
+ column=(type=datetime updatewhereclause=yes name=sgd_subestac_fechaces dbname="sgd_subestac.fechaces" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_subestac_tel_interior dbname="sgd_subestac.tel_interior" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=bdi_job dbname="sgd_subestac.bdi_job" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=statflg dbname="sgd_subestac.statflg" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=instalacion_origen dbname="sgd_subestac.instalacion_origen" )
+ column=(type=char(30) updatewhereclause=yes name=callejero_nom_calle dbname="callejero.nom_calle" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_puerta dbname="sgd_subestac.nro_puerta" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=duplicador dbname="sgd_subestac.duplicador" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_prov dbname="sgd_subestac.cod_prov" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_depto dbname="sgd_subestac.cod_depto" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_munic dbname="sgd_subestac.cod_munic" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_local dbname="sgd_subestac.cod_local" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=class_id dbname="sgd_subestac.class_id" )
+ column=(type=decimal(5) updatewhereclause=yes name=pot_contratada dbname="compute_0036" )
+ column=(type=decimal(5) updatewhereclause=yes name=can_cli_imp dbname="compute_0037" )
+ column=(type=decimal(5) updatewhereclause=yes name=cant_cli dbname="compute_0038" )
+ retrieve="  SELECT ~"SGD_SUBESTAC~".~"CODIGO~",   
+         ~"SGD_SUBESTAC~".~"USUARIO~",   
+         ~"SGD_SUBESTAC~".~"F_ACTUAL~",   
+         ~"SGD_SUBESTAC~".~"PROGRAMA~",   
+         ~"SGD_SUBESTAC~".~"MATRICULA~",   
+         ~"SGD_SUBESTAC~".~"NOMBRE~",   
+         ~"SGD_SUBESTAC~".~"DESCRIPCION~",   
+         ~"SGD_SUBESTAC~".~"PROPIEDAD~",   
+         ~"SGD_SUBESTAC~".~"POTENCIA_INSTALADA~",   
+         ~"SGD_SUBESTAC~".~"NRO_CENTRO~",   
+         ~"SGD_SUBESTAC~".~"NRO_CMD~",   
+         ~"SGD_SUBESTAC~".~"NRO_MESA~",   
+         ~"SGD_SUBESTAC~".~"NRO_CALLE~",   
+         ~"SGD_SUBESTAC~".~"NO_EQ_INCEN~",   
+         ~"SGD_SUBESTAC~".~"UPS~",   
+         ~"SGD_SUBESTAC~".~"CUADROMANDO~",   
+         ~"SGD_SUBESTAC~".~"FECHASER~",   
+         ~"SGD_SUBESTAC~".~"ACCESO~",   
+         ~"SGD_SUBESTAC~".~"TEL_EXTERIOR~",   
+         ~"SGD_SUBESTAC~".~"TENSION~",   
+         ~"SGD_SUBESTAC~".~"SUPERFICIE~",   
+         ~"SGD_SUBESTAC~".~"CEDIDA_A~",   
+         ~"SGD_SUBESTAC~".~"FECHACES~",   
+         ~"SGD_SUBESTAC~".~"TEL_INTERIOR~",   
+         ~"SGD_SUBESTAC~".~"BDI_JOB~",   
+         ~"SGD_SUBESTAC~".~"STATFLG~",   
+         ~"SGD_SUBESTAC~".~"INSTALACION_ORIGEN~",   
+         ~"CALLEJERO~".~"NOM_CALLE~",   
+         ~"SGD_SUBESTAC~".~"NRO_PUERTA~",   
+         ~"SGD_SUBESTAC~".~"DUPLICADOR~",   
+         ~"SGD_SUBESTAC~".~"COD_PROV~",   
+         ~"SGD_SUBESTAC~".~"COD_DEPTO~",   
+         ~"SGD_SUBESTAC~".~"COD_MUNIC~",   
+         ~"SGD_SUBESTAC~".~"COD_LOCAL~",   
+         ~"SGD_SUBESTAC~".~"CLASS_ID~",   
+         NVL(~"SGD_INSTALACION~".~"POT_CONTRATADA~",0),   
+         NVL(~"SGD_INSTALACION~".~"CAN_CLI_IMP~", 0),  
+         NVL(~"SGD_INSTALACION~".~"CANT_CLI~",0)  
+    FROM ~"SGD_SUBESTAC~",   
+         ~"CALLEJERO~",   
+         ~"SGD_INSTALACION~"  
+   WHERE ( callejero.cod_calle (+) = sgd_subestac.nro_calle) and  
+         ( ( ~"SGD_SUBESTAC~".~"CODIGO~" = :codigo ) ) AND  
+         ~"SGD_SUBESTAC~".~"BDI_JOB~" = (SELECT MAX(BDI_JOB) FROM SGD_SUBESTAC    WHERE CODIGO=:codigo) AND  
+		  ~"SGD_INSTALACION~".BDI_JOB = (SELECT MIN(BDI_JOB) FROM SGD_SUBESTAC    WHERE CODIGO=:codigo) AND  
+         ~"SGD_SUBESTAC~".~"CODIGO~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~"    
+" update="SGD_SUBESTAC" updatewhere=1 updatekeyinplace=yes retrieve.asneeded=yes arguments=(("codigo", number)) )
+column(band=detail id=36 alignment="1" tabsequence=32766 border="5" color="8388608" x="1417" y="424" height="64" width="334" format="[general]"  name=pot_contratada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=37 alignment="1" tabsequence=32766 border="5" color="8388608" x="1417" y="556" height="64" width="334" format="[general]"  name=can_cli_imp edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=6 alignment="0" tabsequence=10 border="5" color="0" x="462" y="20" height="64" width="850" format="[general]"  name=nombre editmask.mask="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="0" x="462" y="156" height="64" width="142" format="[general]"  name=matricula editmask.mask="!!!" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=30 border="5" color="0" x="462" y="284" height="64" width="850" format="[general]"  name=propiedad dddw.name=ddw_propiedad dddw.displaycolumn=descripcion dddw.datacolumn=valor dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Pot. Contratada"border="0" color="0" x="855" y="424" height="64" width="549"  name=potencia_contratada_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Cant. Clientes Imp."border="0" color="0" x="855" y="552" height="64" width="549"  name=cant_clientes_imp_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Cant. Clientes"border="0" color="0" x="23" y="548" height="64" width="425"  name=cant_clientes_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Pot. Instalada"border="0" color="0" x="23" y="424" height="64" width="425"  name=potencia_instalada_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Propiedad"border="0" color="0" x="23" y="284" height="64" width="425"  name=propiedad_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Matr$$HEX1$$ed00$$ENDHEX$$cula"border="0" color="0" x="23" y="156" height="64" width="425"  name=matricula_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Nombre"border="0" color="0" x="23" y="20" height="64" width="425"  name=nombre_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Num Puerta"border="0" color="0" x="773" y="660" height="64" width="526"  name=num_puerta_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Duplicador"border="0" color="0" x="1403" y="660" height="64" width="347"  name=duplicador_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="5" color="8388608" x="64" y="752" height="64" width="585" format="[general]"  name=callejero_nom_calle edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="5" color="8388608" x="773" y="752" height="64" width="526" format="[general]"  name=nro_puerta edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="5" color="8388608" x="1403" y="752" height="64" width="347" format="[general]"  name=duplicador edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=9 alignment="1" tabsequence=40 border="5" color="0" x="462" y="424" height="64" width="329" format="[general]"  name=potencia_instalada editmask.mask="###,###.0" editmask.spinrange="1~~99999999" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=38 alignment="1" tabsequence=32766 border="5" color="8388608" x="462" y="548" height="64" width="329" format="[general]"  name=cant_cli edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

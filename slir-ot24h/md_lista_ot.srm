@@ -1,0 +1,1052 @@
+HA$PBExportHeader$md_lista_ot.srm
+forward
+global type md_lista_ot from md_consultas_estandar
+end type
+type m_avisosasociados from menu within m_consultar
+end type
+type m_avisosasociadosaot from menu within m_consultar
+end type
+type m_observaciones from menu within m_consultar
+end type
+type m_callesafectadas from menu within m_consultar
+end type
+type m_grafico from menu within m_consultar
+end type
+type m_localizacion from menu within m_grafico
+end type
+type m_quitarblink from menu within m_grafico
+end type
+type m_selecciondecapas from menu within m_grafico
+end type
+type m_instalacionesconbrigadas from menu within m_grafico
+end type
+type m_grafico from menu within m_consultar
+m_localizacion m_localizacion
+m_quitarblink m_quitarblink
+m_selecciondecapas m_selecciondecapas
+m_instalacionesconbrigadas m_instalacionesconbrigadas
+end type
+type m_imprimir1 from menu within m_consultar
+end type
+type m_consultar from md_consultas_estandar`m_consultar within md_lista_ot
+m_avisosasociados m_avisosasociados
+m_avisosasociadosaot m_avisosasociadosaot
+m_observaciones m_observaciones
+m_callesafectadas m_callesafectadas
+m_grafico m_grafico
+m_imprimir1 m_imprimir1
+end type
+type m_instalacion from menu within m_ordenar
+end type
+type m_ordenar from md_consultas_estandar`m_ordenar within md_lista_ot
+m_instalacion m_instalacion
+end type
+end forward
+
+global type md_lista_ot from md_consultas_estandar
+end type
+global md_lista_ot md_lista_ot
+
+type variables
+//
+end variables
+
+forward prototypes
+public subroutine mf_check_refresco ()
+end prototypes
+
+public subroutine mf_check_refresco ();md_lista_descargos.m_tr.m_5seg.enabled = true
+md_lista_descargos.m_tr.m_15seg.enabled = true
+md_lista_descargos.m_tr.m_30seg.enabled = true
+md_lista_descargos.m_tr.m_45seg.enabled = true
+md_lista_descargos.m_tr.m_60seg.enabled = true
+md_lista_descargos.m_tr.m_120seg.enabled = true
+
+//if w_7101_consulta_descargos.timer > 0 then
+
+//end if
+end subroutine
+
+on md_lista_ot.create
+md_lista_ot=this
+call super::create
+this.text = "md_lista_ot"
+end on
+
+on md_lista_ot.destroy
+call super::destroy
+end on
+
+type m_archivo from md_consultas_estandar`m_archivo within md_lista_ot
+end type
+
+on m_archivo.create
+call super::create
+this.tag = "ARCHIVO"
+end on
+
+on m_archivo.destroy
+call super::destroy
+end on
+
+type m_agregar from md_consultas_estandar`m_agregar within m_archivo
+end type
+
+event m_agregar::clicked;w_7101_consulta_descargos.TriggerEvent("ue_arch_agregar")
+end event
+
+on m_agregar.create
+call super::create
+this.visible = false
+this.enabled = true
+this.microhelp = "Ingresar una Incidencia"
+end on
+
+on m_agregar.destroy
+call super::destroy
+end on
+
+type m_eliminar from md_consultas_estandar`m_eliminar within m_archivo
+end type
+
+event m_eliminar::clicked;call super::clicked;w_7101_consulta_descargos.TriggerEvent("ue_eliminar")
+end event
+
+on m_eliminar.create
+call super::create
+this.visible = false
+this.enabled = true
+end on
+
+on m_eliminar.destroy
+call super::destroy
+end on
+
+type m_cerrar from md_consultas_estandar`m_cerrar within m_archivo
+end type
+
+on m_cerrar.create
+call super::create
+this.toolbaritemvisible = true
+end on
+
+on m_cerrar.destroy
+call super::destroy
+end on
+
+type m_- from md_consultas_estandar`m_- within m_archivo
+end type
+
+on m_-.create
+call super::create
+this.visible = false
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_grabar from md_consultas_estandar`m_grabar within m_archivo
+end type
+
+on m_grabar.create
+call super::create
+this.visible = false
+end on
+
+on m_grabar.destroy
+call super::destroy
+end on
+
+type m_imprimir from md_consultas_estandar`m_imprimir within m_archivo
+end type
+
+on m_imprimir.create
+call super::create
+this.enabled = false
+this.toolbaritemvisible = false
+end on
+
+on m_imprimir.destroy
+call super::destroy
+end on
+
+type m_seleccionarimpresora from md_consultas_estandar`m_seleccionarimpresora within m_archivo
+end type
+
+on m_seleccionarimpresora.create
+call super::create
+this.tag = "SELECCIONARIMPRESORA"
+this.toolbaritemvisible = false
+end on
+
+on m_seleccionarimpresora.destroy
+call super::destroy
+end on
+
+type m_-2 from md_consultas_estandar`m_-2 within m_archivo
+end type
+
+on m_-2.create
+call super::create
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_preferencias from md_consultas_estandar`m_preferencias within m_archivo
+end type
+
+on m_preferencias.create
+call super::create
+this.tag = "PREFERENCIAS"
+this.enabled = false
+this.toolbaritemvisible = false
+end on
+
+on m_preferencias.destroy
+call super::destroy
+end on
+
+type m_-3 from md_consultas_estandar`m_-3 within m_archivo
+end type
+
+on m_-3.create
+call super::create
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_salir from md_consultas_estandar`m_salir within m_archivo
+end type
+
+on m_salir.create
+call super::create
+this.tag = "SALIR"
+this.enabled = false
+this.toolbaritemvisible = false
+end on
+
+on m_salir.destroy
+call super::destroy
+end on
+
+type m_editar from md_consultas_estandar`m_editar within md_lista_ot
+end type
+
+on m_editar.create
+call super::create
+this.tag = "EDITAR"
+end on
+
+on m_editar.destroy
+call super::destroy
+end on
+
+type m_deshacer from md_consultas_estandar`m_deshacer within m_editar
+end type
+
+on m_deshacer.create
+call super::create
+this.tag = "DESHACER"
+end on
+
+on m_deshacer.destroy
+call super::destroy
+end on
+
+type m_-7 from md_consultas_estandar`m_-7 within m_editar
+end type
+
+on m_-7.create
+call super::create
+end on
+
+on m_-7.destroy
+call super::destroy
+end on
+
+type m_cortar from md_consultas_estandar`m_cortar within m_editar
+end type
+
+on m_cortar.create
+call super::create
+this.tag = "CORTAR"
+end on
+
+on m_cortar.destroy
+call super::destroy
+end on
+
+type m_copiar from md_consultas_estandar`m_copiar within m_editar
+end type
+
+on m_copiar.create
+call super::create
+this.tag = "COPIAR"
+end on
+
+on m_copiar.destroy
+call super::destroy
+end on
+
+type m_pegar from md_consultas_estandar`m_pegar within m_editar
+end type
+
+on m_pegar.create
+call super::create
+this.tag = "PEGAR"
+end on
+
+on m_pegar.destroy
+call super::destroy
+end on
+
+type m_-8 from md_consultas_estandar`m_-8 within m_editar
+end type
+
+on m_-8.create
+call super::create
+end on
+
+on m_-8.destroy
+call super::destroy
+end on
+
+type m_iralcomienzo from md_consultas_estandar`m_iralcomienzo within m_editar
+end type
+
+on m_iralcomienzo.create
+call super::create
+this.tag = "IRALCOMIENZO"
+this.visible = false
+this.toolbaritemvisible = false
+this.toolbaritemspace = 3
+end on
+
+on m_iralcomienzo.destroy
+call super::destroy
+end on
+
+type m_iralfinal from md_consultas_estandar`m_iralfinal within m_editar
+end type
+
+on m_iralfinal.create
+call super::create
+this.tag = "IRALFINAL"
+this.visible = false
+this.enabled = true
+this.toolbaritemvisible = false
+end on
+
+on m_iralfinal.destroy
+call super::destroy
+end on
+
+type m_buscar from md_consultas_estandar`m_buscar within m_editar
+end type
+
+event m_buscar::clicked;md_lista_ot.m_consultar.m_grafico.m_localizacion.enabled=false
+md_lista_ot.m_consultar.m_grafico.m_quitarblink.enabled=false
+w_6208_consulta_ot.fw_buscar()
+end event
+
+on m_buscar.create
+call super::create
+this.tag = "BUSCAR"
+this.toolbaritemorder = 1
+this.toolbaritemspace = 3
+end on
+
+on m_buscar.destroy
+call super::destroy
+end on
+
+type m_consultar from md_consultas_estandar`m_consultar within md_lista_ot
+m_avisosasociados m_avisosasociados
+m_avisosasociadosaot m_avisosasociadosaot
+m_observaciones m_observaciones
+m_callesafectadas m_callesafectadas
+m_grafico m_grafico
+m_imprimir1 m_imprimir1
+end type
+
+on m_consultar.create
+call super::create
+this.tag = "CONSULTAR"
+this.text = "&Consultar"
+this.enabled = true
+this.toolbaritemvisible = false
+this.toolbaritemspace = 2
+this.m_avisosasociados=create m_avisosasociados
+this.m_avisosasociadosaot=create m_avisosasociadosaot
+this.m_observaciones=create m_observaciones
+this.m_callesafectadas=create m_callesafectadas
+this.m_grafico=create m_grafico
+this.m_imprimir1=create m_imprimir1
+this.Item[UpperBound(this.Item)+1]=this.m_avisosasociados
+this.Item[UpperBound(this.Item)+1]=this.m_avisosasociadosaot
+this.Item[UpperBound(this.Item)+1]=this.m_observaciones
+this.Item[UpperBound(this.Item)+1]=this.m_callesafectadas
+this.Item[UpperBound(this.Item)+1]=this.m_grafico
+this.Item[UpperBound(this.Item)+1]=this.m_imprimir1
+end on
+
+on m_consultar.destroy
+call super::destroy
+destroy(this.m_avisosasociados)
+destroy(this.m_avisosasociadosaot)
+destroy(this.m_observaciones)
+destroy(this.m_callesafectadas)
+destroy(this.m_grafico)
+destroy(this.m_imprimir1)
+end on
+
+type m_descripcin from md_consultas_estandar`m_descripcin within m_consultar
+end type
+
+on m_descripcin.create
+call super::create
+this.tag = "DESCRIPCION"
+this.text = "&Descripci$$HEX1$$f300$$ENDHEX$$n~tCtrl+A"
+this.enabled = true
+this.checked = false
+end on
+
+on m_descripcin.destroy
+call super::destroy
+end on
+
+type m_informacindeot from md_consultas_estandar`m_informacindeot within m_consultar
+end type
+
+on m_informacindeot.create
+call super::create
+this.tag = "INFORMACIONOT"
+this.text = "&Informaci$$HEX1$$f300$$ENDHEX$$n de OT~tCtrl+O"
+end on
+
+on m_informacindeot.destroy
+call super::destroy
+end on
+
+type m_-456 from md_consultas_estandar`m_-456 within m_consultar
+end type
+
+on m_-456.create
+call super::create
+end on
+
+on m_-456.destroy
+call super::destroy
+end on
+
+type m_brigadistas from md_consultas_estandar`m_brigadistas within m_consultar
+end type
+
+on m_brigadistas.create
+call super::create
+this.tag = "BRIGADISTAS"
+this.text = "&Brigadistas~tCtrl+B"
+end on
+
+on m_brigadistas.destroy
+call super::destroy
+end on
+
+type m_reclamaciones from md_consultas_estandar`m_reclamaciones within m_consultar
+end type
+
+on m_reclamaciones.create
+call super::create
+this.tag = "RECLAMACIONES"
+this.text = "&Avisos~tCtrl+R"
+end on
+
+on m_reclamaciones.destroy
+call super::destroy
+end on
+
+type m_situacinclimatolgica from md_consultas_estandar`m_situacinclimatolgica within m_consultar
+end type
+
+event m_situacinclimatolgica::clicked;call super::clicked;w_7101_consulta_descargos.TriggerEvent("ue_sit_clima")
+end event
+
+on m_situacinclimatolgica.create
+call super::create
+this.tag = "SITUACIONCLIMATOLOGICA"
+this.text = "Situaci$$HEX1$$f300$$ENDHEX$$n &Climatol$$HEX1$$f300$$ENDHEX$$gica~tCtrl+S"
+this.toolbaritemspace = 3
+end on
+
+on m_situacinclimatolgica.destroy
+call super::destroy
+end on
+
+type m_suministrosimportantes from md_consultas_estandar`m_suministrosimportantes within m_consultar
+end type
+
+event m_suministrosimportantes::clicked;call super::clicked;w_7101_consulta_descargos.TriggerEvent("ue_sum_imp")
+end event
+
+on m_suministrosimportantes.create
+call super::create
+this.tag = "SUMINISTROSIMPORTANTES"
+this.text = "S&uministros Importantes~tCtrl+I"
+this.enabled = true
+end on
+
+on m_suministrosimportantes.destroy
+call super::destroy
+end on
+
+type m_ordenar from md_consultas_estandar`m_ordenar within md_lista_ot
+m_instalacion m_instalacion
+end type
+
+on m_ordenar.create
+call super::create
+this.tag = "ORDENAR"
+this.enabled = true
+this.m_instalacion=create m_instalacion
+this.Item[UpperBound(this.Item)+1]=this.m_instalacion
+end on
+
+on m_ordenar.destroy
+call super::destroy
+destroy(this.m_instalacion)
+end on
+
+type m_duracin from md_consultas_estandar`m_duracin within m_ordenar
+end type
+
+event m_duracin::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 1
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_duracin.create
+call super::create
+this.tag = "DURACION"
+this.microhelp = "Permite ordenar la Lista por la Duraci$$HEX1$$f300$$ENDHEX$$n de los Avisos"
+this.toolbaritemspace = 3
+end on
+
+on m_duracin.destroy
+call super::destroy
+end on
+
+type m_prioridad from md_consultas_estandar`m_prioridad within m_ordenar
+end type
+
+event m_prioridad::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 3
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_prioridad.create
+call super::create
+this.tag = "PRIORIDAD"
+this.visible = true
+this.text = "&Instalacion~tShift+F1"
+this.enabled = true
+this.shortcut = 1136
+this.microhelp = "Permite ordenar la lista por la Prioridad de los Avisos"
+end on
+
+on m_prioridad.destroy
+call super::destroy
+end on
+
+type m_d from md_consultas_estandar`m_d within m_ordenar
+end type
+
+event m_d::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 4
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_d.create
+call super::create
+this.visible = true
+this.text = "&Solicitante~tShift+F2"
+this.enabled = true
+this.shortcut = 1137
+this.microhelp = "Permite ordenar la Llsta por la Direcci$$HEX1$$f300$$ENDHEX$$n de los Avisos"
+end on
+
+on m_d.destroy
+call super::destroy
+end on
+
+type m_importante from md_consultas_estandar`m_importante within m_ordenar
+end type
+
+event m_importante::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 2
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_importante.create
+call super::create
+this.tag = "IMPORTANTE"
+this.visible = true
+this.text = "&Estado~tShift+F3"
+this.enabled = true
+this.shortcut = 1138
+this.microhelp = "Permite ordenar la lista de acuerdo al Estado en que se encuentre en Operaciones."
+this.toolbaritemname = "oper.bmp"
+this.toolbaritemtext = "Ord. Est. Oper."
+end on
+
+on m_importante.destroy
+call super::destroy
+end on
+
+type m_peligro from md_consultas_estandar`m_peligro within m_ordenar
+end type
+
+event m_peligro::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 4
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_peligro.create
+call super::create
+this.tag = "PELIGRO"
+this.text = "Estado &Mantenimiento~tShift+F5"
+this.microhelp = "Permite ordenar la lista de acuerdo al Estado en que se encuentre en Mantenimiento."
+this.toolbaritemname = "mante.bmp"
+this.toolbaritemtext = "Ord. Est. Mant."
+end on
+
+on m_peligro.destroy
+call super::destroy
+end on
+
+type m_incidenciaasociada from md_consultas_estandar`m_incidenciaasociada within m_ordenar
+end type
+
+event m_incidenciaasociada::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 7
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_incidenciaasociada.create
+call super::create
+this.tag = "INCIDENCIAASOCIADA"
+this.text = "F&echa de Resoluci$$HEX1$$f300$$ENDHEX$$n~tShift+F6"
+this.microhelp = "Permite ordenar la lista de acuerdo a la Fecha de Resoluci$$HEX1$$f300$$ENDHEX$$n de la Incidencia."
+this.toolbaritemname = "alta_pro.bmp"
+this.toolbaritemtext = "Ord. Fec. Res."
+end on
+
+on m_incidenciaasociada.destroy
+call super::destroy
+end on
+
+type m_fechaderesuelto from md_consultas_estandar`m_fechaderesuelto within m_ordenar
+end type
+
+event m_fechaderesuelto::clicked;call super::clicked;gu_comunic.is_comunic.intval9 = 8
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_fechaderesuelto.create
+call super::create
+this.tag = "FECHADERESUELTO"
+this.text = "&Fecha de Detecci$$HEX1$$f300$$ENDHEX$$n~tShift+F7"
+this.microhelp = "Permite ordenar la lista de acuerdo a la Fecha de Detecci$$HEX1$$f300$$ENDHEX$$n de la Incidencia."
+this.toolbaritemtext = "Ord. Fec. Detec."
+end on
+
+on m_fechaderesuelto.destroy
+call super::destroy
+end on
+
+type m_ventana from md_consultas_estandar`m_ventana within md_lista_ot
+end type
+
+on m_ventana.create
+call super::create
+this.tag = "VENTANA"
+end on
+
+on m_ventana.destroy
+call super::destroy
+end on
+
+type m_cascada from md_consultas_estandar`m_cascada within m_ventana
+end type
+
+on m_cascada.create
+call super::create
+this.tag = "CASCADA"
+end on
+
+on m_cascada.destroy
+call super::destroy
+end on
+
+type m_mosaico from md_consultas_estandar`m_mosaico within m_ventana
+end type
+
+on m_mosaico.create
+call super::create
+this.tag = "MOSAICO"
+end on
+
+on m_mosaico.destroy
+call super::destroy
+end on
+
+type m_organizar from md_consultas_estandar`m_organizar within m_ventana
+end type
+
+on m_organizar.create
+call super::create
+this.tag = "ORGANIZAR"
+end on
+
+on m_organizar.destroy
+call super::destroy
+end on
+
+type m_56 from md_consultas_estandar`m_56 within md_lista_ot
+end type
+
+on m_56.create
+call super::create
+end on
+
+on m_56.destroy
+call super::destroy
+end on
+
+type m_acercadelopensgi from md_consultas_estandar`m_acercadelopensgi within m_56
+end type
+
+event m_acercadelopensgi::clicked;call super::clicked;open(w_acerca_de_sgi)
+end event
+
+on m_acercadelopensgi.create
+call super::create
+end on
+
+on m_acercadelopensgi.destroy
+call super::destroy
+end on
+
+type m_avisosasociados from menu within m_consultar
+end type
+
+event clicked;w_7101_consulta_descargos.TriggerEvent("ue_avisos_asociados")
+end event
+
+on m_avisosasociados.create
+call super::create
+this.tag = "ASOCIARAVISOS"
+this.visible = false
+this.text = "A&visos Asociados~tCtrl+U"
+this.enabled = false
+this.shortcut = 341
+this.microhelp = "Avisos Asociados a la Incidencia"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Custom020!"
+this.toolbaritemtext = "avisos asociados"
+end on
+
+on m_avisosasociados.destroy
+call super::destroy
+end on
+
+type m_avisosasociadosaot from menu within m_consultar
+end type
+
+event clicked;//AHM (29/096/2009) Mejora 1/468636
+w_6208_consulta_ot.TriggerEvent("ue_avisos_asociados")
+end event
+
+on m_avisosasociadosaot.create
+call super::create
+this.visible = false
+this.text = "Avisos aso&ciados a ot~tCtrl+U"
+this.enabled = false
+this.shortcut = 341
+this.microhelp = "Avisos asociados a ot"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Custom020!"
+this.toolbaritemtext = "Avisos asociados a OT"
+end on
+
+on m_avisosasociadosaot.destroy
+call super::destroy
+end on
+
+type m_observaciones from menu within m_consultar
+end type
+
+event clicked;w_7101_consulta_descargos.TriggerEvent("ue_observaciones")
+end event
+
+on m_observaciones.create
+call super::create
+this.tag = "OBSERVACIONES"
+this.visible = false
+this.text = "&Observaciones~tCtrl+E"
+this.enabled = false
+this.shortcut = 325
+this.microhelp = "Observaci$$HEX1$$f300$$ENDHEX$$nes de la incidendcia"
+this.toolbaritemvisible = false
+this.toolbaritemname = "ScriptYes!"
+this.toolbaritemtext = "Observaciones"
+end on
+
+on m_observaciones.destroy
+call super::destroy
+end on
+
+type m_callesafectadas from menu within m_consultar
+end type
+
+on m_callesafectadas.create
+call super::create
+this.visible = false
+this.text = "&Calles Afectadas"
+this.enabled = false
+this.toolbaritemvisible = false
+this.toolbaritemname = "ruta.bmp"
+this.toolbaritemspace = 4
+end on
+
+event clicked;w_7101_consulta_descargos.TriggerEvent("ue_calles_afectadas")
+end event
+
+on m_callesafectadas.destroy
+call super::destroy
+end on
+
+type m_grafico from menu within m_consultar
+m_localizacion m_localizacion
+m_quitarblink m_quitarblink
+m_selecciondecapas m_selecciondecapas
+m_instalacionesconbrigadas m_instalacionesconbrigadas
+end type
+
+on m_grafico.create
+call super::create
+this.visible = false
+this.text = "&Grafica"
+this.microhelp = "Consulta gr$$HEX1$$e100$$ENDHEX$$fica"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Consulta gr$$HEX1$$e100$$ENDHEX$$fica"
+this.toolbaritemorder = 3
+this.toolbaritemspace = 3
+this.m_localizacion=create m_localizacion
+this.m_quitarblink=create m_quitarblink
+this.m_selecciondecapas=create m_selecciondecapas
+this.m_instalacionesconbrigadas=create m_instalacionesconbrigadas
+this.Item[UpperBound(this.Item)+1]=this.m_localizacion
+this.Item[UpperBound(this.Item)+1]=this.m_quitarblink
+this.Item[UpperBound(this.Item)+1]=this.m_selecciondecapas
+this.Item[UpperBound(this.Item)+1]=this.m_instalacionesconbrigadas
+end on
+
+on m_grafico.destroy
+call super::destroy
+destroy(this.m_localizacion)
+destroy(this.m_quitarblink)
+destroy(this.m_selecciondecapas)
+destroy(this.m_instalacionesconbrigadas)
+end on
+
+type m_localizacion from menu within m_grafico
+end type
+
+event clicked;
+int li_retorno
+
+	setpointer(hourglass!)
+	
+	if isvalid(onis) then 
+		onis.of_quita_blink()
+	if gl_instalacion_afectada>0 then 
+		if w_6208_consulta_ot.ib_es_calle then
+					li_retorno=onis.of_muestra_calle(gl_instalacion_afectada)
+		else
+				li_retorno=onis.of_muestra_elemento(gl_instalacion_afectada,true)
+		end if
+	      if li_retorno=1 then
+   				//onis.of_carga_simbologia()			
+		   	fg_mostrar(true)		
+			else
+		   	fg_mostrar(false)	
+				if w_6208_consulta_ot.ib_es_calle then
+					gnv_msg.f_mensaje("EX22","","",OK!)
+				else
+					gnv_msg.f_mensaje("EX20","","",OK!)
+				end if
+		   	fg_mostrar(true)		
+			end if	
+		else
+			fg_mostrar(true)		
+		end if	
+	end if
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+end event
+
+on m_localizacion.create
+call super::create
+this.text = "&Localizaci$$HEX1$$f300$$ENDHEX$$n"
+this.microhelp = "Localizaci$$HEX1$$f300$$ENDHEX$$n de instalaciones asociadas a la OT"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Picture5!"
+this.toolbaritemtext = "Localizaci$$HEX1$$f300$$ENDHEX$$n"
+this.toolbaritemorder = 2
+this.toolbaritemspace = 3
+end on
+
+on m_localizacion.destroy
+call super::destroy
+end on
+
+type m_quitarblink from menu within m_grafico
+end type
+
+event clicked;int retorno
+setpointer(HourGlass!)
+if isvalid(onis) then 
+	onis.of_quita_blink()
+	fg_mostrar(true)
+end if
+
+
+	
+end event
+
+on m_quitarblink.create
+call super::create
+this.text = "&Quitar blink"
+this.microhelp = "Quitar blink"
+this.toolbaritemvisible = false
+this.toolbaritemname = "desmar.bmp"
+this.toolbaritemtext = "Quitar blink"
+this.toolbaritemorder = 2
+end on
+
+on m_quitarblink.destroy
+call super::destroy
+end on
+
+type m_selecciondecapas from menu within m_grafico
+end type
+
+event clicked;int retorno
+setpointer(HourGlass!)
+if isvalid(onis) then 
+if  (onis.of_Selecciona_capa()>0) then
+	setpointer(HourGlass!)
+	retorno=onis.of_trata_capa()
+	if retorno=0 then
+		fg_mostrar(false)		
+		gnv_msg.f_mensaje("EX21","","",OK!)
+	end if
+	fg_mostrar(true)
+end if
+end if
+	
+end event
+
+on m_selecciondecapas.create
+call super::create
+this.text = "&Selecci$$HEX1$$f300$$ENDHEX$$n de capas"
+this.microhelp = "Selecci$$HEX1$$f300$$ENDHEX$$n de capas cartogr$$HEX1$$e100$$ENDHEX$$ficas"
+this.toolbaritemvisible = false
+this.toolbaritemname = "capas2.bmp"
+this.toolbaritemtext = "Selecci$$HEX1$$f300$$ENDHEX$$n de capas "
+this.toolbaritemorder = 2
+end on
+
+on m_selecciondecapas.destroy
+call super::destroy
+end on
+
+type m_instalacionesconbrigadas from menu within m_grafico
+end type
+
+on m_instalacionesconbrigadas.create
+call super::create
+this.text = "&Instalaciones con brigadas"
+this.microhelp = "Instalaciones con brigadas trabajando"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Step!"
+this.toolbaritemtext = "Instalaciones con brigadas trabajando"
+this.toolbaritemorder = 2
+end on
+
+event clicked;checked= not checked
+if isvalid(onis) then
+	if onis.of_carga_simbologia_instalaciones_bri(checked)>0 then
+    fg_mostrar(true)
+ end if
+end if
+end event
+
+on m_instalacionesconbrigadas.destroy
+call super::destroy
+end on
+
+type m_imprimir1 from menu within m_consultar
+end type
+
+event clicked;w_6208_consulta_ot.triggerevent("ue_arch_imprimir")
+end event
+
+on m_imprimir1.create
+call super::create
+this.text = "&Imprimir"
+this.microhelp = "Imprimir lista"
+this.toolbaritemname = "Print!"
+this.toolbaritemtext = "Imprimir lista"
+this.toolbaritemorder = 3
+this.toolbaritemspace = 2
+end on
+
+on m_imprimir1.destroy
+call super::destroy
+end on
+
+type m_instalacion from menu within m_ordenar
+end type
+
+event clicked;gu_comunic.is_comunic.intval9 = 9
+w_7101_consulta_descargos.triggerevent("ue_criterio_orden")
+end event
+
+on m_instalacion.create
+call super::create
+this.visible = false
+this.text = "Instalacion~tShift+F2"
+this.enabled = false
+this.shortcut = 1137
+end on
+
+on m_instalacion.destroy
+call super::destroy
+end on
+

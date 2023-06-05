@@ -1,0 +1,11 @@
+HA$PBExportHeader$d_tipos.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(5) updatewhereclause=yes name=tipo dbname="tipos.tipo" )
+ column=(type=char(80) updatewhereclause=yes name=desc_tipo dbname="tipos.desc_tipo" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"tipos~" ) COLUMN(NAME=~"tipos.tipo~") COLUMN(NAME=~"tipos.desc_tipo~")WHERE( EXP1 =~"~~~"TIPOS~~~".~~~"TIPO~~~"~" OP =~"like~" EXP2 =~":TIPO~" ) ) ORDER(NAME=~"tipos.desc_tipo~" ASC=yes ) ARG(NAME = ~"TIPO~" TYPE = string) " arguments=(("TIPO", string)) )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="8388608" x="5" y="8" height="64" width="1125" format="[general]"  name=desc_tipo edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

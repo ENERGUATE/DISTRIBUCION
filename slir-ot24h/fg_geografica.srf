@@ -1,0 +1,29 @@
+HA$PBExportHeader$fg_geografica.srf
+global type fg_geografica from function_object
+end type
+
+forward prototypes
+global function string fg_geografica (readonly string as_nivel, readonly string as_texto_original)
+end prototypes
+
+global function string fg_geografica (readonly string as_nivel, readonly string as_texto_original);String ls_return
+
+
+
+
+If Not fg_verifica_parametro('GEO') Then Return as_texto_original
+
+
+
+SELECT "SGD_VALOR"."DESCRIPCION"  
+  INTO :ls_return  
+  FROM "SGD_VALOR"  
+ WHERE ( Upper("SGD_VALOR"."CODIF") = 'IDG' ) AND  
+		 ( "SGD_VALOR"."VALOR" = :as_nivel )   ;
+
+If IsNull(ls_return) Or Len(Trim(ls_return)) <= 0 Then ls_return = ""
+
+
+Return ls_return
+end function
+

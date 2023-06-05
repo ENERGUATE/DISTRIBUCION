@@ -1,0 +1,53 @@
+HA$PBExportHeader$fg_compara_instalacion.srf
+global type fg_compara_instalacion from function_object
+end type
+
+forward prototypes
+global function integer fg_compara_instalacion (long pi_nro_instalacion)
+end prototypes
+
+global function integer fg_compara_instalacion (long pi_nro_instalacion);//////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n/Evento: fg_compara_instalacion
+//
+// Objetivo: Comparar las instalaciones genericas con el par$$HEX1$$e100$$ENDHEX$$metro pasado por la datawindow para determinar
+//			   el tipo de instalacion que se trata.
+//         
+// Ambito:  P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//
+//        Entrada: pi_nro_instalacion
+//        Salida: num$$HEX1$$e900$$ENDHEX$$rico
+//
+// Devuelve: num$$HEX1$$e900$$ENDHEX$$rico
+//
+// Fecha            Responsable             Actuaci$$HEX1$$f300$$ENDHEX$$n
+// --------         -----------             ---------
+// 09/02/2000	    FDO
+//		
+/////////////////////////////////////////////////////////// 
+
+CHOOSE CASE pi_nro_instalacion
+		
+	CASE fgcdec_aviso_sin_alimentacion
+		
+		return 1
+		
+	CASE fgcdec_aviso_de_ayuda
+		
+		return 2
+		
+	CASE fgcdec_aviso_alumbrado_publico
+		
+		return 3
+		
+	CASE ELSE
+		
+		return 4
+		
+END CHOOSE
+
+
+end function
+

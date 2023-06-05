@@ -1,0 +1,59 @@
+HA$PBExportHeader$fgrn_intervalo_horario.srf
+global type fgrn_intervalo_horario from function_object
+end type
+
+forward prototypes
+global function integer fgrn_intervalo_horario (datetime pdt_fecha)
+end prototypes
+
+global function integer fgrn_intervalo_horario (datetime pdt_fecha);// Determino a que intervalo horario pertenece la
+// fecha pasada como par$$HEX1$$e100$$ENDHEX$$metro, en base a los valores
+// existentes en la base.
+
+int li_cod, li_hora
+
+//// DBE  ini commentado 31/03/2000 14:02
+//li_hora = Hour(Time(Trim(Mid(String(pdt_fecha),9,8))))
+//
+//SELECT "GI_T_INT_HORARIO"."COD_HOR"  
+//INTO :li_cod  
+//FROM "GI_T_INT_HORARIO"  
+//WHERE ( "GI_T_INT_HORARIO"."DESDE" <= :li_hora ) AND  
+//      ( "GI_T_INT_HORARIO"."HASTA" > :li_hora )   ;
+//
+//// DBE  fin commentado 31/03/2000 14:02
+
+
+//// DBE  ini 31/03/2000 14:03
+
+li_hora = Hour(time(pdt_fecha))
+
+
+SELECT "GI_T_INT_HORARIO"."COD_HOR" 
+INTO :li_cod  
+FROM "GI_T_INT_HORARIO"  
+WHERE ( to_number(to_char("GI_T_INT_HORARIO"."DESDE", 'hh24')) <= :li_hora  ) AND  
+      to_number(to_char("GI_T_INT_HORARIO"."HASTA", 'hh24')) in 
+
+(select min(to_number(to_char("GI_T_INT_HORARIO"."HASTA", 'hh24'))) from "GI_T_INT_HORARIO" 
+where  to_number(to_char("GI_T_INT_HORARIO"."HASTA", 'hh24'))>:li_hora
+) ;
+//// DBE  fin 31/03/2000 14:03
+
+
+
+IF sqlca.SqlCode = 0 THEN
+
+	RETURN li_cod
+ELSEIF sqlca.SqlCode = 100 THEN
+
+	RETURN 1
+ELSE
+	
+	gnv_msg.f_mensaje("ER59","","",OK!)
+	RETURN -1
+END IF
+
+
+end function
+

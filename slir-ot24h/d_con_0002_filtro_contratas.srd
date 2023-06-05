@@ -1,0 +1,29 @@
+HA$PBExportHeader$d_con_0002_filtro_contratas.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=276 color="536870912" )
+table(column=(type=decimal(2) updatewhereclause=yes name=coste dbname="gi_contratas.coste" )
+ column=(type=decimal(0) updatewhereclause=yes name=moneda dbname="gi_contratas.moneda" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_tiempo dbname="gi_contratas.cod_tiempo" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo dbname="gi_contratas.tipo" )
+ column=(type=decimal(0) updatewhereclause=yes name=estado dbname="gi_contratas.estado" initial="1" )
+ retrieve="SELECT 
+	~"GI_CONTRATAS~".~"COSTE~" ,
+  ~"GI_CONTRATAS~".~"MONEDA~" ,
+  ~"GI_CONTRATAS~".~"COD_TIEMPO~" ,
+  ~"GI_CONTRATAS~".~"TIPO~" ,
+  ~"GI_CONTRATAS~".~"ESTADO~" 
+FROM 
+  ~"GI_CONTRATAS~"" )
+column(band=detail id=5 alignment="1" tabsequence=10 border="5" color="8388608" x="256" y="16" height="64" width="558" format="[general]"  name=estado  tag="RD=CO_E;FL=CODIGO<>0;" dddw.name=ddw_codif dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.required=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="8388608" x="256" y="100" height="64" width="558" format="[general]"  name=tipo  tag="RD=CO_T;FL=CODIGO<>0;" dddw.name=ddw_codif dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.required=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=30 border="5" color="8388608" x="256" y="184" height="64" width="256" format="[general]"  name=coste editmask.mask="##,###.00" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=40 border="5" color="8388608" x="539" y="184" height="64" width="242" format="[general]"  name=moneda  tag="RD=CO_M;FL=CODIGO<>0;" dddw.name=ddw_codif dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="por"border="0" color="0" x="795" y="184" height="64" width="101"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=50 border="5" color="8388608" x="914" y="184" height="64" width="215" format="[general]"  name=cod_tiempo  tag="RD=CO_D;FL=CODIGO<>0;" dddw.name=ddw_codif dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Estado:"border="0" color="0" x="14" y="20" height="64" width="224"  name=estado_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Tipo:"border="0" color="0" x="14" y="100" height="64" width="224"  name=tipo_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Coste:"border="0" color="0" x="14" y="184" height="64" width="224"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,41 @@
+HA$PBExportHeader$gf_set_estructura_causa.srf
+global type gf_set_estructura_causa from function_object
+end type
+
+forward prototypes
+global subroutine gf_set_estructura_causa (integer pl_cod_causa, ref string ps_nombre_causa_familia, ref string ps_nombre_causa_categoria, ref string ps_nombre_causa_detallada, ref integer pi_chequear_consignacion, ref integer pi_chequear_activo_causante, ref integer pi_chequear_f_instruccion)
+end prototypes
+
+global subroutine gf_set_estructura_causa (integer pl_cod_causa, ref string ps_nombre_causa_familia, ref string ps_nombre_causa_categoria, ref string ps_nombre_causa_detallada, ref integer pi_chequear_consignacion, ref integer pi_chequear_activo_causante, ref integer pi_chequear_f_instruccion);
+long ll_gpo_causa, ll_tipo, ll_subtipo, ll_activo
+string ls_causa_categoria, ls_causa
+
+SELECT GPO_CAUSA, TIPO, SUBTIPO, ACTIVO, DESCRIPCION
+  INTO :ll_gpo_causa, :ll_tipo, :ll_subtipo, :ll_activo, :ps_nombre_causa_detallada
+  FROM GI_CAUSA
+ WHERE COD_CAUSA = :pl_cod_causa;
+
+SELECT TRIM(DESCRIPCION)
+  INTO :ps_nombre_causa_categoria
+  FROM GI_SUBTIPO_CAUSA
+ WHERE GPO_CAUSA = :ll_gpo_causa
+   AND SUBTIPO =:ll_subtipo
+	AND TIPO = :ll_tipo
+   AND ACTIVO = :ll_activo;
+	
+SELECT TRIM(DESCRIPCION), IND_CHEQUEAR_CONSIGNACION, 
+		 IND_CHEQUEAR_CAUSANTE, IND_CHEQUEAR_F_INSTRUCCION
+  INTO :ps_nombre_causa_familia, :pi_chequear_consignacion, 
+  		 :pi_chequear_activo_causante, :pi_chequear_f_instruccion
+  FROM GI_SUBTIPOS
+ WHERE SUBTIPO =:ll_subtipo
+	AND TIPO = :ll_tipo
+   AND ACTIVO = :ll_activo;
+
+
+
+
+
+
+end subroutine
+

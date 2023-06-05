@@ -1,0 +1,45 @@
+HA$PBExportHeader$d_historial_descargos.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=176 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=104 color="536870912" )
+table(column=(type=char(60) updatewhereclause=yes name=gi_usuario_sgi_nom_usuario dbname="gi_usuario_sgi_nom_usuario" )
+ column=(type=datetime updatewhereclause=yes key=yes name=f_alta dbname="sgd_estados_descargo.f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_inicio dbname="sgd_estados_descargo.f_inicio" )
+ column=(type=datetime updatewhereclause=yes name=f_fin dbname="sgd_estados_descargo.f_fin" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=obs_estado dbname="sgd_estados_descargo.obs_estado" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=estado dbname="sgd_estados_descargo.estado" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=nro_descargo dbname="sgd_estados_descargo.nro_descargo" )
+ column=(type=char(50) updatewhereclause=yes name=estado_desc dbname="sgd_valor.descripcion" )
+ retrieve="SELECT NVL(GI_USUARIO_SGI.NOM_USUARIO,'INTERFAZ')  gi_usuario_sgi_nom_usuario,
+		 SGD_ESTADOS_DESCARGO.F_ALTA,
+		 SGD_ESTADOS_DESCARGO.F_INICIO,
+		 SGD_ESTADOS_DESCARGO.F_FIN,
+		 SGD_ESTADOS_DESCARGO.OBS_ESTADO,
+		 SGD_ESTADOS_DESCARGO.ESTADO,
+		 SGD_ESTADOS_DESCARGO.NRO_DESCARGO,
+		 SGD_VALOR.DESCRIPCION
+FROM SGD_ESTADOS_DESCARGO,
+	  SGD_VALOR,GI_USUARIO_SGI
+WHERE SGD_ESTADOS_DESCARGO.NRO_DESCARGO = :pl_nro_descargo AND
+		SGD_VALOR.CODIF = 'ES_D' AND
+		SGD_VALOR.CODIGO = SGD_ESTADOS_DESCARGO.ESTADO AND
+		SGD_ESTADOS_DESCARGO.ID_USUARIO = GI_USUARIO_SGI.USUARIO(+)
+ORDER BY SGD_ESTADOS_DESCARGO.F_ACTUAL, SGD_ESTADOS_DESCARGO.ESTADO" update="SGD_ESTADOS_DESCARGO" updatewhere=0 updatekeyinplace=no arguments=(("pl_nro_descargo", number)) )
+text(band=header alignment="2" text="Usuario" border="6" color="0" x="14" y="16" height="128" width="549" html.valueishtml="0"  name=usuario_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Estado" border="6" color="0" x="581" y="16" height="128" width="553" html.valueishtml="0"  name=estado_desc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Observaciones" border="6" color="0" x="2555" y="16" height="128" width="1381" html.valueishtml="0"  name=obs_estado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha de la Actualizaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="1152" y="16" height="128" width="453" html.valueishtml="0"  name=f_alta_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha de Inicio" border="6" color="0" x="1623" y="16" height="128" width="448" html.valueishtml="0"  name=f_inicio_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha de Fin" border="6" color="0" x="2089" y="16" height="128" width="448" html.valueishtml="0"  name=f_fin_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="64" width="558" format="[general]" html.valueishtml="0"  name=gi_usuario_sgi_nom_usuario visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="576" y="4" height="68" width="558" format="[general]" html.valueishtml="0"  name=estado_desc visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=10 border="5" color="0" x="2647" y="4" height="68" width="1285" format="[general]" html.valueishtml="0"  name=obs_estado visible="1" edit.limit=2000 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.autovscroll=yes edit.imemode=0 edit.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="5" color="0" x="1152" y="4" height="64" width="448" format="[shortdate] [time]" html.valueishtml="0"  name=f_alta visible="1" editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="5" color="0" x="1623" y="4" height="64" width="448" format="[shortdate] [time]" html.valueishtml="0"  name=f_inicio visible="1" editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+button(band=detail text="->"filename=""action="0" border="0" color="0" x="2555" y="0" height="76" width="82" vtextalign="0" htextalign="0"  name=b_1 pointer="Size!" visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="5" color="0" x="2089" y="4" height="64" width="448" format="[shortdate] [time]" html.valueishtml="0"  name=f_fin visible="1" editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

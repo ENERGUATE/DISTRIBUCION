@@ -1,0 +1,309 @@
+HA$PBExportHeader$md_actualizacion_incidencia.srm
+forward
+global type md_actualizacion_incidencia from md_consultas_estandar
+end type
+type m_avisos from menu within m_consultar
+end type
+type m_acciones from menu within m_consultar
+end type
+type m_seguimiento from menu within m_consultar
+end type
+type m_estadisticas from menu within m_consultar
+end type
+type m_interrupciones from menu within m_consultar
+end type
+type m_instalacionafectada from menu within m_consultar
+end type
+end forward
+
+global type md_actualizacion_incidencia from md_consultas_estandar
+end type
+global md_actualizacion_incidencia md_actualizacion_incidencia
+
+on md_actualizacion_incidencia.create
+md_actualizacion_incidencia=this
+call super::create
+end on
+
+on md_actualizacion_incidencia.destroy
+call super::destroy
+end on
+
+on m_archivo::clicked;call md_consultas_estandar`m_archivo::clicked;// b
+end on
+
+on m_cerrar.create
+call super::create
+this.ToolBarItemVisible=true
+end on
+
+on m_grabar.create
+call super::create
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_imprimir.create
+call super::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_-2.create
+call super::create
+this.Visible=false
+end on
+
+on m_preferencias.create
+call super::create
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_-3.create
+call super::create
+this.Visible=false
+end on
+
+on m_salir.create
+call super::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_-7.create
+call super::create
+this.Visible=false
+end on
+
+on m_-8.create
+call super::create
+this.Visible=false
+end on
+
+on m_iralcomienzo.create
+call super::create
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_iralfinal.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_buscar.create
+call super::create
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+type m_consultar from md_consultas_estandar`m_consultar within md_actualizacion_incidencia
+m_avisos m_avisos
+m_acciones m_acciones
+m_seguimiento m_seguimiento
+m_estadisticas m_estadisticas
+m_interrupciones m_interrupciones
+m_instalacionafectada m_instalacionafectada
+end type
+
+on m_consultar.create
+call super::create
+this.Visible=true
+this.Enabled=true
+this.m_avisos=create m_avisos
+this.m_acciones=create m_acciones
+this.m_seguimiento=create m_seguimiento
+this.m_estadisticas=create m_estadisticas
+this.m_interrupciones=create m_interrupciones
+this.m_instalacionafectada=create m_instalacionafectada
+this.Item[UpperBound(this.item)+1]=this.m_avisos
+this.Item[UpperBound(this.item)+1]=this.m_acciones
+this.Item[UpperBound(this.item)+1]=this.m_seguimiento
+this.Item[UpperBound(this.item)+1]=this.m_estadisticas
+this.Item[UpperBound(this.item)+1]=this.m_interrupciones
+this.Item[UpperBound(this.item)+1]=this.m_instalacionafectada
+end on
+
+on m_consultar.destroy
+call super::destroy
+destroy(this.m_avisos)
+destroy(this.m_acciones)
+destroy(this.m_seguimiento)
+destroy(this.m_estadisticas)
+destroy(this.m_interrupciones)
+destroy(this.m_instalacionafectada)
+end on
+
+on m_descripcin::clicked;call md_consultas_estandar`m_descripcin::clicked;w_2301_form_incidencia.triggerevent("ue_observaciones")
+end on
+
+on m_descripcin.create
+call super::create
+this.Text="Observaciones~tCtrl+A"
+this.Microhelp="Ver en la lista la observaci$$HEX1$$f300$$ENDHEX$$n de la incidencia"
+this.ToolBarItemName="SCRIPTYES!"
+this.ToolBarItemText="Observaciones"
+this.Visible=true
+this.Enabled=true
+this.Checked=false
+this.ToolBarItemVisible=true
+this.ToolBarItemSpace=3
+end on
+
+on m_informacindeot::clicked;call md_consultas_estandar`m_informacindeot::clicked;w_2301_form_incidencia.triggerevent("ue_orden_trabajo")
+
+
+
+
+
+
+
+
+end on
+
+on m_informacindeot.create
+call super::create
+this.ToolBarItemName="ApplicationIcon!"
+this.ToolBarItemText="Orden de Trabajo"
+this.Visible=true
+this.Enabled=true
+this.Checked=false
+this.ToolBarItemVisible=true
+end on
+
+on m_brigadistas::clicked;call md_consultas_estandar`m_brigadistas::clicked;w_2301_form_incidencia.TriggerEvent("ue_cuadrillas")
+end on
+
+on m_brigadistas.create
+call super::create
+this.Text="&Brigadas~tCtrl+B"
+this.Microhelp="Permite consultar las Brigadas que trabajan en la Incidencia"
+this.ToolBarItemName="contrata.bmp"
+this.ToolBarItemText="Informaci$$HEX1$$f300$$ENDHEX$$n de Brigadistas"
+this.Visible=true
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_reclamaciones.create
+call super::create
+this.Text="&Reclamaciones~tCtrl+R"
+this.Enabled=true
+end on
+
+on m_situacinclimatolgica::clicked;call md_consultas_estandar`m_situacinclimatolgica::clicked;w_2301_form_incidencia.triggerevent("ue_sit_clima")
+end on
+
+on m_situacinclimatolgica.create
+call super::create
+this.Text="Situaci$$HEX1$$f300$$ENDHEX$$n &Climatol$$HEX1$$f300$$ENDHEX$$gica~tCtrl+S"
+this.Visible=true
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_suministrosimportantes::clicked;call md_consultas_estandar`m_suministrosimportantes::clicked;w_2301_form_incidencia.TriggerEvent("ue_suministros_importantes")
+end on
+
+on m_suministrosimportantes.create
+call super::create
+this.Text="Suministros &Importantes~tCtrl+I"
+this.Visible=true
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+event m_cascada::clicked;call super::clicked;Arrangesheets(w_operaciones, cascade!)
+end event
+
+type m_avisos from menu within m_consultar
+end type
+
+on clicked;w_2301_form_incidencia.triggerevent("ue_consulta_avisos")
+end on
+
+on m_avisos.create
+this.Text="&Avisos ~tCtrl+A"
+this.Microhelp="Avisos asociados a la Incidencia"
+this.ToolBarItemName="Custom020!"
+this.ToolBarItemText="Avisos Asociados"
+this.Shortcut=321
+end on
+
+type m_acciones from menu within m_consultar
+end type
+
+on clicked;w_2301_form_incidencia.triggerevent("ue_acciones")
+end on
+
+on m_acciones.create
+this.Text="A&cciones~tCtrl+C"
+this.Microhelp="Acciones tomadas sobre la incidencia"
+this.ToolBarItemName="ArrangeTables!"
+this.ToolBarItemText="Acciones"
+this.Shortcut=323
+end on
+
+type m_seguimiento from menu within m_consultar
+end type
+
+on clicked;w_2301_form_incidencia.triggerevent("ue_seguimiento")
+end on
+
+on m_seguimiento.create
+this.Text="Se&guimiento~tCtrl+G"
+this.Microhelp="Seguimiento de la Incidencia"
+this.ToolBarItemName="Step!"
+this.ToolBarItemText="Seguimiento"
+this.Shortcut=327
+end on
+
+type m_estadisticas from menu within m_consultar
+end type
+
+on clicked;w_2301_form_incidencia.triggerevent("ue_estadisticas")
+end on
+
+on m_estadisticas.create
+this.Text="&Estadisticas~tCtrl+E"
+this.Microhelp="Estadisticas "
+this.ToolBarItemName="Graph!"
+this.ToolBarItemText="Estadisticas"
+this.Shortcut=325
+end on
+
+type m_interrupciones from menu within m_consultar
+end type
+
+on clicked;w_2301_form_incidencia.triggerevent("ue_interrupciones")
+end on
+
+on m_interrupciones.create
+this.Text="In&terrupciones~tCtrl+T"
+this.Microhelp="Permite el manejo de interrupciones "
+this.ToolBarItemName="incorpor.bmp"
+this.ToolBarItemText="Interrupciones"
+this.Shortcut=340
+end on
+
+type m_instalacionafectada from menu within m_consultar
+end type
+
+on clicked;w_2301_form_incidencia.triggerevent("ue_instalacion_afectada")
+
+end on
+
+on m_instalacionafectada.create
+this.Text="&Instalacion Afectada~tCtrl+I"
+this.Microhelp="Permite Seleccionar la Instalaci$$HEX1$$f300$$ENDHEX$$n Afectada de la Incidencia"
+this.ToolBarItemDownName="Instalacion Afectada"
+this.ToolBarItemName="Regenerate!"
+this.ToolBarItemText="Instalacion Afectada"
+this.Shortcut=329
+end on
+

@@ -1,0 +1,125 @@
+HA$PBExportHeader$fg_insertar_estado_descargo.srf
+global type fg_insertar_estado_descargo from function_object
+end type
+
+forward prototypes
+global function boolean fg_insertar_estado_descargo (long pl_nro_descargo, integer pi_cod_estado, datetime pdt_f_inicio, datetime pdt_f_fin, datetime pdt_f_alta, string ps_obs, long pl_nro_instalacion)
+end prototypes
+
+global function boolean fg_insertar_estado_descargo (long pl_nro_descargo, integer pi_cod_estado, datetime pdt_f_inicio, datetime pdt_f_fin, datetime pdt_f_alta, string ps_obs, long pl_nro_instalacion);//// Funci$$HEX1$$f300$$ENDHEX$$n que inserta un registro en la tabla SGD_ESTADOS_DESCARGO y que avisa
+//// del cambio de estado al servidor de Operaci$$HEX1$$f300$$ENDHEX$$n
+//
+//// Si el estado que viene como par$$HEX1$$e100$$ENDHEX$$metro es cero, se trata de una alta
+//// Si pl_nro_instalacion es cero es que el descargo est$$HEX2$$e1002000$$ENDHEX$$siendo agrupado, por
+//// lo que no se avisa al servidor de Operaci$$HEX1$$f300$$ENDHEX$$n
+//Int li_tipo_instalacion, li_tension, li_existe
+//String ls_mensaje
+//Long ll_nro_desc_agrup
+//Boolean lb_retorno = True
+//
+//IF pi_cod_estado = fgci_descargo_finalizado THEN
+//	SELECT COUNT(*)
+//	INTO :li_existe
+//	FROM "SGD_ESTADOS_DESCARGO"
+//	WHERE "NRO_DESCARGO" = :pl_nro_descargo AND ESTADO = :pi_cod_estado;
+//ELSE 
+//	li_existe = 0
+//END IF
+//
+//IF li_existe = 0 THEN
+//	INSERT INTO "SGD_ESTADOS_DESCARGO"  
+//		( "F_ACTUAL",   
+//		  "USUARIO",   
+//		  "PROGRAMA",   
+//		  "F_ALTA",   
+//		  "F_INICIO",   
+//		  "F_FIN",   
+//		  "OBS_ESTADO",   
+//		  "ID_USUARIO",   
+//		  "NRO_DESCARGO",   
+//		  "ESTADO" )  
+//	  VALUES ( sysdate,   
+//				  :gs_usuario,   
+//				  'Descargos',   
+//				  :pdt_f_alta,   
+//				  :pdt_f_inicio,   
+//				  :pdt_f_fin,   
+//				  :ps_obs,   
+//				  :gs_usuario,   
+//				  :pl_nro_descargo,   
+//				  DECODE(:pi_cod_estado, 0, :fgci_descargo_definido, :pi_cod_estado) )  ;
+//	
+//	IF SQLCA.SQLCode = 0 THEN
+//	
+//		IF gb_operaciones AND pl_nro_instalacion <> 0 THEN
+//		
+//			SELECT TIPO_INSTALACION, TENSION
+//			INTO :li_tipo_instalacion, :li_tension
+//			FROM SGD_INSTALACION
+//			WHERE NRO_INSTALACION = :pl_nro_instalacion
+//					AND BDI_JOB = 0;
+//				
+//			IF SQLCA.SQLCode <> 0 THEN
+//				Messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n", "No se ha grabado el Descargo debido a que no se ha podido determinar el nivel de tensi$$HEX1$$f300$$ENDHEX$$n de la instalaci$$HEX1$$f300$$ENDHEX$$n afectada")
+//				lb_retorno = False
+//			ELSE
+//				IF (li_tension <=gi_tension_nivel_min AND li_tipo_instalacion <> fgci_tipo_ct) then 
+//					IF pi_cod_estado = fgci_descargo_anulado OR pi_cod_estado = fgci_descargo_finalizado THEN
+//						IF gu_rf_servidor_operacion.of_baja_simulacion_descargo(pl_nro_descargo, ls_mensaje) = 0 THEN
+//							messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n", ls_mensaje)
+//							lb_retorno = False
+//						ELSE
+//							IF pi_cod_estado = fgci_descargo_finalizado THEN 
+//								// Si el descargo est$$HEX2$$e1002000$$ENDHEX$$agrupado se dan de baja las simulaciones de los
+//								// descargos que forman parte de la agrupaci$$HEX1$$f300$$ENDHEX$$n
+//								DECLARE lc_desc_agrupados CURSOR FOR
+//									SELECT SGD_DESCARGOS_AGRUPADOS.NRO_DESCARGO
+//									FROM SGD_DESCARGOS, SGD_DESCARGOS_AGRUPADOS
+//									WHERE SGD_DESCARGOS.NRO_AGRUPACION = SGD_DESCARGOS_AGRUPADOS.NRO_AGRUPACION
+//											AND SGD_DESCARGOS.NRO_AGRUPACION > 0
+//											AND SGD_DESCARGOS.NRO_DESCARGO = :pl_nro_descargo;
+//									
+//								OPEN lc_desc_agrupados;
+//								
+//								IF SQLCA.SQLCode = 0 THEN
+//									FETCH lc_desc_agrupados
+//									INTO :ll_nro_desc_agrup;
+//																		
+//									DO WHILE SQLCA.SQLCode = 0 AND lb_retorno
+//										IF gu_rf_servidor_operacion.of_baja_simulacion_descargo(ll_nro_desc_agrup, ls_mensaje) = 0 THEN
+//											messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n", ls_mensaje)
+//											lb_retorno = False
+//										END IF
+//										
+//										FETCH lc_desc_agrupados
+//										INTO :ll_nro_desc_agrup;
+//									LOOP
+//									
+//									close	lc_desc_agrupados;
+//								ELSE
+//									lb_retorno = FALSE
+//								END IF
+//							END IF
+//						END IF
+//	
+//					END IF
+//					
+//					IF lb_retorno THEN
+//						// Se notifica al servidor de operaci$$HEX1$$f300$$ENDHEX$$n el alta del descargo en caso de ser de media tensi$$HEX1$$f300$$ENDHEX$$n
+//						IF gu_rf_servidor_operacion.of_avisar_mod_descargo(pl_nro_descargo, pi_cod_estado, ls_mensaje) = 0 THEN
+//							messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n", ls_mensaje)
+//							lb_retorno = False
+//						END IF
+//					END IF
+//				END IF
+//			END IF
+//		END IF		
+//	ELSE
+//		lb_retorno = FALSE
+//	END IF
+//END IF
+//
+//return lb_retorno
+return true
+end function
+

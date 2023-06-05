@@ -1,0 +1,17 @@
+HA$PBExportHeader$dddw_ext_subtipo_causa.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=descripcion dbname="gi_subtipos.descripcion" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=c_tipo_inc dbname="c_tipo_inc" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_subtipo_causa_tipo dbname="gi_subtipo_causa.tipo" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_subtipo_causa_subtipo dbname="gi_subtipo_causa.subtipo" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_subtipo_causa_gpo_causa dbname="gi_subtipo_causa.gpo_causa" )
+ column=(type=char(50) updatewhereclause=yes name=gi_subtipo_causa_descripcion dbname="gi_subtipo_causa.descripcion" )
+ column=(type=char(122) updatewhereclause=yes name=c_concat dbname="c_concat" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"gi_subtipos~" )  TABLE(NAME=~"gi_subtipo_causa~" ) COLUMN(NAME=~"gi_subtipos.descripcion~") COMPUTE(NAME=~"Fgnu_Tip_Inc(~~~"GI_SUBTIPOS~~~".~~~"TIPO~~~") As c_tipo_inc~") COLUMN(NAME=~"gi_subtipo_causa.tipo~") COLUMN(NAME=~"gi_subtipo_causa.subtipo~") COLUMN(NAME=~"gi_subtipo_causa.gpo_causa~") COLUMN(NAME=~"gi_subtipo_causa.descripcion~") COMPUTE(NAME=~"to_char(~~~"GI_SUBTIPOS~~~".~~~"TIPO~~~" ) || '-' || to_char(~~~"GI_SUBTIPOS~~~".~~~"SUBTIPO~~~" ) || '-' || to_char(~~~"GI_SUBTIPO_CAUSA~~~".~~~"GPO_CAUSA~~~" )As c_concat~")    JOIN (LEFT=~"gi_subtipos.tipo~"    OP =~"=~"RIGHT=~"gi_subtipo_causa.tipo~" )    JOIN (LEFT=~"gi_subtipos.subtipo~"    OP =~"=~"RIGHT=~"gi_subtipo_causa.subtipo~" )) "  sort="gi_subtipo_causa_tipo A gi_subtipo_causa_subtipo A gi_subtipo_causa_gpo_causa A gi_subtipo_causa_descripcion A " )
+compute(band=detail alignment="0" expression=" c_tipo_inc + ~" - ~" +  descripcion  + ~"   -   ~" +  gi_subtipo_causa_descripcion"border="0" color="0" x="18" y="0" height="64" width="1783" format="[general]"  name=c_tipo_mas_desc  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=0 border="0" color="0" x="1925" y="8" height="76" width="539"  name=c_concat  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

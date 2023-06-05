@@ -1,0 +1,32 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "reportes.pbl" "";
+@end;
+@begin Objects
+ "d_bdg_7004_pr_filtro_reporte_inst.srd" "reportes.pbl";
+ "u_gen_7001_pr_filtro_reporte_inc.sru" "reportes.pbl";
+ "u_gen_7002_pr_filtro_reporte_avi.sru" "reportes.pbl";
+ "w_reportes.srw" "reportes.pbl";
+ "dddw_nombre_tablas.srd" "reportes.pbl";
+ "d_clausula_where.srd" "reportes.pbl";
+ "d_sentencia_select.srd" "reportes.pbl";
+ "d_lista_reporte.srd" "reportes.pbl";
+ "d_lista_orden.srd" "reportes.pbl";
+ "m_consulta_sql.srm" "reportes.pbl";
+ "d_lista_campos.srd" "reportes.pbl";
+ "w_consulta_sql.srw" "reportes.pbl";
+ "u_5001_nu_reportes.sru" "reportes.pbl";
+ "w_reportes_preview.srw" "reportes.pbl";
+ "u_lista_reporte.sru" "reportes.pbl";
+ "u_lista_orden.sru" "reportes.pbl";
+ "d_bdg_7003_pr_filtro_reporte_brigadas.srd" "reportes.pbl";
+ "dddw_nombre_campos_tabla.srd" "reportes.pbl";
+ "ddw_fam_material_averiado_todos_sin99.srd" "reportes.pbl";
+ "ds_5001_reportes.sru" "reportes.pbl";
+ "d_bdg_7001_pr_filtro_reporte_incidencias.srd" "reportes.pbl";
+ "d_bdg_7005_pr_filtro_reporte_descargos.srd" "reportes.pbl";
+ "d_bdg_7002_pr_filtro_reporte_avisos.srd" "reportes.pbl";
+ "m_rep_emer.srm" "reportes.pbl";
+ "m_reportes.srm" "reportes.pbl";
+ "u_pr_menu.sru" "reportes.pbl";
+@end;

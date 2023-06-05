@@ -1,0 +1,228 @@
+HA$PBExportHeader$m_man_inst.srm
+forward
+global type m_man_inst from menu
+end type
+type m_crearinstalacin from menu within m_man_inst
+end type
+type m_crearinstalacin from menu within m_man_inst
+end type
+type m_crearinstalacion2 from menu within m_man_inst
+end type
+type m_crearinstalacion2 from menu within m_man_inst
+end type
+type m_eliminarinstalacin from menu within m_man_inst
+end type
+type m_eliminarinstalacin from menu within m_man_inst
+end type
+type m_suministrosimportantes from menu within m_man_inst
+end type
+type m_suministrosimportantes from menu within m_man_inst
+end type
+type m_incidencias from menu within m_man_inst
+end type
+type m_incidencias from menu within m_man_inst
+end type
+type m_avisos from menu within m_man_inst
+end type
+type m_avisos from menu within m_man_inst
+end type
+type m_ots from menu within m_man_inst
+end type
+type m_ots from menu within m_man_inst
+end type
+type m_acometidas from menu within m_man_inst
+end type
+type m_acometidas from menu within m_man_inst
+end type
+type m_suministros from menu within m_man_inst
+end type
+type m_suministros from menu within m_man_inst
+end type
+end forward
+
+global type m_man_inst from menu
+m_crearinstalacin m_crearinstalacin
+m_crearinstalacion2 m_crearinstalacion2
+m_eliminarinstalacin m_eliminarinstalacin
+m_suministrosimportantes m_suministrosimportantes
+m_incidencias m_incidencias
+m_avisos m_avisos
+m_ots m_ots
+m_acometidas m_acometidas
+m_suministros m_suministros
+end type
+global m_man_inst m_man_inst
+
+on m_man_inst.create
+m_man_inst=this
+this.m_crearinstalacin=create m_crearinstalacin
+this.m_crearinstalacion2=create m_crearinstalacion2
+this.m_eliminarinstalacin=create m_eliminarinstalacin
+this.m_suministrosimportantes=create m_suministrosimportantes
+this.m_incidencias=create m_incidencias
+this.m_avisos=create m_avisos
+this.m_ots=create m_ots
+this.m_acometidas=create m_acometidas
+this.m_suministros=create m_suministros
+this.Item[]={this.m_crearinstalacin, &
+this.m_crearinstalacion2, &
+this.m_eliminarinstalacin, &
+this.m_suministrosimportantes, &
+this.m_incidencias, &
+this.m_avisos, &
+this.m_ots, &
+this.m_acometidas, &
+this.m_suministros}
+end on
+
+on m_man_inst.destroy
+destroy(this.m_crearinstalacin)
+destroy(this.m_crearinstalacion2)
+destroy(this.m_eliminarinstalacin)
+destroy(this.m_suministrosimportantes)
+destroy(this.m_incidencias)
+destroy(this.m_avisos)
+destroy(this.m_ots)
+destroy(this.m_acometidas)
+destroy(this.m_suministros)
+end on
+
+type m_crearinstalacin from menu within m_man_inst
+end type
+
+on m_crearinstalacin.create
+this.Text="Crear Instalaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemText="Crear Instalaci$$HEX1$$f300$$ENDHEX$$n"
+end on
+
+on m_crearinstalacin.destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'crear_instalacion'
+
+
+end event
+
+type m_crearinstalacion2 from menu within m_man_inst
+end type
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'crear_instalacion2'
+
+
+end event
+
+on m_crearinstalacion2.create
+this.Text="Crear Instalacion2"
+this.ToolBarItemText="Crear Instalaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemVisible=false
+end on
+
+on m_crearinstalacion2.destroy
+end on
+
+type m_eliminarinstalacin from menu within m_man_inst
+end type
+
+on m_eliminarinstalacin.create
+this.Text="Eliminar "
+end on
+
+on m_eliminarinstalacin.destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'eliminar_instalacion'
+
+end event
+
+type m_suministrosimportantes from menu within m_man_inst
+end type
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'suministros_imp'
+
+
+
+
+end event
+
+on m_suministrosimportantes.create
+this.Text="Suministros Importantes"
+end on
+
+on m_suministrosimportantes.destroy
+end on
+
+type m_incidencias from menu within m_man_inst
+end type
+
+on m_incidencias.create
+this.Text="Incidencias"
+end on
+
+on m_incidencias.destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'incidencias'
+
+
+end event
+
+type m_avisos from menu within m_man_inst
+end type
+
+on m_avisos.create
+this.Text="Avisos"
+end on
+
+on m_avisos.destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'avisos'
+
+
+end event
+
+type m_ots from menu within m_man_inst
+end type
+
+on m_ots.create
+this.Text="Ots"
+end on
+
+on m_ots.destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'ots'
+
+
+end event
+
+type m_acometidas from menu within m_man_inst
+end type
+
+on m_acometidas.create
+this.Text="Acometidas"
+end on
+
+on m_acometidas.destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'acometidas'
+
+
+end event
+
+type m_suministros from menu within m_man_inst
+end type
+
+on m_suministros.create
+this.Text="Suministros"
+end on
+
+on m_suministros.destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'suministros'
+
+
+end event
+

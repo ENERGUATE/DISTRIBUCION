@@ -1,0 +1,12 @@
+HA$PBExportHeader$d_id0101.srd
+$PBExportComments$Lista de departamentos de la provincia
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=cod_depto dbname="cod_depto" )
+ column=(type=char(30) updatewhereclause=yes name=nom_depto dbname="nom_depto" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"deptos~" ) COLUMN(NAME=~"deptos.cod_depto~") COLUMN(NAME=~"deptos.nom_depto~")WHERE( EXP1 =~"( ~~~"DEPTOS~~~".~~~"COD_PROV~~~"~" OP =~"=~" EXP2 =~":codprov )~" ) ) ORDER(NAME=~"deptos.nom_depto~" ASC=yes ) ARG(NAME = ~"codprov~" TYPE = number) " arguments=(("codprov", number)) )
+compute(band=detail alignment="0" expression="wordcap( nom_depto )"border="0" color="8388608" x="9" y="4" height="64" width="850" format="[GENERAL]"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

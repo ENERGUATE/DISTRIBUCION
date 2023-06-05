@@ -1,0 +1,44 @@
+HA$PBExportHeader$dw_co_cliente_imp_salmt.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nis_rad dbname="sumcon.nis_rad" )
+ column=(type=char(20) updatewhereclause=yes name=clientes_ape1_cli dbname="clientes.ape1_cli" )
+ column=(type=char(20) updatewhereclause=yes name=clientes_ape2_cli dbname="clientes.ape2_cli" )
+ column=(type=char(30) updatewhereclause=yes name=clientes_nom_cli dbname="clientes.nom_cli" )
+ column=(type=char(15) updatewhereclause=yes name=clientes_tfno_cli dbname="clientes.tfno_cli" )
+ retrieve="  SELECT DISTINCT ~"SUMCON~".~"NIS_RAD~",   
+         ~"CLIENTES~".~"APE1_CLI~",   
+         ~"CLIENTES~".~"APE2_CLI~",   
+         ~"CLIENTES~".~"NOM_CLI~",   
+         ~"CLIENTES~".~"TFNO_CLI~"  
+    FROM ~"SGD_ACOMETIDA~",   
+         ~"ACO_SUM~",   
+         ~"GI_SUMINISTROS_IMP~",   
+         ~"SUMCON~",   
+         ~"CLIENTES~"  
+   WHERE ( ~"ACO_SUM~".~"NRO_ACOMETIDA~" = ~"SGD_ACOMETIDA~".~"CODIGO~" ) and  
+         ( ~"ACO_SUM~".~"NIS_RAD~" = ~"GI_SUMINISTROS_IMP~".~"NIS_RAD~" ) and  
+         ( ~"ACO_SUM~".~"NIS_RAD~" = ~"SUMCON~".~"NIS_RAD~" ) and  
+         ( ~"CLIENTES~".~"COD_CLI~" = ~"SUMCON~".~"COD_CLI~" ) and  
+         ( ~"ACO_SUM~".~"NRO_ACOMETIDA~" = ~"SGD_ACOMETIDA~".~"CODIGO~" ) and  
+         ( ~"SGD_ACOMETIDA~".~"BDI_JOB~" = 0 ) AND  
+         ( ~"SGD_ACOMETIDA~".~"INSTALACION_ORIGEN~" IN (SELECT ~"SGD_INSTALACION~".~"NRO_INSTALACION~" FROM ~"SGD_INSTALACION~" WHERE ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" = 5 START WITH ~"SGD_INSTALACION~".~"NRO_INSTALACION~" = :nro_instalacion and ~"SGD_INSTALACION~".~"BDI_JOB~" = 0 CONNECT BY PRIOR ~"SGD_INSTALACION~".~"NRO_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INST_PADRE~" and ~"SGD_INSTALACION~".~"BDI_JOB~" = 0 ) ) AND  
+         to_number(to_char(~"GI_SUMINISTROS_IMP~".~"F_EXPIRACION~", 'YYYYMMDD')) >= to_number(to_char(sysdate, 'YYYYMMDD'))    
+" arguments=(("nro_instalacion", number)) )
+text(band=header alignment="2" text="" border="6" color="8388608" x="9" y="8" height="64" width="2153" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Tel$$HEX1$$e900$$ENDHEX$$fono" border="0" color="0" x="1870" y="12" height="56" width="293" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nombre" border="0" color="0" x="471" y="12" height="56" width="1390" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="NIS" border="0" color="0" x="137" y="12" height="52" width="329" html.valueishtml="0"  name=nis_rad_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="2" expression="GetRow()"border="6" color="0" x="5" y="4" height="56" width="114" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="937" y="4" height="64" width="462" format="[general]" html.valueishtml="0"  name=clientes_ape2_cli visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8388608" x="1399" y="4" height="64" width="462" format="[general]" html.valueishtml="0"  name=clientes_nom_cli visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=detail x="0" y="64" height="120" width="2171"  name=r_1 visible="1" brush.hatch="6" brush.color="8388608" pen.style="5" pen.width="5" pen.color="536870912"  background.mode="2" background.color="8388608" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="1870" y="4" height="64" width="293" format="[general]" html.valueishtml="0"  name=clientes_tfno_cli visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="475" y="4" height="64" width="462" format="[general]" html.valueishtml="0"  name=clientes_ape1_cli visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="137" y="4" height="64" width="329" format="[general]" html.valueishtml="0"  name=nis_rad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

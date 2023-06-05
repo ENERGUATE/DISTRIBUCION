@@ -1,0 +1,41 @@
+HA$PBExportHeader$fg_dias_a_formato.srf
+global type fg_dias_a_formato from function_object
+end type
+
+forward prototypes
+global function string fg_dias_a_formato (decimal pd_duracion)
+end prototypes
+
+global function string fg_dias_a_formato (decimal pd_duracion);//////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n/Evento: fg_dias_a_formato
+//
+// Objetivo: Convierte d$$HEX1$$ed00$$ENDHEX$$as (Formato de Salida SQL) a Dias, Min, SEG
+//         
+// Ambito:  P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//
+//        Entrada: pd_duracion (En d$$HEX1$$ed00$$ENDHEX$$as)
+//        Salida: ls_duracion, string en Dias, Horas, Minutos
+//
+// Devuelve: 
+//
+// Fecha            Responsable             Actuaci$$HEX1$$f300$$ENDHEX$$n
+// --------         -----------             ---------
+// 09/02/2000	    FDO
+//		
+/////////////////////////////////////////////////////////// 
+
+string ls_duracion
+long ll_dias,ll_horas,ll_minutos
+
+ll_dias=truncate(pd_duracion,0)
+ll_horas= truncate((pd_duracion - truncate(pd_duracion,0))*24,0)
+ll_minutos=truncate(((pd_duracion * 24) - truncate((pd_duracion * 24),0))*60,0)
+
+ls_duracion = string(ll_dias) + "D " + string(ll_horas) + "H " + string(ll_minutos) + "M "
+
+return ls_duracion
+end function
+

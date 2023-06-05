@@ -1,0 +1,16 @@
+HA$PBExportHeader$s_print.srs
+global type s_print from structure
+	datawindow		dwprint
+	graph		grafprint
+	boolean		parm1
+	string		titulo
+	string		reporte
+	string		centro
+	string		cmd
+	string		puesto
+	string		f_deteccion
+	string		f_resolucion
+	string		tipo
+	string		duracionmayor
+end type
+

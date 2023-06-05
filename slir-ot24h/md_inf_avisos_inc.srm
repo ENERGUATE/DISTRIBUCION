@@ -1,0 +1,321 @@
+HA$PBExportHeader$md_inf_avisos_inc.srm
+forward
+global type md_inf_avisos_inc from m_recepcion_de_avisos
+end type
+type m_-11 from menu within m_editar
+end type
+type m_porreferencia from menu within m_editar
+end type
+type m_avisos2 from menu within m_consultas
+end type
+type m_incidencias3 from menu within m_consultas
+end type
+type m_interrupciones from menu within m_consultas
+end type
+end forward
+
+global type md_inf_avisos_inc from m_recepcion_de_avisos
+end type
+global md_inf_avisos_inc md_inf_avisos_inc
+
+forward prototypes
+public function integer f_habilitar (string ps_menu, boolean pb_estado)
+end prototypes
+
+public function integer f_habilitar (string ps_menu, boolean pb_estado);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  f_habilitar
+// 
+// Objetivo: Habilita y Deshabilita las distintas opciones de men$$HEX2$$fa002000$$ENDHEX$$de 
+//	acuerdo a los par$$HEX1$$e100$$ENDHEX$$metros que recibe
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_menu (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_estado (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//		14/7/95		SAS		Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en archivo o en editar
+i_cant_menu = UpperBound(m_archivo.item[])
+ps_menu = Upper(ps_menu)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_archivo.item[i_aux].tag = ps_menu THEN
+		m_archivo.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+i_cant_menu = UpperBound(m_editar.item[])
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_editar.item[i_aux].tag = ps_menu THEN
+		m_editar.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+i_cant_menu = UpperBound(m_consultas.item[])
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_consultas.item[i_aux].tag = ps_menu THEN
+		m_consultas.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+RETURN -1
+end function
+
+on md_inf_avisos_inc.create
+md_inf_avisos_inc=this
+call super::create
+end on
+
+on md_inf_avisos_inc.destroy
+call super::destroy
+end on
+
+on m_archivo.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_agregar::clicked;call m_recepcion_de_avisos`m_agregar::clicked;//sw_w_1201_recepcion_aviso.TriggerEvent("ue_nuevo")
+end on
+
+on m_agregar.create
+call super::create
+this.ToolBarItemText="Nuevo"
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_cerrar.create
+call super::create
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_grabar::clicked;call m_recepcion_de_avisos`m_grabar::clicked;w_1201_recepcion_aviso.TriggerEvent("ue_grabar")
+end on
+
+on m_seleccionarimpresora.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_salir.create
+call super::create
+this.Enabled=false
+end on
+
+type m_editar from m_recepcion_de_avisos`m_editar within md_inf_avisos_inc
+m_-11 m_-11
+m_porreferencia m_porreferencia
+end type
+
+on m_editar.create
+call super::create
+this.m_-11=create m_-11
+this.m_porreferencia=create m_porreferencia
+this.Item[UpperBound(this.item)+1]=this.m_-11
+this.Item[UpperBound(this.item)+1]=this.m_porreferencia
+end on
+
+on m_editar.destroy
+call super::destroy
+destroy(this.m_-11)
+destroy(this.m_porreferencia)
+end on
+
+on m_deshacer::clicked;call m_recepcion_de_avisos`m_deshacer::clicked;w_1211_identificar_suministro.TriggerEvent("ue_nuevo")
+end on
+
+on m_deshacer.create
+call super::create
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+type m_consultas from m_recepcion_de_avisos`m_consultas within md_inf_avisos_inc
+m_avisos2 m_avisos2
+m_incidencias3 m_incidencias3
+m_interrupciones m_interrupciones
+end type
+
+on m_consultas.create
+call super::create
+this.ToolBarItemVisible=false
+this.m_avisos2=create m_avisos2
+this.m_incidencias3=create m_incidencias3
+this.m_interrupciones=create m_interrupciones
+this.Item[UpperBound(this.item)+1]=this.m_avisos2
+this.Item[UpperBound(this.item)+1]=this.m_incidencias3
+this.Item[UpperBound(this.item)+1]=this.m_interrupciones
+end on
+
+on m_consultas.destroy
+call super::destroy
+destroy(this.m_avisos2)
+destroy(this.m_incidencias3)
+destroy(this.m_interrupciones)
+end on
+
+on m_avisos.create
+call super::create
+this.Visible=false
+this.Enabled=false
+end on
+
+on m_pendientes.create
+call super::create
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_resueltos.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_estadisticasdeavisos.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_pendientesintervalohorario.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_-89.create
+call super::create
+this.Visible=false
+end on
+
+on m_incidencias.create
+call super::create
+this.Visible=false
+this.Enabled=false
+end on
+
+on m_porcliente2.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_cortesprogramados.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_cargadetrabajoporzona.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_-90.create
+call super::create
+this.Visible=false
+end on
+
+on m_controldetrabajo.create
+call super::create
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_situacionclimatologica.create
+call super::create
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_infdelcliente.create
+call super::create
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+type m_-11 from menu within m_editar
+end type
+
+on m_-11.create
+this.Text="-"
+end on
+
+type m_porreferencia from menu within m_editar
+end type
+
+on clicked;IF This.Checked THEN
+	This.Checked = False
+	w_1211_identificar_suministro.ib_calle = True
+ELSE
+	This.Checked = True
+	w_1211_identificar_suministro.ib_calle = False	
+END IF
+
+
+end on
+
+on m_porreferencia.create
+this.Text="Por Referencia~tCtrl+R"
+this.Checked=true
+this.Shortcut=338
+end on
+
+type m_avisos2 from menu within m_consultas
+end type
+
+on clicked;w_1211_identificar_suministro.Triggerevent("ue_avisos_nic")
+end on
+
+on m_avisos2.create
+this.Text="Avisos"
+this.ToolBarItemName="Cascade!"
+this.ToolBarItemText="Lista de Avisos"
+this.ToolBarItemSpace=3
+end on
+
+type m_incidencias3 from menu within m_consultas
+end type
+
+on clicked;w_1211_identificar_suministro.Triggerevent("ue_incid_nic")
+end on
+
+on m_incidencias3.create
+this.Text="Incidencias"
+this.ToolBarItemName="Watcom!"
+this.ToolBarItemText="Lista de Incidencias"
+end on
+
+type m_interrupciones from menu within m_consultas
+end type
+
+on clicked;w_1211_identificar_suministro.Triggerevent("ue_interrup_nic")
+end on
+
+on m_interrupciones.create
+this.Text="Interrupciones"
+this.ToolBarItemName="incorpor.bmp"
+this.ToolBarItemText="Lista de Interrupciones"
+end on
+

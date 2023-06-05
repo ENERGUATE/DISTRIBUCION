@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_inc_2005_pr_detalle_interrup.sru
+forward
+global type u_inc_2005_pr_detalle_interrup from u_inc_1001_pr_generico
+end type
+end forward
+
+global type u_inc_2005_pr_detalle_interrup from u_inc_1001_pr_generico
+int Width=1651
+int Height=541
+string DataObject="d_inc_2005_pr_detalle_interrup"
+end type
+global u_inc_2005_pr_detalle_interrup u_inc_2005_pr_detalle_interrup
+

@@ -1,0 +1,26 @@
+HA$PBExportHeader$d_avi_2002_incidencias_relaccionadas.srd
+$PBExportComments$Despliega la lista de avisos asociados a una cierta instalacion
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=sgd_incidencia_nro_incidencia dbname="sgd_incidencia.nro_incidencia" )
+ column=(type=char(15) updatewhereclause=yes name=sgd_valor_valor dbname="sgd_valor.valor" )
+ column=(type=decimal(0) updatewhereclause=yes name=tip_incidencia dbname="sgd_incidencia.tip_incidencia" )
+ retrieve=" SELECT ~"SGD_INCIDENCIA~".~"NRO_INCIDENCIA~",   
+         ~"SGD_VALOR~".~"VALOR~",
+~"SGD_INCIDENCIA~".~"TIP_INCIDENCIA~"  
+    FROM ~"SGD_INCIDENCIA~",   
+         ~"SGD_VALOR~"  
+   WHERE  ~"SGD_INCIDENCIA~".~"NRO_INST_AFECTADA~" = :il_nro_instalacion  AND  
+ 			~"SGD_INCIDENCIA~".~"EST_ACTUAL~" < 4  AND  
+          ~"SGD_VALOR~".~"CODIF~" = 'INC'  AND  
+          ~"SGD_VALOR~".~"CODIGO~" = ~"SGD_INCIDENCIA~".~"TIP_INCIDENCIA~" AND 
+		 ~"SGD_INCIDENCIA~".~"TIP_INCIDENCIA~" = DECODE (:il_tipo_inc,1,3, ~"SGD_INCIDENCIA~".~"TIP_INCIDENCIA~") AND
+		~"SGD_INCIDENCIA~".~"TIP_INCIDENCIA~" <> DECODE(:il_tipo_inc,0,3,100)
+ORDER BY ~"SGD_INCIDENCIA~".~"NRO_INCIDENCIA~"
+" arguments=(("il_nro_instalacion", number),("il_tipo_inc", number)) )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="0" x="5" y="8" height="68" width="311" format="[general]"  name=sgd_incidencia_nro_incidencia edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="347" y="8" height="68" width="119" format="[general]"  name=sgd_valor_valor edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

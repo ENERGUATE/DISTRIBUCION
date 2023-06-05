@@ -1,0 +1,12 @@
+HA$PBExportHeader$d_2001_bri_control_brig_trab.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_brigada dbname="gi_brigada_ot.nro_brigada" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"gi_brigada_ot~" ) COLUMN(NAME=~"gi_brigada_ot.nro_brigada~")WHERE(    EXP1 =~"~~~"GI_BRIGADA_OT~~~".~~~"NRO_BRIGADA~~~"~"   OP =~"=~"    EXP2 =~":PL_NRO_BRIGADA~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"GI_BRIGADA_OT~~~".~~~"F_DESDE~~~"~"   OP =~"is not~"    EXP2 =~"NULL~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"GI_BRIGADA_OT~~~".~~~"NRO_OT~~~"~"   OP =~"<>~"    EXP2 =~":pl_nro_ot~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"GI_BRIGADA_OT~~~".~~~"F_HASTA~~~"~"   OP =~"is~"    EXP2 =~"NULL~" ) ) ARG(NAME = ~"PL_NRO_BRIGADA~" TYPE = number)  ARG(NAME = ~"pl_nro_ot~" TYPE = number) " arguments=(("PL_NRO_BRIGADA", number),("pl_nro_ot", number)) )
+text(band=header alignment="2" text="Nro Brigada"border="0" color="0" x="5" y="4" height="64" width="389"  name=nro_brigada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="329" format="[general]"  name=nro_brigada  tag="Numero de la brigada que trabaja en esta orden de trabajo" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

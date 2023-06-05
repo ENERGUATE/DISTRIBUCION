@@ -1,0 +1,11 @@
+HA$PBExportHeader$u_bri_2005_pr_lista_asignaciones_brigada.sru
+forward
+global type u_bri_2005_pr_lista_asignaciones_brigada from u_gen_0000_lista
+end type
+end forward
+
+global type u_bri_2005_pr_lista_asignaciones_brigada from u_gen_0000_lista
+string DataObject="d_2005_pr_lista_asignaciones_brigadas"
+end type
+global u_bri_2005_pr_lista_asignaciones_brigada u_bri_2005_pr_lista_asignaciones_brigada
+

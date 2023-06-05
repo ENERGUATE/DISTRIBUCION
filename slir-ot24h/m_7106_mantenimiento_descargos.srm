@@ -1,0 +1,60 @@
+HA$PBExportHeader$m_7106_mantenimiento_descargos.srm
+forward
+global type m_7106_mantenimiento_descargos from menu
+end type
+type m_versuministrosafectados from menu within m_7106_mantenimiento_descargos
+end type
+global type m_7106_mantenimiento_descargos from menu
+m_versuministrosafectados m_versuministrosafectados
+end type
+end forward
+
+global type m_7106_mantenimiento_descargos from menu
+m_versuministrosafectados m_versuministrosafectados
+end type
+global m_7106_mantenimiento_descargos m_7106_mantenimiento_descargos
+
+on m_7106_mantenimiento_descargos.create
+m_7106_mantenimiento_descargos=this
+call super::create
+this.m_versuministrosafectados=create m_versuministrosafectados
+this.Item[UpperBound(this.Item)+1]=this.m_versuministrosafectados
+end on
+
+on m_7106_mantenimiento_descargos.destroy
+call super::destroy
+destroy(this.m_versuministrosafectados)
+end on
+
+type m_versuministrosafectados from menu within m_7106_mantenimiento_descargos
+end type
+
+event clicked;///////////////////////////////////
+// VERSION UNIFICADA AMR 05/08/2002
+///////////////////////////////////
+
+gi_clientes_afec = 2
+
+if gs_ventana_llamante = 'w_7106_mante_descargos' then
+   w_7106_mante_descargos.tab_1.tabpage_interrupcion.tv_1.triggerevent('ue_versuministros')
+else
+	if gs_ventana_llamante = 'w_7106_consulta_historicos' then
+	   w_7106_consulta_historicos.tab_1.tabpage_2.dw_instalaciones.triggerevent('ue_versuministros')
+	else
+		  if gs_ventana_llamante = 'w_7102_mantenimiento_descargos' then
+			  w_7102_mantenimiento_descargos.tab_1.tabpage_2.tv_1.triggerevent('ue_versuministros')
+			
+		  end if
+	end if
+end if
+end event
+
+on m_versuministrosafectados.create
+call super::create
+this.text = "Suministros Asociados"
+end on
+
+on m_versuministrosafectados.destroy
+call super::destroy
+end on
+

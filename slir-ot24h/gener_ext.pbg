@@ -1,0 +1,26 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "gener_ext.pbl" "";
+@end;
+@begin Objects
+ "fg_cor.srf" "gener_ext.pbl";
+ "fg_geografica.srf" "gener_ext.pbl";
+ "fg_referencia.srf" "gener_ext.pbl";
+ "fg_modifica_texto.srf" "gener_ext.pbl";
+ "fg_verifica_parametro.srf" "gener_ext.pbl";
+ "fg_ventana_parametro.srf" "gener_ext.pbl";
+ "fg_centrar_ventana.srf" "gener_ext.pbl";
+ "fg_inserta_columna.srf" "gener_ext.pbl";
+ "fg_replace_text.srf" "gener_ext.pbl";
+ "fg_parametros_ext.srf" "gener_ext.pbl";
+ "fg_ident_geo.srf" "gener_ext.pbl";
+ "dw_co_filtro_ext.srd" "gener_ext.pbl";
+ "fg_desencriptar.srf" "gener_ext.pbl";
+ "fg_valor_parametro.srf" "gener_ext.pbl";
+ "fg_filtro_ext.srf" "gener_ext.pbl";
+ "dw_co_parametros_ext.srd" "gener_ext.pbl";
+ "fg_cor_dw.srf" "gener_ext.pbl";
+ "fg_encriptar.srf" "gener_ext.pbl";
+ "fg_alto_texto.srf" "gener_ext.pbl";
+ "dw_co_parametros_vent_ext.srd" "gener_ext.pbl";
+@end;

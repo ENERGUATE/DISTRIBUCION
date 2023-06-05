@@ -1,0 +1,41 @@
+HA$PBExportHeader$d_inc_1211_interr_incid_hist.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=nro_incidencia dbname="gi_hist_interrupcion.nro_incidencia" )
+ column=(type=char(15) updatewhereclause=yes name=fase_afectada dbname="sgd_valor.valor" )
+ column=(type=number updatewhereclause=yes name=tipo_instalacion dbname="gi_hist_interrupcion.tipo_instalacion" )
+ column=(type=decimal(5) updatewhereclause=yes name=pasa dbname="compute_0004" )
+ retrieve="select gi_hist_interrupcion.nro_incidencia, SGD_VALOR.VALOR , gi_hist_interrupcion.tipo_instalacion , 0 
+from gi_hist_interrupcion, sgd_valor
+where gi_hist_interrupcion.CABECERA_BT = 0  AND
+		TO_CHAR(gi_hist_interrupcion.f_alta,'YYYYMMDD') >=  :ls_f_desde  AND
+		TO_CHAR(gi_hist_interrupcion.f_alta,'YYYYMMDD') <=  :ls_f_hasta  AND
+		sgd_valor.codif = 'FASE' AND
+		sgd_valor.descripcion = NVL(gi_hist_interrupcion.fase_afectada,'ABC') AND
+		sgd_valor.valor <> '0' AND 
+		gi_hist_interrupcion.NRO_INSTALACION IN   
+				(SELECT NRO_INSTALACION FROM SGD_INSTALACION   
+					START WITH 	SGD_INSTALACION.BDI_JOB = 0 AND NRO_INSTALACION =    
+					(SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN FROM SGD_ACOMETIDA, ACO_SUM   
+							WHERE SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA AND SGD_ACOMETIDA.BDI_JOB = 0														 
+							AND ACO_SUM.NIS_RAD = :ll_nis_rad)   
+					CONNECT 	BY PRIOR NRO_INST_PADRE = NRO_INSTALACION AND SGD_INSTALACION.BDI_JOB = 0)   
+UNION
+SELECT NRO_INCIDENCIA,
+		 :ls_fase ,1 , 1
+FROM GI_HIST_AVISOS
+WHERE NIS_RAD = :ll_nis_rad
+		AND IND_INC_MANUAL = 1
+
+" arguments=(("ll_nis_rad", number),("ls_f_desde", string),("ls_f_hasta", string),("ls_fase", string)) )
+text(band=header alignment="2" text="Nro Incidencia"border="0" color="0" x="5" y="4" height="52" width="315"  name=nro_incidencia_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="fase_afectada"border="0" color="0" x="329" y="4" height="52" width="416"  name=fase_afectada_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="0" y="0" height="76" width="498" format="[general]"  name=nro_incidencia edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="521" y="0" height="76" width="480" format="[general]"  name=fase_afectada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2377" y="0" height="76" width="1376" format="[general]"  name=pasa edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="3753" y="0" height="76" width="1376"  name=tipo_instalacion  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

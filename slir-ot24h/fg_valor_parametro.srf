@@ -1,0 +1,29 @@
+HA$PBExportHeader$fg_valor_parametro.srf
+global type fg_valor_parametro from function_object
+end type
+
+forward prototypes
+global function integer fg_valor_parametro (string arg_parametro)
+end prototypes
+
+global function integer fg_valor_parametro (string arg_parametro);//**************************************************************************//
+//                FUNCION PARA VERIFICAR SI UN PARAMETRO ESTA ACTIVO        //
+//**************************************************************************//
+
+Integer li_return
+
+
+
+SELECT GI_PARAMETROS_EXT.VALOR
+	INTO :li_return
+	FROM GI_PARAMETROS_EXT
+	WHERE UPPER(GI_PARAMETROS_EXT.DESCRIPCION) = UPPER(:arg_parametro);
+	
+If SQLCA.sqlcode <> 0 Then
+	li_return = -1
+	Return li_return
+End If
+
+Return li_return
+end function
+

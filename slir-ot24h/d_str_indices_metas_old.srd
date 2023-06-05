@@ -1,0 +1,68 @@
+HA$PBExportHeader$d_str_indices_metas_old.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=88 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="bdiv10_activos.codigo" )
+ column=(type=char(100) updatewhereclause=yes name=descripcion dbname="bdiv10_activos.descripcion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo dbname="bdiv10_activos.tipo" )
+ column=(type=decimal(0) updatewhereclause=yes name=mhai dbname="gi_tipos_activos_grupo_activos.mhai" )
+ column=(type=decimal(0) updatewhereclause=yes name=codigo_grupo dbname="gi_tipos_activos_grupo_activos.codigo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=codigo_activo dbname="gi_indicadores_str.codigo_activo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=anio dbname="gi_indicadores_str.anio" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=mes dbname="gi_indicadores_str.mes" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=enr dbname="gi_indicadores_str.enr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cnp dbname="gi_indicadores_str.cnp" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mida dbname="gi_indicadores_str.mida" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=indice_disponibilidad dbname="gi_indicadores_str.indice_disponibilidad" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=imr dbname="gi_indicadores_str.imr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_updated dbname="gi_indicadores_str.ind_updated" )
+ retrieve="  SELECT ~"BDIV10_ACTIVOS~".~"CODIGO~",   
+         ~"BDIV10_ACTIVOS~".~"DESCRIPCION~",   
+         ~"BDIV10_ACTIVOS~".~"TIPO~",   
+         ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"MHAI~",  
+			~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"CODIGO~",
+			~"GI_INDICADORES_STR~".~"CODIGO_ACTIVO~", 
+			~"GI_INDICADORES_STR~".~"ANIO~",
+     		~"GI_INDICADORES_STR~".~"MES~",   
+         ~"GI_INDICADORES_STR~".~"ENR~",   
+         ~"GI_INDICADORES_STR~".~"CNP~",
+         ~"GI_INDICADORES_STR~".~"MIDA~", 
+         ~"GI_INDICADORES_STR~".~"INDICE_DISPONIBILIDAD~", 
+         ~"GI_INDICADORES_STR~".~"IMR~", 
+         ~"GI_INDICADORES_STR~".~"IND_UPDATED~"
+    FROM ~"BDIV10_ACTIVOS~",   
+         ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~" ,
+		 ~"GI_INDICADORES_STR~" 
+   WHERE ~"BDIV10_ACTIVOS~".~"BDI_JOB~" = 0    
+     AND ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"TIPO_ELEMENTO~" = 0
+     AND ~"BDIV10_ACTIVOS~".~"TIPO~"  = ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"CODIGO~"(+)	
+ 	  AND  ~"GI_INDICADORES_STR~".~"CODIGO_ACTIVO~"(+) = ~"BDIV10_ACTIVOS~".~"CODIGO~" 
+	  AND  ~"GI_INDICADORES_STR~".~"ANIO~"(+) = :pl_anio
+     AND  ~"GI_INDICADORES_STR~".~"MES~"(+) = :pl_mes
+     
+
+
+" update="GI_INDICADORES_STR" updatewhere=1 updatekeyinplace=no arguments=(("pl_anio", number),("pl_mes", number)) )
+text(band=header alignment="2" text="MHAI" border="6" color="0" x="1317" y="16" height="64" width="192" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Descripcion" border="6" color="0" x="311" y="16" height="64" width="983" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Codigo" border="6" color="0" x="18" y="16" height="64" width="274" html.valueishtml="0"  name=codigo_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ENR" border="6" color="0" x="1563" y="16" height="64" width="192" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="MIDA" border="6" color="0" x="2011" y="16" height="64" width="411" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CNP" border="6" color="0" x="1769" y="16" height="64" width="192" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="$$HEX1$$cd00$$ENDHEX$$ndice Disponibilidad" border="6" color="0" x="2487" y="16" height="64" width="581" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="IMR" border="6" color="0" x="3104" y="16" height="64" width="261" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="3758" y="12" height="60" width="389" format="[general]" html.valueishtml="0"  name=tipo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="8388608" x="18" y="16" height="60" width="274" format="[general]" html.valueishtml="0"  name=codigo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="8388608" x="311" y="16" height="60" width="983" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="5" color="8388608" x="3442" y="16" height="60" width="357" format="[general]" html.valueishtml="0"  name=ind_updated visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="5" color="8388608" x="1321" y="16" height="60" width="192" format="[general]" html.valueishtml="0"  name=mhai visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="5" color="8388608" x="1563" y="16" height="60" width="192" format="[general]" html.valueishtml="0"  name=enr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="5" color="8388608" x="1769" y="16" height="60" width="192" format="[general]" html.valueishtml="0"  name=cnp visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="5" color="8388608" x="2011" y="16" height="60" width="411" format="[general]" html.valueishtml="0"  name=mida visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="1" tabsequence=32766 border="5" color="8388608" x="2487" y="12" height="60" width="581" format="[general]" html.valueishtml="0"  name=indice_disponibilidad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=32766 border="5" color="8388608" x="3104" y="12" height="60" width="261" format="[general]" html.valueishtml="0"  name=imr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

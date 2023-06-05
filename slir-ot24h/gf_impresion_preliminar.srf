@@ -1,0 +1,131 @@
+HA$PBExportHeader$gf_impresion_preliminar.srf
+$PBExportComments$PM013.JCC. Funci$$HEX1$$f300$$ENDHEX$$n para realizar la impresi$$HEX1$$f300$$ENDHEX$$n preliminar.
+global type gf_impresion_preliminar from function_object
+end type
+
+forward prototypes
+global function boolean gf_impresion_preliminar (ref s_impresion_preliminar pst_datawindow, boolean pb_impresion_preliminar, integer pi_numero_copias)
+end prototypes
+
+global function boolean gf_impresion_preliminar (ref s_impresion_preliminar pst_datawindow, boolean pb_impresion_preliminar, integer pi_numero_copias);////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:	gf_impresion_preliminar
+// 
+// Objetivo:	Se trata de realizar la impresi$$HEX1$$f300$$ENDHEX$$n preliminar de los datawindows pasados como par$$HEX1$$e100$$ENDHEX$$metros.
+// Llamamos a la ventana que nos pide confirmaci$$HEX1$$f300$$ENDHEX$$n de la acci$$HEX1$$f300$$ENDHEX$$n a realizar y el n$$HEX1$$fa00$$ENDHEX$$mero de copias de los
+// documentos. Esta ventana nos devolver$$HEX2$$e1002000$$ENDHEX$$-1 si no quiere realizar la impresi$$HEX1$$f300$$ENDHEX$$n y por tanto nosotros 
+// devolveremos FALSE, o un valor mayor de 0 que indica el n$$HEX1$$fa00$$ENDHEX$$mero de copias que se quiere realizar
+// de cada uno de los datawindows pasados como par$$HEX1$$e100$$ENDHEX$$metros.
+// Cada datawindow ser$$HEX2$$e1002000$$ENDHEX$$un Documento el c$$HEX1$$fa00$$ENDHEX$$al deberemos imprimir.
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada: 	- DataWindow pdw_DataWindow[] reference ( Array de Datawindows a imprimir.)
+//				- boolean pb_impresion_preliminar( Indica si se va a realizar Presentaci$$HEX1$$f300$$ENDHEX$$n preliminar.)
+//				- integer pi_numero_copias ( Si introducimos un n$$HEX1$$fa00$$ENDHEX$$mero de copias, quiere decir que
+//				quiere imprimir sin ver ni ventana de impresi$$HEX1$$f300$$ENDHEX$$n ).
+//	Salida:   
+//						
+// Devuelve:	boolean ( TRUE Se ha realizado la impresi$$HEX1$$f300$$ENDHEX$$n , FALSE no se ha cancelado la impresi$$HEX1$$f300$$ENDHEX$$n )
+//
+//	Fecha			Resp.			Actuaci$$HEX1$$f300$$ENDHEX$$n
+//	-----				-----				---------
+//	8-10-96			JCC				PM013
+//
+////////////////////////////////////////////////////////////////////////
+// VARIABLES LOCALES
+//
+// Guarda el valor de retorno de la ventana de petici$$HEX1$$f300$$ENDHEX$$n de impresi$$HEX1$$f300$$ENDHEX$$n
+string ls_Peticion_Impresion
+// guarda el valor de retorno de la funci$$HEX1$$f300$$ENDHEX$$n
+boolean lb_Retorno = TRUE
+// Guarda el trabajo de impresi$$HEX1$$f300$$ENDHEX$$n
+long ll_Trabajo
+// Guarda un $$HEX1$$ed00$$ENDHEX$$ndice del array de datawindows pasados y su dimensi$$HEX1$$f300$$ENDHEX$$n
+integer li_Indice, li_Dimension, li_zoom
+// Estructura a pasar a la ventana de impresi$$HEX1$$f300$$ENDHEX$$n preliminar
+datawindow dw_impresion
+// Guarda el nombre del documento a imprimir
+string ls_Nombre_Documento
+//
+////////////////////////////////////////////////////////////////////////
+
+// Comprobamos si quiere realizar una impresi$$HEX1$$f300$$ENDHEX$$n r$$HEX1$$e100$$ENDHEX$$pida
+IF pi_Numero_Copias > 0 THEN
+
+	// Indicamos que vamos a realizar la impresi$$HEX1$$f300$$ENDHEX$$n r$$HEX1$$e100$$ENDHEX$$pida
+	ls_Peticion_Impresion = "A"
+
+ELSE	
+
+	// Llamamos a la ventana de petici$$HEX1$$f300$$ENDHEX$$n de impresi$$HEX1$$f300$$ENDHEX$$n.
+	IF pb_impresion_preliminar THEN
+		// Le pasamos como par$$HEX1$$e100$$ENDHEX$$metro que realize la presentaci$$HEX1$$f300$$ENDHEX$$n preliminar
+		OpenWithParm( w_generica_peticion_impresion,  "P" )
+	ELSE
+		// Le pasamos como par$$HEX1$$e100$$ENDHEX$$metro que no realize la presentaci$$HEX1$$f300$$ENDHEX$$n preliminar
+		OpenWithParm( w_generica_peticion_impresion,  "A" )
+	END IF
+
+	// Recuperamos el valor de retorno de la ventana de petici$$HEX1$$f300$$ENDHEX$$n de impresi$$HEX1$$f300$$ENDHEX$$n.
+	ls_Peticion_Impresion = message.StringParm
+
+END IF
+
+// Comprobamos si se cancel$$HEX2$$f3002000$$ENDHEX$$la impresi$$HEX1$$f300$$ENDHEX$$n
+IF ls_Peticion_Impresion <> "-1" THEN
+
+	// Comprobamos si quiere realizar una impresi$$HEX1$$f300$$ENDHEX$$n directamente
+	IF LEFT( ls_Peticion_Impresion, 1 ) = "P" THEN
+
+		// Quiere realizar la impresi$$HEX1$$f300$$ENDHEX$$n preliminar
+		// No se cancel$$HEX2$$f3002000$$ENDHEX$$la impresi$$HEX1$$f300$$ENDHEX$$n llamamos a la ventana de presentaci$$HEX1$$f300$$ENDHEX$$n preliminar que ser$$HEX2$$e1002000$$ENDHEX$$la 
+		// que realmente imprima los datawindows directamente o har$$HEX2$$e1002000$$ENDHEX$$la presentaci$$HEX1$$f300$$ENDHEX$$n preliminar
+		// de los mismos.
+			
+		// Cargamos los valores a pasar a la ventana
+		OpenWithParm ( w_generica_impresion_preliminar,  pst_datawindow)	
+		
+	ELSE
+
+		// Quiere imprimir ya.
+		// Comprobamos si la impresi$$HEX1$$f300$$ENDHEX$$n es r$$HEX1$$e100$$ENDHEX$$pida desde el inicio
+		// de la funci$$HEX1$$f300$$ENDHEX$$n
+		IF pi_numero_copias <= 0 THEN
+			// Recuperamos el n$$HEX1$$fa00$$ENDHEX$$mero de copias introducido en la ventna
+			// de petici$$HEX1$$f300$$ENDHEX$$n de impresi$$HEX1$$f300$$ENDHEX$$n
+			pi_numero_copias = INTEGER( MID(ls_Peticion_Impresion,2,10) )
+		END IF
+		
+		if pst_datawindow.compuesto then
+			// Imprimos el datawindows 
+			// Colocamos el n$$HEX1$$fa00$$ENDHEX$$mero de copias a imprimir del documento
+			pst_datawindow.pdw_Compuesto.Modify( "DataWindow.Print.Copies=" + STRING( pi_Numero_Copias ) )
+			pst_datawindow.pdw_Compuesto.MODIFY( "Datawindow.Print.DocumentName='SGI listados'" )
+			pst_datawindow.pdw_Compuesto.Modify( "DataWindow.Zoom='" + string(pst_datawindow.zoom) + "'" )
+			// Imprimos el datawindow.
+			// Imprimos el datawindow.
+			IF pst_datawindow.pdw_Compuesto.Print(FALSE) < 0 THEN RETURN FALSE
+		else
+			// Imprimos el datawindows 
+			// Colocamos el n$$HEX1$$fa00$$ENDHEX$$mero de copias a imprimir del documento
+			pst_datawindow.pdw_Datawindow.Modify( "DataWindow.Print.Copies=" + STRING( pi_Numero_Copias ) )
+			// Imprimos el datawindow.
+			li_zoom = gf_zoom( pst_datawindow.pdw_DataWindow,363300)
+			pst_datawindow.pdw_Datawindow.Modify("DataWindow.Zoom='" + string (li_zoom) + "'")
+			IF pst_datawindow.pdw_DataWindow.Print(FALSE) < 0 THEN RETURN FALSE
+		end if
+	END IF
+
+ELSE
+	
+	// Se cancel$$HEX2$$f3002000$$ENDHEX$$la impresi$$HEX1$$f300$$ENDHEX$$n
+	lb_Retorno = FALSE
+
+END IF
+
+RETURN lb_Retorno
+end function
+

@@ -1,0 +1,89 @@
+HA$PBExportHeader$d_bri_2017_pr_datos_orden_tarea_2.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=gi_ot_nro_ot dbname="gi_ot.nro_ot" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=gi_ot_usuario dbname="gi_ot.usuario" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=gi_ot_ind_trabajo dbname="gi_ot.ind_trabajo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=gi_ot_nro_cmd dbname="gi_ot.nro_cmd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=gi_ot_nro_centro dbname="gi_ot.nro_centro" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=gi_ot_nro_mesa dbname="gi_ot.nro_mesa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=gi_ot_ult_brigada dbname="gi_ot.ult_brigada" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_ot_f_alta dbname="gi_ot.f_alta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_ot_h_alta dbname="gi_ot.h_alta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_ot_f_actual dbname="gi_ot.f_actual" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_ot_h_actual dbname="gi_ot.h_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=gi_ot_programa dbname="gi_ot.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estado_ot dbname="gi_ot.est_ot" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=gi_ot_descripcion dbname="gi_ot.descripcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=gi_ot_nro_aviso dbname="gi_ot.nro_aviso" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=gi_ot_nro_instalacion dbname="gi_ot.nro_instalacion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_incidencia dbname="gi_ot.nro_incidencia" )
+ column=(type=datetime updatewhereclause=yes name=gi_brigada_ot_f_desde dbname="gi_brigada_ot.f_desde" )
+ column=(type=datetime updatewhereclause=yes name=gi_brigada_ot_f_hasta dbname="gi_brigada_ot.f_hasta" )
+ column=(type=datetime updatewhereclause=yes name=gi_brigada_ot_h_desde dbname="gi_brigada_ot.h_desde" )
+ column=(type=datetime updatewhereclause=yes name=gi_brigada_ot_h_hasta dbname="gi_brigada_ot.h_hasta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_ot_f_desde dbname="gi_ot.f_desde" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_ot_f_hasta dbname="gi_ot.f_hasta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_ot_h_desde dbname="gi_ot.h_desde" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_ot_h_hasta dbname="gi_ot.h_hasta" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=gi_ot_tip_brigada dbname="gi_ot.tip_brigada" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_brigada_ot_id_reponsable dbname="gi_brigada_ot.id_reponsable" )
+ column=(type=char(50) updatewhereclause=yes name=sgd_valor_descripcion dbname="sgd_valor.descripcion" )
+ column=(type=number updatewhereclause=yes name=descripcion_tarea dbname="gi_ot.descripcion_tarea" )
+ retrieve="  SELECT ~"GI_OT~".~"NRO_OT~",   
+         ~"GI_OT~".~"USUARIO~",   
+         ~"GI_OT~".~"IND_TRABAJO~",   
+         ~"GI_OT~".~"NRO_CMD~",   
+         ~"GI_OT~".~"NRO_CENTRO~",   
+         ~"GI_OT~".~"NRO_MESA~",   
+         ~"GI_OT~".~"ULT_BRIGADA~",   
+         ~"GI_OT~".~"F_ALTA~",   
+         ~"GI_OT~".~"H_ALTA~",   
+         ~"GI_OT~".~"F_ACTUAL~",   
+         ~"GI_OT~".~"H_ACTUAL~",   
+         ~"GI_OT~".~"PROGRAMA~",   
+         ~"GI_OT~".~"EST_OT~",   
+         ~"GI_OT~".~"DESCRIPCION~",   
+         ~"GI_OT~".~"NRO_AVISO~",   
+         ~"GI_OT~".~"NRO_INSTALACION~",   
+         ~"GI_OT~".~"NRO_INCIDENCIA~",   
+         ~"GI_BRIGADA_OT~".~"F_DESDE~",   
+         ~"GI_BRIGADA_OT~".~"F_HASTA~",   
+         ~"GI_BRIGADA_OT~".~"H_DESDE~",   
+         ~"GI_BRIGADA_OT~".~"H_HASTA~",
+         ~"GI_OT~".~"F_DESDE~",   
+         ~"GI_OT~".~"F_HASTA~",   
+         ~"GI_OT~".~"H_DESDE~",   
+         ~"GI_OT~".~"H_HASTA~", 
+         ~"GI_OT~".~"TIP_BRIGADA~", 
+         ~"GI_BRIGADA_OT~".~"ID_REPONSABLE~",   
+         ~"SGD_VALOR~".~"DESCRIPCION~" ,
+			1 descripcion_tarea
+    FROM ~"GI_OT~",   
+         ~"GI_BRIGADA_OT~",   
+         ~"SGD_VALOR~"  
+   WHERE ( ~"GI_OT~".~"NRO_OT~" = ~"GI_BRIGADA_OT~".~"NRO_OT~" ) and  
+         ( ~"GI_BRIGADA_OT~".~"NRO_BRIGADA~" = :pi_nro_brigada ) AND  
+         ~"SGD_VALOR~".~"CODIF~" = 'E_OT' AND  
+         ~"SGD_VALOR~".~"CODIGO~" = ~"GI_BRIGADA_OT~".~"EST_BRIGADA~" (+)    
+" update="GI_OT" updatewhere=0 updatekeyinplace=yes arguments=(("pi_nro_brigada", number)) )
+text(band=header alignment="2" text="N$$HEX1$$fa00$$ENDHEX$$mero" border="6" color="0" x="512" y="4" height="64" width="256" html.valueishtml="0"  name=gi_ot_nro_ot_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Estado" border="6" color="0" x="1701" y="4" height="64" width="361" html.valueishtml="0"  name=sgd_valor_descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n del Trabajo" border="6" color="0" x="786" y="4" height="64" width="896" html.valueishtml="0"  name=descripcion_tarea_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Trabajo" border="6" color="0" x="14" y="4" height="64" width="485" html.valueishtml="0"  name=cc_tipo_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Fecha de Inicio" border="6" color="0" x="2080" y="4" height="64" width="517" html.valueishtml="0"  name=gi_ot_f_desde_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Fecha de Fin" border="6" color="0" x="2615" y="4" height="64" width="530" html.valueishtml="0"  name=gi_brigada_ot_f_hasta_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=detail alignment="1" expression="if(   gi_ot_ind_trabajo=1  , ~"OT~", ~"TAREA~" )"border="0" color="8388608" x="59" y="8" height="64" width="306" format="[general]" html.valueishtml="0"  name=cc_tipo visible="1"  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+compute(band=detail alignment="0" expression="bitmap(~"altcontr.bmp~")"border="0" color="0" x="411" y="4" height="64" width="78" format="[general]" html.valueishtml="0"  name=compute_1 visible="1~tIF(  gi_brigada_ot_id_reponsable = 1,1,0)"  font.face="MS Sans Serif" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="535" y="8" height="64" width="201" format="[general]" html.valueishtml="0"  name=gi_ot_nro_ot visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="8388608" x="1705" y="4" height="64" width="357" format="[general]" html.valueishtml="0"  name=sgd_valor_descripcion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="8388608" x="773" y="8" height="60" width="887" format="[general]" html.valueishtml="0"  name=gi_ot_descripcion visible="1~tif(  gi_ot_ind_trabajo = 2 and  estado_ot = 0 ,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=29 alignment="0" tabsequence=10 border="0" color="8388608" x="773" y="8" height="60" width="887" format="[general]" html.valueishtml="0"  name=descripcion_tarea visible="1~tif(  gi_ot_ind_trabajo =2 AND ( gi_ot_descripcion =~"~" OR isNull( gi_ot_descripcion )),1 ,0 )" dddw.name=dddw_tareas_sin_tareas dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=18 alignment="2" tabsequence=40 border="5" color="8388608" x="2080" y="12" height="60" width="526" format="[shortdate] [time]" html.valueishtml="0" protect="0~tif( gi_ot_ind_trabajo=2 and  estado_ot=1, 0,1)"  name=gi_brigada_ot_f_desde visible="1" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="79741120~tif( gi_ot_ind_trabajo=2 and  estado_ot=1, 16777215,81324524)" )
+column(band=detail id=19 alignment="2" tabsequence=50 border="5" color="8388608" x="2629" y="12" height="60" width="526" format="[shortdate] [time]" html.valueishtml="0" protect="0~tif( gi_ot_ind_trabajo=2 and  estado_ot=2, 0,1)"  name=gi_brigada_ot_f_hasta visible="1" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="79741120~tif( gi_ot_ind_trabajo=2 and  estado_ot=2, 16777215,81324524)" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

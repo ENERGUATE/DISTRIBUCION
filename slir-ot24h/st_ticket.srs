@@ -1,0 +1,6 @@
+HA$PBExportHeader$st_ticket.srs
+global type st_ticket from structure
+	string		persona_que_reporta
+	string		ticket
+end type
+

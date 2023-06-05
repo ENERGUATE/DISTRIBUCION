@@ -1,0 +1,88 @@
+HA$PBExportHeader$d_ins_2010_lista_interrupciones_2.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1468 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=valor dbname="sgd_valor.valor" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_reposicion dbname="sgd_interrupcion.f_reposicion" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_alta dbname="sgd_interrupcion.f_alta" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=pot_instalada dbname="sgd_interrupcion.pot_instalada" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=pot_contratada dbname="sgd_interrupcion.pot_contratada" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=kwh dbname="sgd_interrupcion.kwh" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cant_cli_afec dbname="sgd_interrupcion.ccli_afec" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=pot_inst_afec dbname="sgd_interrupcion.pot_inst_afec" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=pot_contr_afec dbname="sgd_interrupcion.pot_contr_afec" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cant_cli dbname="sgd_interrupcion.cant_cli" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=usuario dbname="sgd_interrupcion.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="sgd_interrupcion.f_actual" )
+ column=(type=datetime update=yes updatewhereclause=yes name=h_actual dbname="sgd_interrupcion.h_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_interrupcion.programa" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=tip_interrupcion dbname="sgd_interrupcion.tip_interrupcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_otras_ins dbname="sgd_interrupcion.ind_otras_ins" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_debe_rep dbname="sgd_interrupcion.h_reposicion" )
+ column=(type=datetime update=yes updatewhereclause=yes name=h_alta dbname="sgd_interrupcion.h_alta" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_incidencia dbname="sgd_interrupcion.nro_incidencia" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_ult_nivel dbname="sgd_interrupcion.ind_ult_nivel" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=ind_ficticio dbname="sgd_interrupcion.ind_ficticio" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_instalacion dbname="sgd_interrupcion.nro_instalacion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_padre dbname="sgd_interrupcion.nro_padre" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo_instalacion dbname="sgd_interrupcion.tipo_instalacion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=co_nivel dbname="sgd_interrupcion.co_nivel" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo_instalacion_padre dbname="sgd_interrupcion.tipo_instalacion_padre" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=co_nivel_padre dbname="sgd_interrupcion.co_nivel_padre" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=kwh_estimado dbname="sgd_interrupcion.kwh_estimado" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tiempo_interrupcion dbname="sgd_interrupcion.tiempo_interrupcion" )
+ retrieve="  SELECT ~"SGD_VALOR~".~"VALOR~",   
+         ~"SGD_INTERRUPCION~".~"F_REPOSICION~",   
+         ~"SGD_INTERRUPCION~".~"F_ALTA~",   
+         ~"SGD_INTERRUPCION~".~"POT_INSTALADA~",   
+         ~"SGD_INTERRUPCION~".~"POT_CONTRATADA~",   
+         ~"SGD_INTERRUPCION~".~"KWH~",   
+         ~"SGD_INTERRUPCION~".~"CCLI_AFEC~",   
+         ~"SGD_INTERRUPCION~".~"POT_INST_AFEC~",   
+         ~"SGD_INTERRUPCION~".~"POT_CONTR_AFEC~",   
+         ~"SGD_INTERRUPCION~".~"CANT_CLI~",   
+         ~"SGD_INTERRUPCION~".~"USUARIO~",   
+         ~"SGD_INTERRUPCION~".~"F_ACTUAL~",   
+         ~"SGD_INTERRUPCION~".~"H_ACTUAL~",   
+         ~"SGD_INTERRUPCION~".~"PROGRAMA~",   
+         ~"SGD_INTERRUPCION~".~"TIP_INTERRUPCION~",   
+         ~"SGD_INTERRUPCION~".~"IND_OTRAS_INS~",   
+         ~"SGD_INTERRUPCION~".~"H_REPOSICION~",   
+         ~"SGD_INTERRUPCION~".~"H_ALTA~",   
+         ~"SGD_INTERRUPCION~".~"NRO_INCIDENCIA~",   
+         ~"SGD_INTERRUPCION~".~"IND_ULT_NIVEL~",   
+         ~"SGD_INTERRUPCION~".~"IND_FICTICIO~",   
+         ~"SGD_INTERRUPCION~".~"NRO_INSTALACION~",   
+         ~"SGD_INTERRUPCION~".~"NRO_PADRE~",   
+         ~"SGD_INTERRUPCION~".~"TIPO_INSTALACION~",   
+         ~"SGD_INTERRUPCION~".~"CO_NIVEL~",   
+         ~"SGD_INTERRUPCION~".~"TIPO_INSTALACION_PADRE~",   
+         ~"SGD_INTERRUPCION~".~"CO_NIVEL_PADRE~",   
+         ~"SGD_INTERRUPCION~".~"KWH_ESTIMADO~",   
+         ~"SGD_INTERRUPCION~".~"TIEMPO_INTERRUPCION~"  
+    FROM ~"SGD_INTERRUPCION~",   
+         ~"SGD_VALOR~"  
+   WHERE ( SGD_INTERRUPCION.tipo_instalacion = sgd_valor.codigo (+)) and  
+         ( ~"SGD_VALOR~".~"CODIF~" = 'T_IN') AND  
+         ( ~"SGD_INTERRUPCION~".~"NRO_INCIDENCIA~" = :pl_nro_incid )    " update="SGD_INTERRUPCION" updatewhere=0 updatekeyinplace=yes arguments=(("pl_nro_incid", number)) )
+line(band=detail x1="9" y1="752" x2="1061" y2="752" pen.style="0" pen.width="5" pen.color="8421504"  background.mode="2" background.color="8421504" )
+line(band=detail x1="9" y1="756" x2="1061" y2="756" pen.style="0" pen.width="5" pen.color="1090519039"  background.mode="2" background.color="8421504" )
+text(band=detail alignment="0" text="Cantidad Clientes:"border="0" color="0" x="14" y="1180" height="64" width="558"  name=ccant_cli_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Pot. Contr. Afectada:"border="0" color="0" x="14" y="1084" height="64" width="558"  name=pot_contr_afec_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Canti. Cli. Afectados:"border="0" color="0" x="14" y="1276" height="64" width="558"  name=cccli_afec_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Pot Contratada:"border="0" color="0" x="14" y="984" height="64" width="558"  name=cpot_contratada_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Pot. Inst. Afectada:"border="0" color="0" x="14" y="888" height="64" width="558"  name=pot_inst_afec_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Potencia Instalada:"border="0" color="0" x="14" y="796" height="64" width="558"  name=pot_instalada_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="kVA"border="0" color="0" x="937" y="796" height="64" width="123"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="kVA"border="0" color="0" x="937" y="892" height="64" width="123"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="kW"border="0" color="0" x="937" y="988" height="64" width="123"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="kW"border="0" color="0" x="937" y="1084" height="64" width="123"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="5" color="8388608" x="585" y="796" height="64" width="329" format="[general]"  name=pot_instalada edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="5" color="8388608" x="585" y="888" height="64" width="329" format="[general]"  name=pot_inst_afec edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="5" color="8388608" x="585" y="984" height="64" width="329" format="[general]"  name=pot_contratada edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="5" color="8388608" x="585" y="1084" height="64" width="329" format="[general]"  name=pot_contr_afec edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="5" color="8388608" x="585" y="1180" height="64" width="329" format="[general]"  name=cant_cli edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="5" color="8388608" x="585" y="1276" height="64" width="329" format="[general]"  name=cant_cli_afec edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

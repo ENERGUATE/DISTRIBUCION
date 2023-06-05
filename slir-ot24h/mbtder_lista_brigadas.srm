@@ -1,0 +1,104 @@
+HA$PBExportHeader$mbtder_lista_brigadas.srm
+forward
+global type mbtder_lista_brigadas from menu
+end type
+type m_dardealtaunabrigada from menu within mbtder_lista_brigadas
+end type
+type m_dardealtaunabrigada from menu within mbtder_lista_brigadas
+end type
+type m_eliminarunabrigada from menu within mbtder_lista_brigadas
+end type
+type m_eliminarunabrigada from menu within mbtder_lista_brigadas
+end type
+type m_mantenimientodeunabrigada from menu within mbtder_lista_brigadas
+end type
+type m_mantenimientodeunabrigada from menu within mbtder_lista_brigadas
+end type
+type m_tareasotsdeunabrigada from menu within mbtder_lista_brigadas
+end type
+type m_tareasotsdeunabrigada from menu within mbtder_lista_brigadas
+end type
+end forward
+
+global type mbtder_lista_brigadas from menu
+m_dardealtaunabrigada m_dardealtaunabrigada
+m_eliminarunabrigada m_eliminarunabrigada
+m_mantenimientodeunabrigada m_mantenimientodeunabrigada
+m_tareasotsdeunabrigada m_tareasotsdeunabrigada
+end type
+global mbtder_lista_brigadas mbtder_lista_brigadas
+
+on mbtder_lista_brigadas.create
+mbtder_lista_brigadas=this
+this.m_dardealtaunabrigada=create m_dardealtaunabrigada
+this.m_eliminarunabrigada=create m_eliminarunabrigada
+this.m_mantenimientodeunabrigada=create m_mantenimientodeunabrigada
+this.m_tareasotsdeunabrigada=create m_tareasotsdeunabrigada
+this.Item[]={this.m_dardealtaunabrigada, &
+this.m_eliminarunabrigada, &
+this.m_mantenimientodeunabrigada, &
+this.m_tareasotsdeunabrigada}
+end on
+
+on mbtder_lista_brigadas.destroy
+destroy(this.m_dardealtaunabrigada)
+destroy(this.m_eliminarunabrigada)
+destroy(this.m_mantenimientodeunabrigada)
+destroy(this.m_tareasotsdeunabrigada)
+end on
+
+type m_dardealtaunabrigada from menu within mbtder_lista_brigadas
+end type
+
+event clicked;w_2270_lista_brigadas_centro.triggerevent("ue_abrir_mant_brigadas")
+
+
+
+end event
+
+on m_dardealtaunabrigada.create
+this.Text="Dar de Alta una Brigada"
+end on
+
+on m_dardealtaunabrigada.destroy
+end on
+
+type m_eliminarunabrigada from menu within mbtder_lista_brigadas
+end type
+
+event clicked;w_2270_lista_brigadas_centro.triggerevent("ue_arch_eliminar")
+end event
+
+on m_eliminarunabrigada.create
+this.Text="Eliminar una Brigada"
+end on
+
+on m_eliminarunabrigada.destroy
+end on
+
+type m_mantenimientodeunabrigada from menu within mbtder_lista_brigadas
+end type
+
+event clicked;w_2270_lista_brigadas_centro.triggerevent("ue_modificar_mant_brigadas")
+end event
+
+on m_mantenimientodeunabrigada.create
+this.Text="Mantenimiento de una Brigada"
+end on
+
+on m_mantenimientodeunabrigada.destroy
+end on
+
+type m_tareasotsdeunabrigada from menu within mbtder_lista_brigadas
+end type
+
+event clicked;w_2270_lista_brigadas_centro.triggerevent("ue_tareas")
+end event
+
+on m_tareasotsdeunabrigada.create
+this.Text="Tareas/OT's de una Brigada"
+end on
+
+on m_tareasotsdeunabrigada.destroy
+end on
+

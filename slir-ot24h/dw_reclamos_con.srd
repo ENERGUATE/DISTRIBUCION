@@ -1,0 +1,54 @@
+HA$PBExportHeader$dw_reclamos_con.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=164 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=136 color="536870912" )
+detail(height=1784 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=reclamo dbname="reclamo" )
+ column=(type=decimal(0) updatewhereclause=yes name=nis dbname="nis" )
+ column=(type=char(80) updatewhereclause=yes name=estado dbname="estado" )
+ column=(type=decimal(0) updatewhereclause=yes name=orden_servicio dbname="orden_servicio" )
+ column=(type=datetime updatewhereclause=yes name=fecha_ire dbname="fecha_ire" )
+ column=(type=datetime updatewhereclause=yes name=fecha_uce dbname="fecha_uce" )
+ column=(type=char(350) updatewhereclause=yes name=descripcion dbname="descripcion" )
+ column=(type=char(20) updatewhereclause=yes name=oficina dbname="oficina" )
+ retrieve="select /*+ RULE*/t.num_re RECLAMO,
+	   t.nis_rad NIS,
+	   upper(r.desc_est) ESTADO,
+	   t.num_os ORDEN_SERVICIO,
+		t.f_ire FECHA_IRE,
+	   t.f_uce FECHA_UCE,
+	   t.mot_rcm DESCRIPCION,
+	   u.nom_unicom OFICINA
+from trabpend_re@dblsgc t,
+	 estados@dblsgc r,
+	 unicom@dblsgc u
+where t.est_rcm=r.estado
+and u.cod_unicom=t.cod_unicom
+and t.num_re=:reclamo
+and rownum=1
+order by t.f_uce desc" arguments=(("reclamo", string)) )
+text(band=header alignment="0" text="RECLAMOS"border="0" color="128" x="23" y="16" height="76" width="553"  font.face="Helvetica LT Std" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="contexto"border="0" color="0" x="2862" y="28" height="52" width="251"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="9" y1="128" x2="3150" y2="128" pen.style="0" pen.width="5" pen.color="128"  background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=40 border="2" color="0" x="165" y="1084" height="636" width="2729" format="[general]"  name=descripcion edit.limit=350 edit.case=any edit.autoselect=yes edit.autovscroll=yes edit.vscrollbar=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="NIS"border="0" color="128" x="165" y="244" height="76" width="530"  name=nis_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Estado"border="0" color="128" x="165" y="392" height="76" width="530"  name=estado_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Oficina"border="0" color="128" x="165" y="836" height="76" width="530"  name=oficina_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Descripci$$HEX1$$f300$$ENDHEX$$n"border="0" color="128" x="165" y="988" height="76" width="530"  name=descripcion_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Orden de Servicio"border="0" color="128" x="165" y="540" height="76" width="530"  name=orden_servicio_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="2" color="0" x="754" y="688" height="76" width="617" format=""  name=fecha_ire edit.name="DD/MM/YYYY HH:MM:SS" editmask.mask="DD/MM/YYYY HH:MM:SS" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="2" color="0" x="1952" y="688" height="76" width="617" format=""  name=fecha_uce edit.name="DD/MM/YYYY HH:MM:SS" editmask.mask="DD/MM/YYYY HH:MM:SS" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="2" color="0" x="750" y="836" height="76" width="1824" format="[general]"  name=oficina edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="2" color="32768" x="750" y="540" height="76" width="1824" format="[general]"  name=orden_servicio edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="2" color="0" x="750" y="392" height="76" width="1824" format="[general]"  name=estado edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="2" color="0" x="750" y="244" height="76" width="1824" format="[general]"  name=nis edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha_UCE"border="0" color="128" x="1399" y="688" height="76" width="530"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha_IRE"border="0" color="128" x="165" y="688" height="76" width="530"  name=fecha_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Reclamo"border="0" color="128" x="165" y="44" height="128" width="530"  name=reclamo_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="2" color="16711680" x="750" y="44" height="128" width="1824" format="[general]"  name=reclamo edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-14" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=footer x1="32" y1="8" x2="3173" y2="8" pen.style="0" pen.width="5" pen.color="128"  background.mode="2" background.color="16777215" )
+compute(band=footer alignment="0" expression="currentRow() + ~" de ~" + rowcount()"border="0" color="128" x="27" y="36" height="80" width="759" format="[general]"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="dw_reclamos_con"border="0" color="0" x="2715" y="56" height="52" width="535"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

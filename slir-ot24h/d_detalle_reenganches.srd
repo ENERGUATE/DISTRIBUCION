@@ -1,0 +1,48 @@
+HA$PBExportHeader$d_detalle_reenganches.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=704 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_incidencia dbname="sgd_reenganches.nro_incidencia" )
+ column=(type=datetime updatewhereclause=yes name=f_deteccion dbname="sgd_reenganches.f_deteccion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tip_tension dbname="sgd_reenganches.tip_tension" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_zona dbname="sgd_reenganches.nro_zona" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_cmd dbname="sgd_reenganches.nro_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_sector dbname="sgd_reenganches.nro_sector" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_inst_afectada dbname="sgd_reenganches.nro_inst_afectada" )
+ column=(type=datetime updatewhereclause=yes name=fec_resolucion dbname="sgd_reenganches.fec_resolucion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(50) updatewhereclause=yes name=descripcion dbname="sgd_valor.descripcion" )
+ column=(type=char(50) updatewhereclause=yes name=tipo_instalacion dbname="sgd_valor.descripcion" )
+ retrieve="  SELECT ~"SGD_REENGANCHES~".~"NRO_INCIDENCIA~",   
+         ~"SGD_REENGANCHES~".~"F_DETECCION~",   
+         ~"SGD_REENGANCHES~".~"TIP_TENSION~",   
+         ~"SGD_REENGANCHES~".~"NRO_ZONA~",   
+         ~"SGD_REENGANCHES~".~"NRO_CMD~",   
+         ~"SGD_REENGANCHES~".~"NRO_SECTOR~",   
+         ~"SGD_REENGANCHES~".~"NRO_INST_AFECTADA~",   
+         ~"SGD_REENGANCHES~".~"FEC_RESOLUCION~",  
+		~"SGD_INSTALACION~".~"NOM_INSTALACION~",
+		A.~"DESCRIPCION~",
+		B.~"DESCRIPCION~"
+    FROM ~"SGD_REENGANCHES~" , ~"SGD_INSTALACION~", ~"SGD_VALOR~" A, ~"SGD_VALOR~" B
+WHERE ~"SGD_REENGANCHES~".~"NRO_INST_AFECTADA~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~"  AND
+			~"SGD_REENGANCHES~".~"TIP_TENSION~" =  A.~"CODIGO~" AND
+			A.~"CODIF~" = 'TENS' AND 
+			~"SGD_INSTALACION~".~"TIPO_INSTALACION~" = B.~"CODIGO~" AND
+			B.~"CODIF~" = 'T_IN'  AND
+			~"SGD_REENGANCHES~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA   " arguments=(("PL_NRO_INCIDENCIA", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="8388608" x="722" y="40" height="60" width="375" format="[general]"  name=nro_incidencia edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="8388608" x="722" y="152" height="60" width="946" format="[general]"  name=nom_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="8388608" x="722" y="264" height="60" width="946" format="[general]"  name=tipo_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="8388608" x="722" y="376" height="64" width="439" format="[general]"  name=descripcion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="8388608" x="722" y="492" height="64" width="507" format="[shortdate] [time]"  name=f_deteccion editmask.spin=yes editmask.mask="mm/dd/yyyy hh:mm" editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="8388608" x="722" y="608" height="64" width="507" format="[shortdate] [time]"  name=fec_resolucion editmask.spin=yes editmask.mask="mm/dd/yyyy hh:mm" editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Nro. Incidencia:"border="0" color="0" x="23" y="40" height="64" width="503"  name=nro_incidencia_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Nombre Instalaci$$HEX1$$f300$$ENDHEX$$n:"border="0" color="0" x="23" y="152" height="64" width="635"  name=nro_inst_afectada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Tipo Instalaci$$HEX1$$f300$$ENDHEX$$n:"border="0" color="0" x="23" y="264" height="64" width="530"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Tipo Tensi$$HEX1$$f300$$ENDHEX$$n:"border="0" color="0" x="23" y="376" height="64" width="443"  name=tip_tension_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha Detecci$$HEX1$$f300$$ENDHEX$$n:"border="0" color="0" x="23" y="488" height="64" width="549"  name=f_deteccion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha Resoluci$$HEX1$$f300$$ENDHEX$$n:"border="0" color="0" x="23" y="600" height="64" width="590"  name=fec_resolucion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

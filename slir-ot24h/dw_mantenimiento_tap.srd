@@ -1,0 +1,30 @@
+HA$PBExportHeader$dw_mantenimiento_tap.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=288 color="536870912" )
+table(column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="sgd_tap.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="sgd_tap.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_tap.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=valor dbname="sgd_tap.valor" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_instalacion dbname="sgd_tap.nro_instalacion" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_real dbname="sgd_tap.f_real" )
+ retrieve="  SELECT ~"SGD_TAP~".~"USUARIO~",   
+         ~"SGD_TAP~".~"F_ACTUAL~",   
+         ~"SGD_TAP~".~"PROGRAMA~",   
+         ~"SGD_TAP~".~"VALOR~",   
+         ~"SGD_TAP~".~"NRO_INSTALACION~",   
+         ~"SGD_TAP~".~"F_REAL~"  
+    FROM ~"SGD_TAP~"
+   WHERE ~"SGD_TAP~".~"NRO_INSTALACION~" = :pn_numeroInstalacion 
+ 
+" arguments=(("pn_numeroInstalacion", number)) )
+text(band=detail alignment="1" text="Valor:" border="0" color="0" x="59" y="176" height="64" width="357" html.valueishtml="0"  name=valor_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=30 border="5" color="33554432" x="448" y="176" height="64" width="224" format="[General]" html.valueishtml="0"  name=valor visible="1" editmask.spin=yes editmask.mask="##" editmask.imemode=0 editmask.spinrange="1~~15" editmask.spinincr=0 editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Instalaci$$HEX1$$f300$$ENDHEX$$n:" border="0" color="0" x="59" y="56" height="64" width="357" html.valueishtml="0"  name=nro_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=10 border="5" color="33554432" x="448" y="56" height="64" width="594" format="[general]" html.valueishtml="0"  name=nro_instalacion visible="1" dddw.name=dddw_instalacion_tap dddw.displaycolumn=nro_instalacion dddw.datacolumn=nro_instalacion dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Fecha" border="0" color="0" x="1161" y="56" height="64" width="357" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=20 border="5" color="0" x="1550" y="56" height="64" width="384" format="[shortdate] [time]" html.valueishtml="0"  name=f_real visible="1" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm:ss:fff" editmask.imemode=0 editmask.spinincr=0 editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,72 @@
+HA$PBExportHeader$d_con_0001_pr_mant_contratas.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="gi_contratas.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_contratas.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_contratas.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_contrata dbname="gi_contratas.nro_contrata" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=nombre dbname="gi_contratas.nombre" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=coste dbname="gi_contratas.coste" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=moneda dbname="gi_contratas.moneda" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_tiempo dbname="gi_contratas.cod_tiempo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_centro dbname="gi_contratas.nro_centro" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_cmd dbname="gi_contratas.nro_cmd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_mesa dbname="gi_contratas.nro_mesa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo dbname="gi_contratas.tipo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estado dbname="gi_contratas.estado" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=cod_postal dbname="gi_contratas.cod_postal" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=pers_contacto dbname="gi_contratas.pers_contacto" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=telefono dbname="gi_contratas.telefono" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=fax dbname="gi_contratas.fax" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=e_mail dbname="gi_contratas.e_mail" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_calle dbname="gi_contratas.cod_calle" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=num_puerta dbname="gi_contratas.num_puerta" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=duplicador dbname="gi_contratas.duplicador" )
+ column=(type=char(6) update=yes updatewhereclause=yes name=cgv dbname="gi_contratas.cgv" )
+ column=(type=char(50) updatewhereclause=yes name=estado_desc dbname="sgd_valor.descripcion" )
+ column=(type=char(50) updatewhereclause=yes name=tipo_desc dbname="sgd_valor.descripcion" )
+ retrieve="SELECT 
+  ~"GI_CONTRATAS~".~"USUARIO~" ,
+  ~"GI_CONTRATAS~".~"F_ACTUAL~" ,
+  ~"GI_CONTRATAS~".~"PROGRAMA~" ,
+  ~"GI_CONTRATAS~".~"NRO_CONTRATA~" ,
+  ~"GI_CONTRATAS~".~"NOMBRE~" ,
+  ~"GI_CONTRATAS~".~"COSTE~" ,
+  ~"GI_CONTRATAS~".~"MONEDA~" ,
+  ~"GI_CONTRATAS~".~"COD_TIEMPO~" ,
+  ~"GI_CONTRATAS~".~"NRO_CENTRO~" ,
+  ~"GI_CONTRATAS~".~"NRO_CMD~" ,
+  ~"GI_CONTRATAS~".~"NRO_MESA~" ,
+  ~"GI_CONTRATAS~".~"TIPO~" ,
+  ~"GI_CONTRATAS~".~"ESTADO~" ,
+  ~"GI_CONTRATAS~".~"COD_POSTAL~" ,
+  ~"GI_CONTRATAS~".~"PERS_CONTACTO~" ,
+  ~"GI_CONTRATAS~".~"TELEFONO~" ,
+  ~"GI_CONTRATAS~".~"FAX~" ,
+  ~"GI_CONTRATAS~".~"E_MAIL~" ,
+  ~"GI_CONTRATAS~".~"COD_CALLE~",
+  ~"GI_CONTRATAS~".~"NUM_PUERTA~",
+  ~"GI_CONTRATAS~".~"DUPLICADOR~",
+  ~"GI_CONTRATAS~".~"CGV~",
+	A.DESCRIPCION,
+	B.DESCRIPCION
+FROM 
+  ~"GI_CONTRATAS~", ~"SGD_VALOR~" A, ~"SGD_VALOR~" B
+WHERE A.CODIF = 'CO_E' AND
+		~"GI_CONTRATAS~".~"ESTADO~" = A.CODIGO AND
+		B.CODIF = 'T_BR' AND
+		~"GI_CONTRATAS~".~"TIPO~" = B.CODIGO
+" update="GI_CONTRATAS" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Pers Contacto"border="6" color="0" x="2130" y="0" height="64" width="946"  name=pers_contacto_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Estado"border="6" color="0" x="1664" y="0" height="64" width="448"  name=estado_desc_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Tipo"border="6" color="0" x="1129" y="0" height="64" width="517"  name=tipo_desc_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Nombre"border="6" color="0" x="9" y="0" height="64" width="1102"  name=nombre_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="8388608" x="2126" y="8" height="64" width="955" format="[general]"  name=pers_contacto edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="8388608" x="1664" y="8" height="64" width="448" format="[general]"  name=estado_desc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="8" height="64" width="1106" format="[general]"  name=nombre edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="8388608" x="1129" y="8" height="64" width="517" format="[general]"  name=tipo_desc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

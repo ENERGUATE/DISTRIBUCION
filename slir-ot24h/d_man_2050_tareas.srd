@@ -1,0 +1,18 @@
+HA$PBExportHeader$d_man_2050_tareas.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=codigo dbname="codigo" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=descripcion dbname="descripcion" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=usuario dbname="usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="programa" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=codif dbname="codif" initial="TARE" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=valor dbname="valor" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sgd_valor~" ) COLUMN(NAME=~"sgd_valor.codigo~") COLUMN(NAME=~"sgd_valor.descripcion~") COLUMN(NAME=~"sgd_valor.usuario~") COLUMN(NAME=~"sgd_valor.f_actual~") COLUMN(NAME=~"sgd_valor.programa~") COLUMN(NAME=~"sgd_valor.codif~") COLUMN(NAME=~"sgd_valor.valor~")WHERE(    EXP1 =~"~~~"SGD_VALOR~~~".~~~"CODIF~~~"~"   OP =~"=~"    EXP2 =~"'TARE'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"SGD_VALOR~~~".~~~"CODIGO~~~"~"   OP =~">~"    EXP2 =~"0~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"SGD_VALOR~~~".~~~"CODIGO~~~"~"   OP =~"<>~"    EXP2 =~"99~" ) ) " update="SGD_VALOR" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="146" y="0" height="64" width="1614"  name=descripcion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="146" y="4" height="64" width="1614" format="[general]"  name=descripcion editmask.mask="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,23 @@
+HA$PBExportHeader$gf_set_tab_zero.srf
+global type gf_set_tab_zero from function_object
+end type
+
+forward prototypes
+global subroutine gf_set_tab_zero (readonly datawindow adw_dw)
+end prototypes
+
+global subroutine gf_set_tab_zero (readonly datawindow adw_dw);Long ll_i, ll_final
+
+
+ll_final = Long(adw_dw.Describe("DataWindow.Column.Count"))
+
+For ll_i = 1 To ll_final
+	 adw_dw.SetTabOrder(ll_i, 0)
+// Modificado por Sgo. Unificaci$$HEX1$$f300$$ENDHEX$$n.
+//	adw_dw.Modify("#" + String(ll_i) + ".background.color = '"+ String(RGB(192, 192, 192)) + "'")
+	adw_dw.Modify("#" + String(ll_i) + ".background.color = '"+ gs_gris + "'")
+// Fin. Sgo.
+	adw_dw.Modify("#" + String(ll_i) + ".color = '"+ String(RGB(128, 128, 128)) + "'")
+Next
+end subroutine
+

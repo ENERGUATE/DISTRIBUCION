@@ -1,0 +1,17 @@
+HA$PBExportHeader$messageboxn.srf
+global type messageboxn from function_object
+end type
+
+forward prototypes
+global function integer messageboxn (string title, string text, icon icono, button boton)
+end prototypes
+
+global function integer messageboxn (string title, string text, icon icono, button boton);s_mensaje is_mensaje
+is_mensaje.title=title
+is_mensaje.text=text
+is_mensaje.icono=icono
+is_mensaje.boton=boton
+openwithParm(w_mensaje,is_mensaje)
+return message.LongParm
+end function
+

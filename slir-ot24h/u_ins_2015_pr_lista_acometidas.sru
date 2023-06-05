@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_ins_2015_pr_lista_acometidas.sru
+forward
+global type u_ins_2015_pr_lista_acometidas from u_gen_0000_lista
+end type
+end forward
+
+global type u_ins_2015_pr_lista_acometidas from u_gen_0000_lista
+int Width=2510
+int Height=369
+string DataObject="d_ins_2015_lista_acometidas"
+end type
+global u_ins_2015_pr_lista_acometidas u_ins_2015_pr_lista_acometidas
+

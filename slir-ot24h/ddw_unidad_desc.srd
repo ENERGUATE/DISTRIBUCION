@@ -1,0 +1,18 @@
+HA$PBExportHeader$ddw_unidad_desc.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(4) updatewhereclause=yes name=codif dbname="sgd_valor.codif" )
+ column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="sgd_valor.codigo" )
+ column=(type=char(50) updatewhereclause=yes name=descripcion dbname="sgd_valor.descripcion" )
+ retrieve="  SELECT ~"SGD_VALOR~".~"CODIF~",   
+         ~"SGD_VALOR~".~"CODIGO~",   
+         ~"SGD_VALOR~".~"DESCRIPCION~"  
+    FROM ~"SGD_VALOR~"  
+   WHERE ~"SGD_VALOR~".~"CODIF~" = 'UNI'
+ORDER BY ~"SGD_VALOR~".~"DESCRIPCION~"     
+" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="8388608" x="5" y="0" height="64" width="1216" format="[general]"  name=descripcion edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

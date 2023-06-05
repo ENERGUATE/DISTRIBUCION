@@ -1,0 +1,30 @@
+HA$PBExportHeader$fg_remplaza.srf
+global type fg_remplaza from function_object
+end type
+
+forward prototypes
+global function string fg_remplaza (string cadena, string antigua, string nueva)
+end prototypes
+
+global function string fg_remplaza (string cadena, string antigua, string nueva);long start_pos=1
+
+// Find the first occurrence of antigua.
+start_pos = Pos(cadena, antigua, start_pos)
+
+// Only enter the loop if you find antigua.
+DO WHILE start_pos > 0
+
+	// Replace antigua with nueva.
+	cadena = Replace(cadena, start_pos,  &
+		Len(antigua), nueva)
+
+// Find the next occurrence of antigua.
+
+start_pos = Pos(cadena, antigua,  &
+		start_pos+Len(nueva))
+LOOP
+
+return cadena
+
+end function
+

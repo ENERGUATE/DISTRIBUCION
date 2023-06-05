@@ -1,0 +1,28 @@
+HA$PBExportHeader$fg_reproducirsonido.srf
+global type fg_reproducirSonido from function_object
+end type
+
+forward prototypes
+global function integer fg_reproducirsonido (string ps_nombrefichero)
+end prototypes
+
+global function integer fg_reproducirsonido (string ps_nombrefichero);uint lui_numdevs
+
+lui_numdevs = WaveOutGetNumDevs() 
+
+IF lui_numdevs > 0 THEN 
+
+        sndPlaySoundA(ps_nombreFichero,0)
+
+        RETURN 1
+
+ELSE
+
+        RETURN -1
+
+END IF
+
+
+
+end function
+

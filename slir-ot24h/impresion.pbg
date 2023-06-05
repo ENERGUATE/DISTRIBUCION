@@ -1,0 +1,27 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "impresion.pbl" "";
+@end;
+@begin Objects
+ "d_impresion_brigadista.srd" "impresion.pbl";
+ "d_situacion_actual_imp.srd" "impresion.pbl";
+ "d_brigadista_imp.srd" "impresion.pbl";
+ "s_impresion_preliminar.srs" "impresion.pbl";
+ "d_suministro_imp.srd" "impresion.pbl";
+ "d_descargos_imp.srd" "impresion.pbl";
+ "d_inf_aviso_imp.srd" "impresion.pbl";
+ "d_usuario_impr.srd" "impresion.pbl";
+ "d_brigadas_imp.srd" "impresion.pbl";
+ "d_estadisticas_horario_graf_impr.srd" "impresion.pbl";
+ "d_situacion_actual_graf_imp.srd" "impresion.pbl";
+ "d_consulta_sum_impr.srd" "impresion.pbl";
+ "d_estadisticas_pendienes_graf_impr.srd" "impresion.pbl";
+ "d_estadisticas_pendienes_impr.srd" "impresion.pbl";
+ "d_impresion.srd" "impresion.pbl";
+ "d_impresion_climatologica.srd" "impresion.pbl";
+ "d_estadisticas_horario_impr.srd" "impresion.pbl";
+ "w_generica_impresion_preliminar.srw" "impresion.pbl";
+ "gf_impresion_preliminar.srf" "impresion.pbl";
+ "w_generica_peticion_impresion.srw" "impresion.pbl";
+ "gf_zoom.srf" "impresion.pbl";
+@end;

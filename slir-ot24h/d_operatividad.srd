@@ -1,0 +1,69 @@
+HA$PBExportHeader$d_operatividad.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=12 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1628 color="536870912" )
+table(column=(type=char(0) updatewhereclause=yes name=causa_alta dbname="causa_alta" )
+ column=(type=char(0) updatewhereclause=yes name=causa_categoria_alta dbname="causa_categoria_alta" )
+ column=(type=char(0) updatewhereclause=yes name=causa_detallada_alta dbname="causa_detallada_alta" )
+ column=(type=char(0) updatewhereclause=yes name=causa_baja dbname="causa_baja" )
+ column=(type=char(0) updatewhereclause=yes name=causa_categoria_baja dbname="causa_categoria_baja" )
+ column=(type=char(0) updatewhereclause=yes name=causa_detallada_baja dbname="causa_detallada_baja" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_instalacion dbname="sgd_no_operatividad.nro_instalacion" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_alta dbname="sgd_no_operatividad.f_alta" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_causa_alta dbname="sgd_no_operatividad.cod_causa_alta" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=disponibilidad_act_alta dbname="sgd_no_operatividad.disponibilidad_act_alta" )
+ column=(type=char(512) update=yes updatewhereclause=yes name=observaciones_alta dbname="sgd_no_operatividad.observaciones_alta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_baja dbname="sgd_no_operatividad.f_baja" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_causa_baja dbname="sgd_no_operatividad.cod_causa_baja" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=disponibilidad_act_baja dbname="sgd_no_operatividad.disponibilidad_act_baja" )
+ column=(type=char(512) update=yes updatewhereclause=yes name=observaciones_baja dbname="sgd_no_operatividad.observaciones_baja" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="sgd_no_operatividad.usuario" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_no_operatividad.programa" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="sgd_no_operatividad.f_actual" )
+ retrieve="  SELECT '' as CAUSA_ALTA,   
+         '' as CAUSA_CATEGORIA_ALTA,   
+         '' as CAUSA_DETALLADA_ALTA,   
+         '' as CAUSA_BAJA,   
+         '' as CAUSA_CATEGORIA_BAJA,   
+         '' as CAUSA_DETALLADA_BAJA,   
+         ~"SGD_NO_OPERATIVIDAD~".~"NRO_INSTALACION~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"F_ALTA~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"COD_CAUSA_ALTA~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"DISPONIBILIDAD_ACT_ALTA~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"OBSERVACIONES_ALTA~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"F_BAJA~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"COD_CAUSA_BAJA~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"DISPONIBILIDAD_ACT_BAJA~",    
+         ~"SGD_NO_OPERATIVIDAD~".~"OBSERVACIONES_BAJA~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"USUARIO~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"PROGRAMA~",   
+         ~"SGD_NO_OPERATIVIDAD~".~"F_ACTUAL~"  
+    FROM ~"SGD_NO_OPERATIVIDAD~"  
+   WHERE ~"SGD_NO_OPERATIVIDAD~".~"NRO_INSTALACION~" = :p_nro_instalacion    
+" update="SGD_NO_OPERATIVIDAD" updatewhere=0 updatekeyinplace=yes arguments=(("p_nro_instalacion", number)) )
+groupbox(band=detail text="ALTA DE NO OPERATIVIDAD"border="2" color="0" x="41" y="8" height="764" width="1682"  name=gb_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+groupbox(band=detail text="BAJA DE NO OPERATIVIDAD"border="2" color="0" x="41" y="832" height="764" width="1682"  name=gb_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Fecha Alta" border="0" color="0" x="187" y="100" height="56" width="306" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="Causa:" border="0" color="128" x="187" y="200" height="52" width="201" html.valueishtml="0"  name=causa_alta_t pointer="HyperLink!" visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" font.underline="1" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="Disponibilidad(%): " border="0" color="0" x="187" y="444" height="56" width="421" html.valueishtml="0"  name=disponibilidad_act_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Observaciones" border="0" color="0" x="187" y="540" height="56" width="338" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="Fecha Baja " border="0" color="0" x="187" y="924" height="56" width="293" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="Causa:" border="0" color="128" x="187" y="1024" height="52" width="201" html.valueishtml="0"  name=causa_baja_t pointer="HyperLink!" visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" font.underline="1" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="Disponibilidad(%): " border="0" color="0" x="187" y="1268" height="56" width="421" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Observaciones" border="0" color="0" x="187" y="1368" height="56" width="338" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=10 alignment="2" tabsequence=20 border="5" color="8388608" x="768" y="444" height="56" width="265" format="[general]" html.valueishtml="0"  name=disponibilidad_act_alta visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="####" editmask.imemode=0 editmask.spinrange="0~~100" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="2" tabsequence=50 border="5" color="8388608" x="768" y="1272" height="56" width="265" format="[general]" html.valueishtml="0"  name=disponibilidad_act_baja visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="####" editmask.imemode=0 editmask.spinrange="0~~100" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=30 border="5" color="8388608" x="549" y="540" height="196" width="1097" format="[general]" html.valueishtml="0"  name=observaciones_alta visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="8388608" x="549" y="1020" height="56" width="727" format="[general]" html.valueishtml="0"  name=causa_baja visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="8388608" x="549" y="1096" height="56" width="727" format="[general]" html.valueishtml="0"  name=causa_categoria_baja visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="8388608" x="549" y="1168" height="56" width="727" format="[general]" html.valueishtml="0"  name=causa_detallada_baja visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=15 alignment="0" tabsequence=60 border="5" color="8388608" x="549" y="1368" height="196" width="1097" format="[general]" html.valueishtml="0"  name=observaciones_baja visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="2" tabsequence=40 border="5" color="8388608" x="549" y="924" height="56" width="727" format="[shortdate] [time]" html.valueishtml="0"  name=f_baja visible="1" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm:ss" editmask.imemode=0 editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="2" tabsequence=10 border="5" color="8388608" x="549" y="100" height="56" width="727" format="[shortdate] [time]" html.valueishtml="0"  name=f_alta visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm:ss" editmask.imemode=0 editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="8388608" x="549" y="196" height="56" width="727" format="[general]" html.valueishtml="0"  name=causa_alta visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="8388608" x="549" y="272" height="56" width="727" format="[general]" html.valueishtml="0"  name=causa_categoria_alta visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="8388608" x="549" y="344" height="56" width="727" format="[general]" html.valueishtml="0"  name=causa_detallada_alta visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

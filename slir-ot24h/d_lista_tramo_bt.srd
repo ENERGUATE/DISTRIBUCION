@@ -1,0 +1,33 @@
+HA$PBExportHeader$d_lista_tramo_bt.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=matricula dbname="sgd_valor.matricula" )
+ column=(type=decimal(3) updatewhereclause=yes name=longitud dbname="sgd_valor.longitud" )
+ column=(type=char(50) updatewhereclause=yes name=descripcion dbname="sgd_valor.descripcion" )
+ column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="sgd_tramo_bt.codigo" )
+ column=(type=decimal(0) updatewhereclause=yes name=bdi_job dbname="sgd_valor.bdi_job" )
+ retrieve="  SELECT ~"MATRICULA~",   
+         ~"LONGITUD~",   
+         ~"SGD_VALOR~".~"DESCRIPCION~",   
+         ~"A~".~"CODIGO~",   
+         ~"BDI_JOB~"  
+    FROM ~"SGD_VALOR~",
+         ~"SGD_TRAMO_BT~" ~"A~"
+   WHERE ( ~"SGD_VALOR~".~"VALOR~" = ~"A~".~"TIPO~" ) and  
+       ( ( ~"A~".~"ESTA_EN1~" = :ll_codigo ) AND  
+        ( ~"SGD_VALOR~".~"CODIF~" = 'T_TR' )) AND
+         BDI_JOB=(SELECT MAX(BDI_JOB) FROM SGD_TRAMO_BT WHERE A.CODIGO=CODIGO)   
+" arguments=(("ll_codigo", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="8388608" x="14" y="4" height="64" width="384" format="[general]"  name=matricula edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="8388608" x="421" y="4" height="64" width="315" format="[general]"  name=longitud edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="8388608" x="1874" y="4" height="64" width="302" format="[general]"  name=bdi_job edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="8388608" x="754" y="4" height="64" width="1097" format="[general]"  name=descripcion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Trabajo"border="6" color="0" x="1874" y="12" height="64" width="302"  name=sgd_tramo_bdi_job_t pointer=""  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Tipo"border="6" color="0" x="754" y="12" height="64" width="1097"  name=sgd_valor_descripcion_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Longitud"border="6" color="0" x="421" y="12" height="64" width="315"  name=sgd_tramo_longitud_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Matr$$HEX1$$ed00$$ENDHEX$$cula"border="6" color="0" x="14" y="12" height="64" width="384"  name=sgd_tramo_matricula_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

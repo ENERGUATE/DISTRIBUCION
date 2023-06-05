@@ -1,0 +1,406 @@
+HA$PBExportHeader$fgnu_genera_incidencia_programada.srf
+global type fgnu_genera_incidencia_programada from function_object
+end type
+
+forward prototypes
+global function integer fgnu_genera_incidencia_programada (datetime pd_ini_solicitado, datetime pd_fin_solicitado, integer pn_tipo_tension, integer pn_nro_centro, integer pn_nro_cmd, integer pn_nro_mesa, integer pn_pot_afectada, integer pn_pot_contratada, integer pn_cli_afectados, string ps_observacion, integer pn_clientes, integer pn_co_nivel, integer pn_tipo_instalacion, long pn_nro_descargo, long pn_instalacion_origen)
+end prototypes
+
+global function integer fgnu_genera_incidencia_programada (datetime pd_ini_solicitado, datetime pd_fin_solicitado, integer pn_tipo_tension, integer pn_nro_centro, integer pn_nro_cmd, integer pn_nro_mesa, integer pn_pot_afectada, integer pn_pot_contratada, integer pn_cli_afectados, string ps_observacion, integer pn_clientes, integer pn_co_nivel, integer pn_tipo_instalacion, long pn_nro_descargo, long pn_instalacion_origen);/////////////////////////////////////////////////////////////////
+//   FUNCION :  fgnu_genera_incidencia_programada
+//
+//
+// OBJETIVO : Se utiliza para llamarla desde la ventana de gesti$$HEX1$$f300$$ENDHEX$$n
+//                                      de Descargos con el fin de pasarle parametros de los 
+//                                      descargos y las interupciones para los mismos.
+//                                      La funci$$HEX1$$f300$$ENDHEX$$n genera una incidencia en estado CL con las 
+//                                      interrupciones definidas para los descargos solicitados.
+//                                      Se actualizan las tablas: GI_Incidencias, GI_Interrupciones
+//                                      GI_OT, GI_Estado_Oper y GI_T_Ultimo
+//
+// PARAMETROS DE ENTRADA:
+//
+//                              pd_ini_solicitado
+//                              pd_fin_solicitado
+//                              pn_tipo_tension
+//                              pn_nro_centro
+//                         pn_nro_cmd
+//                              pn_nro_mesa
+//                              pn_inst_afectda
+//                              pn_pot_afectada
+//                              pn_pot_contratada
+//                              ps_observacion
+//                              pn_clientes
+//                              
+///////////////////////////////////////////////////////////////////////////
+
+long ll_nro_ot,ll_nro_inc
+long ll_cant_interrup,i
+DateTime ldt_fecha_actual
+string ls_desc_incidencia
+integer li_co_nivel_interrupcion,li_co_nivel_inst_padre,li_tipo_instalacion_padre
+integer li_tipo_inst_interrupcion,li_estado_inc
+Decimal ll_pot_contratada,ll_pot_instalada
+long ll_kwh,ll_cant_cli, ll_nro_instalacion, ll_nro_inst_padre
+Decimal ll_pot_cont_interrupcion,ll_pot_inst_interrupcion
+long ll_kwh_interrupcion,ll_cant_cli_interrupcion
+datetime ld_f_inicio,ld_f_fin
+
+
+ldt_fecha_actual = fgnu_fecha_actual()
+
+
+//Obtengo la ultima ot 
+select cod_ot.nextval into :ll_nro_ot from dual;
+
+//Obtengo la ultima incidencia 
+select cod_incidencia.nextval into :ll_nro_inc from dual;
+// Genera una Incidencia (GI_INCIDECIA)
+
+ls_desc_incidencia = "( "+string(ll_nro_inc)+" )"
+
+  INSERT INTO "SGD_INCIDENCIA"  
+         ( "NRO_INCIDENCIA",   
+           "USUARIO",   
+           "F_ACTUAL",   
+           "H_ACTUAL",   
+           "PROGRAMA",   
+           "PRIMER_AVISO",   
+           "DESC_INCIDENCIA",   
+           "EST_ACTUAL",   
+           "F_DETECCION",   
+           "H_DETECCION",   
+           "F_EST_RES",   
+           "H_EST_RES",   
+           "TIP_TENSION",   
+           "TIP_INCIDENCIA",   
+           "COD_CAUSA",   
+           "F_ALTA",   
+           "H_ALTA",   
+           "NRO_CENTRO",   
+           "NRO_CMD",   
+           "NRO_MESA",   
+           "NRO_INST_AFECTADA",   
+           "NRO_INST_ORIGEN",   
+           "POT_AFECTADA",   
+           "POT_CONTRATADA",   
+           "CCLI_AFEC",   
+           "MAT_AVERIADO",   
+           "NRO_BRIGADA",   
+           "NRO_BRIG_MANT",   
+           "IND_SUMINISTRO",   
+           "OBSERVACION",   
+           "OT",   
+           "COD_EST_CLIMA",   
+           "ESTADO_MANTENIMIENTO",   
+           "CENTRO_ALTA",   
+           "CMD_ALTA","PUESTO_ALTA","CANT_AVISOS",   
+           "CAN_CLI",   
+           "RESUELVE_MANT","FAM_MANT_AVER",   
+           "FAM_CAUSA",   
+           "TIEMPO_MANT","TIEMPO_OPER","DURACION_SR",   
+           "CENTRO_MANT","CMD_MANT", "MESA_MANT","FEC_RESOLUCION",   
+           "FEC_CAUSA",   
+           "DIR_AVISO","FECHA_BATCH","ESTADO_BATCH","DURACION_CL",   
+           "DURACION_RS","DURACION_ER","DER_MANT_EN_CORTE",   
+           "DURACION_ENV_BRIGADA","PAXTC","PCXTC","PAXTC_MANT",   
+           "PCXTC_MANT","DURACION_MANT","DURACION_MANT_CORTE",   
+           "COD_HOR",   
+           "TIEPI","TIEBT",   
+           "CORTE_ST_AL",   
+           "CORTE_EB_AL",   
+           "CORTE_SR",  
+           "SINCORTE_ST_AL",   
+           "SINCORTE_EB_AL",   
+           "SINCORTE_SR",   
+           "DURACION_EB_CL",   
+           "DURACION_CL_SR",   
+           "EB6203",   
+           "EB4001",   
+           "EB4002",   
+           "EB4003",   
+           "EB4004",   
+           "EB4007",   
+           "EB4007_EST",   
+           "KWH_ESTIMADO","IND_ALUM_PUB","TIEPI_MANT","TIEBT_MANT" )  
+  VALUES ( :ll_nro_inc,   
+           :gs_usuario,   
+           :ldt_fecha_actual,   
+           null,   
+           'fgnu_genra_inc',   
+           null,   
+           :ls_desc_incidencia,   
+           :fgci_incidencia_causa_localizada,   
+           :pd_ini_solicitado,   
+           null,   
+           :pd_fin_solicitado,   
+           null,   
+           :pn_tipo_tension,   
+           :fgci_incidencia_programada,   
+           1,   
+           :pd_ini_solicitado,   
+           null,   
+           :pn_nro_centro,   
+           :pn_nro_cmd,   
+           :pn_nro_mesa,   
+           :pn_instalacion_origen,   
+           :pn_instalacion_origen,   
+           :pn_pot_afectada,   
+           :pn_pot_contratada,   
+           :pn_cli_afectados,   
+           null,null,null,   
+           2,   
+           :ps_observacion,   
+           :ll_nro_ot,   
+           null,null,null,null,null,null,   
+           :pn_clientes,   
+           null, null,   
+           0,   
+           null,null,null,null,null,null,null,   
+           :pd_ini_solicitado,   
+           null,null,null,null,null,null,null,null,null,null,null,   
+           null,null,null,   
+           1,   
+           null,null,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           0,   
+           null,null,null,null )  ;
+                        
+
+IF SQLCA.SQLCODE < 0 THEN
+        gnu_u_transaction.uf_rollback();
+        Return -1
+END IF
+
+
+  SELECT "SGD_INSTALACION"."TIPO_INSTALACION",   
+         "SGD_INSTALACION"."CO_NIVEL"  
+    INTO :li_tipo_instalacion_padre,   
+         :li_co_nivel_inst_padre  
+    FROM "SGD_INSTALACION"  
+   WHERE "SGD_INSTALACION"."NRO_INSTALACION" = :pn_instalacion_origen   AND 
+			"SGD_INSTALACION"."BDI_JOB" = 0 ;// DSA 10/01/2000			
+
+
+
+
+//Genera las interrupciones de la incidencia (GI_INTERRUPCIONES)
+
+ DECLARE cur_interrupcion_descargos CURSOR FOR  
+  SELECT "SGD_INTERRUPCION_DESCARGO"."COD_INSTALACION",   
+         "SGD_INTERRUPCION_DESCARGO"."F_INICIO",   
+         "SGD_INTERRUPCION_DESCARGO"."F_FIN",   
+         "SGD_INSTALACION"."POT_INSTALADA",   
+         "SGD_INSTALACION"."POT_CONTRATADA",   
+         "SGD_INSTALACION"."KWH",   
+         "SGD_INSTALACION"."CANT_CLI",   
+         "SGD_INSTALACION"."CO_NIVEL"
+         
+    FROM "SGD_INTERRUPCION_DESCARGO",   
+         "SGD_INSTALACION"  
+   WHERE ( "SGD_INTERRUPCION_DESCARGO"."COD_INSTALACION" = "SGD_INSTALACION"."NRO_INSTALACION" ) AND 
+			( "SGD_INSTALACION"."BDI_JOB" = 0 ) AND // DSA 10/01/2000			
+			("SGD_INTERRUPCION_DESCARGO"."NRO_DESCARGO" = :PN_NRO_DESCARGO) ;
+
+OPEN CUR_INTERRUPCION_DESCARGOS;
+
+FETCH CUR_INTERRUPCION_DESCARGOS INTO
+                :ll_nro_instalacion,
+                :ld_f_inicio,
+                :ld_f_fin,
+                :ll_pot_inst_interrupcion,
+                :ll_pot_cont_interrupcion,
+                :ll_kwh_interrupcion,
+                :ll_cant_cli_interrupcion,
+                :li_co_nivel_interrupcion ;
+                
+
+// Actualizo la tabla Gi_Interrupciones
+DO WHILE SQLCA.SQLCODE <>100 and SQLCA.SQLCODE <> -1
+                                        
+                                  INSERT INTO "SGD_INTERRUPCION"  
+                                                        ( "USUARIO",   
+                                                          "F_ACTUAL",   
+                                                          "H_ACTUAL",   
+                                                          "PROGRAMA",   
+                                                          "TIP_INTERRUPCION",   
+                                                          "IND_OTRAS_INS",   
+                                                          "F_REPOSICION",   
+                                                          "H_REPOSICION",   
+                                                          "F_ALTA",   
+                                                          "H_ALTA",   
+                                                          "NRO_INCIDENCIA",   
+                                                          "POT_INSTALADA",   
+                                                          "POT_CONTRATADA",   
+                                                          "KWH",   
+                                                          "CCLI_AFEC",   
+                                                          "IND_ULT_NIVEL",   
+                                                          "IND_FICTICIO",   
+                                                          "NRO_INSTALACION",   
+                                                          "NRO_PADRE",   
+                                                          "TIPO_INSTALACION",   
+                                                          "CO_NIVEL",   
+                                                          "TIPO_INSTALACION_PADRE",   
+                                                          "CO_NIVEL_PADRE",   
+                                                          "POT_INST_AFEC",   
+                                                          "POT_CONTR_AFEC",   
+                                                          "CANT_CLI",   
+                                                          "KWH_ESTIMADO",   
+                                                          "TIEMPO_INTERRUPCION" )  
+                                  VALUES ( :gs_usuario,   
+                                                          :ldt_fecha_actual,   
+                                                          null,   
+                                                          'fgnu_genra_inc',   
+                                                          'T',   
+                                                          0,   
+                                                          null,   
+                                                          null,   
+                                                          :pd_ini_solicitado,   
+                                                          null,   
+                                                          :ll_nro_inc,   
+                                                          :ll_pot_inst_interrupcion,   
+                                                          :ll_pot_cont_interrupcion,   
+                                                          :ll_kwh_interrupcion,   
+                                                          :ll_cant_cli_interrupcion,   
+                                                          0,   
+                                                          ' ',   
+                                                          :ll_nro_instalacion,   
+                                                          :ll_nro_inst_padre,   
+                                                          :li_tipo_inst_interrupcion,   
+                                                          :li_co_nivel_interrupcion,   
+                                                          :li_tipo_instalacion_padre,   
+                                                          :li_co_nivel_inst_padre,   
+                                                          null,   
+                                                          null,   
+                                                          null,   
+                                                          null,   
+                                                          null )  ;
+        LOOP
+
+
+CLOSE  CUR_INTERRUPCION_DESCARGOS;
+
+IF SQLCA.SQLCODE < 0 THEN
+        gnu_u_transaction.uf_rollback();
+        Return -1
+END IF
+
+//Genera los estados de la incidencia (GI_ESTADO_OPER)
+
+
+FOR i = 1 TO 3
+
+        //para cada uno de los tres estado inserto un registro
+        // evaluo el estado de la incidencia
+        CHOOSE CASE i
+                CASE 1
+                        li_estado_inc = fgci_incidencia_pendiente
+                CASE 2
+                        li_estado_inc =  fgci_incidencia_enviado_brigada  
+                CASE 3
+                        li_estado_inc =  fgci_incidencia_causa_localizada
+        END CHOOSE
+
+                //inserto el registro
+                
+                  INSERT INTO "SGD_ESTADO_OPER"  
+                                        ( "COD_ESTADO",   
+                                          "USUARIO",   
+                                          "F_ACTUAL",   
+                                          "H_ACTUAL",   
+                                          "PROGRAMA",   
+                                          "OBSERVACION",   
+                                          "F_ALTA",   
+                                          "H_ALTA",   
+                                          "NRO_INCIDENCIA",   
+                                          "IND_ENV_MANT" )  
+                  VALUES ( :li_estado_inc,   
+                                          :gs_usuario,   
+                                          :ldt_fecha_actual,   
+                                          :ldt_fecha_actual,   
+                                          'fgnu_genera_inc',   
+                                          '    ',   
+                                          :ldt_fecha_actual,   
+                                          :ldt_fecha_actual,   
+                                          :ll_nro_inc,   
+                                          null )  ;
+                
+                
+                IF SQLCA.SQLCODE < 0 THEN
+                        gnu_u_transaction.uf_rollback();
+                        Return -1
+                END IF
+NEXT
+
+
+//Genera la Orden de Trabajo (GI_OT)
+
+  INSERT INTO "GI_OT"  
+         ( "NRO_OT",   
+           "USUARIO",   
+           "F_ACTUAL",   
+           "H_ACTUAL",   
+           "PROGRAMA",   
+           "EST_OT",   
+           "DESCRIPCION",   
+           "NRO_AVISO",   
+           "NRO_INSTALACION",   
+           "NRO_INCIDENCIA",   
+           "F_DESDE",   
+           "F_HASTA",   
+           "H_DESDE",   
+           "H_HASTA",   
+           "F_ALTA",   
+           "H_ALTA",   
+           "ULT_BRIGADA",   
+           "NRO_CENTRO",   
+           "NRO_CMD",   
+           "NRO_MESA" )  
+  VALUES ( :ll_nro_ot,   
+           :gs_usuario,   
+           :ldt_fecha_actual,   
+           null,   
+           'fgnu_genera_inc',   
+           :fgci_ot_pendiente,   
+           null,   
+           0,   
+           :pn_instalacion_origen,   
+           :ll_nro_inc,   
+           :pd_ini_solicitado,   
+           null,   
+           null,   
+           null,   
+           :pd_ini_solicitado,   
+           null,   
+           0,   
+           :pn_nro_centro,   
+           :pn_nro_cmd,   
+           :pn_nro_mesa )  ;
+
+
+                
+                IF SQLCA.SQLCODE < 0 THEN
+                        gnu_u_transaction.uf_rollback();
+                        Return -1
+                ELSE
+                        gnu_u_transaction.uf_commit();
+                        Return 1
+                END IF
+
+
+Return 1
+end function
+

@@ -1,0 +1,28 @@
+HA$PBExportHeader$fgnu_valido_numero_nulo.srf
+global type fgnu_valido_numero_nulo from function_object
+end type
+
+forward prototypes
+global function long fgnu_valido_numero_nulo (long pl_nro)
+end prototypes
+
+global function long fgnu_valido_numero_nulo (long pl_nro);// retorna un numero, si es nulo, retorna un nulo,de lo contario retorna el numero
+Long ll_numero
+String buffer
+String buffer2
+Long ll_numero_valido
+
+buffer=String(ll_numero)
+buffer2=String(pl_nro)
+
+If buffer=buffer2 THEN
+	setnull(ll_numero_valido)
+ELSE
+	ll_numero_valido=pl_nro
+END IF
+
+return ll_numero_valido
+
+
+end function
+

@@ -1,0 +1,14 @@
+HA$PBExportHeader$d_codigos.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=24 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(5) updatewhereclause=yes name=cod dbname="codigos.cod" )
+ column=(type=char(80) updatewhereclause=yes name=desc_cod dbname="codigos.desc_cod" )
+ retrieve="SELECT ~"CODIGOS~".~"COD~", ~"CODIGOS~".~"DESC_COD~"
+FROM ~"CODIGOS~" 
+WHERE ~"CODIGOS~".~"COD~" LIKE :raiz ORDER BY ~"CODIGOS~".~"DESC_COD~" ASC " arguments=(("raiz", string)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="27" y="4" height="64" width="1125" format="[general]"  name=desc_cod edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

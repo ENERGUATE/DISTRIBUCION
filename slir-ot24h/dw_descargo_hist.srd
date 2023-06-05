@@ -1,0 +1,29 @@
+HA$PBExportHeader$dw_descargo_hist.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=276 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=nro_descargo dbname="gi_hist_interrupcion_descargos.nro_descargo" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=cod_instalacion dbname="gi_hist_interrupcion_descargos.cod_instalacion" )
+ column=(type=datetime updatewhereclause=yes name=f_inicio dbname="gi_hist_interrupcion_descargos.f_inicio" )
+ column=(type=datetime updatewhereclause=yes name=f_fin dbname="gi_hist_interrupcion_descargos.f_fin" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="gi_hist_interrupcion_descargos.f_alta" )
+ column=(type=char(15) updatewhereclause=yes name=programa dbname="gi_hist_interrupcion_descargos.programa" )
+ column=(type=char(15) updatewhereclause=yes name=usuario dbname="gi_hist_interrupcion_descargos.usuario" )
+ retrieve="  SELECT ~"GI_HIST_INTERRUPCION_DESCARGOS~".~"NRO_DESCARGO~",   
+         ~"GI_HIST_INTERRUPCION_DESCARGOS~".~"COD_INSTALACION~",   
+         ~"GI_HIST_INTERRUPCION_DESCARGOS~".~"F_INICIO~",   
+         ~"GI_HIST_INTERRUPCION_DESCARGOS~".~"F_FIN~",   
+         ~"GI_HIST_INTERRUPCION_DESCARGOS~".~"F_ALTA~",   
+         ~"GI_HIST_INTERRUPCION_DESCARGOS~".~"PROGRAMA~",   
+         ~"GI_HIST_INTERRUPCION_DESCARGOS~".~"USUARIO~"  
+    FROM ~"GI_HIST_INTERRUPCION_DESCARGOS~"  
+   WHERE ~"GI_HIST_INTERRUPCION_DESCARGOS~".~"NRO_DESCARGO~" = :ll_descargo    
+" update="GI_HIST_INTERRUPCION_DESCARGOS" updatewhere=0 updatekeyinplace=yes arguments=(("ll_descargo", number)) )
+text(band=detail alignment="0" text="Tiempo Interrupci$$HEX1$$f300$$ENDHEX$$n"border="0" color="0" x="384" y="204" height="64" width="649"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="8388608" x="41" y="84" height="60" width="539" format=""  name=f_inicio editmask.mask="dd/mm/yyyy hh:mm" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="8388608" x="795" y="84" height="60" width="539" format=""  name=f_fin editmask.mask="dd/mm/yyyy hh:mm" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Fin Interrupci$$HEX1$$f300$$ENDHEX$$n"border="0" color="0" x="814" y="4" height="64" width="512"  name=f_fin_solicitado_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Inicio Interrupci$$HEX1$$f300$$ENDHEX$$n"border="0" color="0" x="27" y="4" height="64" width="581"  name=f_ini_solicitado_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

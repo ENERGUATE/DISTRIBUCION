@@ -1,0 +1,16 @@
+HA$PBExportHeader$dddw_descripcion_causas_categoria.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=descripcion dbname="gi_subtipo_causa.descripcion" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=tipo dbname="gi_subtipo_causa.tipo" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=subtipo dbname="gi_subtipo_causa.subtipo" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=gpo_causa dbname="gi_subtipo_causa.gpo_causa" )
+ column=(type=decimal(0) updatewhereclause=yes name=activo dbname="gi_subtipo_causa.activo" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"gi_subtipo_causa~" ) COLUMN(NAME=~"gi_subtipo_causa.descripcion~") COLUMN(NAME=~"gi_subtipo_causa.tipo~") COLUMN(NAME=~"gi_subtipo_causa.subtipo~") COLUMN(NAME=~"gi_subtipo_causa.gpo_causa~") COLUMN(NAME=~"gi_subtipo_causa.activo~")WHERE(    EXP1 =~"gpo_causa~"   OP =~"=~"    EXP2 =~":pl_gpo_causa~"    LOGIC =~"And~" ) WHERE(    EXP1 =~"subtipo~"   OP =~"=~"    EXP2 =~":pl_subtipo_causa~"    LOGIC =~"And~" ) WHERE(    EXP1 =~"tipo~"   OP =~"=~"    EXP2 =~":pl_tipo~"    LOGIC =~"And~" ) WHERE(    EXP1 =~"activo~"   OP =~"=~"    EXP2 =~":pl_activo~" ) ) ARG(NAME = ~"pl_gpo_causa~" TYPE = number)  ARG(NAME = ~"pl_subtipo_causa~" TYPE = number)  ARG(NAME = ~"pl_tipo~" TYPE = number)  ARG(NAME = ~"pl_activo~" TYPE = number) " update="GI_SUBTIPO_CAUSA" updatewhere=1 updatekeyinplace=no arguments=(("pl_gpo_causa", number),("pl_subtipo_causa", number),("pl_tipo", number),("pl_activo", number)) )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="8388608" x="9" y="0" height="64" width="1591" html.valueishtml="0"  name=descripcion visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Descripcion" border="0" color="0" x="5" y="4" height="76" width="1595" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

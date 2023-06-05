@@ -1,0 +1,32 @@
+HA$PBExportHeader$d_2005_pr_lista_asignaciones_brigadas_gr.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=4 color="-1" )
+footer(height=0 color="-1" )
+detail(height=76 color="-1" )
+table(column=(type=char(25) updatewhereclause=yes name=brigada_nombre dbname="gi_brigada.nombre" )
+ column=(type=char(10) updatewhereclause=yes name=brigada_movil dbname="gi_brigada.movil" )
+ column=(type=datetime updatewhereclause=yes name=ot_f_desde dbname="gi_ot.f_desde" )
+ column=(type=decimal(0) updatewhereclause=yes name=ot_nro_ot dbname="gi_ot.nro_ot" )
+ column=(type=char(8) updatewhereclause=yes name=brigada_frec_radio dbname="gi_brigada.frec_radio" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_ot_est_ot dbname="gi_ot.est_ot" )
+ retrieve="SELECT GI_BRIGADA.NOMBRE, GI_BRIGADA.MOVIL, GI_OT.F_DESDE, 
+		 GI_OT.NRO_OT, GI_BRIGADA.FREC_RADIO,GI_OT.EST_OT
+FROM  GI_OT,GI_BRIGADA
+WHERE ( gi_brigada.nro_brigada = gi_ot.ult_brigada (+)) and 
+		( GI_OT . EST_OT  not in ( 3,4,0 ) and  GI_OT . NRO_INSTALACION  = :cod_instalacion)" arguments=(("cod_instalacion", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="0" y="12" height="48" width="631" format="[general]"  name=brigada_nombre edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="8388608" x="640" y="12" height="48" width="206" format="[general]"  name=brigada_movil edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8388608" x="882" y="12" height="48" width="293" format="[general]"  name=ot_nro_ot edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="8388608" x="1207" y="12" height="48" width="411" format="[shortdate] [time]"  name=ot_f_desde edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="8388608" x="1650" y="12" height="48" width="265" format="[general]"  name=brigada_frec_radio edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Pendiente"border="0" color="8388608" x="1947" y="12" height="48" width="389" visible="1~tif(  gi_ot_est_ot = 1, 1, 0 )"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Trabajando"border="0" color="8388608" x="1947" y="12" height="48" width="389" visible="1~tif(  gi_ot_est_ot = 2, 1, 0 )"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nombre"border="6" color="0" x="5" y="8" height="60" width="626"  name=brigada_nombre_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="M$$HEX1$$f300$$ENDHEX$$vil"border="6" color="0" x="649" y="8" height="60" width="206"  name=brigada_movil_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Ord. Trabajo"border="6" color="0" x="873" y="8" height="60" width="306"  name=ot_nro_ot_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Fecha Generada"border="6" color="0" x="1198" y="8" height="60" width="425"  name=ot_f_desde_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Frec. Radio"border="6" color="33554432" x="1646" y="8" height="60" width="279"  name=brigada_frec_radio_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Estado"border="6" color="0" x="1943" y="8" height="60" width="402"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

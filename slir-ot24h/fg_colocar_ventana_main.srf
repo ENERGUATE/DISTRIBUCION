@@ -1,0 +1,18 @@
+HA$PBExportHeader$fg_colocar_ventana_main.srf
+global type fg_colocar_ventana_main from function_object
+end type
+
+forward prototypes
+global subroutine fg_colocar_ventana_main (ref window ventana)
+end prototypes
+
+global subroutine fg_colocar_ventana_main (ref window ventana);ventana.x=0
+ventana.y=0
+ventana.width=3640
+ventana.height=2030
+
+
+
+
+end subroutine
+

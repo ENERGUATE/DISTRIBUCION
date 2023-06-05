@@ -1,0 +1,24 @@
+HA$PBExportHeader$d_man_2049_materiales.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(6) update=yes updatewhereclause=yes key=yes name=codigo dbname="sgd_org_mat.cod_objeto" )
+ column=(type=char(203) updatewhereclause=yes name=descripcion dbname="descripcion" )
+ retrieve="  SELECT MAT1.~"COD_OBJETO~",
+  		CONCAT(MAT2.DESCRIPCION,CONCAT(' - ',MAT1.~"DESCRIPCION~"))  descripcion
+    FROM SGD_ORG_MAT MAT1, SGD_ORG_MAT MAT2,~"GI_PARAMETROS~"   
+   WHERE ~"GI_PARAMETROS~".~"COD_PARAMETRO~" = 100 AND
+			((MAT1.~"COD_OBJETO~" like ('0'|| to_char(valor) ||'01%') and
+		   MAT1.~"COD_OBJETO~" not like ('0'|| to_char(valor) ||'0100') and
+			MAT1.~"COD_OBJETO~" not like ('0'|| to_char(valor) ||'0101%') and valor=1) or
+			(MAT1.~"COD_OBJETO~" not like '%00' and MAT1.ind_correctivo=1 and valor=0 )) AND
+			 (MAT2.COD_OBJETO LIKE CONCAT(SUBSTR(MAT1.COD_OBJETO,1,4),'%') 
+			 AND MAT2.IND_CORRECTIVO=1 AND MAT2.cod_objeto like '%00')	
+" update="SGD_ORG_MAT" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="151" y="0" height="64" width="1577" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="151" y="0" height="64" width="1577" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

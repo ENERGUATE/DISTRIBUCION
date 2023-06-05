@@ -1,0 +1,17 @@
+HA$PBExportHeader$d_indicadores_filtrar_grupo_activos.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=224 color="536870912" )
+table(column=(type=number updatewhereclause=no name=tipo_grupo dbname="tipo_activo" )
+ column=(type=char(50) updatewhereclause=no name=nombre_grupo dbname="nombre_activo" )
+ column=(type=long updatewhereclause=no name=anio dbname="anio" )
+ column=(type=long updatewhereclause=no name=mes dbname="mes" values="Enero	1/Febrero	2/Marzo	3/Abril	4/Mayo	5/Junio	6/Julio	7/Agosto	8/Septiempbre	9/Octubre	10/Noviembre	11/Diciembre	12/" )
+ )
+column(band=detail id=2 alignment="0" tabsequence=30 border="5" color="8388608" x="549" y="16" height="68" width="768" format="[general]" html.valueishtml="0"  name=nombre_grupo visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=40 border="5" color="8388608" x="549" y="116" height="68" width="768" format="[general]" html.valueishtml="0"  name=tipo_grupo visible="1" dddw.name=d_dddw_tipos_de_grupos_de_activos dddw.displaycolumn=nombre dddw.datacolumn=codigo dddw.percentwidth=140 dddw.lines=5 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Instalaci$$HEX1$$f300$$ENDHEX$$n:" border="0" color="33554432" x="27" y="28" height="52" width="338" html.valueishtml="0"  name=instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Tipo de Activos" border="0" color="33554432" x="27" y="128" height="52" width="485" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

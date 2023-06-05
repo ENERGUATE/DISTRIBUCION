@@ -1,0 +1,55 @@
+HA$PBExportHeader$dw_lista_trabajos.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=codigo dbname="codigo" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=nombre dbname="sgd_trabajos_bdi.nombre" )
+ column=(type=char(160) update=yes updatewhereclause=yes name=descripcion dbname="sgd_trabajos_bdi.descripcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_descargo dbname="sgd_trabajos_bdi.nro_descargo" )
+ column=(type=char(50) updatewhereclause=yes name=sgd_valor_descripcion dbname="sgd_valor.descripcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estado_trabajo dbname="sgd_trabajos_bdi.estado_trabajo" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=usuario dbname="sgd_trabajos_bdi.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="sgd_trabajos_bdi.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_trabajos_bdi.programa" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_trabajos_bdi_codigo dbname="sgd_trabajos_bdi.codigo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=centro dbname="sgd_trabajos_bdi.centro" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cmd dbname="sgd_trabajos_bdi.cmd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=puesto dbname="sgd_trabajos_bdi.puesto" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo_trabajo dbname="sgd_trabajos_bdi.tipo_trabajo" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=observaciones dbname="sgd_trabajos_bdi.observaciones" )
+ retrieve="  SELECT /*FIRST_ROWS*/ ~"SGD_TRABAJOS_BDI~".~"CODIGO~",   
+         ~"SGD_TRABAJOS_BDI~".~"NOMBRE~",   
+         ~"SGD_TRABAJOS_BDI~".~"DESCRIPCION~",   
+         ~"SGD_TRABAJOS_BDI~".~"NRO_DESCARGO~",   
+			~"SGD_VALOR~".~"DESCRIPCION~",
+         ~"SGD_TRABAJOS_BDI~".~"ESTADO_TRABAJO~",   
+         ~"SGD_TRABAJOS_BDI~".~"USUARIO~",   
+         ~"SGD_TRABAJOS_BDI~".~"F_ACTUAL~",   
+         ~"SGD_TRABAJOS_BDI~".~"PROGRAMA~",   
+         ~"SGD_TRABAJOS_BDI~".~"CODIGO~",   
+         ~"SGD_TRABAJOS_BDI~".~"CENTRO~",   
+         ~"SGD_TRABAJOS_BDI~".~"CMD~",   
+         ~"SGD_TRABAJOS_BDI~".~"PUESTO~",   
+         ~"SGD_TRABAJOS_BDI~".~"TIPO_TRABAJO~",   
+         ~"SGD_TRABAJOS_BDI~".~"OBSERVACIONES~"  
+    FROM ~"SGD_TRABAJOS_BDI~",   
+         ~"SGD_VALOR~"  
+   WHERE ( ~"SGD_TRABAJOS_BDI~".~"ESTADO_TRABAJO~" = ~"SGD_VALOR~".~"CODIGO~" ) and  
+         (~"SGD_TRABAJOS_BDI~".~"CENTRO~" = :ll_centro_buscar ) AND  
+         (~"SGD_TRABAJOS_BDI~".~"CMD~" = :ll_cmd_buscar ) AND  
+         (~"SGD_TRABAJOS_BDI~".~"PUESTO~" = :ll_mesa_buscar ) AND  
+         (~"SGD_TRABAJOS_BDI~".~"TIPO_TRABAJO~" = :ll_tipo_trabajo) AND  
+         ~"SGD_VALOR~".~"CODIF~" = 'E_TB'    
+" update="SGD_TRABAJOS_BDI" updatewhere=0 updatekeyinplace=no retrieve.asneeded=yes arguments=(("ll_centro_buscar", number),("ll_cmd_buscar", number),("ll_mesa_buscar", number),("ll_tipo_trabajo", number)) )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="8388608~tcase(  estado_trabajo when 1 then rgb(0,128,0) when 2 then rgb( 0, 0, 128) when 3 ,4, 5, 6 then rgb(255,0,0) else rgb(0,0,0))" x="3081" y="8" height="64" width="672" format="[general]"  name=sgd_valor_descripcion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="5" color="8388608~tcase(  estado_trabajo when 1 then rgb(0,128,0) when 2 then rgb( 0, 0, 128) when 3 ,4, 5, 6 then rgb(255,0,0) else rgb(0,0,0))" x="1157" y="8" height="64" width="1902" format="[general]"  name=descripcion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="5" color="8388608~tcase(  estado_trabajo when 1 then rgb(0,128,0) when 2 then rgb( 0, 0, 128) when 3 ,4, 5, 6 then rgb(255,0,0) else rgb(0,0,0))" x="5" y="8" height="64" width="343" format="[general]"  name=codigo edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="5" color="8388608~tcase(  estado_trabajo when 1 then rgb(0,128,0) when 2 then rgb( 0, 0, 128) when 3 ,4, 5, 6 then rgb(255,0,0) else rgb(0,0,0))" x="370" y="8" height="64" width="763" format="[general]"  name=nombre edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Codigo"border="6" color="0" x="5" y="4" height="64" width="343"  name=codigo_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Nombre"border="6" color="0" x="370" y="4" height="64" width="763"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Descripcion"border="6" color="0" x="1157" y="4" height="64" width="1902"  name=descripcion_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Estado"border="6" color="0" x="3081" y="4" height="64" width="672"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

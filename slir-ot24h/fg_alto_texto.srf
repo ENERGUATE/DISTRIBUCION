@@ -1,0 +1,150 @@
+HA$PBExportHeader$fg_alto_texto.srf
+global type fg_alto_texto from function_object
+end type
+
+forward prototypes
+global function string fg_alto_texto (datawindow adw_dw, readonly string as_ventana, readonly integer ai_columna)
+end prototypes
+
+global function string fg_alto_texto (datawindow adw_dw, readonly string as_ventana, readonly integer ai_columna);String  ls_syntax, ls_text_t
+Long	  ll_pos, ll_pos_space, ll_row, ll_alto, ll_header, ll_max_height
+Integer li_parametro
+DataStore lds_parametros
+//*********************************************
+//**  OSGI 2001.2  	28/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+String ls_return = " ", ls_tmp_modif = " "
+//*********************************************
+//**  OSGI 2001.2  	28/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+
+
+
+
+If Not fg_verifica_parametro(as_ventana) Then Return ""
+
+
+SELECT To_Number(GI_PARAMETROS_EXT.VALOR)
+  INTO :li_parametro
+  FROM GI_PARAMETROS_EXT
+  WHERE Upper(GI_PARAMETROS_EXT.DESCRIPCION) = Upper(:as_ventana) AND
+  		  Upper(TIPO) = 'ALT';
+	
+If SQLCA.sqlcode <> 0 Or IsNull(li_parametro) Or li_parametro <= 0 Then
+	Return ""
+End If
+
+
+lds_parametros = Create DataStore
+lds_parametros.DataObject = "dw_co_parametros_ext"
+lds_parametros.SetTransObject(SQLCA)
+	
+
+If lds_parametros.Retrieve(li_parametro, ai_columna) <= 0 Then
+	Destroy lds_parametros
+	Return ""
+End If
+
+
+ls_syntax = adw_dw.Describe("DataWindow.Syntax")
+ll_pos = Pos(ls_syntax, 'text(name=')
+
+ll_row = 0
+ll_alto = 0
+ll_max_height = 0
+
+
+Do While ll_pos > 0
+	ll_pos += 10
+	
+	ls_syntax = Mid(ls_syntax, ll_pos)
+	ll_pos_space = Pos(ls_syntax, ' ') - 1
+
+
+	ls_text_t = Left(ls_syntax, ll_pos_space)
+
+
+	ls_syntax = Mid(ls_syntax, ll_pos_space + 1)
+
+	ll_pos = Pos(ls_syntax, 'text(name=')
+
+	If ai_columna = 0 Then
+		If ll_row <= 0 And ll_alto <= 0 Then
+			ll_row = lds_parametros.Find("tipo='ALT'", 1, lds_parametros.RowCount())
+		End If
+	Else
+		ll_row = lds_parametros.Find("valor='" + ls_text_t + "' And tipo='ALT'", 1, lds_parametros.RowCount())
+	End If
+
+
+	If ll_row > 0 Then
+		ll_alto = Long(lds_parametros.GetItemString(ll_row, "valor"))
+
+		If IsNull(ll_alto) Then ll_alto = 0
+
+		If ll_alto > 0 Then
+			//*********************************************
+			//**  OSGI 2001.2  	28/10/2002					**
+			//**  Jair Padilla / Soluziona PANAMA  		**
+			//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+			//*********************************************
+			//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  			adw_dw.Modify(ls_text_t + ".Height='" + String(ll_alto) + "'")
+
+			ls_tmp_modif = ls_text_t + ".Height='" + String(ll_alto) + "'"
+			adw_dw.Modify(ls_tmp_modif)
+			ls_return += " " + ls_tmp_modif + " "
+			//*********************************************
+			//**  OSGI 2001.2  	28/10/2002					**
+			//**  Jair Padilla / Soluziona PANAMA  		**
+			//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+			//*********************************************
+
+			If ll_max_height < ll_alto Then ll_max_height = ll_alto
+		End If
+	End If
+Loop
+
+Destroy lds_parametros
+
+
+If ll_max_height > 0 Then
+	ll_header = ll_max_height + 18
+	
+	
+	//*********************************************
+	//**  OSGI 2001.2  	28/10/2002					**
+	//**  Jair Padilla / Soluziona PANAMA  		**
+	//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+	//*********************************************
+	//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  	adw_dw.Modify("DataWindow.Header.Height= " + String(ll_header) + " ")
+	
+	ls_tmp_modif = "DataWindow.Header.Height= " + String(ll_header) + " " 
+	adw_dw.Modify(ls_tmp_modif)
+	ls_return += " " + ls_tmp_modif + " "
+	//*********************************************
+	//**  OSGI 2001.2  	28/10/2002					**
+	//**  Jair Padilla / Soluziona PANAMA  		**
+	//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+	//*********************************************
+End If
+
+
+//*********************************************
+//**  OSGI 2001.2  	28/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  Return
+
+Return ls_return
+//*********************************************
+//**  OSGI 2001.2  	28/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+end function
+

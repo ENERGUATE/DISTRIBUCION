@@ -1,0 +1,42 @@
+HA$PBExportHeader$d_7002_mante_modificar.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=936 color="536870912" )
+table(column=(type=char(16) update=yes updatewhereclause=yes name=id_aprobacion dbname="sgd_descargos.id_aprobacion" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_aprobado dbname="sgd_descargos.f_aprobado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_ini_aprobado dbname="sgd_descargos.f_ini_aprobado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_fin_aprobado dbname="sgd_descargos.f_fin_aprobado" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=obs_aprobado dbname="sgd_descargos.obs_aprobado" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estado dbname="sgd_descargos.estado" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_descargo dbname="sgd_descargos.nro_descargo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_interrupcion dbname="sgd_descargos.ind_interrupcion" )
+ retrieve="  SELECT ~"SGD_DESCARGOS~".~"ID_APROBACION~",   
+         ~"SGD_DESCARGOS~".~"F_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"F_INI_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"F_FIN_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"OBS_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"ESTADO~",   
+         ~"SGD_DESCARGOS~".~"NRO_DESCARGO~",
+         ~"SGD_DESCARGOS~".~"IND_INTERRUPCION~"    
+    FROM ~"SGD_DESCARGOS~"  
+   WHERE ~"SGD_DESCARGOS~".~"NRO_DESCARGO~" = :pl_nro_descargo    
+" update="SGD_DESCARGOS" updatewhere=1 updatekeyinplace=yes arguments=(("pl_nro_descargo", number)) )
+rectangle(band=detail x="78" y="460" height="420" width="1358"  name=r_1 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="16777215"  background.mode="1" background.color="553648127" )
+rectangle(band=detail x="46" y="44" height="860" width="1422"  name=r_2 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="16777215"  background.mode="1" background.color="553648127" )
+rectangle(band=detail x="41" y="40" height="860" width="1422"  name=r_3 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="8421504"  background.mode="1" background.color="553648127" )
+rectangle(band=detail x="73" y="456" height="420" width="1358"  name=r_4 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="8421504"  background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="5" color="0" x="101" y="508" height="344" width="1298" format="[general]" html.valueishtml="0"  name=obs_aprobado visible="1" edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.imemode=0 edit.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="2" text="Modificaci$$HEX1$$f300$$ENDHEX$$n" border="0" color="0" x="91" y="4" height="64" width="466" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="2" text=" Observaciones de Modificaci$$HEX1$$f300$$ENDHEX$$n " border="0" color="0" x="119" y="420" height="64" width="1051" html.valueishtml="0"  name=obs_aprobado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="0" text="Responsable Modificaci$$HEX1$$f300$$ENDHEX$$n:" border="0" color="0" x="64" y="84" height="64" width="814" html.valueishtml="0"  name=id_aprobacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha de Modificado:" border="0" color="0" x="64" y="164" height="64" width="814" html.valueishtml="0"  name=f_aprobado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha de Fin Descargo:" border="0" color="0" x="64" y="324" height="64" width="814" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha de Inicio Descargo:" border="0" color="0" x="64" y="244" height="64" width="814" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="859" y="84" height="64" width="347" format="[general]" html.valueishtml="0"  name=id_aprobacion visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="2" tabsequence=10 border="5" color="0" x="859" y="252" height="56" width="576" format="" html.valueishtml="0"  name=f_ini_aprobado visible="1" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="2" tabsequence=20 border="5" color="0" x="859" y="332" height="56" width="576" format="[shortdate] [time]" html.valueishtml="0"  name=f_fin_aprobado visible="1" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="5" color="0" x="859" y="172" height="56" width="576" format="[shortdate] [time]" html.valueishtml="0"  name=f_aprobado visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

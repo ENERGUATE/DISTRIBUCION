@@ -1,0 +1,41 @@
+HA$PBExportHeader$dw_ot24h3.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=4 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no  crosstab.dynamic = yes grid.lines=0 grid.columnmove=no selected.mouse=no )
+header[1](height=128 color="536870912" )
+header[2](height=128 color="536870912" )
+summary(height=180 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=nom_causa dbname="nom_causa" )
+ column=(type=number updatewhereclause=yes name=tipo dbname="tipo" )
+ retrieve="select r1.tipo,
+	   r1.seq,
+	   r1.fecha_alta,
+	   r1.nom_causa,
+	   r2.nom_local,
+	   r2.nom_munic,
+	   r2.nom_depto,
+	   r2.nom_region,
+	   r1.observaciones	   	   
+from registro r1,
+	 registro_geo r2
+where r1.id=r2.ID
+and r1.tipo=r2.tipo
+and r1.seq=r2.seq
+and to_char(fecha_alta,'dd/mm/yyyy') = to_char(sysdate,'dd/mm/yyyy')
+and r2.nom_region not like '%FICTICIA%'
+order by r1.fecha_alta desc
+"  sort="nom_causa A " )
+text(band=header[1] alignment="0" text="Count Of Tipo"border="0" color="0" x="9" y="4" height="120" width="4389"  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header[1] alignment="0" text="Nom Region"border="0" color="0" x="4407" y="4" height="120" width="343"  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header[2] alignment="0" text="Nom Causa"border="0" color="0" x="9" y="4" height="120" width="4389"  name=nom_causa_t  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header[2] alignment="0" text="@nom_region"border="0" color="0" x="4407" y="4" height="120" width="343"  name=tipo_t  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header[2] alignment="0" text="Grand Total "border="0" color="0" x="4759" y="4" height="120" width="686"  name=grand_count_tipo_t  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="72" width="4389" format="[general]"  name=nom_causa edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="4407" y="4" height="72" width="343" format="[general]"  name=tipo edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes crosstab.repeat=yes  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="crosstabsum(1)"border="0" color="0" x="4759" y="4" height="72" width="686" format="[general]"  name=grand_count_tipo  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="~"Grand Total~""border="0" color="0" x="9" y="4" height="120" width="4389" format="[general]"  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="sum(tipo for all )"border="0" color="0" x="4407" y="4" height="120" width="343" format="[general]"  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="sum(grand_count_tipo for all )"border="0" color="0" x="4759" y="4" height="120" width="686" format="[general]"  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+ crosstab(band = foreground  crosstabonly = yes 
+ columns = "nom_region" rows = "nom_causa" values = "count(tipo for crosstab)" sourcenames = "tipo, seq, fecha_alta, nom_causa, nom_local, nom_munic, nom_depto, nom_region, observaciones")htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,169 @@
+HA$PBExportHeader$dw_avisos_5.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=156 color="536870912" )
+detail(height=1804 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=aviso dbname="aviso" )
+ column=(type=decimal(0) updatewhereclause=yes name=nis dbname="nis" )
+ column=(type=datetime updatewhereclause=yes name=ingreso dbname="ingreso" )
+ column=(type=number updatewhereclause=yes name=llamadas dbname="llamadas" )
+ column=(type=char(72) updatewhereclause=yes name=nombre dbname="nombre" )
+ column=(type=char(15) updatewhereclause=yes name=tel dbname="tel" )
+ column=(type=char(50) updatewhereclause=yes name=subestacion dbname="subestacion" )
+ column=(type=char(50) updatewhereclause=yes name=smt dbname="smt" )
+ column=(type=char(50) updatewhereclause=yes name=matr_bdi dbname="matr_bdi" )
+ column=(type=char(255) updatewhereclause=yes name=matr_sgc dbname="matr_sgc" )
+ column=(type=char(9) updatewhereclause=yes name=empresa dbname="empresa" )
+ column=(type=char(25) updatewhereclause=yes name=sector dbname="sector" )
+ column=(type=char(30) updatewhereclause=yes name=departamento dbname="departamento" )
+ column=(type=char(30) updatewhereclause=yes name=municipio dbname="municipio" )
+ column=(type=char(30) updatewhereclause=yes name=localidad dbname="localidad" )
+ column=(type=char(194) updatewhereclause=yes name=direccion dbname="direccion" )
+ column=(type=char(500) updatewhereclause=yes name=obsot24 dbname="obsot24" )
+ column=(type=char(2000) updatewhereclause=yes name=obscor dbname="obscor" )
+ column=(type=char(2) updatewhereclause=yes name=peligro dbname="peligro" )
+ column=(type=char(2) updatewhereclause=yes name=cliente_importante dbname="cliente_importante" )
+ column=(type=char(90) updatewhereclause=yes name=alcance dbname="alcance" )
+ retrieve="select *
+from (
+SELECT DISTINCT e.nro_aviso Aviso,
+e.nis_rad NIS,
+e.f_alta ingreso,
+e.nro_llamadas+1 Llamadas,
+e.NOMBRE || ' ' || e.APE1 || ' ' || e.APE2 Nombre,
+e.tfno_cli tel,
+a.subestac Subestacion,
+b.smt SMT,
+d.matricula matr_bdi,
+h.usr_varchar2 matr_sgc,
+DECODE (d.nro_centro,3100,'ORIENTE',2100,'OCCIDENTE','??') Empresa, 
+F.NOM_CENTRO Sector,
+e.NOM_prov Departamento,
+e.NOM_depto Municipio,
+e.NOM_munic Localidad,
+e.NOM_CALLE || ' ' || e.NUM_PUERTA || e.DUPLICADOR || ' ' || e.NOM_LOC || ' ' || e.ESQUINA Direccion,
+REPLACE(REPLACE(e.OBS_TELEGESTIONES,CHR(013) || CHR(010),' '),CHR(009),' ') obsot24,
+REPLACE(REPLACE(e.OBS_cmd,CHR(013) || CHR(010),' '),CHR(009),' ') obscor,
+DECODE (e.IND_PELIGRO,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Peligro,
+DECODE (e.IND_CLI_IMP,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Cliente_Importante,
+G.DESCRIPCION Alcance
+FROM (SELECT NOM_INSTALACION Subestac,
+nro_aviso aviso_subestac
+FROM GI_AVISOS_INSTALACION
+WHERE tipo_instalacion = 3
+AND est_aviso = 1) a,
+(SELECT NOM_INSTALACION smt,
+nro_aviso aviso_smt
+FROM GI_AVISOS_INSTALACION
+WHERE tipo_instalacion = 4
+AND est_aviso = 1) b,
+(SELECT NOM_INSTALACION ct,
+nro_aviso aviso_ct,
+nro_instalacion codigo_ct
+FROM GI_AVISOS_INSTALACION
+WHERE tipo_instalacion = 5
+AND est_aviso = 1) c,
+sgd_ct d,
+gi_avisos e,
+sgd_centro f,
+sgd_valor g,
+sumcon h
+WHERE e.clase_aviso IN (0,1)
+AND g.codif = 'ALC'
+AND a.aviso_subestac = b.aviso_smt
+AND a.aviso_subestac = c.aviso_ct
+AND d.codigo = c.codigo_ct
+AND e.nro_aviso = a.aviso_subestac
+AND f.nro_centro = d.nro_mesa
+AND g.codigo = e.co_alcance
+AND h.nis_rad = e.nis_rad
+and d.bdi_job=0
+UNION
+SELECT DISTINCT a.nro_aviso Aviso,
+B.nis_rad NIS,
+B.f_alta Ingreso,
+B.nro_llamadas+1 Llamadas,
+b.NOMBRE || ' ' || b.APE1 || ' ' || b.APE2 Nombre,
+b.tfno_cli tel,
+a.NOM_INSTALACION Subestacion,
+a.NOM_INSTALACION SMT,
+a.NOM_INSTALACION matr_bdi,
+d.usr_varchar2 matr_sgc,
+DECODE (a.nro_zona,3100,'ORIENTE',2100,'OCCIDENTE','??') Empresa, 
+c.NOM_CENTRO Sector,
+b.NOM_prov Departamento,
+b.NOM_depto Municipio,
+b.NOM_munic Localidad,
+b.NOM_CALLE || ' ' || b.NUM_PUERTA || b.DUPLICADOR || ' ' || b.NOM_LOC || ' ' || b.ESQUINA Direccion,
+REPLACE(REPLACE(b.OBS_TELEGESTIONES,CHR(013) || CHR(010),' '),CHR(009),' ') obsot24,
+REPLACE(REPLACE(b.OBS_cmd,CHR(013) || CHR(010),' '),CHR(009),' ') obscor,
+DECODE (b.IND_PELIGRO,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Peligro,
+DECODE (b.IND_CLI_IMP,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Cliente_Importante,
+e.DESCRIPCION Alcance
+FROM gi_avisos_instalacion a,
+gi_avisos b,
+sgd_centro c,
+sumcon d,
+sgd_valor e
+WHERE a.est_aviso = 1
+AND a.ind_red = 0
+AND A.NRO_INSTALACION IN (77777777, 88888888)
+AND a.clase_aviso IN (0,1)
+AND a.nro_zona <> 0
+AND e.CODIF = 'ALC'
+AND a.nro_aviso = b.nro_aviso
+AND c.nro_centro = a.nro_sector
+AND e.codigo = b.co_alcance
+AND d.nis_rad = b.nis_rad
+) where nis = :nis_Rad or matr_bdi=:matbdi" arguments=(("nis_rad", number),("matbdi", string)) )
+text(band=header alignment="0" text="AVISOS ABIERTOS SGI"border="0" color="128" x="14" y="32" height="80" width="965"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="9" y1="128" x2="2734" y2="128" pen.style="0" pen.width="5" pen.color="128"  background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="contexto"border="0" color="0" x="2857" y="60" height="52" width="251"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Nis:"border="0" color="128" x="101" y="164" height="76" width="279"  name=nis_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Nombre:"border="0" color="128" x="101" y="264" height="76" width="279"  name=nombre_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Direccion:"border="0" color="128" x="101" y="368" height="152" width="279"  name=direccion_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Peligro:"border="0" color="128" x="1714" y="548" height="76" width="215"  name=peligro_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="16777215" x="1943" y="548" height="76" width="110" format="[general]"  name=peligro edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=detail alignment="0" text="Cliente Importante:"border="0" color="128" x="2075" y="548" height="76" width="530"  name=cliente_importante_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="2" color="16777215" x="2629" y="548" height="76" width="119" format="[general]"  name=cliente_importante edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=detail alignment="0" text="Matr$$HEX1$$ed00$$ENDHEX$$cula BDI:"border="0" color="128" x="101" y="668" height="76" width="416"  name=matr_bdi_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Matr$$HEX1$$ed00$$ENDHEX$$cula SGC:"border="0" color="128" x="101" y="760" height="76" width="416"  name=matr_sgc_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Departamento:"border="0" color="128" x="101" y="864" height="76" width="416"  name=departamento_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="2" color="0" x="544" y="864" height="76" width="425" format="[general]"  name=departamento edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="2" color="0" x="544" y="760" height="76" width="425" format="[general]"  name=matr_sgc edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=30 border="2" color="16777215" x="544" y="668" height="76" width="425" format="[general]"  name=matr_bdi edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=detail alignment="0" text="Empresa:"border="0" color="128" x="1006" y="672" height="76" width="306"  name=empresa_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Llamadas:"border="0" color="128" x="1006" y="548" height="76" width="306"  name=llamadas_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Sector:"border="0" color="128" x="1006" y="768" height="76" width="306"  name=sector_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="2" color="0" x="1344" y="672" height="76" width="713" format="[general]"  name=empresa edit.limit=6 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="2" color="0" x="1344" y="548" height="76" width="242" format="[general]"  name=llamadas edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="2" color="0" x="1344" y="768" height="76" width="713" format="[general]"  name=sector edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="2" color="0" x="1344" y="864" height="76" width="713" format="[general]"  name=municipio edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="2" color="0" x="421" y="164" height="76" width="379" format="[general]"  name=nis edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="2" color="0" x="421" y="548" height="76" width="562" format="[general]"  name=tel edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Tel:"border="0" color="128" x="101" y="548" height="76" width="279"  name=tel_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="2" color="0" x="421" y="368" height="152" width="2638" format="[general]"  name=direccion editmask.useformat=yes editmask.mask="x" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="2" color="0" x="421" y="264" height="76" width="2638" format="[general]"  name=nombre edit.limit=72 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Ingreso:"border="0" color="128" x="2007" y="68" height="76" width="279"  name=ingreso_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="2" color="0" x="2309" y="68" height="76" width="745" format="dd/mm/yyyy hh:mm:ss"  name=ingreso edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Subestacion:"border="0" color="128" x="101" y="960" height="76" width="416"  name=subestacion_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="2" color="0" x="544" y="960" height="76" width="1006" format="[general]"  name=subestacion edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="SMT:"border="0" color="128" x="1609" y="960" height="76" width="151"  name=smt_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="2" color="0" x="1783" y="960" height="76" width="1280" format="[general]"  name=smt edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="2" color="0" x="2386" y="816" height="124" width="677" format="[general]"  name=localidad editmask.useformat=yes editmask.mask="x" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Municipio:"border="0" color="128" x="1006" y="864" height="76" width="306"  name=municipio_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Localidad:"border="0" color="128" x="2089" y="864" height="76" width="279"  name=localidad_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="2" color="0" x="421" y="1104" height="272" width="2647" format="[general]"  name=obsot24 editmask.useformat=yes editmask.mask="x" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="OBS OT24:"border="0" color="128" x="101" y="1104" height="272" width="279"  name=obsot24_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="OBS COR:"border="0" color="128" x="101" y="1396" height="272" width="279"  name=obscor_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="2" color="0" x="421" y="1396" height="272" width="2647" format="[general]"  name=obscor editmask.useformat=yes editmask.mask="x" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Alcance:"border="0" color="128" x="101" y="1696" height="76" width="279"  name=alcance_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="2" color="0" x="421" y="1696" height="76" width="2647" format="[general]"  name=alcance edit.limit=90 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="2" color="0" x="421" y="48" height="92" width="379" format="[general]"  name=aviso edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Aviso:"border="0" color="128" x="101" y="48" height="92" width="279"  name=aviso_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="currentRow() + ~" de ~" + rowcount()"border="0" color="128" x="27" y="52" height="80" width="759" format="[general]"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=footer x1="32" y1="24" x2="2757" y2="24" pen.style="0" pen.width="5" pen.color="128"  background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="dw_avisos_5"border="0" color="0" x="2715" y="72" height="52" width="393"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

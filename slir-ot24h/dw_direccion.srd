@@ -1,0 +1,37 @@
+HA$PBExportHeader$dw_direccion.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="553648127~tIF(MOD(GETROW(),2)=0,rgb(255,255,255),RGB(197,217,241))" )
+table(column=(type=char(30) updatewhereclause=yes name=nombre_loc2 dbname="nombre_loc" )
+ column=(type=char(30) updatewhereclause=yes name=nombre_mun2 dbname="nombre_mun" )
+ column=(type=char(30) updatewhereclause=yes name=nombre_dep2 dbname="nombre_dep" )
+ column=(type=char(154) updatewhereclause=yes name=direccion2 dbname="direccion" )
+ column=(type=decimal(0) updatewhereclause=yes name=c_depto2 dbname="c_depto" )
+ column=(type=decimal(0) updatewhereclause=yes name=c_muni2 dbname="c_muni" )
+ column=(type=decimal(0) updatewhereclause=yes name=c_local2 dbname="c_local" )
+ retrieve="select m.nom_munic nombre_loc,
+	   d.nom_depto nombre_mun,
+	   p.nom_prov nombre_dep,
+	   upper(m.nom_munic||', '||d.nom_depto||', '||p.nom_prov) direccion, 
+	   p.cod_prov c_depto, 
+	   d.cod_depto c_muni, 
+	   m.cod_munic c_local	    
+from provincias@dblsgc p,
+	 deptos@dblsgc d,
+	 municipios@dblsgc m
+where p.cod_prov = d.cod_prov 
+and m.cod_prov= p.cod_prov
+and m.cod_depto= d.cod_depto
+and m.nom_munic  like :datoS
+and m.cod_munic<>5019 /*descartar ficticia cuyotenango*/
+order by m.nom_munic||' '||d.nom_depto||' '||p.nom_prov 	" arguments=(("datos", string)) )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="4251" format="[general]"  name=direccion2 edit.limit=154 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="4261" y="4" height="76" width="329" format="[general]"  name=c_depto2 edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="0" x="4594" y="4" height="76" width="329" format="[general]"  name=c_muni2 edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="0" x="4928" y="4" height="76" width="329" format="[general]"  name=c_local2 edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5262" y="4" height="76" width="585" format="[general]"  name=nombre_loc2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="5851" y="4" height="76" width="585" format="[general]"  name=nombre_mun2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="6441" y="4" height="76" width="585" format="[general]"  name=nombre_dep2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

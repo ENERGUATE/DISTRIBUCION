@@ -1,0 +1,37 @@
+HA$PBExportHeader$fgpr_enviado_mant.srf
+global type fgpr_enviado_mant from function_object
+end type
+
+forward prototypes
+global function string fgpr_enviado_mant (integer pi_enviado_mant)
+end prototypes
+
+global function string fgpr_enviado_mant (integer pi_enviado_mant);////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fgnu_enviado_mant
+// 
+// Objetivo: Retorna el camino de un bmp para enviado mantenimiento.
+//           
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada: pi_enviado_mant
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	
+//
+/////////////////////////////////////////////////////////////////////
+
+
+if pi_enviado_mant = 1 or pi_enviado_mant = 3 then 
+	RETURN "MANTE4.BMP"
+
+else
+	return " "
+end If
+end function
+

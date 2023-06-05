@@ -1,0 +1,41 @@
+HA$PBExportHeader$d_lista_sum_imp_afect.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=f_desde dbname="gi_suministros_imp.f_desde" )
+ column=(type=datetime updatewhereclause=yes name=f_expiracion dbname="gi_suministros_imp.f_expiracion" )
+ column=(type=char(250) updatewhereclause=yes name=observacion dbname="gi_suministros_imp.observacion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_cli dbname="clientes.nom_cli" )
+ column=(type=char(20) updatewhereclause=yes name=ape1_cli dbname="clientes.ape1_cli" )
+ column=(type=char(20) updatewhereclause=yes name=ape2_cli dbname="clientes.ape2_cli" )
+ column=(type=char(30) updatewhereclause=yes name=contacto dbname="gi_suministros_imp.contacto" )
+ column=(type=char(10) updatewhereclause=yes name=telefono dbname="gi_suministros_imp.telefono" )
+ retrieve="  SELECT GI_SUMINISTROS_IMP.F_DESDE,   
+         GI_SUMINISTROS_IMP.F_EXPIRACION,   
+         GI_SUMINISTROS_IMP.OBSERVACION,   
+         CLIENTES.NOM_CLI,   
+         CLIENTES.APE1_CLI,   
+         CLIENTES.APE2_CLI,   
+         GI_SUMINISTROS_IMP.CONTACTO,   
+         GI_SUMINISTROS_IMP.TELEFONO
+   FROM GI_SUMINISTROS_IMP,   
+        CLIENTES
+   where 1 = 0
+" )
+text(band=header alignment="2" text=""border="0" color="0" x="5" y="12" height="80" width="4626"  name=st_instalacion visible="1~t0"  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Cliente"border="6" color="0" x="9" y="8" height="64" width="1646"  name=cc_nom_cliente_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Persona de Contacto"border="6" color="0" x="1673" y="8" height="64" width="754"  name=contacto_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Tel$$HEX1$$e900$$ENDHEX$$fono"border="6" color="0" x="2446" y="8" height="64" width="421"  name=telefono_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Desde"border="6" color="0" x="2885" y="8" height="64" width="297"  name=f_desde_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Expira"border="6" color="0" x="3200" y="8" height="64" width="302"  name=f_expiracion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Observaciones"border="6" color="0" x="3520" y="8" height="64" width="1106"  name=observacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="trim( ape1_cli ) +' ' +  trim( ape2_cli ) + if(len( nom_cli )>0, ', ', '') + trim( nom_cli )"border="0" color="8388608" x="9" y="4" height="68" width="1646" format="[general]"  name=cc_nom_cliente  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="1673" y="4" height="68" width="754" format="[general]"  name=contacto edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="2446" y="4" height="68" width="421" format="[general]"  name=telefono edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="2885" y="4" height="68" width="297" format="dd/mm/yyyy"  name=f_desde edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="3200" y="4" height="68" width="302" format="[shortdate] [time]"  name=f_expiracion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="3520" y="4" height="68" width="1106" format="[general]"  name=observacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

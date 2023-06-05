@@ -1,0 +1,85 @@
+HA$PBExportHeader$m_btder_otras_inst.srm
+forward
+global type m_btder_otras_inst from menu
+end type
+type m_agregar from menu within m_btder_otras_inst
+end type
+type m_agregar from menu within m_btder_otras_inst
+end type
+type m_gestionar from menu within m_btder_otras_inst
+end type
+type m_gestionar from menu within m_btder_otras_inst
+end type
+type m_eliminar from menu within m_btder_otras_inst
+end type
+type m_eliminar from menu within m_btder_otras_inst
+end type
+end forward
+
+global type m_btder_otras_inst from menu
+m_agregar m_agregar
+m_gestionar m_gestionar
+m_eliminar m_eliminar
+end type
+global m_btder_otras_inst m_btder_otras_inst
+
+type variables
+int ii_accion = 0
+end variables
+
+on m_btder_otras_inst.create
+m_btder_otras_inst=this
+this.m_agregar=create m_agregar
+this.m_gestionar=create m_gestionar
+this.m_eliminar=create m_eliminar
+this.Item[]={this.m_agregar, &
+this.m_gestionar, &
+this.m_eliminar}
+end on
+
+on m_btder_otras_inst.destroy
+destroy(this.m_agregar)
+destroy(this.m_gestionar)
+destroy(this.m_eliminar)
+end on
+
+type m_agregar from menu within m_btder_otras_inst
+end type
+
+on m_agregar.create
+this.Text="Agregar"
+end on
+
+on m_agregar.destroy
+end on
+
+event clicked;ii_accion = 1
+
+end event
+
+type m_gestionar from menu within m_btder_otras_inst
+end type
+
+event clicked;ii_accion = 2
+end event
+
+on m_gestionar.create
+this.Text="Gestionar"
+end on
+
+on m_gestionar.destroy
+end on
+
+type m_eliminar from menu within m_btder_otras_inst
+end type
+
+on m_eliminar.create
+this.Text="Eliminar"
+end on
+
+on m_eliminar.destroy
+end on
+
+event clicked;ii_accion = 3
+end event
+

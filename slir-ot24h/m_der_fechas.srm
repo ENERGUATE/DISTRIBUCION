@@ -1,0 +1,76 @@
+HA$PBExportHeader$m_der_fechas.srm
+forward
+global type m_der_fechas from menu
+end type
+type m_seteardesde from menu within m_der_fechas
+end type
+type m_seteardesde from menu within m_der_fechas
+end type
+type m_setearhasta from menu within m_der_fechas
+end type
+type m_setearhasta from menu within m_der_fechas
+end type
+end forward
+
+global type m_der_fechas from menu
+m_seteardesde m_seteardesde
+m_setearhasta m_setearhasta
+end type
+global m_der_fechas m_der_fechas
+
+type variables
+datawindow idw_dw
+integer ii_tipo_uo
+end variables
+
+on m_der_fechas.create
+m_der_fechas=this
+this.m_seteardesde=create m_seteardesde
+this.m_setearhasta=create m_setearhasta
+this.Item[]={this.m_seteardesde, &
+this.m_setearhasta}
+end on
+
+on m_der_fechas.destroy
+destroy(this.m_seteardesde)
+destroy(this.m_setearhasta)
+end on
+
+type m_seteardesde from menu within m_der_fechas
+end type
+
+on m_seteardesde.create
+this.Text="Setear Desde"
+end on
+
+on m_seteardesde.destroy
+end on
+
+event clicked;if ii_tipo_uo =2 then
+	idw_dw.SetItem(1,"f_desde",DATETIME(RelativeDate(Today(),-15),Now()))
+	idw_dw.AcceptText()
+else
+	idw_dw.SetItem(1,"desde",DATETIME(RelativeDate(Today(),-15),Now()))
+	idw_dw.AcceptText()
+end if
+end event
+
+type m_setearhasta from menu within m_der_fechas
+end type
+
+on m_setearhasta.create
+this.Text="Setear Hasta"
+end on
+
+on m_setearhasta.destroy
+end on
+
+event clicked;if ii_tipo_uo =2 then
+	idw_dw.SetItem(1,"f_hasta",DATETIME(Today(),Now()))
+	idw_dw.AcceptText()
+else
+	idw_dw.SetItem(1,"hasta",DATETIME(Today(),Now()))
+	idw_dw.AcceptText()
+end if
+end event
+

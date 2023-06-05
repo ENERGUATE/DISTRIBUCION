@@ -1,0 +1,102 @@
+HA$PBExportHeader$d_bri_2017_pr_datos_cons_ot.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes name=nro_ot dbname="gi_ot.nro_ot" )
+ column=(type=number update=yes updatewhereclause=yes name=est_ot dbname="gi_ot.est_ot" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=descripcion dbname="gi_ot.descripcion" )
+ column=(type=number update=yes updatewhereclause=yes name=nro_aviso dbname="gi_ot.nro_aviso" )
+ column=(type=number update=yes updatewhereclause=yes name=nro_instalacion dbname="gi_ot.nro_instalacion" )
+ column=(type=number update=yes updatewhereclause=yes name=nro_incidencia dbname="gi_ot.nro_incidencia" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_desde dbname="gi_ot.f_desde" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_hasta dbname="gi_ot.f_hasta" )
+ column=(type=number update=yes updatewhereclause=yes name=ult_brigada dbname="gi_ot.ult_brigada" )
+ column=(type=number update=yes updatewhereclause=yes name=ind_trabajo dbname="gi_ot.ind_trabajo" )
+ column=(type=char(40) updatewhereclause=yes name=gi_brigada_nombre dbname="gi_brigada.nombre" )
+ column=(type=char(30) updatewhereclause=yes name=sgd_instalacion_nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(50) updatewhereclause=yes name=sgd_valor_descripcion dbname="sgd_valor.descripcion" )
+ column=(type=number updatewhereclause=yes name=tipo dbname="gi_brigada.tipo" )
+ retrieve="SELECT ~"GI_OT~".~"NRO_OT~",   
+         ~"GI_OT~".~"EST_OT~",   
+         ~"GI_OT~".~"DESCRIPCION~",   
+         ~"GI_OT~".~"NRO_AVISO~",   
+         ~"GI_OT~".~"NRO_INSTALACION~",   
+         ~"GI_OT~".~"NRO_INCIDENCIA~",   
+         ~"GI_OT~".~"F_DESDE~",   
+         ~"GI_OT~".~"F_HASTA~",   
+         ~"GI_OT~".~"ULT_BRIGADA~",   
+         ~"GI_OT~".~"IND_TRABAJO~",   
+         fgci_nombre_ot(~"GI_OT~".~"NRO_OT~") ,   
+         ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         ~"SGD_VALOR~".~"DESCRIPCION~",
+			0 tipo  
+    FROM ~"GI_BRIGADA~",   
+			~"GI_OT~",   
+         ~"SGD_INSTALACION~",   
+         ~"SGD_VALOR~"  
+   WHERE ( ~"GI_BRIGADA~".~"NRO_BRIGADA~" = ~"GI_OT~".~"ULT_BRIGADA~" ) AND  
+         ( ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) = ~"GI_OT~".~"NRO_INSTALACION~" ) AND  
+         ( ~"SGD_INSTALACION~".~"BDI_JOB~" (+)= 0 ) AND
+         ( ~"SGD_VALOR~".~"CODIF~" = 'E_OT' ) 		AND  
+         ( ~"SGD_VALOR~".~"CODIGO~" = ~"GI_OT~".~"EST_OT~"  ) 
+UNION
+  SELECT ~"GI_OT~".~"NRO_OT~",   
+         ~"GI_OT~".~"EST_OT~",   
+         ~"GI_OT~".~"DESCRIPCION~",   
+         ~"GI_OT~".~"NRO_AVISO~",   
+         ~"GI_OT~".~"NRO_INSTALACION~",   
+         ~"GI_OT~".~"NRO_INCIDENCIA~",   
+         ~"GI_OT~".~"F_DESDE~",   
+         ~"GI_OT~".~"F_HASTA~",   
+         ~"GI_OT~".~"ULT_BRIGADA~",   
+         ~"GI_OT~".~"IND_TRABAJO~",   
+         fgci_nombre_ot(~"GI_OT~".~"NRO_OT~") ,   
+         ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         ~"SGD_VALOR~".~"DESCRIPCION~"  ,
+			0 tipo
+    FROM ~"GI_CONTRATAS~",
+			~"GI_CONTRATA_OT~",   
+			~"GI_OT~",   
+         ~"SGD_INSTALACION~",   
+         ~"SGD_VALOR~"
+   WHERE ( ~"GI_CONTRATA_OT~".~"NRO_OT~" 		 = ~"GI_OT~".~"NRO_OT~" ) AND
+		 	( ~"GI_CONTRATA_OT~".~"NRO_CONTRATA~" = ~"GI_CONTRATAS~".~"NRO_CONTRATA~") AND
+			( ~"GI_CONTRATA_OT~".~"F_DESDE~"      = (SELECT MAX(A2.F_DESDE)
+															 FROM ~"GI_CONTRATA_OT~" A2
+															 WHERE A2.~"NRO_CONTRATA~" = ~"GI_CONTRATAS~".~"NRO_CONTRATA~")) AND 
+			( ~"GI_CONTRATA_OT~".~"NRO_CONTRATA~" =	(SELECT MAX(A3.NRO_CONTRATA)
+												 FROM ~"GI_CONTRATA_OT~" A3
+												 WHERE A3.~"F_DESDE~" = ~"GI_CONTRATA_OT~".~"F_DESDE~")) AND
+         ( ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) = ~"GI_OT~".~"NRO_INSTALACION~" ) AND  
+         ( ~"SGD_INSTALACION~".~"BDI_JOB~"(+) = 0 ) AND
+         ( ~"SGD_VALOR~".~"CODIF~" = 'E_OT' ) 		AND  
+         ( ~"SGD_VALOR~".~"CODIGO~" = ~"GI_OT~".~"EST_OT~"  ) " )
+text(band=header alignment="2" text="Nro Ot" border="6" color="0" x="5" y="4" height="64" width="274" html.valueishtml="0"  name=nro_ot_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Estado Ot" border="6" color="0" x="297" y="4" height="64" width="343" html.valueishtml="0"  name=sgd_valor_descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Descripcion" border="6" color="0" x="658" y="4" height="64" width="1682" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Tipo" border="6" color="0" x="2359" y="4" height="64" width="165" html.valueishtml="0"  name=tipo_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Inicio" border="6" color="0" x="2542" y="4" height="64" width="485" html.valueishtml="0"  name=f_desde_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Fin" border="6" color="0" x="3045" y="4" height="64" width="485" html.valueishtml="0"  name=f_hasta_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Brigada Encargada" border="6" color="0" x="3547" y="4" height="64" width="1161" html.valueishtml="0"  name=gi_brigada_nombre_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n Afectada" border="6" color="0" x="4727" y="4" height="64" width="727" html.valueishtml="0"  name=sgd_instalacion_nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+compute(band=detail alignment="0" expression=" if(ind_trabajo = 2, 1, (if( nro_ot  = 0 or isNull(nro_ot ),2,(if(nro_incidencia  = 0 or  IsNull( nro_incidencia ),
+if( nro_instalacion =0,3, 4),  5)) )))
+
+  "border="0" color="0" x="2395" y="164" height="64" width="119" format="[general]" html.valueishtml="0"  name=icono visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="672" y="4" height="76" width="1682" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=32000 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="8388608" x="14" y="4" height="72" width="251" format="[general]" html.valueishtml="0"  name=nro_ot visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="8388608" x="293" y="4" height="72" width="338" format="[general]" html.valueishtml="0"  name=sgd_valor_descripcion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" bitmap(
+if(ind_trabajo = 2, ~"tarea.bmp~",
+if( nro_ot  = 0 or isNull(nro_ot ),~"llave.bmp~",
+if(nro_incidencia  = 0 or  IsNull( nro_incidencia ),
+if( nro_instalacion =0,~"avitelef.bmp~", ~"ordtra.bmp~"),  ~"incid.bmp~"))))  "border="0" color="8388608" x="2400" y="4" height="76" width="91" format="[general]" html.valueishtml="0"  name=tipo visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="0" color="8388608" x="2546" y="4" height="76" width="485" format="[shortdate] [time]" html.valueishtml="0"  name=f_desde visible="1~tif(  isNull(  f_desde  ), 0, 1 )" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="2" tabsequence=32766 border="0" color="8388608" x="3049" y="4" height="76" width="485" format="[shortdate] [time]" html.valueishtml="0"  name=f_hasta visible="1~tif(  isNull(  f_hasta  ), 0, 1 )" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="8388608" x="4731" y="8" height="72" width="713" format="[general]" html.valueishtml="0"  name=sgd_instalacion_nom_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="8388608" x="3570" y="4" height="76" width="1134" format="[general]" html.valueishtml="0"  name=gi_brigada_nombre visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

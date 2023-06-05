@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_inc_2014_pr_lista_acciones_incidencia.sru
+forward
+global type u_inc_2014_pr_lista_acciones_incidencia from u_inc_1001_pr_generico
+end type
+end forward
+
+global type u_inc_2014_pr_lista_acciones_incidencia from u_inc_1001_pr_generico
+int Width=1134
+int Height=621
+string DataObject="dw_2014_lista_acciones_incidencia"
+end type
+global u_inc_2014_pr_lista_acciones_incidencia u_inc_2014_pr_lista_acciones_incidencia
+

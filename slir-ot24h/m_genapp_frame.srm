@@ -1,0 +1,1479 @@
+HA$PBExportHeader$m_genapp_frame.srm
+$PBExportComments$Generated MDI frame menu
+forward
+global type m_genapp_frame from menu
+end type
+type m_file from menu within m_genapp_frame
+end type
+type m_new from menu within m_file
+end type
+type m_open from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_dash11 from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_printersetup from menu within m_file
+end type
+type m_dash12 from menu within m_file
+end type
+type m_toolbars from menu within m_file
+end type
+type m_dash13 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_genapp_frame
+m_new m_new
+m_open m_open
+m_close m_close
+m_dash11 m_dash11
+m_print m_print
+m_printersetup m_printersetup
+m_dash12 m_dash12
+m_toolbars m_toolbars
+m_dash13 m_dash13
+m_exit m_exit
+end type
+type m_help from menu within m_genapp_frame
+end type
+type m_helpindex from menu within m_help
+end type
+type m_search from menu within m_help
+end type
+type m_dash21 from menu within m_help
+end type
+type m_aboutquickapp from menu within m_help
+end type
+type m_help from menu within m_genapp_frame
+m_helpindex m_helpindex
+m_search m_search
+m_dash21 m_dash21
+m_aboutquickapp m_aboutquickapp
+end type
+type m_usuarios from menu within m_genapp_frame
+end type
+type m_perfildeusuario from menu within m_usuarios
+end type
+type m_abcusuarios from menu within m_usuarios
+end type
+type m_usuarios from menu within m_genapp_frame
+m_perfildeusuario m_perfildeusuario
+m_abcusuarios m_abcusuarios
+end type
+type m_herramientas from menu within m_genapp_frame
+end type
+type m_capturadellamadas from menu within m_herramientas
+end type
+type m_consultarllamadas from menu within m_herramientas
+end type
+type m_avisossgi from menu within m_herramientas
+end type
+type m_resolverregistros from menu within m_herramientas
+end type
+type m_consultardescargos from menu within m_herramientas
+end type
+type m_consultarincidencias from menu within m_herramientas
+end type
+type m_0 from menu within m_herramientas
+end type
+type m_detalle_incidencia from menu within m_herramientas
+end type
+type m_detallepornis from menu within m_herramientas
+end type
+type m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n from menu within m_herramientas
+end type
+type m_desbordedellamadas from menu within m_herramientas
+end type
+type m_herramientas from menu within m_genapp_frame
+m_capturadellamadas m_capturadellamadas
+m_consultarllamadas m_consultarllamadas
+m_avisossgi m_avisossgi
+m_resolverregistros m_resolverregistros
+m_consultardescargos m_consultardescargos
+m_consultarincidencias m_consultarincidencias
+m_0 m_0
+m_detalle_incidencia m_detalle_incidencia
+m_detallepornis m_detallepornis
+m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n
+m_desbordedellamadas m_desbordedellamadas
+end type
+type m_informes from menu within m_genapp_frame
+end type
+type m_informedellamadascapturadas from menu within m_informes
+end type
+type m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores from menu within m_informes
+end type
+type m_1 from menu within m_informes
+end type
+type m_reportededatos from menu within m_informes
+end type
+type m_informes from menu within m_genapp_frame
+m_informedellamadascapturadas m_informedellamadascapturadas
+m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores
+m_1 m_1
+m_reportededatos m_reportededatos
+end type
+global type m_genapp_frame from menu
+m_file m_file
+m_help m_help
+m_usuarios m_usuarios
+m_herramientas m_herramientas
+m_informes m_informes
+end type
+end forward
+
+global type m_genapp_frame from menu
+m_file m_file
+m_help m_help
+m_usuarios m_usuarios
+m_herramientas m_herramientas
+m_informes m_informes
+end type
+global m_genapp_frame m_genapp_frame
+
+on m_genapp_frame.create
+m_genapp_frame=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_file=create m_file
+this.m_help=create m_help
+this.m_usuarios=create m_usuarios
+this.m_herramientas=create m_herramientas
+this.m_informes=create m_informes
+this.Item[UpperBound(this.Item)+1]=this.m_file
+this.Item[UpperBound(this.Item)+1]=this.m_help
+this.Item[UpperBound(this.Item)+1]=this.m_usuarios
+this.Item[UpperBound(this.Item)+1]=this.m_herramientas
+this.Item[UpperBound(this.Item)+1]=this.m_informes
+end on
+
+on m_genapp_frame.destroy
+call super::destroy
+destroy(this.m_file)
+destroy(this.m_help)
+destroy(this.m_usuarios)
+destroy(this.m_herramientas)
+destroy(this.m_informes)
+end on
+
+type m_file from menu within m_genapp_frame
+m_new m_new
+m_open m_open
+m_close m_close
+m_dash11 m_dash11
+m_print m_print
+m_printersetup m_printersetup
+m_dash12 m_dash12
+m_toolbars m_toolbars
+m_dash13 m_dash13
+m_exit m_exit
+end type
+
+on m_file.create
+call super::create
+this.text = "&Archivo"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_new=create m_new
+this.m_open=create m_open
+this.m_close=create m_close
+this.m_dash11=create m_dash11
+this.m_print=create m_print
+this.m_printersetup=create m_printersetup
+this.m_dash12=create m_dash12
+this.m_toolbars=create m_toolbars
+this.m_dash13=create m_dash13
+this.m_exit=create m_exit
+this.Item[UpperBound(this.Item)+1]=this.m_new
+this.Item[UpperBound(this.Item)+1]=this.m_open
+this.Item[UpperBound(this.Item)+1]=this.m_close
+this.Item[UpperBound(this.Item)+1]=this.m_dash11
+this.Item[UpperBound(this.Item)+1]=this.m_print
+this.Item[UpperBound(this.Item)+1]=this.m_printersetup
+this.Item[UpperBound(this.Item)+1]=this.m_dash12
+this.Item[UpperBound(this.Item)+1]=this.m_toolbars
+this.Item[UpperBound(this.Item)+1]=this.m_dash13
+this.Item[UpperBound(this.Item)+1]=this.m_exit
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_new)
+destroy(this.m_open)
+destroy(this.m_close)
+destroy(this.m_dash11)
+destroy(this.m_print)
+destroy(this.m_printersetup)
+destroy(this.m_dash12)
+destroy(this.m_toolbars)
+destroy(this.m_dash13)
+destroy(this.m_exit)
+end on
+
+type m_new from menu within m_file
+end type
+
+event clicked;/* Create a new sheet */
+w_genapp_frame.of_NewSheet ()
+end event
+
+on m_new.create
+call super::create
+this.visible = false
+this.text = "&New~tCtrl+N"
+this.enabled = false
+this.shortcut = 334
+this.microhelp = "Create new sheet"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Window!"
+this.toolbaritemtext = "New"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_new.destroy
+call super::destroy
+end on
+
+type m_open from menu within m_file
+end type
+
+on m_open.create
+call super::create
+this.visible = false
+this.text = "&Open...~tCtrl+O"
+this.enabled = false
+this.shortcut = 335
+this.microhelp = "Open existing sheet"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_open.destroy
+call super::destroy
+end on
+
+type m_close from menu within m_file
+end type
+
+event clicked;/* Close active sheet */
+w_genapp_frame.of_CloseSheet ()
+end event
+
+on m_close.create
+call super::create
+this.visible = false
+this.text = "&Cerrar~tCtrl+W"
+this.enabled = false
+this.shortcut = 343
+this.microhelp = "Close active sheet"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_close.destroy
+call super::destroy
+end on
+
+type m_dash11 from menu within m_file
+end type
+
+on m_dash11.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash11.destroy
+call super::destroy
+end on
+
+type m_print from menu within m_file
+end type
+
+event clicked;// Clicked script for m_print
+
+long		ll_job
+window	lw_sheet
+
+// Print active sheet
+lw_sheet = w_genapp_frame.GetActiveSheet ()
+if IsValid (lw_sheet) then
+	w_genapp_frame.SetMicroHelp ("Printing active sheet...")
+	ll_job = PrintOpen ()
+	lw_sheet.Print (ll_job, 1, 1)
+	PrintClose (ll_job)
+	w_genapp_frame.SetMicroHelp ("")
+end if
+end event
+
+on m_print.create
+call super::create
+this.text = "&Imprimir~tCtrl+P"
+this.enabled = false
+this.shortcut = 336
+this.microhelp = "Print active sheet"
+this.toolbaritemvisible = false
+this.toolbaritemname = "print!"
+this.toolbaritemtext = "Print"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printersetup from menu within m_file
+end type
+
+event clicked;// Do printer setup
+PrintSetup ()
+end event
+
+on m_printersetup.create
+call super::create
+this.text = "Configurar I&mpresora..."
+this.microhelp = "Setup printer"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printersetup.destroy
+call super::destroy
+end on
+
+type m_dash12 from menu within m_file
+end type
+
+on m_dash12.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash12.destroy
+call super::destroy
+end on
+
+type m_toolbars from menu within m_file
+end type
+
+event clicked;// Configure toolbars
+OpenWithParm (w_genapp_toolbars, w_genapp_frame)
+end event
+
+on m_toolbars.create
+call super::create
+this.text = "Barra de &Tareas"
+this.microhelp = "Configure toolbars"
+this.toolbaritemvisible = false
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_toolbars.destroy
+call super::destroy
+end on
+
+type m_dash13 from menu within m_file
+end type
+
+on m_dash13.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash13.destroy
+call super::destroy
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;Close (w_genapp_frame)
+end on
+
+on m_exit.create
+call super::create
+this.text = "&Salir"
+this.microhelp = "Exit program"
+this.toolbaritemvisible = false
+this.toolbaritemname = "exit!"
+this.toolbaritemtext = "Exit"
+this.toolbaritemspace = 2
+this.menuitemtype = menuitemtypeexit!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_genapp_frame
+m_helpindex m_helpindex
+m_search m_search
+m_dash21 m_dash21
+m_aboutquickapp m_aboutquickapp
+end type
+
+on m_help.create
+call super::create
+this.text = "A&yuda"
+this.shifttoright = true
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_helpindex=create m_helpindex
+this.m_search=create m_search
+this.m_dash21=create m_dash21
+this.m_aboutquickapp=create m_aboutquickapp
+this.Item[UpperBound(this.Item)+1]=this.m_helpindex
+this.Item[UpperBound(this.Item)+1]=this.m_search
+this.Item[UpperBound(this.Item)+1]=this.m_dash21
+this.Item[UpperBound(this.Item)+1]=this.m_aboutquickapp
+end on
+
+on m_help.destroy
+call super::destroy
+destroy(this.m_helpindex)
+destroy(this.m_search)
+destroy(this.m_dash21)
+destroy(this.m_aboutquickapp)
+end on
+
+type m_helpindex from menu within m_help
+end type
+
+event clicked;/* Display help contents (if uncommented) */
+
+// ShowHelp ("myapp.hlp", Index!)
+
+end event
+
+on m_helpindex.create
+call super::create
+this.visible = false
+this.text = "Help &Index~tF1"
+this.enabled = false
+this.shortcut = 112
+this.microhelp = "Display Help index"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_helpindex.destroy
+call super::destroy
+end on
+
+type m_search from menu within m_help
+end type
+
+event clicked;/* Search for Help topic (if uncommented) */
+
+// ShowHelp ("myapp.hlp", Keyword!, "")
+
+end event
+
+on m_search.create
+call super::create
+this.visible = false
+this.text = "&Search for Help on..."
+this.enabled = false
+this.microhelp = "Search for Help topic"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_search.destroy
+call super::destroy
+end on
+
+type m_dash21 from menu within m_help
+end type
+
+on m_dash21.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_dash21.destroy
+call super::destroy
+end on
+
+type m_aboutquickapp from menu within m_help
+end type
+
+event clicked;// Invoke copyright response window
+
+Open (w_genapp_about)
+end event
+
+on m_aboutquickapp.create
+call super::create
+this.text = "&Acerca de..."
+this.microhelp = "Display ~"About~" window"
+this.menuitemtype = menuitemtypeabout!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_aboutquickapp.destroy
+call super::destroy
+end on
+
+type m_usuarios from menu within m_genapp_frame
+m_perfildeusuario m_perfildeusuario
+m_abcusuarios m_abcusuarios
+end type
+
+on m_usuarios.create
+call super::create
+this.text = "&Usuarios"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_perfildeusuario=create m_perfildeusuario
+this.m_abcusuarios=create m_abcusuarios
+this.Item[UpperBound(this.Item)+1]=this.m_perfildeusuario
+this.Item[UpperBound(this.Item)+1]=this.m_abcusuarios
+end on
+
+on m_usuarios.destroy
+call super::destroy
+destroy(this.m_perfildeusuario)
+destroy(this.m_abcusuarios)
+end on
+
+type m_perfildeusuario from menu within m_usuarios
+end type
+
+on m_perfildeusuario.create
+call super::create
+this.text = "Perfil de Usuario"
+this.toolbaritemname = "custom076!"
+this.toolbaritemtext = "Perfil de usuario"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;OpenSheet (w_perfil, w_genapp_frame, menu, layered!)
+
+
+end event
+
+on m_perfildeusuario.destroy
+call super::destroy
+end on
+
+type m_abcusuarios from menu within m_usuarios
+end type
+
+on m_abcusuarios.create
+call super::create
+this.text = "ABC Usuarios"
+this.toolbaritemname = "createindex!"
+this.toolbaritemtext = "Alta/baja/cambio de usuarios"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;OpenSheet (w_abc_usuarios, w_genapp_frame, menu, layered!)
+
+end event
+
+on m_abcusuarios.destroy
+call super::destroy
+end on
+
+type m_herramientas from menu within m_genapp_frame
+m_capturadellamadas m_capturadellamadas
+m_consultarllamadas m_consultarllamadas
+m_avisossgi m_avisossgi
+m_resolverregistros m_resolverregistros
+m_consultardescargos m_consultardescargos
+m_consultarincidencias m_consultarincidencias
+m_0 m_0
+m_detalle_incidencia m_detalle_incidencia
+m_detallepornis m_detallepornis
+m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n
+m_desbordedellamadas m_desbordedellamadas
+end type
+
+on m_herramientas.create
+call super::create
+this.text = "&Herramientas"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_capturadellamadas=create m_capturadellamadas
+this.m_consultarllamadas=create m_consultarllamadas
+this.m_avisossgi=create m_avisossgi
+this.m_resolverregistros=create m_resolverregistros
+this.m_consultardescargos=create m_consultardescargos
+this.m_consultarincidencias=create m_consultarincidencias
+this.m_0=create m_0
+this.m_detalle_incidencia=create m_detalle_incidencia
+this.m_detallepornis=create m_detallepornis
+this.m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n=create m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n
+this.m_desbordedellamadas=create m_desbordedellamadas
+this.Item[UpperBound(this.Item)+1]=this.m_capturadellamadas
+this.Item[UpperBound(this.Item)+1]=this.m_consultarllamadas
+this.Item[UpperBound(this.Item)+1]=this.m_avisossgi
+this.Item[UpperBound(this.Item)+1]=this.m_resolverregistros
+this.Item[UpperBound(this.Item)+1]=this.m_consultardescargos
+this.Item[UpperBound(this.Item)+1]=this.m_consultarincidencias
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_detalle_incidencia
+this.Item[UpperBound(this.Item)+1]=this.m_detallepornis
+this.Item[UpperBound(this.Item)+1]=this.m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n
+this.Item[UpperBound(this.Item)+1]=this.m_desbordedellamadas
+end on
+
+on m_herramientas.destroy
+call super::destroy
+destroy(this.m_capturadellamadas)
+destroy(this.m_consultarllamadas)
+destroy(this.m_avisossgi)
+destroy(this.m_resolverregistros)
+destroy(this.m_consultardescargos)
+destroy(this.m_consultarincidencias)
+destroy(this.m_0)
+destroy(this.m_detalle_incidencia)
+destroy(this.m_detallepornis)
+destroy(this.m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n)
+destroy(this.m_desbordedellamadas)
+end on
+
+type m_capturadellamadas from menu within m_herramientas
+end type
+
+on m_capturadellamadas.create
+call super::create
+this.text = "Capt&ura de llamadas"
+this.toolbaritemname = "custom020!"
+this.toolbaritemtext = "Captura de llamadas"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;OpenSheet (w_frontend, w_genapp_frame, menu, layered!)
+end event
+
+on m_capturadellamadas.destroy
+call super::destroy
+end on
+
+type m_consultarllamadas from menu within m_herramientas
+end type
+
+on m_consultarllamadas.create
+call super::create
+this.text = "Consultar llamadas"
+this.toolbaritemname = "find!"
+this.toolbaritemtext = "Consultar llamadas capturadas"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;OpenSheet (w_consulta, w_genapp_frame, menu, layered!)
+end event
+
+on m_consultarllamadas.destroy
+call super::destroy
+end on
+
+type m_avisossgi from menu within m_herramientas
+end type
+
+event clicked;OpenSheet (w_avisos, w_genapp_frame, menu, layered!)
+end event
+
+on m_avisossgi.create
+call super::create
+this.text = "Avisos SGI"
+this.toolbaritemname = "globals!"
+this.toolbaritemtext = "Avisos SGI"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_avisossgi.destroy
+call super::destroy
+end on
+
+type m_resolverregistros from menu within m_herramientas
+end type
+
+event clicked;OpenSheet (w_resolucion, w_genapp_frame, menu, layered!)
+end event
+
+on m_resolverregistros.create
+call super::create
+this.text = "Resolver registros"
+this.toolbaritemname = "custom038!"
+this.toolbaritemtext = "Resolver registros"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_resolverregistros.destroy
+call super::destroy
+end on
+
+type m_consultardescargos from menu within m_herramientas
+end type
+
+event clicked;OpenSheet (w_prog_descargos, w_genapp_frame, menu, layered!)
+end event
+
+on m_consultardescargos.create
+call super::create
+this.text = "Consultar descargos"
+this.toolbaritemname = "picture1!"
+this.toolbaritemtext = "Consultar la programaci$$HEX1$$f300$$ENDHEX$$n de descargos"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_consultardescargos.destroy
+call super::destroy
+end on
+
+type m_consultarincidencias from menu within m_herramientas
+end type
+
+on m_consultarincidencias.create
+call super::create
+this.text = "Consultar Incidencias"
+this.toolbaritemname = "pict\incicon.bmp"
+this.toolbaritemtext = "Consultar la programaci$$HEX1$$f300$$ENDHEX$$n de incidencias"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_consultarincidencias.destroy
+call super::destroy
+end on
+
+event clicked;OpenSheet (w_consulta_incidencia, w_genapp_frame, menu, layered!)
+end event
+
+type m_0 from menu within m_herramientas
+end type
+
+on m_0.create
+call super::create
+this.text = "Ingreso de Avisos"
+this.toolbaritemname = "custom070!"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+event clicked;OpenSheet (w_1201_recepcion_aviso, w_genapp_frame, menu, layered!)
+end event
+
+type m_detalle_incidencia from menu within m_herramientas
+end type
+
+on m_detalle_incidencia.create
+call super::create
+this.text = "Detalle Incidencia"
+this.toolbaritemname = "pict\detalle_incidencia_2.png"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_detalle_incidencia.destroy
+call super::destroy
+end on
+
+event clicked;//OpenSheet (w_2301_form_incidencia, w_genapp_frame, menu, layered!)
+//OpenSheet(w_select_tipo_incidencia, w_genapp_frame, menu, layered!)
+open(w_select_tipo_incidencia)
+end event
+
+type m_detallepornis from menu within m_herramientas
+end type
+
+event clicked;gu_comunic.is_comunic.programa_llamante = "detalleNis"
+OpenSheet (w_1211_identificar_suministro, w_genapp_frame, menu, layered!)
+end event
+
+on m_detallepornis.create
+call super::create
+this.text = "Detalle por NIS"
+this.toolbaritemname = ".\recursos\detallenis2.png"
+this.toolbaritemtext = "Consultar Aviso e Incidencia por NIS"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_detallepornis.destroy
+call super::destroy
+end on
+
+type m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n from menu within m_herramientas
+end type
+
+on m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n.create
+call super::create
+this.text = "Corte en Media Tensi$$HEX1$$f300$$ENDHEX$$n"
+this.toolbaritemname = ".\recursos\energia.png"
+this.toolbaritemtext = "Corte en Media Tensi$$HEX1$$f300$$ENDHEX$$n"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_corteenmediatensi$$HEX1$$f300$$ENDHEX$$n.destroy
+call super::destroy
+end on
+
+event clicked;Open (w_corte_sum)
+end event
+
+type m_desbordedellamadas from menu within m_herramientas
+end type
+
+on m_desbordedellamadas.create
+call super::create
+this.text = "Estad$$HEX1$$ed00$$ENDHEX$$stica por Departamento"
+this.toolbaritemname = ".\recursos\desbordamiento_llamadas.png"
+this.toolbaritemtext = "Estad$$HEX1$$ed00$$ENDHEX$$stica por Departamento y por d$$HEX1$$ed00$$ENDHEX$$a"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_desbordedellamadas.destroy
+call super::destroy
+end on
+
+event clicked;Open (w_desborde_llamadas)
+end event
+
+type m_informes from menu within m_genapp_frame
+m_informedellamadascapturadas m_informedellamadascapturadas
+m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores
+m_1 m_1
+m_reportededatos m_reportededatos
+end type
+
+on m_informes.create
+call super::create
+this.text = "&Informes"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_informedellamadascapturadas=create m_informedellamadascapturadas
+this.m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores=create m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores
+this.m_1=create m_1
+this.m_reportededatos=create m_reportededatos
+this.Item[UpperBound(this.Item)+1]=this.m_informedellamadascapturadas
+this.Item[UpperBound(this.Item)+1]=this.m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_reportededatos
+end on
+
+on m_informes.destroy
+call super::destroy
+destroy(this.m_informedellamadascapturadas)
+destroy(this.m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores)
+destroy(this.m_1)
+destroy(this.m_reportededatos)
+end on
+
+type m_informedellamadascapturadas from menu within m_informes
+end type
+
+event clicked;OpenSheet (w_informe_registros, w_genapp_frame, menu, layered!)
+end event
+
+on m_informedellamadascapturadas.create
+call super::create
+this.text = "Informe de llamadas capturadas"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_informedellamadascapturadas.destroy
+call super::destroy
+end on
+
+type m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores from menu within m_informes
+end type
+
+event clicked;OpenSheet (w_informe_xoperador, w_genapp_frame, menu, layered!)
+end event
+
+on m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores.create
+call super::create
+this.text = "Estad$$HEX1$$ed00$$ENDHEX$$stica de operadores"
+this.toolbaritemname = "custom067!"
+this.toolbaritemtext = "Estad$$HEX1$$ed00$$ENDHEX$$stica de operadores"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_estad$$HEX1$$ed00$$ENDHEX$$siticadeoperadores.destroy
+call super::destroy
+end on
+
+type m_1 from menu within m_informes
+end type
+
+on m_1.create
+call super::create
+this.text = "Total de avisos Ingresados"
+this.toolbaritemtext = "Total de avisos ingresados"
+this.mergeoption = windowmenu!
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_llamada="gi_avisos"	
+OpenSheet (w_reportes, w_genapp_frame,3, layered!)
+w_reportes.is_tabla_consulta="gi_avisos"
+w_reportes.postevent("ue_post_open")
+ 
+
+/*window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+IF activesheet = w_reportes THEN
+	w_reportes.iu_comunic.is_comunic.accion_llamada="gi_avisos"
+	gu_comunic.is_comunic.accion_llamada="gi_avisos"
+	w_reportes.is_tabla_consulta="gi_avisos"
+	w_reportes.postevent("ue_post_open")
+ELSE
+
+	close(activesheet)
+	gu_comunic.is_comunic.accion_llamada="gi_avisos"	
+	w_genapp_frame.TriggerEvent("ue_reportes")
+	w_reportes.is_tabla_consulta="gi_avisos"
+	w_reportes.postevent("ue_post_open")
+END IF
+*/
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//**
+end event
+
+type m_reportededatos from menu within m_informes
+end type
+
+event clicked;OpenSheet (w_reporte_datos, w_genapp_frame, menu, layered!)
+end event
+
+on m_reportededatos.create
+call super::create
+this.text = "Estad$$HEX1$$ed00$$ENDHEX$$stica OT24H"
+this.toolbaritemname = ".\recursos\icono-de-reporte.png"
+this.toolbaritemtext = "Reporte de Datos"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_reportededatos.destroy
+call super::destroy
+end on
+

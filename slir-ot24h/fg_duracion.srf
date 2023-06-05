@@ -1,0 +1,83 @@
+HA$PBExportHeader$fg_duracion.srf
+global type fg_duracion from function_object
+end type
+
+forward prototypes
+global function string fg_duracion (datetime pd_fecha_desde, datetime pd_fecha_hasta, integer pd_formato)
+end prototypes
+
+global function string fg_duracion (datetime pd_fecha_desde, datetime pd_fecha_hasta, integer pd_formato);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_duracion
+// 
+// Objetivo: Calcula el tiempo de duraci$$HEX1$$f300$$ENDHEX$$n entre dos fechas.
+//           
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//	    Entrada:  pd_fecha_desde, pd_fecha_hasta, pd_formato
+//	    Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+date ld_fecha_desde 
+ld_fecha_desde =  date(pd_fecha_desde)
+
+time ld_hora_desde
+ld_hora_desde =  time(pd_fecha_desde)
+
+date ld_fecha_hasta
+ld_fecha_hasta  = date(pd_fecha_hasta)
+
+time ld_hora_hasta
+ld_hora_hasta = time(pd_fecha_hasta)
+
+decimal li_duracion
+string ls_duracion
+decimal li_duracion_dias
+decimal li_duracion_horas
+li_duracion = daysafter(ld_fecha_desde,ld_fecha_hasta)
+
+li_duracion = round((li_duracion *24)  + ((24 -(24 - (((secondsafter(ld_hora_hasta,ld_hora_desde)) / 60) /60)))* -1),2)
+
+if li_duracion <= 1 then
+			   li_duracion_horas = int(li_duracion * 60)
+			   ls_duracion =string(li_duracion_horas)+"M "
+				return ls_duracion
+end if
+if li_duracion <= 24 then
+	   li_duracion_horas = int(li_duracion)
+	   ls_duracion =string(li_duracion_horas)+"H "
+		return ls_duracion
+else
+	if li_duracion > 24 AND li_duracion <= 744  then
+ 		li_duracion_dias = int(li_duracion/24)
+   	li_duracion_horas =Int((round(mod( li_duracion,24),2)/24)*100)
+      li_duracion_horas = int(round((li_duracion_horas*24)/100,2))
+		if li_duracion_horas <> 0 then
+			ls_duracion = string(li_duracion_dias)+"D "+string(li_duracion_horas)+"H "
+		else
+			ls_duracion = string(li_duracion_dias)+"D "
+		end if
+		return string(ls_duracion)
+	else
+		if li_duracion > 744  and li_duracion <= 7860 then
+			li_duracion = daysafter(ld_fecha_desde,ld_fecha_hasta)
+			li_duracion_dias = (daysafter(ld_fecha_desde,ld_fecha_hasta)/30)
+			li_duracion_horas = round(((24 -(24 - (((secondsafter(ld_hora_hasta,ld_hora_desde)) / 60) /60)))* -1),2)
+			ls_duracion = string(li_duracion_dias)+"M "+string(li_duracion_horas)+"H "
+			return string(ls_duracion)
+		end if
+
+	end if
+end if
+
+end function
+

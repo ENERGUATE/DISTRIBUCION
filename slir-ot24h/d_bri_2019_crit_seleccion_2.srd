@@ -1,0 +1,15 @@
+HA$PBExportHeader$d_bri_2019_crit_seleccion_2.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=216 color="536870912" )
+table(column=(type=number updatewhereclause=no name=pi_tipo_brig dbname="pi_tipo_brig" )
+ column=(type=number updatewhereclause=no name=pi_brigadas_en_turno dbname="pi_brigadas_en_turno" values="Brigadas en turno	1/Brigadas en turno	0" )
+ column=(type=datetime updatewhereclause=no name=pdt_fecha_turno dbname="pdt_fecha_turno" )
+ )
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="0" x="23" y="28" height="68" width="571" format=""  name=pi_brigadas_en_turno checkbox.text="Brigadas en turno" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=3 alignment="2" tabsequence=20 border="5" color="0" x="640" y="28" height="60" width="544" format="dd/mm/yyyy hh:mm"  name=pdt_fecha_turno editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Tipo de Brigada:  "border="0" color="0" x="23" y="124" height="64" width="526"  name=pi_tipo_brigada_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=30 border="5" color="0" x="640" y="124" height="64" width="544" format="[general]"  name=pi_tipo_brig dddw.name=ddw_tipo_brigada dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,81 @@
+HA$PBExportHeader$fg_fase_afectada.srf
+global type fg_fase_afectada from function_object
+end type
+
+forward prototypes
+global function boolean fg_fase_afectada (integer pi_tipo_ct, integer pi_tipo_instalacion, string ps_fase_interrumpida, string ps_fase_afectada, long pl_tipo_conexion, string ps_fase_ct)
+end prototypes
+
+global function boolean fg_fase_afectada (integer pi_tipo_ct, integer pi_tipo_instalacion, string ps_fase_interrumpida, string ps_fase_afectada, long pl_tipo_conexion, string ps_fase_ct);// FUNCION  PARA FILTRAR TENIENDO EN CUENTA SI EXISTE LA TABLA DE DECISION
+
+ // pl_tipo_ct --> Tipo del ct al que est$$HEX2$$e1002000$$ENDHEX$$enganchado la acometida
+ // pi_tipo_instalacion --> Tipo de la instalacion interrumpida
+ // ps_fase_interrumpida -->  Fase de la interrupcion
+ // ps_fase_afectada  --> Fase de la acometida
+//  pl_tipo_conexion --> Tipo conexion de la acometida
+
+long ll_res
+boolean lb_resultado
+string ls_fase_int_ct 
+
+
+
+	 IF gb_tabla_decision AND pi_tipo_instalacion <= fgci_tipo_ct THEN // La condici$$HEX1$$f300$$ENDHEX$$n debe ser "<="
+	
+		ls_fase_int_ct = ''
+
+				
+				// Se realiza la intersecci$$HEX1$$f300$$ENDHEX$$n entre la fase interrumpida y la fase del CT
+		IF Mid(ps_fase_interrumpida,1,1) = '1' AND Pos(ps_fase_ct,gs_fase_a) > 0 THEN
+			ls_fase_int_ct = '1'
+		ELSE
+			ls_fase_int_ct = '0'
+		END IF
+
+		IF Mid(ps_fase_interrumpida,2,1) = '1' AND Pos(ps_fase_ct,gs_fase_b) > 0 THEN
+			ls_fase_int_ct += '1'
+		ELSE
+			ls_fase_int_ct += '0'
+		END IF
+
+		IF Mid(ps_fase_interrumpida,3,1) = '1' AND Pos(ps_fase_ct,gs_fase_c) > 0 THEN
+			ls_fase_int_ct += '1'
+		ELSE
+			ls_fase_int_ct += '0'
+		END IF
+
+		if ls_fase_int_ct = '000' then 
+			
+			lb_resultado = false // NO AFECTA
+			
+		else
+
+	 	  SELECT INSTR(gi_ct_fase_conexion.fase_sal, ',' || TO_CHAR(:pl_tipo_conexion) || ',')
+	 	  INTO :ll_res
+		 FROM  gi_ct_fase_conexion
+		 WHERE gi_ct_fase_conexion.TIPO_CT = :pi_tipo_ct AND
+		 	   gi_ct_fase_conexion.fase_ent = :ls_fase_int_ct;
+						
+						if sqlca.sqlcode <>0 then 
+				
+							lb_resultado = (mid(ps_fase_afectada ,1,1) = "1" and mid(ls_fase_int_ct ,1,1) = "1") &
+										or (mid(ps_fase_afectada ,2,1) = "1" and mid( ls_fase_int_ct ,2,1) = "1") &
+										or (mid(ps_fase_afectada ,3,1) = "1" and mid( ls_fase_int_ct ,3,1) = "1")
+						 else
+							lb_resultado = (ll_res > 0)
+						  END if;
+			  
+		end if 
+	 ELSE
+			lb_resultado = (mid(ps_fase_afectada ,1,1) = "1" and mid(ps_fase_interrumpida ,1,1) = "1") &
+			or (mid(ps_fase_afectada ,2,1) = "1" and mid( ps_fase_interrumpida ,2,1) = "1") &
+			or (mid(ps_fase_afectada ,3,1) = "1" and mid( ps_fase_interrumpida ,3,1) = "1")
+	     		
+	 END IF;
+
+return lb_resultado
+
+
+
+end function
+

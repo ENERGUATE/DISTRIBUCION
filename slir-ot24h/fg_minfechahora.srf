@@ -1,0 +1,25 @@
+HA$PBExportHeader$fg_minfechahora.srf
+global type fg_minfechahora from function_object
+end type
+
+forward prototypes
+global function datetime fg_minfechahora (datawindow dw, string column)
+end prototypes
+
+global function datetime fg_minfechahora (datawindow dw, string column);long row, minrow = 0
+datetime mindatetime, datetimevalue
+
+SetNull( mindatetime )
+
+FOR row = 1 TO dw.RowCount()
+	datetimevalue = dw.GetItemDateTime(row ,column)
+	if IsNull(mindatetime) or mindatetime > datetimevalue  then
+		mindatetime = datetimevalue
+		minrow = row
+	end if
+NEXT
+
+return mindatetime 
+
+end function
+

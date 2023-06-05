@@ -1,0 +1,6 @@
+HA$PBExportHeader$s_descargos.srs
+global type s_descargos from structure
+	datetime		ldt_ini
+	datetime		ldt_fin
+end type
+

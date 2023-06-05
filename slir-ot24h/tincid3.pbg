@@ -1,0 +1,36 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "tincid3.pbl" "";
+@end;
+@begin Objects
+ "m_indisponibilidad.srm" "tincid3.pbl";
+ "d_2301_fechas_int.srd" "tincid3.pbl";
+ "d_elementos_corte_inc.srd" "tincid3.pbl";
+ "m_btder_seleccion.srm" "tincid3.pbl";
+ "d_desc_problemas.srd" "tincid3.pbl";
+ "w_listado_maniobras.srw" "tincid3.pbl";
+ "d_inc_multiples_inter.srd" "tincid3.pbl";
+ "u_inc_multiples_inter.sru" "tincid3.pbl";
+ "w_inc_multiples_inter.srw" "tincid3.pbl";
+ "ddw_lista_elementos_at.srd" "tincid3.pbl";
+ "d_sum_inter_bt.srd" "tincid3.pbl";
+ "d_afec_parcial_sum.srd" "tincid3.pbl";
+ "u_afec_parcial_sum.sru" "tincid3.pbl";
+ "w_afec_parcial_sum.srw" "tincid3.pbl";
+ "u_elementos_corte.sru" "tincid3.pbl";
+ "ddw_elementos_corte.srd" "tincid3.pbl";
+ "d_lista_indisponibilidades.srd" "tincid3.pbl";
+ "w_def_fecha_avisos.srw" "tincid3.pbl";
+ "d_filtro_indisponibilidades.srd" "tincid3.pbl";
+ "dw_datos_indisponibilidades.srd" "tincid3.pbl";
+ "d_inc_2051_lista_maniobras_causa.srd" "tincid3.pbl";
+ "u_hist_interrupcion.sru" "tincid3.pbl";
+ "dw_co_elementos_corte_inc_rep.srd" "tincid3.pbl";
+ "d_inc_2051_lista_maniobras_at.srd" "tincid3.pbl";
+ "d_inc_2051_lista_maniobras_nuevo.srd" "tincid3.pbl";
+ "d_inc_2051_lista_maniobras_causa_nuevo.srd" "tincid3.pbl";
+ "d_filtro_afec_parcial_sum.srd" "tincid3.pbl";
+ "d_lista_interrupciones_inc.srd" "tincid3.pbl";
+ "d_inc_multiples_inst_int.srd" "tincid3.pbl";
+ "w_problemas_multiples_inter.srw" "tincid3.pbl";
+@end;

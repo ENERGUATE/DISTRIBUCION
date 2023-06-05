@@ -1,0 +1,81 @@
+HA$PBExportHeader$fg_mostrar.srf
+global type fg_mostrar from function_object
+end type
+
+forward prototypes
+global subroutine fg_mostrar (boolean lb_superior)
+end prototypes
+
+global subroutine fg_mostrar (boolean lb_superior);// Muestra u oculta la ventana grafica
+string nula, seccion, titulo
+int retorno
+
+Setnull(nula)
+int px, py, tamx, tamy, indice
+window hija
+datawindow aux
+int ancho
+
+ 
+
+
+titulo="OPENSGI"
+
+//Selecciona los tama$$HEX1$$f100$$ENDHEX$$os que va a utilizar de openbdi
+
+
+if  Isvalid(w_operaciones) then 
+	if lb_superior then // COMPROBAR TRABAJO ALFANUMERICO
+	   hija=w_operaciones.getActiveSheet()
+//		if isvalid(hija) and (hija.ClassName()="w_man_instalacion" ) then
+//			for indice=1 to upperbound(hija.control[])
+//			if typeof(hija.control[indice]) = DataWindow! then
+//	 			if hija.control[indice].Classname()="dw_1" then
+//				  aux=hija.control[indice]
+//				 exit
+//				end if		
+//			end if
+//			next
+//		end if
+//			If not IsNull(aux) and (hija.ClassName()="w_man_instalacion") then
+//				
+//				px=UnitsToPixels(w_operaciones.mdi_1.x+w_operaciones.X + hija.X +aux.x,XUnitsToPixels!)
+//			   py=UnitsToPixels(w_operaciones.y+178+w_operaciones.mdi_1.y+hija.Y +aux.y,YUnitsToPixels!)
+//				
+//				tamx=UnitsToPixels(hija.width -aux.x+10,XUnitsToPixels!)
+//				tamy=UnitsToPixels(hija.height -100,YUnitsToPixels!)
+//				
+//			else // Resto de las ventanas
+				px=UnitsToPixels(20+w_operaciones.mdi_1.x+w_operaciones.X + hija.X,XUnitsToPixels!)
+			   py=UnitsToPixels(w_operaciones.y+176+w_operaciones.mdi_1.y+hija.Y ,YUnitsToPixels!)
+				
+				tamx=UnitsToPixels(hija.width - 5 ,XUnitsToPixels!)
+				tamy=UnitsToPixels(hija.height ,YUnitsToPixels!)
+//			end if	
+
+				if px+tamx>w_operaciones.mdi_1.x+w_operaciones.mdi_1.width then
+					tamx=w_operaciones.mdi_1.width - px
+				end if
+				if py+tamy>w_operaciones.mdi_1.y+w_operaciones.mdi_1.height then
+					tamy=w_operaciones.mdi_1.height - py
+				end if	
+				
+				if px+tamx>w_operaciones.width then
+					tamx=w_operaciones.width - px
+				end if
+				
+				if py+tamy>w_operaciones.height then
+					tamy=w_operaciones.height - py
+				end if
+				retorno=muestraventana (titulo,1, tamx, tamy,px,py) 
+
+	else
+   	retorno=muestraventana (titulo,0,tamx,tamy, px, py)  
+	end if
+	w_operaciones.show()
+end if
+
+
+
+end subroutine
+

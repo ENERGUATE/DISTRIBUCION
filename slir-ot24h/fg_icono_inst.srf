@@ -1,0 +1,116 @@
+HA$PBExportHeader$fg_icono_inst.srf
+global type fg_icono_inst from function_object
+end type
+
+forward prototypes
+global function string fg_icono_inst (long pl_tipo_instalacion, datetime pdt_f_alta, datetime pdt_f_reposicion)
+end prototypes
+
+global function string fg_icono_inst (long pl_tipo_instalacion, datetime pdt_f_alta, datetime pdt_f_reposicion);///////////////////////////////////////////////////
+//
+//	fg_icono_inst
+//
+//	Objetivo: Retorna el s$$HEX1$$ed00$$ENDHEX$$mbolo gr$$HEX1$$e100$$ENDHEX$$fico asociado a un tipo de instalaci$$HEX1$$f300$$ENDHEX$$n
+//
+//	Parametros:  pl_tipo_instalacion (long)
+//					 pdt_f_alta
+//					 pdt_f_reposicion
+//
+//	Retorna : ls_icono (string)
+//
+// Fecha			Responsable			Actuacion
+// -------		-----------			-------------------
+// 22/08/2002    LFE 				Creaci$$HEX1$$f300$$ENDHEX$$n
+////////////////////////////////////////////////////
+
+int li_instalaciones_interrumpidas = 200
+int li_instalaciones_repuestas = 300
+string ls_icono
+
+IF IsNull(pdt_f_reposicion) AND NOT IsNull(pdt_f_alta) THEN 
+	pl_tipo_instalacion += li_instalaciones_interrumpidas
+ELSEIF NOT IsNull(pdt_f_reposicion) THEN
+	pl_tipo_instalacion += li_instalaciones_repuestas
+END IF
+
+CHOOSE CASE pl_tipo_instalacion
+		
+
+	CASE fgci_tipo_subestacion
+		ls_icono = "subest.bmp"
+		
+	case fgci_tipo_subestacion_at	
+		ls_icono = "SUBESTaca.bmp"
+		
+	case fgci_tipo_salida_at 
+		ls_icono = "salat.bmp"
+		
+	case fgci_tipo_salida_mt 
+		ls_icono = "sal_tra1.bmp"
+		
+	case fgci_tipo_salida_de_baja
+		ls_icono = "salbaj.bmp"
+		
+	case fgci_tipo_transformador 
+		ls_icono = "transfor.bmp"
+		
+	case fgci_tipo_ct
+		ls_icono = "ct1.bmp"
+		
+	case fgci_tipo_acometida 
+		ls_icono = "cl.bmp"
+		
+//  Instalaciones interrumpidas
+
+	CASE fgci_tipo_subestacion + li_instalaciones_interrumpidas
+		ls_icono = "nsubest.bmp"
+		
+	case fgci_tipo_subestacion_at	+ li_instalaciones_interrumpidas
+		ls_icono = "nSUBESTaca.bmp"
+			
+	case fgci_tipo_salida_at + li_instalaciones_interrumpidas
+		ls_icono = "nsalta.bmp"
+		
+	case fgci_tipo_salida_mt + li_instalaciones_interrumpidas
+		ls_icono= "nsal_tra1.bmp"
+		
+	case fgci_tipo_salida_de_baja + li_instalaciones_interrumpidas
+		ls_icono= "nsalbaj.bmp"
+		
+	case fgci_tipo_transformador + li_instalaciones_interrumpidas
+		ls_icono = "ntransfor.bmp"
+		
+	case fgci_tipo_ct + li_instalaciones_interrumpidas
+      ls_icono = "nct1.bmp"
+		
+	//  Instalaciones repuestas
+
+	CASE fgci_tipo_subestacion + li_instalaciones_repuestas
+		ls_icono = "rsubest.bmp"
+	
+	case fgci_tipo_subestacion_at	+ li_instalaciones_repuestas
+		ls_icono = "rSUBESTaca.bmp"
+				
+	case fgci_tipo_salida_at + li_instalaciones_repuestas
+		ls_icono = "rsalta.bmp"
+		
+	case fgci_tipo_salida_mt + li_instalaciones_repuestas
+		ls_icono= "rsal_tra1.bmp"
+		
+	case fgci_tipo_salida_de_baja + li_instalaciones_repuestas
+		ls_icono= "rsalbaj.bmp"
+		
+	case fgci_tipo_transformador + li_instalaciones_repuestas
+		ls_icono = "rtransfor.bmp"
+		
+	case fgci_tipo_ct + li_instalaciones_repuestas
+      ls_icono = "rct1.bmp"
+		
+	CASE ELSE
+		ls_icono = ""
+		
+END CHOOSE
+
+Return ls_icono
+end function
+

@@ -1,0 +1,29 @@
+HA$PBExportHeader$d_7002_mante_info_param.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=552 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=agente dbname="sgd_descargos.agente" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=tel_agente dbname="sgd_descargos.tel_agente" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=tel_aprueba dbname="sgd_descargos.tel_aprueba" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=subest_movil dbname="sgd_descargos.subest_movil" values="SI	1/NO	0/" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=nro_descargo dbname="sgd_descargos.nro_descargo" )
+ retrieve="  SELECT ~"SGD_DESCARGOS~".~"AGENTE~",   
+         ~"SGD_DESCARGOS~".~"TEL_AGENTE~",   
+         ~"SGD_DESCARGOS~".~"TEL_APRUEBA~",   
+         ~"SGD_DESCARGOS~".~"SUBEST_MOVIL~",
+         ~"SGD_DESCARGOS~".~"NRO_DESCARGO~"
+    FROM ~"SGD_DESCARGOS~"  
+   WHERE ~"SGD_DESCARGOS~".~"NRO_DESCARGO~" = :PL_NRO_DESCARGO    
+" update="SGD_DESCARGOS" updatewhere=1 updatekeyinplace=yes arguments=(("PL_NRO_DESCARGO", number)) )
+groupbox(band=detail text="Otros"border="5" color="0" x="23" y="0" height="532" width="1321"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="8388608" x="73" y="152" height="68" width="1179" format="[general]"  name=agente edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="8388608" x="969" y="460" height="64" width="279" format="[general]"  name=subest_movil visible="1~t0" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="8388608" x="818" y="256" height="68" width="434" format="[general]"  name=tel_agente edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="8388608" x="818" y="360" height="68" width="434" format="[general]"  name=tel_aprueba edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Tel$$HEX1$$e900$$ENDHEX$$fono Agente"border="0" color="0" x="73" y="260" height="64" width="727"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="0" text="Tel$$HEX1$$e900$$ENDHEX$$fono Aprueba"border="0" color="0" x="73" y="364" height="64" width="727"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="0" text="Subestaci$$HEX1$$f300$$ENDHEX$$n M$$HEX1$$f300$$ENDHEX$$vil"border="0" color="0" x="73" y="464" height="64" width="878" visible="1~t0"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="0" text="Agente del Descargo"border="0" color="0" x="73" y="60" height="64" width="878"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

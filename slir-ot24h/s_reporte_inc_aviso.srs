@@ -1,0 +1,7 @@
+HA$PBExportHeader$s_reporte_inc_aviso.srs
+global type s_reporte_inc_aviso from structure
+	integer		i_reporte
+	long		l_nro_inc_aviso[]
+	string		s_opcion_menu
+end type
+

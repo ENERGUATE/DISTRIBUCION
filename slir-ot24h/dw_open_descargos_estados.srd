@@ -1,0 +1,43 @@
+HA$PBExportHeader$dw_open_descargos_estados.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=100 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=92 color="536870912" )
+detail(height=788 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_descargo dbname="sgd_estados_descargo.nro_descargo" )
+ column=(type=char(31) updatewhereclause=yes name=estado dbname="estado" )
+ column=(type=datetime updatewhereclause=yes name=f_inicio dbname="sgd_estados_descargo.f_inicio" )
+ column=(type=datetime updatewhereclause=yes name=f_fin dbname="sgd_estados_descargo.f_fin" )
+ column=(type=char(2000) updatewhereclause=yes name=obs_estado dbname="sgd_estados_descargo.obs_estado" )
+ retrieve="select NRO_DESCARGO,
+upper(decode(estado,0,'Todos', 1, 'Definido',
+2, 'Solicitado',
+3, 'Aprobado',
+4, 'Rechazado',
+5, 'Modificado',
+6, 'Activado',
+7, 'No Activado',
+8, 'Finalizado',
+9, 'Pendiente en BDI',
+10, 'Actualizado en BDI',
+11, 'Agrupado',
+12, 'Pendiente de puesta en servicio',
+13, 'Anulado',
+14, 'Asociado en BDI',
+15, 'Rechazado en BDI',
+16, 'Aplazado')) estado,
+f_inicio,
+f_fin,
+obs_estado
+from sgd_estados_descargo
+where nro_descargo=:descargo
+order by f_alta desc" arguments=(("descargo", number)) )
+text(band=header alignment="0" text="Estado                                         Fechas                                               Observaciones del estado         "border="0" color="16777215" x="27" y="16" height="60" width="4891"  name=nro_descargo_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+column(band=detail id=5 alignment="0" tabsequence=10 border="2" color="0" x="14" y="116" height="652" width="3735" format="[general]"  name=obs_estado edit.limit=2000 edit.case=any edit.autoselect=yes edit.autovscroll=yes edit.vscrollbar=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="2" color="128" x="18" y="4" height="96" width="686" format="[general]"  name=estado edit.limit=31 edit.case=any edit.autoselect=yes edit.autovscroll=yes edit.hscrollbar=yes edit.vscrollbar=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="2" color="0" x="731" y="4" height="96" width="590" format="dd/mm/yyyy hh:mm:ss"  name=f_inicio edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="2" color="0" x="1344" y="4" height="96" width="590" format="dd/mm/yyyy hh:mm:ss"  name=f_fin edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="getrow()+ ~"/~" + rowcount() "border="0" color="16777215" x="14" y="4" height="76" width="4923" format="[general]"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=footer alignment="0" text="w_open_descargos_estados"border="0" color="16777215" x="786" y="16" height="52" width="850"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,73 @@
+HA$PBExportHeader$d_ot_2001_pr_form_orden_de_trabajo.srd
+$PBExportComments$DataWindow formulario para el ingreso de ordenes de trabajo..
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1008 color="536870912" )
+table(column=(type=char(400) update=yes updatewhereclause=yes name=descripcion dbname="gi_ot.descripcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_ot dbname="gi_ot.nro_ot" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=est_ot dbname="gi_ot.est_ot" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_desde dbname="gi_ot.f_desde" )
+ column=(type=datetime update=yes updatewhereclause=yes name=h_desde dbname="gi_ot.h_desde" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_aviso dbname="gi_ot.nro_aviso" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_instalacion dbname="gi_ot.nro_instalacion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_incidencia dbname="gi_ot.nro_incidencia" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_hasta dbname="gi_ot.f_hasta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=h_hasta dbname="gi_ot.h_hasta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_alta dbname="gi_ot.f_alta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=h_alta dbname="gi_ot.h_alta" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ult_brigada dbname="gi_ot.ult_brigada" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_centro dbname="gi_ot.nro_centro" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_cmd dbname="gi_ot.nro_cmd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_mesa dbname="gi_ot.nro_mesa" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="gi_ot.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_ot.f_actual" )
+ column=(type=datetime update=yes updatewhereclause=yes name=h_actual dbname="gi_ot.h_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_ot.programa" )
+ column=(type=number updatewhereclause=yes name=fin_ot dbname="compute_0021" values="Finalizar OT.	1/Finalizar OT.	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_trabajo dbname="gi_ot.ind_trabajo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tip_brigada dbname="gi_ot.tip_brigada" initial="1" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_elim_peligro dbname="gi_ot.f_elim_peligro" )
+ retrieve="  SELECT  ~"GI_OT~".~"DESCRIPCION~" ,
+           ~"GI_OT~".~"NRO_OT~" ,
+           ~"GI_OT~".~"EST_OT~" ,
+           ~"GI_OT~".~"F_DESDE~" ,
+           ~"GI_OT~".~"H_DESDE~" ,
+           ~"GI_OT~".~"NRO_AVISO~" ,
+           ~"GI_OT~".~"NRO_INSTALACION~" ,
+           ~"GI_OT~".~"NRO_INCIDENCIA~" ,
+           ~"GI_OT~".~"F_HASTA~" ,
+           ~"GI_OT~".~"H_HASTA~" ,
+           ~"GI_OT~".~"F_ALTA~" ,
+           ~"GI_OT~".~"H_ALTA~" ,
+           ~"GI_OT~".~"ULT_BRIGADA~" ,
+           ~"GI_OT~".~"NRO_CENTRO~" ,
+           ~"GI_OT~".~"NRO_CMD~" ,
+           ~"GI_OT~".~"NRO_MESA~" ,
+           ~"GI_OT~".~"USUARIO~" ,
+           ~"GI_OT~".~"F_ACTUAL~" ,
+           ~"GI_OT~".~"H_ACTUAL~" ,
+           ~"GI_OT~".~"PROGRAMA~" ,1,
+		     ~"GI_OT~".~"IND_TRABAJO~",
+			  ~"GI_OT~".~"TIP_BRIGADA~",
+			  ~"GI_OT~".~"F_ELIM_PELIGRO~"      
+        FROM ~"GI_OT~"      
+        WHERE ( ~"GI_OT~".~"NRO_OT~" = :pi_nro_ot )   " update="GI_OT" updatewhere=0 updatekeyinplace=yes arguments=(("pi_nro_ot", number)) )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="8388608" x="430" y="116" height="64" width="357" format="[general]" html.valueishtml="0"  name=est_ot visible="1" dddw.name=dddw_estado_ot dddw.displaycolumn=descripcion dddw.datacolumn=cod_estado dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="5" color="8388608" x="430" y="20" height="64" width="357" format="[general]" html.valueishtml="0"  name=nro_ot visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+compute(band=detail alignment="0" expression="if(  est_ot = 0, ~"En Definici$$HEX1$$f300$$ENDHEX$$n~", ~"~" )"border="5" color="8388608" x="430" y="116" height="64" width="357" format="[general]" html.valueishtml="0"  name=cc_trucho visible="1~tif(  est_ot = 0, 1, 0 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="5" color="8388608" x="434" y="220" height="64" width="613" format="[shortdate] [time]" html.valueishtml="0" protect="0~t1"  name=f_desde visible="1" edit.name="DD/MM/YYYY HH:MM:SS" editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=9 alignment="2" tabsequence=10 border="5" color="8388608" x="434" y="304" height="64" width="622" format="" html.valueishtml="0" protect="0~tif(   est_ot = 2  ,0,1)"  name=f_hasta visible="1" edit.name="DD/MM/YYYY HH:MM:SS" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinincr=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif(est_ot = 2  , 16777215,81324524)" )
+text(band=detail alignment="0" text="Estado:" border="0" color="0" x="23" y="116" height="64" width="393" html.valueishtml="0"  name=est_ot_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="N$$HEX1$$fa00$$ENDHEX$$mero:" border="0" color="0" x="23" y="20" height="64" width="393" html.valueishtml="0"  name=nro_ot_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Finalizada en:" border="0" color="0" x="23" y="304" height="64" width="398" html.valueishtml="0"  name=finalizada_en visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Generada en:" border="0" color="0" x="23" y="216" height="64" width="398" html.valueishtml="0"  name=f_desde_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=detail x="18" y="532" height="452" width="873"  name=r_1 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="16777215"  background.mode="2" background.color="8388608" )
+rectangle(band=detail x="23" y="524" height="464" width="873"  name=r_2 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="8421504"  background.mode="2" background.color="8388608" )
+text(band=detail alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n" border="0" color="0" x="37" y="484" height="64" width="411" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=1 alignment="0" tabsequence=30 border="5" color="0" x="50" y="564" height="368" width="809" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=400 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autovscroll=yes edit.imemode=0 edit.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=24 alignment="0" tabsequence=20 border="5" color="8388608" x="434" y="392" height="64" width="622" format="[shortdate] [time]" html.valueishtml="0" protect="0~tif(   est_ot = 2  ,0,1)"  name=f_elim_peligro visible="1" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm:ss" editmask.imemode=0 editmask.spinincr=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif(est_ot = 2  , 16777215,81324524)" )
+text(band=detail alignment="0" text="Elim. Peligro:" border="0" color="0" x="23" y="396" height="64" width="357" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

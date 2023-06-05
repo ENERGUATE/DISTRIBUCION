@@ -1,0 +1,14 @@
+HA$PBExportHeader$d_2001_pr_ingreso_usuario.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=8421376 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=284 color="536870912" )
+table(column=(type=char(15) updatewhereclause=no name=ps_usuario dbname="ps_usuario" )
+ column=(type=char(15) updatewhereclause=no name=ps_clave dbname="ps_clave" )
+ )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="16777215" x="357" y="44" height="64" width="494" format="[general]"  name=ps_usuario editmask.mask="xxxxxxxxxxxxxxx" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="8421376" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="16777215" x="357" y="152" height="64" width="494" format="'**********';'*****'"  name=ps_clave edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.password=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="8421376" )
+text(band=detail alignment="0" text="Usuario:"border="0" color="8388608" x="46" y="48" height="64" width="288"  name=ps_usuario_t  tag="USUARIO"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Clave:"border="0" color="8388608" x="46" y="156" height="64" width="288"  name=ps_clave_t  tag="CLAVE"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

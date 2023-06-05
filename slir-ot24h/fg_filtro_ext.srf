@@ -1,0 +1,60 @@
+HA$PBExportHeader$fg_filtro_ext.srf
+global type fg_filtro_ext from function_object
+end type
+
+forward prototypes
+global subroutine fg_filtro_ext (datawindow adw_dw, readonly string as_ventana, readonly string as_dwchild)
+end prototypes
+
+global subroutine fg_filtro_ext (datawindow adw_dw, readonly string as_ventana, readonly string as_dwchild);String  ls_cadena, ls_valor
+Long	  ll_row, ll_i
+Integer li_parametro
+DataStore lds_parametros
+DataWindowChild ldwc_tipo_inc_ext
+
+
+
+
+If Not fg_verifica_parametro(as_ventana) Then Return
+
+
+li_parametro = fg_valor_parametro(as_ventana)
+
+If IsNull(li_parametro) Or li_parametro <= 0 Then
+	Return
+End If
+
+
+lds_parametros = Create DataStore
+lds_parametros.DataObject = "dw_co_filtro_ext"
+lds_parametros.SetTransObject(SQLCA)
+ll_row = lds_parametros.Retrieve(li_parametro, 'FIL')
+
+
+If ll_row <= 0 Then
+	Destroy lds_parametros
+	Return
+End If
+
+ls_cadena = ""
+
+For ll_i = 1 To ll_row
+	 ls_valor = lds_parametros.GetItemString(ll_i, "valor")
+	 
+	 If Not IsNull(ls_valor) And Len(Trim(ls_valor)) >= 0 Then
+		 ls_cadena += ls_valor
+	 End If
+Next
+
+If Not IsNull(as_dwchild) And Len(Trim(as_dwchild)) > 0 Then
+	adw_dw.GetChild(as_dwchild, ldwc_tipo_inc_ext)
+	ldwc_tipo_inc_ext.SetFilter(ls_cadena)
+	ldwc_tipo_inc_ext.Filter()
+Else
+	adw_dw.SetFilter(ls_cadena)
+	adw_dw.Filter()
+End If
+
+Destroy lds_parametros
+end subroutine
+

@@ -1,0 +1,54 @@
+HA$PBExportHeader$d_direccion2.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=8 color="536870912" )
+footer(height=8 color="536870912" )
+detail(height=424 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=cod_calle dbname="callejero.cod_calle" )
+ column=(type=char(30) updatewhereclause=yes name=nom_calle dbname="callejero.nom_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_depto dbname="callejero.cod_depto" )
+ column=(type=char(30) updatewhereclause=yes name=nom_depto dbname="deptos.nom_depto" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_local dbname="callejero.cod_local" )
+ column=(type=char(50) updatewhereclause=yes name=nom_local dbname="localidades.nom_local" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_prov dbname="callejero.cod_prov" )
+ column=(type=char(30) updatewhereclause=yes name=nom_prov dbname="provincias.nom_prov" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_munic dbname="callejero.cod_munic" )
+ column=(type=char(30) updatewhereclause=yes name=nom_munic dbname="municipios.nom_munic" )
+ column=(type=char(2) updatewhereclause=yes name=duplicador dbname="duplicador" )
+ column=(type=number updatewhereclause=yes name=num_puerta dbname="callejero.num_puerta" )
+ column=(type=char(6) updatewhereclause=yes name=cgv dbname="cgv" )
+ retrieve=" SELECT		~"CALLEJERO~".~"COD_CALLE~" COD_CALLE,				
+				~"CALLEJERO~".~"NOM_CALLE~" NOM_CALLE,				
+				~"CALLEJERO~".~"COD_DEPTO~" COD_DEPTO,
+   	      ~"DEPTOS~".~"NOM_DEPTO~" NOM_DEPTO,
+			   ~"CALLEJERO~".~"COD_LOCAL~" COD_LOCAL,
+	       	~"LOCALIDADES~".~"NOM_LOCAL~" NOM_LOCAL,
+				~"CALLEJERO~".~"COD_PROV~" COD_PROV,
+	         ~"PROVINCIAS~".~"NOM_PROV~" NOM_PROV,  
+				~"CALLEJERO~".~"COD_MUNIC~" COD_MUNIC,
+	         ~"MUNICIPIOS~".~"NOM_MUNIC~" NOM_MUNIC,
+				'  ' DUPLICADOR,
+				0   NUM_PUERTA,
+				'      ' CGV
+  FROM ~"CALLEJERO~" , ~"DEPTOS~" ,   ~"LOCALIDADES~" , ~"MUNICIPIOS~" ,  ~"PROVINCIAS~" 
+  WHERE ( ~"CALLEJERO~".~"COD_DEPTO~" = ~"DEPTOS~".~"COD_DEPTO~" ) and     
+     			  ( ~"CALLEJERO~".~"COD_LOCAL~" = ~"LOCALIDADES~".~"COD_LOCAL~" ) and  
+			     ( ~"CALLEJERO~".~"COD_PROV~" = ~"PROVINCIAS~".~"COD_PROV~" ) and     
+				  ( ~"MUNICIPIOS~".~"COD_MUNIC~" = ~"CALLEJERO~".~"COD_MUNIC~" ) 
+" )
+column(band=detail id=8 alignment="0" tabsequence=10 border="5" color="8388608" x="334" y="20" height="64" width="754" format="[general]"  name=nom_prov  tag="ESTA=D;" edit.limit=0 edit.case=upper edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="8388608" x="1563" y="20" height="64" width="686" format="[general]"  name=nom_depto  tag="ESTA=D;" edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=30 border="5" color="8388608" x="334" y="176" height="64" width="754" format="[general]"  name=nom_munic  tag="ESTA=D;" edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="5" color="8388608" x="1563" y="176" height="64" width="686" format="[general]"  name=nom_local  tag="ESTA=D;" edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=50 border="5" color="8388608" x="334" y="332" height="64" width="933" format="[general]"  name=nom_calle edit.limit=30 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="1" tabsequence=60 border="5" color="8388608" x="1289" y="332" height="64" width="146" format="[general]"  name=num_puerta editmask.required=yes editmask.mask="####" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="1" tabsequence=70 border="5" color="8388608" x="1463" y="332" height="64" width="105" format="[general]"  name=duplicador edit.limit=2 edit.case=any edit.autoselect=yes edit.nilisnull=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="1" tabsequence=80 border="5" color="8388608" x="2030" y="332" height="64" width="219" format="[general]"  name=cgv edit.limit=6 edit.case=any edit.autoselect=yes edit.nilisnull=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Piso-Depto:"border="0" color="0" x="1641" y="336" height="64" width="375"  name=cgv_t visible="1~t1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Numero de la Puerta"border="0" color="0" x="2304" y="20" height="64" width="608"  name=num_puerta_t visible="1~t0"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Municipio:"border="0" color="0" x="14" y="176" height="64" width="306"  name=nom_munic_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Provincia:"border="0" color="0" x="14" y="20" height="64" width="306"  name=nom_prov_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Direcci$$HEX1$$f300$$ENDHEX$$n:"border="0" color="0" x="14" y="332" height="64" width="306"  name=nom_calle_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Departamento:"border="0" color="0" x="1115" y="20" height="64" width="434"  name=nom_depto_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Localidad:"border="0" color="0" x="1115" y="176" height="64" width="434"  name=nom_local_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

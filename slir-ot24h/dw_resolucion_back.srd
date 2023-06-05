@@ -1,0 +1,109 @@
+HA$PBExportHeader$dw_resolucion_back.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=156 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=136 color="536870912" )
+detail(height=156 color="553648127~tIF(MOD(GETROW(),2)=0,rgb(255,255,255),RGB(197,217,241))" )
+table(column=(type=number updatewhereclause=yes name=id dbname="id" )
+ column=(type=number updatewhereclause=yes name=correlativo dbname="correlativo" )
+ column=(type=char(75) updatewhereclause=yes name=seq dbname="seq" )
+ column=(type=number updatewhereclause=yes name=seq2 dbname="seq2" )
+ column=(type=char(3) updatewhereclause=yes name=tipo dbname="tipo" )
+ column=(type=char(12) updatewhereclause=yes name=nis dbname="nis" )
+ column=(type=char(200) updatewhereclause=yes name=cliente dbname="cliente" )
+ column=(type=char(25) updatewhereclause=yes name=estado dbname="estado" )
+ column=(type=char(200) updatewhereclause=yes name=direccion dbname="direccion" )
+ column=(type=char(25) updatewhereclause=yes name=zona dbname="zona" )
+ column=(type=char(12) updatewhereclause=yes name=tel1 dbname="tel1" )
+ column=(type=char(12) updatewhereclause=yes name=tel2 dbname="tel2" )
+ column=(type=char(100) updatewhereclause=yes name=email dbname="email" )
+ column=(type=char(12) updatewhereclause=yes name=no_aviso dbname="no_aviso" )
+ column=(type=char(25) updatewhereclause=yes name=no_reclamo dbname="no_reclamo" )
+ column=(type=char(200) updatewhereclause=yes name=nom_causa dbname="nom_causa" )
+ column=(type=char(200) updatewhereclause=yes name=persona_que_reporta dbname="persona_que_reporta" )
+ column=(type=char(2000) updatewhereclause=yes name=observaciones dbname="observaciones" )
+ column=(type=datetime updatewhereclause=yes name=fecha_alta dbname="fecha_alta" )
+ column=(type=datetime updatewhereclause=yes name=fecha_resolucion dbname="fecha_resolucion" )
+ column=(type=char(100) updatewhereclause=yes name=cod_usuario dbname="cod_usuario" )
+ column=(type=char(100) updatewhereclause=yes name=nom_usuario dbname="nom_usuario" )
+ column=(type=char(100) updatewhereclause=yes name=matricula dbname="matricula" )
+ column=(type=char(100) updatewhereclause=yes name=nom_depto dbname="nom_depto" )
+ column=(type=char(100) updatewhereclause=yes name=nom_munic dbname="nom_munic" )
+ column=(type=char(100) updatewhereclause=yes name=nom_local dbname="nom_local" )
+ column=(type=char(100) updatewhereclause=yes name=nom_oficina dbname="nom_oficina" )
+ column=(type=char(100) updatewhereclause=yes name=nom_pin dbname="nom_pin" )
+ column=(type=char(100) updatewhereclause=yes name=nom_region dbname="nom_region" )
+ column=(type=char(100) updatewhereclause=yes name=nom_se dbname="nom_se" )
+ column=(type=char(100) updatewhereclause=yes name=nom_smt dbname="nom_smt" )
+ column=(type=char(4000) updatewhereclause=yes name=search dbname="search" )
+ retrieve="select distinct *
+from (
+select r1.id,
+r1.correlativo,
+r1.tipo||' '||r1.seq seq,
+r1.seq seq2,
+r1.tipo tipo,
+r1.nis,
+r1.cliente,
+r1.estado,
+r1.direccion,
+r1.zona,
+r1.tel1,
+r1.tel2,
+r1.email,
+r1.no_aviso,
+r1.no_reclamo,
+r1.nom_causa,
+r1.persona_que_reporta,
+r1.observaciones,
+r1.fecha_alta,
+r1.fecha_resolucion,
+r1.cod_usuario,
+r1.nom_usuario,
+r1.matricula,
+r2.nom_depto,
+r2.nom_munic,
+r2.nom_local,
+r2.nom_oficina,
+r2.nom_pin,
+r2.nom_region,
+r2.nom_se,
+r2.nom_smt,
+upper(r1.tipo||' '||to_char(r1.seq)
+||r1.nis||r1.cliente||r1.estado||r1.direccion
+||r1.estado||r1.direccion||r1.tel1||r1.tel2||r1.email
+||r1.no_aviso||r1.nom_causa||r1.persona_que_reporta
+||r1.observaciones||r1.matricula||r2.nom_depto
+||r2.nom_munic||r2.nom_local
+||r2.nom_oficina||r2.nom_oficina||r2.nom_pin
+||r2.nom_region||r2.nom_se||r2.nom_smt) search
+from registro r1,  
+	 registro_geo r2
+where r1.id=r2.ID
+and r1.seq=r2.seq
+and r1.tipo=r2.tipo
+and r1.correlativo=r2.correlativo
+) where (fecha_resolucion is null)
+  and (search like :cadena or :cadena='?')
+  and (cod_usuario = :usuario or :usuario='?')
+" arguments=(("usuario", string),("cadena", string)) )
+text(band=header alignment="0" text="C$$HEX1$$f300$$ENDHEX$$digo                NIS                             Cliente"border="0" color="16777215" x="18" y="36" height="104" width="1925"  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="0" text="Causa                                                                      Alta                                       Resoluci$$HEX1$$f300$$ENDHEX$$n                          Aviso                    Usuario"border="0" color="16777215" x="1934" y="36" height="104" width="3863"  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+line(band=detail x1="5" y1="144" x2="5591" y2="144" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="128" x="18" y="4" height="124" width="361" format="[general]"  name=seq edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="2" tabsequence=40 border="0" color="0" x="402" y="4" height="76" width="384" format="[general]"  name=nis edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="8388608" x="4347" y="4" height="76" width="384" format="[general]"  name=no_aviso edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="4754" y="4" height="76" width="594" format="[general]"  name=nom_usuario edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="805" y="4" height="124" width="1115" format="[general]"  name=cliente editmask.useformat=yes editmask.mask="x" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="1934" y="4" height="124" width="1097" format="[general]"  name=nom_causa editmask.useformat=yes editmask.mask="x" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="5367" y="4" height="76" width="174" format="[general]"  name=id visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="5559" y="4" height="76" width="256" format="[general]"  name=correlativo visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="5829" y="4" height="76" width="96" format="[general]"  name=tipo visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="128" x="5938" y="8" height="60" width="462" format="[general]"  name=seq2 visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="32768" x="3698" y="4" height="76" width="631" format="[shortdate] [time]"  name=fecha_resolucion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="128" x="3054" y="4" height="76" width="631" format="[shortdate] [time]"  name=fecha_alta edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="128" x="6400" y="0" height="60" width="800" format="[general]"  name=no_reclamo edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="0" expression="~"Registro: ~" + getrow() + ~"/~" +rowcount()"border="0" color="16777215" x="18" y="16" height="104" width="5783" format="[general]"  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=footer alignment="0" text="dw_resolucion"border="0" color="16777215" x="1134" y="16" height="52" width="430"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

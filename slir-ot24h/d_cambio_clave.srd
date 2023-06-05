@@ -1,0 +1,19 @@
+HA$PBExportHeader$d_cambio_clave.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=240 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes key=yes name=usuario dbname="gi_usuario_sgi.usuario" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=clave dbname="gi_usuario_sgi.clave" )
+ column=(type=char(0) updatewhereclause=yes name=clave2 dbname="clave2" )
+ retrieve="  SELECT ~"GI_USUARIO_SGI~".~"USUARIO~",   
+         ~"GI_USUARIO_SGI~".~"CLAVE~" ,'' clave2
+    FROM ~"GI_USUARIO_SGI~"
+WHERE  ~"GI_USUARIO_SGI~".~"USUARIO~"=:ps_usuario
+" update="GI_USUARIO_SGI" updatewhere=1 updatekeyinplace=yes arguments=(("ps_usuario", string)) )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="0" x="571" y="40" height="64" width="530" format="'**********';'*****'"  name=clave edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.password=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="0" x="571" y="152" height="64" width="530" format="'**********';'*****'"  name=clave2 edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.password=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Introduzca Clave:"border="0" color="0" x="27" y="40" height="64" width="530"  name=clave_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Repita Clave:"border="0" color="8421504" x="27" y="152" height="64" width="530"  name=clave2_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

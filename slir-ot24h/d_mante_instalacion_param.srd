@@ -1,0 +1,85 @@
+HA$PBExportHeader$d_mante_instalacion_param.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=916 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="sgd_instalacion.nro_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_instalacion dbname="sgd_instalacion.tipo_instalacion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_instalada dbname="sgd_instalacion.pot_instalada" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_contratada dbname="sgd_instalacion.pot_contratada" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_calle dbname="sgd_instalacion.cod_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=num_puerta dbname="sgd_instalacion.num_puerta" )
+ column=(type=char(10) updatewhereclause=yes name=duplicador dbname="sgd_instalacion.duplicador" )
+ column=(type=decimal(0) updatewhereclause=yes name=cant_cli dbname="sgd_instalacion.cant_cli" )
+ column=(type=decimal(0) updatewhereclause=yes name=km_laereas dbname="sgd_instalacion.km_laereas" )
+ column=(type=decimal(0) updatewhereclause=yes name=km_lsubterraneas dbname="sgd_instalacion.km_lsubterraneas" )
+ column=(type=char(3) updatewhereclause=yes name=cod_prop_inst dbname="sgd_instalacion.cod_prop_inst" )
+ column=(type=decimal(0) updatewhereclause=yes name=can_cli_imp dbname="sgd_instalacion.can_cli_imp" )
+ column=(type=char(12) updatewhereclause=yes name=matricula dbname="sgd_instalacion.matricula" )
+ column=(type=char(50) updatewhereclause=yes name=sgd_valor_descripcion dbname="sgd_valor.descripcion" )
+ column=(type=char(30) updatewhereclause=yes name=callejero_nom_calle dbname="callejero.nom_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_centro dbname="sgd_instalacion.nro_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_mesa dbname="sgd_instalacion.nro_mesa" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_cmd dbname="sgd_instalacion.nro_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_conexion dbname="sgd_instalacion.tipo_conexion" )
+ retrieve="  SELECT ~"SGD_INSTALACION~".~"NRO_INSTALACION~",   
+         ~"SGD_INSTALACION~".~"TIPO_INSTALACION~",   
+         ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         ~"SGD_INSTALACION~".~"POT_INSTALADA~",   
+         ~"SGD_INSTALACION~".~"POT_CONTRATADA~",   
+         ~"SGD_INSTALACION~".~"COD_CALLE~",   
+         ~"SGD_INSTALACION~".~"NUM_PUERTA~",   
+         ~"SGD_INSTALACION~".~"DUPLICADOR~",   
+         ~"SGD_INSTALACION~".~"CANT_CLI~",   
+         ~"SGD_INSTALACION~".~"KM_LAEREAS~",   
+         ~"SGD_INSTALACION~".~"KM_LSUBTERRANEAS~",   
+         ~"SGD_INSTALACION~".~"COD_PROP_INST~",   
+         ~"SGD_INSTALACION~".~"CAN_CLI_IMP~",   
+         ~"SGD_INSTALACION~".~"MATRICULA~",   
+         ~"SGD_VALOR~".~"DESCRIPCION~",   
+         ~"CALLEJERO~".~"NOM_CALLE~",   
+         ~"SGD_INSTALACION~".~"NRO_CENTRO~",   
+         ~"SGD_INSTALACION~".~"NRO_MESA~",   
+         ~"SGD_INSTALACION~".~"NRO_CMD~",   
+         ~"SGD_INSTALACION~".~"TIPO_CONEXION~"  
+    FROM ~"SGD_INSTALACION~",   
+         ~"SGD_VALOR~",   
+         ~"CALLEJERO~"  
+   WHERE ( callejero.cod_calle (+) = sgd_instalacion.cod_calle) and  
+         (~"SGD_INSTALACION~".~"NRO_INSTALACION~" = :pl_instalacion) AND  
+         (~"SGD_INSTALACION~".~"BDI_JOB~" = 0)  AND
+			SGD_INSTALACION.ESTADO = 0 AND
+			SGD_INSTALACION.COD_PROP_INST = SGD_VALOR.VALOR (+) AND
+			SGD_VALOR.CODIF (+) = 'PROP'
+" arguments=(("pl_instalacion", number)) )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="5" color="8388608" x="32" y="832" height="60" width="850" format="[general]"  name=callejero_nom_calle edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="8388608" x="2619" y="680" height="72" width="320" format="[general]"  name=nro_centro edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="8388608" x="2277" y="268" height="140" width="389" format="[general]"  name=nro_mesa edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="8388608" x="2629" y="520" height="96" width="361" format="[general]"  name=nro_cmd edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="8388608" x="517" y="36" height="60" width="1353" format="[general]"  name=nom_instalacion edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="5" color="8388608" x="517" y="308" height="60" width="1353" format="[general]"  name=sgd_valor_descripcion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="5" color="8388608" x="1550" y="444" height="60" width="320" format="[general]"  name=pot_contratada edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="8388608" x="1550" y="724" height="64" width="320" format="[general]"  name=km_laereas visible="1~t0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="5" color="8388608" x="517" y="732" height="56" width="320" format="[general]"  name=km_lsubterraneas visible="1~t0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="5" color="8388608" x="517" y="172" height="60" width="466" format="[general]"  name=matricula edit.limit=12 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fase"border="0" color="0" x="1093" y="172" height="64" width="293"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="5" color="8388608" x="1399" y="172" height="64" width="475" format="[general]"  name=tipo_conexion dddw.name=ddw_tipo_conexion dddw.displaycolumn=descripcion dddw.datacolumn=tipo_conexion dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Pot Contratada"border="0" color="0" x="919" y="444" height="64" width="617"  name=pot_contratada_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Km L$$HEX1$$ed00$$ENDHEX$$neas Subt."border="0" color="0" x="50" y="724" height="64" width="453"  name=km_lsubterraneas_t visible="1~t0"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Cant Clientes"border="0" color="0" x="50" y="580" height="64" width="453"  name=cant_cli_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Pot Instalada"border="0" color="0" x="50" y="444" height="64" width="453"  name=pot_instalada_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Propiedad"border="0" color="0" x="50" y="308" height="64" width="453"  name=cod_prop_inst_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Matricula"border="0" color="0" x="50" y="172" height="64" width="453"  name=matricula_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Nombre"border="0" color="0" x="50" y="36" height="64" width="453"  name=nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="8388608" x="1550" y="580" height="60" width="320" format="[general]"  name=can_cli_imp edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Duplicador"border="0" color="0" x="1522" y="740" height="64" width="347"  name=duplicador_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="8388608" x="1582" y="828" height="60" width="229" format="[general]"  name=duplicador edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Cant. Clientes Imp."border="0" color="0" x="919" y="580" height="64" width="617"  name=can_cli_imp_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Km L$$HEX1$$ed00$$ENDHEX$$neas Aereas"border="0" color="0" x="919" y="724" height="64" width="617"  name=km_laereas_t visible="1~t0"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="8388608" x="937" y="828" height="60" width="507" format="[general]"  name=num_puerta edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="Num Puerta"border="0" color="0" x="891" y="740" height="64" width="599"  name=num_puerta_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="8388608" x="517" y="444" height="60" width="347" format="[general]"  name=pot_instalada edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="5" color="8388608" x="517" y="580" height="60" width="347" format="[general]"  name=cant_cli edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

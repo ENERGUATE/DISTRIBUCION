@@ -1,0 +1,18 @@
+HA$PBExportHeader$d_filtro_afec_parcial_sum.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=460 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=nis_rad dbname="Nis_Rad" )
+ column=(type=char(30) updatewhereclause=yes name=medidor dbname="Medidor" )
+ column=(type=number updatewhereclause=yes name=seleccionado dbname="Seleccionado" values="<Todos>	0/S$$HEX2$$ed000900$$ENDHEX$$1/No	-1/" )
+ )
+groupbox(band=detail text="Filtros "border="5" color="0" x="18" y="16" height="384" width="1225"  name=gb_1  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Nis Rad: "border="0" color="0" x="41" y="104" height="64" width="334"  name=nis_rad_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Medidor:"border="0" color="0" x="41" y="196" height="64" width="329"  name=medidor_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Seleccionado:"border="0" color="0" x="41" y="288" height="68" width="466"  name=seleccionado_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="5" color="0" x="526" y="288" height="72" width="334" format="[general]"  name=seleccionado ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="526" y="192" height="64" width="681" format="[general]"  name=medidor edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="526" y="104" height="64" width="681" format="[general]"  name=nis_rad editmask.mask="#######" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

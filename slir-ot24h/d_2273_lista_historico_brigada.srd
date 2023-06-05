@@ -1,0 +1,61 @@
+HA$PBExportHeader$d_2273_lista_historico_brigada.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=12 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=gi_ot_ind_trabajo dbname="gi_ot.ind_trabajo" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_ot_nro_ot dbname="gi_ot.nro_ot" )
+ column=(type=char(250) updatewhereclause=yes name=gi_ot_descripcion dbname="gi_ot.descripcion" )
+ column=(type=datetime updatewhereclause=yes name=gi_brigada_ot_f_desde dbname="gi_brigada_ot.f_desde" )
+ column=(type=datetime updatewhereclause=yes name=gi_brigada_ot_f_hasta dbname="gi_brigada_ot.f_hasta" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_ot_nro_aviso dbname="gi_ot.nro_aviso" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_ot_nro_instalacion dbname="gi_ot.nro_instalacion" )
+ column=(type=char(30) updatewhereclause=yes name=sgd_instalacion_nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_ot_nro_incidencia dbname="gi_ot.nro_incidencia" )
+ retrieve="  SELECT ~"GI_OT~".~"IND_TRABAJO~",   
+         ~"GI_OT~".~"NRO_OT~",   
+         ~"GI_OT~".~"DESCRIPCION~",   
+         ~"GI_BRIGADA_OT~".~"F_DESDE~",   
+         ~"GI_BRIGADA_OT~".~"F_HASTA~",   
+         ~"GI_OT~".~"NRO_AVISO~",
+   		~"GI_OT~".~"NRO_INSTALACION~",
+         ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         ~"GI_OT~".~"NRO_INCIDENCIA~"    
+    FROM ~"GI_BRIGADA_OT~",  
+         ~"GI_OT~",
+			~"SGD_INSTALACION~"  
+   WHERE ( gi_brigada_ot.nro_ot = gi_ot.nro_ot (+)) and  
+         ( ~"GI_BRIGADA_OT~".~"NRO_BRIGADA~" = :pl_nro_brigada ) AND  
+         ( ~"GI_BRIGADA_OT~".~"EST_BRIGADA~" = 3) AND
+			( ~"SGD_INSTALACION~".~"NRO_INSTALACION~"(+) = ~"GI_OT~".~"NRO_INSTALACION~" ) and
+         ( NVL(~"SGD_INSTALACION~".~"BDI_JOB~",0) = 0 )  
+" arguments=(("pl_nro_brigada", number)) )
+compute(band=header alignment="0" expression="if(gi_ot_ind_trabajo = 2, 1,
+if( gi_ot_nro_ot  = 0 or isNull( gi_ot_nro_ot ),2,
+if( gi_ot_nro_incidencia  = 0 or  IsNull( gi_ot_nro_incidencia ),
+if( gi_ot_nro_instalacion =0,3, 4),5 )))"border="0" color="8388608" x="2981" y="8" height="64" width="14" format="[general]"  name=ind_ordenacion  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=1 alignment="0" tabsequence=32766 border="0" color="0" x="69" y="12" height="52" width="50" format="[general]"  name=gi_ot_ind_trabajo edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Tarea / OT"border="6" color="0" x="14" y="8" height="64" width="347"  name=gi_ot_ind_trabajo_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Nro. Tr."border="6" color="0" x="379" y="8" height="64" width="242"  name=gi_ot_nro_ot_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n del Trabajo"border="6" color="0" x="640" y="8" height="64" width="1170"  name=gi_ot_descripcion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Fecha Inicio"border="6" color="0" x="1829" y="8" height="64" width="521"  name=gi_brigada_ot_f_desde_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Fecha Fin"border="6" color="0" x="2368" y="8" height="64" width="539"  name=gi_brigada_ot_f_hasta_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Nro."border="6" color="0" x="2930" y="8" height="64" width="311"  name=ind_ordenacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Nombre Instalaci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="3259" y="8" height="64" width="859"  name=sgd_instalacion_nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=detail alignment="0" expression=" bitmap(
+if(gi_ot_ind_trabajo = 2, ~"tarea.bmp~",
+if( gi_ot_nro_ot  = 0 or isNull( gi_ot_nro_ot ),~"llave.bmp~",
+if( gi_ot_nro_incidencia  = 0 or  IsNull( gi_ot_nro_incidencia ),
+if( gi_ot_nro_instalacion =0,~"avitelef.bmp~", ~"ordtra.bmp~"),  ~"incid.bmp~"))))  "border="0" color="8388608" x="3141" y="8" height="64" width="82" format="[general]"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if(  gi_ot_ind_trabajo=1, ~"OT~", ~"Tarea~" )"border="0" color="8388608" x="23" y="4" height="64" width="320" format="[general]"  name=cc_tareaot  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="370" y="8" height="64" width="242" format="[general]"  name=gi_ot_nro_ot edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="635" y="8" height="64" width="1161" format="[general]"  name=gi_ot_descripcion  tag="Descripcion de la orden de trabajo" edit.limit=32000 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="8388608" x="1838" y="8" height="60" width="521" format="[shortdate] [time]"  name=gi_brigada_ot_f_desde  tag="Fecha de inicio de la orden de trabajo" editmask.mask="dd/mm/yyyy hh:mm" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="8388608" x="2391" y="8" height="60" width="512" format="[shortdate] [time]"  name=gi_brigada_ot_f_hasta  tag="Fecha de fin de la orden de trabajo" editmask.mask="DD/MM/YYYY HH:MM" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="3278" y="8" height="64" width="827" format="[general]"  name=sgd_instalacion_nom_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="2935" y="8" height="64" width="197" format="[general]" visible="1~tif(gi_ot_nro_ot = 0, 0, if(gi_ot_nro_incidencia = 0,if( gi_ot_nro_aviso = 0, 1, 0 ), 0 ))" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608" x="2935" y="8" height="64" width="197" format="[general]"  name=gi_ot_nro_incidencia  tag="Numero de la incidencia a la que esta asociada la orden de trabajo" visible="1~tif(gi_ot_nro_incidencia = 0, 0, 1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="2935" y="8" height="64" width="197" format="[general]"  name=gi_ot_nro_aviso  tag="Numero del aviso al que esta asociada la orden de trabajo" visible="1~tif(gi_ot_nro_aviso = 0, 0, if(gi_ot_nro_incidencia = 0, 1, 0 ))" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

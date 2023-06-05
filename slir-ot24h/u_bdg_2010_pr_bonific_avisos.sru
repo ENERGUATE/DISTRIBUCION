@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_bdg_2010_pr_bonific_avisos.sru
+forward
+global type u_bdg_2010_pr_bonific_avisos from u_bdg_1001_pr_generico
+end type
+end forward
+
+global type u_bdg_2010_pr_bonific_avisos from u_bdg_1001_pr_generico
+int Width=2378
+int Height=905
+string DataObject="d_bdg_2010_pr_bonific_avisos"
+end type
+global u_bdg_2010_pr_bonific_avisos u_bdg_2010_pr_bonific_avisos
+

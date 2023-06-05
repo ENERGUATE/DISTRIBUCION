@@ -1,0 +1,52 @@
+HA$PBExportHeader$fgnu_auto_der_oper.srf
+global type fgnu_auto_der_oper from function_object
+end type
+
+forward prototypes
+global function boolean fgnu_auto_der_oper ()
+end prototypes
+
+global function boolean fgnu_auto_der_oper ();////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fgnu_auto_der_oper
+// 
+// Objetivo: Evalua si el perfil del usuario esta habilitado para 
+//           derivar a mantenimiento.
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada:  --
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	23/1/96		SAB			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+/////////////////////////////////////////////////////////////////////
+
+
+// ULTIMA MODIFICACION : AQ
+// FECHA MODIFICADA: 24/4/96
+
+//gi_perfil_ok = {fgci_perfil_mante_operador_baja,&
+//					 fgci_perfil_mante_operador_alta,&
+//					fgci_perfil_mante_encargado_turno,&
+//					fgci_perfil_mante_gerente,&
+//					fgci_perfil_supervisor_operaciones,0}
+//if fgnu_tiene_perfil(0) then
+//		return true
+//end if
+//
+//return false
+//IF gu_perfiles.of_acceso_perfil(gi_perfil, 'INC_GENERAL', "ACC_MANTEN") = 1 THEN
+//	return TRUE
+//ELSE
+//	return FALSE
+//END IF
+
+return false
+end function
+

@@ -1,0 +1,11 @@
+HA$PBExportHeader$u_bri_2017_pr_datos_cons_ot.sru
+forward
+global type u_bri_2017_pr_datos_cons_ot from u_gen_0000_lista
+end type
+end forward
+
+global type u_bri_2017_pr_datos_cons_ot from u_gen_0000_lista
+string DataObject="d_bri_2017_pr_datos_cons_ot"
+end type
+global u_bri_2017_pr_datos_cons_ot u_bri_2017_pr_datos_cons_ot
+

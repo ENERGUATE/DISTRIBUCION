@@ -1,0 +1,68 @@
+HA$PBExportHeader$d_con_0001_ing_contratas.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=424 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes name=usuario dbname="gi_contratas.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_contratas.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_contratas.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_contrata dbname="gi_contratas.nro_contrata" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=nombre dbname="gi_contratas.nombre" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=coste dbname="gi_contratas.coste" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=moneda dbname="gi_contratas.moneda" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_tiempo dbname="gi_contratas.cod_tiempo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_centro dbname="gi_contratas.nro_centro" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_cmd dbname="gi_contratas.nro_cmd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_mesa dbname="gi_contratas.nro_mesa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo dbname="gi_contratas.tipo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estado dbname="gi_contratas.estado" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=cod_postal dbname="gi_contratas.cod_postal" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=pers_contacto dbname="gi_contratas.pers_contacto" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=telefono dbname="gi_contratas.telefono" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=fax dbname="gi_contratas.fax" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=e_mail dbname="gi_contratas.e_mail" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_trab_prev dbname="gi_contratas.ind_trab_prev" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_calle dbname="gi_contratas.cod_calle" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=num_puerta dbname="gi_contratas.num_puerta" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=duplicador dbname="gi_contratas.duplicador" )
+ column=(type=char(6) update=yes updatewhereclause=yes name=cgv dbname="gi_contratas.cgv" )
+ retrieve="SELECT 
+  ~"GI_CONTRATAS~".~"USUARIO~" ,
+  ~"GI_CONTRATAS~".~"F_ACTUAL~" ,
+  ~"GI_CONTRATAS~".~"PROGRAMA~" ,
+  ~"GI_CONTRATAS~".~"NRO_CONTRATA~" ,
+  ~"GI_CONTRATAS~".~"NOMBRE~" ,
+  ~"GI_CONTRATAS~".~"COSTE~" ,
+  ~"GI_CONTRATAS~".~"MONEDA~" ,
+  ~"GI_CONTRATAS~".~"COD_TIEMPO~" ,
+  ~"GI_CONTRATAS~".~"NRO_CENTRO~" ,
+  ~"GI_CONTRATAS~".~"NRO_CMD~" ,
+  ~"GI_CONTRATAS~".~"NRO_MESA~" ,
+  ~"GI_CONTRATAS~".~"TIPO~" ,
+  ~"GI_CONTRATAS~".~"ESTADO~" ,
+  ~"GI_CONTRATAS~".~"COD_POSTAL~" ,
+  ~"GI_CONTRATAS~".~"PERS_CONTACTO~" ,
+  ~"GI_CONTRATAS~".~"TELEFONO~" ,
+  ~"GI_CONTRATAS~".~"FAX~" ,
+  ~"GI_CONTRATAS~".~"E_MAIL~" ,
+  ~"GI_CONTRATAS~".~"IND_TRAB_PREV~",
+  ~"GI_CONTRATAS~".~"COD_CALLE~",
+  ~"GI_CONTRATAS~".~"NUM_PUERTA~",
+  ~"GI_CONTRATAS~".~"DUPLICADOR~",
+  ~"GI_CONTRATAS~".~"CGV~"
+FROM 
+  ~"GI_CONTRATAS~"" update="GI_CONTRATAS" updatewhere=1 updatekeyinplace=yes )
+column(band=detail id=5 alignment="0" tabsequence=10 border="5" color="8388608" x="343" y="16" height="64" width="937" format="[general]"  name=nombre edit.limit=40 edit.case=upper edit.focusrectangle=no edit.autoselect=no edit.required=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=15 alignment="0" tabsequence=50 border="5" color="8388608" x="343" y="296" height="64" width="709" format="[general]"  name=pers_contacto edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=18 alignment="0" tabsequence=30 border="5" color="8388608" x="343" y="156" height="64" width="937" format="[general]"  name=e_mail edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="0" tabsequence=20 border="5" color="8388608" x="1787" y="16" height="64" width="462" format="[general]"  name=cod_postal edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.required=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=17 alignment="0" tabsequence=40 border="5" color="8388608" x="1787" y="156" height="64" width="462" format="[general]"  name=fax edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=16 alignment="0" tabsequence=60 border="5" color="8388608" x="1787" y="296" height="64" width="462" format="[general]"  name=telefono edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.required=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Nombre:"border="0" color="0" x="14" y="16" height="64" width="306"  name=nombre_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="E Mail:"border="0" color="0" x="14" y="156" height="64" width="306"  name=e_mail_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Pers Cont.:"border="0" color="0" x="14" y="296" height="64" width="306"  name=pers_contacto_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Cod Postal:"border="0" color="0" x="1408" y="16" height="64" width="357"  name=cod_postal_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fax:"border="0" color="0" x="1408" y="156" height="64" width="357"  name=fax_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Telefono:"border="0" color="0" x="1408" y="296" height="64" width="357"  name=telefono_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,54 @@
+HA$PBExportHeader$d_config_costeincrementalenergia.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 selected.mouse=no )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=hora dbname="gi_coste_incremental_energia.hora" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=energia_desde dbname="gi_coste_incremental_energia.energia_desde" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=energia_hasta dbname="gi_coste_incremental_energia.energia_hasta" )
+ column=(type=decimal(5) update=yes updatewhereclause=yes name=coste dbname="gi_coste_incremental_energia.coste" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_coste_incremental_energia.f_actual" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=usuario dbname="gi_coste_incremental_energia.usuario" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_coste_incremental_energia.programa" )
+ column=(type=number updatewhereclause=yes name=switch_edicion dbname="switch_edicion" )
+ retrieve="  SELECT ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"HORA~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"ENERGIA_DESDE~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"ENERGIA_HASTA~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"COSTE~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"F_ACTUAL~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"USUARIO~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"PROGRAMA~" ,
+			1 as switch_edicion 
+    FROM ~"GI_COSTE_INCREMENTAL_ENERGIA~"   
+   WHERE ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"HORA~" = :pl_hora
+     AND :pl_hora <> 0
+
+
+union
+
+  SELECT ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"HORA~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"ENERGIA_DESDE~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"ENERGIA_HASTA~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"COSTE~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"F_ACTUAL~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"USUARIO~",   
+         ~"GI_COSTE_INCREMENTAL_ENERGIA~".~"PROGRAMA~" ,
+			1 as switch_edicion 
+    FROM ~"GI_COSTE_INCREMENTAL_ENERGIA~"   
+   WHERE :pl_hora =0 
+
+" update="GI_COSTE_INCREMENTAL_ENERGIA" updatewhere=1 updatekeyinplace=no arguments=(("pl_hora", number)) )
+text(band=header alignment="2" text="Hora" border="6" color="33554432" x="9" y="8" height="52" width="329" html.valueishtml="0"  name=hora_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Energia Desde" border="6" color="33554432" x="347" y="8" height="52" width="507" html.valueishtml="0"  name=energia_desde_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Energia Hasta" border="6" color="33554432" x="864" y="8" height="52" width="521" html.valueishtml="0"  name=energia_hasta_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Coste" border="6" color="33554432" x="1394" y="8" height="52" width="329" html.valueishtml="0"  name=coste_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Switch Edicion" border="0" color="8388608" x="1733" y="4" height="60" width="174" html.valueishtml="0"  name=switch_edicion_t visible="0"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="8388608" x="9" y="8" height="64" width="329" format="[general]" html.valueishtml="0"  name=hora visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="1" tabsequence=10 border="0" color="8388608" x="347" y="8" height="64" width="507" format="[general]" html.valueishtml="0" protect="0~tif(((getrow() = 1) or (switch_edicion = 1)), 1, 0)"  name=energia_desde visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="67108864~tif(((getrow() = 1) or (switch_edicion = 1)), 81324524, 16777215) " )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="8388608" x="864" y="8" height="64" width="521" format="[general]" html.valueishtml="0" protect="0~t1"  name=energia_hasta visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=4 alignment="1" tabsequence=20 border="0" color="8388608" x="1394" y="8" height="64" width="329" format="[general]" html.valueishtml="0" protect="0~tif(switch_edicion = 1, 1, 0)"  name=coste visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="67108864~tif((switch_edicion = 1), 81324524, 16777215) " )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="1733" y="12" height="60" width="174" format="[general]" html.valueishtml="0"  name=switch_edicion visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

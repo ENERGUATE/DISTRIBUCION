@@ -1,0 +1,16 @@
+HA$PBExportHeader$s_direccion.srs
+global type s_direccion from structure
+	string		gs_prov
+	string		gs_depto
+	string		gs_munic
+	string		gs_local
+	string		gs_calle
+	long		gl_numero
+	string		gs_duplic
+	string		gs_pisodpto
+	long		gl_codcalle
+	long		gl_nis
+	long		gl_nif
+	long		gl_cod_cli
+end type
+

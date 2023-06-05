@@ -1,0 +1,51 @@
+HA$PBExportHeader$fg_salmt_inst_afectada.srf
+global type fg_salmt_inst_afectada from function_object
+end type
+
+forward prototypes
+global function string fg_salmt_inst_afectada (readonly long al_nro_instalacion)
+end prototypes
+
+global function string fg_salmt_inst_afectada (readonly long al_nro_instalacion);String ls_nom_salmt
+Long ll_nro_instalacion //, ll_i, ll_row
+Integer li_tipo_inst_ext
+
+
+//ll_row = adw_dw.RowCount()
+//
+//For ll_i = 1 To ll_row
+//	ll_nro_instalacion = adw_dw.GetItemNumber(ll_i, "nro_inst_afectada")
+
+
+
+SELECT "SGD_INSTALACION"."TIPO_INSTALACION"  
+  INTO :li_tipo_inst_ext
+  FROM "SGD_INSTALACION"
+ WHERE ( "SGD_INSTALACION"."NRO_INSTALACION" = :al_nro_instalacion ) AND  
+		 ( "SGD_INSTALACION"."BDI_JOB" = 0 )   ;
+
+
+If SQLCA.SQLCODE = 0 And Not IsNull(li_tipo_inst_ext) And li_tipo_inst_ext >= fgci_tipo_salida_mt Then
+
+	SELECT SGD_INSTALACION.NOM_INSTALACION
+	  INTO :ls_nom_salmt
+	  FROM SGD_INSTALACION  
+	 WHERE ( SGD_INSTALACION.BDI_JOB = 0 ) AND  
+			 ( SGD_INSTALACION.TIPO_INSTALACION = :fgci_tipo_salida_mt ) AND    
+				SGD_INSTALACION.NRO_INSTALACION IN 
+			 ( SELECT NRO_INSTALACION FROM SGD_INSTALACION 
+				START WITH 	SGD_INSTALACION.BDI_JOB = 0 AND NRO_INSTALACION =:al_nro_instalacion 
+				CONNECT 	BY PRIOR NRO_INST_PADRE = NRO_INSTALACION AND SGD_INSTALACION.BDI_JOB = 0 ) ;	
+
+End If
+
+
+//	adw_dw.SetItem(ll_i, "c_nom_salmt", ls_nom_salmt)
+//Next
+
+
+If IsNull(ls_nom_salmt) Then ls_nom_salmt = ""
+
+Return ls_nom_salmt
+end function
+

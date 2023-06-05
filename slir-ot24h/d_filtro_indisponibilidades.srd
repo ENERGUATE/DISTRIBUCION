@@ -1,0 +1,16 @@
+HA$PBExportHeader$d_filtro_indisponibilidades.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=134217739 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=272 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=tip_instalacion dbname="Tip_instalacion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="Nom_Instalacion" )
+ )
+groupbox(band=detail text="Filtro Indisponibilidades"border="5" color="33554432" x="23" y="4" height="224" width="3410"  name=gb_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Tipo de Instalacion:" border="0" color="33554432" x="37" y="92" height="64" width="649" html.valueishtml="0"  name=tip_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="33554432" x="722" y="88" height="72" width="800" format="[general]" html.valueishtml="0"  name=tip_instalacion visible="1" dddw.name=ddw_lista_elementos_at dddw.displaycolumn=descripcion dddw.datacolumn=valor dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Instalaci$$HEX1$$f300$$ENDHEX$$n a buscar:" border="0" color="33554432" x="1568" y="92" height="64" width="695" html.valueishtml="0"  name=nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="33554432" x="2295" y="88" height="72" width="1102" format="[general]" html.valueishtml="0"  name=nom_instalacion visible="1" editmask.mask="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

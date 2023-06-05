@@ -1,0 +1,132 @@
+HA$PBExportHeader$dw_informes_registros_2.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(112) updatewhereclause=yes name=cod_interno dbname="cod_interno" )
+ column=(type=char(75) updatewhereclause=yes name=ticket dbname="ticket" )
+ column=(type=char(12) updatewhereclause=yes name=nis dbname="nis" )
+ column=(type=char(200) updatewhereclause=yes name=cliente dbname="cliente" )
+ column=(type=char(25) updatewhereclause=yes name=estado dbname="estado" )
+ column=(type=char(200) updatewhereclause=yes name=direccion dbname="direccion" )
+ column=(type=char(25) updatewhereclause=yes name=zona dbname="zona" )
+ column=(type=char(12) updatewhereclause=yes name=tel1 dbname="tel1" )
+ column=(type=char(12) updatewhereclause=yes name=tel2 dbname="tel2" )
+ column=(type=char(100) updatewhereclause=yes name=email dbname="email" )
+ column=(type=char(12) updatewhereclause=yes name=no_aviso dbname="no_aviso" )
+ column=(type=char(25) updatewhereclause=yes name=no_reclamo dbname="no_reclamo" )
+ column=(type=char(200) updatewhereclause=yes name=nom_causa dbname="nom_causa" )
+ column=(type=char(200) updatewhereclause=yes name=persona_que_reporta dbname="persona_que_reporta" )
+ column=(type=char(2000) updatewhereclause=yes name=observaciones dbname="observaciones" )
+ column=(type=datetime updatewhereclause=yes name=fecha_alta dbname="fecha_alta" )
+ column=(type=datetime updatewhereclause=yes name=fecha_resolucion dbname="fecha_resolucion" )
+ column=(type=char(100) updatewhereclause=yes name=cod_usuario dbname="cod_usuario" )
+ column=(type=char(100) updatewhereclause=yes name=nom_usuario dbname="nom_usuario" )
+ column=(type=char(100) updatewhereclause=yes name=matricula dbname="matricula" )
+ column=(type=char(100) updatewhereclause=yes name=nom_depto dbname="nom_depto" )
+ column=(type=char(100) updatewhereclause=yes name=nom_munic dbname="nom_munic" )
+ column=(type=char(100) updatewhereclause=yes name=nom_local dbname="nom_local" )
+ column=(type=char(100) updatewhereclause=yes name=nom_oficina dbname="nom_oficina" )
+ column=(type=char(100) updatewhereclause=yes name=nom_pin dbname="nom_pin" )
+ column=(type=char(100) updatewhereclause=yes name=nom_region dbname="nom_region" )
+ column=(type=char(100) updatewhereclause=yes name=nom_se dbname="nom_se" )
+ column=(type=char(100) updatewhereclause=yes name=nom_smt dbname="nom_smt" )
+ retrieve="select distinct *
+from (
+select r1.id||' '||r1.correlativo COD_INTERNO,
+r1.tipo||' '||r1.seq TICKET,
+r1.nis,
+r1.cliente,
+r1.estado,
+r1.direccion,
+r1.zona,
+r1.tel1,
+r1.tel2,
+r1.email,
+r1.no_aviso,
+r1.no_reclamo,
+r1.nom_causa,
+r1.persona_que_reporta,
+r1.observaciones,
+r1.fecha_alta,
+r1.fecha_resolucion,
+r1.cod_usuario,
+r1.nom_usuario,
+r1.matricula,
+r2.nom_depto,
+r2.nom_munic,
+r2.nom_local,
+r2.nom_oficina,
+r2.nom_pin,
+r2.nom_region,
+r2.nom_se,
+r2.nom_smt
+from registro r1,  
+	 registro_geo r2
+where r1.id=r2.ID
+and r1.seq=r2.seq
+and r1.tipo=r2.tipo
+and r1.correlativo=r2.correlativo
+) where (cod_usuario = :usuario or :usuario='?')
+and fecha_alta between to_date(:fecha1,'dd/mm/yyyy hh24:mi:ss') and to_date(:fecha2,'dd/mm/yyyy hh24:mi:ss') 
+order by fecha_alta desc
+" retrieve.asneeded=yes arguments=(("usuario", string),("fecha1", string),("fecha2", string)) )
+text(band=header alignment="2" text="Cod Interno"border="0" color="0" x="5" y="4" height="64" width="3099"  name=cod_interno_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ticket"border="0" color="0" x="3109" y="4" height="64" width="2085"  name=ticket_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nis"border="0" color="0" x="5198" y="4" height="64" width="357"  name=nis_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cliente"border="0" color="0" x="5559" y="4" height="64" width="4389"  name=cliente_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Estado"border="0" color="0" x="9952" y="4" height="64" width="713"  name=estado_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Direccion"border="0" color="0" x="10674" y="4" height="64" width="4384"  name=direccion_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Zona"border="0" color="0" x="15063" y="4" height="64" width="713"  name=zona_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tel1"border="0" color="0" x="15785" y="4" height="64" width="357"  name=tel1_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tel2"border="0" color="0" x="16146" y="4" height="64" width="357"  name=tel2_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Email"border="0" color="0" x="16507" y="4" height="64" width="2770"  name=email_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="No Aviso"border="0" color="0" x="19282" y="4" height="64" width="357"  name=no_aviso_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="No Reclamo"border="0" color="0" x="19643" y="4" height="64" width="713"  name=no_reclamo_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Causa"border="0" color="0" x="20361" y="4" height="64" width="4389"  name=nom_causa_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Persona Que Reporta"border="0" color="0" x="24754" y="4" height="64" width="4389"  name=persona_que_reporta_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Observaciones"border="0" color="0" x="29147" y="4" height="64" width="4389"  name=observaciones_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha Alta"border="0" color="0" x="33541" y="4" height="64" width="603"  name=fecha_alta_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha Resolucion"border="0" color="0" x="34149" y="4" height="64" width="603"  name=fecha_resolucion_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cod Usuario"border="0" color="0" x="34757" y="4" height="64" width="2770"  name=cod_usuario_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Usuario"border="0" color="0" x="37531" y="4" height="64" width="2770"  name=nom_usuario_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Matricula"border="0" color="0" x="40306" y="4" height="64" width="2770"  name=matricula_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Depto"border="0" color="0" x="43081" y="4" height="64" width="2770"  name=nom_depto_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Munic"border="0" color="0" x="45856" y="4" height="64" width="2770"  name=nom_munic_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Local"border="0" color="0" x="48631" y="4" height="64" width="2770"  name=nom_local_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Oficina"border="0" color="0" x="51406" y="4" height="64" width="2770"  name=nom_oficina_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Pin"border="0" color="0" x="54181" y="4" height="64" width="2770"  name=nom_pin_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Region"border="0" color="0" x="56955" y="4" height="64" width="2770"  name=nom_region_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Se"border="0" color="0" x="59730" y="4" height="64" width="2770"  name=nom_se_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nom Smt"border="0" color="0" x="62505" y="4" height="64" width="2770"  name=nom_smt_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="76" width="3099" format="[general]"  name=cod_interno edit.limit=112 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="3109" y="4" height="76" width="2085" format="[general]"  name=ticket edit.limit=75 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="5198" y="4" height="76" width="357" format="[general]"  name=nis edit.limit=12 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="5559" y="4" height="76" width="4389" format="[general]"  name=cliente edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="9952" y="4" height="76" width="713" format="[general]"  name=estado edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="10674" y="4" height="76" width="4384" format="[general]"  name=direccion edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="15063" y="4" height="76" width="713" format="[general]"  name=zona edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="15785" y="4" height="76" width="357" format="[general]"  name=tel1 edit.limit=12 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="16146" y="4" height="76" width="357" format="[general]"  name=tel2 edit.limit=12 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="16507" y="4" height="76" width="2770" format="[general]"  name=email edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="19282" y="4" height="76" width="357" format="[general]"  name=no_aviso edit.limit=12 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="19643" y="4" height="76" width="713" format="[general]"  name=no_reclamo edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="20361" y="4" height="76" width="4389" format="[general]"  name=nom_causa edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="24754" y="4" height="76" width="4389" format="[general]"  name=persona_que_reporta edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="29147" y="4" height="76" width="4389" format="[general]"  name=observaciones edit.limit=2000 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="33541" y="4" height="76" width="603" format="[shortdate] [time]"  name=fecha_alta edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="34149" y="4" height="76" width="603" format="[shortdate] [time]"  name=fecha_resolucion edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="34757" y="4" height="76" width="2770" format="[general]"  name=cod_usuario edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="37531" y="4" height="76" width="2770" format="[general]"  name=nom_usuario edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="40306" y="4" height="76" width="2770" format="[general]"  name=matricula edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="43081" y="4" height="76" width="2770" format="[general]"  name=nom_depto edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="45856" y="4" height="76" width="2770" format="[general]"  name=nom_munic edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="48631" y="4" height="76" width="2770" format="[general]"  name=nom_local edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="51406" y="4" height="76" width="2770" format="[general]"  name=nom_oficina edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="0" x="54181" y="4" height="76" width="2770" format="[general]"  name=nom_pin edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="56955" y="4" height="76" width="2770" format="[general]"  name=nom_region edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="59730" y="4" height="76" width="2770" format="[general]"  name=nom_se edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="62505" y="4" height="76" width="2770" format="[general]"  name=nom_smt edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

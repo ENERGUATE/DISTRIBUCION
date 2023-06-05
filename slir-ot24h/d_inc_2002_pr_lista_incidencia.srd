@@ -1,0 +1,433 @@
+HA$PBExportHeader$d_inc_2002_pr_lista_incidencia.srd
+$PBExportComments$Para w_1211_identificar_suministro. Incidencias nivel suministro estan incluidos
+release 12.6;
+datawindow(units=0 timer_interval=0 color=81324524 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=84 color="-1" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=28 color="-1" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="-1" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=92 color="-1" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=char(2) updatewhereclause=yes name=cs_instalacion_afectada dbname="compute_0001" )
+ column=(type=char(2) updatewhereclause=yes name=cs_duracion dbname="compute_0002" )
+ column=(type=char(2) updatewhereclause=yes name=cb_estado_incidencia dbname="compute_0003" )
+ column=(type=decimal(5) updatewhereclause=yes name=ci_duracion dbname="compute_0004" )
+ column=(type=datetime updatewhereclause=yes name=f_deteccion dbname="sgd_incidencia.f_deteccion" )
+ column=(type=number updatewhereclause=yes name=nro_centro dbname="sgd_incidencia.nro_centro" )
+ column=(type=number updatewhereclause=yes name=nro_cmd dbname="sgd_incidencia.nro_cmd" )
+ column=(type=number updatewhereclause=yes name=nro_mesa dbname="sgd_incidencia.nro_mesa" )
+ column=(type=number updatewhereclause=yes name=pot_afectada dbname="sgd_incidencia.pot_afectada" )
+ column=(type=number updatewhereclause=yes name=nro_inst_afectada dbname="sgd_incidencia.nro_inst_afectada" )
+ column=(type=number updatewhereclause=yes name=pot_contratada dbname="sgd_incidencia.pot_contratada" )
+ column=(type=number updatewhereclause=yes name=ccli_afec dbname="sgd_incidencia.ccli_afec" )
+ column=(type=number updatewhereclause=yes name=tip_tension dbname="sgd_incidencia.tip_tension" )
+ column=(type=number updatewhereclause=yes name=est_actual dbname="sgd_incidencia.est_actual" )
+ column=(type=number updatewhereclause=yes name=estado_mantenimiento dbname="sgd_incidencia.estado_mantenimiento" )
+ column=(type=datetime updatewhereclause=yes name=h_deteccion dbname="sgd_incidencia.h_deteccion" )
+ column=(type=number updatewhereclause=yes name=nro_incidencia dbname="sgd_incidencia.nro_incidencia" )
+ column=(type=datetime updatewhereclause=yes name=f_est_res dbname="sgd_incidencia.f_est_res" )
+ column=(type=number updatewhereclause=yes name=tip_incidencia dbname="sgd_incidencia.tip_incidencia" )
+ column=(type=number updatewhereclause=yes name=sgd_incidencia_alcance dbname="sgd_incidencia.alcance" )
+ column=(type=char(1) updatewhereclause=yes name=compute_0021 dbname="compute_0021" )
+ column=(type=char(2000) updatewhereclause=yes name=observacion dbname="sgd_incidencia.observacion" )
+ column=(type=datetime updatewhereclause=yes name=fec_resolucion dbname="sgd_incidencia.fec_resolucion" )
+ column=(type=char(60) updatewhereclause=yes name=dir_aviso dbname="sgd_incidencia.dir_aviso" )
+ column=(type=char(130) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(80) updatewhereclause=yes name=desc_incidencia dbname="sgd_incidencia.desc_incidencia" )
+ column=(type=char(2) updatewhereclause=yes name=cb_estado_incidencia_mant dbname="compute_0027" )
+ column=(type=char(2) updatewhereclause=yes name=cb_tension_suministro dbname="compute_0028" )
+ column=(type=char(2) updatewhereclause=yes name=cb_tipo_incidencia dbname="compute_0029" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0030 dbname="compute_0030" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0031 dbname="compute_0031" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0032 dbname="compute_0032" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0033 dbname="compute_0033" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0034 dbname="compute_0034" )
+ column=(type=number updatewhereclause=yes name=cl_duracion dbname="sgd_instalacion.cl_duracion" )
+ column=(type=char(4000) updatewhereclause=yes name=nombre_instalacion dbname="compute_0036" )
+ column=(type=char(4000) updatewhereclause=yes name=nombre dbname="nombre" )
+ retrieve="	SELECT   
+						'  ',  
+						'  ',  
+						'  ',   
+						1,  
+						SGD_INCIDENCIA.F_DETECCION,  
+						SGD_INCIDENCIA.NRO_CENTRO,  
+						SGD_INCIDENCIA.NRO_CMD,  
+						SGD_INCIDENCIA.NRO_MESA,  
+						SGD_INCIDENCIA.POT_AFECTADA,  
+						SGD_INCIDENCIA.NRO_INST_AFECTADA,  
+						SGD_INCIDENCIA.POT_CONTRATADA,  
+						SGD_INCIDENCIA.CCLI_AFEC,  
+						SGD_INCIDENCIA.TIP_TENSION,  
+						SGD_INCIDENCIA.EST_ACTUAL,  
+						SGD_INCIDENCIA.ESTADO_MANTENIMIENTO,  
+						SGD_INCIDENCIA.H_DETECCION,  
+						SGD_INCIDENCIA.NRO_INCIDENCIA,  
+						SGD_INCIDENCIA.F_EST_RES,  
+						SGD_INCIDENCIA.TIP_INCIDENCIA,  
+						SGD_INCIDENCIA.ALCANCE,  
+						' ',  
+						SGD_INCIDENCIA.OBSERVACION,  
+						SGD_INCIDENCIA.FEC_RESOLUCION,  
+						SGD_INCIDENCIA.DIR_AVISO,  
+						SGD_INSTALACION.NOM_INSTALACION NOM_INSTALACION,  
+						SGD_INCIDENCIA.DESC_INCIDENCIA ,  
+						'  ',  
+						'  ',  
+						'  ',  
+						Fgnu_Est_Inc2(SGD_INCIDENCIA.EST_ACTUAL, SGD_INCIDENCIA.ALCANCE, SGD_INCIDENCIA.TIP_INCIDENCIA),
+						Fgnu_Est_Man(estado_mantenimiento),  
+						Fgnu_Ten_Inc(tip_tension) ,  
+						Fgnu_Tip_Inc(tip_incidencia) ,  
+						Fgnu_Duracion_Str(f_deteccion,fec_resolucion),  
+						1 CL_DURACION ,  
+						F_Nombre_Instalacion2(SGD_INSTALACION.nom_instalacion,SGD_incidencia.dir_aviso,SGD_incidencia.alcance),   
+						fgci_nombre_ot(GI_OT.NRO_OT) nombre
+FROM SGD_INSTALACION ,SGD_INCIDENCIA, GI_OT
+WHERE SGD_INCIDENCIA.OT = GI_OT.NRO_OT (+) AND SGD_INSTALACION.NRO_INSTALACION = SGD_INCIDENCIA.NRO_INST_AFECTADA AND SGD_INSTALACION.BDI_JOB = 0  
+						 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') >=  :ls_f_desde  
+						 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') <=  :ls_f_hasta   
+						 AND SGD_INCIDENCIA.EST_ACTUAL < 11   
+						 AND 	SGD_INCIDENCIA.NRO_INCIDENCIA IN ( SELECT SGD_INTERRUPCION.NRO_INCIDENCIA FROM SGD_INTERRUPCION WHERE  
+								SGD_INTERRUPCION.NRO_INSTALACION IN   
+										(SELECT NRO_INSTALACION FROM SGD_INSTALACION   
+											START WITH 	SGD_INSTALACION.BDI_JOB = 0 AND NRO_INSTALACION =    
+											(SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN FROM SGD_ACOMETIDA, ACO_SUM   
+													WHERE SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA AND SGD_ACOMETIDA.BDI_JOB = 0 
+													AND ACO_SUM.NIS_RAD =:ll_nis_rad)   
+											CONNECT 	BY PRIOR NRO_INST_PADRE = NRO_INSTALACION AND SGD_INSTALACION.BDI_JOB = 0)
+						AND NVL(SGD_INTERRUPCION.AFEC_PARCIAL,0) = DECODE(:li_afec_parcial, 0, NVL(SGD_INTERRUPCION.AFEC_PARCIAL,0),0) )  
+UNION
+SELECT   
+						'  ',  
+						'  ',  
+						'  ',   
+						1,  
+						SGD_INCIDENCIA.F_DETECCION,  
+						SGD_INCIDENCIA.NRO_CENTRO,  
+						SGD_INCIDENCIA.NRO_CMD,  
+						SGD_INCIDENCIA.NRO_MESA,  
+						SGD_INCIDENCIA.POT_AFECTADA,  
+						SGD_INCIDENCIA.NRO_INST_AFECTADA,  
+						SGD_INCIDENCIA.POT_CONTRATADA,  
+						SGD_INCIDENCIA.CCLI_AFEC,  
+						SGD_INCIDENCIA.TIP_TENSION,  
+						SGD_INCIDENCIA.EST_ACTUAL,  
+						SGD_INCIDENCIA.ESTADO_MANTENIMIENTO,  
+						SGD_INCIDENCIA.H_DETECCION,  
+						SGD_INCIDENCIA.NRO_INCIDENCIA,  
+						SGD_INCIDENCIA.F_EST_RES,  
+						SGD_INCIDENCIA.TIP_INCIDENCIA,  
+						SGD_INCIDENCIA.ALCANCE,  
+						' ',  
+						SGD_INCIDENCIA.OBSERVACION,  
+						SGD_INCIDENCIA.FEC_RESOLUCION,  
+						SGD_INCIDENCIA.DIR_AVISO,  
+						SGD_INSTALACION.NOM_INSTALACION NOM_INSTALACION,  
+						SGD_INCIDENCIA.DESC_INCIDENCIA ,  
+						'  ',  
+						'  ',  
+						'  ',  
+						Fgnu_Est_Inc2(SGD_INCIDENCIA.EST_ACTUAL, SGD_INCIDENCIA.ALCANCE, SGD_INCIDENCIA.TIP_INCIDENCIA),
+						Fgnu_Est_Man(estado_mantenimiento),  
+						Fgnu_Ten_Inc(tip_tension) ,  
+						Fgnu_Tip_Inc(tip_incidencia) ,  
+						Fgnu_Duracion_Str(f_deteccion,fec_resolucion),  
+						1 CL_DURACION ,  
+						F_Nombre_Instalacion2(SGD_INSTALACION.nom_instalacion,SGD_incidencia.dir_aviso,SGD_incidencia.alcance),   
+						fgci_nombre_ot(GI_OT.NRO_OT)
+FROM SGD_INSTALACION ,SGD_INCIDENCIA, GI_OT
+WHERE SGD_INCIDENCIA.OT = GI_OT.NRO_OT (+) AND SGD_INSTALACION.NRO_INSTALACION = SGD_INCIDENCIA.NRO_INST_AFECTADA AND SGD_INSTALACION.BDI_JOB = 0  
+						 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') >=  :ls_f_desde  
+						 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') <=  :ls_f_hasta   
+						 AND SGD_INCIDENCIA.EST_ACTUAL < 11   
+						 AND 	SGD_INCIDENCIA.NRO_INCIDENCIA IN ( SELECT SGD_INTERRUPCION_RS.NRO_INCIDENCIA FROM SGD_INTERRUPCION_RS WHERE  
+								 SGD_INTERRUPCION_RS.NRO_INSTALACION IN   
+										(SELECT NRO_INSTALACION FROM SGD_INSTALACION   
+											START WITH 	SGD_INSTALACION.BDI_JOB = 0 AND NRO_INSTALACION =    
+											(SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN FROM SGD_ACOMETIDA, ACO_SUM   
+													WHERE SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA AND SGD_ACOMETIDA.BDI_JOB = 0 
+														AND ACO_SUM.NIS_RAD =:ll_nis_rad)   
+											CONNECT 	BY PRIOR NRO_INST_PADRE = NRO_INSTALACION AND SGD_INSTALACION.BDI_JOB = 0)
+						AND NVL(SGD_INTERRUPCION_RS.AFEC_PARCIAL,0) = DECODE(:li_afec_parcial, 0, NVL(SGD_INTERRUPCION_RS.AFEC_PARCIAL,0),0))  
+UNION
+SELECT   
+						'  ',  
+						'  ',  
+						'  ',   
+						1,  
+						SGD_INCIDENCIA.F_DETECCION,  
+						SGD_INCIDENCIA.NRO_CENTRO,  
+						SGD_INCIDENCIA.NRO_CMD,  
+						SGD_INCIDENCIA.NRO_MESA,  
+						SGD_INCIDENCIA.POT_AFECTADA,  
+						SGD_INCIDENCIA.NRO_INST_AFECTADA,  
+						SGD_INCIDENCIA.POT_CONTRATADA,  
+						SGD_INCIDENCIA.CCLI_AFEC,  
+						SGD_INCIDENCIA.TIP_TENSION,  
+						SGD_INCIDENCIA.EST_ACTUAL,  
+						SGD_INCIDENCIA.ESTADO_MANTENIMIENTO,  
+						SGD_INCIDENCIA.H_DETECCION,  
+						SGD_INCIDENCIA.NRO_INCIDENCIA,  
+						SGD_INCIDENCIA.F_EST_RES,  
+						SGD_INCIDENCIA.TIP_INCIDENCIA,  
+						SGD_INCIDENCIA.ALCANCE,  
+						' ',  
+						SGD_INCIDENCIA.OBSERVACION,  
+						SGD_INCIDENCIA.FEC_RESOLUCION,  
+						SGD_INCIDENCIA.DIR_AVISO,  
+						SGD_INSTALACION.NOM_INSTALACION NOM_INSTALACION,  
+						SGD_INCIDENCIA.DESC_INCIDENCIA ,  
+						'  ',  
+						'  ',  
+						'  ',  
+						Fgnu_Est_Inc2(SGD_INCIDENCIA.EST_ACTUAL, SGD_INCIDENCIA.ALCANCE, SGD_INCIDENCIA.TIP_INCIDENCIA),
+						Fgnu_Est_Man(estado_mantenimiento),  
+						Fgnu_Ten_Inc(tip_tension) ,  
+						Fgnu_Tip_Inc(tip_incidencia) ,  
+						Fgnu_Duracion_Str(f_deteccion,fec_resolucion),  
+						1 CL_DURACION ,  
+						F_Nombre_Instalacion2(SGD_INSTALACION.nom_instalacion,SGD_incidencia.dir_aviso,SGD_incidencia.alcance),   
+						fgci_nombre_ot(GI_OT.NRO_OT)
+FROM SGD_INSTALACION ,SGD_INCIDENCIA, GI_OT, GI_AVISOS
+WHERE SGD_INCIDENCIA.OT = GI_OT.NRO_OT (+) AND SGD_INSTALACION.NRO_INSTALACION = SGD_INCIDENCIA.NRO_INST_AFECTADA AND SGD_INSTALACION.BDI_JOB = 0  
+	 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') >=  :ls_f_desde  
+	 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') <=  :ls_f_hasta
+	 AND SGD_INCIDENCIA.EST_ACTUAL < 11   
+	 AND GI_AVISOS.NRO_INCIDENCIA = SGD_INCIDENCIA.NRO_INCIDENCIA
+	 AND GI_AVISOS.IND_INC_MANUAL = 1
+	 AND GI_AVISOS.NIS_RAD = :ll_nis_rad
+	 AND SGD_INCIDENCIA.ALCANCE = fgnu_alcance_con_perdida
+UNION
+SELECT   
+						'  ',  
+						'  ',  
+						'  ',   
+						1,  
+						SGD_INCIDENCIA.F_DETECCION,  
+						SGD_INCIDENCIA.NRO_CENTRO,  
+						SGD_INCIDENCIA.NRO_CMD,  
+						SGD_INCIDENCIA.NRO_MESA,  
+						SGD_INCIDENCIA.POT_AFECTADA,  
+						SGD_INCIDENCIA.NRO_INST_AFECTADA,  
+						SGD_INCIDENCIA.POT_CONTRATADA,  
+						SGD_INCIDENCIA.CCLI_AFEC,  
+						SGD_INCIDENCIA.TIP_TENSION,  
+						SGD_INCIDENCIA.EST_ACTUAL,  
+						SGD_INCIDENCIA.ESTADO_MANTENIMIENTO,  
+						SGD_INCIDENCIA.H_DETECCION,  
+						SGD_INCIDENCIA.NRO_INCIDENCIA,  
+						SGD_INCIDENCIA.F_EST_RES,  
+						SGD_INCIDENCIA.TIP_INCIDENCIA,  
+						SGD_INCIDENCIA.ALCANCE,  
+						' ',  
+						SGD_INCIDENCIA.OBSERVACION,  
+						SGD_INCIDENCIA.FEC_RESOLUCION,  
+						SGD_INCIDENCIA.DIR_AVISO,  
+						SGD_INSTALACION.NOM_INSTALACION NOM_INSTALACION,  
+						SGD_INCIDENCIA.DESC_INCIDENCIA ,  
+						'  ',  
+						'  ',  
+						'  ',  
+						Fgnu_Est_Inc2(SGD_INCIDENCIA.EST_ACTUAL, SGD_INCIDENCIA.ALCANCE, SGD_INCIDENCIA.TIP_INCIDENCIA),
+						Fgnu_Est_Man(estado_mantenimiento),  
+						Fgnu_Ten_Inc(tip_tension) ,  
+						Fgnu_Tip_Inc(tip_incidencia) ,  
+						Fgnu_Duracion_Str(f_deteccion,fec_resolucion),  
+						1 CL_DURACION ,  
+						F_Nombre_Instalacion2(SGD_INSTALACION.nom_instalacion,SGD_incidencia.dir_aviso,SGD_incidencia.alcance),   
+						fgci_nombre_ot(GI_OT.NRO_OT)
+FROM SGD_INSTALACION ,SGD_INCIDENCIA, GI_OT, GI_AFEC_PARCIAL_SUM
+WHERE SGD_INCIDENCIA.OT = GI_OT.NRO_OT (+) AND SGD_INSTALACION.NRO_INSTALACION = SGD_INCIDENCIA.NRO_INST_AFECTADA AND SGD_INSTALACION.BDI_JOB = 0  
+	 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') >=  :ls_f_desde  
+	 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') <=  :ls_f_hasta
+	 AND SGD_INCIDENCIA.EST_ACTUAL < 11   
+	 AND GI_AFEC_PARCIAL_SUM.NRO_INCIDENCIA = SGD_INCIDENCIA.NRO_INCIDENCIA
+	 AND GI_AFEC_PARCIAL_SUM.NIS_RAD = :ll_nis_rad
+	 AND SGD_INCIDENCIA.ALCANCE = fgnu_alcance_con_perdida
+UNION 
+			SELECT   
+						'  ',  
+						'  ',  
+						'  ',   
+						1,  
+						SGD_INCIDENCIA.F_DETECCION,  
+						SGD_INCIDENCIA.NRO_CENTRO,  
+						SGD_INCIDENCIA.NRO_CMD,  
+						SGD_INCIDENCIA.NRO_MESA,  
+						SGD_INCIDENCIA.POT_AFECTADA,  
+						SGD_INCIDENCIA.NRO_INST_AFECTADA,  
+						SGD_INCIDENCIA.POT_CONTRATADA,  
+						SGD_INCIDENCIA.CCLI_AFEC,  
+						SGD_INCIDENCIA.TIP_TENSION,  
+						SGD_INCIDENCIA.EST_ACTUAL,  
+						SGD_INCIDENCIA.ESTADO_MANTENIMIENTO,  
+						SGD_INCIDENCIA.H_DETECCION,  
+						SGD_INCIDENCIA.NRO_INCIDENCIA,  
+						SGD_INCIDENCIA.F_EST_RES,  
+						SGD_INCIDENCIA.TIP_INCIDENCIA,  
+						SGD_INCIDENCIA.ALCANCE,  
+						' ',  
+						SGD_INCIDENCIA.OBSERVACION,  
+						SGD_INCIDENCIA.FEC_RESOLUCION,  
+						SGD_INCIDENCIA.DIR_AVISO,  
+						SGD_INSTALACION.NOM_INSTALACION NOM_INSTALACION,  
+						SGD_INCIDENCIA.DESC_INCIDENCIA ,  
+						'  ',  
+						'  ',  
+						'  ',  
+						Fgnu_Est_Inc2(SGD_INCIDENCIA.EST_ACTUAL, SGD_INCIDENCIA.ALCANCE, SGD_INCIDENCIA.TIP_INCIDENCIA),
+						Fgnu_Est_Man(estado_mantenimiento),  
+						Fgnu_Ten_Inc(tip_tension) ,  
+						Fgnu_Tip_Inc(tip_incidencia) ,  
+						Fgnu_Duracion_Str(f_deteccion,fec_resolucion),  
+						1 CL_DURACION ,  
+						F_Nombre_Instalacion2(SGD_INSTALACION.nom_instalacion,SGD_incidencia.dir_aviso,SGD_incidencia.alcance),   
+						fgci_nombre_ot(GI_OT.NRO_OT)
+FROM SGD_INSTALACION ,SGD_INCIDENCIA, GI_OT
+WHERE SGD_INCIDENCIA.OT = GI_OT.NRO_OT(+) AND SGD_INSTALACION.NRO_INSTALACION = SGD_INCIDENCIA.NRO_INST_AFECTADA AND SGD_INSTALACION.BDI_JOB = 0  
+						 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') >=  :ls_f_desde  
+						 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') <=  :ls_f_hasta   
+						 AND SGD_INCIDENCIA.EST_ACTUAL < 11   
+						 AND 	SGD_INCIDENCIA.NRO_INCIDENCIA IN ( SELECT SGD_INTERRUPCION.NRO_INCIDENCIA FROM SGD_INTERRUPCION WHERE   
+						  SGD_INTERRUPCION.CABECERA_BT > 0  AND  
+						SGD_INTERRUPCION.NRO_INSTALACION =   
+						(SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN FROM SGD_ACOMETIDA, ACO_SUM   
+						WHERE SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA 
+								AND SGD_ACOMETIDA.BDI_JOB = 0 AND ACO_SUM.NIS_RAD =:ll_nis_rad)
+						AND NVL(SGD_INTERRUPCION.AFEC_PARCIAL,0) = DECODE(:li_afec_parcial, 0, NVL(SGD_INTERRUPCION.AFEC_PARCIAL,0),0))   
+UNION 
+SELECT   
+						'  ',  
+						'  ',  
+						'  ',   
+						1,  
+						SGD_INCIDENCIA.F_DETECCION,  
+						SGD_INCIDENCIA.NRO_CENTRO,  
+						SGD_INCIDENCIA.NRO_CMD,  
+						SGD_INCIDENCIA.NRO_MESA,  
+						SGD_INCIDENCIA.POT_AFECTADA,  
+						SGD_INCIDENCIA.NRO_INST_AFECTADA,  
+						SGD_INCIDENCIA.POT_CONTRATADA,  
+						SGD_INCIDENCIA.CCLI_AFEC,  
+						SGD_INCIDENCIA.TIP_TENSION,  
+						SGD_INCIDENCIA.EST_ACTUAL,  
+						SGD_INCIDENCIA.ESTADO_MANTENIMIENTO,  
+						SGD_INCIDENCIA.H_DETECCION,  
+						SGD_INCIDENCIA.NRO_INCIDENCIA,  
+						SGD_INCIDENCIA.F_EST_RES,  
+						SGD_INCIDENCIA.TIP_INCIDENCIA,  
+						SGD_INCIDENCIA.ALCANCE,  
+						' ',  
+						SGD_INCIDENCIA.OBSERVACION,  
+						SGD_INCIDENCIA.FEC_RESOLUCION,  
+						SGD_INCIDENCIA.DIR_AVISO,  
+						SGD_INSTALACION.NOM_INSTALACION NOM_INSTALACION,  
+						SGD_INCIDENCIA.DESC_INCIDENCIA ,  
+						'  ',  
+						'  ',  
+						'  ',  
+						Fgnu_Est_Inc2(SGD_INCIDENCIA.EST_ACTUAL, SGD_INCIDENCIA.ALCANCE, SGD_INCIDENCIA.TIP_INCIDENCIA),
+						Fgnu_Est_Man(estado_mantenimiento),  
+						Fgnu_Ten_Inc(tip_tension) ,  
+						Fgnu_Tip_Inc(tip_incidencia) ,  
+						Fgnu_Duracion_Str(f_deteccion,fec_resolucion),  
+						1 CL_DURACION ,  
+						F_Nombre_Instalacion2(SGD_INSTALACION.nom_instalacion,SGD_incidencia.dir_aviso,SGD_incidencia.alcance),   
+						fgci_nombre_ot(GI_OT.NRO_OT)
+FROM SGD_INSTALACION ,SGD_INCIDENCIA, GI_OT
+WHERE SGD_INCIDENCIA.OT = GI_OT.NRO_OT(+) AND SGD_INSTALACION.NRO_INSTALACION = SGD_INCIDENCIA.NRO_INST_AFECTADA AND SGD_INSTALACION.BDI_JOB = 0  
+						 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') >=  :ls_f_desde  
+						 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') <=  :ls_f_hasta   
+						 AND SGD_INCIDENCIA.EST_ACTUAL < 11   
+						 AND 	SGD_INCIDENCIA.NRO_INCIDENCIA IN ( SELECT SGD_INTERRUPCION_RS.NRO_INCIDENCIA FROM SGD_INTERRUPCION_RS WHERE   
+						  SGD_INTERRUPCION_RS.CABECERA_BT > 0  AND  
+						SGD_INTERRUPCION_RS.NRO_INSTALACION =   
+						(SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN FROM SGD_ACOMETIDA, ACO_SUM   
+						WHERE SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA 
+								AND SGD_ACOMETIDA.BDI_JOB = 0 AND ACO_SUM.NIS_RAD =:ll_nis_rad)
+						AND NVL(SGD_INTERRUPCION_RS.AFEC_PARCIAL,0) = DECODE(:li_afec_parcial, 0, NVL(SGD_INTERRUPCION_RS.AFEC_PARCIAL,0),0))   
+UNION 
+SELECT   
+						'  ',  
+						'  ',  
+						'  ',   
+						1,  
+						SGD_INCIDENCIA.F_DETECCION,  
+						SGD_INCIDENCIA.NRO_CENTRO,  
+						SGD_INCIDENCIA.NRO_CMD,  
+						SGD_INCIDENCIA.NRO_MESA,  
+						SGD_INCIDENCIA.POT_AFECTADA,  
+						SGD_INCIDENCIA.NRO_INST_AFECTADA,  
+						SGD_INCIDENCIA.POT_CONTRATADA,  
+						SGD_INCIDENCIA.CCLI_AFEC,  
+						SGD_INCIDENCIA.TIP_TENSION,  
+						SGD_INCIDENCIA.EST_ACTUAL,  
+						SGD_INCIDENCIA.ESTADO_MANTENIMIENTO,  
+						SGD_INCIDENCIA.H_DETECCION,  
+						SGD_INCIDENCIA.NRO_INCIDENCIA,  
+						SGD_INCIDENCIA.F_EST_RES,  
+						SGD_INCIDENCIA.TIP_INCIDENCIA,  
+						SGD_INCIDENCIA.ALCANCE,  
+						' ',  
+						SGD_INCIDENCIA.OBSERVACION,  
+						SGD_INCIDENCIA.FEC_RESOLUCION,  
+						SGD_INCIDENCIA.DIR_AVISO,  
+						SGD_INSTALACION.NOM_INSTALACION NOM_INSTALACION,  
+						SGD_INCIDENCIA.DESC_INCIDENCIA ,  
+						'  ',  
+						'  ',  
+						'  ',  
+						Fgnu_Est_Inc2(SGD_INCIDENCIA.EST_ACTUAL, SGD_INCIDENCIA.ALCANCE, SGD_INCIDENCIA.TIP_INCIDENCIA),
+						Fgnu_Est_Man(estado_mantenimiento),  
+						Fgnu_Ten_Inc(tip_tension) ,  
+						Fgnu_Tip_Inc(tip_incidencia) ,  
+						Fgnu_Duracion_Str(f_deteccion,fec_resolucion),  
+						1 CL_DURACION ,  
+						F_Nombre_Instalacion2(SGD_INSTALACION.nom_instalacion,SGD_incidencia.dir_aviso,SGD_incidencia.alcance),   
+						fgci_nombre_ot(GI_OT.NRO_OT)
+FROM SGD_INSTALACION ,SGD_INCIDENCIA, GI_OT, GI_AVISOS
+WHERE SGD_INCIDENCIA.OT = GI_OT.NRO_OT (+) AND SGD_INSTALACION.NRO_INSTALACION = SGD_INCIDENCIA.NRO_INST_AFECTADA AND SGD_INSTALACION.BDI_JOB = 0  
+	 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') >=  :ls_f_desde  
+	 AND TO_CHAR(SGD_incidencia.f_deteccion,'YYYYMMDD') <=  :ls_f_hasta
+	 AND SGD_INCIDENCIA.EST_ACTUAL < 11   
+	 AND GI_AVISOS.NRO_INCIDENCIA = SGD_INCIDENCIA.NRO_INCIDENCIA
+	 AND GI_AVISOS.IND_INC_MANUAL = 1
+	 AND GI_AVISOS.NIS_RAD = :ll_nis_rad
+	 AND SGD_INCIDENCIA.ALCANCE = fgnu_alcance_con_perdida
+
+" arguments=(("ls_f_desde", string),("ls_f_hasta", string),("ll_nis_rad", number),("li_afec_parcial", number)) )
+text(band=header alignment="2" text="TIP" border="6" color="0" x="2432" y="12" height="64" width="91" html.valueishtml="0"  name=compute_0033_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Detecci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="2542" y="12" height="64" width="512" html.valueishtml="0"  name=f_deteccion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n/Calle Afectada" border="6" color="0" x="1015" y="12" height="64" width="1019" html.valueishtml="0"  name=nombre_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="OP" border="6" color="0" x="2053" y="12" height="64" width="105" html.valueishtml="0"  name=compute_0030_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="MA" border="6" color="0" x="2176" y="12" height="64" width="96" html.valueishtml="0"  name=compute_0031_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Duraci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="3072" y="12" height="64" width="503" html.valueishtml="0"  name=compute_0034_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="P. Afec." border="6" color="0" x="3593" y="12" height="64" width="293" html.valueishtml="0"  name=pot_afectada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="C.Afec." border="6" color="0" x="3904" y="12" height="64" width="215" html.valueishtml="0"  name=ccli_afec_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Resoluci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="4137" y="12" height="64" width="512" html.valueishtml="0"  name=fec_resolucion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="TEN" border="6" color="0" x="2290" y="12" height="64" width="123" html.valueishtml="0"  name=compute_0032_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text=" Descripci$$HEX1$$f300$$ENDHEX$$n de la Incidencia" border="6" color="0" x="4667" y="12" height="64" width="2802" html.valueishtml="0"  name=desc_incidencia_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Brigada Encargada / Contrata" border="6" color="0" x="18" y="12" height="64" width="987" html.valueishtml="0"  name=nombre_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="128" x="2066" y="8" height="64" width="87" format="[general]" html.valueishtml="0"  name=compute_0030 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="128" x="2181" y="8" height="64" width="87" format="[general]" html.valueishtml="0"  name=compute_0031 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="128" x="2309" y="8" height="64" width="87" format="[general]" html.valueishtml="0"  name=compute_0032 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="128" x="2441" y="8" height="64" width="87" format="[general]" html.valueishtml="0"  name=compute_0033 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="8388608" x="2542" y="8" height="64" width="517" format="[shortdate] [time]" html.valueishtml="0"  name=f_deteccion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="8388608" x="3118" y="8" height="64" width="466" format="[general]" html.valueishtml="0"  name=compute_0034 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608" x="3584" y="8" height="64" width="302" format="[general]" html.valueishtml="0"  name=pot_afectada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="8388608" x="3904" y="8" height="64" width="210" format="[general]" html.valueishtml="0"  name=ccli_afec visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=23 alignment="2" tabsequence=32766 border="0" color="8388608" x="4137" y="8" height="64" width="517" format="[shortdate] [time]" html.valueishtml="0"  name=fec_resolucion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="8388608" x="4677" y="8" height="64" width="2747" format="[general]" html.valueishtml="0"  name=desc_incidencia visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="8388608" x="7438" y="8" height="64" width="32" format="[general]" html.valueishtml="0"  name=compute_0021 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="8388608" x="1010" y="8" height="64" width="1010" format="[general]" html.valueishtml="0"  name=nombre_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="8388608" x="14" y="8" height="64" width="983" format="[general]" html.valueishtml="0"  name=nombre visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

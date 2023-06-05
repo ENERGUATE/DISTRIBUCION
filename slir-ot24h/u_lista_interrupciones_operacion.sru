@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_lista_interrupciones_operacion.sru
+forward
+global type u_lista_interrupciones_operacion from u_gen_0000_lista
+end type
+end forward
+
+global type u_lista_interrupciones_operacion from u_gen_0000_lista
+int Width=3072
+int Height=772
+string DataObject="d_lista_interrupciones_operacion"
+end type
+global u_lista_interrupciones_operacion u_lista_interrupciones_operacion
+

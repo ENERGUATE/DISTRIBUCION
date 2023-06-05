@@ -1,0 +1,87 @@
+HA$PBExportHeader$dw_avisos_6.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=156 color="536870912" )
+detail(height=2000 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_aviso dbname="nro_aviso" )
+ column=(type=decimal(0) updatewhereclause=yes name=nis_rad dbname="gi_avisos.nis_rad" )
+ column=(type=char(134) updatewhereclause=yes name=cliente dbname="cliente" )
+ column=(type=char(32) updatewhereclause=yes name=peligro dbname="peligro" )
+ column=(type=char(32) updatewhereclause=yes name=cliente_importante dbname="cliente_importante" )
+ column=(type=datetime updatewhereclause=yes name=fecha_alta dbname="gi_avisos.fecha_alta" )
+ column=(type=datetime updatewhereclause=yes name=fecha_resolucion dbname="gi_avisos.fecha_resolucion" )
+ column=(type=datetime updatewhereclause=yes name=ultimo_aviso dbname="gi_avisos.ultimo_aviso" )
+ column=(type=char(15) updatewhereclause=yes name=telefono dbname="gi_avisos.telefono" )
+ column=(type=decimal(0) updatewhereclause=yes name=estado dbname="gi_avisos.estado" )
+ column=(type=char(500) updatewhereclause=yes name=obs_ot24 dbname="gi_avisos.obs_ot24" )
+ column=(type=char(2000) updatewhereclause=yes name=obs_cor dbname="gi_avisos.obs_cor" )
+ column=(type=char(30) updatewhereclause=yes name=departamento dbname="gi_avisos.departamento" )
+ column=(type=char(30) updatewhereclause=yes name=municipio dbname="gi_avisos.municipio" )
+ column=(type=char(30) updatewhereclause=yes name=localidad dbname="gi_avisos.localidad" )
+ column=(type=decimal(0) updatewhereclause=yes name=incidencia dbname="gi_avisos.incidencia" )
+ column=(type=char(287) updatewhereclause=yes name=direccion dbname="direccion" )
+ column=(type=decimal(0) updatewhereclause=yes name=llamadas dbname="gi_avisos.llamadas" )
+ retrieve="SELECT /*+ RULE*/NRO_AVISO,
+	   NIS_RAD,
+	   NOMBRE||' '||ape1||' '||ape2 CLIENTE,
+	   DECODE (IND_PELIGRO,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Peligro,
+	   DECODE (IND_CLI_IMP,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Cliente_Importante,
+	   F_ALTA FECHA_ALTA,
+	   FECHA_RES FECHA_RESOLUCION,
+	   F_ULTIMO_AVISO ULTIMO_AVISO,
+	   TFNO_CLI TELEFONO,
+	   EST_AVISO ESTADO,
+	   OBS_TELEGESTIONES OBS_OT24,
+	   OBS_CMD OBS_COR,
+	   NOM_PROV DEPARTAMENTO,
+	   NOM_DEPTO MUNICIPIO,
+	   NOM_MUNIC LOCALIDAD,
+	   NRO_INCIDENCIA INCIDENCIA,
+	   NOM_CALLE || ' ' || NUM_PUERTA || DUPLICADOR || ' ' || NOM_LOC || ' ' || ESQUINA Direccion,
+      NRO_LLAMADAS LLAMADAS
+FROM GI_AVISOS
+WHERE NRO_AVISO=:AV" arguments=(("av", string)) )
+text(band=header alignment="0" text="AVISOS SGI"border="0" color="128" x="14" y="32" height="76" width="535"  font.face="Helvetica LT Std" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="9" y1="128" x2="3113" y2="128" pen.style="0" pen.width="5" pen.color="128"  background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Nis:"border="0" color="128" x="101" y="164" height="76" width="279"  name=nis_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Aviso:"border="0" color="128" x="101" y="64" height="76" width="279"  name=aviso_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Nombre:"border="0" color="128" x="101" y="280" height="76" width="279"  name=nombre_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Direccion:"border="0" color="128" x="101" y="384" height="152" width="279"  name=direccion_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="2" color="0" x="421" y="384" height="152" width="2629" format="[general]"  name=direccion editmask.useformat=yes editmask.mask="x" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Tel:"border="0" color="128" x="101" y="564" height="76" width="279"  name=tel_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="2" color="0" x="421" y="564" height="76" width="480" format="[general]"  name=telefono edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Llamadas:"border="0" color="128" x="1006" y="564" height="76" width="306"  name=llamadas_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="2" color="0" x="1349" y="564" height="76" width="320" format="[general]"  name=llamadas edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Peligro:"border="0" color="128" x="1714" y="564" height="76" width="215"  name=peligro_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="16777215" x="1943" y="564" height="76" width="110" format="[general]"  name=peligro edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=detail alignment="0" text="Cliente Importante:"border="0" color="128" x="2075" y="564" height="76" width="530"  name=cliente_importante_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="16777215" x="2629" y="564" height="76" width="119" format="[general]"  name=cliente_importante edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=detail alignment="0" text="Incidencia:"border="0" color="128" x="2345" y="172" height="76" width="320"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Estado:"border="0" color="128" x="2345" y="68" height="60" width="320"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="2" color="0" x="421" y="64" height="76" width="1376" format="[general]"  name=nro_aviso edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="2" color="0" x="421" y="184" height="76" width="1376" format="[general]"  name=nis_rad edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="2" color="0" x="421" y="288" height="76" width="2629" format="[general]"  name=cliente edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="2" color="0" x="2725" y="68" height="76" width="325" format="[general]"  name=estado edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="0" tabsequence=30 border="2" color="0" x="2725" y="172" height="76" width="325" format="[general]"  name=incidencia edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="2" color="0" x="539" y="1016" height="76" width="425" format="[general]"  name=departamento edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Municipio:"border="0" color="128" x="1001" y="1016" height="76" width="306"  name=municipio_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="2" color="0" x="1339" y="1016" height="76" width="713" format="[general]"  name=municipio edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Localidad:"border="0" color="128" x="2085" y="1016" height="76" width="279"  name=localidad_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="2" color="0" x="2382" y="968" height="124" width="718" format="[general]"  name=localidad editmask.useformat=yes editmask.mask="x" editmask.focusrectangle=no  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="OBS OT24:"border="0" color="128" x="96" y="1164" height="328" width="279"  name=obsot24_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=40 border="2" color="0" x="416" y="1164" height="328" width="2688" format=""  name=obs_ot24 edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.vscrollbar=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="OBS COR:"border="0" color="128" x="96" y="1524" height="428" width="279"  name=obscor_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=60 border="2" color="0" x="421" y="1540" height="400" width="2688" format=""  name=obs_cor edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.vscrollbar=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Departamento:"border="0" color="128" x="96" y="1016" height="76" width="416"  name=departamento_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha de Alta:"border="0" color="128" x="759" y="692" height="76" width="631"  name=ingreso_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="16777215" x="1417" y="692" height="76" width="750" format="[shortdate] [time]"  name=fecha_alta edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=detail alignment="0" text="Fecha de Resoluci$$HEX1$$f300$$ENDHEX$$n:"border="0" color="128" x="759" y="784" height="76" width="631"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15793151" )
+column(band=detail id=7 alignment="0" tabsequence=50 border="0" color="16777215" x="1417" y="784" height="76" width="750" format="[shortdate] [time]"  name=fecha_resolucion edit.limit=0 edit.case=any edit.autoselect=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="32768" )
+text(band=detail alignment="0" text="$$HEX1$$da00$$ENDHEX$$ltimo aviso:"border="0" color="128" x="759" y="876" height="76" width="631"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="16777215" x="1417" y="876" height="76" width="750" format="[shortdate] [time]"  name=ultimo_aviso edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+compute(band=footer alignment="0" expression="currentRow() + ~" de ~" + rowcount()"border="0" color="128" x="27" y="52" height="80" width="759" format="[general]"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="dw_avisos_6"border="0" color="0" x="2683" y="80" height="52" width="393"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=footer x1="32" y1="24" x2="3136" y2="24" pen.style="0" pen.width="5" pen.color="128"  background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

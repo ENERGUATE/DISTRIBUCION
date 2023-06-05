@@ -1,0 +1,26 @@
+HA$PBExportHeader$fg_registro_log.srf
+global type fg_registro_log from function_object
+end type
+
+forward prototypes
+global subroutine fg_registro_log (string cod_msg)
+end prototypes
+
+global subroutine fg_registro_log (string cod_msg);integer li_filenum
+
+li_filenum = fileopen("C:\SQL.LOG",LineMode!,Write!,LockReadWrite!,Append!)
+
+filewrite(li_filenum,"Fecha: " + String(Today( ), "dd/mm/yyyy hh:mm:ss"))
+filewrite(li_filenum,"Usuario/Clave: " + sqlca.logid + "/" + sqlca.logpass + "   DataBase/ServerName: " + sqlca.database + "/" + sqlca.servername)
+filewrite(li_filenum,"Codigo Error: " + string(sqlca.sqldbcode))
+filewrite(li_filenum,"Codigo de Mensaje: " + cod_msg)
+filewrite(li_filenum,sqlca.sqlerrtext)
+filewrite(li_filenum,"********")
+filewrite(li_filenum,"********")
+filewrite(li_filenum,"********")
+
+fileclose(li_filenum)
+
+
+end subroutine
+

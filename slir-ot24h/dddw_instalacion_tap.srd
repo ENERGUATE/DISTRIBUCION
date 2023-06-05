@@ -1,0 +1,18 @@
+HA$PBExportHeader$dddw_instalacion_tap.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(200) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion_at.nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="sgd_tap.nro_instalacion" )
+ retrieve="  SELECT ~"SGD_INSTALACION_AT~".~"NOM_INSTALACION~",   
+         ~"SGD_TAP~".~"NRO_INSTALACION~"  
+    FROM ~"SGD_TAP~",   
+         ~"SGD_INSTALACION_AT~"  
+	WHERE	 ~"SGD_TAP~".~"NRO_INSTALACION~" = ~"SGD_INSTALACION_AT~".~"NRO_INSTALACION~"  
+" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="32" y="4" height="60" width="645" format="[general]" html.valueishtml="0"  name=nom_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="686" y="4" height="60" width="645" format="[general]" html.valueishtml="0"  name=nro_instalacion visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

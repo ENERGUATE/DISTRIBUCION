@@ -1,0 +1,41 @@
+HA$PBExportHeader$d_man_2037_lista_sum_imp2.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=88 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=clientes_ape1_cli dbname="clientes.ape1_cli" )
+ column=(type=char(20) updatewhereclause=yes name=clientes_ape2_cli dbname="clientes.ape2_cli" )
+ column=(type=char(30) updatewhereclause=yes name=clientes_nom_cli dbname="clientes.nom_cli" )
+ column=(type=datetime updatewhereclause=yes name=suministros_imp_f_desde dbname="gi_suministros_imp.f_desde" )
+ column=(type=datetime updatewhereclause=yes name=suministros_imp_f_expiracion dbname="gi_suministros_imp.f_expiracion" )
+ column=(type=char(250) updatewhereclause=yes name=suministros_imp_observacion dbname="gi_suministros_imp.observacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nis_rad dbname="gi_suministros_imp.nis_rad" )
+ retrieve="  SELECT ~"CLIENTES~".~"APE1_CLI~",~"CLIENTES~".~"APE2_CLI~",~"CLIENTES~".~"NOM_CLI~",   
+         ~"GI_SUMINISTROS_IMP~".~"F_DESDE~",   
+         ~"GI_SUMINISTROS_IMP~".~"F_EXPIRACION~",   
+         ~"GI_SUMINISTROS_IMP~".~"OBSERVACION~",   
+         ~"GI_SUMINISTROS_IMP~".~"NIS_RAD~"  
+    FROM ~"CLIENTES~",   
+         ~"GI_SUMINISTROS_IMP~",   
+         ~"SGD_ACOMETIDA~",   
+         ~"ACO_SUM~"   
+    WHERE (~"GI_SUMINISTROS_IMP~".~"COD_CLI~"= ~"CLIENTES~".~"COD_CLI~" ) and  
+		   ( ~"ACO_SUM~".~"NIS_RAD~" = ~"GI_SUMINISTROS_IMP~".~"NIS_RAD~" ) and  
+         ( ~"SGD_ACOMETIDA~".~"CODIGO~" = ~"ACO_SUM~".~"NRO_ACOMETIDA~" ) and  
+         (~"SGD_ACOMETIDA~".~"INSTALACION_ORIGEN~"= :pdec_nro_inst ) and
+				SGD_ACOMETIDA.BDI_JOB = 0    
+   " retrieve.asneeded=yes arguments=(("pdec_nro_inst", number)) )
+text(band=header alignment="2" text="Cliente"border="6" color="0" x="18" y="4" height="64" width="1426"  name=clientes_ape1_cli_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Desde"border="6" color="0" x="1458" y="4" height="64" width="297"  name=suministros_imp_f_desde_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Hasta"border="6" color="0" x="1769" y="4" height="64" width="297"  name=suministros_imp_f_fin_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Expira"border="6" color="0" x="2080" y="4" height="64" width="297"  name=suministros_imp_f_expiracion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Observaciones"border="6" color="0" x="2391" y="4" height="64" width="1111"  name=suministros_imp_observacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="2391" y="4" height="64" width="1111" format="[general]"  name=suministros_imp_observacion edit.limit=32000 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="8388608" x="2085" y="4" height="64" width="283" format="[shortdate] [time]"  name=suministros_imp_f_expiracion editmask.mask="dd/mm/yyyy"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="8388608" x="1463" y="4" height="64" width="283" format="[shortdate] [time]"  name=suministros_imp_f_desde editmask.mask="dd/mm/yyyy"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="914" y="4" height="64" width="530" format="[general]"  name=clientes_nom_cli edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="475" y="4" height="64" width="421" format="[general]"  name=clientes_ape2_cli edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="0" y="4" height="64" width="457" format="[general]"  name=clientes_ape1_cli edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

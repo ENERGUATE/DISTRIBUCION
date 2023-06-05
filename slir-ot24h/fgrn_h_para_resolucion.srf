@@ -1,0 +1,72 @@
+HA$PBExportHeader$fgrn_h_para_resolucion.srf
+global type fgrn_h_para_resolucion from function_object
+end type
+
+forward prototypes
+global function boolean fgrn_h_para_resolucion (long pl_row, long pl_incidencia)
+end prototypes
+
+global function boolean fgrn_h_para_resolucion (long pl_row, long pl_incidencia);/////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fgrn_h_para_resolucion
+//
+// Objetivo: Verifica si es usuario de mantenimiento y Habilita 
+//           o Deshabilita para resoluci$$HEX1$$f300$$ENDHEX$$n.
+//
+// Ambito: Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//        Entrada: pl_row
+//        Salida:  --
+//
+// Devuelve:
+//
+// Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ----- 	-----------		---------
+//
+////////////////////////////////////////////////////////////////////
+ 
+w_2301_form_incidencia iw_contenedora
+
+iw_contenedora= gu_control_v_incidencias.of_busca_ventana(pl_incidencia,-1)
+
+if not isnull(iw_contenedora) then 
+
+IF (fgnu_auto_der_mant()) THEN
+	Return True
+ELSE
+	//Si es usuario de mantenimiento
+	//Si es fila 5	y resuelve mantenimiento
+	IF pl_row=5					AND &
+		(gi_resuelve_mant<>0	AND &
+	 	NOT ISNULL(gi_resuelve_mant))	THEN
+		
+					//si selecciono material averiado 			 	   	
+		IF (gi_con_material_averiado<>0 	AND  &
+			NOT ISNULL(gi_con_material_averiado)) AND &
+			iw_contenedora.tab_1.ii_estado_oper = fgci_incidencia_servicio_repuesto THEN
+		
+			Return False		//Habilito
+		ELSE
+			Return True	//No habilito
+		END IF
+	ELSE
+		//en otra fila habilito
+		Return False
+	END IF
+	Return True
+END IF
+
+else
+return false
+end if
+//IF (gi_est_actual_mant=fgci_incidencia_mant_resuelta_mant() OR &
+//	gi_est_actual_mant= fgci_incidencia_mant_para_resolucion()$$HEX1$$a800$$ENDHEX$$) THEN
+//
+//	Return True
+//ELSE
+//
+//	Return False
+//END IF
+end function
+

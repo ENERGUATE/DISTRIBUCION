@@ -1,0 +1,79 @@
+HA$PBExportHeader$fg_etiqueta.srf
+global type fg_etiqueta from function_object
+end type
+
+forward prototypes
+global function string fg_etiqueta (long pi_codigo)
+end prototypes
+
+global function string fg_etiqueta (long pi_codigo);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_etiqueta
+// 
+// Objetivo: Retorna seg$$HEX1$$fa00$$ENDHEX$$n el c$$HEX1$$f300$$ENDHEX$$digo de entrada, la etiqueta correspondiente.
+//           
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada: pi_codigo
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	23/1/96		SAB			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//10 // titulos de grup box 
+//20 // Titulos de Ventanas
+//30 // Nombres de Campos
+//40 // Mensajes
+//
+CHOOSE CASE pi_codigo
+	CASE 1000001
+		
+			return  "Detecci$$HEX1$$f300$$ENDHEX$$n"
+		
+	
+	CASE 1000002
+		
+			return   "Per$$HEX1$$ed00$$ENDHEX$$odo"
+		
+	CASE 2000001
+		
+			return   "OPEN SGI - Consulta de Avisos"
+		
+	CASE 2000002
+
+			return  "OPEN SGI - Selecci$$HEX1$$f300$$ENDHEX$$n de Incidencias"
+	
+	CASE 2000003
+		
+			return   "OPEN SGI - Actualizaci$$HEX1$$f300$$ENDHEX$$n de Incidencias"
+		
+
+
+	CASE 2000004
+		
+			return      "OPEN SGI - Consulta de Incidencias"
+		
+	CASE 2000005
+		
+			return 		"OPEN SGI - Selecci$$HEX1$$f300$$ENDHEX$$n de Incidencias"
+		
+
+	CASE 2000006
+		
+			return   	"OPEN SGI - Actualizaci$$HEX1$$f300$$ENDHEX$$n de Incidencias"
+		
+
+	CASE ELSE
+			return  "ATENCION Titulo sin Codificar"
+
+END CHOOSE
+
+end function
+

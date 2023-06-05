@@ -1,0 +1,29 @@
+HA$PBExportHeader$d_lista_activos.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_instalacion dbname="sgd_disponibilidad.nro_instalacion" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=nombre dbname="sgd_disponibilidad.nombre" )
+ column=(type=decimal(0) updatewhereclause=yes name=disponibilidad_act dbname="sgd_disponibilidad.disponibilidad_act" )
+ column=(type=number updatewhereclause=yes name=enr dbname="enr" )
+ column=(type=decimal(0) updatewhereclause=yes name=operatividad dbname="sgd_disponibilidad.operatividad" values="S$$HEX2$$cd000900$$ENDHEX$$1/NO	0/" )
+ retrieve="  SELECT ~"SGD_DISPONIBILIDAD~".~"NRO_INSTALACION~",   
+         ~"SGD_DISPONIBILIDAD~".~"NOMBRE~",   
+         ~"SGD_DISPONIBILIDAD~".~"DISPONIBILIDAD_ACT~"  , 
+			fgci_calculo_enr(~"SGD_DISPONIBILIDAD~".~"NRO_INSTALACION~") as enr,
+			~"SGD_DISPONIBILIDAD~".~"ESTADO_OPERATIVIDAD~" as operatividad
+    FROM ~"SGD_DISPONIBILIDAD~"   
+" update="SGD_DISPONIBILIDAD" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Nombre" border="6" color="0" x="9" y="4" height="64" width="850" html.valueishtml="0"  name=nombre_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Disponibilidad" border="6" color="0" x="869" y="4" height="64" width="274" html.valueishtml="0"  name=disponibilidad_act_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="ENR" border="6" color="0" x="1152" y="4" height="64" width="142" html.valueishtml="0"  name=enr_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Operativo" border="6" color="0" x="1303" y="4" height="64" width="224" html.valueishtml="0"  name=operatividad_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="4" height="60" width="850" format="[general]" html.valueishtml="0"  name=nombre visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="8388608" x="869" y="4" height="60" width="274" format="[general]" html.valueishtml="0"  name=disponibilidad_act visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8388608" x="1152" y="4" height="60" width="142" format="[general]" html.valueishtml="0"  name=enr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="1303" y="4" height="60" width="224" format="[general]" html.valueishtml="0"  name=operatividad visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

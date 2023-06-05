@@ -1,0 +1,49 @@
+HA$PBExportHeader$fg_asignacion_ot.srf
+global type fg_asignacion_ot from function_object
+end type
+
+forward prototypes
+global function string fg_asignacion_ot (long pl_nro_aviso, long pl_nro_incidencia, decimal pdec_instalacion, string ps_direccion_aviso, string ps_desc_incidencia, string ps_nombre_instalacion)
+end prototypes
+
+global function string fg_asignacion_ot (long pl_nro_aviso, long pl_nro_incidencia, decimal pdec_instalacion, string ps_direccion_aviso, string ps_desc_incidencia, string ps_nombre_instalacion);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_asignacion_ot
+// 
+// Objetivo: Retorna el dato que cumpla que no sea nulo y distinto de cero.
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//	Entrada:  pl_nro_aviso, pl_nro_incidencia, pdec_instalacion, ps_direccion_aviso,
+//				 ps_desc_incidencia, ps_nombre_instalacion              
+//	Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	23/1/96		SAB			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+if not isnull(pl_nro_aviso ) and pl_nro_aviso <> 0 then
+	return ps_direccion_aviso
+end if
+
+if not isnull(pl_nro_incidencia ) and &
+	pl_nro_incidencia <> 0  AND &
+	pl_nro_incidencia <> 99 then
+
+	return ps_desc_incidencia
+end if
+
+
+if not isnull(pdec_instalacion ) and pdec_instalacion <> 0 then
+	return ps_nombre_instalacion
+end if
+
+return " " 
+end function
+

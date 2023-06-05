@@ -1,0 +1,11 @@
+HA$PBExportHeader$ddw_t_tramo.srd
+release 5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=1 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=89 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=descripcion dbname="sgd_valor.descripcion" )
+ column=(type=char(15) updatewhereclause=yes name=valor dbname="sgd_valor.valor" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sgd_valor~" ) COLUMN(NAME=~"sgd_valor.descripcion~") COLUMN(NAME=~"sgd_valor.valor~")WHERE(    EXP1 =~"~~~"SGD_VALOR~~~".~~~"CODIF~~~"~"   OP =~"=~"    EXP2 =~"'T_TR'~" ) ) ORDER(NAME=~"sgd_valor.descripcion~" ASC=yes ) "  sort="descripcion A " )
+column(band=detail id=1 alignment="0" tabsequence=20 border="0" color="0" x="14" y="4" height="77" width="645" format="[general]"  name=descripcion edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

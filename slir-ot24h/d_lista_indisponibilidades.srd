@@ -1,0 +1,61 @@
+HA$PBExportHeader$d_lista_indisponibilidades.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=88 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=24 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=nro_instalacion dbname="sgd_indisponibilidad.nro_instalacion" values="Ind. Comercial	1/Ind. Comercial	0" )
+ column=(type=char(200) updatewhereclause=yes name=nombre dbname="sgd_instalacion_at.nombre" )
+ column=(type=datetime updatewhereclause=yes key=yes name=f_alta dbname="sgd_indisponibilidad.f_alta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_reposicion_origen dbname="sgd_indisponibilidad.f_reposicion" )
+ column=(type=decimal(0) updatewhereclause=yes name=maniobra_apertura dbname="sgd_indisponibilidad.maniobra_apertura" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=maniobra_cierre dbname="sgd_indisponibilidad.maniobra_cierre" )
+ column=(type=char(50) updatewhereclause=yes name=entidad dbname="sgd_entidades.entidad" )
+ column=(type=decimal(0) updatewhereclause=yes name=class_id dbname="sgd_indisponibilidad.class_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=tip_interrupcion dbname="sgd_indisponibilidad.tip_interrupcion" values="Ind. Comercial	1/Ind. Comercial	0" )
+ column=(type=char(1) updatewhereclause=yes name=modificado dbname="modificado" )
+ column=(type=datetime updatewhereclause=yes key=yes name=f_actual dbname="sgd_indisponibilidad.f_actual" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_indisponibilidad_manual dbname="sgd_indisponibilidad.manual" )
+ retrieve="  SELECT ~"SGD_INDISPONIBILIDAD~".~"NRO_INSTALACION~",
+			~"SGD_INSTALACION_AT~".~"NOM_INSTALACION~" AS NOMBRE,   
+         ~"SGD_INDISPONIBILIDAD~".~"F_ALTA~",   
+         ~"SGD_INDISPONIBILIDAD~".~"F_REPOSICION~",   
+         ~"SGD_INDISPONIBILIDAD~".~"MANIOBRA_APERTURA~",   
+         ~"SGD_INDISPONIBILIDAD~".~"MANIOBRA_CIERRE~",   
+         ~"SGD_ENTIDADES~".~"ENTIDAD~",   
+         ~"SGD_INDISPONIBILIDAD~".~"CLASS_ID~",   
+         ~"SGD_INDISPONIBILIDAD~".~"TIP_INTERRUPCION~",   
+         '0' MODIFICADO,   
+         ~"SGD_INDISPONIBILIDAD~".~"F_ACTUAL~",   
+         ~"SGD_INDISPONIBILIDAD~".~"MANUAL~"  
+    FROM ~"SGD_INDISPONIBILIDAD~",   
+         ~"SGD_ENTIDADES~" ,
+			~"SGD_INSTALACION_AT~"
+   WHERE (( ~"SGD_INDISPONIBILIDAD~".~"CLASS_ID~" = ~"SGD_ENTIDADES~".~"CLASS_ID~" ) OR 
+         ( ~"SGD_INDISPONIBILIDAD~".~"CLASS_ID~" = ~"SGD_ENTIDADES~".~"CLASS_ID_ESQ~" ))
+	  AND ( ~"SGD_INDISPONIBILIDAD~".~"NRO_INSTALACION~" = ~"SGD_INSTALACION_AT~".~"NRO_INSTALACION~" ) 
+	  AND ( ~"SGD_INSTALACION_AT~".~"BDI_JOB~" = 0 ) 
+     AND ( ~"SGD_INDISPONIBILIDAD~".~"NRO_INCIDENCIA~" = :pl_nro_incidencia )  
+ORDER BY ~"SGD_INDISPONIBILIDAD~".~"NRO_INSTALACION~",
+			~"SGD_INDISPONIBILIDAD~".~"F_ALTA~",   
+         ~"SGD_INDISPONIBILIDAD~".~"F_ACTUAL~"
+" update="SGD_INDISPONIBILIDAD" updatewhere=0 updatekeyinplace=no arguments=(("pl_nro_incidencia", number)) )
+text(band=header alignment="2" text="Ind. Comercial" border="6" color="33554432" x="14" y="12" height="64" width="475" html.valueishtml="0"  name=tip_interrupcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tipo Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="33554432" x="507" y="12" height="64" width="837" html.valueishtml="0"  name=entidad_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha Alta" border="6" color="33554432" x="2551" y="12" height="64" width="535" html.valueishtml="0"  name=f_alta_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha Reposici$$HEX1$$f300$$ENDHEX$$n" border="6" color="33554432" x="3104" y="12" height="64" width="727" html.valueishtml="0"  name=f_reposicion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Maniobra Apertura" border="6" color="33554432" x="3849" y="12" height="64" width="663" html.valueishtml="0"  name=maniobra_apertura_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Maniobra Cierre" border="6" color="33554432" x="4530" y="12" height="64" width="576" html.valueishtml="0"  name=maniobra_cierre_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nombre Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="33554432" x="1362" y="12" height="64" width="1170" html.valueishtml="0"  name=nombre_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=10 border="0" color="0" x="14" y="12" height="64" width="475" format="[general]" html.valueishtml="0"  name=tip_interrupcion visible="1" checkbox.text="Ind. Comercial" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="503" y="12" height="64" width="837" format="[general]" html.valueishtml="0"  name=entidad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2546" y="12" height="64" width="535" format="[shortdate] [time]" html.valueishtml="0"  name=f_alta visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="3104" y="8" height="64" width="617" format="[shortdate] [time]" html.valueishtml="0"  name=f_reposicion visible="1" edit.name="DD/MM/YYYY HH:MM:SS" editmask.spin=yes editmask.mask="DD/MM/YYYY HH:MM:SS" editmask.imemode=0 editmask.spinincr=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+button(band=detail text="->"filename=""action="0" border="0" color="0~tif(  sgd_indisponibilidad_manual = 0, 16777215, 0 )" x="3739" y="4" height="72" width="91" vtextalign="0" htextalign="0"  name=cb_fechas  tag="boton" pointer="" visible="1"  hidesnaked=1  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="3854" y="8" height="72" width="658" format="[general]" html.valueishtml="0"  name=maniobra_apertura visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="0" x="4530" y="8" height="72" width="571" format="[general]" html.valueishtml="0"  name=maniobra_cierre visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1358" y="12" height="64" width="1170" format="[general]" html.valueishtml="0"  name=nombre visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=footer alignment="2" text="text" border="6" color="33554432" x="1755" y="312" height="52" width="114" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,48 @@
+HA$PBExportHeader$dw_ot24h2.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=72 color="536870912" )
+detail(height=88 color="553648127~tIF(MOD(GETROW(),2)=0,rgb(255,255,255),RGB(197,217,241))" )
+table(column=(type=char(3) updatewhereclause=yes name=registro_tipo dbname="registro.tipo" )
+ column=(type=datetime updatewhereclause=yes name=registro_fecha_alta dbname="registro.fecha_alta" )
+ column=(type=char(200) updatewhereclause=yes name=registro_nom_causa dbname="registro.nom_causa" )
+ column=(type=char(100) updatewhereclause=yes name=registro_geo_nom_local dbname="registro_geo.nom_local" )
+ column=(type=char(100) updatewhereclause=yes name=registro_geo_nom_munic dbname="registro_geo.nom_munic" )
+ column=(type=char(100) updatewhereclause=yes name=registro_geo_nom_depto dbname="registro_geo.nom_depto" )
+ column=(type=char(100) updatewhereclause=yes name=registro_geo_nom_region dbname="registro_geo.nom_region" )
+ retrieve="select r1.tipo,
+	   r1.fecha_alta,
+	   r1.nom_causa,
+	   r2.nom_local,
+	   r2.nom_munic,
+	   r2.nom_depto,
+	   r2.nom_region  	   
+from registro r1,
+	 registro_geo r2
+where r1.id=r2.ID
+and r1.tipo=r2.tipo
+and r1.seq=r2.seq
+and to_char(fecha_alta,'dd/mm/yyyy') = to_char(sysdate,'dd/mm/yyyy')
+and r2.nom_region not like '%FICTICIA%'
+order by r1.fecha_alta desc
+" )
+text(band=header alignment="2" text="Tipo"border="0" color="8388608" x="9" y="8" height="116" width="206"  name=registro_tipo_t  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Fecha"border="0" color="8388608" x="229" y="4" height="116" width="759"  name=registro_fecha_alta_t  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Causa"border="0" color="8388608" x="997" y="8" height="116" width="1143"  name=registro_nom_causa_t  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Localidad"border="0" color="8388608" x="2149" y="8" height="116" width="987"  name=registro_geo_nom_local_t  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Municipio"border="0" color="8388608" x="3145" y="8" height="116" width="901"  name=registro_geo_nom_munic_t  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Departamento"border="0" color="8388608" x="4055" y="8" height="116" width="731"  name=registro_geo_nom_depto_t  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Regi$$HEX1$$f300$$ENDHEX$$n"border="0" color="8388608" x="4795" y="8" height="116" width="549"  name=registro_geo_nom_region_t  font.face="Calibri" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="72" width="206" format="[general]"  name=registro_tipo edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="229" y="8" height="72" width="759" format="[shortdate] [time]"  name=registro_fecha_alta edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="997" y="8" height="72" width="1143" format="[general]"  name=registro_nom_causa edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2149" y="8" height="72" width="987" format="[general]"  name=registro_geo_nom_local edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="3145" y="8" height="72" width="901" format="[general]"  name=registro_geo_nom_munic edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="4055" y="8" height="72" width="731" format="[general]"  name=registro_geo_nom_depto edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4795" y="8" height="72" width="549" format="[general]"  name=registro_geo_nom_region edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="~"Registros: ~"+ currentRow() + ~"/~" + rowcount()"border="0" color="8388608" x="229" y="8" height="60" width="759" format="[general]"  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+compute(band=footer alignment="0" expression="~"Volumen: ~" + ROUND(rowcount() / (hour(now()) +0.1),0) + ~" registros por hora~""border="0" color="8388608" x="997" y="8" height="60" width="1143" format="[general]"  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+compute(band=footer alignment="0" expression="~"Avisos de Falta de energ$$HEX1$$ed00$$ENDHEX$$a: ~"+ SUM(case(  registro_nom_causa  when ~"FALTA DE ENERGIA~" then 1 when ~"SUMINISTRO SIN ENERGIA OT24H~" then 1) FOR ALL) + ~"(~" + round((SUM(case(  registro_nom_causa  when ~"FALTA DE ENERGIA~" then 1 when ~"SUMINISTRO SIN ENERGIA OT24H~" then 1) FOR ALL) / (rowcount() + 1) ) * 100,0) + ~"%)~""border="0" color="8388608" x="2149" y="8" height="60" width="987" format="[general]"  font.face="Calibri" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,38 @@
+HA$PBExportHeader$fg_ident_geo.srf
+global type fg_ident_geo from function_object
+end type
+
+forward prototypes
+global function string fg_ident_geo (readonly string arg_valor)
+end prototypes
+
+global function string fg_ident_geo (readonly string arg_valor);///////////////////////////////////////////////////////
+//										
+// Funcion/Evento: fg_ident_geo
+// 
+// Objetivo: Obtiene la descripci$$HEX1$$f300$$ENDHEX$$n de la localidades
+// Responsable: JHC
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: string arg_valor
+//		Salida : ---
+//
+// Devuelve: string
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------	    -----------   ---------
+// 19/09/2000   JHC
+//
+///////////////////////////////////////////////////////
+string ls_descripcion
+  
+  SELECT "SGD_VALOR"."DESCRIPCION"  
+    INTO :ls_descripcion  
+    FROM "SGD_VALOR"  
+   WHERE ( "SGD_VALOR"."CODIF" = 'IDG' ) AND  
+         ( "SGD_VALOR"."VALOR" = :arg_valor )   ;
+
+return ls_descripcion
+
+end function
+

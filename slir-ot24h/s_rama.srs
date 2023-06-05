@@ -1,0 +1,6 @@
+HA$PBExportHeader$s_rama.srs
+global type s_rama from structure
+	long		codigo
+	long		fila
+end type
+

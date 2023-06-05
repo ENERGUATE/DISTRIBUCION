@@ -1,0 +1,55 @@
+HA$PBExportHeader$fg_perfil_acceso.srf
+global type fg_perfil_acceso from function_object
+end type
+
+forward prototypes
+global function integer fg_perfil_acceso (integer pi_perfil, string ps_opcion)
+end prototypes
+
+global function integer fg_perfil_acceso (integer pi_perfil, string ps_opcion);////////////////////////////////////////////////
+////
+////	Funcion : fg_perfil_acceso
+////	
+////	Retorna un codigo de acceso a una opcion de la aplicacion
+////	pasada como parametro para un perfil determinado
+////	Los tipos de acceso son
+////
+////        fgci_sin_acceso = 1
+////        fgci_acceso_consulta = 2
+////        fgci_acceso_puesto = 3
+////        fgci_acceso_CMD = 4
+////        fgci_acceso_zona = 5
+////        fgci_acceso_media_tension = 6
+////        fgci_acceso_baja_tension = 7
+////
+////	Retorna 0 si no encontro el registro en la dw, lo que implica que tiene acceso
+////
+////	Autor		Fecha				Actuacion
+////--------	-------			--------------
+////	AFE		14/10/1999		Creacion
+/////////////////////////////////////////////////////////
+//
+//// Definicion de variables
+//long ll_fila, ll_total_filas
+//int li_tipo_acceso
+//string ls_condicion
+//
+//// Inicio del codigo
+//
+//// Busco la fila en la dw que tiene las opciones para cada perfil
+//ll_total_filas = w_operaciones.ids_opciones_perfil.RowCount()
+//ls_condicion = "perfil=" + string(pi_perfil) + " and opcion='" + ps_opcion + "'"
+//ll_fila = w_operaciones.ids_opciones_perfil.Find(ls_condicion, 1, ll_total_filas)
+//
+//IF ll_fila < 0 THEN 
+//	li_tipo_acceso = -1
+//ELSEIF ll_fila = 0 THEN
+//	li_tipo_acceso = fgci_sin_acceso 
+//ELSE 
+//	li_tipo_acceso = w_operaciones.ids_opciones_perfil.Object.acceso[ll_fila]
+//END IF
+//
+//Return li_tipo_acceso
+return 0
+end function
+

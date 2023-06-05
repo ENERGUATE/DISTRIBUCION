@@ -1,0 +1,255 @@
+HA$PBExportHeader$md_ing_avisos.srm
+forward
+global type md_ing_avisos from m_recepcion_de_avisos
+end type
+type m_-11 from menu within m_editar
+end type
+type m_porreferencia from menu within m_editar
+end type
+end forward
+
+global type md_ing_avisos from m_recepcion_de_avisos
+end type
+global md_ing_avisos md_ing_avisos
+
+on md_ing_avisos.create
+md_ing_avisos=this
+call super::create
+end on
+
+on md_ing_avisos.destroy
+call super::destroy
+end on
+
+on m_agregar::clicked;call m_recepcion_de_avisos`m_agregar::clicked;//
+w_1201_recepcion_aviso.TriggerEvent("ue_nuevo")
+end on
+
+on m_agregar.create
+call super::create
+this.ToolBarItemText="Nuevo"
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_cerrar.create
+call super::create
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_grabar::clicked;call m_recepcion_de_avisos`m_grabar::clicked;w_1201_recepcion_aviso.TriggerEvent("ue_grabar")
+end on
+
+on m_grabar.create
+call super::create
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_seleccionarimpresora.create
+call super::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_preferencias.create
+call super::create
+this.Visible=true
+end on
+
+on m_salir.create
+call super::create
+this.Enabled=false
+end on
+
+type m_editar from m_recepcion_de_avisos`m_editar within md_ing_avisos
+m_-11 m_-11
+m_porreferencia m_porreferencia
+end type
+
+on m_editar.create
+call super::create
+this.m_-11=create m_-11
+this.m_porreferencia=create m_porreferencia
+this.Item[UpperBound(this.item)+1]=this.m_-11
+this.Item[UpperBound(this.item)+1]=this.m_porreferencia
+end on
+
+on m_editar.destroy
+call super::destroy
+destroy(this.m_-11)
+destroy(this.m_porreferencia)
+end on
+
+on m_deshacer::clicked;call m_recepcion_de_avisos`m_deshacer::clicked;w_1201_recepcion_aviso.TriggerEvent("ue_nuevo")
+end on
+
+on m_deshacer.create
+call super::create
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_-8.create
+call super::create
+this.Visible=false
+end on
+
+on m_iralcomienzo.create
+call super::create
+this.Visible=false
+end on
+
+on m_iralfinal.create
+call super::create
+this.Visible=false
+end on
+
+on m_consultas.create
+call super::create
+this.Visible=false
+this.Enabled=false
+end on
+
+event m_avisos::clicked;//
+end event
+
+on m_avisos.create
+call super::create
+this.Text="&Avisos"
+this.Shortcut=0
+end on
+
+on m_pendientes.create
+call super::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+event m_pendientes::clicked;//
+end event
+
+on m_resueltos.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+event m_resueltos::clicked;//
+end event
+
+on m_estadisticasdeavisos.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+event m_estadisticasdeavisos::clicked;//
+end event
+
+on m_pendientesintervalohorario.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+event m_pendientesintervalohorario::clicked;//
+end event
+
+event m_incidencias::clicked;//
+end event
+
+on m_incidencias.create
+call super::create
+this.Text="&Incidencias"
+this.Shortcut=0
+end on
+
+on m_porcliente2.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+event m_porcliente2::clicked;//
+end event
+
+on m_cortesprogramados.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+event m_cortesprogramados::clicked;//
+end event
+
+on m_cargadetrabajoporzona.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+event m_cargadetrabajoporzona::clicked;//
+end event
+
+on m_controldetrabajo.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+event m_controldetrabajo::clicked;//
+end event
+
+on m_situacionclimatologica.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+event m_situacionclimatologica::clicked;//
+end event
+
+on m_infdelcliente.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+event m_infdelcliente::clicked;//
+end event
+
+on m_cascada.create
+call super::create
+this.Enabled=true
+end on
+
+on m_mosaico.create
+call super::create
+this.Enabled=true
+end on
+
+on m_organizar.create
+call super::create
+this.Enabled=true
+end on
+
+type m_-11 from menu within m_editar
+end type
+
+on m_-11.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_porreferencia from menu within m_editar
+end type
+
+event clicked;//IF This.Checked THEN
+//	This.Checked = False
+//	w_1201_recepcion_aviso.ib_calle = True
+//ELSE
+//	This.Checked = True
+//	w_1201_recepcion_aviso.ib_calle = False	
+//END IF
+end event
+
+on m_porreferencia.create
+this.Text="Por Referencia~tCtrl+R"
+this.Visible=false
+this.Enabled=false
+this.Shortcut=338
+end on
+

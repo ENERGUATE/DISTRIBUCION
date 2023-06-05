@@ -1,0 +1,1032 @@
+HA$PBExportHeader$md_reportes_mensuales.srm
+forward
+global type md_reportes_mensuales from menu
+end type
+type m_archivo from menu within md_reportes_mensuales
+end type
+type m_agregar from menu within m_archivo
+end type
+type m_eliminar from menu within m_archivo
+end type
+type m_cerrar from menu within m_archivo
+end type
+type m_- from menu within m_archivo
+end type
+type m_grabar from menu within m_archivo
+end type
+type m_exportarinformeaexcel from menu within m_archivo
+end type
+type m_-1 from menu within m_archivo
+end type
+type m_seleccionarimpresora from menu within m_archivo
+end type
+type m_presentacionpreliminar from menu within m_archivo
+end type
+type m_imprimir from menu within m_archivo
+end type
+type m_-2 from menu within m_archivo
+end type
+type m_preferencias from menu within m_archivo
+end type
+type m_-3 from menu within m_archivo
+end type
+type m_salir from menu within m_archivo
+end type
+type m_archivo from menu within md_reportes_mensuales
+m_agregar m_agregar
+m_eliminar m_eliminar
+m_cerrar m_cerrar
+m_- m_-
+m_grabar m_grabar
+m_exportarinformeaexcel m_exportarinformeaexcel
+m_-1 m_-1
+m_seleccionarimpresora m_seleccionarimpresora
+m_presentacionpreliminar m_presentacionpreliminar
+m_imprimir m_imprimir
+m_-2 m_-2
+m_preferencias m_preferencias
+m_-3 m_-3
+m_salir m_salir
+end type
+type m_editar from menu within md_reportes_mensuales
+end type
+type m_deshacer from menu within m_editar
+end type
+type m_-7 from menu within m_editar
+end type
+type m_cortar from menu within m_editar
+end type
+type m_copiar from menu within m_editar
+end type
+type m_pegar from menu within m_editar
+end type
+type m_-8 from menu within m_editar
+end type
+type m_iralcomienzo from menu within m_editar
+end type
+type m_iralfinal from menu within m_editar
+end type
+type m_buscar from menu within m_editar
+end type
+type m_editar from menu within md_reportes_mensuales
+m_deshacer m_deshacer
+m_-7 m_-7
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-8 m_-8
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+m_buscar m_buscar
+end type
+type m_ventana from menu within md_reportes_mensuales
+end type
+type m_cascada from menu within m_ventana
+end type
+type m_mosaico from menu within m_ventana
+end type
+type m_organizar from menu within m_ventana
+end type
+type m_ventana from menu within md_reportes_mensuales
+m_cascada m_cascada
+m_mosaico m_mosaico
+m_organizar m_organizar
+end type
+type m_56 from menu within md_reportes_mensuales
+end type
+type m_acercadelopensgi from menu within m_56
+end type
+type m_56 from menu within md_reportes_mensuales
+m_acercadelopensgi m_acercadelopensgi
+end type
+global type md_reportes_mensuales from menu
+m_archivo m_archivo
+m_editar m_editar
+m_ventana m_ventana
+m_56 m_56
+end type
+end forward
+
+shared variables
+
+end variables
+
+global type md_reportes_mensuales from menu
+m_archivo m_archivo
+m_editar m_editar
+m_ventana m_ventana
+m_56 m_56
+end type
+global md_reportes_mensuales md_reportes_mensuales
+
+type variables
+
+end variables
+
+forward prototypes
+public function integer f_habilitar (string ps_menu, boolean pb_estado)
+end prototypes
+
+public function integer f_habilitar (string ps_menu, boolean pb_estado);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  f_habilitar
+// 
+// Objetivo: Habilita e inhabilita las distintas opciones de men$$HEX2$$fa002000$$ENDHEX$$de 
+//	acuerdo a los par$$HEX1$$e100$$ENDHEX$$metros que recibe
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_menu (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_estado (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//		14/7/95		SAS		Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en archivo o en editar
+i_cant_menu = UpperBound(m_archivo.item[])
+ps_menu = Upper(ps_menu)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_archivo.item[i_aux].tag = ps_menu THEN
+		m_archivo.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+i_cant_menu = UpperBound(m_editar.item[])
+
+FOR i_aux = 1 TO i_cant_menu
+	IF m_editar.item[i_aux].tag = ps_menu THEN
+		m_editar.item[i_aux].enabled = pb_estado
+		RETURN 1
+	END IF
+NEXT
+
+
+RETURN -1
+end function
+
+on md_reportes_mensuales.create
+md_reportes_mensuales=this
+call super::create
+this.m_archivo=create m_archivo
+this.m_editar=create m_editar
+this.m_ventana=create m_ventana
+this.m_56=create m_56
+this.Item[UpperBound(this.Item)+1]=this.m_archivo
+this.Item[UpperBound(this.Item)+1]=this.m_editar
+this.Item[UpperBound(this.Item)+1]=this.m_ventana
+this.Item[UpperBound(this.Item)+1]=this.m_56
+end on
+
+on md_reportes_mensuales.destroy
+call super::destroy
+destroy(this.m_archivo)
+destroy(this.m_editar)
+destroy(this.m_ventana)
+destroy(this.m_56)
+end on
+
+type m_archivo from menu within md_reportes_mensuales
+m_agregar m_agregar
+m_eliminar m_eliminar
+m_cerrar m_cerrar
+m_- m_-
+m_grabar m_grabar
+m_exportarinformeaexcel m_exportarinformeaexcel
+m_-1 m_-1
+m_seleccionarimpresora m_seleccionarimpresora
+m_presentacionpreliminar m_presentacionpreliminar
+m_imprimir m_imprimir
+m_-2 m_-2
+m_preferencias m_preferencias
+m_-3 m_-3
+m_salir m_salir
+end type
+
+on m_archivo.create
+call super::create
+this.text = "&Archivo"
+this.m_agregar=create m_agregar
+this.m_eliminar=create m_eliminar
+this.m_cerrar=create m_cerrar
+this.m_-=create m_-
+this.m_grabar=create m_grabar
+this.m_exportarinformeaexcel=create m_exportarinformeaexcel
+this.m_-1=create m_-1
+this.m_seleccionarimpresora=create m_seleccionarimpresora
+this.m_presentacionpreliminar=create m_presentacionpreliminar
+this.m_imprimir=create m_imprimir
+this.m_-2=create m_-2
+this.m_preferencias=create m_preferencias
+this.m_-3=create m_-3
+this.m_salir=create m_salir
+this.Item[UpperBound(this.Item)+1]=this.m_agregar
+this.Item[UpperBound(this.Item)+1]=this.m_eliminar
+this.Item[UpperBound(this.Item)+1]=this.m_cerrar
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_grabar
+this.Item[UpperBound(this.Item)+1]=this.m_exportarinformeaexcel
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_seleccionarimpresora
+this.Item[UpperBound(this.Item)+1]=this.m_presentacionpreliminar
+this.Item[UpperBound(this.Item)+1]=this.m_imprimir
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_preferencias
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_salir
+end on
+
+on m_archivo.destroy
+call super::destroy
+destroy(this.m_agregar)
+destroy(this.m_eliminar)
+destroy(this.m_cerrar)
+destroy(this.m_-)
+destroy(this.m_grabar)
+destroy(this.m_exportarinformeaexcel)
+destroy(this.m_-1)
+destroy(this.m_seleccionarimpresora)
+destroy(this.m_presentacionpreliminar)
+destroy(this.m_imprimir)
+destroy(this.m_-2)
+destroy(this.m_preferencias)
+destroy(this.m_-3)
+destroy(this.m_salir)
+end on
+
+type m_agregar from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Habilitar los campos correspondientes para el ingreso de un
+//		 		  nuevo elemento en la base de datos.
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+//SetPointer(HourGlass!)
+//
+//OpenSheet(w_1201_recepcion_aviso,w_prin,4,original!)
+//
+//
+////ParentWindow.TriggerEvent("ue_arch_agregar")
+end on
+
+on m_agregar.create
+call super::create
+this.tag = "AGREGAR"
+this.text = "&Agregar~tCtrl+A"
+this.enabled = false
+this.shortcut = 321
+this.microhelp = "Ingresar un Nuevo Avisos"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Insert!"
+this.toolbaritemtext = "Agregar"
+end on
+
+on m_agregar.destroy
+call super::destroy
+end on
+
+type m_eliminar from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Eliminar los datos seleccionados o desplegados de la 
+//				  base de datos
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+ParentWindow.TriggerEvent("ue_arch_eliminar")
+end on
+
+on m_eliminar.create
+call super::create
+this.tag = "ELIMINAR"
+this.text = "&Eliminar~tCtrl+E"
+this.enabled = false
+this.shortcut = 325
+this.microhelp = "Eliminar los datos en uso"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Custom094!"
+this.toolbaritemtext = "Eliminar"
+end on
+
+on m_eliminar.destroy
+call super::destroy
+end on
+
+type m_cerrar from menu within m_archivo
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Cierra la ventana activa. Triggea el CloseQuery
+//	
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  08/06/05		SGO		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+Close(ParentWindow)
+
+end event
+
+on m_cerrar.create
+call super::create
+this.tag = "CERRAR"
+this.text = "&Cerrar~tCtrl+F4"
+this.shortcut = 371
+this.microhelp = "Cerrar ventana actual"
+this.toolbaritemname = "RunWindow!"
+this.toolbaritemtext = "Cerrar"
+end on
+
+on m_cerrar.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_archivo
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_grabar from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Grabar en la base de datos las modificaciones realizadas 
+//				  por el usuario con los datos.
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+ParentWindow.TriggerEvent("ue_arch_grabar")
+end on
+
+on m_grabar.create
+call super::create
+this.tag = "GRABAR"
+this.text = "&Grabar~tCtrl+G"
+this.enabled = false
+this.shortcut = 327
+this.microhelp = "Grabar en la base de datos las modificaciones realizadas"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Update!"
+this.toolbaritemtext = "Grabar"
+end on
+
+on m_grabar.destroy
+call super::destroy
+end on
+
+type m_exportarinformeaexcel from menu within m_archivo
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Imprimir los datos desplegados en la ventana.
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//	08/06/2005		SGO			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+//////////////////////////////////////////////////////////////////////////
+
+ParentWindow.TriggerEvent("ue_exportar_excel")
+
+end event
+
+on m_exportarinformeaexcel.create
+call super::create
+this.text = "&Exportar Informe a Excel~tCtrl+E"
+this.shortcut = 325
+this.microhelp = "Guarda el informe generado en un fichero con formato Excel"
+this.toolbaritemname = "Query5!"
+this.toolbaritemdownname = "Exportar el informe"
+this.toolbaritemtext = "Exportar el informe"
+this.toolbaritemspace = 2
+end on
+
+on m_exportarinformeaexcel.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_archivo
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_seleccionarimpresora from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Llama al programa de seteo de impresora
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+PrintSetup()
+end on
+
+on m_seleccionarimpresora.create
+call super::create
+this.text = "Se&leccionar Impresora~tAlt+S"
+this.shortcut = 595
+this.microhelp = "Seleccionar una impresora y cambiar las especificaciones"
+this.toolbaritemname = "Print!"
+this.toolbaritemtext = "Seleccionar Impresora"
+end on
+
+on m_seleccionarimpresora.destroy
+call super::destroy
+end on
+
+type m_presentacionpreliminar from menu within m_archivo
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Mostrar de forma preliminar los datos desplegados en la ventana.
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//	08/06/2005		SGO			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+//////////////////////////////////////////////////////////////////////////
+
+ParentWindow.TriggerEvent("ue_mostrar_preliminar")
+
+end event
+
+on m_presentacionpreliminar.create
+call super::create
+this.visible = false
+this.text = "&Presentacion Preliminar~tCtrl+P"
+this.enabled = false
+this.shortcut = 336
+this.microhelp = "Presentacion preliminar del $$HEX1$$fa00$$ENDHEX$$ltimo informe generado"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Preview!"
+this.toolbaritemtext = "Presentacion del $$HEX1$$fa00$$ENDHEX$$ltimo informe"
+end on
+
+on m_presentacionpreliminar.destroy
+call super::destroy
+end on
+
+type m_imprimir from menu within m_archivo
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Imprimir los datos desplegados en la ventana.
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+ParentWindow.TriggerEvent("ue_arch_imprimir")
+end on
+
+on m_imprimir.create
+call super::create
+this.tag = "IMPRIMIR"
+this.text = "&Imprimir~tF5"
+this.shortcut = 116
+this.microhelp = "Imprimir"
+this.toolbaritemname = "Report!"
+this.toolbaritemtext = "Imprimir"
+end on
+
+on m_imprimir.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_archivo
+end type
+
+on m_-2.create
+call super::create
+this.visible = false
+this.text = "-"
+this.enabled = false
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_preferencias from menu within m_archivo
+end type
+
+on m_preferencias.create
+call super::create
+this.visible = false
+this.text = "&Preferencias"
+this.enabled = false
+this.microhelp = "Seleccionar Preferencia de Trabajo por defecto"
+this.toolbaritemvisible = false
+this.toolbaritemname = "SelectReturn!"
+this.toolbaritemtext = "Preferencia"
+end on
+
+on m_preferencias.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_archivo
+end type
+
+on m_-3.create
+call super::create
+this.visible = false
+this.text = "-"
+this.enabled = false
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_salir from menu within m_archivo
+end type
+
+event clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Salir de la aplicaci$$HEX1$$f300$$ENDHEX$$n
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  08/06/05		SGO		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+close(ParentWindow)
+
+end event
+
+on m_salir.create
+call super::create
+this.visible = false
+this.text = "&Salir~tAlt+F4"
+this.enabled = false
+this.shortcut = 627
+this.microhelp = "Salir del Sistema"
+this.toolbaritemtext = "Salir"
+end on
+
+on m_salir.destroy
+call super::destroy
+end on
+
+type m_editar from menu within md_reportes_mensuales
+m_deshacer m_deshacer
+m_-7 m_-7
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-8 m_-8
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+m_buscar m_buscar
+end type
+
+on m_editar.create
+call super::create
+this.text = "&Edici$$HEX1$$f300$$ENDHEX$$n"
+this.m_deshacer=create m_deshacer
+this.m_-7=create m_-7
+this.m_cortar=create m_cortar
+this.m_copiar=create m_copiar
+this.m_pegar=create m_pegar
+this.m_-8=create m_-8
+this.m_iralcomienzo=create m_iralcomienzo
+this.m_iralfinal=create m_iralfinal
+this.m_buscar=create m_buscar
+this.Item[UpperBound(this.Item)+1]=this.m_deshacer
+this.Item[UpperBound(this.Item)+1]=this.m_-7
+this.Item[UpperBound(this.Item)+1]=this.m_cortar
+this.Item[UpperBound(this.Item)+1]=this.m_copiar
+this.Item[UpperBound(this.Item)+1]=this.m_pegar
+this.Item[UpperBound(this.Item)+1]=this.m_-8
+this.Item[UpperBound(this.Item)+1]=this.m_iralcomienzo
+this.Item[UpperBound(this.Item)+1]=this.m_iralfinal
+this.Item[UpperBound(this.Item)+1]=this.m_buscar
+end on
+
+on m_editar.destroy
+call super::destroy
+destroy(this.m_deshacer)
+destroy(this.m_-7)
+destroy(this.m_cortar)
+destroy(this.m_copiar)
+destroy(this.m_pegar)
+destroy(this.m_-8)
+destroy(this.m_iralcomienzo)
+destroy(this.m_iralfinal)
+destroy(this.m_buscar)
+end on
+
+type m_deshacer from menu within m_editar
+end type
+
+on m_deshacer.create
+call super::create
+this.text = "&Deshacer~tCtrl+Z"
+this.enabled = false
+this.shortcut = 346
+this.microhelp = "Deshacer el $$HEX1$$fa00$$ENDHEX$$ltimo cambio realizado"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Undo!"
+this.toolbaritemtext = "Deshacer"
+this.toolbaritemspace = 3
+end on
+
+on m_deshacer.destroy
+call super::destroy
+end on
+
+type m_-7 from menu within m_editar
+end type
+
+on m_-7.create
+call super::create
+this.text = "-"
+end on
+
+on m_-7.destroy
+call super::destroy
+end on
+
+type m_cortar from menu within m_editar
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Mover el texto seleccionado al portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Cut()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Cut()
+End choose
+
+end on
+
+on m_cortar.create
+call super::create
+this.text = "&Cortar~tCtrl+X"
+this.enabled = false
+this.shortcut = 344
+this.microhelp = "Mover el texto seleccionado al porta-papeles "
+this.toolbaritemvisible = false
+this.toolbaritemname = "Cut!"
+this.toolbaritemtext = "Cortar"
+end on
+
+on m_cortar.destroy
+call super::destroy
+end on
+
+type m_copiar from menu within m_editar
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Copiar el texto seleccionado en el portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Copy()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Copy()
+End choose
+
+end on
+
+on m_copiar.create
+call super::create
+this.text = "C&opiar~tCtrl+C"
+this.enabled = false
+this.shortcut = 323
+this.microhelp = "Copiar"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Copy!"
+this.toolbaritemtext = "Copiar"
+end on
+
+on m_copiar.destroy
+call super::destroy
+end on
+
+type m_pegar from menu within m_editar
+end type
+
+on clicked;/////////////////////////////////////////////////////////////////////////
+//
+//  Objetivo: Insertar el texto del portapapeles
+//
+//  Hist$$HEX1$$f300$$ENDHEX$$rico de cambios:
+//
+//   Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+//   -----		-----------		---------
+//  26/6/95			E.G.F.		Versi$$HEX1$$f300$$ENDHEX$$n inicial
+//
+//////////////////////////////////////////////////////////////////////////
+
+GraphicObject	go_which_control
+DataWindow	dw_which
+SingleLineEdit sle_which
+
+go_which_control = GetFocus( ) 
+
+choose case	TypeOf(go_which_control)
+case DataWindow!
+	dw_which = go_which_control
+	dw_which.Paste()
+case SingleLineEdit!
+	sle_which = go_which_control
+	sle_which.Paste()
+End choose
+end on
+
+on m_pegar.create
+call super::create
+this.text = "&Pegar~tCtrl+V"
+this.enabled = false
+this.shortcut = 342
+this.microhelp = "Insertar el contenido del porta-papeles"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Paste!"
+this.toolbaritemtext = "Pegar"
+end on
+
+on m_pegar.destroy
+call super::destroy
+end on
+
+type m_-8 from menu within m_editar
+end type
+
+on m_-8.create
+call super::create
+this.text = "-"
+end on
+
+on m_-8.destroy
+call super::destroy
+end on
+
+type m_iralcomienzo from menu within m_editar
+end type
+
+on m_iralcomienzo.create
+call super::create
+this.text = "Ir al Co&mienzo~tCtrl+K"
+this.shortcut = 331
+this.microhelp = "Ir al primer dato en uso"
+this.toolbaritemname = "VCRFirst!"
+this.toolbaritemtext = "Comienzo"
+end on
+
+on m_iralcomienzo.destroy
+call super::destroy
+end on
+
+event clicked;parentwindow.triggerevent("ue_ir_comienzo")
+end event
+
+type m_iralfinal from menu within m_editar
+end type
+
+on m_iralfinal.create
+call super::create
+this.text = "Ir al &Final~tCtrl+J"
+this.shortcut = 330
+this.microhelp = "Ir al $$HEX1$$fa00$$ENDHEX$$ltimo dato en uso"
+this.toolbaritemname = "VCRLast!"
+this.toolbaritemtext = "Final"
+end on
+
+on m_iralfinal.destroy
+call super::destroy
+end on
+
+event clicked;parentwindow.triggerevent("ue_ir_final")
+end event
+
+type m_buscar from menu within m_editar
+end type
+
+on m_buscar.create
+call super::create
+this.text = "&Buscar~tCtrl+B"
+this.shortcut = 322
+this.microhelp = "Buscar informaci$$HEX1$$f300$$ENDHEX$$n por el Criterio Seleccionado"
+this.toolbaritemname = "Search!"
+this.toolbaritemtext = "Buscar"
+end on
+
+on m_buscar.destroy
+call super::destroy
+end on
+
+event clicked;parentwindow.triggerevent("ue_buscar")
+end event
+
+type m_ventana from menu within md_reportes_mensuales
+m_cascada m_cascada
+m_mosaico m_mosaico
+m_organizar m_organizar
+end type
+
+on m_ventana.create
+call super::create
+this.text = "&Ventana"
+this.m_cascada=create m_cascada
+this.m_mosaico=create m_mosaico
+this.m_organizar=create m_organizar
+this.Item[UpperBound(this.Item)+1]=this.m_cascada
+this.Item[UpperBound(this.Item)+1]=this.m_mosaico
+this.Item[UpperBound(this.Item)+1]=this.m_organizar
+end on
+
+on m_ventana.destroy
+call super::destroy
+destroy(this.m_cascada)
+destroy(this.m_mosaico)
+destroy(this.m_organizar)
+end on
+
+type m_cascada from menu within m_ventana
+end type
+
+on m_cascada.create
+call super::create
+this.text = "&Cascada"
+this.microhelp = "Ordenar las ventanas para que se sobrepongan"
+this.toolbaritemvisible = false
+end on
+
+on m_cascada.destroy
+call super::destroy
+end on
+
+type m_mosaico from menu within m_ventana
+end type
+
+on m_mosaico.create
+call super::create
+this.text = "&Mosaico"
+this.microhelp = "Ordenar las ventanas de modo que se vean todas"
+this.toolbaritemvisible = false
+end on
+
+on m_mosaico.destroy
+call super::destroy
+end on
+
+type m_organizar from menu within m_ventana
+end type
+
+on m_organizar.create
+call super::create
+this.text = "&Organizar"
+this.toolbaritemvisible = false
+end on
+
+on m_organizar.destroy
+call super::destroy
+end on
+
+type m_56 from menu within md_reportes_mensuales
+m_acercadelopensgi m_acercadelopensgi
+end type
+
+on m_56.create
+call super::create
+this.text = "A&yuda"
+this.m_acercadelopensgi=create m_acercadelopensgi
+this.Item[UpperBound(this.Item)+1]=this.m_acercadelopensgi
+end on
+
+on m_56.destroy
+call super::destroy
+destroy(this.m_acercadelopensgi)
+end on
+
+type m_acercadelopensgi from menu within m_56
+end type
+
+on clicked;//open(w_aco_sum)
+end on
+
+on m_acercadelopensgi.create
+call super::create
+this.text = "&Acerca del OPEN SGI"
+this.microhelp = "Mostrar la informacion de la licencia del OPEN SGI"
+this.toolbaritemvisible = false
+end on
+
+on m_acercadelopensgi.destroy
+call super::destroy
+end on
+

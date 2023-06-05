@@ -1,0 +1,15 @@
+HA$PBExportHeader$d_lista_interrupciones.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=f_alta dbname="sgd_interrupcion.f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="sgd_interrupcion.f_reposicion" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sgd_interrupcion~" ) COLUMN(NAME=~"sgd_interrupcion.f_alta~") COLUMN(NAME=~"sgd_interrupcion.f_reposicion~")WHERE(    EXP1 =~"~~~"SGD_INTERRUPCION~~~".~~~"NRO_INCIDENCIA~~~"~"   OP =~"=~"    EXP2 =~":nro_incidencia~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"SGD_INTERRUPCION~~~".~~~"NRO_INSTALACION~~~"~"   OP =~"=~"    EXP2 =~":nro_instalacion~" ) ) ORDER(NAME=~"sgd_interrupcion.f_alta~" ASC=yes ) ARG(NAME = ~"nro_incidencia~" TYPE = number)  ARG(NAME = ~"nro_instalacion~" TYPE = number) " arguments=(("nro_incidencia", number),("nro_instalacion", number)) )
+text(band=header alignment="2" text="Inicio Interrup"border="6" color="0" x="9" y="4" height="64" width="521"  name=f_alta_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fin Interrup"border="6" color="0" x="549" y="4" height="64" width="517"  name=f_reposicion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="0~tif(  isNull( f_reposicion ), rgb( 200, 0, 20),  rgb( 0, 128, 0))" x="18" y="4" height="56" width="498" format="[shortdate] [time]"  name=f_alta editmask.mask="dd/mm/yyyy hh:mm" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="0~tif(  isNull( f_reposicion ), rgb( 200, 0, 20),  rgb( 0, 128,0 ))" x="558" y="4" height="56" width="498" format="[shortdate] [time]"  name=f_reposicion visible="1~tif(  isNull( f_reposicion ), 0, 1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

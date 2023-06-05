@@ -1,0 +1,104 @@
+HA$PBExportHeader$fgrn_habilitar_estados_oper.srf
+global type fgrn_habilitar_estados_oper from function_object
+end type
+
+forward prototypes
+global function boolean fgrn_habilitar_estados_oper (long pl_row, long pl_incidencia)
+end prototypes
+
+global function boolean fgrn_habilitar_estados_oper (long pl_row, long pl_incidencia);/////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fgrn_habilitar_estados_oper
+//
+// Objetivo: Habilita o Deshabilita seg$$HEX1$$fa00$$ENDHEX$$n el estado
+//           de operaci$$HEX1$$f300$$ENDHEX$$n de incidencias.
+//
+// Ambito: Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//        Entrada: pl_row ,pi_estado_oper, pi_estado_mant
+//        Salida:  --
+//
+// Devuelve:
+//
+// Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ----- 	-----------		---------
+//
+////////////////////////////////////////////////////////////////////
+
+
+// Comentarios amistosos en el c$$HEX1$$f300$$ENDHEX$$digo: Odio a la persona que se le ocurri$$HEX2$$f3002000$$ENDHEX$$meter esta funci$$HEX1$$f300$$ENDHEX$$n dentro de la datawindows de 
+// Estados de incidencias. 
+
+boolean lb_estado_SR_habilitado
+w_2301_form_incidencia iw_contenedora
+int li_fila_estado_rs, li_fila_estado_sr
+
+iw_contenedora= gu_control_v_incidencias.of_busca_ventana(pl_incidencia,-1)
+
+if IsValid(iw_contenedora) then 
+
+	lb_estado_SR_habilitado=FALSE
+	
+	// and iw_contenedora.tab_1.ii_ind_act_grafica =0 ) &
+	IF (pl_row = iw_contenedora.tab_1.ii_incidencia_resuelta) & 
+		 or pl_row = iw_contenedora.tab_1. ii_incidencia_pte_pta_explotacion THEN
+
+		//estado operaciones
+		IF iw_contenedora.tab_1.ii_estado_oper = fgci_incidencia_servicio_repuesto  THEN
+			//AHM(02/11/2011)	Integraci$$HEX1$$f300$$ENDHEX$$n OSGI - OSGM
+			//AHM(26/04/2010) Problemas con la activaci$$HEX1$$f300$$ENDHEX$$n del estado resuelto
+			IF fg_valor_parametro('OCEN') = 1 OR gb_interfaseOSGM THEN
+				//Si resuelve mant NO Habilito RS
+				IF	gi_resuelve_mant = 1  THEN
+					Return TRUE			//NO Habilitado
+				ELSE
+					//Si NO fue derivada a mantenimiento Habilito 								
+					//estado mant
+					IF (ISNULL(gi_est_mant)) or gi_est_mant = 0 THEN
+						//RETURN FALSE		// Habilitado
+						IF pl_row = iw_contenedora.tab_1.ii_incidencia_pte_pta_explotacion THEN
+							return FALSE // Habilitado
+						ELSEIF pl_row = iw_contenedora.tab_1.ii_incidencia_resuelta &
+								and iw_contenedora.tab_1.ii_incidencia_pte_pta_explotacion = 0 THEN
+							return FALSE // Habilitado
+						ELSEIF pl_row = iw_contenedora.tab_1.ii_incidencia_resuelta &
+								and iw_contenedora.tab_1.ii_eliminar_pe = 1 THEN
+								Return (pl_row = iw_contenedora.tab_1.ii_incidencia_resuelta)
+						ELSE
+							return TRUE
+						END IF
+					ELSE
+						IF (gi_est_mant = fgci_incidencia_mant_para_resolucion) then
+							Return FALSE			//Habilitado
+						END IF
+					END IF
+				END IF
+			ELSE
+				
+				//Si no se ha activado OCEN
+				IF pl_row = iw_contenedora.tab_1.ii_incidencia_pte_pta_explotacion THEN
+					return FALSE // Habilitado
+				ELSEIF pl_row = iw_contenedora.tab_1.ii_incidencia_resuelta &
+						and iw_contenedora.tab_1.ii_incidencia_pte_pta_explotacion = 0 THEN
+					return FALSE // Habilitado
+				ELSEIF pl_row = iw_contenedora.tab_1.ii_incidencia_resuelta &
+						and iw_contenedora.tab_1.ii_eliminar_pe = 1 THEN
+						Return (pl_row = iw_contenedora.tab_1.ii_incidencia_resuelta)
+				ELSE
+					return TRUE
+				END IF
+			END IF
+		ELSEIF iw_contenedora.tab_1.ii_estado_oper = fgci_incidencia_pte_explotacion  THEN
+			Return (pl_row = iw_contenedora.tab_1.ii_incidencia_resuelta)	
+		END IF
+	
+	ELSE
+		RETURN TRUE		//No Habilitado
+	END IF
+END IF	
+
+Return True //No Habilitado
+
+end function
+

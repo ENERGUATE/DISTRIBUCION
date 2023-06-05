@@ -1,0 +1,31 @@
+HA$PBExportHeader$d_stn_cte_imrt_x_tycn.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=104 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=codigo_activo dbname="gi_indicadores_stn.codigo_activo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=anio dbname="gi_indicadores_stn.anio" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=mes dbname="gi_indicadores_stn.mes" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_indisp_mensual_tycn dbname="gi_indicadores_stn.ind_indisp_mensual_tycn" )
+ retrieve="  SELECT CODIGO_ACTIVO,   
+         ANIO,   
+         MES,   
+         IND_INDISP_MENSUAL_TYCN 
+    FROM GI_INDICADORES_STN
+   WHERE CODIGO_ACTIVO = :pl_codigo_activo
+		AND (  (ANIO = :pl_anio AND MES > 0 AND MES <= : pl_mes )
+			 or ((ANIO + 1)= :pl_anio  AND MES > :pl_mes AND MES  < 13))
+order by ANIO desc,   
+         MES desc" update="GI_INDICADORES_STN" updatewhere=1 updatekeyinplace=no arguments=(("pl_codigo_activo", number),("pl_anio", number),("pl_mes", number)) )
+text(band=header alignment="2" text="Codigo Activo" border="6" color="8388608" x="18" y="16" height="52" width="302" html.valueishtml="0"  name=codigo_activo_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anio" border="6" color="8388608" x="338" y="16" height="52" width="274" html.valueishtml="0"  name=anio_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mes" border="6" color="8388608" x="631" y="16" height="52" width="274" html.valueishtml="0"  name=mes_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ind Indisp Mensual Tycn" border="6" color="8388608" x="923" y="16" height="52" width="530" html.valueishtml="0"  name=ind_indisp_mensual_tycn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="5" color="8388608" x="18" y="16" height="72" width="274" format="[general]" html.valueishtml="0"  name=codigo_activo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="5" color="8388608" x="338" y="16" height="72" width="274" format="[general]" html.valueishtml="0"  name=anio visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="5" color="8388608" x="631" y="16" height="72" width="274" format="[general]" html.valueishtml="0"  name=mes visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="5" color="8388608" x="923" y="16" height="72" width="535" format="[general]" html.valueishtml="0"  name=ind_indisp_mensual_tycn visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

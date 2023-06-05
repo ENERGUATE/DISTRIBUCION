@@ -1,0 +1,14 @@
+HA$PBExportHeader$s_brigada_trab.srs
+global type s_brigada_trab from structure
+	string		gstr_usuario
+	datetime		gstr_f_actual
+	datetime		gstr_h_actual
+	string		gstr_programa
+	long		gstr_nro_brigada
+	long		gstr_nro_ot
+	datetime		gstr_f_alta
+	datetime		gstr_h_alta
+	datetime		gstr_f_fin
+	datetime		gstr_h_fin
+end type
+

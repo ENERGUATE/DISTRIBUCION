@@ -1,0 +1,39 @@
+HA$PBExportHeader$s_w_1234_consulta_incidencias.srs
+global type s_w_1234_consulta_incidencias from structure
+    string accion
+    integer perfil
+    integer centro
+    integer centro_hab
+    string centro_color
+    integer cmd
+    integer cmd_hab
+    string cmd_color
+    integer puesto
+    integer puesto_hab
+    string puesto_color
+    integer estado_operaciones
+    integer estado_operaciones_hab
+    string estado_operaciones_color
+    integer estado_mantenimiento
+    integer estado_mantenimiento_hab
+    string estado_mantenimiento_color
+    integer tipo_incidencia
+    integer tipo_incidencia_hab
+    string tipo_incidencia_color
+    integer tipo_tension
+    integer tipo_tension_hab
+    string tipo_tension_color
+    integer alcance
+    integer alcance_hab
+    string alcance_color
+    integer duracion_hab
+    integer duracion
+    string duracion_color
+    datetime desde
+    integer desde_hab
+    string desde_color
+    datetime hasta
+    integer hasta_hab
+    string hasta_color
+end type
+

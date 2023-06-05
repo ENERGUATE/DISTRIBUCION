@@ -1,0 +1,46 @@
+HA$PBExportHeader$fg_verifica_parametro.srf
+global type fg_verifica_parametro from function_object
+end type
+
+forward prototypes
+global function boolean fg_verifica_parametro (string arg_parametro)
+end prototypes
+
+global function boolean fg_verifica_parametro (string arg_parametro);//**************************************************************************//
+//                FUNCION PARA VERIFICAR SI UN PARAMETRO ESTA ACTIVO        //
+//**************************************************************************//
+
+String valor
+Int activado
+Boolean retorno
+
+retorno = FALSE
+
+
+
+
+SELECT GI_PARAMETROS_EXT.VALOR
+	INTO :valor
+	FROM GI_PARAMETROS_EXT
+	WHERE UPPER(GI_PARAMETROS_EXT.DESCRIPCION) = UPPER(:arg_parametro);
+	
+If SQLCA.sqlcode <> 0 Then
+	Return retorno
+End If
+
+
+SELECT GI_PARAMETROS.VALOR
+	INTO :activado
+	FROM GI_PARAMETROS
+	WHERE GI_PARAMETROS.COD_PARAMETRO = to_number(:valor);
+
+If SQLCA.sqlcode = 0 Then
+	If activado = 1 Then
+		retorno = TRUE
+	End If
+End If
+
+
+Return retorno
+end function
+

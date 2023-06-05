@@ -1,0 +1,19 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "bdg_ext.pbl" "";
+@end;
+@begin Objects
+ "d_bdg_alar_x_empr.srd" "bdg_ext.pbl";
+ "w_grafica_proyeccion.srw" "bdg_ext.pbl";
+ "f_tiempo_annio.srf" "bdg_ext.pbl";
+ "dw_arma_sql_oculto.srd" "bdg_ext.pbl";
+ "d_bdg_alarmas_x_empresa_cod.srd" "bdg_ext.pbl";
+ "fg_fecha_max.srf" "bdg_ext.pbl";
+ "d_grafica_proyeccion_grafica.srd" "bdg_ext.pbl";
+ "d_grafica_proyeccion_datos.srd" "bdg_ext.pbl";
+ "s_grafica_ratios.srs" "bdg_ext.pbl";
+ "d_bdg_alarmas_x_empresa.srd" "bdg_ext.pbl";
+ "w_lista_alarma_x_empresa.srw" "bdg_ext.pbl";
+ "w_mant_alarmas_x_empresa.srw" "bdg_ext.pbl";
+ "d_grafica_proyeccion_datos_oculto.srd" "bdg_ext.pbl";
+@end;

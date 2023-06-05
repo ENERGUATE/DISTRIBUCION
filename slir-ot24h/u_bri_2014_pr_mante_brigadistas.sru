@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_bri_2014_pr_mante_brigadistas.sru
+forward
+global type u_bri_2014_pr_mante_brigadistas from u_gen_0000_lista
+end type
+end forward
+
+global type u_bri_2014_pr_mante_brigadistas from u_gen_0000_lista
+int Width=2894
+int Height=1109
+string DataObject="d_bri_2014_mante_brigadistas"
+end type
+global u_bri_2014_pr_mante_brigadistas u_bri_2014_pr_mante_brigadistas
+

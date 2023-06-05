@@ -1,0 +1,99 @@
+HA$PBExportHeader$d_ins_2005_jerarq_interrup.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="sgd_instalacion.nro_instalacion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_inst_padre dbname="sgd_instalacion.nro_inst_padre" )
+ column=(type=decimal(5) updatewhereclause=yes name=potencia_afectada dbname="compute_0004" )
+ column=(type=decimal(5) updatewhereclause=yes name=de_tabla2 dbname="compute_0005" )
+ column=(type=decimal(0) updatewhereclause=yes name=co_nivel dbname="sgd_instalacion.co_nivel" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_line_4 dbname="compute_0007" )
+ column=(type=decimal(5) updatewhereclause=yes name=expandido dbname="compute_0008" )
+ column=(type=decimal(5) updatewhereclause=yes name=visible dbname="compute_0009" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_line_1 dbname="compute_0010" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_line_2 dbname="compute_0011" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_line_3 dbname="compute_0012" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_line_6 dbname="compute_0013" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_kw dbname="compute_0014" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_pot_afec dbname="compute_0015" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_marca dbname="compute_0016" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_marca2 dbname="compute_0017" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_marca3 dbname="compute_0018" )
+ column=(type=decimal(5) updatewhereclause=yes name=cant_cli_afec dbname="compute_0019" )
+ column=(type=decimal(5) updatewhereclause=yes name=pot_contr_afec dbname="compute_0020" )
+ column=(type=decimal(5) updatewhereclause=yes name=de_tabla dbname="compute_0021" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_duracion dbname="compute_0022" )
+ column=(type=decimal(5) updatewhereclause=yes name=v_line_5 dbname="compute_0023" )
+ column=(type=number updatewhereclause=yes name=rownum dbname="sgd_instalacion.rownum" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_centro dbname="sgd_instalacion.nro_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_cmd dbname="sgd_instalacion.nro_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_mesa dbname="sgd_instalacion.nro_mesa" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_instalacion dbname="sgd_instalacion.tipo_instalacion" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_instalada dbname="sgd_instalacion.pot_instalada" )
+ column=(type=decimal(0) updatewhereclause=yes name=cant_cli dbname="sgd_instalacion.cant_cli" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_contratada dbname="sgd_instalacion.pot_contratada" )
+ column=(type=datetime updatewhereclause=yes name=f_actual dbname="sgd_instalacion.f_actual" )
+ column=(type=datetime updatewhereclause=yes name=h_actual dbname="sgd_instalacion.h_actual" )
+ retrieve="SELECT ~"SGD_INSTALACION~".~"NRO_INSTALACION~",
+ ~"SGD_INSTALACION~".~"NOM_INSTALACION~",
+ ~"SGD_INSTALACION~".~"NRO_INST_PADRE~",
+ 1,	1,
+~"SGD_INSTALACION~".~"CO_NIVEL~" ,
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 , 1, 1, 1 , 1, 1, 1, 1,rownum ,
+	~"SGD_INSTALACION~".~"NRO_CENTRO~",
+~"SGD_INSTALACION~".~"NRO_CMD~",
+~"SGD_INSTALACION~".~"NRO_MESA~" ,
+~"SGD_INSTALACION~".~"TIPO_INSTALACION~" ,
+~"SGD_INSTALACION~".~"POT_INSTALADA~",
+ ~"SGD_INSTALACION~".~"CANT_CLI~",
+ ~"SGD_INSTALACION~".~"POT_CONTRATADA~",
+ ~"SGD_INSTALACION~".~"F_ACTUAL~" ,
+ ~"SGD_INSTALACION~".~"H_ACTUAL~" 
+FROM ~"SGD_INSTALACION~" 
+WHERE ~"SGD_INSTALACION~".~"CO_NIVEL~" <= :pi_hasta_nivel 
+START WITH SGD_INSTALACION.NRO_INSTALACION = :pdec_nro_inst AND SGD_INSTALACION.BDI_JOB = 0
+CONNECT BY PRIOR NRO_INSTALACION = NRO_INST_PADRE AND SGD_INSTALACION.BDI_JOB = 0
+" arguments=(("pdec_nro_inst", number),("pi_hasta_nivel", number)) )
+line(band=detail x1="2583" y1="164" x2="2583" y2="240"  name=linea3  tag="" visible="1~tIF ( v_line_3 = 1, 1, 0)" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=detail x1="2683" y1="164" x2="2683" y2="240"  name=linea4  tag="" visible="1~tIF (v_line_4=1, 1, 0)" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=detail x1="2784" y1="164" x2="2784" y2="240"  name=linea5  tag="" visible="1~tIF ( v_line_5 = 1, 1, 0)" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=detail x1="2880" y1="164" x2="2880" y2="240"  name=linea6  tag="" visible="1~tIF ( v_line_6 = 1, 1, 0)" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=detail x1="2382" y1="164" x2="2382" y2="240"  name=linea1  tag="" visible="1~tIF (v_line_1=1, 1, 0)" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=detail x1="2482" y1="164" x2="2482" y2="240"  name=linea2  tag="" visible="1~tIF ( v_line_2 = 1, 1, 0)" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8421376" x="2880" y="0" height="56" width="987" format="[general]"  name=nro_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8421376" x="3867" y="0" height="56" width="690" format="[general]"  name=nom_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8421376" x="4558" y="0" height="56" width="987" format="[general]"  name=nro_inst_padre edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8421376" x="5545" y="0" height="56" width="987" format="[general]"  name=co_nivel edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="8421376" x="6533" y="0" height="56" width="987" format="[general]"  name=rownum edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="8421376" x="7520" y="0" height="56" width="987" format="[general]"  name=nro_centro edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="8421376" x="8507" y="0" height="56" width="987" format="[general]"  name=nro_cmd edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="8421376" x="9495" y="0" height="56" width="987" format="[general]"  name=nro_mesa edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="8421376" x="10482" y="0" height="56" width="343" format="[general]"  name=tipo_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="8421376" x="10825" y="0" height="56" width="987" format="[general]"  name=pot_instalada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="8421376" x="11813" y="0" height="56" width="987" format="[general]"  name=cant_cli edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="8421376" x="12800" y="0" height="56" width="987" format="[general]"  name=pot_contratada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="8421376" x="13787" y="0" height="56" width="137" format="[shortdate] [time]"  name=f_actual edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="8421376" x="13925" y="0" height="56" width="137" format="[shortdate] [time]"  name=h_actual edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="/* bitmap( if ( tipo_instalacion  = 0 ,~"carp_ab2.BMP~",
+if ( tipo_instalacion  = 1 ,~"lineapri.BMP~", 
+ if ( tipo_instalacion  = 2, ~"segment1.BMP~",
+  if ( tipo_instalacion  = 3, ~"segment2.BMP~", 
+    if ( tipo_instalacion = 4 , ~"trtito1.BMP~",
+      if ( tipo_instalacion  = 5, ~"segment4.BMP~",
+        if ( tipo_instalacion = 6 , ~"segment5.BMP~",
+         if ( tipo_instalacion  = 7 , ~"segment6.BMP~",
+          if ( tipo_instalacion = 8 , ~"segment7.BMP~",
+           if ( tipo_instalacion  = 9 , ~"segment8.BMP~",
+ ~" ~") ))))))
+       ) ) ) )  */"border="2" color="0" x="32" y="4" height="64" width="73" format="[GENERAL]"  name=bitmap  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="kw"border="0" color="8421376" x="1568" y="8" height="56" width="69"  name=kw visible="1~tIF ( v_kw = 1, 1, 0)"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="X"border="0" color="128" x="1669" y="4" height="80" width="50"  name=con_interrup visible="1~tIF ( v_marca = 1, 1, 0)"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="T"border="0" color="128" x="1737" y="8" height="56" width="27"  name=con_interrup_padre visible="1~tIF ( v_marca2 = 1, 1, 0)"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="P"border="0" color="128" x="1792" y="8" height="56" width="27"  name=con_interrup_parcial visible="1~tIF ( v_marca3 = 1, 1, 0)"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="/* IF(isNull(f_repos_interrup) AND (f_alta_int > today()),'0m',fg_duracion_aviso_str(f_alta_int,f_repos_interrup)) */"border="0" color="16711680" x="1842" y="8" height="56" width="283" format="[GENERAL]"  name=duracion visible="1~tIF (v_duracion=1,1,0)"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="string( nom_instalacion) "border="0" color="0" x="219" y="8" height="56" width="1157" format="[GENERAL]"  name=descripcion  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8421376" x="1390" y="8" height="56" width="155" format="[general]"  name=potencia_afectada visible="1~tIF ( v_pot_afec = 1, 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

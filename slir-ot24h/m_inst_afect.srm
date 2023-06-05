@@ -1,0 +1,776 @@
+HA$PBExportHeader$m_inst_afect.srm
+forward
+global type m_inst_afect from menu
+end type
+type m_archivo from menu within m_inst_afect
+end type
+type m_agregar from menu within m_archivo
+end type
+type m_eliminar from menu within m_archivo
+end type
+type m_-1 from menu within m_archivo
+end type
+type m_- from menu within m_archivo
+end type
+type m_imprimir from menu within m_archivo
+end type
+type m_seleccionarimpresora from menu within m_archivo
+end type
+type m_-2 from menu within m_archivo
+end type
+type m_preferencias from menu within m_archivo
+end type
+type m_-5 from menu within m_archivo
+end type
+type m_cerrar from menu within m_archivo
+end type
+type m_archivo from menu within m_inst_afect
+m_agregar m_agregar
+m_eliminar m_eliminar
+m_-1 m_-1
+m_- m_-
+m_imprimir m_imprimir
+m_seleccionarimpresora m_seleccionarimpresora
+m_-2 m_-2
+m_preferencias m_preferencias
+m_-5 m_-5
+m_cerrar m_cerrar
+end type
+type m_edicin from menu within m_inst_afect
+end type
+type m_deshacer from menu within m_edicin
+end type
+type m_-3 from menu within m_edicin
+end type
+type m_cortar from menu within m_edicin
+end type
+type m_copiar from menu within m_edicin
+end type
+type m_pegar from menu within m_edicin
+end type
+type m_-4 from menu within m_edicin
+end type
+type m_iralcomienzo from menu within m_edicin
+end type
+type m_iralfinal from menu within m_edicin
+end type
+type m_buscar from menu within m_edicin
+end type
+type m_seleccionartodo from menu within m_edicin
+end type
+type m_edicin from menu within m_inst_afect
+m_deshacer m_deshacer
+m_-3 m_-3
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-4 m_-4
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+m_buscar m_buscar
+m_seleccionartodo m_seleccionartodo
+end type
+type m_opciones from menu within m_inst_afect
+end type
+type m_actualizar from menu within m_opciones
+end type
+type m_-6 from menu within m_opciones
+end type
+type m_indicescalidad from menu within m_opciones
+end type
+type m_tiepi from menu within m_indicescalidad
+end type
+type m_tiebt from menu within m_indicescalidad
+end type
+type m_saifi from menu within m_indicescalidad
+end type
+type m_saidi from menu within m_indicescalidad
+end type
+type m_caidi from menu within m_indicescalidad
+end type
+type m_asai from menu within m_indicescalidad
+end type
+type m_indicescalidad from menu within m_opciones
+m_tiepi m_tiepi
+m_tiebt m_tiebt
+m_saifi m_saifi
+m_saidi m_saidi
+m_caidi m_caidi
+m_asai m_asai
+end type
+type m_-7 from menu within m_opciones
+end type
+type m_historicos from menu within m_opciones
+end type
+type m_opciones from menu within m_inst_afect
+m_actualizar m_actualizar
+m_-6 m_-6
+m_indicescalidad m_indicescalidad
+m_-7 m_-7
+m_historicos m_historicos
+end type
+type m_ventana from menu within m_inst_afect
+end type
+type m_mosaico from menu within m_ventana
+end type
+type m_cascada from menu within m_ventana
+end type
+type m_organizariconos from menu within m_ventana
+end type
+type m_ventana from menu within m_inst_afect
+m_mosaico m_mosaico
+m_cascada m_cascada
+m_organizariconos m_organizariconos
+end type
+type m_ayuda from menu within m_inst_afect
+end type
+type m_acercadelopensgi from menu within m_ayuda
+end type
+type m_ayuda from menu within m_inst_afect
+m_acercadelopensgi m_acercadelopensgi
+end type
+end forward
+
+global type m_inst_afect from menu
+m_archivo m_archivo
+m_edicin m_edicin
+m_opciones m_opciones
+m_ventana m_ventana
+m_ayuda m_ayuda
+end type
+global m_inst_afect m_inst_afect
+
+on m_inst_afect.create
+m_inst_afect=this
+this.m_archivo=create m_archivo
+this.m_edicin=create m_edicin
+this.m_opciones=create m_opciones
+this.m_ventana=create m_ventana
+this.m_ayuda=create m_ayuda
+this.Item[]={this.m_archivo, &
+this.m_edicin, &
+this.m_opciones, &
+this.m_ventana, &
+this.m_ayuda}
+end on
+
+on m_inst_afect.destroy
+destroy(this.m_archivo)
+destroy(this.m_edicin)
+destroy(this.m_opciones)
+destroy(this.m_ventana)
+destroy(this.m_ayuda)
+end on
+
+type m_archivo from menu within m_inst_afect
+m_agregar m_agregar
+m_eliminar m_eliminar
+m_-1 m_-1
+m_- m_-
+m_imprimir m_imprimir
+m_seleccionarimpresora m_seleccionarimpresora
+m_-2 m_-2
+m_preferencias m_preferencias
+m_-5 m_-5
+m_cerrar m_cerrar
+end type
+
+on m_archivo.create
+this.Text="&Archivo"
+this.m_agregar=create m_agregar
+this.m_eliminar=create m_eliminar
+this.m_-1=create m_-1
+this.m_-=create m_-
+this.m_imprimir=create m_imprimir
+this.m_seleccionarimpresora=create m_seleccionarimpresora
+this.m_-2=create m_-2
+this.m_preferencias=create m_preferencias
+this.m_-5=create m_-5
+this.m_cerrar=create m_cerrar
+this.Item[]={this.m_agregar, &
+this.m_eliminar, &
+this.m_-1, &
+this.m_-, &
+this.m_imprimir, &
+this.m_seleccionarimpresora, &
+this.m_-2, &
+this.m_preferencias, &
+this.m_-5, &
+this.m_cerrar}
+end on
+
+on m_archivo.destroy
+destroy(this.m_agregar)
+destroy(this.m_eliminar)
+destroy(this.m_-1)
+destroy(this.m_-)
+destroy(this.m_imprimir)
+destroy(this.m_seleccionarimpresora)
+destroy(this.m_-2)
+destroy(this.m_preferencias)
+destroy(this.m_-5)
+destroy(this.m_cerrar)
+end on
+
+type m_agregar from menu within m_archivo
+end type
+
+on m_agregar.create
+this.Text="&Agregar~tCtrl+A"
+this.ToolBarItemName="Insert!"
+this.ToolBarItemText="Agregar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=321
+end on
+
+type m_eliminar from menu within m_archivo
+end type
+
+on m_eliminar.create
+this.Text="&Eliminar~tCtrl+E"
+this.ToolBarItemName="Custom094!"
+this.ToolBarItemText="Eliminar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=325
+end on
+
+type m_-1 from menu within m_archivo
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_- from menu within m_archivo
+end type
+
+on m_-.create
+this.Text="&Grabar~tCtrl+G"
+this.ToolBarItemName="Update!"
+this.ToolBarItemText="Grabar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=327
+end on
+
+type m_imprimir from menu within m_archivo
+end type
+
+on m_imprimir.create
+this.Text="&Imprimir~tF5"
+this.ToolBarItemName="Custom074!"
+this.ToolBarItemText="Imprimir"
+this.Shortcut=116
+end on
+
+event clicked;w_4004_instalaciones_afectadas.triggerevent("ue_imprimir")
+end event
+
+type m_seleccionarimpresora from menu within m_archivo
+end type
+
+on m_seleccionarimpresora.create
+this.Text="Se&leccionar Impresora~tAlt+S"
+this.ToolBarItemName="Print!"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=595
+end on
+
+type m_-2 from menu within m_archivo
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_preferencias from menu within m_archivo
+end type
+
+on m_preferencias.create
+this.Text="&Preferencias"
+this.ToolBarItemName="SelectReturn!"
+this.ToolBarItemVisible=false
+this.Enabled=false
+end on
+
+on m_preferencias.destroy
+end on
+
+type m_-5 from menu within m_archivo
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_cerrar from menu within m_archivo
+end type
+
+on clicked;close (parentWindow)
+end on
+
+on m_cerrar.create
+this.Text="&Cerrar~tAlt+F4"
+this.Microhelp="Cerrar la ventana activa."
+this.ToolBarItemName="RunWindow!"
+this.ToolBarItemText="Salir"
+this.Shortcut=627
+end on
+
+type m_edicin from menu within m_inst_afect
+m_deshacer m_deshacer
+m_-3 m_-3
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-4 m_-4
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+m_buscar m_buscar
+m_seleccionartodo m_seleccionartodo
+end type
+
+on m_edicin.create
+this.Text="&Edici$$HEX1$$f300$$ENDHEX$$n"
+this.m_deshacer=create m_deshacer
+this.m_-3=create m_-3
+this.m_cortar=create m_cortar
+this.m_copiar=create m_copiar
+this.m_pegar=create m_pegar
+this.m_-4=create m_-4
+this.m_iralcomienzo=create m_iralcomienzo
+this.m_iralfinal=create m_iralfinal
+this.m_buscar=create m_buscar
+this.m_seleccionartodo=create m_seleccionartodo
+this.Item[]={this.m_deshacer, &
+this.m_-3, &
+this.m_cortar, &
+this.m_copiar, &
+this.m_pegar, &
+this.m_-4, &
+this.m_iralcomienzo, &
+this.m_iralfinal, &
+this.m_buscar, &
+this.m_seleccionartodo}
+end on
+
+on m_edicin.destroy
+destroy(this.m_deshacer)
+destroy(this.m_-3)
+destroy(this.m_cortar)
+destroy(this.m_copiar)
+destroy(this.m_pegar)
+destroy(this.m_-4)
+destroy(this.m_iralcomienzo)
+destroy(this.m_iralfinal)
+destroy(this.m_buscar)
+destroy(this.m_seleccionartodo)
+end on
+
+type m_deshacer from menu within m_edicin
+end type
+
+on m_deshacer.create
+this.Text="&Deshacer~tCtrl+Z"
+this.ToolBarItemName="Undo!"
+this.ToolBarItemText="Deshacer"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=346
+end on
+
+type m_-3 from menu within m_edicin
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_cortar from menu within m_edicin
+end type
+
+on m_cortar.create
+this.Text="&Cortar~tCtrl+X"
+this.ToolBarItemName="Cut!"
+this.ToolBarItemText="Cortar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=344
+end on
+
+type m_copiar from menu within m_edicin
+end type
+
+on m_copiar.create
+this.Text="C&opiar~tCtrl+C"
+this.ToolBarItemName="Copy!"
+this.ToolBarItemText="Copiar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=323
+end on
+
+type m_pegar from menu within m_edicin
+end type
+
+on m_pegar.create
+this.Text="&Pegar~tCtrl+V"
+this.ToolBarItemName="Paste!"
+this.ToolBarItemText="Pegar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=342
+end on
+
+type m_-4 from menu within m_edicin
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_iralcomienzo from menu within m_edicin
+end type
+
+on m_iralcomienzo.create
+this.Text="Ir al Co&mienzo~tCtrl+K"
+this.ToolBarItemName="VCRFirst!"
+this.ToolBarItemText="Comienzo"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=331
+end on
+
+type m_iralfinal from menu within m_edicin
+end type
+
+on m_iralfinal.create
+this.Text="Ir al &Final~tCtrl+J"
+this.ToolBarItemName="VCRLast!"
+this.ToolBarItemText="Fin"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=330
+end on
+
+type m_buscar from menu within m_edicin
+end type
+
+on m_buscar.create
+this.Text="&Buscar~tCtrl+B"
+this.ToolBarItemName="Search!"
+this.ToolBarItemText="Buscar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=322
+end on
+
+type m_seleccionartodo from menu within m_edicin
+end type
+
+event clicked;w_4004_instalaciones_afectadas.fw_seleccionar_todo()
+end event
+
+on m_seleccionartodo.create
+this.Text="&Seleccionar Todo"
+end on
+
+type m_opciones from menu within m_inst_afect
+m_actualizar m_actualizar
+m_-6 m_-6
+m_indicescalidad m_indicescalidad
+m_-7 m_-7
+m_historicos m_historicos
+end type
+
+on m_opciones.create
+this.Text="&Opciones"
+this.m_actualizar=create m_actualizar
+this.m_-6=create m_-6
+this.m_indicescalidad=create m_indicescalidad
+this.m_-7=create m_-7
+this.m_historicos=create m_historicos
+this.Item[]={this.m_actualizar, &
+this.m_-6, &
+this.m_indicescalidad, &
+this.m_-7, &
+this.m_historicos}
+end on
+
+on m_opciones.destroy
+destroy(this.m_actualizar)
+destroy(this.m_-6)
+destroy(this.m_indicescalidad)
+destroy(this.m_-7)
+destroy(this.m_historicos)
+end on
+
+type m_actualizar from menu within m_opciones
+end type
+
+on clicked;w_4004_instalaciones_afectadas.TriggerEvent("ue_actualizar")
+end on
+
+on m_actualizar.create
+this.Text="Actuali&zar"
+this.Microhelp="Aplica el filtro seleccionado a la consulta"
+this.ToolBarItemName="Search!"
+this.ToolBarItemText="Aplicar Filtro"
+this.ToolBarItemSpace=2
+end on
+
+type m_-6 from menu within m_opciones
+end type
+
+on m_-6.create
+this.Text="-"
+end on
+
+type m_indicescalidad from menu within m_opciones
+m_tiepi m_tiepi
+m_tiebt m_tiebt
+m_saifi m_saifi
+m_saidi m_saidi
+m_caidi m_caidi
+m_asai m_asai
+end type
+
+on m_indicescalidad.create
+this.Text="Indices &Calidad"
+this.m_tiepi=create m_tiepi
+this.m_tiebt=create m_tiebt
+this.m_saifi=create m_saifi
+this.m_saidi=create m_saidi
+this.m_caidi=create m_caidi
+this.m_asai=create m_asai
+this.Item[]={this.m_tiepi, &
+this.m_tiebt, &
+this.m_saifi, &
+this.m_saidi, &
+this.m_caidi, &
+this.m_asai}
+end on
+
+on m_indicescalidad.destroy
+destroy(this.m_tiepi)
+destroy(this.m_tiebt)
+destroy(this.m_saifi)
+destroy(this.m_saidi)
+destroy(this.m_caidi)
+destroy(this.m_asai)
+end on
+
+type m_tiepi from menu within m_indicescalidad
+end type
+
+event clicked;This.Checked = True
+Parent.m_tiebt.Checked = False
+Parent.m_saifi.Checked = False
+Parent.m_saidi.Checked = False
+Parent.m_caidi.Checked = False
+Parent.m_asai.Checked = False
+ParentWindow.TriggerEvent("ue_tiepi")
+end event
+
+on m_tiepi.create
+this.Text="Tiepi"
+this.Microhelp="Se muestra el valor de Tiepi"
+this.ToolBarItemName="DataWindow5!"
+this.ToolBarItemText="Tiepi"
+end on
+
+type m_tiebt from menu within m_indicescalidad
+end type
+
+event clicked;Parent.m_tiepi.Checked = False
+This.Checked = True
+Parent.m_saifi.Checked = False
+Parent.m_saidi.Checked = False
+Parent.m_caidi.Checked = False
+Parent.m_asai.Checked = False
+
+ParentWindow.TriggerEvent("ue_tiebt")
+end event
+
+on m_tiebt.create
+this.Text="Tiebt"
+this.Microhelp="Se muestra el valor de Tiebt"
+this.ToolBarItemName="Form!"
+this.ToolBarItemText="Tiebt"
+end on
+
+type m_saifi from menu within m_indicescalidad
+end type
+
+event clicked;Parent.m_tiepi.Checked = False
+Parent.m_tiebt.Checked = False
+This.Checked = True
+Parent.m_saidi.Checked = False
+Parent.m_caidi.Checked = False
+Parent.m_asai.Checked = False
+
+ParentWindow.TriggerEvent("ue_saifi")
+end event
+
+on m_saifi.create
+this.Text="Saifi"
+this.Microhelp="Se muestra el valor de Saidi"
+this.ToolBarItemName="Layer!"
+this.ToolBarItemText="Saifi"
+end on
+
+type m_saidi from menu within m_indicescalidad
+end type
+
+event clicked;Parent.m_tiepi.Checked = False
+Parent.m_tiebt.Checked = False
+Parent.m_saifi.Checked = False
+This.Checked = True
+Parent.m_caidi.Checked = False
+Parent.m_asai.Checked = False
+
+ParentWindow.TriggerEvent("ue_saidi")
+end event
+
+on m_saidi.create
+this.Text="Saidi"
+this.Microhelp="Se muestra el valor de Saidi"
+this.ToolBarItemName="DropDownListBox!"
+this.ToolBarItemText="Saidi"
+end on
+
+type m_caidi from menu within m_indicescalidad
+end type
+
+event clicked;Parent.m_tiepi.Checked = False
+Parent.m_tiebt.Checked = False
+Parent.m_saifi.Checked = False
+Parent.m_saidi.Checked = False
+This.Checked = True
+Parent.m_asai.Checked = False
+
+ParentWindow.TriggerEvent("ue_caidi")
+end event
+
+on m_caidi.create
+this.Text="Caidi"
+this.Microhelp="Se muestra el valor de Caidi"
+this.ToolBarItemName="ListBox!"
+this.ToolBarItemText="Caidi"
+end on
+
+type m_asai from menu within m_indicescalidad
+end type
+
+event clicked;Parent.m_tiepi.Checked = False
+Parent.m_tiebt.Checked = False
+Parent.m_saifi.Checked = False
+Parent.m_saidi.Checked = False
+Parent.m_caidi.Checked = False
+This.Checked = True
+
+ParentWindow.TriggerEvent("ue_asai")
+end event
+
+on m_asai.create
+this.Text="Asai"
+this.Microhelp="Se muestra el valor de Asai"
+this.ToolBarItemName="PictureDropDownListBox!"
+this.ToolBarItemText="Asai"
+end on
+
+type m_-7 from menu within m_opciones
+end type
+
+on m_-7.create
+this.Text="-"
+end on
+
+type m_historicos from menu within m_opciones
+end type
+
+event clicked;w_4004_instalaciones_afectadas.TriggerEvent("ue_historicos")
+end event
+
+on m_historicos.create
+this.Text="&Hist$$HEX1$$f300$$ENDHEX$$ricos"
+this.Microhelp="Muestra Hist$$HEX1$$f300$$ENDHEX$$ricos de la consulta"
+this.ToolBarItemName="Custom023!"
+this.ToolBarItemText="Hist$$HEX1$$f300$$ENDHEX$$ricos"
+this.ToolBarItemSpace=2
+end on
+
+type m_ventana from menu within m_inst_afect
+m_mosaico m_mosaico
+m_cascada m_cascada
+m_organizariconos m_organizariconos
+end type
+
+on m_ventana.create
+this.Text="&Ventana"
+this.Microhelp="Selecciona ventanas activas."
+this.m_mosaico=create m_mosaico
+this.m_cascada=create m_cascada
+this.m_organizariconos=create m_organizariconos
+this.Item[]={this.m_mosaico, &
+this.m_cascada, &
+this.m_organizariconos}
+end on
+
+on m_ventana.destroy
+destroy(this.m_mosaico)
+destroy(this.m_cascada)
+destroy(this.m_organizariconos)
+end on
+
+type m_mosaico from menu within m_ventana
+end type
+
+on m_mosaico.create
+this.Text="&Mosaico"
+this.Enabled=false
+end on
+
+type m_cascada from menu within m_ventana
+end type
+
+on m_cascada.create
+this.Text="&Cascada"
+this.Enabled=false
+end on
+
+type m_organizariconos from menu within m_ventana
+end type
+
+on m_organizariconos.create
+this.Text="&Organizar Iconos"
+this.Enabled=false
+end on
+
+type m_ayuda from menu within m_inst_afect
+m_acercadelopensgi m_acercadelopensgi
+end type
+
+on m_ayuda.create
+this.Text="A&yuda"
+this.m_acercadelopensgi=create m_acercadelopensgi
+this.Item[]={this.m_acercadelopensgi}
+end on
+
+on m_ayuda.destroy
+destroy(this.m_acercadelopensgi)
+end on
+
+type m_acercadelopensgi from menu within m_ayuda
+end type
+
+on m_acercadelopensgi.create
+this.Text="&Acerca del Open SGI."
+end on
+
+event clicked;open(w_acerca_de_sgi)
+end event
+

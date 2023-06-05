@@ -1,0 +1,78 @@
+HA$PBExportHeader$f_aexcel.srf
+global type f_aexcel from function_object
+end type
+
+forward prototypes
+global function integer f_aexcel (datawindow data, string archivo)
+end prototypes
+
+global function integer f_aexcel (datawindow data, string archivo);
+integer li_FileNum, salida
+string ls_Emp_Input
+long ll_FLength, escritos, tamano
+
+string nombretemp
+string directorio
+string temporal
+
+
+directorio=""
+nombretemp="_"+string(now(),'hhmmss')+".html"
+
+temporal=directorio+nombretemp
+
+if data.saveas(temporal,HTMLtable!,true) = -1 then
+	messagebox('aexcel error 001', 'Cannot create temporary file '+temporal)
+else
+	tamano=FileLength(temporal)
+	if tamano=-1 then 
+		messagebox('aexcel error 001b', 'Cannot get '+temporal+' size')
+	else
+	
+	
+				li_FileNum = FileOpen(temporal,LineMode!, Read!, LockReadWrite!)
+				if li_filenum=-1 then
+					messagebox('aexcel error 002','Cannot open temporary file ' + temporal)
+				else
+					salida = FileOpen(archivo,LineMode!, Write!, LockReadWrite!,Replace!)
+					if salida=-1 then 
+						messagebox('aexcel error 003','Cannot write '+archivo)
+					else
+						OPEN(W_SAVE)
+						DO WHILE FileRead(li_FileNum, ls_Emp_Input)  >= 0 
+							
+							if upper(ls_emp_input)<>'<TR>' and upper(mid(ls_emp_input,1,3))<>'.DW'then
+								
+								escritos=escritos + filewrite(salida,ls_emp_input)
+								
+								W_SAVE.R_1.WIDTH=ESCRITOS/TAMANO * 1138
+								//MESSAGEBOX('INFO',STRING(ESCRITOS/TAMANO * 1138))
+								
+							end if
+						LOOP
+						CLOSE(W_SAVE)
+						
+					fileclose(salida)
+			
+					end if
+					
+					fileclose(li_filenum)
+					
+					if filedelete(temporal)= false then
+						messagebox('aexcel error 004', 'Cannot delete temporary file '+temporal)
+					end if
+					
+				end if
+		end if
+
+end if
+
+
+
+setCurrentDirectoryA(ls_path)
+
+
+
+return 1
+end function
+

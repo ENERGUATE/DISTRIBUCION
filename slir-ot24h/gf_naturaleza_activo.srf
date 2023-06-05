@@ -1,0 +1,22 @@
+HA$PBExportHeader$gf_naturaleza_activo.srf
+global type gf_naturaleza_activo from function_object
+end type
+
+forward prototypes
+global function string gf_naturaleza_activo (long pl_activo)
+end prototypes
+
+global function string gf_naturaleza_activo (long pl_activo);
+string ls_naturaleza
+
+//Determina si es Regional o Nacional (STR o STN)
+
+SELECT trim(NATURALEZA)
+  INTO :ls_naturaleza
+  FROM BDIV10_ACTIVOS
+ WHERE CODIGO = :pl_activo; 
+ 
+ 
+return ls_naturaleza
+end function
+

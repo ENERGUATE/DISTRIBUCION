@@ -1,0 +1,249 @@
+HA$PBExportHeader$m_btder_gestion_avisos2.srm
+forward
+global type m_btder_gestion_avisos2 from menu
+end type
+type m_opciones from menu within m_btder_gestion_avisos2
+end type
+type m_asignaralimentacion from menu within m_opciones
+end type
+type m_cambioalimentacion from menu within m_opciones
+end type
+type m_crearincidencia from menu within m_opciones
+end type
+type m_asignarbrigada from menu within m_opciones
+end type
+type m_avisoimprocedente from menu within m_opciones
+end type
+type m_seleccionartodo from menu within m_opciones
+end type
+type m_deseleccion from menu within m_opciones
+end type
+type m_desplegarenarbol from menu within m_opciones
+end type
+type m_alimentarconredreal from menu within m_opciones
+end type
+type m_opciones from menu within m_btder_gestion_avisos2
+m_asignaralimentacion m_asignaralimentacion
+m_cambioalimentacion m_cambioalimentacion
+m_crearincidencia m_crearincidencia
+m_asignarbrigada m_asignarbrigada
+m_avisoimprocedente m_avisoimprocedente
+m_seleccionartodo m_seleccionartodo
+m_deseleccion m_deseleccion
+m_desplegarenarbol m_desplegarenarbol
+m_alimentarconredreal m_alimentarconredreal
+end type
+end forward
+
+global type m_btder_gestion_avisos2 from menu
+m_opciones m_opciones
+end type
+global m_btder_gestion_avisos2 m_btder_gestion_avisos2
+
+type variables
+// ventana a la que llama
+w_2120_identificacion_instalacion iw_2120_identif_instal
+end variables
+
+forward prototypes
+public function integer f_visible (string ps_nivel, boolean pb_cond)
+end prototypes
+
+public function integer f_visible (string ps_nivel, boolean pb_cond);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n:  f_visible
+// 
+// Objetivo: Hace visible o invisible la opci$$HEX1$$f300$$ENDHEX$$n del men$$HEX2$$fa002000$$ENDHEX$$pasado, de
+//				 acuerdo al valor del par$$HEX1$$e100$$ENDHEX$$metro.
+//	
+//
+// Ambito:	P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//	Entrada:  ps_nivel (men$$HEX2$$fa002000$$ENDHEX$$a tratar), pb_cond (estado final)
+//	Salida:   --
+//						
+// Devuelve:	C$$HEX1$$f300$$ENDHEX$$digo de error
+//						1 	O.K.
+//						-1 No se encontr$$HEX2$$f3002000$$ENDHEX$$el item de men$$HEX1$$fa00$$ENDHEX$$
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	22/03/96		HMA			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+int i_cant_menu, i_aux
+
+//Verificamos la existencia del $$HEX1$$ed00$$ENDHEX$$tem de men$$HEX2$$fa002000$$ENDHEX$$en m_btder_gestion_avisos
+i_cant_menu = UpperBound(This.item[])
+ps_nivel = Upper(ps_nivel)
+
+FOR i_aux = 1 TO i_cant_menu
+	IF This.item[i_aux].tag = ps_nivel THEN
+		This.item[i_aux].visible = pb_cond
+		RETURN 1
+	END IF
+NEXT
+
+RETURN -1
+end function
+
+on m_btder_gestion_avisos2.create
+m_btder_gestion_avisos2=this
+this.m_opciones=create m_opciones
+this.Item[]={this.m_opciones}
+end on
+
+on m_btder_gestion_avisos2.destroy
+destroy(this.m_opciones)
+end on
+
+type m_opciones from menu within m_btder_gestion_avisos2
+m_asignaralimentacion m_asignaralimentacion
+m_cambioalimentacion m_cambioalimentacion
+m_crearincidencia m_crearincidencia
+m_asignarbrigada m_asignarbrigada
+m_avisoimprocedente m_avisoimprocedente
+m_seleccionartodo m_seleccionartodo
+m_deseleccion m_deseleccion
+m_desplegarenarbol m_desplegarenarbol
+m_alimentarconredreal m_alimentarconredreal
+end type
+
+on m_opciones.create
+this.Text="Opciones"
+this.m_asignaralimentacion=create m_asignaralimentacion
+this.m_cambioalimentacion=create m_cambioalimentacion
+this.m_crearincidencia=create m_crearincidencia
+this.m_asignarbrigada=create m_asignarbrigada
+this.m_avisoimprocedente=create m_avisoimprocedente
+this.m_seleccionartodo=create m_seleccionartodo
+this.m_deseleccion=create m_deseleccion
+this.m_desplegarenarbol=create m_desplegarenarbol
+this.m_alimentarconredreal=create m_alimentarconredreal
+this.Item[]={this.m_asignaralimentacion, &
+this.m_cambioalimentacion, &
+this.m_crearincidencia, &
+this.m_asignarbrigada, &
+this.m_avisoimprocedente, &
+this.m_seleccionartodo, &
+this.m_deseleccion, &
+this.m_desplegarenarbol, &
+this.m_alimentarconredreal}
+end on
+
+on m_opciones.destroy
+destroy(this.m_asignaralimentacion)
+destroy(this.m_cambioalimentacion)
+destroy(this.m_crearincidencia)
+destroy(this.m_asignarbrigada)
+destroy(this.m_avisoimprocedente)
+destroy(this.m_seleccionartodo)
+destroy(this.m_deseleccion)
+destroy(this.m_desplegarenarbol)
+destroy(this.m_alimentarconredreal)
+end on
+
+type m_asignaralimentacion from menu within m_opciones
+end type
+
+on clicked;
+gu_comunic.is_comunic.intval9 = 1
+end on
+
+on m_asignaralimentacion.create
+this.Text="&Asignar Alimentaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Asignar una Instalaci$$HEX1$$f300$$ENDHEX$$n como alimentaci$$HEX1$$f300$$ENDHEX$$n del Aviso"
+this.ToolBarItemName="reconex.bmp"
+end on
+
+on m_asignaralimentacion.destroy
+end on
+
+type m_cambioalimentacion from menu within m_opciones
+end type
+
+on clicked;
+gu_comunic.is_comunic.intval9 = 2
+
+end on
+
+on m_cambioalimentacion.create
+this.Text="&Cambio de Alimentaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Permite efectuar el cambio de alimentaci$$HEX1$$f300$$ENDHEX$$n "
+end on
+
+type m_crearincidencia from menu within m_opciones
+end type
+
+on clicked;
+gu_comunic.is_comunic.intval9 = 3
+end on
+
+on m_crearincidencia.create
+this.Text="C&rear Incidencia de Suministro"
+this.Microhelp="Permite crear una Incidencia "
+end on
+
+type m_asignarbrigada from menu within m_opciones
+end type
+
+on clicked;gu_comunic.is_comunic.intval9 = 4
+end on
+
+on m_asignarbrigada.create
+this.Text="&Orden de Trabajo"
+this.Microhelp="Asigna una Brigada a el Aviso y genera la OT correspondiente"
+end on
+
+type m_avisoimprocedente from menu within m_opciones
+end type
+
+event clicked;gu_comunic.is_comunic.intval9 = 5
+end event
+
+on m_avisoimprocedente.create
+this.Text="A&viso Improcedente"
+end on
+
+type m_seleccionartodo from menu within m_opciones
+end type
+
+on m_seleccionartodo.create
+this.Text="&Seleccionar Todos"
+end on
+
+event clicked;gu_comunic.is_comunic.intval9 = 6
+end event
+
+type m_deseleccion from menu within m_opciones
+end type
+
+on m_deseleccion.create
+this.Text="&Deseleccionar Todos"
+end on
+
+event clicked;gu_comunic.is_comunic.intval9 = 7
+end event
+
+type m_desplegarenarbol from menu within m_opciones
+end type
+
+event clicked;gu_comunic.is_comunic.intval9 = 8
+end event
+
+on m_desplegarenarbol.create
+this.Text="&Localizar en Arbol"
+end on
+
+type m_alimentarconredreal from menu within m_opciones
+end type
+
+on m_alimentarconredreal.create
+this.Text="Al&imentar con Red Real"
+end on
+
+event clicked;gu_comunic.is_comunic.intval9 = 9
+end event
+

@@ -1,0 +1,23 @@
+HA$PBExportHeader$d_man_2023_causa_inc.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=descripcion dbname="gi_familia_causas.descripcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=gpo_causa dbname="gi_familia_causas.gpo_causa" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_familia_causas.programa" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_familia_causas.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="gi_familia_causas.usuario" )
+ column=(type=number update=yes updatewhereclause=yes name=activo dbname="gi_familia_causas.activo" initial="1" )
+ retrieve="SELECT DESCRIPCION, GPO_CAUSA, PROGRAMA, F_ACTUAL, USUARIO, ACTIVO 
+FROM GI_FAMILIA_CAUSAS
+ORDER BY GPO_CAUSA" update="GI_FAMILIA_CAUSAS" updatewhere=1 updatekeyinplace=yes )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="146" y="0" height="64" width="1618" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Activo" border="6" color="0" x="1783" y="0" height="64" width="238" html.valueishtml="0"  name=activo_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="146" y="0" height="64" width="1600" format="[general]" html.valueishtml="0"  name=descripcion visible="1" editmask.autoskip=yes editmask.mask="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+bitmap(band=detail filename="O:\OpenSGI\desar\online\Recursos\si.bmp" x="1833" y="4" height="64" width="64" border="0"  name=p_si visible="1~tif(activo = 1,1,0) " )
+bitmap(band=detail filename="no.bmp" x="1833" y="4" height="64" width="64" border="0"  name=p_no visible="1~tif(activo = 1,0,1) " )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

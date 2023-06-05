@@ -1,0 +1,37 @@
+HA$PBExportHeader$fg_centrar_ventana.srf
+global type fg_centrar_ventana from function_object
+end type
+
+forward prototypes
+global subroutine fg_centrar_ventana (window aw_ventana)
+end prototypes
+
+global subroutine fg_centrar_ventana (window aw_ventana);///////////////////////////////////////////////////////
+//										
+// Funcion/Evento: f_centrar_ventana
+// 
+// Objetivo: centrar las ventanas de mantenimiento de fases
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: window aw_ventana
+//		Salida : --
+//
+// Devuelve:
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------	    -----------   ---------
+// 12/04/2000   JPE
+//
+///////////////////////////////////////////////////////
+
+Integer li_ScreenH, li_ScreenW
+
+
+	li_ScreenH = w_operaciones.Height
+	li_ScreenW = w_operaciones.Width
+
+	aw_ventana.y = (li_ScreenH - aw_ventana.Height) / 2.7
+	aw_ventana.x = (li_ScreenW - aw_ventana.Width) / 2
+end subroutine
+

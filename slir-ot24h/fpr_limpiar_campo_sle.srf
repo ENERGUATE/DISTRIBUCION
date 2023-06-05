@@ -1,0 +1,33 @@
+HA$PBExportHeader$fpr_limpiar_campo_sle.srf
+global type fpr_limpiar_campo_sle from function_object
+end type
+
+forward prototypes
+global function integer fpr_limpiar_campo_sle (ref singlelineedit psle_campo)
+end prototypes
+
+global function integer fpr_limpiar_campo_sle (ref singlelineedit psle_campo);/////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fpr_limpiar_campo_sle
+//
+// Objetivo: Setea con nulo el SingleLineEdit al que se le aplica.
+//           
+//
+// Ambito: Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//        Entrada: psle_campo, pb_condicion
+//        Salida:  --
+//
+// Devuelve:
+//
+// Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ----- 	-----------		---------
+//
+////////////////////////////////////////////////////////////////////
+
+psle_campo.text = ""
+
+RETURN 1
+end function
+

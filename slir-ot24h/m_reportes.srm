@@ -1,0 +1,1469 @@
+HA$PBExportHeader$m_reportes.srm
+forward
+global type m_reportes from menu
+end type
+type m_reporte from menu within m_reportes
+end type
+type m_nuevo from menu within m_reporte
+end type
+type m_avisos1 from menu within m_nuevo
+end type
+type m_incidencias1 from menu within m_nuevo
+end type
+type m_descargos from menu within m_nuevo
+end type
+type m_brigadas from menu within m_nuevo
+end type
+type m_instalaciones from menu within m_nuevo
+end type
+type m_nuevo from menu within m_reporte
+m_avisos1 m_avisos1
+m_incidencias1 m_incidencias1
+m_descargos m_descargos
+m_brigadas m_brigadas
+m_instalaciones m_instalaciones
+end type
+type m_abrir1 from menu within m_reporte
+end type
+type m_reporte1 from menu within m_abrir1
+end type
+type m_preferencia from menu within m_abrir1
+end type
+type m_abrir1 from menu within m_reporte
+m_reporte1 m_reporte1
+m_preferencia m_preferencia
+end type
+type m_guardar from menu within m_reporte
+end type
+type m_reporte2 from menu within m_guardar
+end type
+type m_preferencia1 from menu within m_guardar
+end type
+type m_guardar from menu within m_reporte
+m_reporte2 m_reporte2
+m_preferencia1 m_preferencia1
+end type
+type m_- from menu within m_reporte
+end type
+type m_imprimir from menu within m_reporte
+end type
+type m_-87875 from menu within m_reporte
+end type
+type m_salir from menu within m_reporte
+end type
+type m_salir1 from menu within m_reporte
+end type
+type m_reporte from menu within m_reportes
+m_nuevo m_nuevo
+m_abrir1 m_abrir1
+m_guardar m_guardar
+m_- m_-
+m_imprimir m_imprimir
+m_-87875 m_-87875
+m_salir m_salir
+m_salir1 m_salir1
+end type
+type m_rep from menu within m_reportes
+end type
+type m_mostrar from menu within m_rep
+end type
+type m_cancelar from menu within m_rep
+end type
+type m_presentacionpreliminar from menu within m_rep
+end type
+type m_exportarinformeaexcel from menu within m_rep
+end type
+type m_rep from menu within m_reportes
+m_mostrar m_mostrar
+m_cancelar m_cancelar
+m_presentacionpreliminar m_presentacionpreliminar
+m_exportarinformeaexcel m_exportarinformeaexcel
+end type
+type m_ventana from menu within m_reportes
+end type
+type m_mosaico from menu within m_ventana
+end type
+type m_cascada from menu within m_ventana
+end type
+type m_organizar from menu within m_ventana
+end type
+type m_ventana from menu within m_reportes
+m_mosaico m_mosaico
+m_cascada m_cascada
+m_organizar m_organizar
+end type
+type m_ayuda1 from menu within m_reportes
+end type
+type m_acercadelopensgi from menu within m_ayuda1
+end type
+type m_ayuda1 from menu within m_reportes
+m_acercadelopensgi m_acercadelopensgi
+end type
+global type m_reportes from menu
+m_reporte m_reporte
+m_rep m_rep
+m_ventana m_ventana
+m_ayuda1 m_ayuda1
+end type
+end forward
+
+global type m_reportes from menu
+m_reporte m_reporte
+m_rep m_rep
+m_ventana m_ventana
+m_ayuda1 m_ayuda1
+end type
+global m_reportes m_reportes
+
+type variables
+boolean ib_mensaje
+boolean ib_inc=false
+end variables
+
+on m_reportes.create
+m_reportes=this
+call super::create
+this.text = "m_reportes"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_reporte=create m_reporte
+this.m_rep=create m_rep
+this.m_ventana=create m_ventana
+this.m_ayuda1=create m_ayuda1
+this.Item[UpperBound(this.Item)+1]=this.m_reporte
+this.Item[UpperBound(this.Item)+1]=this.m_rep
+this.Item[UpperBound(this.Item)+1]=this.m_ventana
+this.Item[UpperBound(this.Item)+1]=this.m_ayuda1
+end on
+
+on m_reportes.destroy
+call super::destroy
+destroy(this.m_reporte)
+destroy(this.m_rep)
+destroy(this.m_ventana)
+destroy(this.m_ayuda1)
+end on
+
+type m_reporte from menu within m_reportes
+m_nuevo m_nuevo
+m_abrir1 m_abrir1
+m_guardar m_guardar
+m_- m_-
+m_imprimir m_imprimir
+m_-87875 m_-87875
+m_salir m_salir
+m_salir1 m_salir1
+end type
+
+on m_reporte.create
+call super::create
+this.text = "&Opciones"
+this.microhelp = "Creacci$$HEX1$$f300$$ENDHEX$$n de Reportes Din$$HEX1$$e100$$ENDHEX$$micos"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_nuevo=create m_nuevo
+this.m_abrir1=create m_abrir1
+this.m_guardar=create m_guardar
+this.m_-=create m_-
+this.m_imprimir=create m_imprimir
+this.m_-87875=create m_-87875
+this.m_salir=create m_salir
+this.m_salir1=create m_salir1
+this.Item[UpperBound(this.Item)+1]=this.m_nuevo
+this.Item[UpperBound(this.Item)+1]=this.m_abrir1
+this.Item[UpperBound(this.Item)+1]=this.m_guardar
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_imprimir
+this.Item[UpperBound(this.Item)+1]=this.m_-87875
+this.Item[UpperBound(this.Item)+1]=this.m_salir
+this.Item[UpperBound(this.Item)+1]=this.m_salir1
+end on
+
+on m_reporte.destroy
+call super::destroy
+destroy(this.m_nuevo)
+destroy(this.m_abrir1)
+destroy(this.m_guardar)
+destroy(this.m_-)
+destroy(this.m_imprimir)
+destroy(this.m_-87875)
+destroy(this.m_salir)
+destroy(this.m_salir1)
+end on
+
+type m_nuevo from menu within m_reporte
+m_avisos1 m_avisos1
+m_incidencias1 m_incidencias1
+m_descargos m_descargos
+m_brigadas m_brigadas
+m_instalaciones m_instalaciones
+end type
+
+on m_nuevo.create
+call super::create
+this.text = "&Nuevo"
+this.microhelp = "Informe Nuevo"
+this.toolbaritemtext = "Informe Nuevo"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_avisos1=create m_avisos1
+this.m_incidencias1=create m_incidencias1
+this.m_descargos=create m_descargos
+this.m_brigadas=create m_brigadas
+this.m_instalaciones=create m_instalaciones
+this.Item[UpperBound(this.Item)+1]=this.m_avisos1
+this.Item[UpperBound(this.Item)+1]=this.m_incidencias1
+this.Item[UpperBound(this.Item)+1]=this.m_descargos
+this.Item[UpperBound(this.Item)+1]=this.m_brigadas
+this.Item[UpperBound(this.Item)+1]=this.m_instalaciones
+end on
+
+on m_nuevo.destroy
+call super::destroy
+destroy(this.m_avisos1)
+destroy(this.m_incidencias1)
+destroy(this.m_descargos)
+destroy(this.m_brigadas)
+destroy(this.m_instalaciones)
+end on
+
+event clicked;//
+end event
+
+type m_avisos1 from menu within m_nuevo
+end type
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.iu_comunic.is_comunic.accion_llamada="gi_avisos"
+//**  OSGI 2001.1  	01/05/2001  w_reportes.is_tabla_consulta="gi_avisos"
+//**  OSGI 2001.1  	01/05/2001  w_reportes.postevent("ue_post_open")
+
+window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+IF activesheet = w_reportes THEN
+	w_reportes.iu_comunic.is_comunic.accion_llamada="gi_avisos"
+	gu_comunic.is_comunic.accion_llamada="gi_avisos"
+	w_reportes.is_tabla_consulta="gi_avisos"
+	w_reportes.postevent("ue_post_open")
+ELSE
+
+	close(activesheet)
+	gu_comunic.is_comunic.accion_llamada="gi_avisos"	
+	w_genapp_frame.TriggerEvent("ue_reportes")
+	w_reportes.is_tabla_consulta="gi_avisos"
+	w_reportes.postevent("ue_post_open")
+END IF
+
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_avisos1.create
+call super::create
+this.text = "A&visos"
+this.microhelp = "Informe de Avisos"
+this.toolbaritemname = "custom020!"
+this.toolbaritemdownname = "Avisos"
+this.toolbaritemtext = "Informe de Avisos"
+this.toolbaritemorder = 9
+this.toolbaritemspace = 3
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_avisos1.destroy
+call super::destroy
+end on
+
+type m_incidencias1 from menu within m_nuevo
+end type
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.iu_comunic.is_comunic.accion_llamada="sgd_incidencia"
+//**  OSGI 2001.1  	01/05/2001  w_reportes.is_tabla_consulta="sgd_incidencia"
+//**  OSGI 2001.1  	01/05/2001  w_reportes.postevent("ue_post_open")
+
+
+If Not fg_verifica_parametro(This.ClassName()) Then
+	w_reportes.iu_comunic.is_comunic.accion_llamada="sgd_incidencia"
+	w_reportes.is_tabla_consulta="sgd_incidencia"
+	w_reportes.postevent("ue_post_open")
+Else
+	window activesheet
+	
+	activesheet = w_operaciones.GetActiveSheet()
+	close(activesheet)
+	gu_comunic.is_comunic.accion_llamada="sgd_incidencia"	
+	SetPointer(HourGlass!)
+	OpenSheetWithParm(w_reportes_new,"sgd_incidencia",W_operaciones,3,Layered!)
+End If
+
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_incidencias1.create
+call super::create
+this.visible = false
+this.text = "Inci&dencias"
+this.enabled = false
+this.microhelp = "Informe de Incidencias"
+this.toolbaritemdownname = "Incidencias"
+this.toolbaritemtext = "Informe de Incidencias"
+this.toolbaritemorder = 10
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_incidencias1.destroy
+call super::destroy
+end on
+
+type m_descargos from menu within m_nuevo
+end type
+
+event clicked;window activesheet
+
+activesheet = w_operaciones.GetActiveSheet()
+
+IF activesheet = w_reportes OR IsValid(w_reportes) THEN
+	w_reportes.iu_comunic.is_comunic.accion_llamada="sgd_descargos"
+	gu_comunic.is_comunic.accion_llamada="sgd_descargos"
+	w_reportes.is_tabla_consulta="sgd_descargos"
+	w_reportes.postevent("ue_post_open")
+
+ELSE
+	close(activesheet)
+	gu_comunic.is_comunic.accion_llamada="sgd_descargos"
+	w_operaciones.TriggerEvent("ue_reportes")
+	w_reportes.is_tabla_consulta="sgd_descargos"
+	w_reportes.postevent("ue_post_open")
+END IF
+end event
+
+on m_descargos.create
+call super::create
+this.visible = false
+this.text = "&Descargos"
+this.enabled = false
+this.microhelp = "Informe de Descargos"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Informe de Descargos"
+this.toolbaritemorder = 11
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_descargos.destroy
+call super::destroy
+end on
+
+type m_brigadas from menu within m_nuevo
+end type
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.iu_comunic.is_comunic.accion_llamada="gi_brigada"
+//**  OSGI 2001.1  	01/05/2001  w_reportes.is_tabla_consulta="gi_brigada"
+//**  OSGI 2001.1  	01/05/2001  w_reportes.postevent("ue_post_open")
+
+//window activesheet
+//
+//activesheet = w_operaciones.GetActiveSheet()
+
+//IF activesheet = w_reportes OR IsValid(w_reportes) THEN
+//	w_reportes.iu_comunic.is_comunic.accion_llamada="gi_brigada"
+//	gu_comunic.is_comunic.accion_llamada="gi_brigada"
+//	w_reportes.is_tabla_consulta="gi_brigada"
+//	w_reportes.postevent("ue_post_open")
+//ELSE
+//	close(activesheet)
+//	gu_comunic.is_comunic.accion_llamada="gi_brigada"	
+//	w_operaciones.TriggerEvent("ue_reportes")
+//	w_reportes.is_tabla_consulta="gi_brigada"
+//	w_reportes.postevent("ue_post_open")
+//END IF
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+
+If Not fg_verifica_parametro(This.ClassName()) Then
+	w_reportes.iu_comunic.is_comunic.accion_llamada="gi_brigada"
+	w_reportes.is_tabla_consulta="gi_brigada"
+	w_reportes.postevent("ue_post_open")
+Else
+	window activesheet
+	
+	activesheet = w_operaciones.GetActiveSheet()
+	close(activesheet)
+	gu_comunic.is_comunic.accion_llamada="gi_brigada"	
+	SetPointer(HourGlass!)
+	OpenSheetWithParm(w_reportes_new,"gi_brigada",W_operaciones,3,Layered!)
+End If
+end event
+
+on m_brigadas.create
+call super::create
+this.visible = false
+this.text = "&Brigadas"
+this.enabled = false
+this.microhelp = "Informe de Brigadas"
+this.toolbaritemtext = "Informe de Brigadas"
+this.toolbaritemorder = 12
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_brigadas.destroy
+call super::destroy
+end on
+
+type m_instalaciones from menu within m_nuevo
+end type
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.iu_comunic.is_comunic.accion_llamada="sgd_instalacion"
+//**  OSGI 2001.1  	01/05/2001  w_reportes.is_tabla_consulta="sgd_instalacion"
+//**  OSGI 2001.1  	01/05/2001  w_reportes.postevent("ue_post_open")
+
+window activesheet
+
+activesheet = w_operaciones.GetActiveSheet()
+
+IF activesheet = w_reportes OR IsValid(w_reportes) THEN
+	w_reportes.iu_comunic.is_comunic.accion_llamada="sgd_instalacion"
+	gu_comunic.is_comunic.accion_llamada="sgd_instalacion"
+	w_reportes.is_tabla_consulta="sgd_instalacion"
+	w_reportes.postevent("ue_post_open")
+
+ELSE
+	close(activesheet)
+	gu_comunic.is_comunic.accion_llamada="sgd_instalacion"
+	w_operaciones.TriggerEvent("ue_reportes")
+	w_reportes.is_tabla_consulta="sgd_instalacion"
+	w_reportes.postevent("ue_post_open")
+END IF
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_instalaciones.create
+call super::create
+this.visible = false
+this.text = "&Instalaciones"
+this.enabled = false
+this.microhelp = "Informe de Instalaciones"
+this.toolbaritemtext = "Informe de Instalaciones"
+this.toolbaritemorder = 13
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_instalaciones.destroy
+call super::destroy
+end on
+
+type m_abrir1 from menu within m_reporte
+m_reporte1 m_reporte1
+m_preferencia m_preferencia
+end type
+
+on m_abrir1.create
+call super::create
+this.text = "&Abrir"
+this.microhelp = "Abrir Informe/ Preferencia"
+this.toolbaritemtext = "Abrir Informe/ Preferencia"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_reporte1=create m_reporte1
+this.m_preferencia=create m_preferencia
+this.Item[UpperBound(this.Item)+1]=this.m_reporte1
+this.Item[UpperBound(this.Item)+1]=this.m_preferencia
+end on
+
+on m_abrir1.destroy
+call super::destroy
+destroy(this.m_reporte1)
+destroy(this.m_preferencia)
+end on
+
+type m_reporte1 from menu within m_abrir1
+end type
+
+on m_reporte1.create
+call super::create
+this.text = "&Informe"
+this.enabled = false
+this.microhelp = "Abrir Informe"
+this.toolbaritemname = "carp_ab.bmp"
+this.toolbaritemtext = "Abrir Informe"
+this.toolbaritemorder = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.triggerevent("ue_abrir_reporte")
+
+
+window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+activesheet.triggerevent("ue_abrir_reporte")
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_reporte1.destroy
+call super::destroy
+end on
+
+type m_preferencia from menu within m_abrir1
+end type
+
+on m_preferencia.create
+call super::create
+this.text = "&Preferencia"
+this.enabled = false
+this.microhelp = "Abrir Preferencia"
+this.toolbaritemname = "update5!"
+this.toolbaritemtext = "Abrir Preferencia"
+this.toolbaritemorder = 3
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.triggerevent("ue_abrir_pref")
+
+window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+activesheet.triggerevent("ue_abrir_pref")
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_preferencia.destroy
+call super::destroy
+end on
+
+type m_guardar from menu within m_reporte
+m_reporte2 m_reporte2
+m_preferencia1 m_preferencia1
+end type
+
+on m_guardar.create
+call super::create
+this.text = "&Guardar"
+this.enabled = false
+this.microhelp = "Guardar Informe/Preferencia"
+this.toolbaritemtext = "Guardar Informe/Preferencia"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_reporte2=create m_reporte2
+this.m_preferencia1=create m_preferencia1
+this.Item[UpperBound(this.Item)+1]=this.m_reporte2
+this.Item[UpperBound(this.Item)+1]=this.m_preferencia1
+end on
+
+on m_guardar.destroy
+call super::destroy
+destroy(this.m_reporte2)
+destroy(this.m_preferencia1)
+end on
+
+type m_reporte2 from menu within m_guardar
+end type
+
+on m_reporte2.create
+call super::create
+this.text = "Informe"
+this.microhelp = "Guardar Informe"
+this.toolbaritemname = "save!"
+this.toolbaritemtext = "Guardar Informe"
+this.toolbaritemorder = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.triggerevent("ue_grabar_reporte")
+
+window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+activesheet.triggerevent("ue_grabar_reporte")
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_reporte2.destroy
+call super::destroy
+end on
+
+type m_preferencia1 from menu within m_guardar
+end type
+
+on m_preferencia1.create
+call super::create
+this.text = "Preferencia"
+this.microhelp = "Guardar Preferencia"
+this.toolbaritemname = "retrieve5!"
+this.toolbaritemtext = "Guardar Preferencia"
+this.toolbaritemorder = 4
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.triggerevent("ue_grabar_pref")
+
+window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+activesheet.triggerevent("ue_grabar_pref")
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_preferencia1.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_reporte
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_imprimir from menu within m_reporte
+end type
+
+on m_imprimir.create
+call super::create
+this.text = "&Imprimir~tAlt+I"
+this.shortcut = 585
+this.microhelp = "Imprimir Informe"
+this.toolbaritemname = "print!"
+this.toolbaritemtext = "Imprimir Informe"
+this.toolbaritemorder = 5
+this.toolbaritemspace = 3
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.triggerevent("ue_imprimir")
+
+window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+activesheet.triggerevent("ue_imprimir")
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_imprimir.destroy
+call super::destroy
+end on
+
+type m_-87875 from menu within m_reporte
+end type
+
+on m_-87875.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-87875.destroy
+call super::destroy
+end on
+
+type m_salir from menu within m_reporte
+end type
+
+on m_salir.create
+call super::create
+this.text = "&Cerrar~tCtrl+F4"
+this.shortcut = 371
+this.microhelp = "Salir"
+this.toolbaritemname = "runwindow!"
+this.toolbaritemtext = "Salir"
+this.toolbaritemorder = 13
+this.toolbaritemspace = 6
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_salir.destroy
+call super::destroy
+end on
+
+event clicked;close(ParentWindow)
+end event
+
+type m_salir1 from menu within m_reporte
+end type
+
+event clicked;close(ParentWindow)
+end event
+
+on m_salir1.create
+call super::create
+this.visible = false
+this.text = "Salir~tAlt+F4"
+this.enabled = false
+this.shortcut = 627
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_salir1.destroy
+call super::destroy
+end on
+
+type m_rep from menu within m_reportes
+m_mostrar m_mostrar
+m_cancelar m_cancelar
+m_presentacionpreliminar m_presentacionpreliminar
+m_exportarinformeaexcel m_exportarinformeaexcel
+end type
+
+on m_rep.create
+call super::create
+this.text = "&Reporte"
+this.toolbaritemtext = "Selecci$$HEX1$$f300$$ENDHEX$$n de Reporte"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_mostrar=create m_mostrar
+this.m_cancelar=create m_cancelar
+this.m_presentacionpreliminar=create m_presentacionpreliminar
+this.m_exportarinformeaexcel=create m_exportarinformeaexcel
+this.Item[UpperBound(this.Item)+1]=this.m_mostrar
+this.Item[UpperBound(this.Item)+1]=this.m_cancelar
+this.Item[UpperBound(this.Item)+1]=this.m_presentacionpreliminar
+this.Item[UpperBound(this.Item)+1]=this.m_exportarinformeaexcel
+end on
+
+on m_rep.destroy
+call super::destroy
+destroy(this.m_mostrar)
+destroy(this.m_cancelar)
+destroy(this.m_presentacionpreliminar)
+destroy(this.m_exportarinformeaexcel)
+end on
+
+type m_mostrar from menu within m_rep
+end type
+
+on m_mostrar.create
+call super::create
+this.text = "&Mostrar"
+this.microhelp = "Generar Informe"
+this.toolbaritemname = "search!"
+this.toolbaritemdownname = "Mostrar Reporte"
+this.toolbaritemtext = "Generar Informe"
+this.toolbaritemorder = 6
+this.toolbaritemspace = 3
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.triggerevent("ue_armar_sql")
+
+IF IsValid(w_reportes) THEN
+	w_reportes.triggerevent("ue_armar_sql")	
+ELSEIF IsValid(w_reportes_new) THEN
+	w_reportes_new.triggerevent("ue_armar_sql")
+END IF
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_mostrar.destroy
+call super::destroy
+end on
+
+type m_cancelar from menu within m_rep
+end type
+
+on m_cancelar.create
+call super::create
+this.text = "&Restaurar"
+this.microhelp = "Restaurar Pantalla"
+this.toolbaritemname = "undo!"
+this.toolbaritemdownname = "Restaurar Pantalla"
+this.toolbaritemtext = "Restaurar Pantalla"
+this.toolbaritemorder = 7
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.TRIGGEREVENT("UE_limpiar_ventana")
+
+IF IsValid(w_reportes) THEN
+	w_reportes.TRIGGEREVENT("UE_limpiar_ventana")	
+ELSEIF IsValid(w_reportes_new) THEN
+	w_reportes_new.triggerevent("ue_setear_datos")
+END IF
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_cancelar.destroy
+call super::destroy
+end on
+
+type m_presentacionpreliminar from menu within m_rep
+end type
+
+event clicked;string data
+
+
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  data= w_reportes.dw_1.Object.DataWindow.Syntax
+//**  OSGI 2001.1  	01/05/2001  OpenWithParm(w_reportes_preview,data)
+//**  OSGI 2001.1  	01/05/2001  //w_reportes.dw_1.Object.DataWindow.Print.preview(true)
+
+
+IF IsValid(w_reportes) THEN
+	If fg_verifica_parametro(ParentWindow.ClassName()) Then
+		w_reportes.f_titulo_subtitulo()
+		w_reportes.str_print.PARM1=true
+	End If
+	
+	data = w_reportes.dw_1.Object.DataWindow.Syntax
+	OpenWithParm(w_reportes_preview, data)
+ELSEIF IsValid(w_reportes_new) THEN
+	w_reportes_new.f_titulo_subtitulo()
+	w_reportes_new.str_print_new.PARM1=true
+
+	data = w_reportes_new.dw_1.Object.DataWindow.Syntax
+	OpenWithParm(w_reportes_preview, data)
+END IF
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_presentacionpreliminar.create
+call super::create
+this.text = "&Presentacion Preliminar"
+this.microhelp = "Presentacion preliminar del $$HEX1$$fa00$$ENDHEX$$ltimo informe generado"
+this.toolbaritemname = "preview!"
+this.toolbaritemtext = "Presentacion del $$HEX1$$fa00$$ENDHEX$$ltimo informe"
+this.toolbaritemorder = 7
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_presentacionpreliminar.destroy
+call super::destroy
+end on
+
+type m_exportarinformeaexcel from menu within m_rep
+end type
+
+on m_exportarinformeaexcel.create
+call super::create
+this.text = "&Exportar Informe a Excel"
+this.microhelp = "Guarda el informe generado en un fichero con formato Excel"
+this.toolbaritemname = "Query5!"
+this.toolbaritemdownname = "Exportar el informe"
+this.toolbaritemtext = "Exportar el informe"
+this.toolbaritemorder = 8
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	01/05/2001  w_reportes.TriggerEvent("ue_exportar_excel")
+
+IF IsValid(w_reportes) THEN
+	w_reportes.TriggerEvent("ue_exportar_excel")
+ELSEIF IsValid(w_reportes_new) THEN
+	w_reportes_new.TriggerEvent("ue_exportar_excel")
+END IF
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_exportarinformeaexcel.destroy
+call super::destroy
+end on
+
+type m_ventana from menu within m_reportes
+m_mosaico m_mosaico
+m_cascada m_cascada
+m_organizar m_organizar
+end type
+
+on m_ventana.create
+call super::create
+this.text = "&Ventana"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_mosaico=create m_mosaico
+this.m_cascada=create m_cascada
+this.m_organizar=create m_organizar
+this.Item[UpperBound(this.Item)+1]=this.m_mosaico
+this.Item[UpperBound(this.Item)+1]=this.m_cascada
+this.Item[UpperBound(this.Item)+1]=this.m_organizar
+end on
+
+on m_ventana.destroy
+call super::destroy
+destroy(this.m_mosaico)
+destroy(this.m_cascada)
+destroy(this.m_organizar)
+end on
+
+type m_mosaico from menu within m_ventana
+end type
+
+on m_mosaico.create
+call super::create
+this.text = "&Cascada"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_mosaico.destroy
+call super::destroy
+end on
+
+type m_cascada from menu within m_ventana
+end type
+
+on m_cascada.create
+call super::create
+this.text = "&Mosaico"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cascada.destroy
+call super::destroy
+end on
+
+type m_organizar from menu within m_ventana
+end type
+
+on m_organizar.create
+call super::create
+this.text = "&Organizar"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_organizar.destroy
+call super::destroy
+end on
+
+type m_ayuda1 from menu within m_reportes
+m_acercadelopensgi m_acercadelopensgi
+end type
+
+on m_ayuda1.create
+call super::create
+this.text = "Ay&uda"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_acercadelopensgi=create m_acercadelopensgi
+this.Item[UpperBound(this.Item)+1]=this.m_acercadelopensgi
+end on
+
+on m_ayuda1.destroy
+call super::destroy
+destroy(this.m_acercadelopensgi)
+end on
+
+type m_acercadelopensgi from menu within m_ayuda1
+end type
+
+event clicked;Open(w_genapp_about)
+end event
+
+on m_acercadelopensgi.create
+call super::create
+this.text = "&Acerca del OT24H"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_acercadelopensgi.destroy
+call super::destroy
+end on
+

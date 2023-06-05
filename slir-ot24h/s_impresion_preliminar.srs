@@ -1,0 +1,15 @@
+HA$PBExportHeader$s_impresion_preliminar.srs
+$PBExportComments$PM013.JCC.Par$$HEX1$$e100$$ENDHEX$$metros de la ventana de presentaci$$HEX1$$f300$$ENDHEX$$n preliminar.
+global type s_impresion_preliminar from structure
+	datawindow		pdw_datawindow
+	datawindow		pdw_lista
+	datawindow		pdw_compuesto
+	boolean		compuesto
+	datawindow		pa_todos[]
+	string		pa_nombres[]
+	integer		total
+	boolean		grafica
+	integer		zoom
+	string		modify
+end type
+

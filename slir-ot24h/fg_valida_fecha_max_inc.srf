@@ -1,0 +1,85 @@
+HA$PBExportHeader$fg_valida_fecha_max_inc.srf
+global type fg_valida_fecha_max_inc from function_object
+end type
+
+forward prototypes
+global function datetime fg_valida_fecha_max_inc (readonly datetime adt_fecha_avi, readonly long al_nro_instalacion, readonly integer ai_clase_aviso)
+end prototypes
+
+global function datetime fg_valida_fecha_max_inc (readonly datetime adt_fecha_avi, readonly long al_nro_instalacion, readonly integer ai_clase_aviso);//*******************************************
+//**  OSGI 2002.1  	16/07/2002				 **
+//**  Jair Padilla / Soluziona PANAMA  	 **
+//**  PM001 RESTRICCION N DIAS ANTIG$$HEX1$$dc00$$ENDHEX$$EDAD  **
+//*******************************************
+///////////////////////////////////////////////////////
+//									
+// Funcion/Evento: fg_valida_fecha_max_inc
+// 
+// Objetivo: Busca la fecha m$$HEX1$$ed00$$ENDHEX$$nima de los avisos dependientes
+//				 de una instalaci$$HEX1$$f300$$ENDHEX$$n "al_nro_instalacion"
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: datetime adt_fecha_avi,
+//					long al_nro_instalacion,
+//					integer ai_clase_aviso
+//    Salida : --
+//
+// Devuelve: datetime
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 04/09/2002   JPE
+//
+///////////////////////////////////////////////////////
+
+DateTime ldt_fecha_max_inc_rest
+Long ll_dias_antig_cont = 0
+
+
+
+ldt_fecha_max_inc_rest = fgnu_fecha_actual()
+
+If al_nro_instalacion > 0 And &
+	al_nro_instalacion <> fgcdec_aviso_alumbrado_publico And &
+	al_nro_instalacion <> fgcdec_aviso_de_ayuda And &
+	al_nro_instalacion <> fgcdec_aviso_sin_alimentacion And &
+	al_nro_instalacion <> fgcdec_aviso_de_calidad_sin_alim Then
+
+	SELECT MIN(GI_AVISOS_INSTALACION.F_ALTA)
+	  INTO :ldt_fecha_max_inc_rest
+	  FROM GI_AVISOS_INSTALACION
+	 WHERE GI_AVISOS_INSTALACION.NRO_INSTALACION = :al_nro_instalacion And
+			 GI_AVISOS_INSTALACION.EST_AVISO = :fgci_aviso_pendiente And 
+			 GI_AVISOS_INSTALACION.CLASE_AVISO = :ai_clase_aviso And 
+			 ( Trunc((sysdate-F_ALTA), 0) < :gi_dias_antiguedad Or :gi_dias_antiguedad = 0 ) ;
+
+
+	If sqlca.sqlcode <> 0 Or IsNull(ldt_fecha_max_inc_rest) Then
+		SetNull(ldt_fecha_max_inc_rest)
+	End If
+
+
+	If Not gb_inc_antig And IsNull(ldt_fecha_max_inc_rest) Then ldt_fecha_max_inc_rest = fgnu_fecha_actual()
+Else
+	If gb_inc_antig Then
+		If Not IsNull(adt_fecha_avi) Then
+			SELECT Trunc((sysdate-:adt_fecha_avi), 0)
+			  INTO :ll_dias_antig_cont
+			  FROM DUAL ;
+		End If
+		  
+		If ll_dias_antig_cont >= gi_dias_antiguedad Or SQLCA.SQLCODE <> 0 Or IsNull(adt_fecha_avi) Then
+			SetNull(ldt_fecha_max_inc_rest)
+		End If
+	End If
+End If
+
+Return ldt_fecha_max_inc_rest
+//*******************************************
+//**  OSGI 2002.1  	16/07/2002				 **
+//**  Jair Padilla / Soluziona PANAMA  	 **
+//**  PM001 RESTRICCION N DIAS ANTIG$$HEX1$$dc00$$ENDHEX$$EDAD  **
+//*******************************************
+end function
+

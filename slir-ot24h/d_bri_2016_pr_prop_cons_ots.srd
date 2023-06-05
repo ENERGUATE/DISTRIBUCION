@@ -1,0 +1,17 @@
+HA$PBExportHeader$d_bri_2016_pr_prop_cons_ots.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=28 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=196 color="536870912" )
+table(column=(type=number updatewhereclause=no name=pi_tareas dbname="pi_tareas" values="<Todos>	0/OT's	1/Tareas	2/" )
+ column=(type=number updatewhereclause=no name=pi_estado dbname="pi_estado" )
+ column=(type=char(2) updatewhereclause=no name=ps_tipo dbname="ps_tipo" initial="BR" values="Brigada	BR/Contrata	CO/	/" )
+ )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="8388608" x="398" y="16" height="64" width="901" format="[general]" html.valueishtml="0"  name=pi_tareas visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="8388608" x="398" y="112" height="64" width="901" format="[general]" html.valueishtml="0"  name=pi_estado visible="1" dddw.name=ddw_estado_ot dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Tareas/OT's" border="0" color="0" x="27" y="20" height="64" width="352" html.valueishtml="0"  name=pi_tareas_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="Estado:" border="0" color="0" x="27" y="116" height="64" width="215" html.valueishtml="0"  name=pi_estado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

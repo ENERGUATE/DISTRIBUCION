@@ -1,0 +1,22 @@
+HA$PBExportHeader$f_encriptar.srf
+global type f_encriptar from function_object
+end type
+
+forward prototypes
+global function string f_encriptar (string a_valor)
+end prototypes
+
+global function string f_encriptar (string a_valor);string wtxt,wcrip,wcar 
+long xi,wlen 
+
+wtxt = trim(a_valor) 
+wlen=len(wtxt)+1 
+wcrip ="" 
+for xi=1 to wlen - 1 
+wcar=mid(wtxt,xi,1) 
+wcar=char(asc(wcar)+(wlen)-xi) 
+wcrip=wcrip+wcar 
+next 
+return wcrip 
+end function
+

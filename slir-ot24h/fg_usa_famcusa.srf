@@ -1,0 +1,17 @@
+HA$PBExportHeader$fg_usa_famcusa.srf
+global type fg_usa_famcusa from function_object
+end type
+
+forward prototypes
+global function integer fg_usa_famcusa ()
+end prototypes
+
+global function integer fg_usa_famcusa ();integer li_encontrado
+  SELECT "SGD_PARAMETROS"."VALOR" 
+    INTO :li_encontrado
+    FROM "SGD_PARAMETROS"  
+   WHERE "SGD_PARAMETROS"."COD_PARAMETRO" = 60  ;
+
+return li_encontrado
+end function
+

@@ -1,0 +1,56 @@
+HA$PBExportHeader$fg_ejecuta_parametro.srf
+global type fg_ejecuta_parametro from function_object
+end type
+
+forward prototypes
+global subroutine fg_ejecuta_parametro (datawindow adw_dw, readonly string as_columna, readonly integer ai_opcion, readonly integer ai_parametro)
+end prototypes
+
+global subroutine fg_ejecuta_parametro (datawindow adw_dw, readonly string as_columna, readonly integer ai_opcion, readonly integer ai_parametro);//***************************************
+//**  OSGI 2001.1  	21/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+///////////////////////////////////////////////////////
+//
+// Funcion/Evento: fg_ejecuta_parametro
+// 
+// Objetivo: Ejecuta los parametros si los mismos est$$HEX1$$e100$$ENDHEX$$n activos o no.
+//
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: datawindow ai_cod_parametro,
+//					string as_columna
+//					integer ai_opcion 
+//
+//
+//    Salida : --
+//
+// Devuelve: integer
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 21/03/2001   JPE
+//
+///////////////////////////////////////////////////////
+//**  2.  Quita las tensiones origen, afectada y agente de la pesta$$HEX1$$f100$$ENDHEX$$a otros
+
+
+
+String ls_texto_nuevo
+
+
+
+
+CHOOSE CASE ai_opcion
+	CASE 2
+		If sqlca.sqlcode = 0 Then adw_dw.Modify(as_columna + ".Visible = '" + String(ai_parametro) + "'")
+
+END CHOOSE
+
+//***************************************
+//**  OSGI 2001.1  	21/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end subroutine
+

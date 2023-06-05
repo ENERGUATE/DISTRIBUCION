@@ -1,0 +1,107 @@
+HA$PBExportHeader$d_ins_2010_pr_lista_otras_ins.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=88 color="-1" )
+summary(height=0 color="536870912" )
+footer(height=8 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(3) updatewhereclause=yes name=fase_afectada dbname="sgd_interrupcion.fase_afectada" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_incidencia dbname="sgd_interrupcion.nro_incidencia" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="sgd_interrupcion.nro_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_padre dbname="sgd_interrupcion.nro_padre" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_instalacion dbname="sgd_interrupcion.tipo_instalacion" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="sgd_interrupcion.f_alta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_reposicion dbname="sgd_interrupcion.f_reposicion" )
+ column=(type=datetime updatewhereclause=yes name=f_alta_fase_a dbname="sgd_interrupcion.f_alta_fase_a" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion_fase_a dbname="sgd_interrupcion.f_reposicion_fase_a" )
+ column=(type=datetime updatewhereclause=yes name=f_alta_fase_b dbname="sgd_interrupcion.f_alta_fase_b" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion_fase_b dbname="sgd_interrupcion.f_reposicion_fase_b" )
+ column=(type=datetime updatewhereclause=yes name=f_alta_fase_c dbname="sgd_interrupcion.f_alta_fase_c" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion_fase_c dbname="sgd_interrupcion.f_reposicion_fase_c" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(50) updatewhereclause=yes name=tipo_instalacion dbname="sgd_valor.descripcion" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_incidencia_est_actual dbname="sgd_incidencia.est_actual" )
+ column=(type=char(4000) updatewhereclause=yes name=estado dbname="estado" )
+ column=(type=number updatewhereclause=yes name=color dbname="sgd_interrupcion.color" )
+ column=(type=char(50) updatewhereclause=yes name=sgd_valor_descripcion dbname="sgd_valor.descripcion" )
+ column=(type=number updatewhereclause=yes name=incidencia_bloqueada dbname="sgd_interrupcion.incidencia_bloqueada" )
+ column=(type=decimal(0) updatewhereclause=yes name=ccli_afec dbname="sgd_interrupcion.ccli_afec" )
+ column=(type=decimal(0) updatewhereclause=yes name=co_nivel dbname="sgd_interrupcion.co_nivel" )
+ column=(type=decimal(0) updatewhereclause=yes name=kwh dbname="sgd_interrupcion.kwh" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_instalada dbname="sgd_interrupcion.pot_instalada" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_contratada dbname="sgd_interrupcion.pot_contratada" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_inst_afec dbname="sgd_interrupcion.pot_inst_afec" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_contr_afec dbname="sgd_interrupcion.pot_contr_afec" )
+ column=(type=decimal(0) updatewhereclause=yes name=cant_cli dbname="sgd_interrupcion.cant_cli" )
+ column=(type=decimal(0) updatewhereclause=yes name=ind_otras_ins dbname="sgd_interrupcion.ind_otras_ins" )
+ column=(type=number updatewhereclause=yes name=afectado dbname="afectado" )
+ column=(type=number updatewhereclause=yes name=instalacion_padre_int dbname="sgd_interrupcion.instalacion_padre_int" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_conexion dbname="sgd_instalacion.tipo_conexion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_ct dbname="sgd_instalacion.tipo_ct" )
+ column=(type=datetime updatewhereclause=yes name=f_actual dbname="sgd_interrupcion.f_actual" )
+ retrieve="SELECT ~"SGD_INTERRUPCION~".~"FASE_AFECTADA~",
+		 ~"SGD_INTERRUPCION~".~"NRO_INCIDENCIA~",   
+         ~"SGD_INTERRUPCION~".~"NRO_INSTALACION~",   
+         ~"SGD_INTERRUPCION~".~"NRO_PADRE~",   
+         ~"SGD_INTERRUPCION~".~"TIPO_INSTALACION~",   
+         ~"SGD_INTERRUPCION~".~"F_ALTA~",   
+         ~"SGD_INTERRUPCION~".~"F_REPOSICION~",   
+			~"SGD_INTERRUPCION~".~"F_ALTA_FASE_A~",  
+			~"SGD_INTERRUPCION~".~"F_REPOSICION_FASE_A~",
+			~"SGD_INTERRUPCION~".~"F_ALTA_FASE_B~",  
+			~"SGD_INTERRUPCION~".~"F_REPOSICION_FASE_B~",
+         ~"SGD_INTERRUPCION~".~"F_ALTA_FASE_C~",  
+			~"SGD_INTERRUPCION~".~"F_REPOSICION_FASE_C~",
+         ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         A.DESCRIPCION,
+			~"SGD_INCIDENCIA~".~"EST_ACTUAL~",
+			fgnu_est_inc2(~"SGD_INCIDENCIA~".~"EST_ACTUAL~",0,0) ESTADO, 0 COLOR,
+			B.DESCRIPCION,
+			0 INCIDENCIA_BLOQUEADA,
+			~"SGD_INTERRUPCION~".~"CCLI_AFEC~",
+			~"SGD_INTERRUPCION~".~"CO_NIVEL~",
+			~"SGD_INTERRUPCION~".~"KWH~",
+		   ~"SGD_INTERRUPCION~".~"POT_INSTALADA~",
+			~"SGD_INTERRUPCION~".~"POT_CONTRATADA~",
+			~"SGD_INTERRUPCION~".~"POT_INST_AFEC~",
+			~"SGD_INTERRUPCION~".~"POT_CONTR_AFEC~",
+			~"SGD_INTERRUPCION~".~"CANT_CLI~",
+			~"SGD_INTERRUPCION~".~"IND_OTRAS_INS~",
+			Fgnu_fase_afect_decision_aa(~"SGD_INSTALACION~".~"TIPO_CT~",~"SGD_INSTALACION~".~"TIPO_CONEXION~",:ps_fase_afectada,~"SGD_INTERRUPCION~".~"FASE_AFECTADA~", :pi_tipo_inst_padre, :pi_tabla_decision) AFECTADO,
+			:pl_nro_instalacion INSTALACION_PADRE_INT,
+			~"SGD_INSTALACION~".~"TIPO_CONEXION~",
+			~"SGD_INSTALACION~".~"TIPO_CT~",
+			~"SGD_INTERRUPCION~".~"F_ACTUAL~"
+	FROM 
+	    ~"SGD_INTERRUPCION~",   
+         ~"SGD_INSTALACION~", 
+         ~"SGD_VALOR~" A,
+			~"SGD_VALOR~" B,
+		~"SGD_INCIDENCIA~"  
+   WHERE DECODE(:gb_operaciones_inst,1,~"SGD_INCIDENCIA~".~"ESTADO_RED~",0,-10) = -10 and
+			  ~"SGD_INTERRUPCION~".~"NRO_INSTALACION~" in
+					 (SELECT ~"NRO_INSTALACION~" 
+					  FROM ~"SGD_INSTALACION~"
+					  WHERE DECODE(:gb_operaciones_inst,0, ~"SGD_INSTALACION~".~"TENSION~",1,5) > :pl_tension_con_rep_graf and ~"SGD_INSTALACION~".~"BDI_JOB~" = 0
+					  START WITH ~"SGD_INSTALACION~".~"NRO_INSTALACION~" = :pl_nro_instalacion AND ~"SGD_INSTALACION~".~"BDI_JOB~" = 0
+   					  CONNECT BY PRIOR ~"SGD_INSTALACION~".~"NRO_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INST_PADRE~" ) 
+	AND ~"SGD_INTERRUPCION~".~"NRO_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" AND
+		~"SGD_INTERRUPCION~".~"NRO_INCIDENCIA~" <> :pl_nro_incidencia AND
+    	~"SGD_INTERRUPCION~".~"F_REPOSICION~" IS NULL AND
+		~"SGD_INTERRUPCION~".~"TIPO_INSTALACION~" = A.CODIGO AND  
+		A.CODIF = 'T_IN' AND
+		~"SGD_INCIDENCIA~".~"NRO_INCIDENCIA~"=~"SGD_INTERRUPCION~".~"NRO_INCIDENCIA~" AND 
+		~"SGD_INCIDENCIA~".~"EST_ACTUAL~" > 1 AND
+		(B.CODIF (+) = 'FASE') AND
+		(B.VALOR (+) = SGD_INTERRUPCION.FASE_AFECTADA)   
+" filter="afectado = 1" arguments=(("pl_nro_instalacion", number),("pl_nro_incidencia", number),("ps_fase_afectada", string),("pi_tipo_inst_padre", number),("pl_tension_con_rep_graf", number),("pi_tabla_decision", number),("gb_operaciones_inst", number))  sort="nro_incidencia A " )
+text(band=header alignment="2" text="Nro. Incid."border="6" color="0" x="9" y="8" height="64" width="334"  name=nro_incidencia_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Estado"border="6" color="0" x="361" y="8" height="64" width="247"  name=estado_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Nombre de la Instalaci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="626" y="8" height="64" width="1623"  name=nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Fase Afectada"border="6" color="0" x="1769" y="8" height="64" width="475"  name=fase_afectada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+button(band=detail text=" -> "filename=""action="0" border="0" color="0" x="2153" y="4" height="76" width="96" vtextalign="0" htextalign="0"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="64" width="338" format="[general]"  name=nro_incidencia edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="361" y="8" height="64" width="247" format="[general]"  name=estado edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="622" y="8" height="64" width="1495" format="[general]"  name=nom_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="1783" y="8" height="64" width="288" format="[general]"  name=sgd_valor_descripcion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

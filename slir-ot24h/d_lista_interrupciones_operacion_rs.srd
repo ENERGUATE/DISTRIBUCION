@@ -1,0 +1,82 @@
+HA$PBExportHeader$d_lista_interrupciones_operacion_rs.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=104 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=108 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="nro_instalacion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=number updatewhereclause=yes name=cant_clientes_afectados dbname="compute_0003" )
+ column=(type=number updatewhereclause=yes name=cant_cli dbname="compute_0004" )
+ column=(type=number updatewhereclause=yes name=pot_instalada dbname="compute_0005" )
+ column=(type=number updatewhereclause=yes name=pot_inst_afec dbname="compute_0006" )
+ column=(type=number updatewhereclause=yes name=pot_contratada dbname="compute_0007" )
+ column=(type=number updatewhereclause=yes name=pot_contr_afec dbname="compute_0008" )
+ column=(type=char(30) updatewhereclause=yes name=sgd_interrupcion_nombre_salmt dbname="sgd_interrupcion.nombre_salmt" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0013 dbname="compute_0010" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="sgd_interrupcion.f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="sgd_interrupcion.f_reposicion" )
+ column=(type=char(50) updatewhereclause=yes name=sgd_valor_descripcion dbname="sgd_valor.descripcion" )
+ retrieve="SELECT DISTINCT (sgd_instalacion.nro_instalacion),
+                sgd_instalacion.nom_instalacion,
+                NVL (sgd_interrupcion.ccli_afec, 0),
+                NVL (sgd_instalacion.cant_cli, 0),
+                NVL (sgd_instalacion.pot_instalada, 0),
+                NVL (sgd_interrupcion.pot_inst_afec, 0),
+                NVL (sgd_instalacion.pot_contratada, 0),
+                NVL (sgd_interrupcion.pot_contr_afec, 0),
+                sgd_interrupcion.nombre_salmt,
+                NVL (fgci_fase_instalacion (sgd_instalacion.tipo_conexion),
+                     'No determinada'),
+                sgd_interrupcion.f_alta, sgd_interrupcion.f_reposicion,
+					SGD_VALOR.DESCRIPCION DESCRIPCION
+           FROM sgd_interrupcion, sgd_instalacion, SGD_VALOR
+          WHERE sgd_interrupcion.nro_incidencia = :pl_nro_incidencia
+            AND sgd_interrupcion.nro_instalacion =
+                                               sgd_instalacion.nro_instalacion
+            AND sgd_instalacion.bdi_job = 0
+				AND  SGD_VALOR.CODIF = 'FASE'
+				AND SGD_VALOR.VALOR = SGD_INTERRUPCION.FASE_AFECTADA
+UNION ALL
+SELECT DISTINCT (sgd_interrupcion_rs.codigo_ct),
+                sgd_interrupcion_rs.nombre_ct,
+                NVL (sgd_interrupcion_rs.ccli_afec, 0),
+                NVL (sgd_interrupcion_rs.cant_clientes_ct, 0),
+                NVL (sgd_interrupcion_rs.potencia_instalada_ct, 0),
+                NVL (sgd_interrupcion_rs.pot_inst_afec, 0),
+                NVL (sgd_interrupcion_rs.potencia_contratada_ct, 0),
+                NVL (sgd_interrupcion_rs.pot_contr_afec, 0),
+                sgd_interrupcion_rs.nombre_salmt,
+                sgd_interrupcion_rs.fase_ct fase, sgd_interrupcion_rs.f_alta,
+                sgd_interrupcion_rs.f_reposicion,
+					 SGD_INTERRUPCION_RS.FASE_AFECTADA
+           FROM sgd_interrupcion_rs, SGD_VALOR
+          WHERE sgd_interrupcion_rs.nro_incidencia = :pl_nro_incidencia
+					 " arguments=(("pl_nro_incidencia", number)) )
+text(band=header alignment="2" text="Nombre Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="9" y="20" height="64" width="869" html.valueishtml="0"  name=nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n Superior" border="6" color="0" x="1586" y="20" height="64" width="763" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Alta Interrupci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="2368" y="20" height="64" width="608" html.valueishtml="0"  name=f_alta_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Rep. Interrupci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="2994" y="20" height="64" width="631" html.valueishtml="0"  name=f_reposicion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Cant. Clientes" border="6" color="0" x="3643" y="20" height="64" width="443" html.valueishtml="0"  name=cant_cli_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Clientes Afectados" border="6" color="0" x="4105" y="20" height="64" width="608" html.valueishtml="0"  name=cant_clientes_afectados_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Instalada" border="6" color="0" x="4731" y="20" height="64" width="453" html.valueishtml="0"  name=pot_instalada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Inst. Afect." border="6" color="0" x="5202" y="20" height="64" width="471" html.valueishtml="0"  name=pot_inst_afect_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Contratada" border="6" color="0" x="5691" y="20" height="64" width="494" html.valueishtml="0"  name=pot_contratada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Contr. Afect." border="6" color="0" x="6203" y="20" height="64" width="526" html.valueishtml="0"  name=pot_contr_afec_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Fase Interrumpida" border="6" color="0" x="896" y="20" height="64" width="672" html.valueishtml="0"  name=fase_ct_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="4110" y="16" height="76" width="603" format="[general]" html.valueishtml="0"  name=cant_clientes_afectados visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="0" x="3643" y="16" height="76" width="443" format="[general]" html.valueishtml="0"  name=cant_cli visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="4731" y="16" height="76" width="453" format="[general]" html.valueishtml="0"  name=pot_instalada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="0" x="5202" y="16" height="76" width="471" format="[general]" html.valueishtml="0"  name=pot_inst_afec visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="0" x="5691" y="16" height="76" width="494" format="[general]" html.valueishtml="0"  name=pot_contratada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="0" x="6203" y="16" height="76" width="526" format="[general]" html.valueishtml="0"  name=pot_contr_afec visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="1591" y="16" height="76" width="759" format="[general]" html.valueishtml="0"  name=sgd_interrupcion_nombre_salmt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="974" y="256" height="76" width="667" format="[general]" html.valueishtml="0"  name=compute_0013 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=11 alignment="2" tabsequence=32766 border="0" color="0" x="2368" y="16" height="76" width="608" format="[general]" html.valueishtml="0"  name=f_alta visible="1" editmask.mask="DD/MM/YYYY HH:MM:SS" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=12 alignment="2" tabsequence=32766 border="0" color="0" x="2994" y="16" height="76" width="631" format="[general]" html.valueishtml="0"  name=f_reposicion visible="1" editmask.mask="DD/MM/YYYY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="439" y="256" height="76" width="512" format="[general]" html.valueishtml="0"  name=codigo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="14" y="16" height="76" width="869" format="[general]" html.valueishtml="0"  name=nom_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="896" y="16" height="76" width="672" format="[general]" html.valueishtml="0"  name=sgd_valor_descripcion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

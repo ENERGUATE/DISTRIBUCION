@@ -1,0 +1,16 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "ot24hv.pbl" "";
+@end;
+@begin Objects
+ "ot24hv.sra" "ot24hv.pbl";
+ "ddw_centro3.srd" "ot24hv.pbl";
+ "w_genapp_mensaje.srw" "ot24hv.pbl";
+ "w_genapp_toolbars.srw" "ot24hv.pbl";
+ "m_genapp_frame.srm" "ot24hv.pbl";
+ "w_genapp_frame.srw" "ot24hv.pbl";
+ "m_genapp_sheet.srm" "ot24hv.pbl";
+ "w_genapp_sheet.srw" "ot24hv.pbl";
+ "w_genapp_about.srw" "ot24hv.pbl";
+ "proy_ot24hv.srj" "ot24hv.pbl";
+@end;

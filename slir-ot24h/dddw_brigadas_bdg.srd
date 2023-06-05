@@ -1,0 +1,17 @@
+HA$PBExportHeader$dddw_brigadas_bdg.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=numero dbname="numero" )
+ column=(type=char(40) updatewhereclause=yes name=nombre dbname="gi_brigadas_bdg.nombre" )
+ retrieve="SELECT  DISTINCT (~"GI_BRIGADAS_BDG~".~"NRO_BRIGADA~") NUMERO,
+        ~"GI_BRIGADAS_BDG~".~"NOMBRE~" NOMBRE     
+FROM ~"GI_BRIGADAS_BDG~"    
+WHERE (~"GI_BRIGADAS_BDG~".~"TIP_BRIGADA~" = :pi_tipo_trabajo) AND 
+(~"GI_BRIGADAS_BDG~".~"BRIG_CONT~" = :pi_tipo) AND
+(~"GI_BRIGADAS_BDG~".~"NRO_BRIGADA~" > 0)
+ORDER BY NOMBRE" retrieve.asneeded=yes arguments=(("pi_tipo_trabajo", number),("pi_tipo", number)) )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="0" y="4" height="56" width="1280"  name=nombre  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

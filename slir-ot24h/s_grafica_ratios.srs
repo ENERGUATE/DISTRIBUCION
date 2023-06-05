@@ -1,0 +1,6 @@
+HA$PBExportHeader$s_grafica_ratios.srs
+global type s_grafica_ratios from structure
+	long		centro
+	integer		ratios
+end type
+

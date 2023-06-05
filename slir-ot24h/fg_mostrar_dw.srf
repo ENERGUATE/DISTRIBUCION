@@ -1,0 +1,80 @@
+HA$PBExportHeader$fg_mostrar_dw.srf
+global type fg_mostrar_dw from function_object
+end type
+
+forward prototypes
+global subroutine fg_mostrar_dw (ref datawindow pd_dw)
+end prototypes
+
+global subroutine fg_mostrar_dw (ref datawindow pd_dw);int  i, j,  total_columnas, puedo_mostrar , empiezo_en = 1
+string  s_modif, s_dato, texto, tipo_campo, arg_describe, ls_update
+string columnas[100]
+
+pd_dw.AcceptText()
+
+total_columnas =  integer(pd_dw.Describe("Datawindow.Column.Count"))
+
+//IF total_columnas > 35 THEN
+//	puedo_mostrar = 35
+//ELSE
+//	puedo_mostrar = total_columnas
+//END IF
+
+For j =1 to pd_dw.RowCount()
+	For i = 1 to total_columnas
+		
+		arg_describe = "#" + string(i) + ".Name"
+		columnas[i] = pd_dw.Describe(arg_describe)
+			
+		s_modif = columnas[i]+".ColType"
+		tipo_campo = Left(pd_dw.Describe(s_modif),4)
+		
+		ls_update = pd_dw.Describe(columnas[i]+".Update")
+		
+		CHOOSE CASE tipo_campo
+			CASE 'char'
+				s_dato = pd_dw.GetItemString(j,columnas[i])
+				IF isnull(s_dato) then s_dato = 'nulo'
+				IF  ls_update = "yes" THEN s_dato = s_dato + "~t~tUPDATE"
+
+			CASE 'date'
+				s_dato = string(pd_dw.GetItemDateTime(j,columnas[i]))
+				IF isnull(s_dato) then s_dato = 'nulo'
+				IF  ls_update = "yes" THEN s_dato = s_dato + "~tUPDATE"
+
+			CASE 'deci'
+				s_dato = string(pd_dw.GetItemNumber(j,columnas[i]))
+				IF isnull(s_dato) then s_dato = 'nulo'
+				IF  ls_update = "yes" THEN s_dato = s_dato + "~t~tUPDATE"
+
+			CASE 'numb'
+				s_dato = string(pd_dw.GetItemNumber(j,columnas[i]))
+				IF isnull(s_dato) then s_dato = 'nulo'
+				IF  ls_update = "yes" THEN s_dato = s_dato + "~t~tUPDATE"
+
+			CASE ELSE
+				s_dato = "No definido"
+				IF  ls_update = "yes" THEN s_dato = s_dato + "~t~tUPDATE"
+				
+		END CHOOSE
+	
+	
+		texto = texto + "~r~n"+columnas[i]+" = ~t"+s_dato
+		
+	NEXT		// fin de columnas
+	
+//	messagebox(pd_dw.DataObject + "   FILA = " + string(j),texto)
+//	texto = ""
+OPEN(W_MOSTRAR_DATAWINDOW)
+W_MOSTRAR_DATAWINDOW.MLE_1.TEXT= pd_dw.DataObject + "   FILA = " + string(j) + texto
+	
+	
+	
+	
+NEXT
+
+
+
+
+end subroutine
+

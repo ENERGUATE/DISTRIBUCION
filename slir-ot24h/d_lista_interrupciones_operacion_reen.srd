@@ -1,0 +1,59 @@
+HA$PBExportHeader$d_lista_interrupciones_operacion_reen.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="nro_instalacion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=number updatewhereclause=yes name=cant_clientes_afectados dbname="cant_clientes_afectados" )
+ column=(type=number updatewhereclause=yes name=cant_cli dbname="cant_cli" )
+ column=(type=number updatewhereclause=yes name=pot_instalada dbname="pot_instalada" )
+ column=(type=number updatewhereclause=yes name=pot_inst_afec dbname="pot_inst_afec" )
+ column=(type=number updatewhereclause=yes name=pot_contratada dbname="pot_contratada" )
+ column=(type=number updatewhereclause=yes name=pot_contr_afec dbname="pot_contr_afec" )
+ column=(type=char(30) updatewhereclause=yes name=nombre_salmt dbname="sgd_interrupcion_reenganche.nombre_salmt" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0010 dbname="compute_0010" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="sgd_interrupcion_reenganche.f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="sgd_interrupcion_reenganche.f_reposicion" )
+ retrieve="SELECT DISTINCT(SGD_INSTALACION.NRO_INSTALACION), 
+	   SGD_INSTALACION.NOM_INSTALACION, 
+	   NVL(SGD_INTERRUPCION_REENGANCHE.CCLI_AFEC,0) CANT_CLIENTES_AFECTADOS, 
+	   NVL(SGD_INSTALACION.CANT_CLI,0) CANT_CLI,
+	   NVL(SGD_INSTALACION.POT_INSTALADA,0) POT_INSTALADA,
+	   NVL(SGD_INTERRUPCION_REENGANCHE.POT_INST_AFEC,0) POT_INST_AFEC,
+	   NVL(SGD_INSTALACION.POT_CONTRATADA,0) POT_CONTRATADA,
+	   NVL(SGD_INTERRUPCION_REENGANCHE.POT_CONTR_AFEC,0) POT_CONTR_AFEC,
+		SGD_INTERRUPCION_REENGANCHE.NOMBRE_SALMT,
+		FGCI_FASE_INSTALACION(SGD_INSTALACION.TIPO_CONEXION) ,
+		F_ALTA,
+		F_REPOSICION
+FROM SGD_INTERRUPCION_REENGANCHE, SGD_INSTALACION 
+WHERE SGD_INTERRUPCION_REENGANCHE.NRO_INCIDENCIA = :pl_nro_incidencia
+		  AND SGD_INSTALACION.NRO_INSTALACION = SGD_INTERRUPCION_REENGANCHE.NRO_INSTALACION
+		  AND SGD_INSTALACION.BDI_JOB = 0
+	   " retrieve.asneeded=yes arguments=(("pl_nro_incidencia", number)) )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="14" y="8" height="68" width="1253" format="[general]"  name=nom_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="8388608" x="1285" y="8" height="68" width="407" format="[general]"  name=compute_0010 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608" x="1719" y="8" height="68" width="1056" format="[general]"  name=nombre_salmt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=11 alignment="2" tabsequence=32766 border="0" color="8388608" x="2798" y="8" height="68" width="608" format="[general]"  name=f_alta editmask.mask="DD/MM/YYYY HH:MM" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=12 alignment="2" tabsequence=32766 border="0" color="8388608" x="3429" y="8" height="68" width="631" format="[general]"  name=f_reposicion editmask.mask="DD/MM/YYYY HH:MM" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="8388608" x="4078" y="8" height="68" width="443" format="[general]"  name=cant_cli edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="8388608" x="4539" y="8" height="68" width="603" format="[general]"  name=cant_clientes_afectados edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="8388608" x="5161" y="8" height="68" width="453" format="[general]"  name=pot_instalada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="8388608" x="5632" y="8" height="68" width="471" format="[general]"  name=pot_inst_afec edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="8388608" x="6121" y="8" height="68" width="494" format="[general]"  name=pot_contratada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="8388608" x="6633" y="8" height="68" width="526" format="[general]"  name=pot_contr_afec edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Nombre del CT"border="6" color="0" x="14" y="20" height="64" width="1253"  name=nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Fase del CT"border="6" color="0" x="1285" y="20" height="64" width="407"  name=compute_0010_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Salida de Media Tensi$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="1710" y="20" height="64" width="1070"  name=nombre_salmt_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Alta Interrupci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="2798" y="20" height="64" width="608"  name=f_alta_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Rep. Interrupci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="3424" y="20" height="64" width="631"  name=f_reposicion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Cant. Clientes"border="6" color="0" x="4078" y="20" height="64" width="443"  name=cant_cli_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Clientes Afectados"border="6" color="0" x="4535" y="20" height="64" width="608"  name=cant_clientes_afectados_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Instalada"border="6" color="0" x="5161" y="20" height="64" width="453"  name=pot_instalada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Inst. Afect."border="6" color="0" x="5632" y="20" height="64" width="471"  name=pot_inst_afect_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Contratada"border="6" color="0" x="6121" y="20" height="64" width="494"  name=pot_contratada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Contr. Afect."border="6" color="0" x="6638" y="20" height="64" width="526"  name=pot_contr_afec_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

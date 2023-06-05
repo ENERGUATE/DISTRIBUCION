@@ -1,0 +1,118 @@
+HA$PBExportHeader$fg_ventana_parametro.srf
+global type fg_ventana_parametro from function_object
+end type
+
+forward prototypes
+global function string fg_ventana_parametro (string as_ventana, datawindow adw_dw)
+end prototypes
+
+global function string fg_ventana_parametro (string as_ventana, datawindow adw_dw);///////////////////////////////////////////////////////
+//
+// Funcion/Evento: fg_cor2
+// 
+// Objetivo: Busca los valores de los par$$HEX1$$e100$$ENDHEX$$metros para cada ventana.
+//
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: string as_replace
+//
+//    Salida : --
+//
+// Devuelve: --
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 03/04/2001   JPE
+//
+///////////////////////////////////////////////////////
+
+Integer li_parametro, li_columna
+Long  ll_i, ll_row
+
+
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+String ls_return = " "
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+
+
+
+
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  If Not fg_verifica_parametro(as_ventana) Then Return
+
+
+If Not fg_verifica_parametro(as_ventana) Then Return " "
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+
+
+
+DataStore lds_param_ventana
+
+as_ventana = Upper(as_ventana)
+
+lds_param_ventana = Create DataStore
+lds_param_ventana.DataObject = "dw_co_parametros_vent_ext"
+lds_param_ventana.SetTransObject(SQLCA)
+ll_row = lds_param_ventana.Retrieve(as_ventana)
+
+adw_dw.SetRedraw(False)
+For ll_i = 1 To ll_row
+	li_parametro = lds_param_ventana.GetItemNumber(ll_i, "cod_parametro")
+	li_columna = lds_param_ventana.GetItemNumber(ll_i, "columna")
+
+	If Not IsNull(li_parametro) And li_parametro > 0 And &
+		Not IsNull(li_columna) And li_columna > 0 Then
+		//******************************************
+		//**  OSGI 2001.2  	25/09/2002				**
+		//**  Jair Padilla / Soluziona PANAMA  	**
+		//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+		//******************************************
+		//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  		fg_parametros_ext(li_parametro, li_columna, adw_dw)
+
+
+		ls_return += " " + fg_parametros_ext(li_parametro, li_columna, adw_dw)
+		//******************************************
+		//**  OSGI 2001.2  	25/09/2002				**
+		//**  Jair Padilla / Soluziona PANAMA  	**
+		//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+		//******************************************
+	End If
+Next
+
+adw_dw.AcceptText()
+adw_dw.SetRedraw(True)
+
+Destroy lds_param_ventana
+
+
+
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+Return ls_return
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+end function
+

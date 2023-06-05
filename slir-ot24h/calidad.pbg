@@ -1,0 +1,13 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "calidad.pbl" "";
+@end;
+@begin Objects
+ "w_indices_calidad.srw" "calidad.pbl";
+ "md_lista_calidad.srm" "calidad.pbl";
+ "d_calidad_cmd.srd" "calidad.pbl";
+ "d_gra_calidad.srd" "calidad.pbl";
+ "d_calidad_sub.srd" "calidad.pbl";
+ "d_calidad_smt.srd" "calidad.pbl";
+ "d_f_consulta.srd" "calidad.pbl";
+@end;

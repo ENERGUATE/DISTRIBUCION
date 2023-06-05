@@ -1,0 +1,16 @@
+HA$PBExportHeader$dw_gen_form_filtro_fechas_horas.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=188 color="536870912" )
+table(column=(type=datetime updatewhereclause=no name=f_desde dbname="F_Desde" validationmsg="~"Fecha Erronea~"" )
+ column=(type=datetime updatewhereclause=no name=f_hasta dbname="F_Hasta" validationmsg="~"Fecha Erronea~"" )
+ )
+data(2004-11-11 10:24:33:000000,2004-11-11 10:24:33:000000,) 
+text(band=detail alignment="1" text="Fecha Desde:" border="0" color="0" x="27" y="8" height="64" width="407" html.valueishtml="0"  name=f_desde_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=10 border="5" color="0" x="27" y="76" height="64" width="549" format="[shortdate] [time]" html.valueishtml="0"  name=f_desde visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Fecha Hasta:" border="0" color="0" x="599" y="8" height="64" width="389" html.valueishtml="0"  name=f_hasta_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=20 border="5" color="0" x="603" y="76" height="64" width="539" format="[shortdate] [time]" html.valueishtml="0"  name=f_hasta visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

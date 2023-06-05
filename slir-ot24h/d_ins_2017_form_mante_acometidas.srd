@@ -1,0 +1,93 @@
+HA$PBExportHeader$d_ins_2017_form_mante_acometidas.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=2768 color="536870912" )
+table(column=(type=char(30) update=yes updatewhereclause=yes name=usuario dbname="sgd_acometida.usuario" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=f_actual dbname="sgd_acometida.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_acometida.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=codigo dbname="sgd_acometida.codigo" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=descripcion dbname="sgd_acometida.descripcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=instalacion_origen dbname="sgd_acometida.instalacion_origen" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=pot_contratada dbname="sgd_acometida.pot_contratada" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=kwh dbname="sgd_acometida.kwh" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nif dbname="sgd_acometida.nif" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cant_cli dbname="sgd_acometida.cant_cli" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_calle dbname="sgd_acometida.cod_calle" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_depto dbname="sgd_acometida.cod_depto" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_loc dbname="sgd_acometida.cod_loc" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_prov dbname="sgd_acometida.cod_prov" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_munic dbname="sgd_acometida.cod_munic" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=num_puerta dbname="sgd_acometida.num_puerta" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=duplicador dbname="sgd_acometida.duplicador" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=kwh_fact dbname="sgd_acometida.kwh_fact" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_centro dbname="sgd_acometida.nro_centro" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_cmd dbname="sgd_acometida.nro_cmd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_mesa dbname="sgd_acometida.nro_mesa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cant_clientes_imp dbname="sgd_acometida.cant_clientes_imp" )
+ column=(type=char(45) update=yes updatewhereclause=yes name=propiedad dbname="sgd_acometida.propiedad" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=potencia_max dbname="sgd_acometida.potencia_max" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=esta_en dbname="sgd_acometida.esta_en" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=tip_proteccion dbname="sgd_acometida.tip_proteccion" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=tip_acometida dbname="sgd_acometida.tip_acometida" )
+ column=(type=char(60) update=yes updatewhereclause=yes name=ref_dir dbname="sgd_acometida.ref_dir" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=bdi_job dbname="sgd_acometida.bdi_job" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=statflg dbname="sgd_acometida.statflg" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo_conexion dbname="sgd_acometida.tipo_conexion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=class_id dbname="sgd_acometida.class_id" )
+ column=(type=char(15) update=yes updatewhereclause=yes key=yes name=onis_ver dbname="sgd_acometida.onis_ver" )
+ column=(type=char(1) updatewhereclause=yes name=onis_stat dbname="sgd_acometida.onis_stat" )
+ retrieve="  SELECT ~"SGD_ACOMETIDA~".~"USUARIO~",   
+         ~"SGD_ACOMETIDA~".~"F_ACTUAL~",   
+         ~"SGD_ACOMETIDA~".~"PROGRAMA~",   
+         ~"SGD_ACOMETIDA~".~"CODIGO~",   
+         ~"SGD_ACOMETIDA~".~"DESCRIPCION~",   
+         ~"SGD_ACOMETIDA~".~"INSTALACION_ORIGEN~",   
+         ~"SGD_ACOMETIDA~".~"POT_CONTRATADA~",   
+         ~"SGD_ACOMETIDA~".~"KWH~" KWH,   
+         ~"SGD_ACOMETIDA~".~"NIF~",   
+         ~"SGD_ACOMETIDA~".~"CANT_CLI~",   
+         ~"SGD_ACOMETIDA~".~"COD_CALLE~",   
+         ~"SGD_ACOMETIDA~".~"COD_DEPTO~",   
+         ~"SGD_ACOMETIDA~".~"COD_LOC~",   
+         ~"SGD_ACOMETIDA~".~"COD_PROV~",   
+         ~"SGD_ACOMETIDA~".~"COD_MUNIC~",   
+         ~"SGD_ACOMETIDA~".~"NUM_PUERTA~",   
+         ~"SGD_ACOMETIDA~".~"DUPLICADOR~",   
+         ~"SGD_ACOMETIDA~".~"KWH_FACT~",   
+         ~"SGD_ACOMETIDA~".~"NRO_CENTRO~",   
+         ~"SGD_ACOMETIDA~".~"NRO_CMD~",   
+         ~"SGD_ACOMETIDA~".~"NRO_MESA~",   
+         ~"SGD_ACOMETIDA~".~"CANT_CLIENTES_IMP~",   
+         ~"SGD_ACOMETIDA~".~"PROPIEDAD~",   
+         ~"SGD_ACOMETIDA~".~"POTENCIA_MAX~",   
+         ~"SGD_ACOMETIDA~".~"ESTA_EN~",   
+         ~"SGD_ACOMETIDA~".~"TIP_PROTECCION~",   
+         ~"SGD_ACOMETIDA~".~"TIP_ACOMETIDA~",   
+         ~"SGD_ACOMETIDA~".~"REF_DIR~",   
+         ~"SGD_ACOMETIDA~".~"BDI_JOB~",   
+         ~"SGD_ACOMETIDA~".~"STATFLG~",   
+         ~"SGD_ACOMETIDA~".~"TIPO_CONEXION~",   
+         ~"SGD_ACOMETIDA~".~"CLASS_ID~",   
+         ~"SGD_ACOMETIDA~".~"ONIS_VER~",   
+         ~"SGD_ACOMETIDA~".~"ONIS_STAT~"  
+    FROM ~"SGD_ACOMETIDA~"  
+   WHERE ( ~"SGD_ACOMETIDA~".~"CODIGO~" = :pl_CODIGO AND  
+         BDI_JOB = 0 )    
+" update="SGD_ACOMETIDA" updatewhere=0 updatekeyinplace=yes arguments=(("pl_CODIGO", number)) )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="5" color="8388608" x="1335" y="172" height="64" width="334" format="[general]" html.valueishtml="0" protect="0~t1"  name=cant_cli visible="1" edit.limit=0 edit.case=any edit.format="#######" edit.focusrectangle=no edit.autoselect=no edit.nilisnull=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Fase:" border="0" color="0" x="1710" y="172" height="64" width="183" html.valueishtml="0"  name=fase_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="8388608" x="1335" y="48" height="64" width="960" format="" html.valueishtml="0"  name=descripcion visible="1" editmask.mask="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="5" color="0" x="1906" y="172" height="64" width="389" format="[general]" html.valueishtml="0"  name=tipo_conexion visible="1" dddw.name=ddw_tipo_conexion dddw.displaycolumn=descripcion dddw.datacolumn=tipo_conexion dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Descripci$$HEX1$$f300$$ENDHEX$$n:" border="0" color="0" x="878" y="48" height="64" width="443" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Cant. Clientes:" border="0" color="0" x="878" y="172" height="64" width="443" html.valueishtml="0"  name=cant_cli_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="8388608" x="512" y="48" height="64" width="329" format="[general]" html.valueishtml="0"  name=codigo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Nro. Acometida:" border="0" color="0" x="27" y="48" height="64" width="471" html.valueishtml="0"  name=codigo_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="8388608" x="535" y="1112" height="64" width="1376" format="[general]" html.valueishtml="0"  name=class_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="8388608" x="663" y="744" height="64" width="96" format="[general]" html.valueishtml="0"  name=onis_ver visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="8388608" x="1047" y="956" height="64" width="123" format="[general]" html.valueishtml="0"  name=onis_stat visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Pot. Contratada:" border="0" color="0" x="27" y="172" height="64" width="471" html.valueishtml="0"  name=pot_contratada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="8388608" x="512" y="172" height="64" width="329" format="[general]" html.valueishtml="0"  name=pot_contratada_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

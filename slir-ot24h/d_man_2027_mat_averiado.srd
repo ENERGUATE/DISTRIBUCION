@@ -1,0 +1,36 @@
+HA$PBExportHeader$d_man_2027_mat_averiado.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=8 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=mat_averiado dbname="t_material_averiado.mat_averiado" validation="integer(gettext()) > 0 and integer(gettext()) <> 99" validationmsg="~"El c$$HEX1$$f300$$ENDHEX$$digo de material averiado debe ser mayor que cero y distinto de 99.~"" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=usuario dbname="t_material_averiado.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="t_material_averiado.f_actual" )
+ column=(type=datetime update=yes updatewhereclause=yes name=h_actual dbname="t_material_averiado.h_actual" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=descripcion dbname="t_material_averiado.descripcion" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="t_material_averiado.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_familia dbname="t_material_averiado.ind_familia" )
+ column=(type=decimal(0) updatewhereclause=yes name=ind_familia2 dbname="t_material_averiado.ind_familia" values="	99/	0" )
+ retrieve="  SELECT ~"T_MATERIAL_AVERIADO~".~"MAT_AVERIADO~",   
+         ~"T_MATERIAL_AVERIADO~".~"USUARIO~",   
+         ~"T_MATERIAL_AVERIADO~".~"F_ACTUAL~",   
+         ~"T_MATERIAL_AVERIADO~".~"H_ACTUAL~",   
+         ~"T_MATERIAL_AVERIADO~".~"DESCRIPCION~",   
+         ~"T_MATERIAL_AVERIADO~".~"PROGRAMA~",   
+         ~"T_MATERIAL_AVERIADO~".~"IND_FAMILIA~",   
+         ~"T_MATERIAL_AVERIADO~".~"IND_FAMILIA~"  
+    FROM ~"T_MATERIAL_AVERIADO~"  
+   WHERE ( ~"T_MATERIAL_AVERIADO~".~"MAT_AVERIADO~" <> 99 ) AND  
+         ( ~"T_MATERIAL_AVERIADO~".~"MAT_AVERIADO~" <> 0 )    
+" update="T_MATERIAL_AVERIADO" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Material " border="6" color="0" x="9" y="0" height="64" width="402" html.valueishtml="0"  name=mat_averiado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="425" y="0" height="64" width="1061" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Familia" border="6" color="0" x="1499" y="0" height="64" width="750" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=30 border="0" color="8388608" x="1541" y="12" height="48" width="59" format="[general]" html.valueishtml="0"  name=ind_familia2 visible="1" checkbox.text="" checkbox.on="99" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="8388608" x="123" y="8" height="64" width="274" format="[general]" html.valueishtml="0" protect="0~tif(isRowNew(),0,1)"  name=mat_averiado visible="1" edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~t if(isRowNew(),16777215,81324524)" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="8388608" x="416" y="8" height="64" width="1042" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="1" tabsequence=40 border="5" color="0" x="1646" y="8" height="64" width="594" format="[general]" html.valueishtml="0"  name=ind_familia visible="1" dddw.name=ddw_fam_material_averiado_99_sin_todos dddw.displaycolumn=descripcion dddw.datacolumn=mat_averiado dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

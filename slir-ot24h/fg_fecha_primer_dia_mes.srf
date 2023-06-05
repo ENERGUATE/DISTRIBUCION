@@ -1,0 +1,17 @@
+HA$PBExportHeader$fg_fecha_primer_dia_mes.srf
+global type fg_fecha_primer_dia_mes from function_object
+end type
+
+forward prototypes
+global function date fg_fecha_primer_dia_mes (datetime pda_fecha)
+end prototypes
+
+global function date fg_fecha_primer_dia_mes (datetime pda_fecha);///////////////////////////////////////////////////////////////////////
+//
+// Retorna la fecha com el primer dia del mes.
+//
+///////////////////////////////////////////////////////////////////////
+
+RETURN RelativeDate(Date(pda_fecha), ( (Day(Date(pda_fecha)) * (-1) ) + 1 ) )
+end function
+

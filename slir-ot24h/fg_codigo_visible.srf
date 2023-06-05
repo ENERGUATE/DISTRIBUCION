@@ -1,0 +1,37 @@
+HA$PBExportHeader$fg_codigo_visible.srf
+global type fg_codigo_visible from function_object
+end type
+
+forward prototypes
+global function long fg_codigo_visible (long codigo)
+end prototypes
+
+global function long fg_codigo_visible (long codigo);// Obtiene el codigo del ct que contiene a la instalacion dada:
+// Trafos y salidas de baja.
+
+long codigo_padre
+
+ CHOOSE CASE codigo
+	CASE 50000000 to 50999999
+  SELECT "SGD_INSTALACION"."NRO_INST_PADRE"  
+    INTO :codigo_padre  
+    FROM "SGD_INSTALACION"  
+   WHERE "SGD_INSTALACION"."NRO_INSTALACION" =
+	(  SELECT "SGD_INSTALACION"."NRO_INST_PADRE"  
+    FROM "SGD_INSTALACION"  
+   WHERE "SGD_INSTALACION"."NRO_INSTALACION" = :codigo);
+
+        
+	CASE 45000000 to 45999999
+        // Ct padre 
+          SELECT "SGD_INSTALACION"."NRO_INST_PADRE"  
+            INTO :codigo_padre  
+		    FROM "SGD_INSTALACION"  
+		    WHERE "SGD_INSTALACION"."NRO_INSTALACION" = :codigo;  
+	CASE ELSE
+		 codigo_padre=codigo			 
+END CHOOSE
+
+return codigo_padre
+end function
+

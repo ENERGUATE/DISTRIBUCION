@@ -1,0 +1,12 @@
+HA$PBExportHeader$d_nom_instalacion.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=8 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=128 color="536870912" )
+table(column=(type=char(30) updatewhereclause=no name=ps_nom_instalacion dbname="ps_nom_instalacion" values="<Todas>	0/" )
+ column=(type=number updatewhereclause=no name=nro_instalacion dbname="nro_instalacion" )
+ )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="27" y="32" height="64" width="1134" format="[general]"  name=ps_nom_instalacion ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

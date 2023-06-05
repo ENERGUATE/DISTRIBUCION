@@ -1,0 +1,9 @@
+HA$PBExportHeader$st_params.srs
+global type st_params from structure
+	double		l_nro_aviso
+	double		l_nro_incidencia
+	double		l_nis_rad
+	double		il_inst_afect_inc
+	boolean		historico
+end type
+

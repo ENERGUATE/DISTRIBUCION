@@ -1,0 +1,47 @@
+HA$PBExportHeader$d_bri_2012_brigadistas_asignados.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=gi_brigada_brigadista_nro_brigada dbname="gi_brigada_brigadista.nro_brigada" )
+ column=(type=datetime update=yes updatewhereclause=yes key=yes name=gi_brigada_brigadista_f_alta dbname="gi_brigada_brigadista.f_alta" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=gi_brigada_brigadista_usuario dbname="gi_brigada_brigadista.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_brigada_brigadista_f_actual dbname="gi_brigada_brigadista.f_actual" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_brigada_brigadista_h_actual dbname="gi_brigada_brigadista.h_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=gi_brigada_brigadista_programa dbname="gi_brigada_brigadista.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=gi_brigada_brigadista_nro_brigadistas dbname="gi_brigada_brigadista.nro_brigadistas" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_brigada_brigadista_f_fin dbname="gi_brigada_brigadista.f_fin" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_brigada_brigadista_h_alta dbname="gi_brigada_brigadista.h_alta" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gi_brigada_brigadista_h_fin dbname="gi_brigada_brigadista.h_fin" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=gi_brigada_brigadista_encargado dbname="gi_brigada_brigadista.encargado" )
+ column=(type=char(25) updatewhereclause=yes name=gi_brigadista_nombre dbname="compute_0012" )
+ column=(type=char(15) updatewhereclause=yes name=gi_brigadista_ape1 dbname="compute_0013" )
+ column=(type=char(15) updatewhereclause=yes name=gi_brigadista_ape2 dbname="compute_0014" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_brigadista_encargado dbname="gi_brigadista.encargado" )
+ retrieve="  SELECT ~"GI_BRIGADA_BRIGADISTA~".~"NRO_BRIGADA~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"F_ALTA~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"USUARIO~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"F_ACTUAL~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"H_ACTUAL~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"PROGRAMA~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"NRO_BRIGADISTAS~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"F_FIN~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"H_ALTA~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"H_FIN~",   
+         ~"GI_BRIGADA_BRIGADISTA~".~"ENCARGADO~",   
+         NVL(~"GI_BRIGADISTA~".~"NOMBRE~",' '),   
+         NVL(~"GI_BRIGADISTA~".~"APE1~", ' '),
+			NVL(~"GI_BRIGADISTA~".~"APE2~", ' '),
+         ~"GI_BRIGADISTA~".~"ENCARGADO~"  
+    FROM ~"GI_BRIGADA_BRIGADISTA~",   
+         ~"GI_BRIGADISTA~"  
+   WHERE ( ~"GI_BRIGADA_BRIGADISTA~".~"NRO_BRIGADISTAS~" = ~"GI_BRIGADISTA~".~"NRO_BRIGADISTAS~" ) and  
+         ( ( ~"GI_BRIGADA_BRIGADISTA~".~"NRO_BRIGADA~" = :pi_nro_brigada ) AND  
+         ( ~"GI_BRIGADA_BRIGADISTA~".~"F_FIN~" is NULL ) )    
+" update="GI_BRIGADA_BRIGADISTA" updatewhere=0 updatekeyinplace=no arguments=(("pi_nro_brigada", number)) )
+text(band=header alignment="2" text="Brigadistas Asignados"border="6" color="0" x="18" y="0" height="64" width="1230"  name=gi_brigada_brigadista_nro_brigada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=detail alignment="0" expression="gi_brigadista_ape1 +~"  ~"+ gi_brigadista_ape2+ ~", ~" +  gi_brigadista_nombre "border="0" color="8388608" x="9" y="4" height="64" width="1143" format="[general]"  name=cc_nombre_brigadista  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="bitmap(~"altcontr.bmp~")"border="0" color="0" x="1170" y="4" height="64" width="73" format="[general]"  name=ind_responsable visible="1~tIF ( gi_brigadista_encargado = 1,1,0)"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

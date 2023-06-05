@@ -1,0 +1,92 @@
+HA$PBExportHeader$d_bri_2004_pr_lista_brigadas.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_brigada dbname="gi_brigada.nro_brigada" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_mesa dbname="gi_brigada.nro_mesa" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_cmd dbname="gi_brigada.nro_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_centro dbname="gi_brigada.nro_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=ind_disponible dbname="gi_brigada.ind_disponible" )
+ column=(type=char(10) updatewhereclause=yes name=movil dbname="gi_brigada.movil" )
+ column=(type=char(25) updatewhereclause=yes name=brigada dbname="gi_brigada.nombre" )
+ column=(type=decimal(0) updatewhereclause=yes name=tip_brigada dbname="gi_brigada.tip_brigada" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_incidencia_est_actual dbname="sgd_incidencia.est_actual" )
+ column=(type=char(30) updatewhereclause=yes name=instalacion_afectada dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=cccli_afec dbname="sgd_incidencia.ccli_afec" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_ot dbname="gi_brigada_ot.nro_ot" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_incidencia dbname="sgd_incidencia.tip_incidencia" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_incidencia dbname="sgd_incidencia.nro_incidencia" )
+ column=(type=datetime updatewhereclause=yes name=f_deteccion_incidencia dbname="sgd_incidencia.f_deteccion" )
+ column=(type=datetime updatewhereclause=yes name=f_inicio_tarea_ot dbname="gi_brigada_ot.f_desde" )
+ column=(type=char(8) updatewhereclause=yes name=frec_radio dbname="gi_brigada.frec_radio" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="gi_ot.nro_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_ot_ind_trabajo dbname="gi_ot.ind_trabajo" )
+ column=(type=char(4000) updatewhereclause=yes name=est_act dbname="est_act" )
+ column=(type=char(4000) updatewhereclause=yes name=bitmap dbname="bitmap" )
+ column=(type=char(4000) updatewhereclause=yes name=instalacion_afectada dbname="compute_0022" )
+ retrieve="SELECT DISTINCT GI_BRIGADA.NRO_BRIGADA,
+					 GI_BRIGADA.NRO_MESA ,
+					 GI_BRIGADA.NRO_CMD ,
+					 GI_BRIGADA.NRO_CENTRO ,
+					 GI_BRIGADA.IND_DISPONIBLE ,
+					 GI_BRIGADA.MOVIL ,
+					 GI_BRIGADA.NOMBRE ,
+					 GI_BRIGADA.TIP_BRIGADA ,
+					 SGD_INCIDENCIA.EST_ACTUAL ,
+					 SGD_INSTALACION.NOM_INSTALACION ,
+				    SGD_INCIDENCIA.CCLI_AFEC ,
+					 GI_BRIGADA_OT.NRO_OT ,
+					 SGD_INCIDENCIA.TIP_INCIDENCIA ,
+					 SGD_INCIDENCIA.NRO_INCIDENCIA ,
+					 SGD_INCIDENCIA.F_DETECCION ,
+					 GI_BRIGADA_OT.F_DESDE ,
+					 GI_BRIGADA.FREC_RADIO ,
+					 GI_OT.NRO_INSTALACION ,
+					 GI_OT.IND_TRABAJO,
+				    FGNU_EST_INC2
+									(	SGD_INCIDENCIA.EST_ACTUAL ,
+										SGD_INCIDENCIA.ALCANCE,
+										SGD_INCIDENCIA.TIP_INCIDENCIA)      est_act,
+				    Fgnu_brigada_bitmap 
+									(	GI_BRIGADA_OT.NRO_OT,
+					 					GI_OT.IND_TRABAJO,
+										SGD_INCIDENCIA.NRO_INCIDENCIA ,
+					  					GI_OT.NRO_INSTALACION ,
+										SGD_INCIDENCIA.TIP_INCIDENCIA ,
+										SGD_INCIDENCIA.ALCANCE ) bitmap,
+					fgnu_asignacion_ot( gi_ot.nro_aviso , gi_ot.nro_incidencia , gi_ot.nro_instalacion , gi_avisos.nom_calle , gi_avisos.num_puerta , gi_avisos.duplicador , gi_avisos.ref_dir , SGD_INCIDENCIA.desc_incidencia , sgd_instalacion.nom_instalacion )
+FROM
+  GI_OT ,
+  GI_BRIGADA_OT ,
+  SGD_INSTALACION ,
+  SGD_INCIDENCIA ,
+  GI_BRIGADA,
+ GI_AVISOS
+WHERE	( gi_brigada.nro_brigada = gi_brigada_ot.nro_brigada (+)) and 
+   ( gi_ot.nro_instalacion = sgd_instalacion.nro_instalacion (+)) and 
+   ( NVL(sgd_instalacion.bdi_job,0)=0) and 
+	( gi_ot.nro_ot = SGD_INCIDENCIA.ot (+)) and  ( gi_brigada_ot.nro_ot = gi_ot.nro_ot (+)) and 
+   ( gi_brigada_ot.est_brigada = 2) AND 
+   ( gi_brigada_ot.f_hasta is Null) AND
+   ( GI_BRIGADA.IND_DISPONIBLE = 0 ) and 
+   ( GI_BRIGADA_OT.EST_BRIGADA <> 3 )  AND
+	(GI_AVISOS.NRO_AVISO (+) = GI_OT.NRO_AVISO) and
+	gi_brigada_ot.f_hasta is null
+
+" )
+text(band=header alignment="0" text="nro tarea" border="0" color="8388608" x="2597" y="8" height="64" width="288" html.valueishtml="0"  name=t_1  tag=" " visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="2" text="Brigadas" border="6" color="0" x="9" y="8" height="64" width="1019" html.valueishtml="0"  name=brigada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Trabajando en" border="6" color="0" x="1047" y="8" height="64" width="544" html.valueishtml="0"  name=instalacion_afectada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="0" text="Est." border="6" color="0" x="1609" y="8" height="64" width="110" html.valueishtml="0"  name=est_act_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="0" text="C. Af." border="6" color="0" x="1737" y="8" height="64" width="146" html.valueishtml="0"  name=cccli_afec_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="0" text="Ind" border="6" color="0" x="1902" y="8" height="64" width="123" html.valueishtml="0"  name=orden_por_bmp_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="8388608" x="1915" y="4" height="64" width="82" format="[general]" html.valueishtml="0"  name=bitmap visible="1" bitmapname=yes edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="8388608" x="1737" y="4" height="64" width="137" format="[general]" html.valueishtml="0"  name=cccli_afec visible="1~tif(   nro_incidencia <> 0, 1, 0 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="2" tabsequence=32766 border="0" color="8388608" x="1614" y="4" height="64" width="105" format="[general]" html.valueishtml="0"  name=est_act visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="8388608" x="1047" y="4" height="64" width="539" format="[general]" html.valueishtml="0"  name=instalacion_afectada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="5" y="4" height="64" width="1024" format="[general]" html.valueishtml="0"  name=brigada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

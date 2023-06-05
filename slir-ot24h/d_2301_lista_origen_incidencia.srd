@@ -1,0 +1,18 @@
+HA$PBExportHeader$d_2301_lista_origen_incidencia.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=valor dbname="sgd_valor.valor" )
+ column=(type=char(90) updatewhereclause=yes name=descripcion dbname="sgd_valor.descripcion" )
+ retrieve="SELECT VALOR, DESCRIPCION
+FROM SGD_VALOR   
+WHERE CODIF = 'ORIG' AND ACTIVO = '0'
+" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="0" y="0" height="72" width="599" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=90 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=summary alignment="2" text="Valor" border="0" color="33554432" x="18" y="24" height="52" width="366" html.valueishtml="0"  name=valor_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=summary alignment="2" text="Descripcion" border="0" color="33554432" x="416" y="28" height="52" width="2080" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=summary id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="27" y="132" height="72" width="366" format="[general]" html.valueishtml="0"  name=valor visible="1" edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

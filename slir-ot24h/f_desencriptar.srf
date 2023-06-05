@@ -1,0 +1,24 @@
+HA$PBExportHeader$f_desencriptar.srf
+global type f_desencriptar from function_object
+end type
+
+forward prototypes
+global function string f_desencriptar (string a_valor)
+end prototypes
+
+global function string f_desencriptar (string a_valor);string wtxt,wcrip='',wcar 
+long xi,wlen 
+
+wtxt = a_valor 
+wcrip = "" 
+wlen=len(wtxt)+1 
+for xi=1 to wlen - 1 
+wcar=mid(wtxt,xi,1) 
+wcar=char(asc(wcar)-(wlen)+xi) 
+wcrip=wcrip+wcar 
+next 
+
+return wcrip 
+
+end function
+

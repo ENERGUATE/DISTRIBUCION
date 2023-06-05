@@ -1,0 +1,54 @@
+HA$PBExportHeader$fg_obtener_ultimo.srf
+global type fg_obtener_ultimo from function_object
+end type
+
+forward prototypes
+global function long fg_obtener_ultimo (string ps_table_name, string ps_program)
+end prototypes
+
+global function long fg_obtener_ultimo (string ps_table_name, string ps_program); /////////////////////////////////////////////////////////////////////////
+//	14/06/99			DSA		Agua modificaciones
+/////////////////////////////////////////////////////////////////////////
+
+ long 		ll_valor = -1;
+ datetime 	ldt_now
+
+
+ ldt_now = fgnu_fecha_actual ()
+ 
+
+ 
+ 
+ SELECT "GI_T_ULTIMO"."ULTIMO"  
+	INTO :ll_valor
+	FROM "GI_T_ULTIMO"  
+	WHERE "GI_T_ULTIMO"."TABLA" = :ps_table_name
+	FOR UPDATE 
+	USING sqlca;
+			
+	IF sqlca.sqlcode < 0 THEN	
+		ll_valor = -1
+		gnv_msg.f_mensaje("AD22","","",ok!)
+		//Messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n","Espere un momento. Otro usuario est$$HEX2$$e1002000$$ENDHEX$$dando de alta un descargo.")
+	ELSEIF sqlca.sqlcode = 0 THEN
+		  ll_valor = ll_valor + 1			
+		  
+		  
+		  UPDATE "GI_T_ULTIMO"  
+			SET 	"ULTIMO" = :ll_valor ,
+  		     		"PROGRAMA"  = :ps_program,   
+     				"F_ACTUAL"  = :ldt_now,   
+         		"USUARIO" = :gs_usuario  
+			WHERE "GI_T_ULTIMO"."TABLA" = :ps_table_name
+			USING sqlca;
+
+ 		  IF sqlca.sqlcode < 0 THEN	
+				gnu_u_transaction.uf_rollback()
+				ll_valor = -1
+			ELSE
+				gnu_u_transaction.uf_commit()
+			END IF
+END IF			
+RETURN ll_valor
+end function
+

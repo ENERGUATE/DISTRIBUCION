@@ -1,0 +1,12 @@
+HA$PBExportHeader$dddw_descripcion_causas_familia.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=descripcion dbname="gi_subtipos.descripcion" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"gi_subtipos~" ) COLUMN(NAME=~"gi_subtipos.descripcion~")WHERE(    EXP1 =~"subtipo~"   OP =~"=~"    EXP2 =~":pl_subtipo_causa~"    LOGIC =~"And~" ) WHERE(    EXP1 =~"tipo~"   OP =~"=~"    EXP2 =~":pl_tipo~"    LOGIC =~"And~" ) WHERE(    EXP1 =~"activo~"   OP =~"=~"    EXP2 =~":pl_activo~" ) ) ARG(NAME = ~"pl_subtipo_causa~" TYPE = number)  ARG(NAME = ~"pl_tipo~" TYPE = number)  ARG(NAME = ~"pl_activo~" TYPE = number) " arguments=(("pl_subtipo_causa", number),("pl_tipo", number),("pl_activo", number)) )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="8388608" x="9" y="0" height="52" width="1143" html.valueishtml="0"  name=descripcion visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Descripcion" border="0" color="8388608" x="5" y="4" height="52" width="1147" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

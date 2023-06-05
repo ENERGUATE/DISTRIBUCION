@@ -1,0 +1,27 @@
+HA$PBExportHeader$fg_hayindisponibilidadasociada.srf
+global type fg_hayIndisponibilidadAsociada from function_object
+end type
+
+forward prototypes
+global function long fg_hayindisponibilidadasociada (long pl_codmaniobra)
+end prototypes
+
+global function long fg_hayindisponibilidadasociada (long pl_codmaniobra);long ll_contador
+
+SELECT count(*)
+INTO :ll_contador
+FROM sgd_indisponibilidad
+WHERE (maniobra_apertura = :pl_codManiobra
+		OR maniobra_cierre = :pl_codManiobra)
+		AND class_id = 5555;
+		
+IF ll_contador > 0 THEN
+	ll_contador = 1
+ELSE
+	ll_contador = 0
+END IF
+
+
+RETURN ll_contador
+end function
+

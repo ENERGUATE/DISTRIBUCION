@@ -1,0 +1,194 @@
+HA$PBExportHeader$m_mantenimientos_tablas.srm
+forward
+global type m_mantenimientos_tablas from m_recepcion_de_avisos
+end type
+end forward
+
+global type m_mantenimientos_tablas from m_recepcion_de_avisos
+end type
+global m_mantenimientos_tablas m_mantenimientos_tablas
+
+on m_mantenimientos_tablas.create
+m_mantenimientos_tablas=this
+call super::create
+end on
+
+on m_mantenimientos_tablas.destroy
+call super::destroy
+end on
+
+on m_archivo.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_agregar::clicked;w_generica_mant.triggerevent("agregar_registro")
+
+
+end on
+
+on m_agregar.create
+call super::create
+this.Tag=""
+this.ToolBarItemName="insert!"
+this.ToolBarItemText="Agregar registro"
+end on
+
+on m_eliminar::clicked;call m_recepcion_de_avisos`m_eliminar::clicked;// llamada al evento borrar registro.
+
+w_generica_mant.triggerevent("borrar_registro")
+
+
+
+end on
+
+on m_eliminar.create
+call super::create
+this.Tag=""
+this.ToolBarItemName="Clear!"
+this.ToolBarItemText="Eliminar registro"
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_cerrar.create
+call super::create
+this.Tag=""
+this.ToolBarItemText="Retornar"
+this.Enabled=true
+this.ToolBarItemVisible=true
+this.ToolBarItemSpace=2
+end on
+
+on m_grabar::clicked;call m_recepcion_de_avisos`m_grabar::clicked;w_generica_mant.triggerevent("grabar_modificaciones")
+end on
+
+on m_grabar.create
+call super::create
+this.Tag=""
+this.Enabled=true
+this.ToolBarItemVisible=true
+this.ToolBarItemSpace=2
+end on
+
+on m_imprimir.create
+call super::create
+this.Tag=""
+this.Visible=false
+end on
+
+on m_seleccionarimpresora.create
+call super::create
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_salir::clicked;call m_recepcion_de_avisos`m_salir::clicked;close(ParentWindow)
+
+end on
+
+on m_salir.create
+call super::create
+this.Enabled=false
+this.ToolBarItemSpace=2
+end on
+
+on m_iralcomienzo.create
+call super::create
+this.Enabled=true
+end on
+
+on m_iralfinal.create
+call super::create
+this.Enabled=true
+end on
+
+on m_consultas.create
+call super::create
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_avisos.create
+call super::create
+this.Visible=false
+this.Enabled=false
+end on
+
+on m_pendientes.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemVisible=false
+end on
+
+on m_resueltos.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemVisible=false
+end on
+
+on m_estadisticasdeavisos.create
+call super::create
+this.ToolBarItemName=""
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_pendientesintervalohorario.create
+call super::create
+this.ToolBarItemName=""
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_incidencias.create
+call super::create
+this.Visible=false
+this.Enabled=false
+end on
+
+on m_porcliente2.create
+call super::create
+this.ToolBarItemName=""
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_cortesprogramados.create
+call super::create
+this.ToolBarItemName=""
+this.Visible=false
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_cargadetrabajoporzona.create
+call super::create
+this.ToolBarItemName=""
+this.ToolBarItemVisible=false
+end on
+
+on m_controldetrabajo.create
+call super::create
+this.ToolBarItemName=""
+this.Visible=false
+this.Enabled=false
+end on
+
+on m_situacionclimatologica.create
+call super::create
+this.ToolBarItemName=""
+this.Enabled=false
+end on
+
+on m_infdelcliente.create
+call super::create
+this.ToolBarItemName=""
+this.Enabled=false
+end on
+

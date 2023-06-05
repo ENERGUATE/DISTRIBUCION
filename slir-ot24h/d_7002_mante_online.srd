@@ -1,0 +1,37 @@
+HA$PBExportHeader$d_7002_mante_online.srd
+release 5;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no grid.lines=0 )
+header(height=85 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=97 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_descargo dbname="sgd_descargos.nro_descargo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estado dbname="sgd_descargos.estado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_ini_solicitado dbname="sgd_descargos.f_ini_solicitado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_fin_solicitado dbname="sgd_descargos.f_fin_solicitado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_ini_aprobado dbname="sgd_descargos.f_ini_aprobado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_fin_aprobado dbname="sgd_descargos.f_fin_aprobado" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_inst_origen dbname="sgd_descargos.cod_inst_origen" )
+ retrieve="  SELECT ~"SGD_DESCARGOS~".~"NRO_DESCARGO~",   
+         ~"SGD_DESCARGOS~".~"ESTADO~",   
+         ~"SGD_DESCARGOS~".~"F_INI_SOLICITADO~",   
+         ~"SGD_DESCARGOS~".~"F_FIN_SOLICITADO~",   
+         ~"SGD_DESCARGOS~".~"F_INI_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"F_FIN_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"COD_INST_ORIGEN~"  
+    FROM ~"SGD_DESCARGOS~"   
+" update="SGD_DESCARGOS" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Nro Descargo"border="0" color="0" x="10" y="8" height="65" width="362"  name=nro_descargo_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Estado"border="0" color="0" x="380" y="8" height="65" width="330"  name=estado_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="F Ini Solicitado"border="0" color="0" x="718" y="8" height="65" width="604"  name=f_ini_solicitado_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="F Fin Solicitado"border="0" color="0" x="1331" y="8" height="65" width="604"  name=f_fin_solicitado_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="F Ini Aprobado"border="0" color="0" x="1943" y="8" height="65" width="604"  name=f_ini_aprobado_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="F Fin Aprobado"border="0" color="0" x="2556" y="8" height="65" width="604"  name=f_fin_aprobado_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Cod Inst Origen"border="0" color="0" x="3169" y="4" height="77" width="1194"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="0" x="10" y="8" height="77" width="362" format="[general]"  name=nro_descargo edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="380" y="8" height="77" width="330" format="[general]"  name=estado edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="718" y="8" height="77" width="604" format="[shortdate] [time]"  name=f_ini_solicitado edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="1331" y="8" height="77" width="604" format="[shortdate] [time]"  name=f_fin_solicitado edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="1943" y="8" height="77" width="604" format="[shortdate] [time]"  name=f_ini_aprobado edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="0" color="0" x="2556" y="8" height="77" width="604" format="[shortdate] [time]"  name=f_fin_aprobado edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3169" y="0" height="65" width="1194" format="[General]"  name=cod_inst_origen edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

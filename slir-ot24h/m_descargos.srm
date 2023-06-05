@@ -1,0 +1,59 @@
+HA$PBExportHeader$m_descargos.srm
+forward
+global type m_descargos from menu
+end type
+type m_aprobar from menu within m_descargos
+end type
+type m_aprobar from menu within m_descargos
+end type
+type m_rechazar from menu within m_descargos
+end type
+type m_rechazar from menu within m_descargos
+end type
+end forward
+
+global type m_descargos from menu
+m_aprobar m_aprobar
+m_rechazar m_rechazar
+end type
+global m_descargos m_descargos
+
+on m_descargos.create
+m_descargos=this
+this.m_aprobar=create m_aprobar
+this.m_rechazar=create m_rechazar
+this.Item[]={this.m_aprobar, &
+this.m_rechazar}
+end on
+
+on m_descargos.destroy
+destroy(this.m_aprobar)
+destroy(this.m_rechazar)
+end on
+
+type m_aprobar from menu within m_descargos
+end type
+
+on m_aprobar.create
+this.Text="Aprobar"
+end on
+
+on m_aprobar.destroy
+end on
+
+event clicked;w_descargos_res.triggerevent("ue_aprobar")
+end event
+
+type m_rechazar from menu within m_descargos
+end type
+
+on m_rechazar.create
+this.Text="Rechazar"
+end on
+
+on m_rechazar.destroy
+end on
+
+event clicked;w_descargos_res.triggerevent("ue_rechazar")
+end event
+

@@ -1,0 +1,14 @@
+HA$PBExportHeader$u_avi_2022_pr_lista_clientes_doc.sru
+forward
+global type u_avi_2022_pr_lista_clientes_doc from u_avi_1001_pr_generico
+end type
+end forward
+
+global type u_avi_2022_pr_lista_clientes_doc from u_avi_1001_pr_generico
+int Width=2542
+int Height=421
+string DataObject="d_avi_2022_pr_lista_clientes_doc"
+boolean VScrollBar=true
+end type
+global u_avi_2022_pr_lista_clientes_doc u_avi_2022_pr_lista_clientes_doc
+

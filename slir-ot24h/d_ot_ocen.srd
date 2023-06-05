@@ -1,0 +1,50 @@
+HA$PBExportHeader$d_ot_ocen.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_incidencia dbname="gi_ocen_ot.nro_incidencia" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_sol_ocen dbname="gi_ocen_ot.nro_sol_ocen" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_ot_ocen dbname="gi_ocen_ot.nro_ot_ocen" )
+ column=(type=datetime update=yes updatewhereclause=yes name=fecha_ini dbname="gi_ocen_ot.fecha_ini" )
+ column=(type=datetime update=yes updatewhereclause=yes name=fecha_fin dbname="gi_ocen_ot.fecha_fin" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=estado dbname="gi_ocen_ot.estado" values="OT CANCELADA	CA/OT CREADA	CR/OT CERRADA	CE/RECHAZADA	SR/SOLICITADA	SO/DEFINIDA	DF/" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=comentarios dbname="gi_ocen_ot.comentarios" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_instalacion dbname="gi_ocen_ot.nro_instalacion" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=servicio dbname="gi_ocen_ot.servicio" )
+ retrieve="  SELECT ~"GI_OCEN_OT~".~"NRO_INCIDENCIA~",
+			~"GI_OCEN_OT~".~"NRO_SOL_OCEN~",
+			~"GI_OCEN_OT~".~"NRO_OT_OCEN~",
+         ~"GI_OCEN_OT~".~"FECHA_INI~",   
+         ~"GI_OCEN_OT~".~"FECHA_FIN~",   
+         ~"GI_OCEN_OT~".~"ESTADO~",
+			~"GI_OCEN_OT~".~"COMENTARIOS~",
+			~"GI_OCEN_OT~".~"NRO_INSTALACION~",
+			~"GI_OCEN_OT~".~"SERVICIO~"  
+    FROM ~"GI_OCEN_OT~"  
+WHERE ~"GI_OCEN_OT~".~"NRO_INCIDENCIA~"=:pl_nro_incidencia 
+
+
+" update="GI_OCEN_OT" updatewhere=1 updatekeyinplace=yes arguments=(("pl_nro_incidencia", number)) )
+text(band=header alignment="0" text="Nro Incidencia" border="6" color="0" x="9" y="4" height="52" width="393" html.valueishtml="0"  name=nro_incidencia_t visible="1"  hidesnaked=1  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Fecha Inicio" border="6" color="0" x="411" y="4" height="52" width="480" html.valueishtml="0"  name=fecha_ini_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Fecha Fin" border="6" color="0" x="901" y="4" height="52" width="475" html.valueishtml="0"  name=fecha_fin_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Comentarios" border="0" color="0" x="2839" y="4" height="76" width="2290" html.valueishtml="0"  name=comentarios_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Nro Instalacion" border="0" color="0" x="5138" y="0" height="76" width="978" html.valueishtml="0"  name=nro_instalacion_t visible="0"  font.face="MS Serif" font.height="-12" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Estado" border="6" color="0" x="1385" y="4" height="52" width="517" html.valueishtml="0"  name=estado_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Solicitud Ocen" border="6" color="0" x="1911" y="4" height="52" width="448" html.valueishtml="0"  name=nro_sol_ocen_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Nro Ot Ocen" border="6" color="0" x="2368" y="4" height="52" width="462" html.valueishtml="0"  name=nro_ot_ocen_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Servicio" border="0" color="0" x="6126" y="4" height="76" width="219" html.valueishtml="0"  name=servicio_t visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="76" width="393" format="[general]" html.valueishtml="0"  name=nro_incidencia visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="411" y="0" height="76" width="480" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_ini visible="1" editmask.mask="dd/mm/yyyy hh:mm:ss" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="901" y="0" height="76" width="475" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_fin visible="1" editmask.mask="dd/mm/yyyy hh:mm:ss" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1385" y="0" height="76" width="517" format="[general]" html.valueishtml="0"  name=estado visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2839" y="0" height="52" width="2290" format="[general]" html.valueishtml="0"  name=comentarios visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="5138" y="0" height="52" width="978" format="[general]" html.valueishtml="0"  name=nro_instalacion visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1911" y="0" height="52" width="448" format="[general]" html.valueishtml="0"  name=nro_sol_ocen visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2368" y="0" height="52" width="462" format="[general]" html.valueishtml="0"  name=nro_ot_ocen visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="6126" y="0" height="52" width="219" format="[general]" html.valueishtml="0"  name=servicio visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-6" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

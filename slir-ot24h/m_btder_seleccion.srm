@@ -1,0 +1,75 @@
+HA$PBExportHeader$m_btder_seleccion.srm
+forward
+global type m_btder_seleccion from menu
+end type
+type m_opciones from menu within m_btder_seleccion
+end type
+type m_seleccionar from menu within m_opciones
+end type
+type m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n from menu within m_opciones
+end type
+type m_opciones from menu within m_btder_seleccion
+m_seleccionar m_seleccionar
+m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n
+end type
+end forward
+
+global type m_btder_seleccion from menu
+m_opciones m_opciones
+end type
+global m_btder_seleccion m_btder_seleccion
+
+type variables
+int ii_accion_retorno = -1
+end variables
+
+on m_btder_seleccion.create
+m_btder_seleccion=this
+this.m_opciones=create m_opciones
+this.Item[]={this.m_opciones}
+end on
+
+on m_btder_seleccion.destroy
+destroy(this.m_opciones)
+end on
+
+type m_opciones from menu within m_btder_seleccion
+m_seleccionar m_seleccionar
+m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n
+end type
+
+on m_opciones.create
+this.Text="Opciones"
+this.m_seleccionar=create m_seleccionar
+this.m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n=create m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n
+this.Item[]={this.m_seleccionar, &
+this.m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n}
+end on
+
+on m_opciones.destroy
+destroy(this.m_seleccionar)
+destroy(this.m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n)
+end on
+
+type m_seleccionar from menu within m_opciones
+end type
+
+event clicked;ii_accion_retorno = 1
+
+end event
+
+on m_seleccionar.create
+this.Text="Seleccionar"
+end on
+
+type m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n from menu within m_opciones
+end type
+
+event clicked;ii_accion_retorno = 0
+
+end event
+
+on m_eliminarselecci$$HEX1$$f300$$ENDHEX$$n.create
+this.Text="Eliminar selecci$$HEX1$$f300$$ENDHEX$$n"
+end on
+

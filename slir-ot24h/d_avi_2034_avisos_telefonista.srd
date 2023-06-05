@@ -1,0 +1,55 @@
+HA$PBExportHeader$d_avi_2034_avisos_telefonista.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=76 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(7) updatewhereclause=yes name=mes dbname="mes" )
+ column=(type=char(8) updatewhereclause=yes name=nro_telefonista dbname="gi_avisos.nro_telefonista" )
+ column=(type=number updatewhereclause=yes name=total_cnt dbname="total_cnt" )
+ column=(type=number updatewhereclause=yes name=average_user dbname="average_user" )
+ column=(type=number updatewhereclause=yes name=peligros dbname="peligros" )
+ column=(type=number updatewhereclause=yes name=normal dbname="normal" )
+ column=(type=number updatewhereclause=yes name=ayuda dbname="ayuda" )
+ column=(type=number updatewhereclause=yes name=alumbrado dbname="alumbrado" )
+ column=(type=number updatewhereclause=yes name=calidad dbname="calidad" )
+ retrieve="  SELECT 
+          to_char(~"GI_AVISOS~".~"F_ALTA~", 'MM/YYYY') mes,
+         ~"GI_AVISOS~".~"NRO_TELEFONISTA~" ,  
+         count(*) total_cnt,
+         round(count(*)/12,1) average_user,
+         sum(~"GI_AVISOS~".~"IND_PELIGRO~") peligros,   
+         sum(decode(~"GI_AVISOS~".~"IND_AYUDA~",0,1,0)) normal,
+         sum(decode(~"GI_AVISOS~".~"IND_AYUDA~",1,1,0)) ayuda,
+         sum(decode(~"GI_AVISOS~".~"IND_AYUDA~",2,1,0)) alumbrado,
+         sum(decode(~"GI_AVISOS~".~"IND_CALIDAD~",1,1,0)) calidad
+    FROM ~"GI_AVISOS~" 
+WHERE trunc(~"GI_AVISOS~".~"F_ALTA~") between trunc(:f_desde) and trunc(:f_hasta)
+      and UPPER(GI_AVISOS.NRO_TELEFONISTA) = UPPER(:ps_usuario)
+GROUP BY to_char(~"GI_AVISOS~".~"F_ALTA~", 'MM/YYYY'),
+~"GI_AVISOS~".~"NRO_TELEFONISTA~"
+" arguments=(("ps_usuario", string),("f_desde", datetime),("f_hasta", datetime)) )
+text(band=header alignment="2" text="Calidad" border="6" color="0" x="2126" y="8" height="64" width="407" html.valueishtml="0"  name=calidad_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Alumbrado" border="6" color="0" x="1733" y="8" height="64" width="384" html.valueishtml="0"  name=alumbrado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Ayuda" border="6" color="0" x="1371" y="8" height="64" width="352" html.valueishtml="0"  name=ayuda_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Normales" border="6" color="0" x="1006" y="8" height="64" width="357" html.valueishtml="0"  name=normal_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Peligro" border="6" color="0" x="667" y="8" height="64" width="329" html.valueishtml="0"  name=peligros_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Total" border="6" color="0" x="247" y="8" height="64" width="411" html.valueishtml="0"  name=total_cnt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mes" border="6" color="0" x="9" y="8" height="64" width="229" html.valueishtml="0"  name=mes_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="8" height="64" width="229" format="[general]" html.valueishtml="0"  name=mes visible="1" edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="8388608" x="247" y="8" height="64" width="411" format="[general]" html.valueishtml="0"  name=total_cnt visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="8388608" x="667" y="8" height="64" width="329" format="[general]" html.valueishtml="0"  name=peligros visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="8388608" x="1006" y="8" height="64" width="357" format="[general]" html.valueishtml="0"  name=normal visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="8388608" x="1371" y="8" height="64" width="352" format="[general]" html.valueishtml="0"  name=ayuda visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="8388608" x="1733" y="8" height="64" width="384" format="[general]" html.valueishtml="0"  name=alumbrado visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="8388608" x="2126" y="8" height="64" width="407" format="[general]" html.valueishtml="0"  name=calidad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=summary alignment="1" text="Total: " border="0" color="0" x="9" y="0" height="64" width="229" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum(  total_cnt  for all )"border="0" color="0" x="247" y="0" height="64" width="411" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum( peligros  for all)"border="0" color="0" x="667" y="0" height="64" width="329" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum( normal  for all)"border="0" color="0" x="1006" y="0" height="64" width="357" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum( ayuda  for all)"border="0" color="0" x="1371" y="0" height="64" width="352" format="[general]" html.valueishtml="0"  name=compute_4 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum( alumbrado  for all)"border="0" color="0" x="1733" y="0" height="64" width="384" format="[general]" html.valueishtml="0"  name=compute_5 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+compute(band=summary alignment="1" expression="sum( calidad  for all)"border="0" color="0" x="2126" y="0" height="64" width="407" format="[general]" html.valueishtml="0"  name=compute_6 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

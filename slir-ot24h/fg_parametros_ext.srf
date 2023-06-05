@@ -1,0 +1,257 @@
+HA$PBExportHeader$fg_parametros_ext.srf
+global type fg_parametros_ext from function_object
+end type
+
+forward prototypes
+global function string fg_parametros_ext (readonly integer ai_parametro, readonly integer ai_columna, datawindow adw_dw)
+end prototypes
+
+global function string fg_parametros_ext (readonly integer ai_parametro, readonly integer ai_columna, datawindow adw_dw);String	ls_tex, &
+			ls_arr_tex[], &
+			ls_sql, &
+			ls_arr_sql[], &
+			ls_mov, &
+			ls_arr_mov[], &
+			ls_enc_columnas[], &
+			ls_det_columnas[], &
+			ls_tipo, &
+			ls_valor, &
+			ls_desc, &
+			ls_arr_desc[], &
+			ls_det, &
+			ls_arr_det[], &
+			ls_tipo_ant, &
+			ls_modelo_enc, &
+			ls_modelo_det, &
+			ls_format_det, &
+			ls_nivel
+
+
+
+Long  ll_i, &
+		ll_row, &
+		ll_array, &
+		ll_tam, &
+		ll_arr_tam[], &
+		ll_array_col, &
+		li_operacion
+
+
+Integer li_columna, li_columna_ant, li_arr_columna[], li_geo,li_cuenta
+
+string ls_dataobject
+// FDO Comprobaci$$HEX1$$f300$$ENDHEX$$n para ver si est$$HEX2$$e1002000$$ENDHEX$$grabada la datawindow previamente.
+
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+String ls_return = " "
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+
+ls_dataobject = adw_dw.dataobject
+
+select count(*) 
+into :li_cuenta
+from gi_sintaxis_usuario 
+where usuario =:gs_usuario 
+	and datawindow = :ls_dataobject ; 
+
+if li_cuenta > 0 then  // existe registro para este usuario y esta datawindow, nos salimos.
+	return ls_return
+end if
+
+
+
+DataStore lds_parametros
+
+
+lds_parametros = Create DataStore
+lds_parametros.DataObject = "dw_co_parametros_ext"
+lds_parametros.SetTransObject(SQLCA)
+ll_row = lds_parametros.Retrieve(ai_parametro, ai_columna)
+
+
+ls_tipo_ant = "___"
+li_columna_ant = -1
+
+For ll_i = 1 To ll_row
+	li_columna = lds_parametros.GetItemNumber(ll_i, "columna")
+	ls_tipo	  = lds_parametros.GetItemString(ll_i, "tipo")
+	ls_valor	  = lds_parametros.GetItemString(ll_i, "valor")
+
+
+	If Left(Upper(ls_tipo_ant), 3) <> Left(Upper(ls_tipo), 3) Then
+		ll_array = 0 
+	End If
+
+
+	If li_columna <> li_columna_ant Then
+		ls_tex = ""
+		ll_tam = 0
+		ls_sql = ""
+		ls_mov = ""
+		ls_desc = ""
+		ls_det = ""
+		ls_modelo_enc = ""
+		ls_modelo_det = ""
+		ls_format_det = ""
+
+		ll_array_col++
+		ls_arr_tex[ll_array_col] = ""
+		ll_arr_tam[ll_array_col] = 0
+		ls_arr_sql[ll_array_col] = ""
+		ls_arr_mov[ll_array_col] = ""
+		ls_arr_desc[ll_array_col] = ""
+		ls_arr_det[ll_array_col] = ""
+		li_arr_columna[ll_array_col] = 0
+	End If
+
+
+	If	Upper(ls_tipo) = "TEX"  Then ls_tex = ls_valor
+	If	Upper(ls_tipo) = "TAM"  Then ll_tam = Long(ls_valor)
+	If	Upper(ls_tipo) = "SQL"  Then ls_sql = ls_valor
+	If	Upper(ls_tipo) = "MOV"  Then ls_mov = ls_valor
+	If	Upper(ls_tipo) = "DESC" Then ls_desc = ls_valor
+	If	Upper(ls_tipo) = "DET"  Then ls_det = ls_valor
+	If	Upper(ls_tipo) = "MODE" Then ls_modelo_enc = ls_valor
+	If	Upper(ls_tipo) = "MODD" Then ls_modelo_det = ls_valor
+	If	Upper(ls_tipo) = "FOR"  Then ls_format_det = ls_valor
+	If	Upper(ls_tipo) = "OPE"  Then li_operacion = Long(ls_valor)
+	If	Upper(ls_tipo) = "GEO"  Then li_geo = Long(ls_valor)
+
+
+	If Not IsNull(li_geo) And li_geo > 0 And li_geo <= 4 Then ls_desc = fg_geografica(String(li_geo), ls_desc)
+	
+//////	li_geo = fg_ventana_parametro("GEO", "NIVEL1")
+//////	
+//////	If li_geo <= 0 Or ai_parametro <> li_geo Then
+//////		li_geo = fg_ventana_parametro("GEO", "NIVEL2")
+//////
+//////		If li_geo <= 0 Or ai_parametro <> li_geo Then
+//////			li_geo = fg_ventana_parametro("GEO", "NIVEL3")
+//////
+//////			If li_geo <= 0 Or ai_parametro <> li_geo Then
+//////				li_geo = fg_ventana_parametro("GEO", "NIVEL4")
+//////			End If
+//////		End If
+//////	End If
+//////
+//////
+////////	mESSAGEbOX("ai_parametro " + sTRING(ai_parametro), li_geo)
+//////
+//////
+//////	If ai_parametro = li_geo Then
+//////
+//////		SELECT "GI_PARAMETROS_EXT"."DESCRIPCION"  
+//////	     INTO :ls_nivel  
+//////	     FROM "GI_PARAMETROS_EXT"  
+//////	    WHERE ( "GI_PARAMETROS_EXT"."COD_PARAMETRO" = 0 ) AND  
+//////       		 ( Upper("GI_PARAMETROS_EXT"."TIPO") = 'GEO' ) AND  
+//////		       ( To_number("GI_PARAMETROS_EXT"."VALOR") = :li_geo ) AND  
+//////      		 ( rownum = 1 )   ;
+//////
+//////		
+//////		ls_desc = fg_geografica(Right(ls_nivel, 1))
+//////
+//////		li_geo = fg_ventana_parametro("GEO", "GEO")
+//////	End If
+
+
+	ls_arr_tex[ll_array_col] = ls_tex
+	ll_arr_tam[ll_array_col] = ll_tam
+	ls_arr_sql[ll_array_col] = ls_sql
+	ls_arr_mov[ll_array_col] = ls_mov
+	ls_arr_desc[ll_array_col] = ls_desc
+	ls_arr_det[ll_array_col] = ls_det
+	li_arr_columna[ll_array_col] = li_columna
+
+
+	If	Left(Upper(ls_tipo), 3) = "ENC" And Len(ls_tipo) > 3 Then
+		ll_array ++
+		ls_enc_columnas[ll_array] = ls_valor
+	End If
+
+	If	Left(Upper(ls_tipo), 3) = "DET" And Len(ls_tipo) > 3 Then
+		ll_array ++
+		ls_det_columnas[ll_array] = ls_valor
+	End If
+
+	ls_tipo_ant = ls_tipo
+	li_columna_ant = li_columna
+Next
+
+
+
+CHOOSE CASE li_operacion
+	CASE 1
+		//******************************************
+		//**  OSGI 2001.2  	25/09/2002				**
+		//**  Jair Padilla / Soluziona PANAMA  	**
+		//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+		//******************************************
+		//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  		fg_inserta_columna(adw_dw, ls_mov, ls_tex, ls_desc, ll_tam, ls_enc_columnas[], ls_det_columnas[], ls_sql, ls_det, ai_parametro, ai_columna, li_arr_columna[], ls_modelo_enc, ls_modelo_det, ls_format_det)
+
+
+		ls_return = fg_inserta_columna(adw_dw, ls_mov, ls_tex, ls_desc, ll_tam, ls_enc_columnas[], ls_det_columnas[], ls_sql, ls_det, ai_parametro, ai_columna, li_arr_columna[], ls_modelo_enc, ls_modelo_det, ls_format_det)
+		//******************************************
+		//**  OSGI 2001.2  	25/09/2002				**
+		//**  Jair Padilla / Soluziona PANAMA  	**
+		//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+		//******************************************
+//	CASE 2
+//		fg_alto_texto(adw_dw, 2, 0)
+	CASE 3
+		//******************************************
+		//**  OSGI 2001.2  	25/09/2002				**
+		//**  Jair Padilla / Soluziona PANAMA  	**
+		//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+		//******************************************
+		//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  		fg_modifica_texto(adw_dw, ls_arr_mov[], ls_arr_desc[], ll_arr_tam[], ls_arr_det[], ai_parametro, li_arr_columna[], ai_columna)
+
+
+		ls_return = fg_modifica_texto(adw_dw, ls_arr_mov[], ls_arr_desc[], ll_arr_tam[], ls_arr_det[], ai_parametro, li_arr_columna[], ai_columna)
+		//******************************************
+		//**  OSGI 2001.2  	25/09/2002				**
+		//**  Jair Padilla / Soluziona PANAMA  	**
+		//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+		//******************************************
+	CASE 4
+//		fg_parametros_ext(li_geo, 1, adw_dw)
+//	CASE 5
+//		fg_parametros_ext(li_geo, 2, adw_dw)
+//	CASE 6
+//		fg_parametros_ext(li_geo, 3, adw_dw)
+//	CASE 7
+//		fg_parametros_ext(li_geo, 4, adw_dw)
+//	CASE 8
+//		fg_salmt_inst_afectada(adw_dw)
+//	CASE 9
+//		fg_cor(adw_dw, ls_arr_desc[], ls_arr_mov[])
+
+END CHOOSE
+
+//adw_dw.AcceptText()
+
+
+Destroy lds_parametros
+
+
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+Return ls_return
+//******************************************
+//**  OSGI 2001.2  	25/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+end function
+

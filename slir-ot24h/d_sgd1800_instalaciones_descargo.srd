@@ -1,0 +1,43 @@
+HA$PBExportHeader$d_sgd1800_instalaciones_descargo.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="553648127" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes name=identificador_instalacion dbname="sgd_instalaciones_descargo.identificador_instalacion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_descargo dbname="sgd_instalaciones_descargo.nro_descargo" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=descripcion dbname="sgd_instalaciones_descargo.descripcion" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=tipo_cambio dbname="sgd_instalaciones_descargo.tipo_cambio" values="ALTA	A/BAJA	B/MODIFICACION	M/" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_instalacion dbname="sgd_instalaciones_descargo.nro_instalacion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo_instalacion dbname="sgd_instalaciones_descargo.tipo_instalacion" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_alta dbname="sgd_instalaciones_descargo.f_alta" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=usuario dbname="sgd_instalaciones_descargo.usuario" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_instalaciones_descargo.programa" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="sgd_instalaciones_descargo.f_actual" )
+ column=(type=decimal(5) updatewhereclause=yes name=estado dbname="compute_0011" initial="0" )
+ retrieve="  SELECT ~"SGD_INSTALACIONES_DESCARGO~".~"IDENTIFICADOR_INSTALACION~",   
+         ~"SGD_INSTALACIONES_DESCARGO~".~"NRO_DESCARGO~",   
+         ~"SGD_INSTALACIONES_DESCARGO~".~"DESCRIPCION~",   
+         ~"SGD_INSTALACIONES_DESCARGO~".~"TIPO_CAMBIO~",   
+         ~"SGD_INSTALACIONES_DESCARGO~".~"NRO_INSTALACION~",   
+         ~"SGD_INSTALACIONES_DESCARGO~".~"TIPO_INSTALACION~",   
+         ~"SGD_INSTALACIONES_DESCARGO~".~"F_ALTA~",   
+         ~"SGD_INSTALACIONES_DESCARGO~".~"USUARIO~",   
+         ~"SGD_INSTALACIONES_DESCARGO~".~"PROGRAMA~",   
+         ~"SGD_INSTALACIONES_DESCARGO~".~"F_ACTUAL~",0
+    FROM ~"SGD_INSTALACIONES_DESCARGO~"  
+   WHERE ~"SGD_INSTALACIONES_DESCARGO~".~"NRO_DESCARGO~" = :nro_desc    
+" update="SGD_INSTALACIONES_DESCARGO" updatewhere=1 updatekeyinplace=no arguments=(("nro_desc", number)) )
+text(band=header alignment="2" text="Identif. Instal" border="6" color="0" x="14" y="8" height="64" width="475" html.valueishtml="0"  name=identificador_instalacion_t pointer="mano.cur" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="507" y="8" height="64" width="1408" html.valueishtml="0"  name=descripcion_t pointer="mano.cur" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Nro. Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="1934" y="8" height="64" width="535" html.valueishtml="0"  name=nro_instalacion_t pointer="mano.cur" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Tipo Cambio" border="6" color="0" x="2487" y="8" height="64" width="603" html.valueishtml="0"  name=tipo_cambio_t pointer="mano.cur" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Tipo Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="3113" y="8" height="64" width="736" html.valueishtml="0"  name=tipo_instalacion_t pointer="mano.cur" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0~tif(  estado = 1,5, 0)" color="8388608~tif(  estado = 1, 0, 8388608)" x="18" y="4" height="56" width="475" format="[general]" html.valueishtml="0" protect="0~tif(  estado = 1, 0, 1 )"  name=identificador_instalacion visible="1" editmask.mask="XXXXXXXXXX" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif(  estado = 1, 16777215, 81324524 )" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="0~tif(  estado = 1,5, 0)" color="8388608~tif(  estado = 1, 0, 8388608)" x="507" y="4" height="56" width="1408" format="[general]" html.valueishtml="0" protect="0~tif(  estado = 1, 0, 1 )"  name=descripcion visible="1" editmask.mask="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif(  estado = 1, 16777215, 81324524 )" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="0~tif(  estado = 1,5, 0)" color="8388608~tif(  estado = 1, 0, 8388608)" x="1934" y="4" height="56" width="535" format="[general]" html.valueishtml="0" protect="0~tif(  estado = 1, 0, 1 )"  name=nro_instalacion visible="1" editmask.mask="########" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif(  estado = 1, 16777215, 81324524 )" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0~tif(  estado = 1,5, 0)" color="8388608~tif(  estado = 1, 0, 8388608)" x="2487" y="4" height="56" width="603" format="[general]" html.valueishtml="0" protect="0~tif(  estado = 1, 0, 1 )"  name=tipo_cambio visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif(  estado = 1, 16777215, 81324524 )" )
+column(band=detail id=6 alignment="0" tabsequence=50 border="0~tif(  estado = 1,5, 0)" color="8388608~tif(  estado = 1, 0, 8388608)" x="3109" y="4" height="56" width="727" format="" html.valueishtml="0" protect="0~tif(  estado = 1, 0, 1 )"  name=tipo_instalacion visible="1" dddw.name=d_2021_tipo_instalacion dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif(  estado = 1, 16777215, 81324524 )" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

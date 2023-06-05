@@ -1,0 +1,22 @@
+HA$PBExportHeader$fg_sgi-bdi.srf
+global type fg_sgi-bdi from function_object
+end type
+
+forward prototypes
+global function long fg_sgi-bdi (long codigo)
+end prototypes
+
+global function long fg_sgi-bdi (long codigo);//// Convierte el codigo de SGI a BDI
+//if codigo >= 30000000 and codigo <= 30999999 then
+//	codigo = codigo - 20000000
+//elseif codigo >= 45000000 and codigo <= 45999999 then
+//	codigo = codigo + 20000000
+//elseif codigo >= 50000000 and codigo <= 50999999 then
+//	codigo = codigo - 35000000
+//end if
+
+return codigo
+
+	
+end function
+

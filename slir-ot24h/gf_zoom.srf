@@ -1,0 +1,83 @@
+HA$PBExportHeader$gf_zoom.srf
+global type gf_zoom from function_object
+end type
+
+forward prototypes
+global function integer gf_zoom (datawindow pdw_lista, long pl_tamanio)
+end prototypes
+
+global function integer gf_zoom (datawindow pdw_lista, long pl_tamanio);//
+//Funcion que calcula el zoom que se debe aplicar a la dw para que se ajuste al papel
+//
+int li_margen_d, li_margen_i, li_total, li_ancho, li_columna, li_porcentaje
+int li_coe_error
+string ls_margen_d, ls_margen_i, ls_columna, ls_wid, ls_visible, ls_nombre
+
+DatawindowChild dwc_listado
+
+//*********************************************
+//**  OSGI 2001.2  	24/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+If li_ancho > 9900 Then 
+	li_coe_error = 3
+Else
+	li_coe_error = 5
+End If
+//*********************************************
+//**  OSGI 2001.2  	24/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+
+//Obtengo los margenes del papel
+ls_margen_d = pdw_lista.Describe("DataWindow.Print.Margin.Left")
+ls_margen_i = pdw_lista.Describe("DataWindow.Print.Margin.Right")
+li_margen_d = integer(ls_margen_d)
+li_margen_i = integer(ls_margen_i)
+
+//Obtengo la dw que contiene los datos
+pdw_lista.getchild("data_1", dwc_listado)
+
+//Calculo el ancho de la dw
+ls_columna = dwc_listado.describe("DataWindow.Column.Count")
+li_total = integer(ls_columna)
+li_ancho = 0
+
+FOR li_columna = 1 TO li_total
+	ls_visible = dwc_listado.Describe("#" + string(li_columna) + ".visible")
+	IF ls_visible <> '0' THEN
+		ls_nombre=dwc_listado.Describe("#" + string(li_columna) + ".name")
+		ls_wid = dwc_listado.Describe(ls_nombre + "_t" + ".width")
+		li_ancho = li_ancho + integer(ls_wid)
+	END IF
+NEXT
+ 
+li_ancho = li_ancho + li_margen_i + li_margen_d
+li_porcentaje = (363300 / li_ancho) - li_coe_error
+
+if li_total= 0 then
+	li_porcentaje=95
+end if
+
+pdw_lista.MODIFY("DataWindow.Zoom = '" + string(li_porcentaje) + "'")
+
+
+//*********************************************
+//**  OSGI 2001.2  	28/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  pdw_lista.Modify("d_1.Width= '9900'")
+
+pdw_lista.Modify("data_1.Width= '25000'")
+//*********************************************
+//**  OSGI 2001.2  	28/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+
+return li_porcentaje
+end function
+

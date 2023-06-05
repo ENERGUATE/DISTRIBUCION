@@ -1,0 +1,21 @@
+HA$PBExportHeader$dw_ofi.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="553648127~tIF(MOD(GETROW(),2)=0,rgb(255,255,255),RGB(197,217,241))" )
+table(column=(type=char(50) updatewhereclause=yes name=oficina dbname="departamento.oficina" )
+ column=(type=char(50) updatewhereclause=yes name=nom_region dbname="departamento.nom_region" )
+ column=(type=number updatewhereclause=yes name=cod_oficina dbname="departamento.cod_oficina" )
+ column=(type=number updatewhereclause=yes name=cod_region dbname="departamento.cod_region" )
+ retrieve="select oficina, 
+	   nom_region,
+	   cod_oficina, 
+	   cod_region
+from departamento /*tabla local de la ot24h*/
+where cod_depto=:cod" arguments=(("cod", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="16" height="64" width="1399" format="[general]"  name=oficina edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1454" y="16" height="64" width="1399" format="[general]"  name=nom_region edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="2894" y="16" height="64" width="329" format="[general]"  name=cod_oficina visible="1~t0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="0" x="3264" y="16" height="64" width="329" format="[general]"  name=cod_region visible="1~t0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

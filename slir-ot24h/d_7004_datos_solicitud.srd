@@ -1,0 +1,127 @@
+HA$PBExportHeader$d_7004_datos_solicitud.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=936 color="536870912" )
+table(column=(type=datetime update=yes updatewhereclause=yes name=f_ini_solicitado dbname="sgd_descargos.f_ini_solicitado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_fin_solicitado dbname="sgd_descargos.f_fin_solicitado" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=obs_solicitado dbname="sgd_descargos.obs_solicitado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_solicitado dbname="sgd_descargos.f_solicitado" initial="today()" )
+ column=(type=char(16) update=yes updatewhereclause=yes name=id_solicitante dbname="sgd_descargos.id_solicitante" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_descargos.programa" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="sgd_descargos.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_alta dbname="sgd_descargos.f_alta" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_descargo dbname="sgd_descargos.nro_descargo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=estado dbname="sgd_descargos.estado" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_inst_origen dbname="sgd_descargos.cod_inst_origen" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=tipo_descargo dbname="sgd_descargos.tipo_descargo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=id_enviado dbname="sgd_descargos.id_enviado" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=nom_desc dbname="sgd_descargos.nom_desc" initial=" " )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_interrupcion dbname="sgd_descargos.ind_interrupcion" values="Sin  Interrupcion	2/Sin  Interrupcion	1" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=trab_tension dbname="sgd_descargos.trab_tension" values="Trab. en Tensi$$HEX1$$f300$$ENDHEX$$n	1/Trab. en Tensi$$HEX1$$f300$$ENDHEX$$n	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=subest_movil dbname="sgd_descargos.subest_movil" values="Subestaci$$HEX1$$f300$$ENDHEX$$n M$$HEX1$$f300$$ENDHEX$$vil	1/Subestaci$$HEX1$$f300$$ENDHEX$$n M$$HEX1$$f300$$ENDHEX$$vil	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_act_grafica dbname="sgd_descargos.ind_act_grafica" values="Necesita Act. BDI	1/Necesita Act. BDI	0" )
+ column=(type=char(160) update=yes updatewhereclause=yes name=descripcion dbname="sgd_descargos.descripcion" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_ini_aprobado dbname="sgd_descargos.f_ini_aprobado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_fin_aprobado dbname="sgd_descargos.f_fin_aprobado" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=obs_aprobado dbname="sgd_descargos.obs_aprobado" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_aprobado dbname="sgd_descargos.f_aprobado" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=ubicacion dbname="sgd_descargos.ubicacion" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=tel_solic dbname="sgd_descargos.tel_solic" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=unidad dbname="sgd_descargos.unidad" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=jefe_trabajo dbname="sgd_descargos.jefe_trabajo" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=tel_trabajo dbname="sgd_descargos.tel_trabajo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=plano dbname="sgd_descargos.plano" )
+ column=(type=char(11) update=yes updatewhereclause=yes name=tiempo_repos dbname="sgd_descargos.tiempo_repos" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=brigada dbname="sgd_descargos.brigada" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=inst_descargar dbname="sgd_descargos.inst_descargar" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=agente dbname="sgd_descargos.agente" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_obligada dbname="sgd_descargos.ind_obligada" initial="0" values="Indicativo Incidencia Obligada	1/Indicativo Incidencia Obligada	0" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_causa dbname="sgd_descargos.cod_causa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=fam_causa dbname="sgd_descargos.fam_causa" )
+ column=(type=datetime update=yes updatewhereclause=yes name=fec_causa dbname="sgd_descargos.fec_causa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=grupo_descargo dbname="sgd_descargos.grupo_descargo" initial="1" values="Distribuci$$HEX1$$f300$$ENDHEX$$n	1/Comercial	2/" )
+ retrieve="  SELECT  ~"SGD_DESCARGOS~".~"F_INI_SOLICITADO~" ,           
+          ~"SGD_DESCARGOS~".~"F_FIN_SOLICITADO~" ,           
+          ~"SGD_DESCARGOS~".~"OBS_SOLICITADO~" ,           
+			 ~"SGD_DESCARGOS~".~"F_SOLICITADO~" ,           
+				~"SGD_DESCARGOS~".~"ID_SOLICITANTE~" ,           
+				~"SGD_DESCARGOS~".~"PROGRAMA~" ,           
+				~"SGD_DESCARGOS~".~"USUARIO~" ,           
+				~"SGD_DESCARGOS~".~"F_ALTA~" ,           
+				~"SGD_DESCARGOS~".~"NRO_DESCARGO~" ,           
+				~"SGD_DESCARGOS~".~"ESTADO~" ,           
+				~"SGD_DESCARGOS~".~"COD_INST_ORIGEN~" ,           
+				~"SGD_DESCARGOS~".~"TIPO_DESCARGO~" ,           
+				~"SGD_DESCARGOS~".~"ID_ENVIADO~" ,           
+				~"SGD_DESCARGOS~".~"NOM_DESC~" ,           
+				~"SGD_DESCARGOS~".~"IND_INTERRUPCION~" ,           
+				~"SGD_DESCARGOS~".~"TRAB_TENSION~" ,
+           ~"SGD_DESCARGOS~".~"SUBEST_MOVIL~" ,
+           ~"SGD_DESCARGOS~".~"IND_ACT_GRAFICA~" ,
+           ~"SGD_DESCARGOS~".~"DESCRIPCION~" ,
+           ~"SGD_DESCARGOS~".~"F_INI_APROBADO~" ,
+           ~"SGD_DESCARGOS~".~"F_FIN_APROBADO~" ,
+           ~"SGD_DESCARGOS~".~"OBS_APROBADO~" ,
+           ~"SGD_DESCARGOS~".~"F_APROBADO~" ,
+           ~"SGD_DESCARGOS~".~"UBICACION~" ,
+           ~"SGD_DESCARGOS~".~"TEL_SOLIC~" ,
+           ~"SGD_DESCARGOS~".~"UNIDAD~" ,
+           ~"SGD_DESCARGOS~".~"JEFE_TRABAJO~" ,
+           ~"SGD_DESCARGOS~".~"TEL_TRABAJO~" ,
+           ~"SGD_DESCARGOS~".~"PLANO~" ,
+           ~"SGD_DESCARGOS~".~"TIEMPO_REPOS~" ,
+           ~"SGD_DESCARGOS~".~"BRIGADA~" ,
+           ~"SGD_DESCARGOS~".~"INST_DESCARGAR~" ,
+           ~"SGD_DESCARGOS~".~"AGENTE~" ,
+           ~"SGD_DESCARGOS~".~"IND_OBLIGADA~" ,
+           ~"SGD_DESCARGOS~".~"COD_CAUSA~" ,
+           ~"SGD_DESCARGOS~".~"FAM_CAUSA~" ,
+           ~"SGD_DESCARGOS~".~"FEC_CAUSA~" ,
+			  ~"SGD_DESCARGOS~".~"GRUPO_DESCARGO~"
+        FROM ~"SGD_DESCARGOS~"    
+" update="SGD_DESCARGOS" updatewhere=0 updatekeyinplace=yes )
+groupbox(band=detail text=""border="6" color="16777215" x="1376" y="516" height="396" width="1015"  name=gb_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=17 alignment="0" tabsequence=100 border="0" color="0" x="1463" y="640" height="64" width="891" format="[general]" html.valueishtml="0"  name=subest_movil visible="1" checkbox.text="Subestaci$$HEX1$$f300$$ENDHEX$$n M$$HEX1$$f300$$ENDHEX$$vil" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="0" tabsequence=10 border="5" color="8388608" x="494" y="20" height="64" width="480" format="[general]" html.valueishtml="0"  name=nom_desc visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=19 alignment="0" tabsequence=20 border="5" color="8388608" x="1431" y="20" height="64" width="960" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="8388608" x="6725" y="0" height="64" width="192" format="[shortdate] [time]" html.valueishtml="0"  name=f_aprobado visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="8388608" x="6917" y="0" height="64" width="3511" format="[general]" html.valueishtml="0"  name=ubicacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="8388608" x="10427" y="0" height="64" width="480" format="[general]" html.valueishtml="0"  name=tel_solic visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="8388608" x="10907" y="0" height="64" width="1376" format="[general]" html.valueishtml="0"  name=unidad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="8388608" x="12283" y="0" height="64" width="1600" format="[general]" html.valueishtml="0"  name=jefe_trabajo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="8388608" x="13883" y="0" height="64" width="480" format="[general]" html.valueishtml="0"  name=tel_trabajo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="8388608" x="14363" y="0" height="64" width="1376" format="[general]" html.valueishtml="0"  name=plano visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="8388608" x="15739" y="0" height="64" width="352" format="[general]" html.valueishtml="0"  name=tiempo_repos visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="8388608" x="16091" y="0" height="64" width="800" format="[general]" html.valueishtml="0"  name=brigada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Descripci$$HEX1$$f300$$ENDHEX$$n" border="0" color="0" x="1010" y="20" height="64" width="407" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="0" tabsequence=70 border="0" color="0" x="1463" y="540" height="64" width="891" format="[general]" html.valueishtml="0"  name=ind_act_grafica visible="1" checkbox.text="Necesita Act. BDI" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=15 alignment="0" tabsequence=110 border="0" color="0" x="1463" y="736" height="64" width="891" format="" html.valueishtml="0"  name=ind_interrupcion visible="1" checkbox.text="Sin  Interrupcion" checkbox.on="2" checkbox.off="1" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="0" tabsequence=120 border="0" color="0" x="1463" y="828" height="64" width="891" format="[general]" html.valueishtml="0"  name=trab_tension visible="1~tif ( ind_interrupcion =2,1,0)" checkbox.text="Trab. en Tensi$$HEX1$$f300$$ENDHEX$$n" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="8388608" x="16891" y="0" height="64" width="5893" format="[general]" html.valueishtml="0"  name=inst_descargar visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="estado" border="5" color="8388608" x="645" y="300" height="64" width="549" html.valueishtml="0"  name=estado_o visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="5" color="8388608" x="645" y="120" height="64" width="549" format="[shortdate] [time]" html.valueishtml="0"  name=f_solicitado visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="2" tabsequence=30 border="5" color="8388608" x="645" y="212" height="64" width="549" format="[shortdate] [time]" html.valueishtml="0"  name=f_ini_solicitado visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="2" text="Observaciones" border="0" color="0" x="55" y="468" height="52" width="576" html.valueishtml="0"  name=obs_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=80 border="5" color="8388608" x="55" y="536" height="276" width="1257" format="[general]" html.valueishtml="0"  name=obs_solicitado visible="1" edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autovscroll=yes edit.imemode=0 edit.vscrollbar=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=34 alignment="0" tabsequence=90 border="0" color="0" x="55" y="836" height="64" width="1257" format="[general]" html.valueishtml="0"  name=ind_obligada visible="1~tif(fg_verifica_parametro('nuevos_tip_inc'), 1, 0)" checkbox.text="Indicativo Incidencia Obligada" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Identificador" border="0" color="0" x="55" y="20" height="64" width="425" html.valueishtml="0"  name=nom_desc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Fecha de Petici$$HEX1$$f300$$ENDHEX$$n" border="0" color="0" x="55" y="120" height="64" width="576" html.valueishtml="0"  name=f_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Fecha Inicio Desc." border="0" color="0" x="55" y="212" height="64" width="576" html.valueishtml="0"  name=f_ini_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Estado:" border="0" color="0" x="55" y="300" height="64" width="576" html.valueishtml="0"  name=estado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Agente:" border="0" color="0" x="55" y="388" height="64" width="576" html.valueishtml="0"  name=agente_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="0" text="Solicitante" border="0" color="0" x="1230" y="116" height="64" width="558" html.valueishtml="0"  name=id_solicitante_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Fecha Fin Desc." border="0" color="0" x="1230" y="208" height="64" width="558" html.valueishtml="0"  name=f_fin_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Tipo Descargo   ~tIf (fg_verifica_parametro('grupo descargo'), 'Grupo Descargo', 'Tipo Descargo')" border="0" color="0" x="1230" y="304" height="64" width="558" html.valueishtml="0"  name=tipo_descargo_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="8388608" x="1801" y="116" height="64" width="590" format="[general]" html.valueishtml="0"  name=id_solicitante visible="1" dddw.name=ddw_usuario dddw.displaycolumn=nom_usuario dddw.datacolumn=usuario dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="0" x="22784" y="0" height="64" width="1591" format="[general]" html.valueishtml="0"  name=cod_causa visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="0" x="24375" y="0" height="64" width="1591" format="[general]" html.valueishtml="0"  name=fam_causa visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="0" x="25966" y="0" height="64" width="224" format="[shortdate] [time]" html.valueishtml="0"  name=fec_causa visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Ordinario" border="5" color="8388608" x="1390" y="1080" height="64" width="613" html.valueishtml="0"  name=tipo_descargo_3 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="2" tabsequence=40 border="5" color="8388608" x="1801" y="208" height="64" width="590" format="[shortdate] [time]" html.valueishtml="0"  name=f_fin_solicitado visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=33 alignment="0" tabsequence=60 border="5" color="8388608" x="645" y="392" height="64" width="1746" format="[general]" html.valueishtml="0"  name=agente visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=50 border="5" color="8388608" x="1801" y="304" height="64" width="613" format="[general]" html.valueishtml="0"  name=tipo_descargo visible="1" dddw.name=ddw_tipo_descargo dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=38 alignment="0" tabsequence=130 border="5" color="8388608" x="1801" y="304" height="64" width="613" format="[general]" html.valueishtml="0"  name=grupo_descargo visible="1~tIf (fg_verifica_parametro('grupo descargo'), 1, 0)" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

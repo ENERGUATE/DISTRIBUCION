@@ -1,0 +1,57 @@
+HA$PBExportHeader$d_inc_int_descargos_bt.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=number updatewhereclause=yes name=nro_instalacion dbname="nro_instalacion" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="f_reposicion" )
+ column=(type=datetime updatewhereclause=yes name=f_inicio dbname="sgd_interrupcion_descargo.f_inicio" )
+ column=(type=datetime updatewhereclause=yes name=f_fin dbname="sgd_interrupcion_descargo.f_fin" )
+ retrieve="SELECT SGD_INSTALACION.NOM_INSTALACION, /* Instalaciones interrumpidas o no definidas en el descargo */
+	   SGD_INSTALACION.NRO_INSTALACION,
+	   NVL(SGD_INTERRUPCION.F_ALTA, TO_DATE('01/01/1900', 'DD/MM/YYYY')) F_ALTA,
+	   NVL(SGD_INTERRUPCION.F_REPOSICION,TO_DATE('01/01/1900', 'DD/MM/YYYY')) F_REPOSICION,
+	   SGD_INTERRUPCION_DESCARGO.F_INICIO,
+	   SGD_INTERRUPCION_DESCARGO.F_FIN
+FROM SGD_INTERRUPCION, SGD_INSTALACION, SGD_INTERRUPCION_DESCARGO
+WHERE SGD_INTERRUPCION.NRO_INCIDENCIA (+) = :pl_nro_incidencia AND
+		SGD_INTERRUPCION.NRO_INSTALACION (+) = SGD_INTERRUPCION_DESCARGO.COD_INSTALACION AND
+		SGD_INTERRUPCION_DESCARGO.NRO_DESCARGO = :pl_nro_descargo AND
+		SGD_INTERRUPCION_DESCARGO.COD_INSTALACION = SGD_INSTALACION.NRO_INSTALACION AND
+		SGD_INSTALACION.BDI_JOB = 0
+UNION ALL /* Instalaciones interrumpidas no definidas en el descargo	 */
+SELECT SGD_INSTALACION.NOM_INSTALACION, 
+	   SGD_INSTALACION.NRO_INSTALACION,
+	   NVL(SGD_INTERRUPCION.F_ALTA, TO_DATE('01/01/1900', 'DD/MM/YYYY')) F_ALTA,
+	   NVL(SGD_INTERRUPCION.F_REPOSICION,TO_DATE('01/01/1900', 'DD/MM/YYYY')) F_REPOSICION,
+	   TO_DATE('01/01/1900', 'DD/MM/YYYY') F_INICIO,
+	   TO_DATE('01/01/1900', 'DD/MM/YYYY') F_FIN
+FROM SGD_INTERRUPCION, SGD_INSTALACION
+WHERE SGD_INTERRUPCION.NRO_INCIDENCIA = :pl_nro_incidencia AND
+	  SGD_INTERRUPCION.NRO_INSTALACION = SGD_INSTALACION.NRO_INSTALACION AND
+	  SGD_INSTALACION.BDI_JOB = 0 AND
+	  SGD_INTERRUPCION.NRO_INSTALACION NOT IN
+	  (SELECT SGD_INTERRUPCION_DESCARGO.COD_INSTALACION
+	   FROM SGD_INTERRUPCION_DESCARGO
+	   WHERE SGD_INTERRUPCION_DESCARGO.NRO_DESCARGO = :pl_nro_descargo)
+
+		
+" arguments=(("pl_nro_descargo", number),("pl_nro_incidencia", number)) )
+text(band=header alignment="2" text="Inst. afectadas por el Descargo"border="6" color="0" x="9" y="8" height="64" width="1042"  name=nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="F. Alta Real"border="6" color="0" x="1070" y="8" height="64" width="553"  name=f_alta_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="F. Fin Real"border="6" color="0" x="1641" y="8" height="64" width="553"  name=f_reposicion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="F. Alta Propuesta"border="6" color="0" x="2213" y="8" height="64" width="553"  name=f_inicio_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="F. Fin Propuesta"border="6" color="0" x="2784" y="8" height="64" width="553"  name=f_fin_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="NO DEFINIDA EN EL DESCARGO"border="0" color="128" x="2213" y="4" height="64" width="1125" visible="1~tif ( f_inicio=date('01/01/1900'),1,0)"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0~tIf( f_alta=date('01/01/1900'), 8388608, 128 )" x="14" y="4" height="64" width="1038" format="[general]"  name=nom_instalacion edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="0~tIf( f_alta=date('01/01/1900'), 8388608, 128 )" x="2213" y="4" height="64" width="553" format="[shortdate] [time]"  name=f_inicio visible="1~tif ( f_inicio=date('01/01/1900'),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="0~tIf( f_alta=date('01/01/1900'), 8388608, 128 )" x="2784" y="4" height="64" width="553" format="[shortdate] [time]"  name=f_fin visible="1~tif ( f_inicio=date('01/01/1900'),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="0~tIf( f_alta=date('01/01/1900'), 8388608, 128 )" x="1641" y="4" height="64" width="553" format="[shortdate] [time]"  name=f_reposicion visible="1~tif ( f_reposicion=date('01/01/1900'),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="NO FINALIZADA"border="0" color="128" x="1641" y="4" height="64" width="553" visible="1~tif ( f_reposicion=date('01/01/1900') and  f_alta<>date('01/01/1900'),1,0)"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0~tIf( f_alta=date('01/01/1900'), 8388608, 128 )" x="1070" y="4" height="64" width="553" format=""  name=f_alta visible="1~tif ( f_alta=date('01/01/1900'),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="NO INTERRUMPIDA"border="0" color="8388608" x="1070" y="4" height="64" width="1125" visible="1~tif ( f_alta=date('01/01/1900'),1,0)"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

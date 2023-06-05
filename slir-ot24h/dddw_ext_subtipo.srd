@@ -1,0 +1,15 @@
+HA$PBExportHeader$dddw_ext_subtipo.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=tipo dbname="gi_subtipos.tipo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=subtipo dbname="gi_subtipos.subtipo" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=descripcion dbname="gi_subtipos.descripcion" )
+ column=(type=char(4000) update=yes updatewhereclause=yes name=c_tipo_inc dbname="c_tipo_inc" )
+ column=(type=char(81) updatewhereclause=yes name=c_concat dbname="c_concat" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"gi_subtipos~" ) COLUMN(NAME=~"gi_subtipos.tipo~") COLUMN(NAME=~"gi_subtipos.subtipo~") COLUMN(NAME=~"gi_subtipos.descripcion~") COMPUTE(NAME=~"Fgnu_Tip_Inc(~~~"GI_SUBTIPOS~~~".~~~"TIPO~~~") As c_tipo_inc~") COMPUTE(NAME=~"~~~"GI_SUBTIPOS~~~".~~~"TIPO~~~" || '-' ||~~~"GI_SUBTIPOS~~~".~~~"SUBTIPO~~~"   As c_concat~")) " update="GI_SUBTIPOS" updatewhere=1 updatekeyinplace=no )
+compute(band=detail alignment="0" expression=" c_tipo_inc + ~" - ~" +  descripcion "border="0" color="0" x="18" y="0" height="64" width="1783" format="[general]" html.valueishtml="0"  name=c_tipo_mas_desc visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

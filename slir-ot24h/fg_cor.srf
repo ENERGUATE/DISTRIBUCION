@@ -1,0 +1,50 @@
+HA$PBExportHeader$fg_cor.srf
+global type fg_cor from function_object
+end type
+
+forward prototypes
+global subroutine fg_cor (datawindow adw_dw, readonly string as_arr_desc[], readonly string as_columna_mov[])
+end prototypes
+
+global subroutine fg_cor (datawindow adw_dw, readonly string as_arr_desc[], readonly string as_columna_mov[]);Long ll_i, ll_upper_bound, ll_pos, ll_pos_busca
+String ls_dw_syntax, ls_busca, ls_columna
+
+
+
+ll_upper_bound = UpperBound(as_arr_desc)
+ls_busca = Upper(Reverse("text(name="))
+
+adw_dw.AcceptText()
+Yield()
+
+For ll_i = 1 To ll_upper_bound
+	ls_dw_syntax = ""
+	ls_dw_syntax = Upper(adw_dw.Describe("DataWindow.Syntax"))
+
+//	ll_pos = Pos(ls_dw_syntax, Reverse(ls_busca))
+//	ls_dw_syntax = Mid(ls_dw_syntax, ll_pos)
+
+	ll_pos_busca = Pos(ls_dw_syntax, Upper(as_columna_mov[ll_i]))
+
+	Do While ll_pos_busca > 0
+		ls_columna = Left(ls_dw_syntax, ll_pos_busca)
+		ls_columna = Reverse(ls_columna)
+		ll_pos = Pos(ls_columna, ls_busca) - 1
+
+	
+		ls_columna = Reverse(Left(ls_columna, ll_pos))
+		ll_pos = Pos(ls_columna, " BAND=") - 1
+		ls_columna = Left(ls_columna, ll_pos)
+
+//		MessageBox(ls_columna + "   " + adw_dw.Describe(ls_columna + ".Text"), Upper(as_columna_mov[ll_i]))
+
+		If Upper(adw_dw.Describe(ls_columna + ".Text")) = Upper(as_columna_mov[ll_i]) Then
+			adw_dw.Modify(ls_columna + ".Text ='" + as_arr_desc[ll_i] + "'")
+		End If
+
+		ls_dw_syntax = Mid(ls_dw_syntax, ll_pos_busca + Len(as_columna_mov[ll_i]))
+		ll_pos_busca = Pos(ls_dw_syntax, Upper(as_columna_mov[ll_i]))
+	Loop
+Next
+end subroutine
+

@@ -1,0 +1,123 @@
+HA$PBExportHeader$m_man_inst_param.srm
+forward
+global type m_man_inst_param from menu
+end type
+type m_acometidas from menu within m_man_inst_param
+end type
+type m_incidencias from menu within m_man_inst_param
+end type
+type m_suministros from menu within m_man_inst_param
+end type
+type m_suministrosimportantes from menu within m_man_inst_param
+end type
+global type m_man_inst_param from menu
+m_acometidas m_acometidas
+m_incidencias m_incidencias
+m_suministros m_suministros
+m_suministrosimportantes m_suministrosimportantes
+end type
+end forward
+
+global type m_man_inst_param from menu
+m_acometidas m_acometidas
+m_incidencias m_incidencias
+m_suministros m_suministros
+m_suministrosimportantes m_suministrosimportantes
+end type
+global m_man_inst_param m_man_inst_param
+
+on m_man_inst_param.create
+m_man_inst_param=this
+call super::create
+this.m_acometidas=create m_acometidas
+this.m_incidencias=create m_incidencias
+this.m_suministros=create m_suministros
+this.m_suministrosimportantes=create m_suministrosimportantes
+this.Item[UpperBound(this.Item)+1]=this.m_acometidas
+this.Item[UpperBound(this.Item)+1]=this.m_incidencias
+this.Item[UpperBound(this.Item)+1]=this.m_suministros
+this.Item[UpperBound(this.Item)+1]=this.m_suministrosimportantes
+end on
+
+on m_man_inst_param.destroy
+call super::destroy
+destroy(this.m_acometidas)
+destroy(this.m_incidencias)
+destroy(this.m_suministros)
+destroy(this.m_suministrosimportantes)
+end on
+
+type m_acometidas from menu within m_man_inst_param
+end type
+
+on m_acometidas.create
+call super::create
+this.text = "Acometidas"
+end on
+
+on m_acometidas.destroy
+call super::destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'acometidas'
+
+
+end event
+
+type m_incidencias from menu within m_man_inst_param
+end type
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'incidencias'
+end event
+
+on m_incidencias.create
+call super::create
+this.text = "Incidencias"
+end on
+
+on m_incidencias.destroy
+call super::destroy
+end on
+
+type m_suministros from menu within m_man_inst_param
+end type
+
+on m_suministros.create
+call super::create
+this.text = "Suministros"
+end on
+
+on m_suministros.destroy
+call super::destroy
+end on
+
+event clicked;gu_comunic.is_comunic.accion_retorno = 'suministros'
+
+
+end event
+
+type m_suministrosimportantes from menu within m_man_inst_param
+end type
+
+event clicked;//*******************************************
+//**  OSGI 2001.2  	07/08/2002				 **
+//**  Jair Padilla / Soluziona PANAMA  	 **
+//**  SUMINISTROS IMPORTANTES					 **
+//*******************************************
+gu_comunic.is_comunic.accion_retorno = 'suministros_imp'
+//*******************************************
+//**  OSGI 2001.2  	07/08/2002				 **
+//**  Jair Padilla / Soluziona PANAMA  	 **
+//**  SUMINISTROS IMPORTANTES					 **
+//*******************************************
+end event
+
+on m_suministrosimportantes.create
+call super::create
+this.text = "Suministros Importantes"
+end on
+
+on m_suministrosimportantes.destroy
+call super::destroy
+end on
+

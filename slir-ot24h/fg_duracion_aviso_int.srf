@@ -1,0 +1,39 @@
+HA$PBExportHeader$fg_duracion_aviso_int.srf
+global type fg_duracion_aviso_int from function_object
+end type
+
+forward prototypes
+global function long fg_duracion_aviso_int (datetime pd_fecha_alta, datetime pd_fecha_res)
+end prototypes
+
+global function long fg_duracion_aviso_int (datetime pd_fecha_alta, datetime pd_fecha_res);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_duracion_aviso_int
+// 
+// Objetivo: Calcula el tiempo de duraci$$HEX1$$f300$$ENDHEX$$n entre fechas que se obtienen 
+//           como par$$HEX1$$e100$$ENDHEX$$metros.
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada:  pd_fecha_alta, pd_fecha_res
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	23/1/96		SAB			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
+//MODIFICACIONES , SE CAMBIO EL RETORNO DE TIPO INT  A TIPO LONG
+if NOT ISNULL(pd_fecha_res) then
+//		return fgi_duracion_horas(pd_fecha_alta,pd_fecha_res)
+		return fg_duracion_minutos(pd_fecha_alta,pd_fecha_res)
+else
+//		return fgi_duracion_horas(pd_fecha_alta,fgnu_fecha_actual())
+		return fg_duracion_minutos(pd_fecha_alta,fgnu_fecha_actual())
+end if
+
+end function
+

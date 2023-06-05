@@ -1,0 +1,43 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "reportes_avi_inc.pbl" "";
+@end;
+@begin Objects
+ "ddw_familia_causa.srd" "reportes_avi_inc.pbl";
+ "d_mensual_interrupciones.srd" "reportes_avi_inc.pbl";
+ "dw_co_acciones_inc_rep.srd" "reportes_avi_inc.pbl";
+ "dw_co_brigadas_inc_rep.srd" "reportes_avi_inc.pbl";
+ "dw_co_estados_inc_rep.srd" "reportes_avi_inc.pbl";
+ "ddw_tipo_agente.srd" "reportes_avi_inc.pbl";
+ "ddw_causa_sinfam_new.srd" "reportes_avi_inc.pbl";
+ "s_reporte_inc_aviso.srs" "reportes_avi_inc.pbl";
+ "w_mensualdecausas.srw" "reportes_avi_inc.pbl";
+ "d_mensual_causas.srd" "reportes_avi_inc.pbl";
+ "d_mensual_causas_total.srd" "reportes_avi_inc.pbl";
+ "dw_re_inc_rep.srd" "reportes_avi_inc.pbl";
+ "dddw_inc_materiales.srd" "reportes_avi_inc.pbl";
+ "fg_ext_parametros.srf" "reportes_avi_inc.pbl";
+ "md_reportes_mensuales.srm" "reportes_avi_inc.pbl";
+ "fg_ejecuta_parametro.srf" "reportes_avi_inc.pbl";
+ "dw_re_avi_rep.srd" "reportes_avi_inc.pbl";
+ "dw_re_inc_rep_hist.srd" "reportes_avi_inc.pbl";
+ "d_lista_reporte_new.srd" "reportes_avi_inc.pbl";
+ "dw_co_materiales_inc_rep_hist.srd" "reportes_avi_inc.pbl";
+ "d_lista_agrupar.srd" "reportes_avi_inc.pbl";
+ "fg_usa_famcusa.srf" "reportes_avi_inc.pbl";
+ "ddw_causa_incidencia_new.srd" "reportes_avi_inc.pbl";
+ "dw_co_acciones_inc_rep_hist.srd" "reportes_avi_inc.pbl";
+ "dw_co_brigadas_inc_rep_hist.srd" "reportes_avi_inc.pbl";
+ "dw_co_contratas_inc_rep_hist.srd" "reportes_avi_inc.pbl";
+ "dw_co_contratas_inc_rep.srd" "reportes_avi_inc.pbl";
+ "d_criterio_selec_rep_causas.srd" "reportes_avi_inc.pbl";
+ "dw_co_interrupciones_inc_rep_hist.srd" "reportes_avi_inc.pbl";
+ "dw_co_materiales_inc_rep.srd" "reportes_avi_inc.pbl";
+ "dw_co_estados_inc_rep_hist.srd" "reportes_avi_inc.pbl";
+ "dw_co_interrupciones_inc_rep.srd" "reportes_avi_inc.pbl";
+ "w_re_inc_avisos.srw" "reportes_avi_inc.pbl";
+ "w_reportes_new.srw" "reportes_avi_inc.pbl";
+ "u_gen_7001_pr_filtro_reporte_inc_new.sru" "reportes_avi_inc.pbl";
+ "d_bdg_7001_pr_filtro_reporte_inci_news.srd" "reportes_avi_inc.pbl";
+ "w_mensualdeinterrupciones.srw" "reportes_avi_inc.pbl";
+@end;

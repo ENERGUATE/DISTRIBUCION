@@ -1,0 +1,69 @@
+HA$PBExportHeader$d_grafica_proyeccion_datos_oculto.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=tiepi_propio dbname="gi_incidencia_bdg.tiepi_propio" )
+ column=(type=number updatewhereclause=yes name=mes dbname="mes" )
+ column=(type=decimal(1) updatewhereclause=yes name=paxtc dbname="gi_incidencia_bdg.paxtc" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_instalada dbname="gi_incidencia_bdg.pot_instalada" )
+ column=(type=decimal(1) updatewhereclause=yes name=pot_contratada dbname="gi_incidencia_bdg.pot_contratada" )
+ column=(type=decimal(0) updatewhereclause=yes name=incidencia_cli dbname="gi_incidencia_bdg.incidencia_cli" )
+ column=(type=decimal(0) updatewhereclause=yes name=clientes_sist dbname="gi_incidencia_bdg.clientes_sist" )
+ column=(type=decimal(0) updatewhereclause=yes name=duracion dbname="gi_incidencia_bdg.duracion" )
+ column=(type=number updatewhereclause=yes name=annio dbname="annio" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_centro dbname="gi_incidencia_bdg.nro_centro" )
+ column=(type=decimal(1) updatewhereclause=yes name=pcxtc dbname="gi_incidencia_bdg.pcxtc" )
+ retrieve="  SELECT TIEPI_PROPIO,   
+         to_number(to_char(FECHA, 'mm')) As mes,   
+         PAXTC,   
+         POT_INSTALADA,   
+         POT_CONTRATADA,   
+         INCIDENCIA_CLI,   
+         CLIENTES_SIST,   
+         DURACION,   
+         to_number(to_char(FECHA, 'yyyy')) As annio,   
+         NRO_CENTRO,   
+         PCXTC 
+    FROM GI_INCIDENCIA_BDG  
+   WHERE ( to_number(to_char(FECHA, 'YYYYMMDD')) between :fecha_ini and :fecha_fin ) AND  
+         ( TIP_INCIDENCIA = 0 ) AND  
+         ( TIP_TENSION = 0 ) AND  
+         ( MAT_AVERIADO = '010101' ) AND  
+         ( HORARIO = 0 ) AND  
+         ( NRO_CMD = 0 ) AND  
+         ( NRO_MESA = 0 )    
+" arguments=(("fecha_ini", number),("fecha_fin", number))  sort="annio A mes A " )
+group(level=1 header.height=0 trailer.height=188 by=("annio" , "mes" ) header.color="536870912" trailer.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="27" y="12" height="64" width="425" format="#,##0.00"  name=paxtc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="0" x="485" y="12" height="64" width="425" format="#,##0.00"  name=pot_instalada edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="round(( paxtc/60)/ pot_instalada, 2)"border="0" color="0" x="1390" y="4" height="76" width="425" format="#,##0.00"  name=c_valor_tiepi_calc  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16776960" )
+compute(band=detail alignment="1" expression="round( (pcxtc/60)/ pot_contratada, 2)"border="0" color="0" x="1847" y="4" height="76" width="425" format="#,##0.00"  name=c_valor_tiebt_calc  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="8421376" )
+compute(band=detail alignment="1" expression="round(  incidencia_cli / clientes_sist, 2)"border="0" color="0" x="2304" y="4" height="76" width="425" format="#,##0.00"  name=c_valor_saifi_calc  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=detail alignment="1" expression="round( (duracion/ 60)/ clientes_sist, 2)"border="0" color="0" x="2757" y="4" height="76" width="434" format="#,##0.00"  name=c_valor_saidi_calc  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711935" )
+compute(band=detail alignment="1" expression="round( c_valor_saidi_calc  /  c_valor_saifi_calc , 2)"border="0" color="0" x="3218" y="4" height="76" width="430" format="#,##0.00"  name=c_valor_caidi_calc  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15793151" )
+compute(band=detail alignment="1" expression=" 1 - (c_valor_saidi_calc / f_tiempo_annio( annio )) "border="0" color="0" x="3680" y="4" height="76" width="430" format="[general]"  name=c_valor_asai_calc  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="402" y="116" height="64" width="215" format="[general]"  name=annio edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65280" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="4526" y="0" height="64" width="1161" format="[general]"  name=pcxtc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="4137" y="8" height="80" width="425" format="[general]"  name=nro_centro edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.1 alignment="1" expression="/* sum( c_valor_asai_calc for group 1) */ 0"border="0" color="0" x="3630" y="104" height="80" width="425" format="[general]"  name=c_valor_asai_old  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+compute(band=trailer.1 alignment="2" expression="count(mes for group 1)"border="0" color="0" x="174" y="84" height="80" width="78" format="[general]"  name=c_lineas  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=trailer.1 alignment="0" text="c_valor_tiepi"border="0" color="0" x="1390" y="8" height="80" width="425"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=trailer.1 alignment="0" text="c_valor_tiebt"border="0" color="0" x="1838" y="8" height="80" width="425"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=trailer.1 alignment="0" text="c_valor_saifi"border="0" color="0" x="2286" y="8" height="80" width="425"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=trailer.1 alignment="0" text="c_valor_saidi"border="0" color="0" x="2734" y="8" height="80" width="425"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=trailer.1 alignment="0" text="c_valor_caidi"border="0" color="0" x="3182" y="8" height="80" width="425"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=trailer.1 id=2 alignment="2" tabsequence=32766 border="0" color="0" x="535" y="100" height="80" width="379" format="[general]"  name=mes edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="255" )
+compute(band=trailer.1 alignment="1" expression="sum(  c_valor_tiepi_calc  for group 1)"border="0" color="0" x="1390" y="104" height="80" width="425" format="#,##0.00"  name=c_valor_tiepi  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16776960" )
+compute(band=trailer.1 alignment="1" expression="sum( c_valor_tiebt_calc  for group 1)"border="0" color="0" x="1838" y="104" height="80" width="425" format="#,##0.00"  name=c_valor_tiebt  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="8421376" )
+compute(band=trailer.1 alignment="1" expression="sum( c_valor_saifi_calc  for group 1)"border="0" color="0" x="2286" y="104" height="80" width="425" format="#,##0.00"  name=c_valor_saifi  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=trailer.1 alignment="1" expression="sum(  c_valor_saidi_calc   for group 1)"border="0" color="0" x="2734" y="104" height="80" width="425" format="#,##0.00"  name=c_valor_saidi  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711935" )
+compute(band=trailer.1 alignment="1" expression="/* sum( c_valor_caidi_calc for group 1) */ 0"border="0" color="0" x="3177" y="104" height="80" width="425" format="#,##0.00"  name=c_valor_caidi_old  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15793151" )
+compute(band=trailer.1 alignment="1" expression="round(cumulativesum( c_valor_saidi_calc for all)  / cumulativesum( c_valor_saifi_calc for all ) , 2) "border="0" color="16777215" x="3177" y="104" height="80" width="425" format="#,##0.00"  name=c_valor_caidi  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+compute(band=trailer.1 alignment="1" expression=" 1 - (cumulativesum( c_valor_saidi_calc for all )/ f_tiempo_annio( annio )) "border="0" color="16777215" x="3630" y="104" height="80" width="425" format="#,##0.0000"  name=c_valor_asai  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+column(band=trailer.1 id=9 alignment="0" tabsequence=32766 border="0" color="16777215" x="987" y="68" height="64" width="274" format="[general]" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=trailer.1 alignment="0" text="c_valor_asai"border="0" color="0" x="3630" y="8" height="80" width="425"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+compute(band=trailer.1 alignment="1" expression="f_tiempo_annio( annio )"border="0" color="16777215" x="4101" y="104" height="80" width="425" format="[general]"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+compute(band=summary alignment="0" expression="rowcount()"border="0" color="8388608" x="50" y="24" height="76" width="256" format="[general]"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

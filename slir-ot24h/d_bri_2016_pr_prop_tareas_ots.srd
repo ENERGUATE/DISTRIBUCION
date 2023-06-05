@@ -1,0 +1,17 @@
+HA$PBExportHeader$d_bri_2016_pr_prop_tareas_ots.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=28 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=200 color="536870912" )
+table(column=(type=number updatewhereclause=no name=pi_tareas dbname="pi_tareas" values="<Todos>	0/OT's	1/Tareas	2/" )
+ column=(type=number updatewhereclause=no name=pi_estado dbname="pi_estado" )
+ )
+text(band=detail alignment="0" text="TEXT"border="5" color="8388608" x="384" y="112" height="64" width="503"  name=estado_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="TEXT"border="5" color="8388608" x="384" y="16" height="64" width="503"  name=tarea_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="8388608" x="384" y="16" height="64" width="507" format="[general]"  name=pi_tareas ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=30 border="5" color="8388608" x="384" y="112" height="64" width="507" format="[general]"  name=pi_estado dddw.name=ddw_estado_ot_pend_trab dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Estado:"border="0" color="0" x="14" y="116" height="64" width="219"  name=pi_estado_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="Tareas/OT's"border="0" color="0" x="14" y="20" height="64" width="361"  name=pi_tareas_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

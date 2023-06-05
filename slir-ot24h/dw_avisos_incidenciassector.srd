@@ -1,0 +1,111 @@
+HA$PBExportHeader$dw_avisos_incidenciassector.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=116 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(32) updatewhereclause=yes name=empresa dbname="empresa" )
+ column=(type=char(25) updatewhereclause=yes name=sector dbname="sector" )
+ column=(type=number updatewhereclause=yes name=avisos dbname="avisos" )
+ retrieve="SELECT
+Empresa ~"Empresa~",
+Sector ~"Sector~",
+COUNT(*) ~"Avisos~"
+FROM 
+(SELECT /*+ RULE*/ DISTINCT e.nro_aviso Aviso,
+e.nis_rad NIS,
+e.f_alta ingreso,
+e.nro_llamadas+1 Llamadas,
+e.NOMBRE || ' ' || e.APE1 || ' ' || e.APE2 Nombre,
+e.tfno_cli tel,
+a.subestac Subestacion,
+b.smt SMT,
+d.matricula matr_bdi,
+h.usr_varchar2 matr_sgc,
+DECODE (d.nro_centro,3100,'DEORSA',2100,'DEOCSA','??') Empresa, 
+F.NOM_CENTRO Sector,
+e.NOM_prov Departamento,
+e.NOM_depto Municipio,
+e.NOM_munic Localidad,
+e.NOM_CALLE || ' ' || e.NUM_PUERTA || e.DUPLICADOR || ' ' || e.NOM_LOC || ' ' || e.ESQUINA Direccion,
+REPLACE(REPLACE(e.OBS_TELEGESTIONES,CHR(013) || CHR(010),' '),CHR(009),' ') obsot24,
+REPLACE(REPLACE(e.OBS_cmd,CHR(013) || CHR(010),' '),CHR(009),' ') obscor,
+DECODE (e.IND_PELIGRO,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Peligro,
+DECODE (e.IND_CLI_IMP,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Cliente_Importante,
+G.DESCRIPCION Alcance
+FROM (SELECT NOM_INSTALACION Subestac,
+nro_aviso aviso_subestac
+FROM GI_AVISOS_INSTALACION
+WHERE tipo_instalacion = 3
+AND est_aviso = 1) a,
+(SELECT NOM_INSTALACION smt,
+nro_aviso aviso_smt
+FROM GI_AVISOS_INSTALACION
+WHERE tipo_instalacion = 4
+AND est_aviso = 1) b,
+(SELECT NOM_INSTALACION ct,
+nro_aviso aviso_ct,
+nro_instalacion codigo_ct
+FROM GI_AVISOS_INSTALACION
+WHERE tipo_instalacion = 5
+AND est_aviso = 1) c,
+sgd_ct d,
+gi_avisos e,
+sgd_centro f,
+sgd_valor g,
+sumcon h
+WHERE e.clase_aviso IN (0,1)
+AND g.codif = 'ALC'
+AND a.aviso_subestac = b.aviso_smt
+AND a.aviso_subestac = c.aviso_ct
+AND d.codigo = c.codigo_ct
+AND e.nro_aviso = a.aviso_subestac
+AND f.nro_centro = d.nro_mesa
+AND g.codigo = e.co_alcance
+AND h.nis_rad = e.nis_rad
+and d.bdi_job=0
+UNION
+SELECT DISTINCT a.nro_aviso Aviso,
+B.nis_rad NIS,
+B.f_alta Ingreso,
+B.nro_llamadas+1 Llamadas,
+b.NOMBRE || ' ' || b.APE1 || ' ' || b.APE2 Nombre,
+b.tfno_cli tel,
+a.NOM_INSTALACION Subestacion,
+a.NOM_INSTALACION SMT,
+a.NOM_INSTALACION matr_bdi,
+d.usr_varchar2 matr_sgc,
+DECODE (a.nro_zona,3100,'DEORSA',2100,'DEOCSA','??') Empresa, 
+c.NOM_CENTRO Sector,
+b.NOM_prov Departamento,
+b.NOM_depto Municipio,
+b.NOM_munic Localidad,
+b.NOM_CALLE || ' ' || b.NUM_PUERTA || b.DUPLICADOR || ' ' || b.NOM_LOC || ' ' || b.ESQUINA Direccion,
+REPLACE(REPLACE(b.OBS_TELEGESTIONES,CHR(013) || CHR(010),' '),CHR(009),' ') obsot24,
+REPLACE(REPLACE(b.OBS_cmd,CHR(013) || CHR(010),' '),CHR(009),' ') obscor,
+DECODE (b.IND_PELIGRO,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Peligro,
+DECODE (b.IND_CLI_IMP,'1','S$$HEX1$$ed00$$ENDHEX$$','No') Cliente_Importante,
+e.DESCRIPCION Alcance
+FROM gi_avisos_instalacion a,
+gi_avisos b,
+sgd_centro c,
+sumcon d,
+sgd_valor e
+WHERE a.est_aviso = 1
+AND a.ind_red = 0
+AND A.NRO_INSTALACION IN (77777777, 88888888)
+AND a.clase_aviso IN (0,1)
+AND a.nro_zona <> 0
+AND e.CODIF = 'ALC'
+AND a.nro_aviso = b.nro_aviso
+AND c.nro_centro = a.nro_sector
+AND e.codigo = b.co_alcance
+AND d.nis_rad = b.nis_rad
+)
+GROUP BY empresa, sector
+order by count(*) desc" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="12" height="64" width="553" format="[general]"  name=sector edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="581" y="12" height="64" width="183" format="[general]"  name=avisos edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=summary x1="14" y1="12" x2="809" y2="12" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+compute(band=summary alignment="2" expression="sum(avisos for all)"border="0" color="0" x="581" y="28" height="64" width="183" format="[general]"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

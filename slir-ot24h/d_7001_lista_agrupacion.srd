@@ -1,0 +1,110 @@
+HA$PBExportHeader$d_7001_lista_agrupacion.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=estado dbname="sgd_descargos.estado" )
+ column=(type=char(60) updatewhereclause=yes name=nom_usuario dbname="gi_usuario_sgi.nom_usuario" )
+ column=(type=datetime updatewhereclause=yes name=f_solicitado dbname="sgd_descargos.f_solicitado" )
+ column=(type=datetime updatewhereclause=yes name=f_aprobado dbname="sgd_descargos.f_aprobado" )
+ column=(type=datetime updatewhereclause=yes name=f_ini_aprobado dbname="sgd_descargos.f_ini_aprobado" )
+ column=(type=datetime updatewhereclause=yes name=f_fin_aprobado dbname="sgd_descargos.f_fin_aprobado" )
+ column=(type=decimal(0) updatewhereclause=yes name=id_activado dbname="sgd_descargos.id_activado" )
+ column=(type=datetime updatewhereclause=yes name=f_activado dbname="sgd_descargos.f_activado" )
+ column=(type=char(130) updatewhereclause=yes name=sgd_instalacion_nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(15) updatewhereclause=yes name=sgd_descargos_usuario dbname="sgd_descargos.usuario" )
+ column=(type=number updatewhereclause=yes name=sgd_instalacion_tension dbname="sgd_instalacion.tension" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_descargo dbname="sgd_descargos.nro_descargo" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_descargos_id_enviado dbname="sgd_descargos.id_enviado" )
+ column=(type=datetime updatewhereclause=yes name=sgd_descargos_f_ini_solicitado dbname="sgd_descargos.f_ini_solicitado" )
+ column=(type=datetime updatewhereclause=yes name=sgd_descargos_f_fin_solicitado dbname="sgd_descargos.f_fin_solicitado" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_instalacion_nro_instalacion dbname="sgd_instalacion.nro_instalacion" )
+ column=(type=char(15) updatewhereclause=yes name=gi_usuario_sgi_usuario dbname="sgd_descargos.usuario" )
+ column=(type=char(2000) updatewhereclause=yes name=obs_aprobado dbname="sgd_descargos.obs_aprobado" )
+ column=(type=char(16) updatewhereclause=yes name=sgd_descargos_id_aprobacion dbname="sgd_descargos.id_aprobacion" )
+ column=(type=char(4000) updatewhereclause=yes name=duracion dbname="compute_0020" )
+ column=(type=number updatewhereclause=yes name=ccl_duracion dbname="cl_duracion" )
+ column=(type=decimal(0) updatewhereclause=yes name=ccod_inst_origen dbname="sgd_descargos.cod_inst_origen" )
+ column=(type=char(50) updatewhereclause=yes name=estado dbname="sgd_valor.descripcion" )
+ column=(type=char(2000) updatewhereclause=yes name=cobs_solicitado dbname="sgd_descargos.obs_solicitado" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sgd_descargos_nro_agrupacion dbname="sgd_descargos.nro_agrupacion" )
+ column=(type=decimal(5) updatewhereclause=yes name=seleccionada dbname="compute_0026" )
+ column=(type=decimal(0) updatewhereclause=yes name=ind_act_grafica dbname="sgd_descargos.ind_act_grafica" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_descargo dbname="sgd_descargos.tipo_descargo" )
+ column=(type=number updatewhereclause=yes name=sgd_instalacion_tipo_instalacion dbname="sgd_instalacion.tipo_instalacion" )
+ retrieve="SELECT DISTINCT ~"SGD_DESCARGOS~".~"ESTADO~",   
+         ~"GI_USUARIO_SGI~".~"NOM_USUARIO~",   
+         ~"SGD_DESCARGOS~".~"F_SOLICITADO~",   
+         ~"SGD_DESCARGOS~".~"F_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"F_INI_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"F_FIN_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"ID_ACTIVADO~",   
+         ~"SGD_DESCARGOS~".~"F_ACTIVADO~",   
+         ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         ~"SGD_DESCARGOS~".~"USUARIO~",   
+         ~"SGD_INSTALACION~".~"TENSION~",   
+         ~"SGD_DESCARGOS~".~"NRO_DESCARGO~",   
+         ~"SGD_DESCARGOS~".~"ID_ENVIADO~",   
+         ~"SGD_DESCARGOS~".~"F_INI_SOLICITADO~",   
+         ~"SGD_DESCARGOS~".~"F_FIN_SOLICITADO~",   
+         ~"SGD_INSTALACION~".~"NRO_INSTALACION~",   
+         ~"SGD_DESCARGOS~".~"USUARIO~",   
+         ~"SGD_DESCARGOS~".~"OBS_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"ID_APROBACION~",
+			fgnu_duracion_str(F_INI_APROBADO,F_FIN_APROBADO),
+			fg_duracion_int(F_INI_APROBADO,F_FIN_APROBADO) CL_DURACION ,
+         ~"SGD_DESCARGOS~".~"COD_INST_ORIGEN~",   
+			~"SGD_VALOR~".~"DESCRIPCION~",
+         ~"SGD_DESCARGOS~".~"OBS_SOLICITADO~",
+			~"SGD_DESCARGOS~".~"NRO_AGRUPACION~",
+			2,
+			~"IND_ACT_GRAFICA~",
+			~"TIPO_DESCARGO~",
+			~"SGD_INSTALACION~".~"TIPO_INSTALACION~"
+    FROM ~"SGD_DESCARGOS~",   
+			~"SGD_VALOR~",
+         ~"GI_USUARIO_SGI~",   
+         ~"SGD_INSTALACION~",
+		 ~"SGD_DESCARGOS_INST_AFEC~" 
+   WHERE (~"SGD_DESCARGOS~".~"USUARIO~" = ~"GI_USUARIO_SGI~".~"USUARIO~" (+) ) AND
+			(~"SGD_VALOR~".~"CODIGO~" = ~"SGD_DESCARGOS~".~"ESTADO~" ) AND 
+			(~"SGD_VALOR~".~"CODIF~" = 'ES_D') AND 
+			(~"SGD_DESCARGOS~".~"ESTADO~" = 2) and (~"SGD_DESCARGOS~".~"NRO_AGRUPACION~" = 0 or ~"SGD_DESCARGOS~".~"NRO_AGRUPACION~" is null) and
+			(~"SGD_DESCARGOS~".~"COD_INST_ORIGEN~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" ) and
+			(~"SGD_DESCARGOS~".~"NRO_DESCARGO~" = ~"SGD_DESCARGOS_INST_AFEC~".~"NRO_DESCARGO~") AND
+			((~"SGD_INSTALACION~".~"NRO_INSTALACION~"  IN   	
+			(SELECT ~"NRO_INSTALACION~"
+          FROM ~"SGD_INSTALACION~"  
+		 START WITH ~"SGD_INSTALACION~".~"NRO_INSTALACION~" = :nro_inst AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" = 0
+        CONNECT BY PRIOR ~"SGD_INSTALACION~".~"NRO_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INST_PADRE~" AND  
+			~"SGD_INSTALACION~".~"BDI_JOB~" = 0))
+			OR ~"SGD_DESCARGOS_INST_AFEC~".~"NRO_INSTALACION~" IN (SELECT ~"SGD_DESCARGOS_INST_AFEC~".~"NRO_INSTALACION~"
+			   											   	   FROM ~"SGD_DESCARGOS_INST_AFEC~"
+															  			WHERE ~"SGD_DESCARGOS_INST_AFEC~".~"NRO_DESCARGO~" = :pl_nro_desc))" arguments=(("nro_inst", number),("pl_nro_desc", number),("ldt_f_ini", datetime),("ldt_f_fin", datetime),("pl_tipo_instalacion", number)) )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="18" y="4" height="64" width="905" html.valueishtml="0"  name=sgd_instalacion_nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="14" y="4" height="64" width="905" format="[general]" html.valueishtml="0"  name=sgd_instalacion_nom_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Fec. Solicitado" border="6" color="0" x="2482" y="4" height="64" width="489" html.valueishtml="0"  name=f_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F Ini. Solicitado" border="6" color="0" x="2990" y="4" height="64" width="503" html.valueishtml="0"  name=sgd_descargos_f_ini_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="0" text="F. Fin Solicitado" border="6" color="0" x="3511" y="4" height="64" width="521" html.valueishtml="0"  name=sgd_descargos_f_fin_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F Aprobado" border="6" color="0" x="4050" y="4" height="64" width="448" html.valueishtml="0"  name=f_aprobado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F Ini Apro" border="6" color="0" x="4517" y="4" height="64" width="503" html.valueishtml="0"  name=f_ini_aprobado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F Fin Apro" border="6" color="0" x="5038" y="4" height="64" width="448" html.valueishtml="0"  name=f_fin_aprobado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Duraci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="5504" y="4" height="64" width="416" html.valueishtml="0"  name=cduracion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Activado" border="6" color="0" x="5938" y="4" height="64" width="430" html.valueishtml="0"  name=f_activado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Estado" border="6" color="0" x="6386" y="4" height="64" width="498" html.valueishtml="0"  name=estado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="2473" y="4" height="64" width="498" format="[shortdate] [time]" html.valueishtml="0"  name=f_solicitado visible="1~tif( isnull( f_solicitado ),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="2985" y="4" height="64" width="512" format="[shortdate] [time]" html.valueishtml="0"  name=sgd_descargos_f_ini_solicitado visible="1~tif( isnull( sgd_descargos_f_ini_solicitado ),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="3506" y="4" height="64" width="521" format="[shortdate] [time]" html.valueishtml="0"  name=sgd_descargos_f_fin_solicitado visible="1~tif( isnull(  sgd_descargos_f_fin_solicitado  ),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="4037" y="4" height="64" width="466" format="[shortdate] [time]" html.valueishtml="0"  name=f_aprobado visible="1~tif( isnull( f_aprobado ),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="4512" y="4" height="64" width="512" format="[shortdate] [time]" html.valueishtml="0"  name=f_ini_aprobado visible="1~tif( isnull(  f_ini_aprobado  ),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="5033" y="4" height="64" width="462" format="[shortdate] [time]" html.valueishtml="0"  name=f_fin_aprobado visible="1~tif( isnull(  f_fin_aprobado  ),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="5504" y="4" height="64" width="421" format="[general]" html.valueishtml="0"  name=duracion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="5934" y="4" height="64" width="448" format="[shortdate] [time]" html.valueishtml="0"  name=f_activado visible="1~tif( isnull(  f_activado  ),0,1)" editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="6391" y="4" height="64" width="503" format="[general]" html.valueishtml="0"  name=estado visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Solicitante" border="6" color="0" x="942" y="4" height="64" width="1522" html.valueishtml="0"  name=nom_usuario_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608~tif (seleccionada = 1, 255,0)" x="928" y="4" height="64" width="1541" format="*********" html.valueishtml="0"  name=nom_usuario visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.password=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

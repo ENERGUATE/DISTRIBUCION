@@ -1,0 +1,58 @@
+HA$PBExportHeader$dw_sum_x_instal.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=168 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nis dbname="sumcon.nis" )
+ column=(type=char(20) updatewhereclause=yes name=primerapellido dbname="clientes.primerapellido" )
+ column=(type=char(20) updatewhereclause=yes name=segundoapellido dbname="clientes.segundoapellido" )
+ column=(type=char(30) updatewhereclause=yes name=nombre dbname="clientes.nombre" )
+ column=(type=char(4000) updatewhereclause=yes name=direccion dbname="direccion" )
+ column=(type=char(40) updatewhereclause=yes name=clienteimportante dbname="clienteimportante" )
+ column=(type=char(41) updatewhereclause=yes name=instalacion dbname="instalacion" )
+ retrieve="   SELECT SUMCON.NIS_RAD AS NIS, 
+			 CLIENTES.APE1_CLI AS PRIMERAPELLIDO, 
+			 CLIENTES.APE2_CLI AS SEGUNDOAPELLIDO, 
+			 CLIENTES.NOM_CLI AS NOMBRE, 
+          fgnu_calle_referencia(CALLEJERO.NOM_CALLE, ACO_SUM.NUM_PUERTA, ACO_SUM.DUPLICADOR, ACO_SUM.NIF, ACO_SUM.COD_CALLE, 0, ' ', 0, ' ') DIRECCION,   
+			 TO_CHAR(NVL(GI_SUMINISTROS_IMP.COD_CLI,0)) AS CLIENTEIMPORTANTE,
+			 '                                         ' AS INSTALACION
+   FROM SGD_ACOMETIDA,
+		  ACO_SUM,
+		  SUMCON, 
+		  CLIENTES,
+		  CALLEJERO, 
+		  GI_SUMINISTROS_IMP
+   WHERE (ACO_SUM.NRO_ACOMETIDA = SGD_ACOMETIDA.CODIGO) AND
+			(ACO_SUM.NIS_RAD = SUMCON.NIS_RAD) AND
+			(CALLEJERO.COD_CALLE = ACO_SUM.COD_CALLE) AND
+			(CLIENTES.COD_CLI = SUMCON.COD_CLI) AND
+			(SGD_ACOMETIDA.BDI_JOB = 0 ) AND
+			(ACO_SUM.NIS_RAD = GI_SUMINISTROS_IMP.NIS_RAD(+)) AND
+			((SGD_ACOMETIDA.INSTALACION_ORIGEN ) IN ( SELECT SGD_INSTALACION.NRO_INSTALACION 
+																	FROM SGD_INSTALACION 
+																	WHERE SGD_INSTALACION.TIPO_INSTALACION >= 5  
+																			START WITH SGD_INSTALACION.NRO_INSTALACION IN (:nro_instal)
+																			AND SGD_INSTALACION.BDI_JOB = 0
+																			CONNECT BY PRIOR SGD_INSTALACION.NRO_INSTALACION = SGD_INSTALACION.NRO_INST_PADRE
+																			AND SGD_INSTALACION.BDI_JOB=0))
+
+
+" arguments=(("nro_instal", numberlist))  sort="clienteimportante D " )
+bitmap(band=header filename="Cliimp.bmp" x="9" y="92" height="64" width="96" border="6"  name=clienteimportante_t  tag="bmp" visible="1" )
+text(band=header alignment="2" text="NIS" border="6" color="0" x="123" y="92" height="64" width="274" html.valueishtml="0"  name=nis_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="1" text="PrimerApellido" border="6" color="0" x="416" y="92" height="64" width="480" html.valueishtml="0"  name=primerapellido_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="1" text="Segundo Apellido" border="6" color="0" x="914" y="92" height="64" width="571" html.valueishtml="0"  name=segundoapellido_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Nombre" border="6" color="0" x="1504" y="92" height="64" width="713" html.valueishtml="0"  name=nombre_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="0" text="" border="6" color="0" x="9" y="12" height="64" width="3383" html.valueishtml="0"  name=inst_afect visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Direcci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="2235" y="92" height="64" width="1157" html.valueishtml="0"  name=direccion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+bitmap(band=detail filename="Cliimp.bmp" x="14" y="4" height="64" width="87" border="5"  name=p_1 visible="1~t If( number(clienteimportante)  > 0,1,0)" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="123" y="4" height="64" width="274" format="[general]" html.valueishtml="0"  name=nis visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="421" y="4" height="64" width="480" format="[general]" html.valueishtml="0"  name=primerapellido visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="914" y="4" height="64" width="571" format="[general]" html.valueishtml="0"  name=segundoapellido visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8388608" x="1504" y="4" height="64" width="713" format="[general]" html.valueishtml="0"  name=nombre visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="2235" y="4" height="64" width="1157" format="[general]" html.valueishtml="0"  name=direccion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

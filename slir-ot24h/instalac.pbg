@@ -1,0 +1,48 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "instalac.pbl" "";
+@end;
+@begin Objects
+ "w_3210_lista_suministros_imp.srw" "instalac.pbl";
+ "w_3112_lista_consulta_sum.srw" "instalac.pbl";
+ "w_2035_ordenes_trabajo.srw" "instalac.pbl";
+ "w_man_instalacion.srw" "instalac.pbl";
+ "d_generico_trans.srd" "instalac.pbl";
+ "w_2038_consulta_incidencias.srw" "instalac.pbl";
+ "w_3109_consulta_acometidas.srw" "instalac.pbl";
+ "d_ins_type_install.srd" "instalac.pbl";
+ "w_3211_form_mante_acometidas.srw" "instalac.pbl";
+ "w_2220_identificacion_acometida.srw" "instalac.pbl";
+ "fg_icono_inst.srf" "instalac.pbl";
+ "u_tab_ins_trans.sru" "instalac.pbl";
+ "u_ins_2012_pr_lista_instal_hijas.sru" "instalac.pbl";
+ "u_ins_2017_nu_form_mante_acometidas.sru" "instalac.pbl";
+ "u_ins_2017_pr_form_mante_acometidas.sru" "instalac.pbl";
+ "u_ins_2015_nu_lista_acometidas.sru" "instalac.pbl";
+ "u_ins_2015_pr_lista_acometidas.sru" "instalac.pbl";
+ "u_ins_2019_pr_lista_acometidas.sru" "instalac.pbl";
+ "u_ord_2004_nu_ordenes_trabajo.sru" "instalac.pbl";
+ "u_ord_2004_pr_ordenes_trabajo.sru" "instalac.pbl";
+ "d_geop_ct.srd" "instalac.pbl";
+ "d_other_ct.srd" "instalac.pbl";
+ "d_tecn_ct.srd" "instalac.pbl";
+ "d_volt_ct.srd" "instalac.pbl";
+ "u_ins_2014_nu_lista_mante_trafos.sru" "instalac.pbl";
+ "u_ins_2014_pr_lista_mante_trafos.sru" "instalac.pbl";
+ "u_ins_2014_rn_lista_mante_trafos.sru" "instalac.pbl";
+ "w_3111_lista_mante_acometidas.srw" "instalac.pbl";
+ "d_tecn_trans.srd" "instalac.pbl";
+ "d_ins_2017_form_mante_acometidas.srd" "instalac.pbl";
+ "u_tab_ins_ct.sru" "instalac.pbl";
+ "w_3108_lista_mante_trafos.srw" "instalac.pbl";
+ "d_ins_2016_lista_sum_dir.srd" "instalac.pbl";
+ "w_3301_detalle_instalacion.srw" "instalac.pbl";
+ "u_ins_2011_nu_lista_instal_por_tipo.sru" "instalac.pbl";
+ "u_ins_2011_pr_lista_instal_por_tipo.sru" "instalac.pbl";
+ "u_ins_2011_rn_lista_instal_por_tipo.sru" "instalac.pbl";
+ "u_ins_2016_nu_lista_sum_dir.sru" "instalac.pbl";
+ "u_ins_2016_pr_lista_sum_dir.sru" "instalac.pbl";
+ "u_ins_2013_pr_datos_instal_padre.sru" "instalac.pbl";
+ "u_ins_2018_pr_lista_sum.sru" "instalac.pbl";
+ "w_3113_lista_mante_suministros.srw" "instalac.pbl";
+@end;

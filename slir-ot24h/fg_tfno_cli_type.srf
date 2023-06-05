@@ -1,0 +1,144 @@
+HA$PBExportHeader$fg_tfno_cli_type.srf
+global type fg_tfno_cli_type from function_object
+end type
+
+forward prototypes
+global function string fg_tfno_cli_type (readonly long al_cod_cli, readonly string as_tfno_cli)
+end prototypes
+
+global function string fg_tfno_cli_type (readonly long al_cod_cli, readonly string as_tfno_cli);//**********************************************
+//**  OSGI 2001.2  	01/10/2002					 **
+//**  Jair Padilla / Soluziona PANAMA  		 **
+//**  TIPO COLUMNA TFNO_CLI TELEFONO CLIENTE  **
+//**********************************************
+///////////////////////////////////////////////////////
+//									
+// Funcion/Evento: fg_tfno_cli_type
+// 
+// Objetivo: Verifica si el tipo de dato de la columna
+//				 tfno_cli de la tabla clientes, ya que para
+//				 la versiones del SGC, esta columna puede ser
+//				 num$$HEX1$$e900$$ENDHEX$$rica y para otros caso varchar2.
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: --
+//					
+//    Salida : --
+//
+// Devuelve: String
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 01/10/2002   JPE
+//
+///////////////////////////////////////////////////////
+String ls_dw_syntax, ls_err, ls_tfno_cli_val, ls_cadena_cod_cli
+Boolean lb_string = True
+Long ll_cod_cli, ll_fetch
+DataStore lds_tfno_cli_type
+
+
+SetNull(ls_tfno_cli_val)
+
+If fg_verifica_parametro('TFNO_CLI_TYPE') Then
+	SetPointer(HourGlass!)
+
+	lds_tfno_cli_type = Create DataStore
+
+	lds_tfno_cli_type.Reset()
+
+	If IsNull(al_cod_cli) Then
+		ll_cod_cli = 0
+	Else
+		ll_cod_cli = al_cod_cli
+	End If
+
+	ls_dw_syntax = SQLCA.SyntaxFromSQL("SELECT TFNO_CLI, TFNO_CLI AS C_VAL_TFNO_CLI FROM CLIENTES WHERE COD_CLI = " + String(ll_cod_cli), "style(type=grid)", ls_err)
+	
+	
+	If Len(ls_err) > 0 And Not IsNull(ls_err) Then 
+		MessageBox("Error", ls_err)
+	Else
+		lds_tfno_cli_type.Create(ls_dw_syntax, ls_err)
+
+		If Len(ls_err) > 0 And Not IsNull(ls_err) Then 
+			MessageBox("Error", ls_err)
+		Else
+			lds_tfno_cli_type.SetTransObject(SQLCA)
+
+			If lds_tfno_cli_type.Retrieve() <= 0 Then lds_tfno_cli_type.InsertRow(0)
+
+			If lds_tfno_cli_type.SetItem(1, "C_VAL_TFNO_CLI", "ABC") < 0 Then lb_string = False
+
+			If IsNull(ll_cod_cli) Or ll_cod_cli <= 0 Then
+				If lb_string Then
+					DECLARE lcur_cod_cli_x_tel CURSOR FOR
+					  SELECT "COD_CLI"
+						 FROM "CLIENTES"
+						WHERE NVL(REPLACE(TRANSLATE(UPPER(CLIENTES.tfno_cli),'0123456789??\!|"@?#$%&/()=??!QWERTYUIOP[]+*ASDFGHJKL?{}C<>ZXCVBNM;,.:-_','0123456789'),' ',''),'0') = :as_tfno_cli ;
+
+					OPEN lcur_cod_cli_x_tel;
+
+					FETCH lcur_cod_cli_x_tel INTO :ll_cod_cli ;
+
+
+					ls_cadena_cod_cli = " And CLIENTES.COD_CLI In ("
+
+					If SQLCA.SQLCODE <> 0 Then ls_cadena_cod_cli = " AND ROWNUM <= 0 "
+
+
+					DO WHILE SQLCA.SQLCODE = 0
+						ls_cadena_cod_cli += String(ll_cod_cli)
+
+						FETCH lcur_cod_cli_x_tel INTO :ll_cod_cli ;
+
+						If SQLCA.SQLCODE = 0 Then
+							ls_cadena_cod_cli += ", "
+							
+							ll_fetch ++
+						Else
+							ls_cadena_cod_cli += ") "
+						End If
+
+						If ll_fetch > 250 Then
+							ls_cadena_cod_cli = " AND ROWNUM <= 0 "
+
+							MessageBox("Aviso", "Se han encontrado muchos registros para el n$$HEX1$$fa00$$ENDHEX$$mero de tel$$HEX1$$e900$$ENDHEX$$fono seleccionado.")
+							Exit							
+						End If
+					LOOP
+
+					CLOSE lcur_cod_cli_x_tel;
+
+					ls_tfno_cli_val = ls_cadena_cod_cli
+
+//					MessageBox(String(ll_fetch), ls_cadena_cod_cli)
+				Else
+					ls_tfno_cli_val = " AND TFNO_CLI = " + as_tfno_cli + " "
+				End If
+			Else
+				If lds_tfno_cli_type.RowCount() > 0 Then
+					If lb_string Then
+						ls_tfno_cli_val = lds_tfno_cli_type.GetItemString(1, "TFNO_CLI")
+					Else
+						ls_tfno_cli_val = String(lds_tfno_cli_type.GetItemNumber(1, "TFNO_CLI"))
+					End If
+				End If
+			End If
+
+			Destroy lds_tfno_cli_type
+		End If
+	End If
+
+	SetPointer(Arrow!)
+End If
+
+Return ls_tfno_cli_val
+//**********************************************
+//**  OSGI 2001.2  	01/10/2002					 **
+//**  Jair Padilla / Soluziona PANAMA  		 **
+//**  TIPO COLUMNA TFNO_CLI TELEFONO CLIENTE  **
+//**********************************************
+end function
+

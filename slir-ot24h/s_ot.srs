@@ -1,0 +1,24 @@
+HA$PBExportHeader$s_ot.srs
+global type s_ot from structure
+	long		gstr_nro_ot
+	string		gstr_usuario
+	datetime		gstr_f_actual
+	datetime		gstr_h_actual
+	string		gstr_programa
+	integer		gstr_est_ot
+	string		gstr_descripcion
+	long		gstr_nro_aviso
+	long		gstr_nro_instalacion
+	long		gstr_nro_incidencia
+	datetime		gstr_f_desde
+	datetime		gstr_h_desde
+	datetime		gstr_f_hasta
+	datetime		gstr_h_hasta
+	datetime		gstr_f_alta
+	datetime		gstr_h_alta
+	long		gstr_ult_brigada
+	integer		gstr_nro_centro
+	integer		gstr_nro_cmd
+	integer		gstr_nro_mesa
+end type
+

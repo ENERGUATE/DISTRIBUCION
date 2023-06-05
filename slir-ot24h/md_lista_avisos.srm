@@ -1,0 +1,586 @@
+HA$PBExportHeader$md_lista_avisos.srm
+forward
+global type md_lista_avisos from md_consultas_estandar
+end type
+type m_-1 from menu within m_consultar
+end type
+type m_grafico from menu within m_consultar
+end type
+type m_quitarblink from menu within m_consultar
+end type
+type m_capas from menu within m_consultar
+end type
+type m_imprimir1 from menu within m_consultar
+end type
+type m_informedeavisos from menu within m_consultar
+end type
+type m_nroaviso from menu within m_ordenar
+end type
+end forward
+
+global type md_lista_avisos from md_consultas_estandar
+end type
+global md_lista_avisos md_lista_avisos
+
+type variables
+w_1233_consulta_avisos iw_1233
+end variables
+
+forward prototypes
+public function integer fnu_m_opciones_open_consulta_avi (string ps_accion_llamda)
+public function integer frn_hab_agregar (string ps_accion_llamada)
+public function integer frn_hab_eliminar (string ps_accion_llamada)
+public function integer frn_hab_selec_impresora (string ps_accion_llamada)
+public function integer frn_hab_preferencias (string ps_accion_llamada)
+end prototypes
+
+public function integer fnu_m_opciones_open_consulta_avi (string ps_accion_llamda);/////////////////////////////////////////////////////////////////////
+//
+// Funcion: fnu_m_opciones_open_consulta_avi
+// 
+// Objetivo: Habilita opciones de menu seg$$HEX1$$fa00$$ENDHEX$$n acci$$HEX1$$f300$$ENDHEX$$n llamada
+//	 		
+//
+// Ambito:   P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: ps_accion_llamda
+//		Salida : --
+//
+// Devuelve:
+//
+// Fecha      Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------	   -----------   ---------
+//
+//
+///////////////////////////////////////////////////////
+
+this.frn_hab_agregar(ps_accion_llamda)
+this.frn_hab_eliminar(ps_accion_llamda)
+this.frn_hab_preferencias(ps_accion_llamda)
+this.frn_hab_selec_impresora(ps_accion_llamda)
+	
+return 1
+end function
+
+public function integer frn_hab_agregar (string ps_accion_llamada);/////////////////////////////////////////////////////////////////////
+//
+// Funcion:  frn_hab_agregar
+// 
+// Objetivo: Pone invisible la opci$$HEX1$$f300$$ENDHEX$$n agregar del menu segun acci$$HEX1$$f300$$ENDHEX$$n llamada.
+//	
+//
+// Ambito:   P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: ps_accion_llamada
+//		Salida : --
+//
+// Devuelve:
+//
+// Fecha      Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------	   -----------   ---------
+//
+//
+///////////////////////////////////////////////////////
+
+
+
+CHOOSE CASE ps_accion_llamada
+	CASE "Seleccion"
+			//-------------------------SELECCION-----------------------------
+		md_lista_avisos.m_archivo.m_agregar.visible=FALSE	
+
+
+	CASE "Consulta"
+			//-------------------------CONSULTA-----------------------------
+		md_lista_avisos.m_archivo.m_agregar.visible=false	
+
+	CASE "Actualizacion"
+			//--------------------------ACTUALIZACION------------------------
+		md_lista_avisos.m_archivo.m_agregar.visible=FALSE
+
+
+END CHOOSE	
+
+
+RETURN 1
+end function
+
+public function integer frn_hab_eliminar (string ps_accion_llamada);/////////////////////////////////////////////////////////////////////
+//
+// Funcion:  frn_hab_eliminar
+// 
+// Objetivo: Pone invisible la opci$$HEX1$$f300$$ENDHEX$$n eliminar del menu segun acci$$HEX1$$f300$$ENDHEX$$n llamada.
+//	
+// Ambito:   P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: ps_accion_llamada
+//		Salida : --
+//
+// Devuelve:
+//
+// Fecha      Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------	   -----------   ---------
+//
+//
+///////////////////////////////////////////////////////
+
+CHOOSE CASE ps_accion_llamada
+	CASE "Seleccion"
+			//-------------------------SELECCION-----------------------------
+		md_lista_avisos.m_archivo.m_eliminar.visible=FALSE	
+
+	CASE "Consulta"
+			//-------------------------CONSULTA-----------------------------
+		md_lista_avisos.m_archivo.m_eliminar.Visible=FALSE	
+
+	CASE "Actualizacion"
+			//-------------------------OPERACIONES-----------------------------
+		md_lista_avisos.m_archivo.m_eliminar.Visible=False
+	
+END CHOOSE 
+
+RETURN 1
+end function
+
+public function integer frn_hab_selec_impresora (string ps_accion_llamada);/////////////////////////////////////////////////////////////////////
+//
+// Funcion:  frn_hab_selec_impresora
+// 
+// Objetivo:   Pone invisible la opci$$HEX1$$f300$$ENDHEX$$n seleccionar impersora seg$$HEX1$$fa00$$ENDHEX$$n la acci$$HEX1$$f300$$ENDHEX$$n llamada de menu.
+//
+// Ambito:   P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: ps_accion_llamada
+//		Salida : --
+//
+// Devuelve:
+//
+// Fecha      Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------	   -----------   ---------
+//
+//
+///////////////////////////////////////////////////////
+
+CHOOSE CASE ps_accion_llamada
+	CASE "Seleccion"
+			//-------------------------SELECCION-----------------------------
+		md_lista_avisos.m_archivo.m_seleccionarimpresora.visible=FALSE	
+
+	CASE "Consulta"
+			//-------------------------CONSULTA-----------------------------
+		md_lista_avisos.m_archivo.m_seleccionarimpresora.Visible=FALSE	
+
+	CASE "Actualizacion"
+			//-------------------------OPERACIONES-----------------------------
+		md_lista_avisos.m_archivo.m_seleccionarimpresora.Visible=False
+	
+END CHOOSE 
+
+RETURN 1
+end function
+
+public function integer frn_hab_preferencias (string ps_accion_llamada);/////////////////////////////////////////////////////////////////////
+//
+// Funcion:  frn_hab_preferencias
+// 
+// Objetivo: Pone invisible la opci$$HEX1$$f300$$ENDHEX$$n preferencias seg$$HEX1$$fa00$$ENDHEX$$n la acci$$HEX1$$f300$$ENDHEX$$n llamada de menu.
+//	
+// Ambito:   P$$HEX1$$fa00$$ENDHEX$$blico
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: ps_accion_llamada
+//		Salida : --
+//
+// Devuelve:
+//
+// Fecha      Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------	   -----------   ---------
+//
+//
+///////////////////////////////////////////////////////
+
+CHOOSE CASE ps_accion_llamada
+	CASE "Seleccion"
+			//-------------------------SELECCION-----------------------------
+		md_lista_avisos.m_archivo.m_preferencias.visible=FALSE	
+
+	CASE "Consulta"
+			//-------------------------CONSULTA-----------------------------
+		md_lista_avisos.m_archivo.m_preferencias.Visible=FALSE	
+
+	CASE "Actualizacion"
+			//-------------------------OPERACIONES-----------------------------
+		md_lista_avisos.m_archivo.m_preferencias.Visible=False
+	
+END CHOOSE 
+
+RETURN 1
+end function
+
+on md_lista_avisos.create
+md_lista_avisos=this
+call super::create
+end on
+
+on md_lista_avisos.destroy
+call super::destroy
+end on
+
+on m_agregar::clicked;call md_consultas_estandar`m_agregar::clicked;W_1233_CONSULTA_AVISOS.TriggerEvent("ue_agregar")
+end on
+
+on m_agregar.create
+call super::create
+this.Visible=false
+end on
+
+on m_eliminar.create
+call super::create
+this.Visible=false
+end on
+
+on m_cerrar.create
+call super::create
+this.ToolBarItemVisible=true
+end on
+
+on m_-.create
+call super::create
+this.Visible=false
+end on
+
+on m_grabar.create
+call super::create
+this.Visible=false
+end on
+
+on m_imprimir.create
+call super::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_seleccionarimpresora.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_preferencias.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_salir.create
+call super::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_iralcomienzo::clicked;call md_consultas_estandar`m_iralcomienzo::clicked;w_1233_consulta_avisos.triggerevent("ue_ir_comienzo")
+end on
+
+on m_iralcomienzo.create
+call super::create
+this.Enabled=false
+this.ToolBarItemSpace=3
+end on
+
+on m_iralfinal::clicked;call md_consultas_estandar`m_iralfinal::clicked;w_1233_consulta_avisos.triggerevent("ue_ir_final")
+end on
+
+on m_buscar::clicked;call md_consultas_estandar`m_buscar::clicked;w_1233_consulta_avisos.triggerevent("ue_armar_sql")
+end on
+
+type m_consultar from md_consultas_estandar`m_consultar within md_lista_avisos
+m_-1 m_-1
+m_grafico m_grafico
+m_quitarblink m_quitarblink
+m_capas m_capas
+m_imprimir1 m_imprimir1
+m_informedeavisos m_informedeavisos
+end type
+
+on m_consultar.create
+call super::create
+this.m_-1=create m_-1
+this.m_grafico=create m_grafico
+this.m_quitarblink=create m_quitarblink
+this.m_capas=create m_capas
+this.m_imprimir1=create m_imprimir1
+this.m_informedeavisos=create m_informedeavisos
+this.Item[UpperBound(this.item)+1]=this.m_-1
+this.Item[UpperBound(this.item)+1]=this.m_grafico
+this.Item[UpperBound(this.item)+1]=this.m_quitarblink
+this.Item[UpperBound(this.item)+1]=this.m_capas
+this.Item[UpperBound(this.item)+1]=this.m_imprimir1
+this.Item[UpperBound(this.item)+1]=this.m_informedeavisos
+end on
+
+on m_consultar.destroy
+call super::destroy
+destroy(this.m_-1)
+destroy(this.m_grafico)
+destroy(this.m_quitarblink)
+destroy(this.m_capas)
+destroy(this.m_imprimir1)
+destroy(this.m_informedeavisos)
+end on
+
+on m_brigadistas::clicked;call md_consultas_estandar`m_brigadistas::clicked;W_1233_CONSULTA_AVISOS.TriggerEvent("ue_brigadistas")
+end on
+
+on m_reclamaciones::clicked;call md_consultas_estandar`m_reclamaciones::clicked;W_1233_CONSULTA_AVISOS.TriggerEvent("ue_reclamaciones")
+end on
+
+on m_situacinclimatolgica::clicked;call md_consultas_estandar`m_situacinclimatolgica::clicked;W_1233_CONSULTA_AVISOS.TriggerEvent("ue_sit_clima")
+end on
+
+on m_suministrosimportantes::clicked;call md_consultas_estandar`m_suministrosimportantes::clicked;W_1233_CONSULTA_AVISOS.TriggerEvent("ue_suministros_imp")
+end on
+
+type m_ordenar from md_consultas_estandar`m_ordenar within md_lista_avisos
+m_nroaviso m_nroaviso
+end type
+
+on m_ordenar.create
+call super::create
+this.Visible=true
+this.Enabled=true
+this.m_nroaviso=create m_nroaviso
+this.Item[UpperBound(this.item)+1]=this.m_nroaviso
+end on
+
+on m_ordenar.destroy
+call super::destroy
+destroy(this.m_nroaviso)
+end on
+
+on m_duracin::clicked;call md_consultas_estandar`m_duracin::clicked;gu_comunic.is_comunic.intval9 = 1
+w_1233_consulta_avisos.triggerevent("ue_criterio_orden")
+end on
+
+on m_duracin.create
+call super::create
+this.Microhelp="Permite ordenar la Lista por la Duraci$$HEX1$$f300$$ENDHEX$$n de los Avisos"
+this.Visible=true
+this.Enabled=true
+this.ToolBarItemSpace=3
+end on
+
+on m_prioridad::clicked;call md_consultas_estandar`m_prioridad::clicked;gu_comunic.is_comunic.intval9 = 2
+w_1233_consulta_avisos.triggerevent("ue_criterio_orden")
+end on
+
+on m_prioridad.create
+call super::create
+this.Microhelp="Permite ordenar la lista por la Prioridad de los Avisos"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_d::clicked;call md_consultas_estandar`m_d::clicked;gu_comunic.is_comunic.intval9 = 3
+w_1233_consulta_avisos.triggerevent("ue_criterio_orden")
+end on
+
+on m_d.create
+call super::create
+this.Microhelp="Permite ordenar la Llsta por la Direcci$$HEX1$$f300$$ENDHEX$$n de los Avisos"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_importante::clicked;call md_consultas_estandar`m_importante::clicked;gu_comunic.is_comunic.intval9 = 4
+w_1233_consulta_avisos.triggerevent("ue_criterio_orden")
+end on
+
+on m_importante.create
+call super::create
+this.Microhelp="Permite ordenar la lista de acuerdo a la importancia del Cliente"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_peligro::clicked;call md_consultas_estandar`m_peligro::clicked;gu_comunic.is_comunic.intval9 = 5
+w_1233_consulta_avisos.triggerevent("ue_criterio_orden")
+end on
+
+on m_peligro.create
+call super::create
+this.Microhelp="Permite ordenar la lista tomando en cuenta si los Avisos son de Peligro"
+this.Visible=true
+this.Enabled=true
+end on
+
+on m_incidenciaasociada::clicked;call md_consultas_estandar`m_incidenciaasociada::clicked;gu_comunic.is_comunic.intval9 = 9
+w_1233_consulta_avisos.triggerevent("ue_criterio_orden")
+end on
+
+on m_incidenciaasociada.create
+call super::create
+this.Text="&Estado ~tShift+F6"
+this.Microhelp="Permite ordenar la lista de acuerdo al estado del aviso."
+this.ToolBarItemName="Custom037!"
+this.ToolBarItemText="Ord. Avi. con Inc. "
+this.Visible=true
+this.Enabled=true
+this.Shortcut=1141
+end on
+
+on m_fechaderesuelto::clicked;call md_consultas_estandar`m_fechaderesuelto::clicked;gu_comunic.is_comunic.intval9 = 8
+w_1233_consulta_avisos.triggerevent("ue_criterio_orden")
+end on
+
+on m_fechaderesuelto.create
+call super::create
+this.Microhelp="Permite ordenar la lista de acuerdo a la Fecha de Resoluci$$HEX1$$f300$$ENDHEX$$n de los Avisos."
+this.ToolBarItemText="Ord. Fec. Res."
+this.Visible=true
+this.Enabled=true
+end on
+
+type m_-1 from menu within m_consultar
+end type
+
+on m_-1.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_grafico from menu within m_consultar
+end type
+
+on m_grafico.create
+this.Text="&Grafico~tCtrl+G"
+this.ToolBarItemName="Picture5!"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=4
+this.ToolBarItemSpace=4
+this.Shortcut=327
+end on
+
+event clicked;long ll_respuesta
+setpointer(HourGlass!)
+
+if isvalid(onis) then 
+		onis.of_quita_blink()
+		setpointer(HourGlass!)
+		if gl_instalacion_afectada>0 then 
+			// Si es una calle
+			if onis.of_muestra_calle(gl_instalacion_afectada) > 0 then
+				setpointer(HourGlass!)
+			else
+				gnv_msg.f_mensaje("EX22","","",OK!)
+			end if
+		end if	
+   	fg_mostrar(true)
+		setpointer(HourGlass!)
+end if	
+
+end event
+
+type m_quitarblink from menu within m_consultar
+end type
+
+on m_quitarblink.create
+this.Text="Quitar Blink"
+this.ToolBarItemName="desmar.bmp"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=4
+end on
+
+event clicked;int retorno
+setpointer(HourGlass!)
+if isvalid(onis) then 
+	onis.of_quita_blink()
+	setpointer(HourGlass!)
+	fg_mostrar(true)
+end if
+
+
+	
+end event
+
+type m_capas from menu within m_consultar
+end type
+
+on m_capas.create
+this.Text="Capas"
+this.ToolBarItemName="capas2.bmp"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=4
+end on
+
+event clicked;int retorno
+
+setpointer(HourGlass!)
+if  (onis.of_Selecciona_capa()>0) then
+	setpointer(HourGlass!)
+	retorno=onis.of_trata_capa()
+	setpointer(HourGlass!)
+	if retorno=0 then
+//		messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n","No se pudo cargar las capas")
+gnv_msg.f_mensaje("EX38","","",Ok!)
+	else
+		fg_mostrar(true)
+	end if
+end if
+
+
+end event
+
+type m_imprimir1 from menu within m_consultar
+end type
+
+event clicked;W_1233_CONSULTA_AVISOS.TriggerEvent("ue_arch_imprimir")
+end event
+
+on m_imprimir1.create
+this.Text="&Imprimir"
+this.Microhelp="Imprimir Lista"
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Imprimir Lista"
+end on
+
+type m_informedeavisos from menu within m_consultar
+end type
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	20/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+W_1233_CONSULTA_AVISOS.TriggerEvent("ue_imp_reporte_avi")
+//***************************************
+//**  OSGI 2001.1  	20/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_informedeavisos.create
+this.Text="Informe de Avisos"
+this.ToolBarItemName="Report!"
+this.ToolBarItemText="Imprimir Informe"
+this.ToolBarItemSpace=1
+end on
+
+type m_nroaviso from menu within m_ordenar
+end type
+
+on clicked;gu_comunic.is_comunic.intval9 = 10
+w_1233_consulta_avisos.triggerevent("ue_criterio_orden")
+end on
+
+on m_nroaviso.create
+this.Text="&Nro. Aviso~tShift+F8"
+this.Microhelp="Permite ordenar la lista por n$$HEX1$$fa00$$ENDHEX$$mero de aviso"
+this.ToolBarItemName="aviso.bmp"
+this.ToolBarItemVisible=false
+this.Shortcut=1143
+end on
+

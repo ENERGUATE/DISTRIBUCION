@@ -1,0 +1,25 @@
+HA$PBExportHeader$fg_maxfechahora.srf
+global type fg_maxfechahora from function_object
+end type
+
+forward prototypes
+global function datetime fg_maxfechahora (datawindow dw, string column)
+end prototypes
+
+global function datetime fg_maxfechahora (datawindow dw, string column);long row, maxrow = 0
+datetime maxdatetime, datetimevalue
+
+SetNull( maxdatetime )
+
+FOR row = 1 TO dw.RowCount()
+	datetimevalue = dw.GetItemDateTime(row ,column)
+	if IsNull(maxdatetime) or maxdatetime < datetimevalue  then
+		maxdatetime = datetimevalue
+		maxrow = row
+	end if
+NEXT
+
+return maxdatetime 
+
+end function
+

@@ -1,0 +1,12 @@
+HA$PBExportHeader$dddw_paises.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=descripcion dbname="sgd_valor.descripcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=codigo dbname="sgd_valor.codigo" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"sgd_valor~" ) COLUMN(NAME=~"sgd_valor.descripcion~") COLUMN(NAME=~"sgd_valor.codigo~")WHERE(    EXP1 =~"~~~"SGD_VALOR~~~".~~~"CODIF~~~"~"   OP =~"=~"    EXP2 =~"'PAI'~" ) ) " )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="5" y="4" height="64" width="1166" format="[general]"  name=descripcion edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="1175" y="4" height="64" width="274" format="[general]"  name=codigo edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

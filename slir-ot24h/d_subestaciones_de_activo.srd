@@ -1,0 +1,29 @@
+HA$PBExportHeader$d_subestaciones_de_activo.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=104 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_instalacion dbname="sgd_instalacion_at.nro_instalacion" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=tipo_activo dbname="sgd_instalacion_at.tipo_activo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_subestac_at dbname="sgd_instalacion_at.cod_subestac_at" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_inst_padre dbname="sgd_instalacion_at.nro_inst_padre" )
+ retrieve="  SELECT ~"SGD_INSTALACION_AT~".~"NRO_INSTALACION~",   
+         ~"SGD_INSTALACION_AT~".~"TIPO_ACTIVO~",   
+         ~"SGD_INSTALACION_AT~".~"COD_SUBESTAC_AT~",   
+         ~"SGD_INSTALACION_AT~".~"NRO_INST_PADRE~"  
+    FROM ~"SGD_INSTALACION_AT~"   
+   WHERE ~"SGD_INSTALACION_AT~".~"COD_SUBESTAC_AT~" is null 
+     AND ~"SGD_INSTALACION_AT~".~"NRO_INSTALACION~" LIKE '5555%'
+" update="SGD_INSTALACION_AT" updatewhere=0 updatekeyinplace=yes )
+text(band=header alignment="2" text="Nro Instalacion" border="0" color="0" x="18" y="16" height="52" width="325" html.valueishtml="0"  name=nro_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tipo Activo" border="0" color="0" x="361" y="16" height="52" width="247" html.valueishtml="0"  name=tipo_activo_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cod Subestac At" border="0" color="0" x="626" y="16" height="52" width="366" html.valueishtml="0"  name=cod_subestac_at_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nro Inst Padre" border="0" color="0" x="1010" y="16" height="52" width="311" html.valueishtml="0"  name=nro_inst_padre_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="2" color="8388608" x="18" y="16" height="72" width="274" format="[general]" html.valueishtml="0"  name=nro_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="2" color="8388608" x="361" y="16" height="72" width="69" format="[general]" html.valueishtml="0"  name=tipo_activo visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="2" color="8388608" x="626" y="16" height="72" width="274" format="[general]" html.valueishtml="0"  name=cod_subestac_at visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="2" color="8388608" x="1010" y="16" height="72" width="274" format="[general]" html.valueishtml="0"  name=nro_inst_padre visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

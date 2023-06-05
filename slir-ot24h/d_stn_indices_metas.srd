@@ -1,0 +1,95 @@
+HA$PBExportHeader$d_stn_indices_metas.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="bdiv10_activos.codigo" )
+ column=(type=char(100) updatewhereclause=yes name=descripcion dbname="bdiv10_activos.descripcion" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo dbname="bdiv10_activos.tipo" )
+ column=(type=char(5) updatewhereclause=yes name=naturaleza dbname="bdiv10_activos.naturaleza" )
+ column=(type=decimal(0) updatewhereclause=yes name=mhai dbname="gi_tipos_activos_grupo_activos.mhai" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_tipos_activos_grupo_activos_codigo dbname="gi_tipos_activos_grupo_activos.codigo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=codigo_activo dbname="gi_indicadores_stn.codigo_activo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=anio dbname="gi_indicadores_stn.anio" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=mes dbname="gi_indicadores_stn.mes" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=enr dbname="gi_indicadores_stn.enr" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sce dbname="gi_indicadores_stn.sce" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cpsm dbname="gi_indicadores_stn.cpsm" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=mida dbname="gi_indicadores_stn.mida" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=indice_disponibilidad dbname="gi_indicadores_stn.indice_disponibilidad" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=imr dbname="gi_indicadores_stn.imr" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=horas_indisp_a_compensar dbname="gi_indicadores_stn.horas_indisp_a_compensar" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=horas_mes dbname="gi_indicadores_stn.horas_mes" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_indisp_mensual_tycn dbname="gi_indicadores_stn.ind_indisp_mensual_tycn" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=imrt_compensacion_tycn dbname="gi_indicadores_stn.imrt_compensacion_tycn" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_updated dbname="gi_indicadores_stn.ind_updated" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=cano dbname="gi_indicadores_stn.cano" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=cano_pendiente dbname="gi_indicadores_stn.cano_pendiente" )
+ retrieve="  SELECT ~"BDIV10_ACTIVOS~".~"CODIGO~",   
+         ~"BDIV10_ACTIVOS~".~"DESCRIPCION~",   
+         ~"BDIV10_ACTIVOS~".~"TIPO~",   
+         ~"BDIV10_ACTIVOS~".~"NATURALEZA~",   
+         ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"MHAI~",   
+         ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"CODIGO~",   
+         ~"GI_INDICADORES_STN~".~"CODIGO_ACTIVO~",   
+         ~"GI_INDICADORES_STN~".~"ANIO~",   
+         ~"GI_INDICADORES_STN~".~"MES~",   
+         ~"GI_INDICADORES_STN~".~"ENR~",   
+         ~"GI_INDICADORES_STN~".~"SCE~",   
+         ~"GI_INDICADORES_STN~".~"CPSM~",   
+         ~"GI_INDICADORES_STN~".~"MIDA~",   
+         ~"GI_INDICADORES_STN~".~"INDICE_DISPONIBILIDAD~",   
+         ~"GI_INDICADORES_STN~".~"IMR~",   
+         ~"GI_INDICADORES_STN~".~"HORAS_INDISP_A_COMPENSAR~",   
+         ~"GI_INDICADORES_STN~".~"HORAS_MES~",   
+         ~"GI_INDICADORES_STN~".~"IND_INDISP_MENSUAL_TYCN~",     
+         ~"GI_INDICADORES_STN~".~"IMRT_COMPENSACION_TYCN~",
+         ~"GI_INDICADORES_STN~".~"IND_UPDATED~",
+         ~"GI_INDICADORES_STN~".~"CANO~",
+         ~"GI_INDICADORES_STN~".~"CANO_PENDIENTE~"
+    FROM ~"BDIV10_ACTIVOS~",   
+         ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~",   
+         ~"GI_INDICADORES_STN~"  
+   WHERE ~"BDIV10_ACTIVOS~".~"ONIS_STAT~" = 0    
+	  AND ~"BDIV10_ACTIVOS~".~"ONIS_VER~" NOT LIKE '%.%'  
+     AND ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"TIPO_ELEMENTO~" = 0
+     AND ~"BDIV10_ACTIVOS~".~"TIPO~"  = ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"CODIGO~"(+)	
+ 	  AND  ~"GI_INDICADORES_STN~".~"CODIGO_ACTIVO~"(+) = ~"BDIV10_ACTIVOS~".~"CODIGO~" 
+	  AND  ~"GI_INDICADORES_STN~".~"ANIO~"(+) = :pl_anio
+     AND  ~"GI_INDICADORES_STN~".~"MES~"(+) = :pl_mes
+     " update="GI_INDICADORES_STN" updatewhere=0 updatekeyinplace=no arguments=(("pl_anio", number),("pl_mes", number)) )
+text(band=header alignment="2" text="Indisponibilidad a compensar (horas)" border="6" color="0" x="1833" y="16" height="96" width="402" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Terrorismo y Cat$$HEX1$$e100$$ENDHEX$$strofes" border="6" color="0" x="2263" y="16" height="96" width="265" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ingreso Mensual Regulado" border="6" color="0" x="2569" y="16" height="96" width="343" html.valueishtml="0"  name=t_9 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cte. IMR Temporal (Terrorismo ...)" border="6" color="0" x="2935" y="16" height="96" width="398" html.valueishtml="0"  name=t_11 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="C$$HEX1$$f300$$ENDHEX$$digo" border="6" color="0" x="18" y="16" height="96" width="274" html.valueishtml="0"  name=codigo_t visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Compensaci$$HEX1$$f300$$ENDHEX$$n por indisponibilidades" border="6" color="0" x="3397" y="16" height="96" width="402" html.valueishtml="0"  name=t_10 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ENR" border="6" color="0" x="4919" y="16" height="96" width="169" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="SCE" border="6" color="0" x="5102" y="16" height="96" width="169" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CPSM" border="6" color="0" x="5285" y="16" height="96" width="169" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Comp. por ENS  (CANO)" border="6" color="0" x="3845" y="16" height="96" width="370" html.valueishtml="0"  name=t_12 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="MHAI" border="6" color="0" x="4713" y="16" height="96" width="169" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CANO Pendiente" border="6" color="0" x="4247" y="16" height="96" width="311" html.valueishtml="0"  name=t_13 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="$$HEX1$$cd00$$ENDHEX$$ndice Disponibilidad" border="6" color="0" x="1490" y="16" height="96" width="320" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="311" y="16" height="96" width="818" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="MHAIA" border="6" color="0" x="1166" y="16" height="96" width="279" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="/*  horas_indisp_a_compensar / horas_mes *  imr  */"border="5" color="8388608" x="0" y="0" height="8" width="9" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="5" color="8388608" x="18" y="8" height="60" width="274" format="[general]" html.valueishtml="0"  name=codigo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="8388608" x="311" y="8" height="60" width="818" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="2" tabsequence=32766 border="5" color="8388608" x="1166" y="8" height="60" width="279" format="[general]" html.valueishtml="0"  name=mida visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="1" tabsequence=32766 border="5" color="8388608" x="1490" y="8" height="60" width="320" format="[general]" html.valueishtml="0"  name=indice_disponibilidad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="1" tabsequence=32766 border="5" color="8388608" x="1833" y="8" height="60" width="402" format="[general]" html.valueishtml="0"  name=horas_indisp_a_compensar visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="1" tabsequence=32766 border="5" color="8388608" x="2935" y="12" height="60" width="398" format="[general]" html.valueishtml="0"  name=imrt_compensacion_tycn visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="1" tabsequence=32766 border="5" color="8388608" x="2569" y="8" height="60" width="343" format="[general]" html.valueishtml="0"  name=imr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="1" tabsequence=32766 border="5" color="8388608" x="2263" y="8" height="60" width="265" format="[general]" html.valueishtml="0"  name=ind_indisp_mensual_tycn visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="imr * imrt_compensacion_tycn *  horas_indisp_a_compensar"border="5" color="8388608" x="3406" y="8" height="60" width="393" format="0.0###" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=21 alignment="1" tabsequence=32766 border="5" color="8388608" x="3849" y="8" height="60" width="370" format="[general]" html.valueishtml="0"  name=cano visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="5" color="8388608" x="5102" y="8" height="60" width="169" format="[general]" html.valueishtml="0"  name=sce visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="1" tabsequence=32766 border="5" color="8388608" x="5285" y="8" height="60" width="169" format="[general]" html.valueishtml="0"  name=cpsm visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="5" color="8388608" x="4718" y="8" height="60" width="169" format="[general]" html.valueishtml="0"  name=mhai visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="5" color="8388608" x="4919" y="8" height="60" width="169" format="[general]" html.valueishtml="0"  name=enr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="5" color="8388608" x="4247" y="8" height="60" width="311" format="[general]" html.valueishtml="0"  name=cano_pendiente visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

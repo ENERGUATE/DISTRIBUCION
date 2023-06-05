@@ -1,0 +1,17 @@
+HA$PBExportHeader$d_ambito_oculto.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=424 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=nro_centro dbname="nro_centro" )
+ column=(type=number updatewhereclause=yes name=nro_cmd dbname="nro_cmd" )
+ column=(type=number updatewhereclause=yes name=nro_mesa dbname="nro_mesa" )
+ )
+text(band=detail alignment="1" text="Nro Centro:"border="0" color="0" x="23" y="12" height="64" width="334"  name=nro_centro_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Nro Cmd:"border="0" color="0" x="78" y="116" height="64" width="274"  name=nro_cmd_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Nro Mesa:"border="0" color="0" x="50" y="220" height="64" width="306"  name=nro_mesa_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="1" color="0" x="393" y="104" height="76" width="219" format="[general]"  name=nro_cmd edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="1" color="0" x="389" y="4" height="76" width="219" format="[general]"  name=nro_centro edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="1" color="0" x="393" y="216" height="76" width="219" format="[general]"  name=nro_mesa edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

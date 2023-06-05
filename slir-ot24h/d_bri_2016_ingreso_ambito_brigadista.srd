@@ -1,0 +1,17 @@
+HA$PBExportHeader$d_bri_2016_ingreso_ambito_brigadista.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=112 color="536870912" )
+table(column=(type=number updatewhereclause=no name=nro_centro dbname="nro_centro" )
+ column=(type=number updatewhereclause=no name=nro_cmd dbname="nro_cmd" )
+ column=(type=number updatewhereclause=no name=nro_mesa dbname="nro_mesa" )
+ )
+column(band=detail id=1 alignment="2" tabsequence=10 border="5" color="8388608" x="270" y="24" height="60" width="448" format="[general]" protect="0~t1"  name=nro_centro dddw.name=ddw_centro_2 dddw.displaycolumn=sgd_centro_nom_centro dddw.datacolumn=sgd_centro_nro_centro dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="2" tabsequence=20 border="5" color="8388608" x="1061" y="24" height="60" width="517" format="[general]" protect="0~t1"  name=nro_cmd dddw.name=ddw_cmd_2 dddw.displaycolumn=sgd_centro_nom_centro dddw.datacolumn=sgd_centro_nro_centro dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="8388608" x="1979" y="20" height="64" width="631" format="[general]" protect="0~t0"  name=nro_mesa dddw.name=ddw_mesa_2 dddw.displaycolumn=sgd_centro_nom_centro dddw.datacolumn=sgd_centro_nro_centro dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="1" text="Puesto:"border="0" color="0" x="1705" y="20" height="64" width="238"  name=nro_puesto_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Cmd:"border="0" color="0" x="855" y="20" height="64" width="165"  name=nro_cmd_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Centro:"border="0" color="0" x="9" y="20" height="64" width="224"  name=nro_centro_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

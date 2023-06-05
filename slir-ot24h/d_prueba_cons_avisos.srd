@@ -1,0 +1,190 @@
+HA$PBExportHeader$d_prueba_cons_avisos.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=112 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_nro_aviso dbname="gi_avisos.nro_aviso" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_ind_peligro dbname="gi_avisos.ind_peligro" )
+ column=(type=datetime updatewhereclause=yes name=gi_avisos_f_alta dbname="gi_avisos.f_alta" )
+ column=(type=datetime updatewhereclause=yes name=gi_avisos_h_alta dbname="gi_avisos.h_alta" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_est_aviso dbname="gi_avisos.est_aviso" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_ind_ayuda dbname="gi_avisos.ind_ayuda" )
+ column=(type=char(2) updatewhereclause=yes name=gi_avisos_duplicador dbname="gi_avisos.duplicador" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_num_puerta dbname="gi_avisos.num_puerta" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_cod_calle dbname="gi_avisos.cod_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_nro_centro dbname="gi_avisos.nro_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_nro_telegestiones dbname="gi_avisos.nro_telegestiones" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_nro_instalacion dbname="gi_avisos.nro_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_nro_cmd dbname="gi_avisos.nro_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_nro_mesa dbname="gi_avisos.nro_mesa" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_nro_incidencia dbname="gi_avisos.nro_incidencia" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_ind_cli_imp dbname="gi_avisos.ind_cli_imp" )
+ column=(type=char(41) updatewhereclause=yes name=gi_avisos_nom_calle dbname="gi_avisos.nom_calle" )
+ column=(type=char(60) updatewhereclause=yes name=gi_avisos_esquina dbname="gi_avisos.esquina" )
+ column=(type=datetime updatewhereclause=yes name=gi_avisos_fecha_res dbname="gi_avisos.fecha_res" )
+ column=(type=datetime updatewhereclause=yes name=gi_avisos_hora_res dbname="gi_avisos.hora_res" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_co_alcance dbname="gi_avisos.co_alcance" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_tip_aviso dbname="gi_avisos.tip_aviso" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_prioridad dbname="gi_avisos.prioridad" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_nro_ot dbname="gi_avisos.nro_ot" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_ind_improcedente dbname="gi_avisos.ind_improcedente" )
+ column=(type=char(50) updatewhereclause=yes name=sgd_valor_descripcion dbname="sgd_valor.descripcion" )
+ column=(type=char(250) updatewhereclause=yes name=gi_avisos_obs_improc dbname="gi_avisos.obs_improc" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_ind_calidad dbname="gi_avisos.ind_calidad" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_clase_aviso dbname="gi_avisos.clase_aviso" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_nis_rad dbname="gi_avisos.nis_rad" )
+ column=(type=datetime updatewhereclause=yes name=gi_avisos_f_actual dbname="gi_avisos.f_actual" )
+ column=(type=char(30) updatewhereclause=yes name=gi_avisos_nom_depto dbname="gi_avisos.nom_depto" )
+ column=(type=char(25) updatewhereclause=yes name=sgd_centro_nom_centro dbname="sgd_centro.nom_centro" )
+ column=(type=char(30) updatewhereclause=yes name=gi_avisos_nom_munic dbname="gi_avisos.nom_munic" )
+ column=(type=char(80) updatewhereclause=yes name=c_desc_tipo dbname="c_desc_tipo" )
+ retrieve="SELECT ~"GI_AVISOS~".~"NRO_AVISO~",
+~"GI_AVISOS~".~"IND_PELIGRO~",
+~"GI_AVISOS~".~"F_ALTA~",
+~"GI_AVISOS~".~"H_ALTA~",
+~"GI_AVISOS~".~"EST_AVISO~",
+~"GI_AVISOS~".~"IND_AYUDA~",
+~"GI_AVISOS~".~"DUPLICADOR~",
+~"GI_AVISOS~".~"NUM_PUERTA~",
+~"GI_AVISOS~".~"COD_CALLE~",
+~"GI_AVISOS~".~"NRO_CENTRO~",
+~"GI_AVISOS~".~"NRO_TELEGESTIONES~",
+~"GI_AVISOS~".~"NRO_INSTALACION~",
+~"GI_AVISOS~".~"NRO_CMD~",
+~"GI_AVISOS~".~"NRO_MESA~",
+~"GI_AVISOS~".~"NRO_INCIDENCIA~",
+~"GI_AVISOS~".~"IND_CLI_IMP~",
+~"GI_AVISOS~".~"NOM_CALLE~",
+~"GI_AVISOS~".~"ESQUINA~",
+~"GI_AVISOS~".~"FECHA_RES~",
+~"GI_AVISOS~".~"HORA_RES~",
+~"GI_AVISOS~".~"CO_ALCANCE~",
+~"GI_AVISOS~".~"TIP_AVISO~",
+~"GI_AVISOS~".~"PRIORIDAD~",
+~"GI_AVISOS~".~"NRO_OT~",
+~"GI_AVISOS~".~"IND_IMPROCEDENTE~",
+~"SGD_VALOR~".~"DESCRIPCION~",
+~"GI_AVISOS~".~"OBS_IMPROC~",
+~"GI_AVISOS~".~"IND_CALIDAD~",
+~"GI_AVISOS~".~"CLASE_AVISO~",
+~"GI_AVISOS~".~"NIS_RAD~",
+~"GI_AVISOS~".~"F_ACTUAL~",
+~"GI_AVISOS~".~"NOM_DEPTO~",
+~"SGD_CENTRO~".~"NOM_CENTRO~",
+~"GI_AVISOS~".~"NOM_MUNIC~",
+NVL(~"TIPOS~".~"DESC_TIPO~", '') As c_desc_tipo  
+FROM ~"GI_AVISOS~", ~"SGD_VALOR~", ~"SGD_CENTRO~", ~"CALLEJERO~", ~"TIPOS~" 
+WHERE  ((~"GI_AVISOS~".~"PRIORIDAD~" = ~"SGD_VALOR~".~"CODIGO~" (+))
+AND ( ~"CALLEJERO~".~"TIP_VIA~" = ~"TIPOS~".~"TIPO~" (+)) 
+AND  ( ~"GI_AVISOS~".~"COD_CALLE~" = ~"CALLEJERO~".~"COD_CALLE~" (+))  
+AND ~"SGD_VALOR~".~"CODIF~"= 'PRI') 
+AND ~"SGD_CENTRO~".~"NRO_CENTRO~" = ~"GI_AVISOS~".~"NRO_MESA~" 
+AND ~"SGD_CENTRO~".~"TIP_CENTRO~" = 3" )
+text(band=header alignment="2" text="Gi Avisos
+Nro Aviso" border="0" color="33554432" x="5" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_nro_aviso_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Ind Peligro" border="0" color="33554432" x="283" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_ind_peligro_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+F Alta" border="0" color="33554432" x="562" y="4" height="104" width="503" html.valueishtml="0"  name=gi_avisos_f_alta_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+H Alta" border="0" color="33554432" x="1070" y="4" height="104" width="503" html.valueishtml="0"  name=gi_avisos_h_alta_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Est Aviso" border="0" color="33554432" x="1577" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_est_aviso_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Ind Ayuda" border="0" color="33554432" x="1856" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_ind_ayuda_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Duplicador" border="0" color="33554432" x="2135" y="4" height="104" width="233" html.valueishtml="0"  name=gi_avisos_duplicador_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Num Puerta" border="0" color="33554432" x="2377" y="4" height="104" width="270" html.valueishtml="0"  name=gi_avisos_num_puerta_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Cod Calle" border="0" color="33554432" x="2656" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_cod_calle_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nro Centro" border="0" color="33554432" x="2935" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_nro_centro_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nro Telegestiones" border="0" color="33554432" x="3214" y="4" height="104" width="393" html.valueishtml="0"  name=gi_avisos_nro_telegestiones_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nro Instalacion" border="0" color="33554432" x="3611" y="4" height="104" width="325" html.valueishtml="0"  name=gi_avisos_nro_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nro Cmd" border="0" color="33554432" x="3941" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_nro_cmd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nro Mesa" border="0" color="33554432" x="4219" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_nro_mesa_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nro Incidencia" border="0" color="33554432" x="4498" y="4" height="104" width="315" html.valueishtml="0"  name=gi_avisos_nro_incidencia_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Ind Cli Imp" border="0" color="33554432" x="4818" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_ind_cli_imp_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nom Calle" border="0" color="33554432" x="5097" y="4" height="104" width="960" html.valueishtml="0"  name=gi_avisos_nom_calle_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Esquina" border="0" color="33554432" x="6062" y="4" height="104" width="1394" html.valueishtml="0"  name=gi_avisos_esquina_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Fecha Res" border="0" color="33554432" x="7461" y="4" height="104" width="503" html.valueishtml="0"  name=gi_avisos_fecha_res_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Hora Res" border="0" color="33554432" x="7968" y="4" height="104" width="503" html.valueishtml="0"  name=gi_avisos_hora_res_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Co Alcance" border="0" color="33554432" x="8475" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_co_alcance_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Tip Aviso" border="0" color="33554432" x="8754" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_tip_aviso_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Prioridad" border="0" color="33554432" x="9033" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_prioridad_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nro Ot" border="0" color="33554432" x="9312" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_nro_ot_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Ind Improcedente" border="0" color="33554432" x="9591" y="4" height="104" width="379" html.valueishtml="0"  name=gi_avisos_ind_improcedente_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sgd Valor
+Descripcion" border="0" color="33554432" x="9975" y="4" height="104" width="1170" html.valueishtml="0"  name=sgd_valor_descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Obs Improc" border="0" color="33554432" x="11150" y="4" height="104" width="3506" html.valueishtml="0"  name=gi_avisos_obs_improc_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Ind Calidad" border="0" color="33554432" x="14665" y="4" height="104" width="270" html.valueishtml="0"  name=gi_avisos_ind_calidad_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Clase Aviso" border="0" color="33554432" x="14944" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_clase_aviso_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nis Rad" border="0" color="33554432" x="15223" y="4" height="104" width="274" html.valueishtml="0"  name=gi_avisos_nis_rad_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+F Actual" border="0" color="33554432" x="15502" y="4" height="104" width="503" html.valueishtml="0"  name=gi_avisos_f_actual_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nom Depto" border="0" color="33554432" x="16009" y="4" height="104" width="709" html.valueishtml="0"  name=gi_avisos_nom_depto_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sgd Centro
+Nom Centro" border="0" color="33554432" x="16722" y="4" height="104" width="594" html.valueishtml="0"  name=sgd_centro_nom_centro_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gi Avisos
+Nom Munic" border="0" color="33554432" x="17321" y="4" height="104" width="709" html.valueishtml="0"  name=gi_avisos_nom_munic_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="C Desc Tipo" border="0" color="33554432" x="18034" y="4" height="52" width="1851" html.valueishtml="0"  name=c_desc_tipo_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="5" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_nro_aviso visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="283" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_ind_peligro visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="562" y="4" height="72" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=gi_avisos_f_alta visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1070" y="4" height="72" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=gi_avisos_h_alta visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="33554432" x="1577" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_est_aviso visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="33554432" x="1856" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_ind_ayuda visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="2135" y="4" height="72" width="73" format="[general]" html.valueishtml="0"  name=gi_avisos_duplicador visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="33554432" x="2377" y="4" height="72" width="270" format="[general]" html.valueishtml="0"  name=gi_avisos_num_puerta visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="33554432" x="2656" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_cod_calle visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="0" color="33554432" x="2935" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_nro_centro visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="33554432" x="3214" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_nro_telegestiones visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="1" tabsequence=32766 border="0" color="33554432" x="3611" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_nro_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=32766 border="0" color="33554432" x="3941" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_nro_cmd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="1" tabsequence=32766 border="0" color="33554432" x="4219" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_nro_mesa visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="1" tabsequence=32766 border="0" color="33554432" x="4498" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_nro_incidencia visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="1" tabsequence=32766 border="0" color="33554432" x="4818" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_ind_cli_imp visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="33554432" x="5097" y="4" height="72" width="960" format="[general]" html.valueishtml="0"  name=gi_avisos_nom_calle visible="1" edit.limit=41 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="33554432" x="6062" y="4" height="72" width="1394" format="[general]" html.valueishtml="0"  name=gi_avisos_esquina visible="1" edit.limit=60 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="33554432" x="7461" y="4" height="72" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=gi_avisos_fecha_res visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="33554432" x="7968" y="4" height="72" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=gi_avisos_hora_res visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="1" tabsequence=32766 border="0" color="33554432" x="8475" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_co_alcance visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="1" tabsequence=32766 border="0" color="33554432" x="8754" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_tip_aviso visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="1" tabsequence=32766 border="0" color="33554432" x="9033" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_prioridad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="1" tabsequence=32766 border="0" color="33554432" x="9312" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_nro_ot visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="1" tabsequence=32766 border="0" color="33554432" x="9591" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_ind_improcedente visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="33554432" x="9975" y="4" height="72" width="1170" format="[general]" html.valueishtml="0"  name=sgd_valor_descripcion visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="33554432" x="11150" y="4" height="72" width="3506" format="[general]" html.valueishtml="0"  name=gi_avisos_obs_improc visible="1" edit.limit=250 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="1" tabsequence=32766 border="0" color="33554432" x="14665" y="4" height="72" width="270" format="[general]" html.valueishtml="0"  name=gi_avisos_ind_calidad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="1" tabsequence=32766 border="0" color="33554432" x="14944" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_clase_aviso visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="1" tabsequence=32766 border="0" color="33554432" x="15223" y="4" height="72" width="274" format="[general]" html.valueishtml="0"  name=gi_avisos_nis_rad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="33554432" x="15502" y="4" height="72" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=gi_avisos_f_actual visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="33554432" x="16009" y="4" height="72" width="709" format="[general]" html.valueishtml="0"  name=gi_avisos_nom_depto visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="33554432" x="16722" y="4" height="72" width="594" format="[general]" html.valueishtml="0"  name=sgd_centro_nom_centro visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="33554432" x="17321" y="4" height="72" width="709" format="[general]" html.valueishtml="0"  name=gi_avisos_nom_munic visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="33554432" x="18034" y="4" height="72" width="1851" format="[general]" html.valueishtml="0"  name=c_desc_tipo visible="1" edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

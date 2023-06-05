@@ -1,0 +1,43 @@
+HA$PBExportHeader$dw_co_interrupciones_inc_rep.srd
+release 6;
+datawindow(units=2 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 500 print.margin.right = 500 print.margin.top = 500 print.margin.bottom = 500 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=260 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=187 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=sgd_instalacion_nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=number updatewhereclause=yes name=sgd_interrupcion_pot_instalada dbname="sgd_interrupcion.pot_instalada" )
+ column=(type=number updatewhereclause=yes name=sgd_interrupcion_ccli_afec dbname="sgd_interrupcion.ccli_afec" )
+ column=(type=datetime updatewhereclause=yes name=sgd_interrupcion_f_alta dbname="sgd_interrupcion.f_alta" )
+ column=(type=datetime updatewhereclause=yes name=sgd_interrupcion_f_reposicion dbname="sgd_interrupcion.f_reposicion" )
+ retrieve="  SELECT ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         ~"SGD_INTERRUPCION~".~"POT_INSTALADA~",   
+         ~"SGD_INTERRUPCION~".~"CCLI_AFEC~",   
+         ~"SGD_INTERRUPCION~".~"F_ALTA~",   
+         ~"SGD_INTERRUPCION~".~"F_REPOSICION~"  
+    FROM ~"SGD_INTERRUPCION~",   
+         ~"SGD_INSTALACION~"  
+   WHERE ( sgd_interrupcion.nro_instalacion = sgd_instalacion.nro_instalacion (+)) and  
+         ( ( ~"SGD_INTERRUPCION~".~"NRO_INCIDENCIA~" = :nro_incidencia ) AND  
+         ( NVL(~"SGD_INSTALACION~".~"BDI_JOB~", 0) = 0 ) )    
+UNION ALL
+   SELECT ~"SGD_INTERRUPCION_RS~".~"NOM_INSTALACION~" ,
+			~"SGD_INTERRUPCION_RS~".~"POT_INSTALADA~",
+			~"SGD_INTERRUPCION_RS~".~"CCLI_AFEC~",   
+			~"SGD_INTERRUPCION_RS~".~"F_ALTA~",   
+			~"SGD_INTERRUPCION_RS~".~"F_REPOSICION~"   
+    FROM ~"SGD_INTERRUPCION_RS~"  
+   WHERE ~"SGD_INTERRUPCION_RS~".~"NRO_INCIDENCIA~" = :nro_incidencia    
+" arguments=(("nro_incidencia", number)) )
+roundrectangle(band=header ellipseheight="93" ellipsewidth="93"x="41" y="20" height="218" width="7041" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="10" pen.color="0"  background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Clientes"border="0" color="0" x="3677" y="62" height="135" width="989"  name=sgd_interrupcion_ccli_afec_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Inicio"border="0" color="0" x="4697" y="62" height="135" width="1145"  name=sgd_interrupcion_f_alta_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Reposici$$HEX1$$f300$$ENDHEX$$n"border="0" color="0" x="5885" y="62" height="135" width="1145"  name=sgd_interrupcion_f_reposicion_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Instalacion"border="0" color="0" x="93" y="62" height="135" width="2364"  name=sgd_instalacion_nom_instalacion_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Potencia Instalada"border="0" color="0" x="2500" y="62" height="135" width="1135"  name=sgd_interrupcion_pot_instalada_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="3802" y="11" height="166" width="739" format="#,##0"  name=sgd_interrupcion_ccli_afec edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="4697" y="11" height="166" width="1145" format="[shortdate] [time]"  name=sgd_interrupcion_f_alta edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="5885" y="11" height="166" width="1145" format="[shortdate] [time]"  name=sgd_interrupcion_f_reposicion edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="93" y="11" height="166" width="2364" format="[general]"  name=sgd_instalacion_nom_instalacion edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="2500" y="11" height="166" width="1135" format="#,##0.0"  name=sgd_interrupcion_pot_instalada edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,181 @@
+HA$PBExportHeader$m_indisponibilidad.srm
+forward
+global type m_indisponibilidad from menu
+end type
+type m_marcarindisponibilidad from menu within m_indisponibilidad
+end type
+type m_desmarcarindisponibilidad from menu within m_indisponibilidad
+end type
+type m_marcarindisponibilidadrama from menu within m_indisponibilidad
+end type
+type m_desmarcarindisponibilidadrama from menu within m_indisponibilidad
+end type
+type m_incidencia from menu within m_indisponibilidad
+end type
+type m_nuevaindisponibilidad from menu within m_indisponibilidad
+end type
+type m_instalacionafectada from menu within m_indisponibilidad
+end type
+global type m_indisponibilidad from menu
+m_marcarindisponibilidad m_marcarindisponibilidad
+m_desmarcarindisponibilidad m_desmarcarindisponibilidad
+m_marcarindisponibilidadrama m_marcarindisponibilidadrama
+m_desmarcarindisponibilidadrama m_desmarcarindisponibilidadrama
+m_incidencia m_incidencia
+m_nuevaindisponibilidad m_nuevaindisponibilidad
+m_instalacionafectada m_instalacionafectada
+end type
+end forward
+
+global type m_indisponibilidad from menu
+m_marcarindisponibilidad m_marcarindisponibilidad
+m_desmarcarindisponibilidad m_desmarcarindisponibilidad
+m_marcarindisponibilidadrama m_marcarindisponibilidadrama
+m_desmarcarindisponibilidadrama m_desmarcarindisponibilidadrama
+m_incidencia m_incidencia
+m_nuevaindisponibilidad m_nuevaindisponibilidad
+m_instalacionafectada m_instalacionafectada
+end type
+global m_indisponibilidad m_indisponibilidad
+
+type variables
+int ii_opcion_indisponibilidad
+end variables
+
+on m_indisponibilidad.create
+m_indisponibilidad=this
+call super::create
+this.text = "m_indisponibilidad"
+this.m_marcarindisponibilidad=create m_marcarindisponibilidad
+this.m_desmarcarindisponibilidad=create m_desmarcarindisponibilidad
+this.m_marcarindisponibilidadrama=create m_marcarindisponibilidadrama
+this.m_desmarcarindisponibilidadrama=create m_desmarcarindisponibilidadrama
+this.m_incidencia=create m_incidencia
+this.m_nuevaindisponibilidad=create m_nuevaindisponibilidad
+this.m_instalacionafectada=create m_instalacionafectada
+this.Item[UpperBound(this.Item)+1]=this.m_marcarindisponibilidad
+this.Item[UpperBound(this.Item)+1]=this.m_desmarcarindisponibilidad
+this.Item[UpperBound(this.Item)+1]=this.m_marcarindisponibilidadrama
+this.Item[UpperBound(this.Item)+1]=this.m_desmarcarindisponibilidadrama
+this.Item[UpperBound(this.Item)+1]=this.m_incidencia
+this.Item[UpperBound(this.Item)+1]=this.m_nuevaindisponibilidad
+this.Item[UpperBound(this.Item)+1]=this.m_instalacionafectada
+end on
+
+on m_indisponibilidad.destroy
+call super::destroy
+destroy(this.m_marcarindisponibilidad)
+destroy(this.m_desmarcarindisponibilidad)
+destroy(this.m_marcarindisponibilidadrama)
+destroy(this.m_desmarcarindisponibilidadrama)
+destroy(this.m_incidencia)
+destroy(this.m_nuevaindisponibilidad)
+destroy(this.m_instalacionafectada)
+end on
+
+type m_marcarindisponibilidad from menu within m_indisponibilidad
+end type
+
+on m_marcarindisponibilidad.create
+call super::create
+this.text = "Marcar Indisponibilidad"
+end on
+
+on m_marcarindisponibilidad.destroy
+call super::destroy
+end on
+
+event clicked;ii_opcion_indisponibilidad=1
+end event
+
+type m_desmarcarindisponibilidad from menu within m_indisponibilidad
+end type
+
+on m_desmarcarindisponibilidad.create
+call super::create
+this.text = "Desmarcar Indisponibilidad"
+end on
+
+on m_desmarcarindisponibilidad.destroy
+call super::destroy
+end on
+
+event clicked;ii_opcion_indisponibilidad=2
+end event
+
+type m_marcarindisponibilidadrama from menu within m_indisponibilidad
+end type
+
+on m_marcarindisponibilidadrama.create
+call super::create
+this.text = "Marcar Indisponibilidad Rama"
+end on
+
+on m_marcarindisponibilidadrama.destroy
+call super::destroy
+end on
+
+event clicked;ii_opcion_indisponibilidad=3
+end event
+
+type m_desmarcarindisponibilidadrama from menu within m_indisponibilidad
+end type
+
+on m_desmarcarindisponibilidadrama.create
+call super::create
+this.text = "Desmarcar Indisponibilidad Rama"
+end on
+
+on m_desmarcarindisponibilidadrama.destroy
+call super::destroy
+end on
+
+event clicked;ii_opcion_indisponibilidad=4
+end event
+
+type m_incidencia from menu within m_indisponibilidad
+end type
+
+on m_incidencia.create
+call super::create
+this.text = "Incidencia"
+end on
+
+on m_incidencia.destroy
+call super::destroy
+end on
+
+event clicked;ii_opcion_indisponibilidad=5
+end event
+
+type m_nuevaindisponibilidad from menu within m_indisponibilidad
+end type
+
+on m_nuevaindisponibilidad.create
+call super::create
+this.visible = false
+this.text = "Nueva indisponibilidad"
+end on
+
+on m_nuevaindisponibilidad.destroy
+call super::destroy
+end on
+
+event clicked;ii_opcion_indisponibilidad=7
+end event
+
+type m_instalacionafectada from menu within m_indisponibilidad
+end type
+
+event clicked;ii_opcion_indisponibilidad=6
+end event
+
+on m_instalacionafectada.create
+call super::create
+this.text = "Instalaci$$HEX1$$f300$$ENDHEX$$n Afectada"
+end on
+
+on m_instalacionafectada.destroy
+call super::destroy
+end on
+

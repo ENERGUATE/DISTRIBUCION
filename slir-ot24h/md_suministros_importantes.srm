@@ -1,0 +1,83 @@
+HA$PBExportHeader$md_suministros_importantes.srm
+forward
+global type md_suministros_importantes from md_consultas_estandar
+end type
+end forward
+
+global type md_suministros_importantes from md_consultas_estandar
+end type
+global md_suministros_importantes md_suministros_importantes
+
+on md_suministros_importantes.create
+md_suministros_importantes=this
+call md_consultas_estandar::create
+end on
+
+on md_suministros_importantes.destroy
+call md_consultas_estandar::destroy
+end on
+
+on m_agregar::clicked;call md_consultas_estandar`m_agregar::clicked;w_3201_mantenimiento_suministros_imp.TriggerEvent("ue_arch_agregar")
+end on
+
+on m_agregar.create
+call md_consultas_estandar`m_agregar::create
+this.Microhelp="Ingresar un Nuevo Suministro Importante"
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_eliminar.create
+call md_consultas_estandar`m_eliminar::create
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+on m_cerrar.create
+call md_consultas_estandar`m_cerrar::create
+this.ToolBarItemName="RunWindow!"
+this.ToolBarItemVisible=true
+end on
+
+on m_imprimir.create
+call md_consultas_estandar`m_imprimir::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_seleccionarimpresora.create
+call md_consultas_estandar`m_seleccionarimpresora::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_preferencias.create
+call md_consultas_estandar`m_preferencias::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_salir.create
+call md_consultas_estandar`m_salir::create
+this.ToolBarItemName=""
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_iralcomienzo.create
+call md_consultas_estandar`m_iralcomienzo::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_iralfinal.create
+call md_consultas_estandar`m_iralfinal::create
+this.ToolBarItemVisible=false
+end on
+
+on m_buscar.create
+call md_consultas_estandar`m_buscar::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+

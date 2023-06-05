@@ -1,0 +1,40 @@
+HA$PBExportHeader$d_elementos_corte_inc.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes name=matricula dbname="sgd_elementos_corte_inc.matricula" )
+ column=(type=number update=yes updatewhereclause=yes name=tipo dbname="sgd_elementos_corte_inc.tipo" values="FUSIBLE	1/INTERRUPTOR	2/SECCIONADOR	3/" )
+ column=(type=number update=yes updatewhereclause=yes key=yes name=codigo dbname="sgd_elementos_corte_inc.codigo" )
+ column=(type=number update=yes updatewhereclause=yes key=yes name=nro_incidencia dbname="sgd_elementos_corte_inc.nro_incidencia" )
+ column=(type=char(15) updatewhereclause=yes name=usuario dbname="sgd_elementos_corte_inc.usuario" )
+ column=(type=char(15) updatewhereclause=yes name=programa dbname="sgd_elementos_corte_inc.programa" )
+ column=(type=datetime updatewhereclause=yes name=f_actual dbname="sgd_elementos_corte_inc.f_actual" )
+ retrieve="  SELECT ~"SGD_ELEMENTOS_CORTE_INC~".~"MATRICULA~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"TIPO~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"CODIGO~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"NRO_INCIDENCIA~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"USUARIO~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"PROGRAMA~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"F_ACTUAL~"
+    FROM ~"SGD_ELEMENTOS_CORTE_INC~"  
+   WHERE ~"SGD_ELEMENTOS_CORTE_INC~".~"NRO_INCIDENCIA~" = :pl_nro_incidencia  
+UNION  
+  SELECT ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"MATRICULA~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"TIPO~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"CODIGO~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"NRO_INCIDENCIA~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"USUARIO~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"PROGRAMA~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"F_ACTUAL~"
+    FROM ~"GI_HIST_ELEMENTOS_CORTE_INC~"  
+   WHERE ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"NRO_INCIDENCIA~" = :pl_nro_incidencia  " update="SGD_ELEMENTOS_CORTE_INC" updatewhere=1 updatekeyinplace=no arguments=(("pl_nro_incidencia", number)) )
+text(band=header alignment="2" text="Matricula" border="6" color="0" x="466" y="4" height="52" width="654" html.valueishtml="0"  name=matricula_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tipo" border="6" color="0" x="9" y="4" height="52" width="443" html.valueishtml="0"  name=tipo_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="475" y="8" height="52" width="558" format="[general]" html.valueishtml="0"  name=matricula visible="1" dddw.name=ddw_elementos_corte dddw.displaycolumn=matricula dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="27" y="4" height="52" width="411" format="[General]" html.valueishtml="0" protect="0~t1"  name=tipo visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="lookupdisplay( matricula)"border="0" color="0" x="1234" y="8" height="52" width="183" format="[general]" html.valueishtml="0"  name=mat visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

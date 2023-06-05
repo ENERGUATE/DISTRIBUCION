@@ -1,0 +1,109 @@
+HA$PBExportHeader$fgnu_habilita_st.srf
+$PBExportComments$mover a OTEXE2.PBL
+global type fgnu_habilita_st from function_object
+end type
+
+forward prototypes
+global function boolean fgnu_habilita_st (long pl_row, datetime pd_f_alta, long pl_incidencia)
+end prototypes
+
+global function boolean fgnu_habilita_st (long pl_row, datetime pd_f_alta, long pl_incidencia);////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fgnu_habilita_st
+// 
+// Objetivo: Habilita o deshabilita el campo sin atender de la pantalla
+//           de seguimiento. Correspondiente a las incidencias derivadas.
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada: pl_row, pd_f_alta,pl_incidencia
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	
+//
+/////////////////////////////////////////////////////////////////////
+
+
+
+w_2301_form_incidencia iw_contenedora
+
+iw_contenedora= gu_control_v_incidencias.of_busca_ventana(pl_incidencia,-1)
+
+if not isnull(iw_contenedora) then 
+	
+IF pl_row=1 THEN
+	IF fgnu_auto_der_mant() AND (NOT ISNULL(pd_f_alta)) AND &
+		iw_contenedora.tab_1.ii_estado_mant < fgci_incidencia_mant_enviado_brigada THEN 
+		Return TRUE
+	ELSE
+		Return False
+	END IF
+ELSE
+			//si es usuario de mantenimiento
+	IF fgnu_auto_der_oper() THEN
+				//Si esta en la fila 5 y resuelve mantenimiento
+		IF pl_row = 5  AND gi_resuelve_mant <> 0 AND NOT ISNULL(gi_resuelve_mant)	THEN
+			// Agrege condicion que en operaciones este en SR
+			IF	NOT ISNULL(gi_con_material_averiado) AND &
+				gi_con_material_averiado <> 0 AND &
+				iw_contenedora.tab_1.ii_estado_oper = fgci_incidencia_servicio_repuesto THEN
+		
+				Return True		//Habilito
+			ELSE
+		
+				Return False		//No Habilito
+			END IF
+		ELSE	
+			Return True	//Habilito
+		END IF
+	ELSE
+		//si no es usuario de mantenimiento
+		Return False	//No Habilito
+	END IF
+END IF
+end if
+Return FALSE
+
+
+//
+//IF pl_row=1 THEN
+//	IF fgnu_auto_der_mant() AND (NOT ISNULL(pd_f_alta)) AND &
+//		w_2301_form_incidencia.tab_1.ii_estado_mant < fgci_incidencia_mant_enviado_brigada THEN 
+//		Return TRUE
+//	ELSE
+//		Return False
+//	END IF
+//ELSE
+//			//si es usuario de mantenimiento
+//	IF fgnu_auto_der_oper() THEN
+//				//Si esta en la fila 5 y resuelve mantenimiento
+//		IF pl_row = 5 		     AND &
+//			gi_resuelve_mant <> 0 AND &
+//			NOT ISNULL(gi_resuelve_mant)	THEN
+//		
+//			IF	NOT ISNULL(gi_con_material_averiado) AND &
+//				gi_con_material_averiado<>0 THEN
+//		
+//				Return True		//Habilito
+//			ELSE
+//		
+//				Return False		//No Habilito
+//			END IF
+//		ELSE	
+//			Return True	//Habilito
+//		END IF
+//	ELSE
+//		//si no es usuario de mantenimiento
+//		Return False	//No Habilito
+//	END IF
+//END IF
+//
+//Return FALSE
+
+end function
+

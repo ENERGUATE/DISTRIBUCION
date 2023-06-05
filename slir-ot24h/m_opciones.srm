@@ -1,0 +1,150 @@
+HA$PBExportHeader$m_opciones.srm
+forward
+global type m_opciones from menu
+end type
+type m_opcione from menu within m_opciones
+end type
+type m_opcione from menu within m_opciones
+end type
+type m_opciona from menu within m_opciones
+end type
+type m_opciona from menu within m_opciones
+end type
+type m_opcionc from menu within m_opciones
+end type
+type m_opcionc from menu within m_opciones
+end type
+type m_buscarinterrupciones from menu within m_opciones
+end type
+type m_buscarinterrupciones from menu within m_opciones
+end type
+type m_reabririnterrupcion from menu within m_opciones
+end type
+type m_reabririnterrupcion from menu within m_opciones
+end type
+type m_interrupcionesengrupo from menu within m_opciones
+end type
+type m_interrupcionesengrupo from menu within m_opciones
+end type
+end forward
+
+global type m_opciones from menu
+m_opcione m_opcione
+m_opciona m_opciona
+m_opcionc m_opcionc
+m_buscarinterrupciones m_buscarinterrupciones
+m_reabririnterrupcion m_reabririnterrupcion
+m_interrupcionesengrupo m_interrupcionesengrupo
+end type
+global m_opciones m_opciones
+
+type variables
+int ii_opcion_selec
+end variables
+
+on m_opciones.create
+m_opciones=this
+this.m_opcione=create m_opcione
+this.m_opciona=create m_opciona
+this.m_opcionc=create m_opcionc
+this.m_buscarinterrupciones=create m_buscarinterrupciones
+this.m_reabririnterrupcion=create m_reabririnterrupcion
+this.m_interrupcionesengrupo=create m_interrupcionesengrupo
+this.Item[]={this.m_opcione, &
+this.m_opciona, &
+this.m_opcionc, &
+this.m_buscarinterrupciones, &
+this.m_reabririnterrupcion, &
+this.m_interrupcionesengrupo}
+end on
+
+on m_opciones.destroy
+destroy(this.m_opcione)
+destroy(this.m_opciona)
+destroy(this.m_opcionc)
+destroy(this.m_buscarinterrupciones)
+destroy(this.m_reabririnterrupcion)
+destroy(this.m_interrupcionesengrupo)
+end on
+
+type m_opcione from menu within m_opciones
+end type
+
+on m_opcione.create
+this.Text="Instalaci$$HEX1$$f300$$ENDHEX$$n Origen"
+end on
+
+on m_opcione.destroy
+end on
+
+event clicked;ii_opcion_selec = 5
+end event
+
+type m_opciona from menu within m_opciones
+end type
+
+on m_opciona.create
+this.Text="Marcar Interrupci$$HEX1$$f300$$ENDHEX$$n"
+this.Visible=false
+end on
+
+on m_opciona.destroy
+end on
+
+event clicked;ii_opcion_selec = 1
+end event
+
+type m_opcionc from menu within m_opciones
+end type
+
+on m_opcionc.create
+this.Text="Desmarcar Interrupci$$HEX1$$f300$$ENDHEX$$n"
+this.Visible=false
+end on
+
+on m_opcionc.destroy
+end on
+
+event clicked;ii_opcion_selec = 3
+end event
+
+type m_buscarinterrupciones from menu within m_opciones
+end type
+
+event clicked;ii_opcion_selec = 6
+end event
+
+on m_buscarinterrupciones.create
+this.Text="Mostrar Interrupciones"
+end on
+
+on m_buscarinterrupciones.destroy
+end on
+
+type m_reabririnterrupcion from menu within m_opciones
+end type
+
+on m_reabririnterrupcion.create
+this.Text="Reabrir Interrupci$$HEX1$$f300$$ENDHEX$$n"
+this.Visible=false
+end on
+
+on m_reabririnterrupcion.destroy
+end on
+
+event clicked;ii_opcion_selec = 7
+end event
+
+type m_interrupcionesengrupo from menu within m_opciones
+end type
+
+event clicked;ii_opcion_selec = 8
+end event
+
+on m_interrupcionesengrupo.create
+this.Text="Interrupciones en grupo"
+end on
+
+on m_interrupcionesengrupo.destroy
+end on
+

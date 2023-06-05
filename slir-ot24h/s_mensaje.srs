@@ -1,0 +1,8 @@
+HA$PBExportHeader$s_mensaje.srs
+global type s_mensaje from structure
+	string		title
+	string		text
+	icon		icono
+	button		boton
+end type
+

@@ -1,0 +1,2 @@
+HA$PBExportHeader$dw_cliente.srq
+PBSELECT( VERSION(400) TABLE(NAME="clientes" ) COLUMN(NAME="clientes.doc_id")) 

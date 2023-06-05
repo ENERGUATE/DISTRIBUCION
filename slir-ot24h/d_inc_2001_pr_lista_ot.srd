@@ -1,0 +1,40 @@
+HA$PBExportHeader$d_inc_2001_pr_lista_ot.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(4000) updatewhereclause=yes name=nombre dbname="nombre" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=gi_ot_nro_ot dbname="gi_ot.nro_ot" )
+ column=(type=datetime updatewhereclause=yes name=gi_ot_f_desde dbname="gi_ot.f_desde" )
+ column=(type=datetime updatewhereclause=yes name=gi_ot_f_hasta dbname="gi_ot.f_hasta" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_ot_tip_brigada dbname="gi_ot.tip_brigada" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_ot_ult_brigada dbname="gi_ot.ult_brigada" )
+ column=(type=char(250) updatewhereclause=yes name=gi_ot_descripcion dbname="gi_ot.descripcion" )
+ retrieve="  SELECT Fgci_Nombre_Ot(~"GI_OT~".~"NRO_OT~") NOMBRE,   
+         ~"GI_OT~".~"NRO_OT~",   
+         ~"GI_OT~".~"F_DESDE~",   
+         ~"GI_OT~".~"F_HASTA~",   
+         ~"GI_OT~".~"TIP_BRIGADA~",   
+         ~"GI_OT~".~"ULT_BRIGADA~",   
+         ~"GI_OT~".~"DESCRIPCION~"  
+    FROM ~"GI_OT~"  
+   WHERE 	( ~"GI_OT~".~"NRO_INSTALACION~" = :pl_nro_instalacion ) AND
+				( NVL(~"GI_OT~".~"NRO_INCIDENCIA~",0) = 0 ) AND   
+      	 		( ~"GI_OT~".~"EST_OT~" < 3) AND 
+					(~"GI_OT~".~"EST_OT~"<> 11) AND
+		 		( ~"GI_OT~".~"F_DESDE~" >= :pdt_f_desde)" update="GI_OT" updatewhere=0 updatekeyinplace=no arguments=(("pl_nro_instalacion", number),("pdt_f_desde", datetime)) )
+text(band=header alignment="2" text="Nro. OT" border="6" color="0" x="14" y="8" height="52" width="315" html.valueishtml="0"  name=gi_ot_nro_ot_t  tag="bmp" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Desde" border="6" color="0" x="347" y="8" height="52" width="535" html.valueishtml="0"  name=gi_ot_f_desde_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="F. Hasta" border="6" color="0" x="901" y="8" height="52" width="558" html.valueishtml="0"  name=gi_ot_f_hasta_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="1477" y="8" height="52" width="987" html.valueishtml="0"  name=gi_ot_descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Brigada Encargada / Contrata" border="6" color="0" x="2482" y="8" height="52" width="1175" html.valueishtml="0"  name=gi_brigada_nombre_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+bitmap(band=detail filename="ordtra.bmp" x="23" y="4" height="64" width="73" border="0"  name=icono visible="1" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="357" y="4" height="64" width="521" format="[shortdate] [time]" html.valueishtml="0"  name=gi_ot_f_desde visible="1" editmask.mask="DD/MM/YY HH:MM" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="123" y="4" height="64" width="201" format="[general]" html.valueishtml="0"  name=gi_ot_nro_ot visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="0" x="914" y="4" height="64" width="539" format="[shortdate] [time]" html.valueishtml="0"  name=gi_ot_f_hasta visible="1" editmask.mask="DD/MM/YY HH:MM" editmask.imemode=0 editmask.spinrange="~~" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1490" y="4" height="64" width="955" format="[general]" html.valueishtml="0"  name=gi_ot_descripcion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2482" y="4" height="64" width="1175" format="[general]" html.valueishtml="0"  name=nombre visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

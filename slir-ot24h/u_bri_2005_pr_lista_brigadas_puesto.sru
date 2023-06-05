@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_bri_2005_pr_lista_brigadas_puesto.sru
+forward
+global type u_bri_2005_pr_lista_brigadas_puesto from datawindow
+end type
+end forward
+
+global type u_bri_2005_pr_lista_brigadas_puesto from datawindow
+int Width=1093
+int Height=293
+string DataObject="d_2005_lista_brigada_puesto"
+end type
+global u_bri_2005_pr_lista_brigadas_puesto u_bri_2005_pr_lista_brigadas_puesto
+

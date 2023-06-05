@@ -1,0 +1,570 @@
+HA$PBExportHeader$m_energia_perdida_corte.srm
+forward
+global type m_energia_perdida_corte from menu
+end type
+type m_archivo from menu within m_energia_perdida_corte
+end type
+type m_agregar from menu within m_archivo
+end type
+type m_eliminar from menu within m_archivo
+end type
+type m_-1 from menu within m_archivo
+end type
+type m_- from menu within m_archivo
+end type
+type m_imprimir from menu within m_archivo
+end type
+type m_seleccionarimpresora from menu within m_archivo
+end type
+type m_-2 from menu within m_archivo
+end type
+type m_preferencias from menu within m_archivo
+end type
+type m_-5 from menu within m_archivo
+end type
+type m_cerrar from menu within m_archivo
+end type
+type m_archivo from menu within m_energia_perdida_corte
+m_agregar m_agregar
+m_eliminar m_eliminar
+m_-1 m_-1
+m_- m_-
+m_imprimir m_imprimir
+m_seleccionarimpresora m_seleccionarimpresora
+m_-2 m_-2
+m_preferencias m_preferencias
+m_-5 m_-5
+m_cerrar m_cerrar
+end type
+type m_edicin from menu within m_energia_perdida_corte
+end type
+type m_deshacer from menu within m_edicin
+end type
+type m_-3 from menu within m_edicin
+end type
+type m_cortar from menu within m_edicin
+end type
+type m_copiar from menu within m_edicin
+end type
+type m_pegar from menu within m_edicin
+end type
+type m_-4 from menu within m_edicin
+end type
+type m_iralcomienzo from menu within m_edicin
+end type
+type m_iralfinal from menu within m_edicin
+end type
+type m_buscar from menu within m_edicin
+end type
+type m_seleccionar_todo from menu within m_edicin
+end type
+type m_edicin from menu within m_energia_perdida_corte
+m_deshacer m_deshacer
+m_-3 m_-3
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-4 m_-4
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+m_buscar m_buscar
+m_seleccionar_todo m_seleccionar_todo
+end type
+type m_opciones from menu within m_energia_perdida_corte
+end type
+type m_actualizar from menu within m_opciones
+end type
+type m_historicos from menu within m_opciones
+end type
+type m_opciones from menu within m_energia_perdida_corte
+m_actualizar m_actualizar
+m_historicos m_historicos
+end type
+type m_ventana from menu within m_energia_perdida_corte
+end type
+type m_mosaico from menu within m_ventana
+end type
+type m_cascada from menu within m_ventana
+end type
+type m_organizariconos from menu within m_ventana
+end type
+type m_ventana from menu within m_energia_perdida_corte
+m_mosaico m_mosaico
+m_cascada m_cascada
+m_organizariconos m_organizariconos
+end type
+type m_ayuda from menu within m_energia_perdida_corte
+end type
+type m_acercadelopensgi from menu within m_ayuda
+end type
+type m_ayuda from menu within m_energia_perdida_corte
+m_acercadelopensgi m_acercadelopensgi
+end type
+end forward
+
+global type m_energia_perdida_corte from menu
+m_archivo m_archivo
+m_edicin m_edicin
+m_opciones m_opciones
+m_ventana m_ventana
+m_ayuda m_ayuda
+end type
+global m_energia_perdida_corte m_energia_perdida_corte
+
+on m_energia_perdida_corte.create
+m_energia_perdida_corte=this
+this.m_archivo=create m_archivo
+this.m_edicin=create m_edicin
+this.m_opciones=create m_opciones
+this.m_ventana=create m_ventana
+this.m_ayuda=create m_ayuda
+this.Item[]={this.m_archivo, &
+this.m_edicin, &
+this.m_opciones, &
+this.m_ventana, &
+this.m_ayuda}
+end on
+
+on m_energia_perdida_corte.destroy
+destroy(this.m_archivo)
+destroy(this.m_edicin)
+destroy(this.m_opciones)
+destroy(this.m_ventana)
+destroy(this.m_ayuda)
+end on
+
+type m_archivo from menu within m_energia_perdida_corte
+m_agregar m_agregar
+m_eliminar m_eliminar
+m_-1 m_-1
+m_- m_-
+m_imprimir m_imprimir
+m_seleccionarimpresora m_seleccionarimpresora
+m_-2 m_-2
+m_preferencias m_preferencias
+m_-5 m_-5
+m_cerrar m_cerrar
+end type
+
+on m_archivo.create
+this.Text="&Archivo"
+this.m_agregar=create m_agregar
+this.m_eliminar=create m_eliminar
+this.m_-1=create m_-1
+this.m_-=create m_-
+this.m_imprimir=create m_imprimir
+this.m_seleccionarimpresora=create m_seleccionarimpresora
+this.m_-2=create m_-2
+this.m_preferencias=create m_preferencias
+this.m_-5=create m_-5
+this.m_cerrar=create m_cerrar
+this.Item[]={this.m_agregar, &
+this.m_eliminar, &
+this.m_-1, &
+this.m_-, &
+this.m_imprimir, &
+this.m_seleccionarimpresora, &
+this.m_-2, &
+this.m_preferencias, &
+this.m_-5, &
+this.m_cerrar}
+end on
+
+on m_archivo.destroy
+destroy(this.m_agregar)
+destroy(this.m_eliminar)
+destroy(this.m_-1)
+destroy(this.m_-)
+destroy(this.m_imprimir)
+destroy(this.m_seleccionarimpresora)
+destroy(this.m_-2)
+destroy(this.m_preferencias)
+destroy(this.m_-5)
+destroy(this.m_cerrar)
+end on
+
+type m_agregar from menu within m_archivo
+end type
+
+on m_agregar.create
+this.Text="&Agregar~tCtrl+A"
+this.ToolBarItemName="Insert!"
+this.ToolBarItemText="Agregar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=321
+end on
+
+type m_eliminar from menu within m_archivo
+end type
+
+on m_eliminar.create
+this.Text="&Eliminar~tCtrl+E"
+this.ToolBarItemName="Custom094!"
+this.ToolBarItemText="Eliminar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=325
+end on
+
+type m_-1 from menu within m_archivo
+end type
+
+on m_-1.create
+this.Text="-"
+end on
+
+type m_- from menu within m_archivo
+end type
+
+on m_-.create
+this.Text="&Grabar~tCtrl+G"
+this.ToolBarItemName="Update!"
+this.ToolBarItemText="Grabar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=327
+end on
+
+type m_imprimir from menu within m_archivo
+end type
+
+on m_imprimir.create
+this.Text="&Imprimir~tF5"
+this.ToolBarItemName="Custom074!"
+this.ToolBarItemText="Imprimir"
+this.Shortcut=116
+end on
+
+event clicked;w_4007_energia_perdida_corte.triggerevent("ue_imprimir")
+end event
+
+type m_seleccionarimpresora from menu within m_archivo
+end type
+
+on m_seleccionarimpresora.create
+this.Text="Se&leccionar Impresora~tAlt+S"
+this.ToolBarItemName="Print!"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=595
+end on
+
+type m_-2 from menu within m_archivo
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_preferencias from menu within m_archivo
+end type
+
+on m_preferencias.create
+this.Text="&Preferencias"
+this.ToolBarItemName="SelectReturn!"
+this.ToolBarItemVisible=false
+this.Enabled=false
+end on
+
+on m_preferencias.destroy
+end on
+
+type m_-5 from menu within m_archivo
+end type
+
+on m_-5.create
+this.Text="-"
+end on
+
+type m_cerrar from menu within m_archivo
+end type
+
+on clicked;close (parentWindow)
+end on
+
+on m_cerrar.create
+this.Text="&Cerrar~tAlt+F4"
+this.Microhelp="Cerrar la ventana activa."
+this.ToolBarItemName="RunWindow!"
+this.ToolBarItemText="Salir"
+this.Shortcut=627
+end on
+
+type m_edicin from menu within m_energia_perdida_corte
+m_deshacer m_deshacer
+m_-3 m_-3
+m_cortar m_cortar
+m_copiar m_copiar
+m_pegar m_pegar
+m_-4 m_-4
+m_iralcomienzo m_iralcomienzo
+m_iralfinal m_iralfinal
+m_buscar m_buscar
+m_seleccionar_todo m_seleccionar_todo
+end type
+
+on m_edicin.create
+this.Text="&Edici$$HEX1$$f300$$ENDHEX$$n"
+this.m_deshacer=create m_deshacer
+this.m_-3=create m_-3
+this.m_cortar=create m_cortar
+this.m_copiar=create m_copiar
+this.m_pegar=create m_pegar
+this.m_-4=create m_-4
+this.m_iralcomienzo=create m_iralcomienzo
+this.m_iralfinal=create m_iralfinal
+this.m_buscar=create m_buscar
+this.m_seleccionar_todo=create m_seleccionar_todo
+this.Item[]={this.m_deshacer, &
+this.m_-3, &
+this.m_cortar, &
+this.m_copiar, &
+this.m_pegar, &
+this.m_-4, &
+this.m_iralcomienzo, &
+this.m_iralfinal, &
+this.m_buscar, &
+this.m_seleccionar_todo}
+end on
+
+on m_edicin.destroy
+destroy(this.m_deshacer)
+destroy(this.m_-3)
+destroy(this.m_cortar)
+destroy(this.m_copiar)
+destroy(this.m_pegar)
+destroy(this.m_-4)
+destroy(this.m_iralcomienzo)
+destroy(this.m_iralfinal)
+destroy(this.m_buscar)
+destroy(this.m_seleccionar_todo)
+end on
+
+type m_deshacer from menu within m_edicin
+end type
+
+on m_deshacer.create
+this.Text="&Deshacer~tCtrl+Z"
+this.ToolBarItemName="Undo!"
+this.ToolBarItemText="Deshacer"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=346
+end on
+
+type m_-3 from menu within m_edicin
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_cortar from menu within m_edicin
+end type
+
+on m_cortar.create
+this.Text="&Cortar~tCtrl+X"
+this.ToolBarItemName="Cut!"
+this.ToolBarItemText="Cortar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=344
+end on
+
+type m_copiar from menu within m_edicin
+end type
+
+on m_copiar.create
+this.Text="C&opiar~tCtrl+C"
+this.ToolBarItemName="Copy!"
+this.ToolBarItemText="Copiar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=323
+end on
+
+type m_pegar from menu within m_edicin
+end type
+
+on m_pegar.create
+this.Text="&Pegar~tCtrl+V"
+this.ToolBarItemName="Paste!"
+this.ToolBarItemText="Pegar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=342
+end on
+
+type m_-4 from menu within m_edicin
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_iralcomienzo from menu within m_edicin
+end type
+
+on m_iralcomienzo.create
+this.Text="Ir al Co&mienzo~tCtrl+K"
+this.ToolBarItemName="VCRFirst!"
+this.ToolBarItemText="Comienzo"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=331
+end on
+
+type m_iralfinal from menu within m_edicin
+end type
+
+on m_iralfinal.create
+this.Text="Ir al &Final~tCtrl+J"
+this.ToolBarItemName="VCRLast!"
+this.ToolBarItemText="Fin"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=330
+end on
+
+type m_buscar from menu within m_edicin
+end type
+
+on m_buscar.create
+this.Text="&Buscar~tCtrl+B"
+this.ToolBarItemName="Search!"
+this.ToolBarItemText="Buscar"
+this.ToolBarItemVisible=false
+this.Enabled=false
+this.Shortcut=322
+end on
+
+type m_seleccionar_todo from menu within m_edicin
+end type
+
+event clicked;w_4007_energia_perdida_corte.fw_seleccionar_todo()
+end event
+
+on m_seleccionar_todo.create
+this.Text="&Seleccionar_Todo"
+end on
+
+type m_opciones from menu within m_energia_perdida_corte
+m_actualizar m_actualizar
+m_historicos m_historicos
+end type
+
+on m_opciones.create
+this.Text="&Opciones"
+this.m_actualizar=create m_actualizar
+this.m_historicos=create m_historicos
+this.Item[]={this.m_actualizar, &
+this.m_historicos}
+end on
+
+on m_opciones.destroy
+destroy(this.m_actualizar)
+destroy(this.m_historicos)
+end on
+
+type m_actualizar from menu within m_opciones
+end type
+
+on clicked;w_4007_energia_perdida_corte.TriggerEvent("ue_actualizar")
+
+end on
+
+on m_actualizar.create
+this.Text="Actuali&zar"
+this.Microhelp="Aplica el filtro seleccionado a la consulta"
+this.ToolBarItemName="Search!"
+this.ToolBarItemText="Aplicar Filtro"
+this.ToolBarItemSpace=2
+end on
+
+type m_historicos from menu within m_opciones
+end type
+
+on clicked;w_4007_energia_perdida_corte.triggerEvent("ue_historicos")
+
+end on
+
+on m_historicos.create
+this.Text="&Hist$$HEX1$$f300$$ENDHEX$$ricos"
+this.Microhelp="Muestra los Hist$$HEX1$$f300$$ENDHEX$$ricos de los Cortes de Energ$$HEX1$$ed00$$ENDHEX$$a"
+this.ToolBarItemName="Custom023!"
+this.ToolBarItemText="Hist$$HEX1$$f300$$ENDHEX$$ricos"
+this.ToolBarItemSpace=2
+end on
+
+type m_ventana from menu within m_energia_perdida_corte
+m_mosaico m_mosaico
+m_cascada m_cascada
+m_organizariconos m_organizariconos
+end type
+
+on m_ventana.create
+this.Text="&Ventana"
+this.Microhelp="Selecciona ventanas activas."
+this.m_mosaico=create m_mosaico
+this.m_cascada=create m_cascada
+this.m_organizariconos=create m_organizariconos
+this.Item[]={this.m_mosaico, &
+this.m_cascada, &
+this.m_organizariconos}
+end on
+
+on m_ventana.destroy
+destroy(this.m_mosaico)
+destroy(this.m_cascada)
+destroy(this.m_organizariconos)
+end on
+
+type m_mosaico from menu within m_ventana
+end type
+
+on m_mosaico.create
+this.Text="&Mosaico"
+this.Enabled=false
+end on
+
+type m_cascada from menu within m_ventana
+end type
+
+on m_cascada.create
+this.Text="&Cascada"
+this.Enabled=false
+end on
+
+type m_organizariconos from menu within m_ventana
+end type
+
+on m_organizariconos.create
+this.Text="&Organizar Iconos"
+this.Enabled=false
+end on
+
+type m_ayuda from menu within m_energia_perdida_corte
+m_acercadelopensgi m_acercadelopensgi
+end type
+
+on m_ayuda.create
+this.Text="A&yuda"
+this.m_acercadelopensgi=create m_acercadelopensgi
+this.Item[]={this.m_acercadelopensgi}
+end on
+
+on m_ayuda.destroy
+destroy(this.m_acercadelopensgi)
+end on
+
+type m_acercadelopensgi from menu within m_ayuda
+end type
+
+on m_acercadelopensgi.create
+this.Text="&Acerca del Open SGI."
+end on
+
+event clicked;Open(w_acerca_de_sgi)
+end event
+

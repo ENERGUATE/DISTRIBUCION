@@ -1,0 +1,13 @@
+HA$PBExportHeader$s_bdg.srs
+global type s_bdg from structure
+	integer		gi_centro
+	integer		gi_cmd
+	integer		gi_puesto
+	date		gda_periodo
+	integer		gi_tipo_incid
+	integer		gi_tension_afec
+	string		gs_material_aver
+	integer		gi_int_horario
+	integer		gi_causa
+end type
+

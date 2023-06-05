@@ -1,0 +1,21 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "exter_dom.pbl" "";
+@end;
+@begin Objects
+ "dw_co_salmt_descargo.srd" "exter_dom.pbl";
+ "f_centrar_ventana.srf" "exter_dom.pbl";
+ "dw_co_salmt_ind.srd" "exter_dom.pbl";
+ "dw_ma_salmt_ind.srd" "exter_dom.pbl";
+ "dw_co_salmt_int_inv.srd" "exter_dom.pbl";
+ "gf_set_tab_zero.srf" "exter_dom.pbl";
+ "s_mensaje_salmt.srs" "exter_dom.pbl";
+ "s_brigada_int.srs" "exter_dom.pbl";
+ "w_co_salmt_ind.srw" "exter_dom.pbl";
+ "w_ma_salmt_ind.srw" "exter_dom.pbl";
+ "dw_co_salmt_int_abierta_conect.srd" "exter_dom.pbl";
+ "dw_co_salmt.srd" "exter_dom.pbl";
+ "dw_co_salmt_int_abierta.srd" "exter_dom.pbl";
+ "w_co_mensaje.srw" "exter_dom.pbl";
+ "dw_co_cliente_imp_salmt.srd" "exter_dom.pbl";
+@end;

@@ -1,0 +1,50 @@
+HA$PBExportHeader$d_ins_2018_lista_sum.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=aco_sum_pot_contratada dbname="aco_sum.pot_contratada" )
+ column=(type=decimal(0) updatewhereclause=yes name=aco_sum_num_puerta dbname="aco_sum.num_puerta" )
+ column=(type=char(10) updatewhereclause=yes name=aco_sum_duplicador dbname="aco_sum.duplicador" )
+ column=(type=char(6) updatewhereclause=yes name=aco_sum_cgv_sum dbname="aco_sum.cgv_sum" )
+ column=(type=char(30) updatewhereclause=yes name=callejero_nom_calle dbname="callejero.nom_calle" )
+ column=(type=char(20) updatewhereclause=yes name=compute_0006 dbname="compute_0006" )
+ column=(type=char(20) updatewhereclause=yes name=compute_0007 dbname="compute_0007" )
+ column=(type=char(30) updatewhereclause=yes name=compute_0008 dbname="compute_0008" )
+ column=(type=decimal(0) updatewhereclause=yes name=aco_sum_nif dbname="aco_sum.nif" )
+ column=(type=decimal(0) updatewhereclause=yes name=aco_sum_cod_calle dbname="aco_sum.cod_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=aco_sum_nis_rad dbname="aco_sum.nis_rad" )
+ column=(type=char(4000) updatewhereclause=yes name=cdireccion dbname="cdireccion" )
+ retrieve="  SELECT ~"ACO_SUM~".~"POT_CONTRATADA~",   
+         ACO_SUM.NUM_PUERTA,  
+	  ACO_SUM.DUPLICADOR,
+         ~"ACO_SUM~".~"CGV_SUM~",   
+         ~"CALLEJERO~".~"NOM_CALLE~",   
+         NVL(A.APE1_CLI,B.APE1_CLI),   
+         NVL(A.APE2_CLI,B.APE2_CLI),   
+         NVL(A.NOM_CLI, B.NOM_CLI),   
+         ~"ACO_SUM~".~"NIF~",   
+          ACO_SUM.COD_CALLE, 
+         ~"ACO_SUM~".~"NIS_RAD~",   
+         fgnu_calle_referencia(CALLEJERO.NOM_CALLE, ACO_SUM.NUM_PUERTA, ACO_SUM.DUPLICADOR, ACO_SUM.NIF, ACO_SUM.COD_CALLE, 0, ' ', 0, ' ') cdireccion  
+    FROM ~"ACO_SUM~",   
+         ~"SUMCON~",   
+         ~"PETSUM~",   
+         ~"CLIENTES~" ~"B~",   
+         ~"CLIENTES~" ~"A~",   
+         ~"CALLEJERO~"   
+" retrieve.asneeded=yes )
+text(band=header alignment="2" text="Direcci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="14" y="0" height="64" width="1326" html.valueishtml="0"  name=cdireccion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text=" Pot. Contratada " border="6" color="0" x="1358" y="0" height="64" width="489" html.valueishtml="0"  name=aco_sum_pot_contratada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="N.i.s." border="6" color="0" x="1865" y="0" height="64" width="425" html.valueishtml="0"  name=aco_sum_nis_rad_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="    Nombre" border="6" color="0" x="2309" y="0" height="64" width="1678" html.valueishtml="0"  name=compute_0006_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="8388608" x="18" y="4" height="56" width="1317" format="[general]" html.valueishtml="0"  name=cdireccion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="8388608" x="1344" y="4" height="64" width="489" format="[general]" html.valueishtml="0"  name=aco_sum_pot_contratada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="8388608" x="1865" y="4" height="64" width="398" format="[general]" html.valueishtml="0"  name=aco_sum_nis_rad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="2309" y="4" height="56" width="485" format="[general]" html.valueishtml="0"  name=compute_0006 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="2816" y="4" height="56" width="462" format="[general]" html.valueishtml="0"  name=compute_0007 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="3301" y="4" height="56" width="690" format="[general]" html.valueishtml="0"  name=compute_0008 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

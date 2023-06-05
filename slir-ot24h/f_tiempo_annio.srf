@@ -1,0 +1,42 @@
+HA$PBExportHeader$f_tiempo_annio.srf
+global type f_tiempo_annio from function_object
+end type
+
+forward prototypes
+global function long f_tiempo_annio (readonly long ai_annio)
+end prototypes
+
+global function long f_tiempo_annio (readonly long ai_annio);DateTime ldt_fecha_sys
+Date ldt_fecha_ini
+Time lt_tiempo
+Long ll_sys_annio,  ll_sys_dias, ll_sys_minutos, ll_return
+
+
+Select sysdate Into:ldt_fecha_sys From dual;
+
+lt_tiempo		= Time(ldt_fecha_sys)
+ll_sys_annio 	= Year(Date(ldt_fecha_sys))
+ll_sys_minutos = Minute(Time(lt_tiempo))
+
+
+If ll_sys_annio = ai_annio Then
+	ldt_fecha_ini  = Date("01/01/" + String(ai_annio))
+	ll_sys_dias    = DaysAfter(ldt_fecha_ini, Date(ldt_fecha_sys))
+//	CAMBIO SGI DESARROLLO 2000 ll_sys_minutos = (Hour(lt_tiempo) * 60) + Minute(lt_tiempo)
+	ll_sys_minutos = (Hour(lt_tiempo) ) 
+//	CAMBIO SGI DESARROLLO 2000 ll_return		= (ll_sys_dias * 24 * 60) + ll_sys_minutos
+	ll_return		= (ll_sys_dias * 24 ) 
+Else
+	If Day(fg_fecha_max(ai_annio, 2)) = 29 Then
+//	CAMBIO SGI DESARROLLO 2000	ll_return = (8761 * 60)
+		ll_return = (8761 )
+	Else
+//	CAMBIO SGI DESARROLLO 2000 	ll_return = (8760 * 60)
+		ll_return = (8760 )
+	End If
+End If
+
+
+Return ll_return
+end function
+

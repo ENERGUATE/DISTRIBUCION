@@ -1,0 +1,70 @@
+HA$PBExportHeader$dw_informes_xoperador.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=216 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=184 color="536870912" )
+detail(height=96 color="553648127~tIF(MOD(GETROW(),2)=0,rgb(255,255,255),RGB(197,217,241))" )
+table(column=(type=char(50) updatewhereclause=yes name=usuario dbname="usuario" )
+ column=(type=number updatewhereclause=yes name=llamadas dbname="llamadas" )
+ column=(type=number updatewhereclause=yes name=registros dbname="registros" )
+ column=(type=number updatewhereclause=yes name=tmr_hrs dbname="tmr_hrs" )
+ column=(type=datetime updatewhereclause=yes name=inicio_de_rango dbname="inicio_de_rango" )
+ column=(type=datetime updatewhereclause=yes name=fin_de_rango dbname="fin_de_rango" )
+ retrieve="select u.nombre ~"Usuario~",
+	   a.llamadas ~"Llamadas~",
+	   b.registros ~"Registros~",
+	   c.tiempo ~"TMR_HRS~",
+	   to_date(:f1,'dd/mm/yyyy hh24:mi:ss') ~"Inicio_de_Rango~",
+	   to_date(:f2,'dd/mm/yyyy hh24:mi:ss') ~"Fin_de_Rango~"
+from(
+select nombre nombre, 
+	   usuario cod_usuario,
+	   status status
+from usuario
+ ) u,
+		(
+		select cod_usuario, 
+			   count(*) llamadas
+		from (
+			select /*+ RULE*/distinct cod_usuario, id
+			from registro
+			where fecha_alta between to_date(:f1,'dd/mm/yyyy hh24:mi:ss') and to_date(:f2,'dd/mm/yyyy hh24:mi:ss')
+			)
+			group by cod_usuario ) a,
+			(select /*+ RULE*/cod_usuario, 
+				   count(*) registros
+			from registro
+			where fecha_alta between to_date(:f1,'dd/mm/yyyy hh24:mi:ss') and to_date(:f2,'dd/mm/yyyy hh24:mi:ss')
+			group by cod_usuario) b,
+			(select /*+ RULE*/cod_usuario, avg(tiempo) tiempo 
+			from (
+			select /*+ RULE*/cod_usuario,  
+				   (fecha_resolucion - fecha_alta) *24  tiempo
+			from registro
+			where (fecha_resolucion - fecha_alta) > 0
+			and fecha_resolucion is not null
+			and fecha_alta between to_date(:f1,'dd/mm/yyyy hh24:mi:ss') and to_date(:f2,'dd/mm/yyyy hh24:mi:ss')
+			) group by cod_usuario) c
+			where a.cod_usuario (+) =u.cod_usuario 
+			and   b.cod_usuario (+) =u.cod_usuario 
+			and   c.cod_usuario (+) =u.cod_usuario
+			and   (u.cod_usuario=:usuario or :usuario='?')
+			and  u.status='A'
+			and  a.llamadas > 0
+			" arguments=(("USUARIO", string),("F1", string),("F2", string)) )
+text(band=header alignment="0" text="  Fecha Inicio                          Fecha fin              "border="0" color="16777215" x="2510" y="24" height="188" width="1394"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Tiempo medio de resoluci$$HEX1$$f300$$ENDHEX$$n (Hrs)"border="0" color="16777215" x="2071" y="24" height="188" width="430"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="0" text="Usuario                                                               LLamadas    Registros   "border="0" color="16777215" x="9" y="24" height="188" width="2057"  name=usuario_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="1349" format="[general]"  name=usuario edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="0" x="1376" y="8" height="76" width="329" format="[general]"  name=llamadas edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="1723" y="8" height="76" width="329" format="[general]"  name=registros edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="0" x="2066" y="8" height="76" width="411" format="#,##0.00"  name=tmr_hrs edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="0" x="2491" y="8" height="76" width="695" format="dd/mm/yyyy hh:mm:ss"  name=inicio_de_rango edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="0" x="3209" y="8" height="76" width="695" format="dd/mm/yyyy hh:mm:ss"  name=fin_de_rango edit.limit=1 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="getrow()+'/'+rowcount()"border="0" color="16777215" x="14" y="8" height="128" width="3895" format="[general]"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+compute(band=footer alignment="2" expression="sum(llamadas for all)"border="0" color="16777215" x="1376" y="8" height="76" width="329" format="#,##0"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="2" expression="sum(registros for all)"border="0" color="16777215" x="1723" y="8" height="76" width="329" format="#,##0"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+button(band=footer text=""filename=""defaultpicture=yes action="8" border="0" color="0" x="2336" y="12" height="120" width="229" vtextalign="0" htextalign="0"  name=ordenar  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="14215660" )
+text(band=footer alignment="0" text="Ordenar"border="0" color="16777215" x="2574" y="40" height="60" width="238"  font.face="Helvetica" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

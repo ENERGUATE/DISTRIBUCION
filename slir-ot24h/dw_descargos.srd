@@ -1,0 +1,77 @@
+HA$PBExportHeader$dw_descargos.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=148 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=136 color="536870912" )
+detail(height=1764 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=sgd_salmt_smt dbname="smt" )
+ column=(type=char(30) updatewhereclause=yes name=sgd_subestac_subestacion dbname="sgd_subestac.subestacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_descargos_descargo dbname="sgd_descargos.descargo" )
+ column=(type=datetime updatewhereclause=yes name=sgd_descargos_fecha_inicio dbname="sgd_descargos.fecha_inicio" )
+ column=(type=datetime updatewhereclause=yes name=sgd_descargos_fecha_fin dbname="sgd_descargos.fecha_fin" )
+ column=(type=char(2000) updatewhereclause=yes name=sgd_descargos_ubicacion dbname="sgd_descargos.ubicacion" )
+ column=(type=char(32) updatewhereclause=yes name=estado dbname="estado" )
+ retrieve="select /*+ RULE*/
+f.NOMBRE SMT,
+g.NOMBRE SUBESTACION,
+desca.nro_descargo DESCARGO,
+desca.f_ini_aprobado FECHA_INICIO,
+desca.f_fin_aprobado FECHA_FIN,
+desca.ubicacion UBICACION,
+upper(decode(desca.estado,0,'Todos', 1, 'Definido',
+2, 'Solicitado',
+3, 'Aprobado',
+4, 'Rechazado',
+5, 'Modificado',
+6, 'Activado',
+7, 'No Activado',
+8, 'Finalizado',
+9, 'Pendiente en BDI',
+10, 'Actualizado en BDI',
+11, 'Agrupado',
+12, 'Pendiente de puesta en servicio',
+13, 'Anulado',
+14, 'Asociado en BDI',
+15, 'Rechazado en BDI',
+16, 'Aplazado')) estado
+from aco_sum a,
+sgd_acometida b,
+sgd_salbt c,
+sgd_ct d,
+sgd_salmt f,
+sgd_subestac g,
+sgd_descargos desca
+where a.nis_rad = :nis
+and d.instalacion_origen = f.codigo
+and f.instalacion_origen = g.codigo
+and a.NRO_ACOMETIDA = b.codigo
+and b.INSTALACION_ORIGEN = c.codigo
+and c.INSTALACION_ORIGEN = d.codigo
+and d.bdi_job = 0
+and f.bdi_job = 0
+and g.bdi_job = 0
+and f.codigo=desca.COD_INST_ORIGEN
+and to_date(f_ini_aprobado) = :hoy
+" arguments=(("nis", number),("hoy", date)) )
+text(band=header alignment="0" text="DESCARGOS"border="0" color="128" x="23" y="16" height="76" width="617"  font.face="Helvetica LT Std" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="contexto"border="0" color="0" x="2862" y="28" height="52" width="251"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="9" y1="128" x2="4206" y2="128" pen.style="0" pen.width="5" pen.color="128"  background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="2" color="0" x="622" y="64" height="76" width="603" format="[general]"  name=sgd_descargos_descargo edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="2" color="0" x="622" y="288" height="76" width="603" format="[shortdate] [time]"  name=sgd_descargos_fecha_fin edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="2" color="0" x="622" y="176" height="76" width="603" format="[shortdate] [time]"  name=sgd_descargos_fecha_inicio edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="2" color="0" x="1728" y="176" height="76" width="850" format="[general]"  name=sgd_salmt_smt edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="2" color="0" x="1728" y="288" height="76" width="850" format="[general]"  name=sgd_subestac_subestacion edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="2" color="0" x="123" y="544" height="1060" width="4169" format="[general]"  name=sgd_descargos_ubicacion edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.vscrollbar=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Descargo:"border="0" color="128" x="123" y="60" height="76" width="430"  name=sgd_descargos_descargo_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha Inicio:"border="0" color="128" x="123" y="176" height="76" width="430"  name=sgd_descargos_fecha_inicio_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Fecha Fin:"border="0" color="128" x="123" y="288" height="76" width="430"  name=sgd_descargos_fecha_fin_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="SMT:"border="0" color="128" x="1294" y="176" height="60" width="384"  name=sgd_salmt_smt_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="16777215" x="1728" y="428" height="60" width="2514" format="[general]"  name=estado edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=detail alignment="0" text="Ubicacion:"border="0" color="128" x="123" y="428" height="76" width="430"  name=sgd_descargos_ubicacion_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Subestacion:"border="0" color="128" x="1294" y="288" height="76" width="384"  name=sgd_subestac_subestacion_t  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Estado:"border="0" color="128" x="1294" y="428" height="60" width="384"  font.face="Helvetica LT Std" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="currentRow() + ~" de ~" + rowcount()"border="0" color="128" x="110" y="36" height="80" width="759" format="[general]"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="dw_descargos"border="0" color="0" x="2798" y="56" height="52" width="430"  font.face="Helvetica LT Std" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=footer x1="9" y1="8" x2="4206" y2="8" pen.style="0" pen.width="5" pen.color="128"  background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

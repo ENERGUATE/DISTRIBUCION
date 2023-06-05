@@ -1,0 +1,10 @@
+HA$PBExportHeader$u_bdg_2005_pr_instal_afect.sru
+forward
+global type u_bdg_2005_pr_instal_afect from u_gen_0000_lista
+end type
+end forward
+
+global type u_bdg_2005_pr_instal_afect from u_gen_0000_lista
+end type
+global u_bdg_2005_pr_instal_afect u_bdg_2005_pr_instal_afect
+

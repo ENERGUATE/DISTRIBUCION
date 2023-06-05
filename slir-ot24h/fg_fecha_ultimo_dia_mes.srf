@@ -1,0 +1,22 @@
+HA$PBExportHeader$fg_fecha_ultimo_dia_mes.srf
+global type fg_fecha_ultimo_dia_mes from function_object
+end type
+
+forward prototypes
+global function date fg_fecha_ultimo_dia_mes (datetime pda_fecha)
+end prototypes
+
+global function date fg_fecha_ultimo_dia_mes (datetime pda_fecha);///////////////////////////////////////////////////////////////////////
+//
+// Retorna la fecha com el ultimo dia del mes.
+//
+///////////////////////////////////////////////////////////////////////
+
+IF Month(Date(pda_fecha)) < 12 THEN
+	RETURN RelativeDate(Date(String(Year(Date(pda_fecha)))+'/'+String(Month(Date(pda_fecha))+1)+'/01'), -1 )
+ELSE
+	RETURN RelativeDate(Date(String(Year(Date(pda_fecha))+1)+'/01/01'), -1 )
+END IF
+
+end function
+

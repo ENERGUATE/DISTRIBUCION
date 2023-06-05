@@ -1,0 +1,107 @@
+HA$PBExportHeader$d_inc_lista_seleccion_incidencia_agrup.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=88 color="-1" )
+summary(height=28 color="-1" )
+footer(height=0 color="-1" )
+detail(height=92 color="-1" )
+table(column=(type=datetime updatewhereclause=yes name=gi_incidencia_agrupada_f_deteccion dbname="gi_incidencia_agrupada.f_deteccion" )
+ column=(type=decimal(1) updatewhereclause=yes name=gi_incidencia_agrupada_pot_afectada dbname="gi_incidencia_agrupada.pot_afectada" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_incidencia_agrupada_ccli_afec dbname="gi_incidencia_agrupada.ccli_afec" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_incidencia_agrupada_est_actual dbname="gi_incidencia_agrupada.est_actual" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_incidencia dbname="gi_incidencia_agrupada.nro_incidencia" )
+ column=(type=decimal(0) updatewhereclause=yes name=tip_incidencia dbname="gi_incidencia_agrupada.tip_incidencia" )
+ column=(type=decimal(0) updatewhereclause=yes name=alcance dbname="gi_incidencia_agrupada.alcance" )
+ column=(type=datetime updatewhereclause=yes name=gi_incidencia_agrupada_fec_resolucion dbname="gi_incidencia_agrupada.fec_resolucion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(80) updatewhereclause=yes name=gi_incidencia_agrupada_desc_incidencia dbname="gi_incidencia_agrupada.desc_incidencia" )
+ column=(type=char(4000) updatewhereclause=yes name=estado_incid dbname="estado_incid" )
+ column=(type=char(4000) updatewhereclause=yes name=estado_man dbname="estado_man" )
+ column=(type=char(4000) updatewhereclause=yes name=tension dbname="tension" )
+ column=(type=char(4000) updatewhereclause=yes name=tipo dbname="tipo" )
+ column=(type=char(4000) updatewhereclause=yes name=duracion_str dbname="duracion_str" )
+ column=(type=number updatewhereclause=yes name=cll_duracion dbname="cl_duracion" )
+ column=(type=char(4000) updatewhereclause=yes name=nombre_instalacion dbname="nombre_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_incidencia_agrupada_nro_agrupacion dbname="gi_incidencia_agrupada.nro_agrupacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_incidencia_agrupada_ind_alum_pub dbname="gi_incidencia_agrupada.ind_alum_pub" )
+ column=(type=char(30) updatewhereclause=yes name=gi_incidencia_agrupada_usuario dbname="gi_incidencia_agrupada.usuario" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_incidencia_agrupada_duracion_sr dbname="gi_incidencia_agrupada.duracion_sr" )
+ column=(type=char(4000) updatewhereclause=yes name=c_duracion_rs dbname="c_duracion_rs" )
+ column=(type=number updatewhereclause=yes name=c_ext_paxtc dbname="c_ext_paxtc" )
+ column=(type=number updatewhereclause=yes name=c_ext_duracion dbname="c_ext_duracion" )
+ column=(type=char(30) updatewhereclause=yes name=c_nom_salmt dbname="c_nom_salmt" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_inst_afectada dbname="gi_incidencia_agrupada.nro_inst_afectada" )
+ retrieve="SELECT GI_INCIDENCIA_AGRUPADA.F_DETECCION,
+ GI_INCIDENCIA_AGRUPADA.POT_AFECTADA,
+ GI_INCIDENCIA_AGRUPADA.CCLI_AFEC,
+GI_INCIDENCIA_AGRUPADA.EST_ACTUAL,
+GI_INCIDENCIA_AGRUPADA.NRO_INCIDENCIA, 
+GI_INCIDENCIA_AGRUPADA.TIP_INCIDENCIA, 
+GI_INCIDENCIA_AGRUPADA.ALCANCE,  
+GI_INCIDENCIA_AGRUPADA.FEC_RESOLUCION, 
+SGD_INSTALACION.NOM_INSTALACION, 
+GI_INCIDENCIA_AGRUPADA.DESC_INCIDENCIA,
+Fgnu_Est_Inc2(GI_INCIDENCIA_AGRUPADA.EST_ACTUAL, GI_INCIDENCIA_AGRUPADA.ALCANCE,GI_INCIDENCIA_AGRUPADA.TIP_INCIDENCIA) ESTADO_INCID,
+Fgnu_Est_Man(estado_mantenimiento) ESTADO_MAN,
+Fgnu_Ten_Inc(tip_tension) TENSION ,Fgnu_Tip_Inc(tip_incidencia) TIPO,
+Fgnu_Duracion_Str(f_deteccion,fec_resolucion) DURACION_STR,
+Fg_Duracion_Int(f_deteccion,fec_resolucion) CL_DURACION ,
+F_Nombre_Instalacion2(sgd_instalacion.nom_instalacion,
+							GI_INCIDENCIA_AGRUPADA.DIR_AVISO,
+							GI_INCIDENCIA_AGRUPADA.ALCANCE) NOMBRE_INSTALACION, 
+GI_INCIDENCIA_AGRUPADA.NRO_AGRUPACION,
+GI_INCIDENCIA_AGRUPADA.IND_ALUM_PUB,
+GI_INCIDENCIA_AGRUPADA.USUARIO,
+GI_INCIDENCIA_AGRUPADA.DURACION_SR,
+FGNU_DURACION_SR(NVL(GI_INCIDENCIA_AGRUPADA.DURACION_SR, 0)) As c_duracion_rs,
+NVL(GI_INCIDENCIA_AGRUPADA.PAXTC, 0) AS C_EXT_PAXTC,
+NVL(GI_INCIDENCIA_AGRUPADA.DURACION, 0) AS C_EXT_DURACION,
+'                              ' As c_nom_salmt,
+GI_INCIDENCIA_AGRUPADA.nro_inst_afectada
+FROM SGD_INSTALACION, GI_INCIDENCIA_AGRUPADA
+WHERE  GI_INCIDENCIA_AGRUPADA.nro_inst_afectada = sgd_instalacion.nro_instalacion (+) AND
+		 sgd_instalacion.bdi_job(+) = 0  AND
+		 GI_INCIDENCIA_AGRUPADA.NRO_AGRUPACION = :pl_nro_agrupacion	AND
+		 GI_INCIDENCIA_AGRUPADA.NRO_INCIDENCIA <> :pl_nro_incidencia
+		
+		 " arguments=(("pl_nro_agrupacion", number),("pl_nro_incidencia", number)) )
+text(band=header alignment="2" text="Duraci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="2761" y="96" height="64" width="475" html.valueishtml="0"  name=compute_0034_t visible="1~t0"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Nro. Incid." border="6" color="0" x="9" y="12" height="64" width="379" html.valueishtml="0"  name=nro_incidencia_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n Afectada" border="6" color="0" x="407" y="12" height="64" width="1019" html.valueishtml="0"  name=nombre_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="OP" border="6" color="0" x="1445" y="12" height="64" width="96" html.valueishtml="0"  name=estado_incid_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="MA" border="6" color="0" x="1559" y="12" height="64" width="96" html.valueishtml="0"  name=estado_man_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="TEN" border="6" color="0" x="1673" y="12" height="64" width="137" html.valueishtml="0"  name=tension_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="TIP" border="6" color="0" x="1829" y="12" height="64" width="379" html.valueishtml="0"  name=tipo_t  tag="bmp" visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Detecci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="2226" y="12" height="64" width="549" html.valueishtml="0"  name=gi_incidencia_agrupada_f_deteccion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Duraci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="2793" y="12" height="64" width="475" html.valueishtml="0"  name=dura_sr_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="P. Afec." border="6" color="0" x="3287" y="12" height="64" width="293" html.valueishtml="0"  name=gi_incidencia_agrupada_pot_afectada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="C.Afec." border="6" color="0" x="3598" y="12" height="64" width="256" html.valueishtml="0"  name=gi_incidencia_agrupada_ccli_afec_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Resoluci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="3872" y="12" height="64" width="512" html.valueishtml="0"  name=gi_incidencia_agrupada_fec_resolucion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text=" Descripci$$HEX1$$f300$$ENDHEX$$n de la Incidencia" border="6" color="0" x="4402" y="12" height="64" width="2880" html.valueishtml="0"  name=gi_incidencia_agrupada_desc_incidencia_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Usuario" border="6" color="0" x="7301" y="12" height="64" width="960" html.valueishtml="0"  name=gi_incidencia_agrupada_usuario_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+compute(band=detail alignment="0" expression=" if ( gi_incidencia_agrupada_nro_agrupacion > 0, 1,0) "border="0" color="0" x="2112" y="104" height="48" width="78" format="[general]" html.valueishtml="0"  name=ind_agrupado visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+bitmap(band=detail filename="RELOJ_OB.bmp" x="1925" y="8" height="64" width="78" border="0"  name=incidencia_obligada visible="1~tif (tip_incidencia = 5,1,0)" )
+bitmap(band=detail filename="reloj.bmp" x="1925" y="8" height="64" width="78" border="0"  name=incidencia_programada visible="1~tif (tip_incidencia = 2,1,0)" )
+bitmap(band=detail filename="scada.bmp" x="1925" y="8" height="64" width="78" border="0"  name=incidencia_scada visible="1~tif( tip_incidencia = 4,1,0)" )
+bitmap(band=detail filename="inci_imp.bmp" x="1925" y="8" height="64" width="78" border="0"  name=incidencia_imp visible="1~tif ( tip_incidencia = 1,1,0)" )
+bitmap(band=detail filename="inci_sr.bmp" x="1925" y="8" height="64" width="87" border="0"  name=incidencia_de_instalacion visible="1~tif ( alcance  = 4,1,0)" )
+bitmap(band=detail filename="cor_pro1.bmp" x="2016" y="8" height="64" width="78" border="0"  name=incidencia_con_perdida visible="1~tif ( alcance = 2,1,0)" )
+bitmap(band=detail filename="sincorte.bmp" x="2016" y="8" height="64" width="78" border="0"  name=incidencia_sin_perdida visible="1~tif( alcance = 3, 1,0)" )
+bitmap(band=detail filename="reenganche.bmp" x="2016" y="8" height="64" width="78" border="0"  name=incidencia_reenganche visible="1~tif (alcance = 5,1,0)" )
+bitmap(band=detail filename="candado.bmp" x="2117" y="8" height="64" width="78" border="0"  name=pb_ind_agrupado visible="1~tif (gi_incidencia_agrupada_nro_agrupacion > 0, 1,0)" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="2226" y="8" height="64" width="549" format="[shortdate] [time]" html.valueishtml="0"  name=gi_incidencia_agrupada_f_deteccion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="2" expression="c_duracion_rs"border="0" color="8388608" x="2793" y="8" height="64" width="466" format="[general]" html.valueishtml="0"  name=dura_sr visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="3287" y="8" height="64" width="293" format="[general]" html.valueishtml="0"  name=gi_incidencia_agrupada_pot_afectada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="3598" y="8" height="64" width="256" format="[general]" html.valueishtml="0"  name=gi_incidencia_agrupada_ccli_afec visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="3872" y="8" height="64" width="512" format="[shortdate] [time]" html.valueishtml="0"  name=gi_incidencia_agrupada_fec_resolucion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="8388608" x="4402" y="8" height="64" width="2496" format="[general]" html.valueishtml="0"  name=gi_incidencia_agrupada_desc_incidencia visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="6935" y="8" height="64" width="261" format="[general]" html.valueishtml="0"  name=cll_duracion visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="8388608" x="7301" y="8" height="64" width="960" format="[general]" html.valueishtml="0"  name=gi_incidencia_agrupada_usuario visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="8388608" x="1445" y="8" height="64" width="96" format="[general]" html.valueishtml="0"  name=estado_incid visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="8388608" x="1559" y="8" height="64" width="96" format="[general]" html.valueishtml="0"  name=estado_man visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="8388608" x="1673" y="8" height="64" width="137" format="[general]" html.valueishtml="0"  name=tension visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="8388608" x="1829" y="8" height="64" width="78" format="[general]" html.valueishtml="0"  name=tipo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="8" height="64" width="379" format="[general]" html.valueishtml="0"  name=nro_incidencia visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="8388608" x="407" y="8" height="64" width="1019" format="[general]" html.valueishtml="0"  name=nombre_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

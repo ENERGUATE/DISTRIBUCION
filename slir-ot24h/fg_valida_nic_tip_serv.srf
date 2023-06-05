@@ -1,0 +1,60 @@
+HA$PBExportHeader$fg_valida_nic_tip_serv.srf
+global type fg_valida_nic_tip_serv from function_object
+end type
+
+forward prototypes
+global function integer fg_valida_nic_tip_serv ()
+end prototypes
+
+global function integer fg_valida_nic_tip_serv ();//******************************************
+//**  OSGI 2001.2  	24/09/2002				**
+//**  Jair Padilla / Soluziona PANAMA  	**
+//**  TIPOS DE SERVICIOS SUMCON TIP_SERV  **
+//******************************************
+///////////////////////////////////////////////////////
+//									
+// Funcion/Evento: fg_valida_nic_tip_serv
+// 
+// Objetivo: Verifica si el par$$HEX1$$e100$$ENDHEX$$metro de busqueda de suministros
+//				 por NIC y/o SUMCON_TIP_SERV est$$HEX1$$e100$$ENDHEX$$n activados para determinar
+//				 si las columnas NIC y TIP_SERV existen.
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: --
+//					
+//    Salida : --
+//
+// Devuelve: String
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 24/09/2002   JPE
+//
+///////////////////////////////////////////////////////
+String ls_sql
+Boolean lb_nic, lb_tip_serv
+Integer li_return
+
+
+
+If fg_verifica_parametro('NIC') Or fg_verifica_parametro('SUMCON_TIP_SERV') Then
+	ls_sql = "SELECT NIC, TIP_SERV FROM SUMCON WHERE ROWNUM = 1"
+	EXECUTE IMMEDIATE :ls_sql ;
+
+	If sqlca.sqlcode < 0 Then
+		MessageBox("Error", "El par$$HEX1$$e100$$ENDHEX$$metro de busqueda de suministros por NIC y/o SUMCON_TIP_SERV pueden estar activados.  " + &
+						  "Para poder utilizar estas opciones, las columnas NIC y TIP_SERV deben " + &
+						  "existir en la tabla SUMCON.")
+	
+		li_return = -1
+	Else
+		li_return = 1
+	End If
+Else
+	li_return = 0
+End If
+
+Return li_return
+end function
+

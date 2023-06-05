@@ -1,0 +1,12 @@
+HA$PBExportHeader$ddw_cmd_instala.srd
+release 5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=1 color="536870912" )
+summary(height=5 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=93 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=sgd_centro_nro_centro dbname="sgd_centro.nro_centro" )
+ column=(type=char(25) updatewhereclause=yes name=sgd_centro_nom_centro dbname="sgd_centro.nom_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_relacion_centro_centro_resp dbname="sgd_relacion_centro.centro_resp" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"sgd_centro~" )  TABLE(NAME=~"sgd_relacion_centro~" ) COLUMN(NAME=~"sgd_centro.nro_centro~") COLUMN(NAME=~"sgd_centro.nom_centro~") COLUMN(NAME=~"sgd_relacion_centro.centro_resp~")    JOIN (LEFT=~"sgd_centro.nro_centro~"    OP =~"=~"RIGHT=~"sgd_relacion_centro.centro_depen~" )WHERE(    EXP1 =~"( (~~~"SGD_CENTRO~~~".~~~"TIP_CENTRO~~~"~"   OP =~"=~"    EXP2 =~"2~"    LOGIC =~"or~" ) WHERE(    EXP1 =~"~~~"SGD_CENTRO~~~".~~~"NRO_CENTRO~~~"~"   OP =~"=~"    EXP2 =~"0)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( ~~~"SGD_CENTRO~~~".~~~"NRO_CENTRO~~~"~"   OP =~"<>~"    EXP2 =~"98)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( ~~~"SGD_CENTRO~~~".~~~"NRO_CENTRO~~~"~"   OP =~"<>~"    EXP2 =~"99 ) )~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"SGD_CENTRO~~~".~~~"NRO_CENTRO~~~"~"   OP =~"<>~"    EXP2 =~"0~" ) ) " )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="5" y="4" height="81" width="599" format="[general]"  name=sgd_centro_nom_centro edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )

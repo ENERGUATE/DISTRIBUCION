@@ -1,0 +1,70 @@
+HA$PBExportHeader$dw_open_descargos_det.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1004 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=subestacion dbname="subestacion" )
+ column=(type=char(30) updatewhereclause=yes name=smt dbname="smt" )
+ column=(type=decimal(0) updatewhereclause=yes name=descargo dbname="descargo" )
+ column=(type=datetime updatewhereclause=yes name=fecha_inicio dbname="fecha_inicio" )
+ column=(type=datetime updatewhereclause=yes name=fecha_fin dbname="fecha_fin" )
+ column=(type=char(2000) updatewhereclause=yes name=ubicacion dbname="ubicacion" )
+ column=(type=char(31) updatewhereclause=yes name=estado dbname="estado" )
+ retrieve="select subestacion,
+smt,
+descargo,
+fecha_inicio,
+fecha_fin,
+ubicacion,
+estado
+from(
+select distinct
+g.NOMBRE SUBESTACION,
+f.NOMBRE SMT,
+desca.nro_descargo DESCARGO,
+desca.f_ini_aprobado FECHA_INICIO,
+desca.f_fin_aprobado FECHA_FIN,
+desca.ubicacion UBICACION,
+upper(decode(desca.estado,0,'Todos', 1, 'Definido',
+2, 'Solicitado',
+3, 'Aprobado',
+4, 'Rechazado',
+5, 'Modificado',
+6, 'Activado',
+7, 'No Activado',
+8, 'Finalizado',
+9, 'Pendiente en BDI',
+10, 'Actualizado en BDI',
+11, 'Agrupado',
+12, 'Pendiente de puesta en servicio',
+13, 'Anulado',
+14, 'Asociado en BDI',
+15, 'Rechazado en BDI',
+16, 'Aplazado')) estado
+from 
+sgd_salmt f,
+sgd_subestac g,
+sgd_descargos desca
+where f.instalacion_origen = g.codigo
+and f.bdi_job = 0
+and g.bdi_job = 0
+and f.codigo=desca.COD_INST_ORIGEN
+and desca.nro_descargo=:descargo
+)
+" arguments=(("descargo", number)) )
+column(band=detail id=6 alignment="0" tabsequence=20 border="2" color="0" x="590" y="540" height="420" width="2441" format="[general]"  name=ubicacion edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autovscroll=yes edit.vscrollbar=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Ubicacion:"border="0" color="128" x="178" y="540" height="56" width="384"  name=ubicacion_t  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33554431" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="2" color="0" x="590" y="60" height="76" width="850" format="[general]"  name=subestacion edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Subestacion:"border="0" color="128" x="178" y="60" height="76" width="384"  name=subestacion_t  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33554431" )
+text(band=detail alignment="1" text="Smt:"border="0" color="128" x="178" y="156" height="76" width="384"  name=smt_t  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33554431" )
+text(band=detail alignment="1" text="Fecha Inicio:"border="0" color="128" x="178" y="348" height="76" width="384"  name=fecha_inicio_t  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33554431" )
+text(band=detail alignment="1" text="Fecha Fin:"border="0" color="128" x="178" y="444" height="76" width="384"  name=fecha_fin_t  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33554431" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="2" color="0" x="590" y="156" height="76" width="850" format="[general]"  name=smt edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="2" color="0" x="590" y="348" height="76" width="850" format="dd/mm/yyyy hh:mm:ss"  name=fecha_inicio edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="2" color="0" x="590" y="444" height="76" width="850" format="dd/mm/yyyy hh:mm:ss"  name=fecha_fin edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Descargo:"border="0" color="128" x="178" y="252" height="76" width="384"  name=descargo_t  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33554431" )
+column(band=detail id=3 alignment="1" tabsequence=10 border="2" color="0" x="590" y="252" height="76" width="850" format="[general]"  name=descargo edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Estado:"border="0" color="128" x="1742" y="252" height="76" width="384"  name=estado_t  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33554431" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="2" color="0" x="2149" y="252" height="76" width="878" format="[general]"  name=estado edit.limit=31 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Helvetica LT Std" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

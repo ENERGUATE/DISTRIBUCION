@@ -1,0 +1,45 @@
+HA$PBExportHeader$fg_encriptar.srf
+global type fg_encriptar from function_object
+end type
+
+forward prototypes
+global function string fg_encriptar (string as_cadena)
+end prototypes
+
+global function string fg_encriptar (string as_cadena);//////////////////////////////////////////////////////////////////////////
+//	Funci$$HEX1$$f300$$ENDHEX$$n	:	fg_encriptar(as_cadena)
+//
+// Objetivo	:	Devuelve el valor de la clave de usuario encritada para
+//					ser gestionada por la conexion a base de datos del sgi
+// 
+//	Salida:   string as_cadena
+//						
+// Fecha               Responsable             				Actuaci$$HEX1$$f300$$ENDHEX$$n
+// -----               -----------             				---------
+//	17/10/2013			  LSH											 SGI
+//
+// LSH INI 17/10/2013 Mejora DEO13-00000754
+//
+//////////////////////////////////////////////////////////////////////////
+
+
+integer i, j
+string ls_enctext = ""
+CONSTANT string CRYPT_KEY = "$#@%&#%@&*"
+
+j = len(as_cadena)
+
+//MessageBox("JJJJ",j)
+
+IF j > 255 THEN
+	MessageBox("Advertencia","La clave no puede tener mas de 255 caracteres", Exclamation!)
+ELSE 
+	FOR i = 1 TO j
+   	ls_enctext += mid(CRYPT_KEY , mod(i,10) + 1, 1)
+   	ls_enctext += String(Char(255 - Asc(Mid(as_cadena, i, 1))))
+	NEXT
+END IF
+
+RETURN ls_enctext
+end function
+

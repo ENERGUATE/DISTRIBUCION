@@ -1,0 +1,14 @@
+HA$PBExportHeader$ddw_estado_incidencia_t_shared.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="-1" )
+table(column=(type=char(15) updatewhereclause=yes name=valor dbname="valor" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=descripcion dbname="descripcion" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_estado dbname="codigo" )
+ retrieve="  SELECT  ~"SGD_VALOR~".~"VALOR~" ,           ~"SGD_VALOR~".~"DESCRIPCION~"      , ~"SGD_VALOR~".~"CODIGO~"
+        FROM ~"SGD_VALOR~" WHERE  ~"SGD_VALOR~".~"CODIF~"='E_OP'  " )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="8388608" x="14" y="8" height="68" width="2459" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

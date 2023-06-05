@@ -1,0 +1,65 @@
+HA$PBExportHeader$d_ins_2016_lista_sum_dir.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=aco_sum_pot_contratada dbname="aco_sum.pot_contratada" )
+ column=(type=decimal(0) updatewhereclause=yes name=aco_sum_num_puerta dbname="aco_sum.num_puerta" )
+ column=(type=char(10) updatewhereclause=yes name=aco_sum_duplicador dbname="aco_sum.duplicador" )
+ column=(type=char(6) updatewhereclause=yes name=aco_sum_cgv_sum dbname="aco_sum.cgv_sum" )
+ column=(type=char(80) updatewhereclause=yes name=sgd_acometida_descripcion dbname="sgd_acometida.descripcion" )
+ column=(type=char(30) updatewhereclause=yes name=callejero_nom_calle dbname="callejero.nom_calle" )
+ column=(type=char(30) updatewhereclause=yes name=sgd_instalacion_nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(20) updatewhereclause=yes name=compute_0008 dbname="compute_0008" )
+ column=(type=char(20) updatewhereclause=yes name=compute_0009 dbname="compute_0009" )
+ column=(type=char(30) updatewhereclause=yes name=compute_0010 dbname="compute_0010" )
+ column=(type=decimal(0) updatewhereclause=yes name=aco_sum_nis_rad dbname="aco_sum.nis_rad" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_instalacion_nro_instalacion dbname="sgd_instalacion.nro_instalacion" )
+ column=(type=decimal(0) updatewhereclause=yes name=aco_sum_nro_acometida dbname="aco_sum.nro_acometida" )
+ column=(type=char(4000) updatewhereclause=yes name=cdireccion dbname="cdireccion" )
+ retrieve="  SELECT ~"ACO_SUM~".~"POT_CONTRATADA~",   
+         ~"ACO_SUM~".~"NUM_PUERTA~",   
+         ~"ACO_SUM~".~"DUPLICADOR~",   
+         ~"ACO_SUM~".~"CGV_SUM~",   
+         ~"SGD_ACOMETIDA~".~"DESCRIPCION~",   
+         ~"CALLEJERO~".~"NOM_CALLE~",   
+         ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         NVL(A.~"APE1_CLI~",B.~"APE1_CLI~"),   
+         NVL(A.~"APE2_CLI~",B.~"APE2_CLI~"),   
+         NVL(A.~"NOM_CLI~",B.~"NOM_CLI~"),   
+         ~"ACO_SUM~".~"NIS_RAD~",   
+         ~"SGD_INSTALACION~".~"NRO_INSTALACION~",   
+         ~"ACO_SUM~".~"NRO_ACOMETIDA~",   
+         fgnu_calle_referencia(CALLEJERO.NOM_CALLE, ACO_SUM.NUM_PUERTA, ACO_SUM.DUPLICADOR, ACO_SUM.NIF, ACO_SUM.COD_CALLE, 0, ' ', 0, ' ') cdireccion  
+    FROM ~"SGD_ACOMETIDA~",   
+         ~"ACO_SUM~",   
+         ~"SUMCON~",   
+         ~"PETSUM~",   
+         ~"SGD_INSTALACION~",   
+         ~"CLIENTES~" ~"B~",   
+         ~"CLIENTES~" ~"A~",   
+         ~"CALLEJERO~"  
+   WHERE ( ~"ACO_SUM~".~"COD_CALLE~" = ~"CALLEJERO~".~"COD_CALLE~" ) and  
+         ( B.cod_cli (+) = sumcon.cod_cli) and  
+         ( A.cod_cli (+) = petsum.cod_cli) and 
+			( SGD_INSTALACION.BDI_JOB(+) = 0 )  AND 
+			(SGD_ACOMETIDA.BDI_JOB (+) = 0 ) AND
+         ( sgd_instalacion.nro_instalacion (+) = sgd_acometida.instalacion_origen) and  
+         ( sgd_acometida.codigo (+) = aco_sum.nro_acometida) and  
+         ( aco_sum.nis_rad = sumcon.nis_rad (+)) and  
+         ( aco_sum.nis_rad = petsum.nis_rad (+))  
+" retrieve.asneeded=yes )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="23" y="0" height="64" width="827" html.valueishtml="0"  name=sgd_instalacion_nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Direcci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="869" y="0" height="64" width="1477" html.valueishtml="0"  name=cdireccion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pot. Contr." border="6" color="0" x="2363" y="0" height="64" width="329" html.valueishtml="0"  name=aco_sum_pot_contratada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Cliente" border="6" color="0" x="2711" y="0" height="64" width="1879" html.valueishtml="0"  name=compute_0008_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608" x="3291" y="4" height="56" width="571" format="[general]" html.valueishtml="0"  name=compute_0009 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="8388608" x="3840" y="4" height="56" width="763" format="[general]" html.valueishtml="0"  name=compute_0010 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="4" height="56" width="832" format="[general]" html.valueishtml="0"  name=sgd_instalacion_nom_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="8388608" x="864" y="4" height="56" width="1490" format="[general]" html.valueishtml="0"  name=cdireccion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="8388608" x="2373" y="4" height="56" width="302" format="#,##0.0" html.valueishtml="0"  name=aco_sum_pot_contratada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="2706" y="4" height="56" width="539" format="[general]" html.valueishtml="0"  name=compute_0008 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

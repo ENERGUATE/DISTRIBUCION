@@ -1,0 +1,140 @@
+HA$PBExportHeader$fg_duracion_inc_sr.srf
+global type fg_duracion_inc_sr from function_object
+end type
+
+forward prototypes
+global function string fg_duracion_inc_sr (long duracion_sr)
+end prototypes
+
+global function string fg_duracion_inc_sr (long duracion_sr);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_duracion_inc_sr
+// 
+// Objetivo: Transforma la duraci$$HEX1$$f300$$ENDHEX$$n dada en minutos en formato de "D" "H" "M"
+//           
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada: duracion_sr
+//		Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	15/06/2000	 	JBS		Versi$$HEX1$$f300$$ENDHEX$$n Original
+//	13/12/2000     JHE		Modificado
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+Datetime  ld_f_alta
+String 	 ls_duracion
+Decimal   ld_duracion, ld_dias, ld_horas, ld_res, ld_min
+
+Choose Case duracion_sr
+	Case Is >= 1440   //dias
+		ld_dias = int(duracion_sr / 1400) 
+	  	ld_res  = int(mod(duracion_sr,1440))
+		
+		IF ld_dias > 100 THEN
+			ls_duracion = String(ld_dias) + "D "
+		ELSEIF ld_dias > 9 AND ld_dias < 99 THEN
+			ls_duracion = "0"+String(ld_dias) + "D "
+		ELSE
+			ls_duracion = "00"+String(ld_dias) + "D "
+		END IF			
+			
+		If ld_res >= 60 then
+			ld_horas = int(ld_res / 60)
+			If ld_horas > 9 THEN
+				ls_duracion += String(ld_horas) + "H " 
+			ELSE
+				ls_duracion += "0"+String(ld_horas) + "H " 
+			END IF
+			ld_min   = int(mod(duracion_sr,60))
+			If ld_min >= 1 then 
+				IF ld_min > 9 THEN
+//					ls_duracion += String(ld_min) + "M"
+					ls_duracion += String(ld_min, '00') + "M"
+				ELSE
+//					ls_duracion += "0"+String(ld_min) + "M"
+					ls_duracion += String(ld_min, '00') + "M"
+				END IF
+			ELSE
+//				ls_duracion += "0"+String(ld_min) + "M"
+				ls_duracion += String(ld_min, '00') + "M"
+			END IF
+		Else
+			ld_min   = (ld_res)
+//			ls_duracion +=  "00H "+String(ld_min) + "M"
+			ls_duracion +=  "00H "+String(ld_min, '00') + "M"
+		End IF	
+
+	Case Is  >= 60  //HORAS
+		ld_horas = int(duracion_sr / 60) 
+		IF ld_horas > 9 THEN
+			ls_duracion = String(ld_horas) + "H "
+		ELSE
+			ls_duracion = "0"+String(ld_horas) + "H "
+		END IF
+		ld_min  = int(mod(duracion_sr,60))
+		If ld_min >= 1 then 
+			IF ld_min > 9 THEN
+//				ls_duracion = "000D " + ls_duracion + String(ld_min) + "M"	
+				ls_duracion = "000D " + ls_duracion + String(ld_min, '00') + "M"	
+			Else
+//				ls_duracion = "000D " + ls_duracion + "0"+String(ld_min)+ "M"	
+				ls_duracion = "000D " + ls_duracion + String(ld_min, '00')+ "M"	
+			END IF
+		ELSE
+//			ls_duracion = "000D " + ls_duracion + "0"+String(ld_min)+ "M"
+			ls_duracion = "000D " + ls_duracion + String(ld_min, '00')+ "M"
+		END IF
+			
+	Case else	//MINUTOS
+		IF long(duracion_sr) > 9 THEN
+//			ls_duracion = "000D " + "00H " + String(duracion_sr) + "M"
+			ls_duracion = "000D " + "00H " + String(duracion_sr, '00') + "M"
+		ELSE
+//			ls_duracion = "000D " + "00H 0" + String(duracion_sr) + "M"
+			ls_duracion = "000D " + "00H " + String(duracion_sr, '00') + "M"
+		END IF
+End Choose		
+
+Return ls_duracion
+	
+//
+//
+//Choose Case duracion_sr
+//	Case Is >= 1440   //dias
+//		 ld_dias = int(duracion_sr / 1400) 
+//	  	 ls_duracion = String(ld_dias) + "D "
+//		 ld_res  = int(mod(duracion_sr,1440))
+// 
+//		 If ld_res >= 60 then
+//			ld_horas = int(ld_res / 60)
+//			ls_duracion += String(ld_horas) + "H " 
+//			ld_min   = int(mod(duracion_sr,60))
+//			If ld_min >= 1 then ls_duracion += String(ld_min) + "M"
+//		 Else
+//			ld_min   = (ld_res)
+//			ls_duracion += String(ld_min) + "M"
+//		 End IF	
+//		
+//	Case Is  >= 60  //HORAS
+//		 ld_horas = int(duracion_sr / 60) 
+//		 
+//   	 ls_duracion = String(ld_horas) + "H "
+//		 
+//		 ld_min  = int(mod(duracion_sr,60))
+//   	 If ld_min >= 1 then ls_duracion += String(ld_min) + "M"	
+//		
+//	Case else	//MINUTOS
+//		ls_duracion = String(duracion_sr) + "M"
+//End Choose		
+//
+//Return ls_duracion
+//	
+//
+end function
+

@@ -1,0 +1,267 @@
+HA$PBExportHeader$dw_co_nro_instalacion_arg35.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=164 color="553648127" )
+summary(height=0 color="536870912" )
+footer(height=68 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=nro_incidencia dbname="sgd_incidencia.nro_incidencia" )
+ column=(type=datetime updatewhereclause=yes name=f_deteccion dbname="sgd_incidencia.f_deteccion" )
+ column=(type=datetime updatewhereclause=yes name=fec_resolucion dbname="sgd_incidencia.fec_resolucion" )
+ column=(type=char(4000) updatewhereclause=yes name=c_duracion dbname="c_duracion" )
+ column=(type=number updatewhereclause=yes name=pot_afectada dbname="sgd_incidencia.pot_afectada" )
+ column=(type=number updatewhereclause=yes name=nro_inst_afectada dbname="sgd_incidencia.nro_inst_afectada" )
+ column=(type=number updatewhereclause=yes name=sgd_incidencia_pot_contratada dbname="sgd_incidencia.pot_contratada" )
+ column=(type=number updatewhereclause=yes name=ccli_afec dbname="sgd_incidencia.ccli_afec" )
+ column=(type=char(2000) updatewhereclause=yes name=sgd_incidencia_observacion dbname="sgd_incidencia.observacion" )
+ column=(type=char(60) updatewhereclause=yes name=sgd_incidencia_dir_aviso dbname="sgd_incidencia.dir_aviso" )
+ column=(type=char(80) updatewhereclause=yes name=desc_incidencia dbname="sgd_incidencia.desc_incidencia" )
+ column=(type=char(4000) updatewhereclause=yes name=c_est_man dbname="c_est_man" )
+ column=(type=char(4000) updatewhereclause=yes name=c_tension dbname="c_tension" )
+ column=(type=char(4000) updatewhereclause=yes name=c_tipo_inc dbname="c_tipo_inc" )
+ column=(type=char(45) updatewhereclause=yes name=nombre_instalacion_b dbname="nombre_instalacion_b" )
+ column=(type=char(45) updatewhereclause=yes name=c_nom_salmt dbname="c_nom_salmt" )
+ column=(type=number updatewhereclause=yes name=paxtc dbname="paxtc" )
+ column=(type=number updatewhereclause=yes name=duracion dbname="duracion" )
+ column=(type=char(30) updatewhereclause=yes name=usuario dbname="sgd_incidencia.usuario" )
+ column=(type=number updatewhereclause=yes name=est_actual dbname="sgd_incidencia.est_actual" )
+ column=(type=char(6) updatewhereclause=yes name=fase_afectada dbname="fase_afectada" )
+ column=(type=char(4000) updatewhereclause=yes name=c_est_inc dbname="c_est_inc" )
+ column=(type=char(4000) updatewhereclause=yes name=c_nombre_brigada dbname="c_nombre_brigada" )
+ column=(type=char(4000) updatewhereclause=yes name=c_inst_afect_dir_aviso dbname="c_inst_afect_dir_aviso" )
+ column=(type=char(25) updatewhereclause=yes name=c_duracion_int dbname="c_duracion_int" )
+ column=(type=number updatewhereclause=yes name=c_est_fact dbname="c_est_fact" )
+ column=(type=number updatewhereclause=yes name=nro_instalacion dbname="nro_instalacion" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="f_alta" )
+ column=(type=datetime updatewhereclause=yes name=f_reposicion dbname="f_reposicion" )
+ column=(type=number updatewhereclause=yes name=c_duracion_calc dbname="c_duracion_calc" )
+ column=(type=number updatewhereclause=yes name=c_paxtc_calc dbname="c_paxtc_calc" )
+ column=(type=number updatewhereclause=yes name=c_valida_fase_sql dbname="c_valida_fase_sql" )
+ retrieve="SELECT DISTINCT SGD_INCIDENCIA
+.NRO_INCIDENCIA, 
+			SGD_INCIDENCIA.F_DETECCION,  
+			SGD_INCIDENCIA.FEC_RESOLUCION,  
+			FGNU_DURACION_SR(NVL(~"SGD_INCIDENCIA~".~"DURACION_SR~", 0)) C_DURACION,
+			SGD_INCIDENCIA.POT_AFECTADA,  
+			SGD_INCIDENCIA.NRO_INST_AFECTADA,  
+			SGD_INCIDENCIA.POT_CONTRATADA,  
+			SGD_INCIDENCIA.CCLI_AFEC,  
+			SGD_INCIDENCIA.OBSERVACION,  
+			SGD_INCIDENCIA.DIR_AVISO,  
+			SGD_INCIDENCIA.DESC_INCIDENCIA,  
+			Fgnu_Est_Man(estado_mantenimiento) C_EST_MAN,  
+			Fgnu_Ten_Inc(tip_tension) C_TENSION,  
+			Fgnu_Tip_Inc(tip_incidencia) C_TIPO_INC,
+			RPAD(' ', 45, ' ') AS NOMBRE_INSTALACION_B, 
+         RPAD(' ', 45, ' ') As c_nom_salmt,
+         NVL(SGD_INCIDENCIA.PAXTC, 0) AS PAXTC,   
+         NVL(SGD_INCIDENCIA.DURACION, 0) AS DURACION,
+         SGD_INCIDENCIA.USUARIO,
+         SGD_INCIDENCIA.EST_ACTUAL, 
+			RPAD(' ', 6, ' ') AS FASE_AFECTADA, 
+			Fgnu_Est_Inc2(SGD_INCIDENCIA.EST_ACTUAL, SGD_INCIDENCIA.ALCANCE, SGD_INCIDENCIA.TIP_INCIDENCIA) C_EST_INC,
+			fgci_nombre_ot(SGD_INCIDENCIA.OT) C_NOMBRE_BRIGADA,  
+			F_Nombre_Instalacion2(SGD_INST_A.NOM_INSTALACION, SGD_INCIDENCIA.DIR_AVISO,  SGD_INCIDENCIA.ALCANCE) C_INST_AFECT_DIR_AVISO,
+	      RPAD(' ', 25, ' ') AS C_DURACION_INT, 
+   	   0 AS C_EST_FACT, 
+			0 AS NRO_INSTALACION,
+			TO_DATE('19000101','yyyymmdd') AS F_ALTA, 
+			TO_DATE('19000102','yyyymmdd') AS F_REPOSICION,
+			NVL(SGD_INCIDENCIA.DURACION, 0) / 60 AS c_duracion_calc,
+			NVL(PAXTC, 0) / 60 AS c_paxtc_calc,
+			fgci_hist_relac_cte_inst4(:arg_nis_rad, 
+												sgd_interrupcion.nro_instalacion, 
+												:tipo_instalacion_aco, 
+												sgd_interrupcion.f_reposicion, 
+												sgd_interrupcion.fase_afectada,
+												sgd_interrupcion.tipo_instalacion,
+												:arg_red_trif,
+												:arg_tabla_decision) AS C_VALIDA_FASE_SQL
+ FROM SGD_INCIDENCIA,
+		SGD_INTERRUPCION,
+		SGD_VALOR,
+		SGD_INSTALACION SGD_INST_A,
+		SGD_INSTALACION SGD_INST_B
+WHERE SGD_INCIDENCIA.NRO_INCIDENCIA = SGD_INTERRUPCION.NRO_INCIDENCIA AND 
+		SGD_INCIDENCIA.NRO_INST_AFECTADA = SGD_INST_A.NRO_INSTALACION (+) AND 
+		SGD_INTERRUPCION.NRO_INSTALACION = SGD_INST_B.NRO_INSTALACION (+) AND 
+		SGD_INTERRUPCION.FASE_AFECTADA = SGD_VALOR.VALOR (+) AND 
+		SGD_INCIDENCIA.EST_ACTUAL <= 11 AND
+		SGD_INST_A.BDI_JOB = 0 AND
+		SGD_INST_B.BDI_JOB = 0 AND 
+		SGD_VALOR.CODIF (+) = 'FASE' AND 
+		NVL(SGD_INTERRUPCION.AFEC_PARCIAL,0) = DECODE(:li_afec_parcial, 1, NVL(SGD_INTERRUPCION.AFEC_PARCIAL,0),0) AND
+	   SGD_INTERRUPCION.NRO_INSTALACION IN ( ( SELECT DISTINCT HIST_1.NRO_INST_PADRE					/* BUSCA TODO LO DE HISTORICO */
+																FROM GI_HIST_RELAC_CTE_INST HIST_1
+														 	 START WITH HIST_1.NIS_RAD = :arg_nis_rad AND 
+																			HIST_1.TIPO_INSTALACION = :tipo_instalacion_aco AND
+																			HIST_1.F_ACTUAL >= :fecha_ini
+														 	 CONNECT BY PRIOR HIST_1.NRO_INST_PADRE = HIST_1.NRO_INSTALACION  
+														 	 UNION
+														 	 SELECT DISTINCT HIST_2.NRO_INST_PADRE					/* BUSCA TODO LO DE ACOMETIDA, A TODO HISTORICO */
+														   	FROM GI_HIST_RELAC_CTE_INST HIST_2
+														 	 START WITH HIST_2.NRO_INSTALACION IN (SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN 
+																												 FROM SGD_ACOMETIDA, ACO_SUM
+																											   WHERE SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA AND
+																													   SGD_ACOMETIDA.BDI_JOB = 0 AND 
+																													   ACO_SUM.NIS_RAD = :arg_nis_rad
+																											  UNION 
+																											  SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN 
+																												 FROM SGD_ACOMETIDA
+																											   WHERE SGD_ACOMETIDA.BDI_JOB = 0 AND
+																													   SGD_ACOMETIDA.CODIGO IN (SELECT DISTINCT HIST_1.NRO_INST_PADRE
+																																							FROM GI_HIST_RELAC_CTE_INST HIST_1
+																																						 WHERE HIST_1.NIS_RAD = :arg_nis_rad AND 
+																																								 HIST_1.TIPO_INSTALACION = :tipo_instalacion_aco AND
+																																								 HIST_1.F_ACTUAL >= :fecha_ini))
+														 	 CONNECT BY PRIOR HIST_2.NRO_INST_PADRE = HIST_2.NRO_INSTALACION
+														 	 UNION
+															 SELECT INST_3.NRO_INSTALACION
+																FROM SGD_INSTALACION INST_3
+															  WHERE INST_3.BDI_JOB = 0 
+															 START WITH INST_3.NRO_INSTALACION IN (SELECT DISTINCT HIST_2.NRO_INST_PADRE					/* BUSCA TODO LO DE HISTORICO, A ACOMETIDA, A HISTORICO, A TODO SGD */
+																												  FROM GI_HIST_RELAC_CTE_INST HIST_2
+																												START WITH HIST_2.NRO_INSTALACION IN (SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN 
+																																								   FROM SGD_ACOMETIDA
+																																								  WHERE SGD_ACOMETIDA.BDI_JOB = 0 AND
+																																										  SGD_ACOMETIDA.CODIGO IN (SELECT DISTINCT HIST_1.NRO_INST_PADRE
+																																																			  FROM GI_HIST_RELAC_CTE_INST HIST_1
+																																																			 WHERE HIST_1.NIS_RAD = :arg_nis_rad AND 
+																																																					 HIST_1.TIPO_INSTALACION = :tipo_instalacion_aco AND
+																																																					 HIST_1.F_ACTUAL >= :fecha_ini))
+																												CONNECT BY PRIOR HIST_2.NRO_INST_PADRE = HIST_2.NRO_INSTALACION
+																												UNION
+																												SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN       /* BUSCA TODO LO DE HISTORICO, A ACOMETIDA, A TODO SGD */
+																												  FROM SGD_ACOMETIDA
+																												 WHERE SGD_ACOMETIDA.BDI_JOB = 0 AND
+																														 SGD_ACOMETIDA.CODIGO IN (SELECT DISTINCT HIST_1.NRO_INST_PADRE
+																																							 FROM GI_HIST_RELAC_CTE_INST HIST_1
+																																							WHERE HIST_1.NIS_RAD = :arg_nis_rad AND 
+																																									HIST_1.TIPO_INSTALACION = :tipo_instalacion_aco AND
+																																									HIST_1.F_ACTUAL >= :fecha_ini)
+																												UNION
+																												SELECT DISTINCT HIST_3.NRO_INST_PADRE
+																												  FROM GI_HIST_RELAC_CTE_INST HIST_3
+																												START WITH HIST_3.NRO_INSTALACION = (SELECT SGD_ACOMETIDA.CODIGO 
+																																									FROM SGD_ACOMETIDA, ACO_SUM
+																																								  WHERE SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA AND
+																																										  SGD_ACOMETIDA.BDI_JOB = 0 AND 
+																																											ACO_SUM.NIS_RAD = :arg_nis_rad)
+																												CONNECT BY PRIOR HIST_3.NRO_INST_PADRE = HIST_3.NRO_INSTALACION
+																												UNION
+																												SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN 
+																												 FROM SGD_ACOMETIDA, ACO_SUM
+																								  	  			WHERE SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA AND
+																										  	  			SGD_ACOMETIDA.BDI_JOB = 0 AND 
+																														ACO_SUM.NIS_RAD = :arg_nis_rad) AND INST_3.BDI_JOB = 0
+															 CONNECT BY PRIOR INST_3.NRO_INST_PADRE = INST_3.NRO_INSTALACION AND INST_3.BDI_JOB = 0 
+														 	 UNION
+														 	 SELECT ACO_SUM.NRO_ACOMETIDA        /* BUSCA TODO LO DE ACOMETIDA */
+																FROM ACO_SUM
+														  	  WHERE ACO_SUM.NIS_RAD = :arg_nis_rad
+														 	 UNION
+														 	 SELECT INST_3.NRO_INSTALACION		/* BUSCA TODO LO DE A ACOMETIDA, A TODO SGD POR LOS POSIBLES TRANSFORMADORES */
+																FROM SGD_INSTALACION INST_3
+														  	  WHERE INST_3.BDI_JOB = 0 AND 
+																	  INST_3.TIPO_INSTALACION < :tipo_instalacion_aco
+														 	 START WITH INST_3.NRO_INST_PADRE = (SELECT SGD_ACOMETIDA.INSTALACION_ORIGEN 
+																								  			   FROM SGD_ACOMETIDA, ACO_SUM
+																								 			  WHERE SGD_ACOMETIDA.CODIGO = ACO_SUM.NRO_ACOMETIDA AND 
+																													  SGD_ACOMETIDA.BDI_JOB = 0 AND
+																								 					  ACO_SUM.NIS_RAD = :arg_nis_rad) AND
+																			INST_3.BDI_JOB = 0  
+														 	 CONNECT BY PRIOR INST_3.NRO_INSTALACION = INST_3.NRO_INST_PADRE AND
+																					INST_3.BDI_JOB = 0  ) ) AND 
+		F_REPOSICION BETWEEN :fecha_ini AND :fecha_fin
+UNION
+SELECT DISTINCT SGD_INCIDENCIA.NRO_INCIDENCIA,
+			SGD_INCIDENCIA.F_DETECCION,  
+			SGD_INCIDENCIA.FEC_RESOLUCION,  
+			FGNU_DURACION_SR(NVL(~"SGD_INCIDENCIA~".~"DURACION_SR~", 0)) C_DURACION,
+			SGD_INCIDENCIA.POT_AFECTADA,  
+			SGD_INCIDENCIA.NRO_INST_AFECTADA,  
+			SGD_INCIDENCIA.POT_CONTRATADA,  
+			SGD_INCIDENCIA.CCLI_AFEC,  
+			SGD_INCIDENCIA.OBSERVACION,  
+			SGD_INCIDENCIA.DIR_AVISO,  
+			SGD_INCIDENCIA.DESC_INCIDENCIA,  
+			Fgnu_Est_Man(estado_mantenimiento) C_EST_MAN,  
+			Fgnu_Ten_Inc(tip_tension) C_TENSION,  
+			Fgnu_Tip_Inc(tip_incidencia) C_TIPO_INC,
+			RPAD(' ', 45, ' ') AS NOMBRE_INSTALACION_B, 
+         RPAD(' ', 45, ' ') As c_nom_salmt,
+         NVL(SGD_INCIDENCIA.PAXTC, 0) AS PAXTC,   
+         NVL(SGD_INCIDENCIA.DURACION, 0) AS DURACION,
+         SGD_INCIDENCIA.USUARIO,
+         SGD_INCIDENCIA.EST_ACTUAL, 
+			RPAD(' ', 6, ' ') AS FASE_AFECTADA, 
+			Fgnu_Est_Inc2(SGD_INCIDENCIA.EST_ACTUAL, SGD_INCIDENCIA.ALCANCE, SGD_INCIDENCIA.TIP_INCIDENCIA) C_EST_INC,
+			fgci_nombre_ot(SGD_INCIDENCIA.OT) C_NOMBRE_BRIGADA,  
+			F_Nombre_Instalacion2(SGD_INST_A.NOM_INSTALACION, SGD_INCIDENCIA.DIR_AVISO,  SGD_INCIDENCIA.ALCANCE) C_INST_AFECT_DIR_AVISO,
+	      RPAD(' ', 25, ' ') AS C_DURACION_INT, 
+   	   0 AS C_EST_FACT, 
+			0 AS NRO_INSTALACION,
+			TO_DATE('19000101','yyyymmdd') AS F_ALTA, 
+			TO_DATE('19000102','yyyymmdd') AS F_REPOSICION,
+			NVL(SGD_INCIDENCIA.DURACION, 0) / 60 AS c_duracion_calc,
+			NVL(PAXTC, 0) / 60 AS c_paxtc_calc,
+			1 AS C_VALIDA_FASE_SQL
+ FROM SGD_INCIDENCIA,
+		SGD_INSTALACION SGD_INST_A,
+		GI_AVISOS
+WHERE SGD_INCIDENCIA.NRO_INST_AFECTADA = SGD_INST_A.NRO_INSTALACION (+) AND 
+		SGD_INCIDENCIA.NRO_INCIDENCIA = GI_AVISOS.NRO_INCIDENCIA AND 
+		SGD_INCIDENCIA.EST_ACTUAL <= 11 AND
+	 	SGD_INCIDENCIA.ALCANCE = fgnu_alcance_con_perdida AND 
+		SGD_INST_A.BDI_JOB = 0 AND
+	 	GI_AVISOS.NIS_RAD = :arg_nis_rad AND 
+	   GI_AVISOS.IND_INC_MANUAL = 1 AND 
+	   GI_AVISOS.IND_IMPROCEDENTE = 0 AND 
+		F_DETECCION BETWEEN :fecha_ini AND :fecha_fin
+" filter=" c_valida_fase_sql = 1"arguments=(("arg_nis_rad", number),("fecha_ini", datetime),("fecha_fin", datetime),("tipo_instalacion_aco", number),("arg_red_trif", number),("arg_tabla_decision", number),("li_afec_parcial", number))  sort="f_reposicion D f_alta D fec_resolucion A nro_incidencia D " )
+text(band=header alignment="2" text="N$$HEX1$$fa00$$ENDHEX$$mero
+Incidencia" border="6" color="0" x="9" y="12" height="144" width="361" html.valueishtml="0"  name=nro_incidencia_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Instalaci$$HEX1$$f300$$ENDHEX$$n Afectada / 
+Calle Afectada" border="6" color="0" x="389" y="12" height="144" width="1019" html.valueishtml="0"  name=c_inst_afect_dir_aviso_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Atendida por" border="6" color="0" x="1426" y="12" height="144" width="969" html.valueishtml="0"  name=c_nombre_brigada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Salida de Media Tensi$$HEX1$$f300$$ENDHEX$$n
+de la Instalaci$$HEX1$$f300$$ENDHEX$$n Afectada" border="6" color="0" x="2414" y="12" height="144" width="1019" html.valueishtml="0"  name=c_nom_salmt_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Estado" border="6" color="0" x="3451" y="12" height="144" width="247" html.valueishtml="0"  name=estados_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="OP" border="6" color="0" x="3456" y="92" height="64" width="110" html.valueishtml="0"  name=c_est_inc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="MA" border="6" color="0" x="3584" y="92" height="64" width="110" html.valueishtml="0"  name=c_est_man_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Tensi$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="3721" y="12" height="144" width="293" html.valueishtml="0"  name=c_tension_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Tipo" border="6" color="0" x="4032" y="12" height="144" width="169" html.valueishtml="0"  name=c_tipo_inc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Detecci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="4219" y="12" height="144" width="549" html.valueishtml="0"  name=f_deteccion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Duraci$$HEX1$$f300$$ENDHEX$$n Serv.
+Respuesto" border="6" color="0" x="4786" y="12" height="144" width="503" html.valueishtml="0"  name=c_duracion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Potencia
+Afectada (kVA)" border="6" color="0" x="5307" y="12" height="144" width="494" html.valueishtml="0"  name=pot_afectada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Clientes
+Afectados" border="6" color="0" x="5819" y="12" height="144" width="370" html.valueishtml="0"  name=ccli_afec_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Clientes x Tiempo
+(Clientes x Hora)" border="6" color="0" x="6825" y="12" height="144" width="581" html.valueishtml="0"  name=c_duracion_calc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Resoluci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="7424" y="12" height="144" width="512" html.valueishtml="0"  name=fec_resolucion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text=" Descripci$$HEX1$$f300$$ENDHEX$$n de la Incidencia" border="6" color="0" x="7954" y="12" height="144" width="1902" html.valueishtml="0"  name=desc_incidencia_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Usuario" border="6" color="0" x="9874" y="12" height="144" width="960" html.valueishtml="0"  name=usuario_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=header alignment="2" text="Potencia x Tiempo
+(kVA x Hora)" border="6" color="0" x="6208" y="12" height="144" width="599" html.valueishtml="0"  name=c_paxct_calc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="8388608" x="9" y="4" height="64" width="361" format="" html.valueishtml="0"  name=nro_incidencia visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="8388608" x="389" y="4" height="64" width="1019" format="[general]" html.valueishtml="0"  name=c_inst_afect_dir_aviso visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="8388608" x="1426" y="4" height="64" width="969" format="[general]" html.valueishtml="0"  name=c_nombre_brigada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="8388608" x="2409" y="4" height="64" width="1006" format="[general]" html.valueishtml="0"  name=c_nom_salmt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=22 alignment="2" tabsequence=32766 border="0" color="128" x="3456" y="4" height="64" width="110" format="[general]" html.valueishtml="0"  name=c_est_inc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="2" tabsequence=32766 border="0" color="128" x="3593" y="4" height="64" width="110" format="[general]" html.valueishtml="0"  name=c_est_man visible="1" edit.limit=4000 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="2" tabsequence=32766 border="0" color="128" x="3721" y="4" height="64" width="293" format="[general]" html.valueishtml="0"  name=c_tension visible="1" edit.limit=4000 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="2" tabsequence=32766 border="0" color="128" x="4032" y="4" height="64" width="169" format="[general]" html.valueishtml="0"  name=c_tipo_inc visible="1" edit.limit=4000 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="8388608" x="4219" y="4" height="64" width="549" format="dd/mm/yyyy hh:mm" html.valueishtml="0"  name=f_deteccion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="8388608" x="4786" y="4" height="64" width="503" format="[general]" html.valueishtml="0"  name=c_duracion visible="1" edit.limit=4000 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="8388608" x="5307" y="4" height="64" width="494" format="#,##0.0" html.valueishtml="0"  name=pot_afectada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="8388608" x="5819" y="4" height="64" width="370" format="[general]" html.valueishtml="0"  name=ccli_afec visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="8388608" x="7424" y="4" height="64" width="512" format="dd/mm/yyyy hh:mm" html.valueishtml="0"  name=fec_resolucion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="8388608" x="7954" y="4" height="64" width="1902" format="[general]" html.valueishtml="0"  name=desc_incidencia visible="1" edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="8388608" x="9874" y="4" height="64" width="960" format="[general]" html.valueishtml="0"  name=usuario visible="1" dddw.name=ddw_usuario dddw.displaycolumn=nom_usuario dddw.datacolumn=usuario dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=30 alignment="1" tabsequence=32766 border="0" color="8388608" x="6825" y="4" height="64" width="581" format="#,##0.0" html.valueishtml="0"  name=c_duracion_calc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=31 alignment="1" tabsequence=32766 border="0" color="8388608" x="6208" y="4" height="64" width="599" format="#,##0.0" html.valueishtml="0"  name=c_paxtc_calc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="0" expression="'Cantidad de registros : ' + String(count(nro_incidencia for all), '##,###,###')"border="0" color="0" x="14" y="0" height="64" width="1481" format="[general]" html.valueishtml="0"  name=c_count_regs visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

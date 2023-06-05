@@ -1,0 +1,24 @@
+HA$PBExportHeader$d_bri_2018_datos_brigada.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=288 color="536870912" )
+table(column=(type=char(25) update=yes updatewhereclause=yes name=nombre dbname="gi_brigada.nombre" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_disponible dbname="gi_brigada.ind_disponible" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=movil dbname="gi_brigada.movil" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_brigada dbname="gi_brigada.nro_brigada" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=frec_radio dbname="gi_brigada.frec_radio" )
+ column=(type=decimal(0) updatewhereclause=yes name=tip_brigada dbname="gi_brigada.tip_brigada" )
+ retrieve="  SELECT  ~"GI_BRIGADA~".~"NOMBRE~" ,           ~"GI_BRIGADA~".~"IND_DISPONIBLE~" ,                  ~"GI_BRIGADA~".~"MOVIL~" ,           ~"GI_BRIGADA~".~"NRO_BRIGADA~" ,           ~"GI_BRIGADA~".~"FREC_RADIO~" ,           ~"GI_BRIGADA~".~"TIP_BRIGADA~"     
+        FROM ~"GI_BRIGADA~"      
+        WHERE ( ~"GI_BRIGADA~".~"NRO_BRIGADA~" = :pi_nro_brigada )   " update="GI_BRIGADA" updatewhere=1 updatekeyinplace=no arguments=(("pi_nro_brigada", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="8388608" x="521" y="16" height="64" width="933" format="[general]"  name=nombre edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="5" color="8388608" x="521" y="112" height="64" width="270" format="[general]"  name=movil edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="8388608" x="521" y="208" height="64" width="933" format="[general]"  name=tip_brigada dddw.name=ddw_tipo_brigada dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="0" text="Frec Radio:"border="0" color="0" x="814" y="112" height="64" width="320"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="5" color="8388608" x="1152" y="112" height="64" width="302" format="[general]"  name=frec_radio edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="1" text="Nombre Brigada:"border="0" color="0" x="41" y="16" height="64" width="471"  name=nombre_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="0" text="Nro del Movil:"border="0" color="0" x="41" y="112" height="64" width="471"  name=movil_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79741120" )
+text(band=detail alignment="0" text="Tipo Brigada:"border="0" color="0" x="41" y="208" height="64" width="471"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

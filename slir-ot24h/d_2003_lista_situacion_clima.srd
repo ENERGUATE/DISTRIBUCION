@@ -1,0 +1,52 @@
+HA$PBExportHeader$d_2003_lista_situacion_clima.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=cod_est_clima dbname="gi_sit_clima.cod_est_clima" )
+ column=(type=decimal(0) updatewhereclause=yes name=temp_max dbname="gi_sit_clima.temp_max" )
+ column=(type=decimal(0) updatewhereclause=yes name=temp_min dbname="gi_sit_clima.temp_min" )
+ column=(type=char(2) updatewhereclause=yes name=viento_dir dbname="gi_sit_clima.viento_dir" )
+ column=(type=decimal(0) updatewhereclause=yes name=viento_vel dbname="gi_sit_clima.viento_vel" )
+ column=(type=decimal(0) updatewhereclause=yes name=humedad dbname="gi_sit_clima.humedad" )
+ column=(type=char(250) updatewhereclause=yes name=observacion dbname="gi_sit_clima.observacion" )
+ column=(type=datetime updatewhereclause=yes key=yes name=fecha dbname="gi_sit_clima.fecha" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=nro_cmd dbname="gi_sit_clima.nro_cmd" )
+ retrieve="  SELECT ~"GI_SIT_CLIMA~".~"COD_EST_CLIMA~",   
+         ~"GI_SIT_CLIMA~".~"TEMP_MAX~",   
+         ~"GI_SIT_CLIMA~".~"TEMP_MIN~",   
+         ~"GI_SIT_CLIMA~".~"VIENTO_DIR~",   
+         ~"GI_SIT_CLIMA~".~"VIENTO_VEL~",   
+         ~"GI_SIT_CLIMA~".~"HUMEDAD~",   
+         ~"GI_SIT_CLIMA~".~"OBSERVACION~",   
+         ~"GI_SIT_CLIMA~".~"FECHA~",   
+         ~"GI_SIT_CLIMA~".~"NRO_CMD~"  
+    FROM ~"GI_SIT_CLIMA~"  
+   WHERE ~"GI_SIT_CLIMA~".~"NRO_CMD~" = DECODE(:pi_cmd,0,~"GI_SIT_CLIMA~".~"NRO_CMD~",:pi_cmd)  AND
+			~"GI_SIT_CLIMA~".~"FECHA~" BETWEEN :pd_f_desde AND :pd_f_hasta	
+            
+" update="GI_SIT_CLIMA" updatewhere=0 updatekeyinplace=no arguments=(("pi_cmd", number),("pd_f_desde", datetime),("pd_f_hasta", datetime)) )
+text(band=header alignment="2" text="Fecha" border="6" color="0" x="5" y="8" height="64" width="311" html.valueishtml="0"  name=fecha_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Estado Clima" border="6" color="0" x="329" y="8" height="64" width="677" html.valueishtml="0"  name=cod_est_clima_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Tmp. Max." border="6" color="0" x="1019" y="8" height="64" width="338" html.valueishtml="0"  name=temp_max_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Tmp. Min." border="6" color="0" x="1371" y="8" height="64" width="311" html.valueishtml="0"  name=temp_min_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Vel.Viento" border="6" color="0" x="2043" y="8" height="64" width="357" html.valueishtml="0"  name=viento_vel_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Humedad" border="6" color="0" x="2414" y="8" height="64" width="334" html.valueishtml="0"  name=humedad_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Observaciones" border="6" color="0" x="2761" y="8" height="64" width="1714" html.valueishtml="0"  name=observacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Dir.Viento" border="6" color="0" x="1696" y="8" height="64" width="334" html.valueishtml="0"  name=viento_dir_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="14" y="12" height="64" width="311" format="m/d/yy" html.valueishtml="0"  name=fecha visible="1" editmask.mask="dd/mm/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="347" y="12" height="64" width="654" format="[general]" html.valueishtml="0"  name=cod_est_clima visible="1" edit.name="es_estado_clima" dddw.name=ddw_estado_clima dddw.displaycolumn=descripcion dddw.datacolumn=cod_est_clima dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="$$HEX1$$ba00$$ENDHEX$$C" border="0" color="8388608" x="1271" y="12" height="64" width="64" html.valueishtml="0"  name=t_1 visible="1~tif( isNull( temp_max ), 0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="8388608" x="1413" y="12" height="64" width="169" format="[general]" html.valueishtml="0"  name=temp_min visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="$$HEX1$$ba00$$ENDHEX$$C" border="0" color="8388608" x="1600" y="12" height="64" width="64" html.valueishtml="0"  name=t_2 visible="1~tif( isNull( temp_min ), 0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="8388608" x="2085" y="12" height="64" width="137" format="[general]" html.valueishtml="0"  name=viento_vel visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Km/h" border="0" color="8388608" x="2226" y="12" height="64" width="151" html.valueishtml="0"  name=vel visible="1~tif( isNull( viento_vel ), 0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="8388608" x="2459" y="12" height="64" width="183" format="[general]" html.valueishtml="0"  name=humedad visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="%" border="0" color="8388608" x="2661" y="12" height="64" width="50" html.valueishtml="0"  name=t_4 visible="1~tif( isNull( humedad ), 0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="8388608" x="1065" y="12" height="64" width="192" format="[general]" html.valueishtml="0"  name=temp_max visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="2779" y="12" height="64" width="1687" format="[general]" html.valueishtml="0"  name=observacion visible="1" edit.limit=32000 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="8388608" x="1696" y="12" height="64" width="334" format="[general]" html.valueishtml="0"  name=viento_dir visible="1" edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

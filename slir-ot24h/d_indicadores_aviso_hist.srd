@@ -1,0 +1,52 @@
+HA$PBExportHeader$d_indicadores_aviso_hist.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=4 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=320 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=saifi_fm dbname="saifi_fm" )
+ column=(type=number updatewhereclause=yes name=saifi_cf dbname="saifi_cf" )
+ column=(type=number updatewhereclause=yes name=saifi_oc dbname="saifi_oc" )
+ column=(type=number updatewhereclause=yes name=saidi_fm dbname="saidi_fm" )
+ column=(type=number updatewhereclause=yes name=saidi_cf dbname="saidi_cf" )
+ column=(type=number updatewhereclause=yes name=saidi_oc dbname="saidi_oc" )
+ column=(type=number updatewhereclause=yes name=limite_saifi dbname="limite_saifi" )
+ column=(type=number updatewhereclause=yes name=limite_saidi dbname="limite_saidi" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="gi_hist_avisos.f_alta" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="gi_hist_avisos.nro_instalacion" )
+ retrieve="SELECT NVL(GI_HIST_INDICES_AVISO.SAIFI_FM,0) as saifi_fm,
+		NVL(GI_HIST_INDICES_AVISO.SAIFI_CF,0) as saifi_cf,
+		NVL(GI_HIST_INDICES_AVISO.SAIFI_OC,0) as saifi_oc,
+		NVL(GI_HIST_INDICES_AVISO.SAIDI_FM,0) as saidi_fm,
+		NVL(GI_HIST_INDICES_AVISO.SAIDI_CF,0) as saidi_cf,
+		NVL(GI_HIST_INDICES_AVISO.SAIDI_OC,0) as saidi_oc,
+		0 as limite_saifi,
+		0 as limite_saidi,
+		GI_HIST_AVISOS.F_ALTA,
+		GI_HIST_AVISOS.NRO_INSTALACION
+FROM GI_HIST_INDICES_AVISO, GI_HIST_AVISOS
+WHERE GI_HIST_AVISOS.NRO_AVISO = :pl_nro_aviso AND
+	   GI_HIST_AVISOS.NRO_AVISO = GI_HIST_INDICES_AVISO.NRO_AVISO (+)
+	" arguments=(("pl_nro_aviso", number)) )
+text(band=detail alignment="2" text="$$HEX1$$cd00$$ENDHEX$$ndices de Calidad del Suministro" border="5" color="0" x="27" y="28" height="52" width="1061" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="" border="5" color="0" x="27" y="96" height="52" width="151" html.valueishtml="0"  name=blanco_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="FM" border="5" color="0" x="201" y="96" height="52" width="155" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="CF" border="5" color="0" x="375" y="96" height="52" width="155" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="OC" border="5" color="0" x="549" y="96" height="52" width="155" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="Suma" border="5" color="0" x="727" y="96" height="52" width="169" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="L$$HEX1$$ed00$$ENDHEX$$mite" border="5" color="0" x="914" y="96" height="52" width="174" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="SAIFI" border="5" color="0" x="27" y="168" height="52" width="155" html.valueishtml="0"  name=saifi_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="0" x="201" y="168" height="52" width="155" format="[general]" html.valueishtml="0"  name=saifi_fm visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="0" x="375" y="168" height="52" width="155" format="[general]" html.valueishtml="0"  name=saifi_cf visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="0" x="549" y="168" height="52" width="155" format="[general]" html.valueishtml="0"  name=saifi_oc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression=" saifi_fm +  saifi_cf + saifi_oc "border="5" color="0" x="722" y="168" height="52" width="174" format="[general]" html.valueishtml="0"  name=csuma_saifi visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="0" x="914" y="164" height="52" width="174" format="[general]" html.valueishtml="0"  name=limite_saifi visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="SAIDI" border="5" color="0" x="27" y="236" height="52" width="155" html.valueishtml="0"  name=saidi_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="0" x="201" y="236" height="52" width="155" format="[general]" html.valueishtml="0"  name=saidi_fm visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="0" x="375" y="236" height="52" width="155" format="[general]" html.valueishtml="0"  name=saidi_cf visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="0" x="549" y="236" height="52" width="155" format="[general]" html.valueishtml="0"  name=saidi_oc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression=" saidi_fm + saidi_cf + saidi_oc "border="5" color="0" x="722" y="236" height="52" width="174" format="[general]" html.valueishtml="0"  name=csuma_saidi visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="0" x="914" y="236" height="52" width="174" format="[general]" html.valueishtml="0"  name=limite_saidi visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

@@ -1,0 +1,23 @@
+HA$PBExportHeader$d_lista_interrupciones_operacion_bt.srd
+$PBExportComments$Muestra las instalaciones en estado normal afectadas por la incidencia en baja tensi$$HEX1$$f300$$ENDHEX$$n
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=96 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=instalacion dbname="instalacion" )
+ column=(type=char(39) updatewhereclause=yes name=tension dbname="tension" )
+ column=(type=char(41) updatewhereclause=yes name=tipo dbname="tipo" )
+ retrieve="SELECT NVL(SGD_ACOMETIDA.DESCRIPCION, CONCAT('ACOMETIDA ', TO_CHAR(SGD_ACOMETIDA.CODIGO) )) INSTALACION ,
+		 concat(:ps_tension,'                                      ') TENSION, 
+		 concat(:ps_tipo_inst,'                                        ') TIPO    
+FROM SGD_ACOMETIDA, 
+	  SGD_INTERRUPCION" arguments=(("ps_tipo_inst", string),("ps_tension", string)) )
+text(band=header alignment="2" text="Nombre de la Instalaci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="9" y="8" height="64" width="1481"  name=instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Tipo de Tensi$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="1509" y="8" height="64" width="663"  name=tension_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Tipo de Instalaci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="2190" y="8" height="64" width="763"  name=tipo_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="14" y="8" height="64" width="1481" format="[general]"  name=instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1504" y="8" height="64" width="663" format="[general]"  name=tension edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2176" y="8" height="64" width="777" format="[general]"  name=tipo edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,50 @@
+HA$PBExportHeader$d_info_int_descargo.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=164 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_descargo dbname="sgd_interrupcion_descargo.nro_descargo" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_instalacion dbname="sgd_interrupcion_descargo.cod_instalacion" )
+ column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(18) updatewhereclause=yes name=matr dbname="matr" )
+ column=(type=number updatewhereclause=yes name=pot_instalada dbname="pot_instalada" )
+ column=(type=number updatewhereclause=yes name=cant_cli dbname="cant_cli" )
+ column=(type=datetime updatewhereclause=yes name=f_inicio dbname="sgd_interrupcion_descargo.f_inicio" )
+ column=(type=datetime updatewhereclause=yes name=f_fin dbname="sgd_interrupcion_descargo.f_fin" )
+ column=(type=number updatewhereclause=yes name=pxt dbname="pxt" )
+ column=(type=number updatewhereclause=yes name=cxt dbname="cxt" )
+ retrieve="SELECT ~"SGD_INTERRUPCION_DESCARGO~".~"NRO_DESCARGO~",   
+		~"SGD_INTERRUPCION_DESCARGO~".~"COD_INSTALACION~",   
+		~"SGD_INSTALACION~".~"NOM_INSTALACION~",
+		'Mat - ' || ~"SGD_INSTALACION~".~"MATRICULA~" AS MATR, 
+		NVL(~"SGD_INSTALACION~".~"POT_INSTALADA~",0) AS POT_INSTALADA,
+		NVL(~"SGD_INSTALACION~".~"CANT_CLI~",0) AS CANT_CLI,
+		~"SGD_INTERRUPCION_DESCARGO~".~"F_INICIO~",   
+		~"SGD_INTERRUPCION_DESCARGO~".~"F_FIN~",
+		NVL(ROUND((~"SGD_INTERRUPCION_DESCARGO~".~"F_FIN~" - ~"SGD_INTERRUPCION_DESCARGO~".~"F_INICIO~") * ~"SGD_INSTALACION~".~"POT_INSTALADA~",2),0) AS PXT,
+		NVL(ROUND((~"SGD_INTERRUPCION_DESCARGO~".~"F_FIN~" - ~"SGD_INTERRUPCION_DESCARGO~".~"F_INICIO~") * ~"SGD_INSTALACION~".~"CANT_CLI~",2),0) AS CXT
+FROM ~"SGD_INTERRUPCION_DESCARGO~", ~"SGD_INSTALACION~"   
+WHERE ~"SGD_INTERRUPCION_DESCARGO~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" AND
+		~"SGD_INSTALACION~".~"BDI_JOB~" = 0 AND
+		~"SGD_INTERRUPCION_DESCARGO~".~"NRO_DESCARGO~" = :pl_nro_descargo" arguments=(("pl_nro_descargo", number)) )
+text(band=header alignment="2" text="Nombre del CT"border="6" color="0" x="14" y="4" height="132" width="1019"  name=nom_instalacion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Matr$$HEX1$$ed00$$ENDHEX$$cula"border="6" color="0" x="1047" y="4" height="132" width="512"  name=matr_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Potencia Instalada"border="6" color="0" x="1573" y="4" height="132" width="471"  name=pot_instalada_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cantidad de Clientes"border="6" color="0" x="2057" y="4" height="132" width="402"  name=cant_cli_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha de Inicio"border="6" color="0" x="2473" y="4" height="132" width="462"  name=f_inicio_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fecha de Fin"border="6" color="0" x="2949" y="4" height="132" width="462"  name=f_fin_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Potencia x Tiempo
+(KVA x Hora)"border="6" color="0" x="3424" y="4" height="132" width="594"  name=pxt_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Clientes x Tiempo
+(Clientes x Hora)"border="6" color="0" x="4032" y="4" height="132" width="571"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1047" y="8" height="68" width="512" format="[general]"  name=matr edit.limit=18 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="1577" y="8" height="68" width="462" format="[general]"  name=pot_instalada edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="0" x="2080" y="8" height="68" width="366" format="[general]"  name=cant_cli edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="5" color="0" x="2487" y="8" height="68" width="439" format="[shortdate] [time]"  name=f_inicio editmask.mask="DD/MM/YY HH:MM" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="2" tabsequence=32766 border="5" color="0" x="2971" y="8" height="68" width="421" format="[shortdate] [time]"  name=f_fin editmask.mask="DD/MM/YY HH:MM" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="0" x="3447" y="8" height="68" width="562" format="[general]"  name=pxt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="0" color="0" x="4032" y="8" height="68" width="571" format="[general]"  name=cxt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="68" width="1019" format="[general]"  name=nom_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

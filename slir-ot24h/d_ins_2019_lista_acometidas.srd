@@ -1,0 +1,34 @@
+HA$PBExportHeader$d_ins_2019_lista_acometidas.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=codigo dbname="sgd_acometida.codigo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=instalacion_origen dbname="sgd_acometida.instalacion_origen" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=descripcion dbname="sgd_acometida.descripcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cod_calle dbname="sgd_acometida.cod_calle" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=num_puerta dbname="sgd_acometida.num_puerta" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=duplicador dbname="sgd_acometida.duplicador" )
+ column=(type=char(30) updatewhereclause=yes name=callejero_nom_calle dbname="callejero.nom_calle" )
+ column=(type=char(4000) updatewhereclause=yes name=cdireccion dbname="cdireccion" )
+ retrieve="  SELECT ~"SGD_ACOMETIDA~".~"CODIGO~",   
+         ~"SGD_ACOMETIDA~".~"INSTALACION_ORIGEN~",   
+         ~"SGD_ACOMETIDA~".~"DESCRIPCION~",   
+         ~"SGD_ACOMETIDA~".~"COD_CALLE~",   
+         ~"SGD_ACOMETIDA~".~"NUM_PUERTA~",   
+         ~"SGD_ACOMETIDA~".~"DUPLICADOR~",   
+         ~"CALLEJERO~".~"NOM_CALLE~",   
+         fgnu_calle_referencia(callejero.nom_calle, SGD_ACOMETIDA.num_puerta, SGD_ACOMETIDA.duplicador, SGD_ACOMETIDA.nif, SGD_ACOMETIDA.cod_calle, 0, '', 0, '') cdireccion  
+    FROM ~"SGD_ACOMETIDA~",   
+         ~"CALLEJERO~"  
+   WHERE ( ~"SGD_ACOMETIDA~".~"COD_CALLE~" = ~"CALLEJERO~".~"COD_CALLE~" ) and  
+         ( ~"SGD_ACOMETIDA~".~"INSTALACION_ORIGEN~" = :pdec_nro_instalacion) AND  
+         ~"SGD_ACOMETIDA~".~"BDI_JOB~" = 0    
+" retrieve.asneeded=yes arguments=(("pdec_nro_instalacion", number)) )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="4" height="56" width="1024" format="[general]"  name=cdireccion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="1042" y="4" height="56" width="1152" format="[general]"  name=descripcion edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Direcci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="5" y="0" height="64" width="1024"  name=cdireccion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Descripci$$HEX1$$f300$$ENDHEX$$n"border="6" color="0" x="1047" y="0" height="64" width="1143"  name=descripcion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

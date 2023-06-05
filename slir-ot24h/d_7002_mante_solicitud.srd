@@ -1,0 +1,125 @@
+HA$PBExportHeader$d_7002_mante_solicitud.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=20 color="536870912" )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=932 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=f_solicitado dbname="sgd_descargos.f_solicitado" )
+ column=(type=char(2000) updatewhereclause=yes name=obs_solicitud dbname="sgd_descargos.obs_solicitado" )
+ column=(type=datetime updatewhereclause=yes name=f_fin_solicitado dbname="sgd_descargos.f_fin_solicitado" )
+ column=(type=decimal(0) updatewhereclause=yes name=estado dbname="sgd_descargos.estado" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=nro_descargo dbname="sgd_descargos.nro_descargo" )
+ column=(type=datetime updatewhereclause=yes name=f_alta dbname="sgd_descargos.f_alta" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=usuario dbname="sgd_descargos.usuario" )
+ column=(type=char(15) updatewhereclause=yes name=programa dbname="sgd_descargos.programa" )
+ column=(type=datetime updatewhereclause=yes name=f_aprobado dbname="sgd_descargos.f_aprobado" )
+ column=(type=char(2000) updatewhereclause=yes name=obs_aprobado dbname="sgd_descargos.obs_aprobado" )
+ column=(type=decimal(0) updatewhereclause=yes name=id_activado dbname="sgd_descargos.id_activado" )
+ column=(type=datetime updatewhereclause=yes name=f_activado dbname="sgd_descargos.f_activado" )
+ column=(type=char(25) updatewhereclause=yes name=nom_usuario dbname="gi_usuario_sgi.nom_usuario" )
+ column=(type=char(16) updatewhereclause=yes name=id_solicitante dbname="sgd_descargos.id_solicitante" )
+ column=(type=char(16) updatewhereclause=yes name=id_aprobacion dbname="sgd_descargos.id_aprobacion" )
+ column=(type=datetime updatewhereclause=yes name=f_ini_solicitado dbname="sgd_descargos.f_ini_solicitado" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_incidencia dbname="sgd_descargos.nro_incidencia" )
+ column=(type=datetime updatewhereclause=yes name=f_ini_aprobado dbname="sgd_descargos.f_ini_aprobado" )
+ column=(type=datetime updatewhereclause=yes name=f_fin_aprobado dbname="sgd_descargos.f_fin_aprobado" )
+ column=(type=char(50) updatewhereclause=yes name=tipo_descargo dbname="sgd_valor.descripcion" )
+ column=(type=decimal(0) updatewhereclause=yes name=id_enviado dbname="sgd_descargos.id_enviado" values="	1/	0" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_descargos_cod_inst_origen dbname="sgd_descargos.cod_inst_origen" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_usuario_sgi_nro_centro dbname="gi_usuario_sgi.nro_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_usuario_sgi_nro_cmd dbname="gi_usuario_sgi.nro_cmd" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_usuario_sgi_nro_mesa dbname="gi_usuario_sgi.nro_mesa" )
+ column=(type=decimal(0) updatewhereclause=yes name=ind_interrupcion dbname="sgd_descargos.ind_interrupcion" values="Sin Interrupcion	2/Sin Interrupcion	1" )
+ column=(type=decimal(0) updatewhereclause=yes name=ind_act_grafica dbname="sgd_descargos.ind_act_grafica" values="Necesita Act. BDI	1/Necesita Act. BDI	0" )
+ column=(type=decimal(0) updatewhereclause=yes name=subest_movil dbname="sgd_descargos.subest_movil" values="Subestacion Movil	1/Subestacion Movil	0" )
+ column=(type=decimal(0) updatewhereclause=yes name=trab_tension dbname="sgd_descargos.trab_tension" values="Trab en Tension	1/Trab en Tension	0" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=nom_desc dbname="sgd_descargos.nom_desc" )
+ column=(type=char(160) updatewhereclause=yes name=descripcion dbname="sgd_descargos.descripcion" )
+ column=(type=char(2000) updatewhereclause=yes name=inst_descargar dbname="sgd_descargos.inst_descargar" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=agente dbname="sgd_descargos.nom_doc" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=agente dbname="sgd_descargos.agente" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=sgd_descargos_ind_obligada dbname="sgd_descargos.ind_obligada" values="Indicativo Incidencia Obligada	1/Indicativo Incidencia Obligada	0" )
+ column=(type=decimal(0) updatewhereclause=yes name=cod_causa dbname="sgd_descargos.cod_causa" )
+ column=(type=decimal(0) updatewhereclause=yes name=fam_causa dbname="sgd_descargos.fam_causa" )
+ column=(type=datetime updatewhereclause=yes name=fec_causa dbname="sgd_descargos.fec_causa" )
+ column=(type=decimal(0) updatewhereclause=yes name=sgd_descargos_grupo_descargo dbname="sgd_descargos.grupo_descargo" values=" Distribuci$$HEX1$$f300$$ENDHEX$$n	1/Comercial	2/" )
+ retrieve="  SELECT ~"SGD_DESCARGOS~".~"F_SOLICITADO~",   
+         ~"SGD_DESCARGOS~".~"OBS_SOLICITADO~",   
+         ~"SGD_DESCARGOS~".~"F_FIN_SOLICITADO~",   
+         ~"SGD_DESCARGOS~".~"ESTADO~",   
+         ~"SGD_DESCARGOS~".~"NRO_DESCARGO~",   
+         ~"SGD_DESCARGOS~".~"F_ALTA~",   
+         ~"SGD_DESCARGOS~".~"USUARIO~",   
+         ~"SGD_DESCARGOS~".~"PROGRAMA~",   
+         ~"SGD_DESCARGOS~".~"F_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"OBS_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"ID_ACTIVADO~",   
+         ~"SGD_DESCARGOS~".~"F_ACTIVADO~",   
+         ~"GI_USUARIO_SGI~".~"NOM_USUARIO~",   
+         ~"SGD_DESCARGOS~".~"ID_SOLICITANTE~",   
+         ~"SGD_DESCARGOS~".~"ID_APROBACION~",   
+         ~"SGD_DESCARGOS~".~"F_INI_SOLICITADO~",   
+         ~"SGD_DESCARGOS~".~"NRO_INCIDENCIA~",   
+         ~"SGD_DESCARGOS~".~"F_INI_APROBADO~",   
+         ~"SGD_DESCARGOS~".~"F_FIN_APROBADO~",   
+         ~"SGD_VALOR~".~"DESCRIPCION~",
+         ~"SGD_DESCARGOS~".~"ID_ENVIADO~",   
+         ~"SGD_DESCARGOS~".~"COD_INST_ORIGEN~",   
+         ~"GI_USUARIO_SGI~".~"NRO_CENTRO~",   
+         ~"GI_USUARIO_SGI~".~"NRO_CMD~",   
+         ~"GI_USUARIO_SGI~".~"NRO_MESA~",   
+         ~"SGD_DESCARGOS~".~"IND_INTERRUPCION~",   
+         ~"SGD_DESCARGOS~".~"IND_ACT_GRAFICA~",   
+         ~"SGD_DESCARGOS~".~"SUBEST_MOVIL~",   
+         ~"SGD_DESCARGOS~".~"TRAB_TENSION~",   
+         ~"SGD_DESCARGOS~".~"NOM_DESC~",   
+         ~"SGD_DESCARGOS~".~"DESCRIPCION~",   
+         ~"SGD_DESCARGOS~".~"INST_DESCARGAR~",   
+         ~"SGD_DESCARGOS~".~"NOM_DOC~",
+         ~"SGD_DESCARGOS~".~"AGENTE~",
+         ~"SGD_DESCARGOS~".~"IND_OBLIGADA~",
+         ~"SGD_DESCARGOS~".~"COD_CAUSA~",   
+         ~"SGD_DESCARGOS~".~"FAM_CAUSA~",
+         ~"SGD_DESCARGOS~".~"FEC_CAUSA~",
+			~"SGD_DESCARGOS~".~"GRUPO_DESCARGO~"
+    FROM ~"SGD_DESCARGOS~",   
+         ~"GI_USUARIO_SGI~",   
+         ~"SGD_VALOR~" 
+   WHERE ( UPPER(~"SGD_DESCARGOS~".~"ID_SOLICITANTE~") = UPPER(~"GI_USUARIO_SGI~".~"USUARIO~" (+))) and  
+         (( ~"SGD_VALOR~".~"CODIGO~" = ~"SGD_DESCARGOS~".~"TIPO_DESCARGO~" ) and  
+         ( ~"SGD_VALOR~".~"CODIF~" = 'TI_D')) AND
+         ( ( ~"SGD_DESCARGOS~".~"NRO_DESCARGO~" = :pl_nro_descargo ) )    
+" update="SGD_DESCARGOS" updatewhere=0 updatekeyinplace=no arguments=(("pl_nro_descargo", number)) )
+column(band=detail id=19 alignment="2" tabsequence=32766 border="5" color="8388608" x="1801" y="204" height="64" width="590" format="[shortdate] [time]" html.valueishtml="0"  name=f_fin_aprobado visible="1~tif( isNull( f_fin_aprobado ), 0, 1 )" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="5" color="8388608" x="1801" y="204" height="64" width="590" format="[shortdate] [time]" html.valueishtml="0"  name=f_fin_solicitado visible="1~tif( isNull( f_fin_aprobado ), 1, 0 )" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="2" tabsequence=32766 border="5" color="8388608" x="645" y="204" height="64" width="594" format="[shortdate] [time]" html.valueishtml="0"  name=f_ini_solicitado visible="1~tif( isNull( f_ini_aprobado ), 1, 0 )" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="2" tabsequence=32766 border="5" color="8388608" x="645" y="204" height="64" width="594" format="[shortdate] [time]" html.valueishtml="0"  name=f_ini_aprobado visible="1~tif( isNull( f_ini_aprobado ), 0, 1 )" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+rectangle(band=detail x="1312" y="520" height="404" width="1083"  name=gb_2 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="16777215"  background.mode="2" background.color="0" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="5" color="8388608" x="494" y="20" height="64" width="480" format="" html.valueishtml="0"  name=nom_desc visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="5" color="8388608" x="1431" y="20" height="64" width="960" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="1403" y="540" height="64" width="891" format="[General]" html.valueishtml="0"  name=ind_act_grafica visible="1" checkbox.text="Necesita Act. BDI" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=no criteria.required=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="1403" y="640" height="64" width="891" format="[General]" html.valueishtml="0"  name=subest_movil visible="1" checkbox.text="Subestacion Movil" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="1403" y="736" height="64" width="891" format="[General]" html.valueishtml="0"  name=ind_interrupcion visible="1" checkbox.text="Sin Interrupcion" checkbox.on="2" checkbox.off="1" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="0" x="1403" y="828" height="64" width="891" format="[General]" html.valueishtml="0"  name=trab_tension visible="1~tif ( ind_interrupcion =2,1,0)" checkbox.text="Trab en Tension" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Identificador" border="0" color="0" x="55" y="20" height="64" width="425" html.valueishtml="0"  name=nom_desc_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Fecha de Petici$$HEX1$$f300$$ENDHEX$$n" border="0" color="0" x="55" y="112" height="64" width="576" html.valueishtml="0"  name=f_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Fecha Inicio Desc." border="0" color="0" x="55" y="204" height="64" width="576" html.valueishtml="0"  name=f_ini_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Estado:" border="0" color="0" x="55" y="296" height="64" width="576" html.valueishtml="0"  name=estado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Agente:" border="0" color="0" x="55" y="384" height="64" width="576" html.valueishtml="0"  name=agente_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Descripcion" border="0" color="0" x="1001" y="20" height="64" width="416" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="Observaciones" border="0" color="0" x="55" y="464" height="52" width="576" html.valueishtml="0"  name=obs_solicitud_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="8388608" x="55" y="540" height="272" width="1198" format="[general]" html.valueishtml="0"  name=obs_solicitud visible="1" edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.imemode=0 edit.vscrollbar=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="0" x="55" y="840" height="64" width="1198" format="" html.valueishtml="0"  name=sgd_descargos_ind_obligada visible="1~tif(fg_verifica_parametro('nuevos_tip_inc'), 1, 0)" checkbox.text="Indicativo Incidencia Obligada" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=no  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="5" color="8388608" x="1801" y="296" height="64" width="590" format="[general]" html.valueishtml="0"  name=tipo_descargo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+rectangle(band=detail x="1307" y="516" height="404" width="1083"  name=gb_1 visible="1" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="8421504"  background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Solicitante" border="0" color="0" x="1266" y="112" height="64" width="512" html.valueishtml="0"  name=id_solicitante_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Fecha Fin Desc." border="0" color="0" x="1266" y="204" height="64" width="512" html.valueishtml="0"  name=f_fin_solicitado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Tipo Descargo~tIf (fg_verifica_parametro('grupo descargo'), 'Grupo Descargo', 'Tipo Descargo')" border="0" color="0" x="1266" y="296" height="64" width="535" html.valueishtml="0"  name=tipo_descargo_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="5" color="8388608" x="645" y="112" height="64" width="594" format="[shortdate] [time]" html.valueishtml="0"  name=f_solicitado visible="1" editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="" border="5" color="8388608" x="645" y="296" height="64" width="594" html.valueishtml="0"  name=estado visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="5" color="8388608" x="1801" y="296" height="64" width="590" format="[general]" html.valueishtml="0"  name=sgd_descargos_grupo_descargo visible="1~tIf (fg_verifica_parametro('grupo descargo'), 1, 0)" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="5" color="8388608" x="645" y="384" height="64" width="1746" format="[general]" html.valueishtml="0"  name=agente visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="8388608" x="1801" y="112" height="64" width="590" format="[general]" html.valueishtml="0"  name=nom_usuario visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

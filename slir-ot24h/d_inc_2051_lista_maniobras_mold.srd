@@ -1,0 +1,364 @@
+HA$PBExportHeader$d_inc_2051_lista_maniobras_mold.srd
+release 12.6;
+datawindow(units=0 timer_interval=0 color=79741120 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=92 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=88 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=number updatewhereclause=yes name=cod_maniobra dbname="sgd_maniobra.cod_maniobra" )
+ column=(type=number updatewhereclause=yes name=tipo_maniobra dbname="sgd_maniobra.tipo_maniobra" )
+ column=(type=number updatewhereclause=yes name=cod_elemento dbname="sgd_maniobra.cod_elemento" )
+ column=(type=number updatewhereclause=yes name=sgd_maniobra_cod_instalacion dbname="sgd_maniobra.cod_instalacion" )
+ column=(type=datetime updatewhereclause=yes name=fecha_maniobra dbname="sgd_maniobra.fecha_maniobra" )
+ column=(type=number updatewhereclause=yes name=estado dbname="sgd_maniobra.estado" values="Abierto	1/Cerrado	0/Alta	4/Baja	3/Dentro	5/Fuera	6/" )
+ column=(type=char(40) updatewhereclause=yes name=nom_instalacion dbname="nom_instalacion" )
+ column=(type=char(4000) updatewhereclause=yes name=nom_brig_cont dbname="nom_brig_cont" )
+ column=(type=char(50) updatewhereclause=yes name=ubicacion dbname="sgd_valor.descripcion" )
+ column=(type=char(50) updatewhereclause=yes name=fase dbname="sgd_valor.fase" )
+ column=(type=char(50) updatewhereclause=yes name=tipo dbname="sgd_valor.tipo" )
+ column=(type=char(40) updatewhereclause=yes name=sgd_fusib_matricula dbname="sgd_fusib.matricula" )
+ retrieve=" SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~",   
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~",   
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~",   
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~",   
+         ~"SGD_MANIOBRA~".~"ESTADO~",
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION ,
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT,
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO,
+	~"SGD_FUSIB~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_FUSIB~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND
+			~"A~".~"CODIF~" (+) = 'T_IN' AND
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND
+			~"B~".~"CODIF~" (+) = 'FASE' AND
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND
+			~"C~".~"CODIF~" (+) = 'T_MA' AND
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND
+			~"SGD_FUSIB~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_FUSIB~".~"BDI_JOB~" = 0
+UNION ALL
+ SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~",
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~",   
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~",   
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~",   
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~",   
+         ~"SGD_MANIOBRA~".~"ESTADO~",
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION ,
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT,
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO,
+	~"SGD_INTERR~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~",~"SGD_INTERR~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND
+			~"A~".~"CODIF~" (+) = 'T_IN' AND
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND
+			~"B~".~"CODIF~" (+) = 'FASE' AND
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND
+			~"C~".~"CODIF~" (+) = 'T_MA' AND
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND
+			~"SGD_INTERR~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_INTERR~".~"BDI_JOB~" = 0
+UNION ALL
+ SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~",
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~",   
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~",   
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~",   
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~",   
+         ~"SGD_MANIOBRA~".~"ESTADO~",
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION ,
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT,
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO,
+	~"SGD_SECCI~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~",~"SGD_SECCI~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND
+			~"A~".~"CODIF~" (+) = 'T_IN' AND
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND
+			~"B~".~"CODIF~" (+) = 'FASE' AND
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND
+			~"C~".~"CODIF~" (+) = 'T_MA' AND
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND
+			~"SGD_SECCI~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_SECCI~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  0,0,
+		 CLASS_MEMB, 
+		 CLASS_MEMB,
+		 FECHA_ALTA,
+		 4,
+		 TEXTO,
+		 '',
+		 '',
+		 '',
+		 'Alta Inst. Temp',
+		''
+FROM OOP_ELTOS_TMP_HIST
+where cod_inc_alta = :pl_nro_incidencia
+UNION ALL
+SELECT  0,0,
+		 CLASS_MEMB, 
+		 CLASS_MEMB,
+		 FECHA_BAJA,
+		 3,
+		 TEXTO,
+		 '',
+		 '',
+		 '',
+		 'Baja Inst. Temp',
+		''
+FROM OOP_ELTOS_TMP_HIST
+where cod_inc_baja = :pl_nro_incidencia
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	NVL(~"SGD_TRAMO~".~"MATRICULA~",~"SGD_TRAMO~".~"COD_DOC~") 
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_TRAMO~" 
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_TRAMO~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_TRAMO~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	~"SGD_DISYUN~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_DISYUN~" 
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_DISYUN~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_DISYUN~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	~"SGD_SECCI_CARGA~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_SECCI_CARGA~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_SECCI_CARGA~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_SECCI_CARGA~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	~"SGD_CUCHILLA~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_CUCHILLA~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_CUCHILLA~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_CUCHILLA~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	~"SGD_SECCI_AUTOMATICO~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_SECCI_AUTOMATICO~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_SECCI_AUTOMATICO~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_SECCI_AUTOMATICO~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	~"SGD_INTERR_BT~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_INTERR_BT~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_INTERR_BT~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_INTERR_BT~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	~"SGD_CORTOCIRC~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_CORTOCIRC~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_CORTOCIRC~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_CORTOCIRC~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	~"SGD_INTERR_AT~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_INTERR_AT~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_INTERR_AT~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_INTERR_AT~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	~"SGD_SECCI_AT~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_SECCI_AT~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_SECCI_AT~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_SECCI_AT~".~"BDI_JOB~" = 0
+UNION ALL
+SELECT  ~"SGD_MANIOBRA~".~"COD_MANIOBRA~", 
+			   ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~", 
+		   ~"SGD_MANIOBRA~".~"COD_ELEMENTO~", 
+         ~"SGD_MANIOBRA~".~"COD_INSTALACION~", 
+         ~"SGD_MANIOBRA~".~"FECHA_MANIOBRA~", 
+         ~"SGD_MANIOBRA~".~"ESTADO~", 
+			NVL(~"SGD_INSTALACION~".~"NOM_INSTALACION~",~"SGD_MANIOBRA~".~"COD_INSTALACION~") NOM_INSTALACION , 
+			Fgci_Nombre_BrigCont_Maniobra(~"SGD_MANIOBRA~".~"COD_MANIOBRA~") NOM_BRIG_CONT, 
+			~"A~".~"DESCRIPCION~",~"B~".~"DESCRIPCION~" FASE,~"C~".~"DESCRIPCION~" TIPO, 
+	~"SGD_CUCHILLA_AT~".~"MATRICULA~"
+    FROM ~"SGD_MANIOBRA~",~"SGD_INSTALACION~", ~"SGD_VALOR~" ~"A~", ~"SGD_VALOR~" ~"B~", ~"SGD_VALOR~" ~"C~", ~"SGD_CUCHILLA_AT~"
+	WHERE ~"SGD_MANIOBRA~".~"COD_INSTALACION~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" (+) AND 
+			~"SGD_INSTALACION~".~"BDI_JOB~" (+) = 0 AND 
+			~"SGD_MANIOBRA~".~"NRO_INCIDENCIA~" = :PL_NRO_INCIDENCIA  AND 
+			~"A~".~"CODIF~" (+) = 'T_IN' AND 
+			~"A~".~"CODIGO~" (+) = ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" AND 
+			~"B~".~"CODIF~" (+) = 'FASE' AND 
+			~"B~".~"VALOR~" (+) = ~"SGD_MANIOBRA~".~"FASES~" AND 
+			~"C~".~"CODIF~" (+) = 'T_MA' AND 
+			~"C~".~"CODIGO~" (+) = ~"SGD_MANIOBRA~".~"TIPO_MANIOBRA~" AND 
+			~"SGD_CUCHILLA_AT~".~"CODIGO~"= ~"SGD_MANIOBRA~".~"COD_ELEMENTO~" AND ~"SGD_CUCHILLA_AT~".~"BDI_JOB~" = 0" arguments=(("PL_NRO_INCIDENCIA", number))  sort="fecha_maniobra A cod_elemento A " )
+text(band=header alignment="2" text="Elem. Maniobrado" border="6" color="0" x="14" y="12" height="64" width="805" html.valueishtml="0"  name=cod_elemento_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Nombre Instalaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="837" y="12" height="64" width="827" html.valueishtml="0"  name=nom_instalacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Tipo" border="6" color="0" x="1682" y="12" height="64" width="590" html.valueishtml="0"  name=tipo_t  tag="bmp" visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Fases" border="6" color="0" x="2290" y="12" height="64" width="288" html.valueishtml="0"  name=fase_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Ubicaci$$HEX1$$f300$$ENDHEX$$n" border="6" color="0" x="2597" y="12" height="64" width="782" html.valueishtml="0"  name=ubicacion_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Fecha Maniobra" border="6" color="0" x="3397" y="12" height="64" width="539" html.valueishtml="0"  name=fecha_maniobra_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Estado" border="6" color="0" x="3954" y="12" height="64" width="357" html.valueishtml="0"  name=estado_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Brigada / Contrata encargada" border="6" color="0" x="4329" y="12" height="64" width="1184" html.valueishtml="0"  name=nom_brig_cont_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="8388608" x="18" y="8" height="68" width="800" format="[general]" html.valueishtml="0"  name=sgd_fusib_matricula visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+bitmap(band=detail filename="mando.bmp" x="1701" y="8" height="64" width="73" border="2" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=tipo_g visible="1~tif (tipo_maniobra=1 ,1,0)" transparency="0" )
+bitmap(band=detail filename="manual.bmp" x="1701" y="8" height="64" width="73" border="2" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=tipo_g_3 visible="1~tif (tipo_maniobra=3 ,1,0)" transparency="0" )
+bitmap(band=detail filename="./recursos/expontanea.bmp" x="1701" y="8" height="64" width="73" border="2" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0"  name=tipo_g_2 visible="1~tif (tipo_maniobra=2 ,1,0)" transparency="0" )
+compute(band=detail alignment="0" expression="bitmap(case( estado when 1 then ~"abierta.bmp~" 
+when 0 then ~"cerrada.bmp~"))"border="0" color="8388608" x="3950" y="8" height="68" width="87" format="[general]" html.valueishtml="0"  name=bmp visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="841" y="8" height="68" width="818" format="[general]" html.valueishtml="0"  name=nom_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="8388608" x="1792" y="8" height="68" width="475" format="[general]" html.valueishtml="0"  name=tipo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="8388608" x="2322" y="8" height="68" width="247" format="[general]" html.valueishtml="0"  name=fase visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="8388608" x="2597" y="8" height="68" width="786" format="[general]" html.valueishtml="0"  name=ubicacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="8388608" x="3392" y="8" height="68" width="549" format="[shortdate] [time]" html.valueishtml="0"  name=fecha_maniobra visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="4050" y="8" height="68" width="261" format="[general]" html.valueishtml="0"  name=estado visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="8388608" x="4347" y="8" height="68" width="1166" format="[general]" html.valueishtml="0"  name=nom_brig_cont visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

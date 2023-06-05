@@ -1,0 +1,37 @@
+HA$PBExportHeader$d_lista_acometidas_int.srd
+$PBExportComments$Muestra el listado de las acometidas interrumpidas dependientes de un CT
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=88 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="codigo" )
+ column=(type=char(40) updatewhereclause=yes name=nom_acometida dbname="nom_acometida" )
+ column=(type=char(4000) updatewhereclause=yes name=cdireccion dbname="cdireccion" )
+ column=(type=char(4000) updatewhereclause=yes name=compute_0004 dbname="compute_0004" )
+ column=(type=number updatewhereclause=yes name=fase_afectada dbname="sgd_acometida.fase_afectada" )
+ retrieve="SELECT DISTINCT(SGD_ACOMETIDA.CODIGO),
+   	NVL(SGD_ACOMETIDA.DESCRIPCION, SGD_ACOMETIDA.CODIGO) NOM_ACOMETIDA,
+		fgnu_calle_referencia(callejero.nom_calle, SGD_ACOMETIDA.num_puerta, SGD_ACOMETIDA.duplicador, SGD_ACOMETIDA.nif, SGD_ACOMETIDA.cod_calle, 0, '', 0, '') cdireccion, 
+	   NVL(FGCI_FASE_INSTALACION(SGD_ACOMETIDA.TIPO_CONEXION), 'No determinada') ,
+	  1 fase_afectada
+FROM SGD_ACOMETIDA,
+	 SGD_SALBT,
+	 SGD_INTERRUPCION,
+	 CALLEJERO
+WHERE SGD_SALBT.INSTALACION_ORIGEN = :pl_codigo_ct
+	  AND SGD_SALBT.BDI_JOB = 0
+	  AND SGD_SALBT.CODIGO = SGD_INTERRUPCION.CABECERA_BT
+	  AND SGD_INTERRUPCION.NRO_INCIDENCIA = :pl_nro_incidencia
+	  AND SGD_INTERRUPCION.NRO_INSTALACION = SGD_ACOMETIDA.CODIGO
+	  AND SGD_ACOMETIDA.BDI_JOB = 0
+	  AND	SGD_ACOMETIDA.COD_CALLE = CALLEJERO.COD_CALLE
+" retrieve.asneeded=yes arguments=(("pl_codigo_ct", number),("pl_nro_incidencia", number)) )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1646" y="12" height="76" width="1755" format="[general]"  name=cdireccion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="910" y="12" height="76" width="718" format="[general]"  name=compute_0004 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="14" y="12" height="76" width="873" format="[general]"  name=nom_acometida edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Direcci$$HEX1$$f300$$ENDHEX$$n de la Acometida"border="6" color="0" x="1646" y="12" height="64" width="1755"  name=cdireccion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Fase de la Acometida"border="6" color="0" x="910" y="12" height="64" width="718"  name=fase_acometida_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Nombre de la Acometida"border="6" color="0" x="14" y="12" height="64" width="878"  name=nom_acometida_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

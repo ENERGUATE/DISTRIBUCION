@@ -1,0 +1,16 @@
+HA$PBExportHeader$s_brigada.srs
+global type s_brigada from structure
+	integer		gstr_usuario
+	datetime		gstr_f_actual
+	datetime		gstr_h_actual
+	string		gstr_programa
+	long		gstr_nro_brigada
+	integer		gstr_nombre
+	integer		gstr_ind_disponible
+	string		gstr_turno
+	integer		gstr_movil
+	integer		gstr_nro_centro
+	integer		gstr_nro_cmd
+	integer		gstr_nro_mesa
+end type
+

@@ -1,0 +1,59 @@
+HA$PBExportHeader$d_bri_2014_mante_brigadistas.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_brigadistas dbname="gi_brigadista.nro_brigadistas" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=nombre dbname="gi_brigadista.nombre" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=doc_id dbname="gi_brigadista.doc_id" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=co_pais dbname="gi_brigadista.co_pais" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=ape1 dbname="gi_brigadista.ape1" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=ape2 dbname="gi_brigadista.ape2" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_contrata dbname="gi_brigadista.nro_contrata" )
+ column=(type=char(50) updatewhereclause=yes name=sgd_valor_descripcion dbname="sgd_valor.descripcion" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=encargado dbname="gi_brigadista.encargado" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=ind_disponible dbname="gi_brigadista.ind_disponible" )
+ column=(type=char(80) updatewhereclause=yes name=tipos_desc dbname="tipos.desc_tipo" )
+ column=(type=char(5) updatewhereclause=yes name=tip_doc dbname="gi_brigadista.tip_doc" )
+ column=(type=char(80) updatewhereclause=yes name=codigos_desc_cod dbname="codigos.desc_cod" )
+ retrieve="  SELECT ~"GI_BRIGADISTA~".~"NRO_BRIGADISTAS~",   
+         ~"GI_BRIGADISTA~".~"NOMBRE~",   
+         ~"GI_BRIGADISTA~".~"DOC_ID~",   
+         ~"GI_BRIGADISTA~".~"CO_PAIS~",   
+         ~"GI_BRIGADISTA~".~"APE1~",   
+         ~"GI_BRIGADISTA~".~"APE2~",   
+         ~"GI_BRIGADISTA~".~"NRO_CONTRATA~",
+			~"SGD_VALOR~".~"DESCRIPCION~",     
+         ~"GI_BRIGADISTA~".~"ENCARGADO~",   
+         ~"GI_BRIGADISTA~".~"IND_DISPONIBLE~",   
+         ~"TIPOS~".~"DESC_TIPO~",   
+         ~"GI_BRIGADISTA~".~"TIP_DOC~",   
+         ~"CODIGOS~".~"DESC_COD~"
+    FROM ~"GI_BRIGADISTA~",   
+         ~"TIPOS~",   
+         ~"CODIGOS~",   
+         ~"SGD_VALOR~"  
+   WHERE ( ~"GI_BRIGADISTA~".~"TIP_DOC~" = ~"TIPOS~".~"TIPO~" ) and  
+         ( ~"GI_BRIGADISTA~".~"CO_PAIS~" = ~"CODIGOS~".~"COD~" ) and
+         ((~"SGD_VALOR~".~"CODIF~" = 'EMPR' ) AND  
+         (~"SGD_VALOR~".~"CODIGO~" <> 0 )    AND
+			( ~"SGD_VALOR~".~"CODIGO~" = ~"GI_BRIGADISTA~".~"NRO_CONTRATA~"))
+" update="GI_BRIGADISTA" updatewhere=0 updatekeyinplace=no )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="8388608" x="2839" y="4" height="64" width="407" format="[general]"  name=nro_contrata visible="1~t0" dddw.name=ddw_contratas_sin_todos dddw.displaycolumn=descripcion dddw.datacolumn=codigo dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="8388608" x="1746" y="4" height="64" width="576" format="[general]"  name=tipos_desc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="8388608" x="14" y="4" height="64" width="553" format="[general]"  name=nombre edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="585" y="4" height="64" width="553" format="[general]"  name=ape1 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="1157" y="4" height="64" width="553" format="[general]"  name=ape2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="2354" y="4" height="64" width="457" format="[general]"  name=doc_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="if(  ind_disponible = 0, ~"No Disponible~", ~"Disponible~" )"border="0" color="8388608" x="3278" y="4" height="60" width="389" format="[general]"  name=cc_disponible  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="2" tabsequence=32766 border="0" color="8388608" x="2839" y="0" height="64" width="411" format="[general]"  name=sgd_valor_descripcion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Nombre"border="6" color="0" x="5" y="0" height="64" width="567"  name=nombre_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Apellidos"border="6" color="0" x="590" y="0" height="64" width="1115"  name=ape1_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Documento"border="6" color="0" x="1723" y="0" height="64" width="603"  name=tipos_desc_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Nro. Doc."border="6" color="0" x="2345" y="0" height="64" width="475"  name=doc_id_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Empresa"border="6" color="0" x="2839" y="0" height="64" width="411"  name=nro_contrata_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=header id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3538" y="0" height="52" width="78" format="[general]"  name=ind_disponible edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Disponible"border="6" color="0" x="3269" y="0" height="64" width="402"  name=ind_disponible_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,94 @@
+HA$PBExportHeader$fg_conexion_bd.srf
+global type fg_conexion_bd from function_object
+end type
+
+forward prototypes
+global function integer fg_conexion_bd (ref datawindow d_usuario)
+end prototypes
+
+global function integer fg_conexion_bd (ref datawindow d_usuario);//////////////////////////////////////////////////////////////////////////
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_conexion_bd
+// Objetivo: Realiza la conexion con la base de datos 
+// Ambito : Global
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//			Entrada: d_usuario - dw donde esta el usuario y la clave
+//			Salida: --
+//
+// Devuelve: 1 - Realizo la conexion bien
+//				-1 - No pudo realizar la conexion a la Base de Datos
+//
+// Fecha		Responsable		Actuaci$$HEX1$$f300$$ENDHEX$$n
+// -----		-----------		---------
+// 27/08/96    P.C.			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//////////////////////////////////////////////////////////////////////////
+
+string base, usuario, clave, dbparametros, encriptar
+SetPointer(Hourglass!)
+//usuario = d_usuario.GetItemString(1,'ps_usuario')
+//clave = d_usuario.GetItemString(1,'ps_clave')
+usuario = ProfileString("opensgi.ini","database","usuario","sgi")
+clave = ProfileString("opensgi.ini","database","clave","sgi")
+base = ProfileString("opensgi.ini","database","Database","open")
+dbparametros = ProfileString("opensgi.ini","database","DBParm","Disablebind=0")
+encriptar = ProfileString("opensgi.ini","externalidad","encriptar","no")
+//,Date=' ''''yyyy/mm/dd'''' ';DateTime=' ''''yyyy/mm/dd hh:mm:ss'''' '
+//dbparametros = ProfileString("opensgi.ini","database","DBParm","StaticBind=1,Disablebind=1,Date=' ''''yyyy/mm/dd'''' ';DateTime=' ''''yyyy/mm/dd hh:mm:ss'''' '")
+
+//**************************************************************************************************//
+//                          ENCRIPTAR EL NOMBRE Y EL PASSWORD                                       //
+//                            LUIS EDUARDO ORTIZ ABRIL/2001                                         //
+//**************************************************************************************************//
+
+//LSH INI 17/10/2013 Mejora DEO13-00000754
+
+//If encriptar = 'si' Then
+//	usuario = fg_desencriptar(usuario)
+//	clave = fg_desencriptar(clave)
+//	If usuario = "" OR clave = "" Then
+//		Halt Close
+//	End if
+//End If
+
+If encriptar = 'si' Then
+	clave = fg_desencriptar(clave)
+	If usuario = "" OR clave = "" Then
+		Halt Close
+	End if
+End If
+
+//LSH FIN 17/10/2013 Mejora DEO13-00000754
+
+//**************************************************************************************************//
+//                                         FIN CAMBIOS                                              //
+//**************************************************************************************************//
+
+
+sqlca.DBMS       = "O90 Oracle9i (9.0.1)"
+sqlca.logid      = usuario
+sqlca.logpass    = clave
+sqlca.database   = base
+sqlca.servername = ProfileString("opensgi.ini","database","ServerName","GID01E")
+sqlca.dbparm     ="ConnectString='DSN="+base+";UID="+usuario+";PWD="+clave+";Disablebind=0;'"
+
+CONNECT;
+//w_arranque_operaciones.barra.object.value = 16 // Hugo Serna
+
+IF sqlca.sqlcode <> 0 then
+		MessageBox ("No es posible la conexi$$HEX1$$f300$$ENDHEX$$n con la base de datos!", sqlca.sqlerrtext,stopsign!)
+		return -1
+END IF
+//w_arranque_operaciones.barra.object.value = 32 // Hugo Serna
+
+Rollback;
+//w_arranque_operaciones.barra.object.value = 48 // Hugo Serna
+
+//w_arranque_operaciones.barra.object.value = 64 // Hugo Serna
+IF sqlca.sqlcode <> 0 then
+		MessageBox ("No es posible la conexi$$HEX1$$f300$$ENDHEX$$n con la base de datos !", sqlca.sqlerrtext,stopsign!)
+		return -1
+END IF
+
+//gnu_u_transaction.uf_inicializar_transaccion()
+return 1
+end function
+

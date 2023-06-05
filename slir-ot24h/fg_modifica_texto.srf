@@ -1,0 +1,218 @@
+HA$PBExportHeader$fg_modifica_texto.srf
+global type fg_modifica_texto from function_object
+end type
+
+forward prototypes
+global function string fg_modifica_texto (datawindow adw_dw, readonly string as_columna_mov[], readonly string as_columan_ins_text[], long al_width[], readonly string as_det_columna[], readonly integer ai_parametro, readonly integer ai_arr_columna[], readonly integer ai_columna)
+end prototypes
+
+global function string fg_modifica_texto (datawindow adw_dw, readonly string as_columna_mov[], readonly string as_columan_ins_text[], long al_width[], readonly string as_det_columna[], readonly integer ai_parametro, readonly integer ai_arr_columna[], readonly integer ai_columna);Long  ll_width_mov, &
+		ll_pos, &
+		ll_pos_space, &
+		ll_x, &
+		ll_x_mov, &
+		ll_i, &
+		ll_upper_bound, &
+		ll_i2, &
+		ll_row2
+
+String ls_syntax, ls_text_t, ls_text_pos
+
+Boolean lb_no_mover
+
+//*********************************************
+//**  OSGI 2001.2  	24/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+String ls_return = " ", ls_tmp_modif = " " 
+//*********************************************
+//**  OSGI 2001.2  	24/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+
+
+
+DataStore lds_detalles
+
+
+lds_detalles = Create DataStore
+lds_detalles.DataObject = "dw_co_parametros_ext"
+lds_detalles.SetTransObject(SQLCA)
+ll_row2 = lds_detalles.Retrieve(ai_parametro, ai_columna)
+
+
+ll_upper_bound = UpperBound(as_columna_mov[])
+
+For ll_i = 1 To ll_upper_bound
+	ll_x_mov = Long(adw_dw.Describe(as_columna_mov[ll_i] + ".x"))
+	ll_width_mov = Long(adw_dw.Describe(as_columna_mov[ll_i] + ".Width"))
+
+
+	If Not IsNull(as_columan_ins_text[ll_i]) And Len(Trim(as_columan_ins_text[ll_i])) > 0 Then
+		//*********************************************
+		//**  OSGI 2001.2  	24/10/2002					**
+		//**  Jair Padilla / Soluziona PANAMA  		**
+		//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+		//*********************************************
+		//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  		adw_dw.Modify(as_columna_mov[ll_i] + ".Text='" + as_columan_ins_text[ll_i] + "'")
+
+
+		ls_tmp_modif = as_columna_mov[ll_i] + ".Text='" + as_columan_ins_text[ll_i] + "'"
+		adw_dw.Modify(ls_tmp_modif)		
+		ls_return += " " + ls_tmp_modif + " "
+		//*********************************************
+		//**  OSGI 2001.2  	24/10/2002					**
+		//**  Jair Padilla / Soluziona PANAMA  		**
+		//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+		//*********************************************
+	End If
+
+
+	If IsNull(al_width[ll_i]) Or al_width[ll_i] < 0 Then al_width[ll_i] = 0
+
+
+	ll_pos = 0
+	
+	If al_width[ll_i] > 0 Then
+		//*********************************************
+		//**  OSGI 2001.2  	24/10/2002					**
+		//**  Jair Padilla / Soluziona PANAMA  		**
+		//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+		//*********************************************
+		//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  		adw_dw.Modify(as_columna_mov[ll_i] + ".Width='" + String(al_width[ll_i]) + "'")
+
+
+		ls_tmp_modif = as_columna_mov[ll_i] + ".Width='" + String(al_width[ll_i]) + "'"
+		adw_dw.Modify(ls_tmp_modif)
+		ls_return += " " + ls_tmp_modif + " "
+		//*********************************************
+		//**  OSGI 2001.2  	24/10/2002					**
+		//**  Jair Padilla / Soluziona PANAMA  		**
+		//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+		//*********************************************
+
+
+		If Upper(adw_dw.Describe(as_det_columna[ll_i] + ".Type")) <> "BITMAP" Then
+			//*********************************************
+			//**  OSGI 2001.2  	24/10/2002					**
+			//**  Jair Padilla / Soluziona PANAMA  		**
+			//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+			//*********************************************
+			//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  			adw_dw.Modify(as_det_columna[ll_i] + ".Width='" + String(al_width[ll_i]) + "'")
+
+
+			ls_tmp_modif = as_det_columna[ll_i] + ".Width='" + String(al_width[ll_i]) + "'"
+			adw_dw.Modify(ls_tmp_modif)
+			ls_return += " " + ls_tmp_modif + " "
+			//*********************************************
+			//**  OSGI 2001.2  	24/10/2002					**
+			//**  Jair Padilla / Soluziona PANAMA  		**
+			//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+			//*********************************************
+		End If
+		
+		ls_text_pos = 'text(name='
+		ls_syntax = adw_dw.Describe("DataWindow.Syntax")
+		
+		ll_pos = Pos(ls_syntax, ls_text_pos) + 2
+		ls_syntax = Mid(ls_syntax, ll_pos)
+	
+//		adw_dw.AcceptText()
+	
+		ls_text_pos = '(name='
+		ll_pos = Pos(ls_syntax, ls_text_pos)
+	End If
+
+
+	Do While ll_pos > 0
+		//******************
+		//**  BUSCO TEXT  **
+		//******************
+		ll_pos += 6
+		
+		ls_syntax = Mid(ls_syntax, ll_pos)
+		ll_pos_space = Pos(ls_syntax, ' ') - 1
+		ls_text_t = Left(ls_syntax, ll_pos_space)
+		ls_syntax = Mid(ls_syntax, ll_pos_space + 1)
+		//******************
+		//**  BUSCO TEXT  **
+		//******************
+
+
+
+		//***************
+		//**  BUSCO X  **
+		//***************
+		If al_width[ll_i] > 0 Then
+			ll_x = Long(adw_dw.Describe(ls_text_t + ".x"))
+
+			If ll_x > ll_x_mov And ls_text_t <> as_columna_mov[ll_i]  And ls_text_t <> as_det_columna[ll_i] Then
+				lb_no_mover = False
+
+				lds_detalles.SetFilter("")
+				
+				If ll_i <= UpperBound(ai_arr_columna[]) Then
+					lds_detalles.SetFilter("(tipo like 'DET%') And Len(tipo) > 3 And columna = " + String(ai_arr_columna[ll_i]))
+					lds_detalles.Filter()
+				End If
+
+				ll_row2 = lds_detalles.RowCount()
+
+				For ll_i2 = 1 To ll_row2
+					 If ls_text_t = lds_detalles.GetItemString(ll_i2, "valor") Then
+						 lb_no_mover = True
+						 Exit
+					End If
+				Next
+
+				If Not lb_no_mover Then
+					ll_x += (al_width[ll_i] - ll_width_mov)
+
+
+					//*********************************************
+					//**  OSGI 2001.2  	24/10/2002					**
+					//**  Jair Padilla / Soluziona PANAMA  		**
+					//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+					//*********************************************
+					//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  					adw_dw.Modify(ls_text_t + ".x='" + String(ll_x) + "'")
+
+
+					ls_tmp_modif = ls_text_t + ".x='" + String(ll_x) + "'"
+					adw_dw.Modify(ls_tmp_modif)
+					ls_return += " " + ls_tmp_modif + " "
+					//*********************************************
+					//**  OSGI 2001.2  	24/10/2002					**
+					//**  Jair Padilla / Soluziona PANAMA  		**
+					//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+					//*********************************************
+				End If
+			End If
+		End If
+		//***************
+		//**  BUSCO X  **
+		//***************
+
+		ll_pos = Pos(ls_syntax, ls_text_pos)
+	Loop
+//////////////////////	adw_dw.AcceptText()
+Next
+
+Destroy lds_detalles
+
+
+
+//*********************************************
+//**  OSGI 2001.2  	24/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+Return ls_return
+//*********************************************
+//**  OSGI 2001.2  	24/10/2002					**
+//**  Jair Padilla / Soluziona PANAMA  		**
+//**  IMPRIMIR COLUMNAS DIMANICAS HIST INST  **
+//*********************************************
+end function
+

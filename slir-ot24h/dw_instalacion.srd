@@ -1,0 +1,52 @@
+HA$PBExportHeader$dw_instalacion.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(30) updatewhereclause=yes name=nom_instalacion dbname="sgd_instalacion.nom_instalacion" )
+ column=(type=char(12) updatewhereclause=yes name=matricula dbname="sgd_instalacion.matricula" )
+ column=(type=number updatewhereclause=yes name=nro_instalacion dbname="sgd_instalacion.nro_instalacion" )
+ column=(type=char(80) updatewhereclause=yes name=descripcion dbname="sgd_instalacion.descripcion" )
+ retrieve="  SELECT ~"SGD_INSTALACION~".~"NOM_INSTALACION~",   
+         ~"SGD_INSTALACION~".~"MATRICULA~" ,
+          NRO_INSTALACION,DESCRIPCION
+    FROM ~"SGD_INSTALACION~"  
+   WHERE ( ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" > 0) AND  
+         ( ~"SGD_INSTALACION~".~"TIPO_INSTALACION~" like :ls_tipo ) AND
+			(:ls_tipo=:ls_literal AND :ls_nombre='%' AND ~"SGD_INSTALACION~".~"NOM_INSTALACION~" is null or
+			~"SGD_INSTALACION~".~"NOM_INSTALACION~" like :ls_nombre)  AND
+         (~"SGD_INSTALACION~".~"MATRICULA~" like :ls_matricula ) AND  
+         ( ~"SGD_INSTALACION~".~"NRO_INSTALACION~" like :ls_codigo ) AND  
+         (:ambito = 'N' OR  
+         (           ~"SGD_INSTALACION~".~"NRO_CENTRO~" = :li_nro_centro AND  
+         ~"SGD_INSTALACION~".~"NRO_MESA~" = :li_nro_puesto AND  
+         ~"SGD_INSTALACION~".~"NRO_CMD~" = :li_nro_cmd)) AND  
+         ~"SGD_INSTALACION~".~"BDI_JOB~" = :trabajo AND  
+         ~"SGD_INSTALACION~".~"STAT_FLG~" <> 128   
+   UNION   
+  SELECT ~"NOM_INSTALACION~",   
+         ~"MATRICULA~"  ,
+          NRO_INSTALACION,DESCRIPCION
+    FROM ~"SGD_INSTALACION~" ~"SGD_INSTALACIONA~"   
+   WHERE ( ~"TIPO_INSTALACION~" > 0 ) AND  
+         ( ~"TIPO_INSTALACION~" like :ls_tipo ) AND  
+         (:ls_tipo='4' AND :ls_nombre='%' AND ~"NOM_INSTALACION~" is null or
+			~"NOM_INSTALACION~" like :ls_nombre)  AND
+         (~"MATRICULA~" like :ls_matricula ) AND  
+		  ( ~"NRO_INSTALACION~" like :ls_codigo ) AND  
+         (:ambito = 'N' OR  
+         (~"NRO_CENTRO~" = :li_nro_centro AND  
+          ~"NRO_CMD~" = :li_nro_cmd AND  
+          ~"NRO_MESA~" = :li_nro_puesto)) AND  
+         not exists (SELECT ~"SGD_INSTALACION~".~"NRO_INSTALACION~"  FROM ~"SGD_INSTALACION~"  
+           WHERE ~"SGD_INSTALACIONA~".NRO_INSTALACION=NRO_INSTALACION AND ~"SGD_INSTALACION~".~"BDI_JOB~" > 0)    
+			ORDER BY DESCRIPCION ASC
+ " arguments=(("ls_nombre", string),("ls_codigo", string),("ls_matricula", string),("ls_tipo", string),("li_nro_centro", number),("li_nro_cmd", number),("li_nro_puesto", number),("trabajo", number),("ambito", string),("ls_literal", number)) )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="5" y="4" height="84" width="1042" format="[general]" html.valueishtml="0"  name=nom_instalacion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="8388608" x="1061" y="4" height="84" width="969" format="[general]" html.valueishtml="0"  name=matricula visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Matr$$HEX1$$ed00$$ENDHEX$$cula" border="6" color="0" x="1061" y="8" height="64" width="969" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Nombre" border="6" color="0" x="5" y="8" height="64" width="1042" html.valueishtml="0"  name=nom_instalacion_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

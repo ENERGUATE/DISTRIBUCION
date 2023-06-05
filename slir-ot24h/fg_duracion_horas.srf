@@ -1,0 +1,34 @@
+HA$PBExportHeader$fg_duracion_horas.srf
+global type fg_duracion_horas from function_object
+end type
+
+forward prototypes
+global function decimal fg_duracion_horas (datetime pd_fecha_desde, datetime pd_fecha_hasta)
+end prototypes
+
+global function decimal fg_duracion_horas (datetime pd_fecha_desde, datetime pd_fecha_hasta);int li_cant_horas
+date ld_fecha_desde 
+ld_fecha_desde =  date(pd_fecha_desde)
+
+time ld_hora_desde
+ld_hora_desde =  time(pd_fecha_desde)
+
+date ld_fecha_hasta
+ld_fecha_hasta  = date(pd_fecha_hasta)
+
+time ld_hora_hasta
+ld_hora_hasta = time(pd_fecha_hasta)
+
+decimal li_duracion
+string ls_duracion
+decimal li_duracion_dias
+decimal li_duracion_horas
+decimal{3} ldec_duracion_horas
+
+li_duracion = daysafter(ld_fecha_desde,ld_fecha_hasta)
+
+ldec_duracion_horas = (li_duracion * 24 )  + (secondsafter(ld_hora_desde,ld_hora_hasta) / 3600)
+
+RETURN ldec_duracion_horas
+end function
+

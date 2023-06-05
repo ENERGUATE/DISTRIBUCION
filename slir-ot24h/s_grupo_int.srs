@@ -1,0 +1,14 @@
+HA$PBExportHeader$s_grupo_int.srs
+global type s_grupo_int from structure
+	long		nro_instalacion
+	long		nro_instalacion_int[]
+	string		tipo_conexion[]
+	datawindow		dw
+	boolean		respuesta
+	integer		interrupcion[]
+	datetime		inicio[]
+	datetime		fin[]
+	integer		opcion
+	datetime		f_deteccion
+end type
+

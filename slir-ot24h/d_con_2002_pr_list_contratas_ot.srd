@@ -1,0 +1,60 @@
+HA$PBExportHeader$d_con_2002_pr_list_contratas_ot.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=28 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=datetime update=yes updatewhereclause=yes key=yes name=f_desde dbname="gi_contrata_ot.f_desde" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_hasta dbname="gi_contrata_ot.f_hasta" )
+ column=(type=char(40) updatewhereclause=yes name=brigada dbname="gi_contratas.nombre" )
+ column=(type=char(15) updatewhereclause=yes name=telefono dbname="gi_contratas.telefono" )
+ column=(type=char(30) updatewhereclause=yes name=pers_contacto dbname="gi_contratas.pers_contacto" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_ot dbname="gi_contrata_ot.nro_ot" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="gi_contrata_ot.programa" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="gi_contrata_ot.f_actual" )
+ column=(type=char(8) update=yes updatewhereclause=yes name=usuario dbname="gi_contrata_ot.usuario" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=nro_brigada dbname="gi_contrata_ot.nro_contrata" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=est_brigada dbname="gi_contrata_ot.est_brigada" initial="0" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_contratas_estado dbname="gi_contratas.estado" )
+ column=(type=number updatewhereclause=yes name=cantidad_ot dbname="gi_contrata_ot.cantidad_ot" )
+ column=(type=number updatewhereclause=yes name=cantidad_tp dbname="gi_contrata_ot.cantidad_tp" )
+ column=(type=number updatewhereclause=yes name=ind_responsable dbname="gi_contrata_ot.ind_responsable" )
+ column=(type=number updatewhereclause=yes name=ind_disponible dbname="gi_contrata_ot.ind_disponible" )
+ retrieve=" SELECT  ~"GI_CONTRATA_OT~".~"F_DESDE~",   
+         ~"GI_CONTRATA_OT~".~"F_HASTA~",            
+         ~"GI_CONTRATAS~".~"NOMBRE~",   
+         ~"GI_CONTRATAS~".~"TELEFONO~",   
+         ~"GI_CONTRATAS~".~"PERS_CONTACTO~",   
+         ~"GI_CONTRATA_OT~".~"NRO_OT~",   
+         ~"GI_CONTRATA_OT~".~"PROGRAMA~",   
+         ~"GI_CONTRATA_OT~".~"F_ACTUAL~",   
+         ~"GI_CONTRATA_OT~".~"USUARIO~",   
+         ~"GI_CONTRATA_OT~".~"NRO_CONTRATA~",   
+         ~"GI_CONTRATA_OT~".~"EST_BRIGADA~" , 
+			~"GI_CONTRATAS~".~"ESTADO~", 
+			0						CANTIDAD_OT,
+			0						CANTIDAD_TP,
+			0						IND_RESPONSABLE,
+			0						IND_DISPONIBLE			
+    FROM ~"GI_CONTRATA_OT~",   
+         ~"GI_CONTRATAS~"  
+   WHERE ( ~"GI_CONTRATA_OT~".~"NRO_CONTRATA~" = ~"GI_CONTRATAS~".~"NRO_CONTRATA~" ) AND
+			( ~"GI_CONTRATA_OT~".~"NRO_OT~"       = :PI_NRO_OT)
+		 " update="GI_CONTRATA_OT" updatewhere=0 updatekeyinplace=no arguments=(("PI_NRO_OT", number)) )
+text(band=header alignment="2" text="Tel$$HEX1$$e900$$ENDHEX$$fono" border="6" color="0" x="2839" y="0" height="64" width="384" html.valueishtml="0"  name=movil_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Pers.Contacto" border="6" color="0" x="2359" y="0" height="64" width="462" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Fin Tareas" border="6" color="0" x="1847" y="0" height="64" width="494" html.valueishtml="0"  name=f_hasta_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Inicio  Tareas" border="6" color="0" x="1349" y="0" height="64" width="480" html.valueishtml="0"  name=f_desde_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Contrata" border="6" color="0" x="9" y="0" height="64" width="1321" html.valueishtml="0"  name=brigada_t visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+compute(band=detail alignment="0" expression="if( est_brigada   = 2 and not isnull(f_desde), 1, 0) "border="0" color="8388608" x="3095" y="88" height="52" width="183" format="[general]" html.valueishtml="0"  name=cuatro visible="1~t0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="/* if( est_brigada   = 0 or est_brigada   = 1 or  isNull( est_brigada ) or isNull( gi_brigada_ot_f_ini_prev ) or isnull( gi_brigada_ot_f_fin_prev ), 1,0) */"border="0" color="8388608" x="3305" y="92" height="52" width="183" format="[general]" html.valueishtml="0"  name=tres visible="1~t0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="/* if( est_brigada   = 0 or  isNull( est_brigada ) or isNull( gi_brigada_ot_f_ini_prev ) or isnull( gi_brigada_ot_f_fin_prev ), 1,0) */"border="0" color="8388608" x="3493" y="88" height="52" width="183" format="[general]" html.valueishtml="0"  name=uno visible="1~t0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="8388608" x="146" y="8" height="60" width="1097" format="[general]" html.valueishtml="0"  name=brigada visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" if (isNull (  f_desde ), 1,if (isNull (  f_hasta ), 2, 3))"border="0" color="8388608" x="23" y="12" height="52" width="96" format="[general]" html.valueishtml="0"  name=estado_new visible="1~t0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=30 border="5" color="8388608" x="1353" y="4" height="68" width="480" format="[shortdate] [time]" html.valueishtml="0" protect="0~tif( est_brigada < 2 or estado_new < 2,0,1)"  name=f_desde visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( est_brigada < 2 or  estado_new < 2, 16777215,81324524)" )
+column(band=detail id=2 alignment="0" tabsequence=40 border="5" color="8388608" x="1856" y="4" height="68" width="480" format="" html.valueishtml="0" protect="0~tif(est_brigada  = 2 ,0,1)"  name=f_hasta visible="1" editmask.autoskip=yes editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.imemode=0 editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif(est_brigada  = 2 , 16777215,81324524)" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="2363" y="8" height="60" width="443" format="[general]" html.valueishtml="0"  name=pers_contacto visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8388608" x="2834" y="8" height="60" width="379" format="[general]" html.valueishtml="0"  name=telefono visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

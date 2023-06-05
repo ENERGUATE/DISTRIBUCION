@@ -1,0 +1,45 @@
+HA$PBExportHeader$d_str_mhaia_activos.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=codigo dbname="bdiv10_activos.codigo" )
+ column=(type=char(100) updatewhereclause=yes name=descripcion dbname="bdiv10_activos.descripcion" )
+ column=(type=decimal(0) updatewhereclause=yes name=mhai dbname="gi_tipos_activos_grupo_activos.mhai" )
+ column=(type=number updatewhereclause=yes name=enr dbname="enr" )
+ column=(type=number updatewhereclause=yes name=sce dbname="sce" )
+ column=(type=number updatewhereclause=yes name=cpsm dbname="cpsm" )
+ retrieve="  SELECT ~"BDIV10_ACTIVOS~".~"CODIGO~",   
+         ~"BDIV10_ACTIVOS~".~"DESCRIPCION~", 
+			~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"MHAI~",  
+         fgci_calculo_enr_desde_fecha(~"BDIV10_ACTIVOS~".~"CODIGO~", :pdate_fecha_calculo) AS ENR, 
+			0 AS SCE,
+			0 AS CPSM 
+    FROM ~"BDIV10_ACTIVOS~" , 
+         ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~" 
+   WHERE ~"BDIV10_ACTIVOS~".~"ONIS_STAT~" = 0    
+	  AND ~"BDIV10_ACTIVOS~".~"ONIS_VER~" NOT LIKE '%.%'  
+     AND ~"BDIV10_ACTIVOS~".~"TIPO~"  = ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"CODIGO~"(+)	
+     AND ~"GI_TIPOS_ACTIVOS_GRUPO_ACTIVOS~".~"TIPO_ELEMENTO~" = 0 
+
+" arguments=(("pdate_fecha_calculo", date)) )
+text(band=header alignment="2" text="$$HEX1$$cd00$$ENDHEX$$ndice Disponibilidad" border="6" color="0" x="2779" y="16" height="64" width="581" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="MHAI Ajustada" border="6" color="0" x="2240" y="16" height="64" width="443" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="CPSM" border="6" color="0" x="2025" y="16" height="64" width="192" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="SCE" border="6" color="0" x="1810" y="16" height="64" width="192" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ENR" border="6" color="0" x="1595" y="16" height="64" width="192" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Descripcion" border="6" color="0" x="311" y="16" height="64" width="983" html.valueishtml="0"  name=descripcion_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Codigo" border="6" color="0" x="18" y="16" height="64" width="274" html.valueishtml="0"  name=codigo_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="MHAI" border="6" color="0" x="1317" y="16" height="64" width="192" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="8388608" x="18" y="12" height="60" width="274" format="[general]" html.valueishtml="0"  name=codigo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="5" color="8388608" x="2779" y="4" height="64" width="581" format="[general]" html.valueishtml="0"  name=cpsm_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression="/* if( isnull(mhai), 0, (mhai - enr)) */"border="5" color="8388608" x="2240" y="4" height="64" width="443" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="8388608" x="2025" y="4" height="64" width="192" format="[general]" html.valueishtml="0"  name=cpsm visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="8388608" x="1810" y="4" height="64" width="192" format="[general]" html.valueishtml="0"  name=sce visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="5" color="8388608" x="1595" y="4" height="64" width="192" format="[general]" html.valueishtml="0"  name=enr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="8388608" x="311" y="8" height="60" width="983" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="8388608" x="1317" y="8" height="60" width="192" format="[general]" html.valueishtml="0"  name=mhai visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

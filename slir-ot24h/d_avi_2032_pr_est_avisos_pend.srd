@@ -1,0 +1,161 @@
+HA$PBExportHeader$d_avi_2032_pr_est_avisos_pend.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=116 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=152 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(25) updatewhereclause=yes name=centro_nom_centro dbname="sgd_centro.nom_centro" )
+ column=(type=decimal(0) updatewhereclause=yes name=int1 dbname="gi_est_aviso.int1" )
+ column=(type=decimal(0) updatewhereclause=yes name=int2 dbname="gi_est_aviso.int2" )
+ column=(type=decimal(0) updatewhereclause=yes name=int3 dbname="gi_est_aviso.int3" )
+ column=(type=decimal(0) updatewhereclause=yes name=int4 dbname="gi_est_aviso.int4" )
+ column=(type=decimal(0) updatewhereclause=yes name=int5 dbname="gi_est_aviso.int5" )
+ column=(type=decimal(0) updatewhereclause=yes name=int6 dbname="gi_est_aviso.int6" )
+ column=(type=decimal(0) updatewhereclause=yes name=int7 dbname="gi_est_aviso.int7" )
+ column=(type=decimal(0) updatewhereclause=yes name=int8 dbname="gi_est_aviso.int8" )
+ column=(type=decimal(0) updatewhereclause=yes name=int9 dbname="gi_est_aviso.int9" )
+ column=(type=decimal(0) updatewhereclause=yes name=int10 dbname="gi_est_aviso.int10" )
+ column=(type=decimal(0) updatewhereclause=yes name=int11 dbname="gi_est_aviso.int11" )
+ column=(type=decimal(0) updatewhereclause=yes name=int12 dbname="gi_est_aviso.int12" )
+ column=(type=decimal(0) updatewhereclause=yes name=tot_int dbname="gi_est_aviso.tot_int" )
+ column=(type=char(8) updatewhereclause=yes name=usuario_est dbname="gi_est_aviso.usuario_est" )
+ column=(type=decimal(0) updatewhereclause=yes name=tipo_reg dbname="gi_est_aviso.tipo_reg" )
+ column=(type=char(8) updatewhereclause=yes name=usuario dbname="gi_est_aviso.usuario" )
+ column=(type=decimal(0) updatewhereclause=yes name=nro_centro dbname="gi_est_aviso.nro_centro" )
+ column=(type=datetime updatewhereclause=yes name=f_actual dbname="gi_est_aviso.f_actual" )
+ column=(type=decimal(0) updatewhereclause=yes name=int13 dbname="gi_est_aviso.int13" )
+ column=(type=decimal(0) updatewhereclause=yes name=int14 dbname="gi_est_aviso.int14" )
+ column=(type=decimal(0) updatewhereclause=yes name=int15 dbname="gi_est_aviso.int15" )
+ column=(type=decimal(0) updatewhereclause=yes name=int16 dbname="gi_est_aviso.int16" )
+ column=(type=decimal(0) updatewhereclause=yes name=int17 dbname="gi_est_aviso.int17" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_est_aviso_tipo_de_consulta dbname="gi_est_aviso.tipo_de_consulta" )
+ retrieve="  SELECT ~"SGD_CENTRO~".~"NOM_CENTRO~",   
+         ~"GI_EST_AVISO~".~"INT1~",   
+         ~"GI_EST_AVISO~".~"INT2~",   
+         ~"GI_EST_AVISO~".~"INT3~",   
+         ~"GI_EST_AVISO~".~"INT4~",   
+         ~"GI_EST_AVISO~".~"INT5~",   
+         ~"GI_EST_AVISO~".~"INT6~",   
+         ~"GI_EST_AVISO~".~"INT7~",   
+         ~"GI_EST_AVISO~".~"INT8~",   
+         ~"GI_EST_AVISO~".~"INT9~",   
+         ~"GI_EST_AVISO~".~"INT10~",   
+         ~"GI_EST_AVISO~".~"INT11~",   
+         ~"GI_EST_AVISO~".~"INT12~",   
+         ~"GI_EST_AVISO~".~"TOT_INT~",   
+         ~"GI_EST_AVISO~".~"USUARIO_EST~",   
+         ~"GI_EST_AVISO~".~"TIPO_REG~",   
+         ~"GI_EST_AVISO~".~"USUARIO~",   
+         ~"GI_EST_AVISO~".~"NRO_CENTRO~",   
+         ~"GI_EST_AVISO~".~"F_ACTUAL~",   
+         ~"GI_EST_AVISO~".~"INT13~",   
+         ~"GI_EST_AVISO~".~"INT14~",   
+         ~"GI_EST_AVISO~".~"INT15~",   
+         ~"GI_EST_AVISO~".~"INT16~",   
+         ~"GI_EST_AVISO~".~"INT17~",
+			~"GI_EST_AVISO~".~"TIPO_DE_CONSULTA~"  
+    FROM ~"GI_EST_AVISO~",   
+         ~"SGD_CENTRO~"  
+   WHERE (~"GI_EST_AVISO~".~"TIP_CENTRO~"=:tip_centro)  and
+			( ~"GI_EST_AVISO~".~"NRO_CENTRO~" = ~"SGD_CENTRO~".~"NRO_CENTRO~" ) and  
+			(~"GI_EST_AVISO~".~"TIPO_REG~"=:tipo_centro_padre) AND
+			(~"SGD_CENTRO~".~"TIP_CENTRO~"=:tip_centro) AND
+         (~"GI_EST_AVISO~".~"USUARIO_EST~" like :usuario_est) AND  
+		   (~"GI_EST_AVISO~".~"TIPO_DE_CONSULTA~"=2)  and
+         (~"GI_EST_AVISO~".~"CLASE_AVISO~"=:clase_aviso)  and
+         (~"GI_EST_AVISO~".~"TODOS_AMBITOS~"=:todos_ambitos)  and
+			to_char( ~"GI_EST_AVISO~".~"NRO_CENTRO~") like :ls_nro_centro AND
+         (~"SGD_CENTRO~".~"NRO_CENTRO~" IN (
+						SELECT SGD_RELACION_CENTRO.CENTRO_DEPEN 
+						FROM SGD_RELACION_CENTRO
+					   WHERE SGD_RELACION_CENTRO.TIP_CENTRO=:tipo_centro_padre AND
+								SGD_RELACION_CENTRO.CENTRO_RESP = :nro_padre))			
+	ORDER BY ~"GI_EST_AVISO~".~"TOT_INT~" ASC  
+ 
+ 
+
+" arguments=(("nro_padre", number),("usuario_est", string),("tip_centro", number),("clase_aviso", number),("todos_ambitos", number),("ls_nro_centro", string),("tipo_centro_padre", number))  sort="centro_nom_centro A " )
+text(band=header alignment="2" text="Hs/ Zona"border="6" color="0" x="9" y="4" height="104" width="763"  name=nombre  hidesnaked=1  slideup=directlyabove  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="0-4  hs"border="6" color="0" x="786" y="4" height="104" width="123"  name=int1_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="4-8 hs"border="6" color="0" x="928" y="4" height="104" width="133"  name=int2_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="20-30 d$$HEX1$$ed00$$ENDHEX$$as"border="6" color="0" x="2578" y="4" height="104" width="137"  name=int13_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="8-12 hs"border="6" color="0" x="1079" y="4" height="104" width="123"  name=int3_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="12-16 hs"border="6" color="0" x="1221" y="4" height="104" width="137"  name=int4_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="16-20 hs"border="6" color="0" x="1376" y="4" height="104" width="142"  name=int5_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="20-24 hs"border="6" color="0" x="1531" y="4" height="104" width="155"  name=int6_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="1-2 d$$HEX1$$ed00$$ENDHEX$$as"border="6" color="0" x="1705" y="4" height="104" width="119"  name=int7_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="2-4 d$$HEX1$$ed00$$ENDHEX$$as"border="6" color="0" x="1842" y="4" height="104" width="123"  name=int8_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="4-8 d$$HEX1$$ed00$$ENDHEX$$as"border="6" color="0" x="1979" y="4" height="104" width="123"  name=int9_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="8-12 d$$HEX1$$ed00$$ENDHEX$$as"border="6" color="0" x="2117" y="4" height="104" width="133"  name=int10_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="12-16 d$$HEX1$$ed00$$ENDHEX$$as"border="6" color="0" x="2267" y="4" height="104" width="142"  name=int11_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="16-20 d$$HEX1$$ed00$$ENDHEX$$as"border="6" color="0" x="2423" y="4" height="104" width="142"  name=int12_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="> 30 d$$HEX1$$ed00$$ENDHEX$$as"border="6" color="0" x="2734" y="4" height="104" width="151"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=header alignment="2" text="Total "border="6" color="0" x="2903" y="4" height="104" width="498"  name=int15_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=14 alignment="1" tabsequence=32766 border="0" color="0" x="2912" y="4" height="64" width="462" format="[general]"  name=tot_int height.autosize=yes edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="64" width="768" format="[general]"  name=centro_nom_centro edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="782" y="4" height="64" width="137" format="[general]"  name=int1 visible="1~tif ( int1 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="928" y="4" height="64" width="137" format="[general]"  name=int2 visible="1~tif ( int2 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="0" x="1074" y="4" height="64" width="133" format="[general]"  name=int3 visible="1~tif ( int3 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="1225" y="4" height="64" width="128" format="[general]"  name=int4 visible="1~tif ( int4 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="0" x="1376" y="4" height="64" width="137" format="[general]"  name=int5 visible="1~tif ( int5 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="0" x="1545" y="4" height="64" width="133" format="[general]"  name=int6 visible="1~tif ( int6 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="0" x="1701" y="4" height="64" width="128" format="[general]"  name=int7 visible="1~tif ( int7 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="0" x="1842" y="4" height="64" width="133" format="[general]"  name=int8 visible="1~tif ( int8 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="0" color="0" x="1979" y="4" height="64" width="133" format="[general]"  name=int9 visible="1~tif ( int9 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="0" x="2121" y="4" height="64" width="128" format="[general]"  name=int10 visible="1~tif ( int10 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="1" tabsequence=32766 border="0" color="0" x="2432" y="4" height="64" width="128" format="[general]"  name=int12 visible="1~tif ( int12 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="1" tabsequence=32766 border="0" color="0" x="2583" y="4" height="64" width="128" format="[general]"  name=int13 visible="1~tif ( int13 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=21 alignment="1" tabsequence=32766 border="0" color="0" x="2729" y="4" height="64" width="146" format="[general]"  name=int14 visible="1~tif ( int14 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="1" tabsequence=32766 border="0" color="0" x="2272" y="4" height="64" width="128" format="[general]"  name=int11 visible="1~tif ( int11 = 0,0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+line(band=detail x1="0" y1="68" x2="3392" y2="68" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=footer x1="0" y1="4" x2="3415" y2="4" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=footer x1="0" y1="80" x2="3415" y2="80" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+compute(band=footer alignment="1" expression="sum(tot_int for all)"border="0" color="8388608" x="2907" y="4" height="64" width="453" format="[GENERAL]"  name=totint visible="1~tif ( totint = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="totint"border="0" color="128" x="2907" y="84" height="64" width="453" format="[GENERAL]"  name=tot_gral visible="1~tif ( tot_gral = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int14 for all)"border="0" color="8388608" x="2725" y="4" height="64" width="151" format="[GENERAL]"  name=tot14 visible="1~tif ( tot14 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu13+tot14"border="0" color="128" x="2725" y="84" height="64" width="151" format="[GENERAL]"  name=tot_acu14 visible="1~tif ( tot_acu14 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int13 for all)"border="0" color="8388608" x="2583" y="4" height="64" width="128" format="[GENERAL]"  name=tot13 visible="1~tif ( tot13 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu12+tot13"border="0" color="128" x="2583" y="84" height="64" width="128" format="[GENERAL]"  name=tot_acu13 visible="1~tif ( tot_acu13 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu11+tot12"border="0" color="128" x="2427" y="84" height="64" width="133" format="[GENERAL]"  name=tot_acu12 visible="1~tif ( tot_acu12 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int12 for all)"border="0" color="8388608" x="2427" y="4" height="64" width="133" format="[GENERAL]"  name=tot12 visible="1~tif ( tot12 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int11 for all)"border="0" color="8388608" x="2272" y="4" height="64" width="128" format="[GENERAL]"  name=tot11 visible="1~tif ( tot11 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu10+tot11"border="0" color="128" x="2272" y="84" height="64" width="128" format="[GENERAL]"  name=tot_acu11 visible="1~tif ( tot_acu11 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu9+tot10"border="0" color="128" x="2121" y="84" height="64" width="128" format="[GENERAL]"  name=tot_acu10 visible="1~tif ( tot_acu10 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int10 for all)"border="0" color="8388608" x="2121" y="4" height="64" width="128" format="[GENERAL]"  name=tot10 visible="1~tif ( tot10 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int9 for all)"border="0" color="8388608" x="1979" y="4" height="64" width="133" format="[GENERAL]"  name=tot9 visible="1~tif ( tot9 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu8+tot9"border="0" color="128" x="1975" y="84" height="64" width="133" format="[GENERAL]"  name=tot_acu9 visible="1~tif ( tot_acu9 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu7+tot8"border="0" color="128" x="1838" y="84" height="64" width="133" format="[GENERAL]"  name=tot_acu8 visible="1~tif ( tot_acu8 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int8 for all)"border="0" color="8388608" x="1842" y="4" height="64" width="133" format="[GENERAL]"  name=tot8 visible="1~tif ( tot8 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int7 for all)"border="0" color="8388608" x="1696" y="4" height="64" width="128" format="[GENERAL]"  name=tot7 visible="1~tif ( tot7 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu6+tot7"border="0" color="128" x="1701" y="84" height="64" width="128" format="[GENERAL]"  name=tot_acu7 visible="1~tif ( tot_acu7 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu5+tot6"border="0" color="128" x="1545" y="84" height="64" width="133" format="[GENERAL]"  name=tot_acu6 visible="1~tif ( tot_acu6 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int6 for all)"border="0" color="8388608" x="1541" y="4" height="64" width="133" format="[GENERAL]"  name=tot6 visible="1~tif ( tot6 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int5 for all)"border="0" color="8388608" x="1367" y="4" height="64" width="137" format="[GENERAL]"  name=tot5 visible="1~tif ( tot5 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu4+tot5"border="0" color="128" x="1376" y="84" height="64" width="137" format="[GENERAL]"  name=tot_acu5 visible="1~tif ( tot_acu5 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu3+tot4"border="0" color="128" x="1225" y="84" height="64" width="128" format="[GENERAL]"  name=tot_acu4 visible="1~tif ( tot_acu4 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int4 for all)"border="0" color="8388608" x="1216" y="4" height="64" width="128" format="[GENERAL]"  name=tot4 visible="1~tif ( tot4 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int3 for all)"border="0" color="8388608" x="1074" y="4" height="64" width="133" format="[GENERAL]"  name=tot3 visible="1~tif ( tot3 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu2+tot3"border="0" color="128" x="1070" y="84" height="64" width="133" format="[GENERAL]"  name=tot_acu3 visible="1~tif ( tot_acu3 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot_acu1+tot2"border="0" color="128" x="923" y="84" height="64" width="137" format="[GENERAL]"  name=tot_acu2 visible="1~tif ( tot_acu2 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int2 for all)"border="0" color="8388608" x="928" y="4" height="64" width="137" format="[GENERAL]"  name=tot2 visible="1~tif ( tot2 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="sum(int1 for all)"border="0" color="8388608" x="782" y="4" height="64" width="137" format="[GENERAL]"  name=tot1 visible="1~tif ( tot1 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="1" expression="tot1"border="0" color="128" x="777" y="84" height="64" width="137" format="[GENERAL]"  name=tot_acu1 visible="1~tif ( tot_acu1 = 0,0,1 )"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=footer alignment="0" text="Total Acumulado"border="0" color="0" x="9" y="84" height="64" width="489"  slideleft=yes  slideup=allabove  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=footer alignment="0" text="Total por Intervalo"border="0" color="0" x="9" y="8" height="64" width="539"  slideup=directlyabove  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+line(band=foreground x1="777" y1="1780" x2="777" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="2565" y1="1780" x2="2565" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="914" y1="1780" x2="914" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="1065" y1="1780" x2="1065" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="1207" y1="1780" x2="1207" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="2254" y1="1784" x2="2254" y2="4" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="2414" y1="1780" x2="2414" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="2720" y1="1784" x2="2720" y2="4" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="2885" y1="1784" x2="2885" y2="4"  name=int14_t pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="1522" y1="1780" x2="1522" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="1691" y1="1780" x2="1691" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="1829" y1="1780" x2="1829" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="1970" y1="1780" x2="1970" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="2107" y1="1780" x2="2107" y2="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=foreground x1="1362" y1="1784" x2="1362" y2="4" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

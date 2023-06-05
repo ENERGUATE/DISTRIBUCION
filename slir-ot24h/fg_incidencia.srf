@@ -1,0 +1,11 @@
+HA$PBExportHeader$fg_incidencia.srf
+global type fg_incidencia from function_object
+end type
+
+forward prototypes
+global function boolean fg_incidencia (integer nro_incidencia)
+end prototypes
+
+global function boolean fg_incidencia (integer nro_incidencia);return true
+end function
+

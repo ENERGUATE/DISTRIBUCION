@@ -1,0 +1,18 @@
+HA$PBExportHeader$dw_arma_sql_oculto.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=540 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=0 color="536870912" )
+table(column=(type=char(5) updatewhereclause=yes name=tipo dbname="gi_parametros_ext.tipo" )
+ column=(type=char(50) updatewhereclause=yes name=valor dbname="gi_parametros_ext.valor" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"gi_parametros_ext~" ) COLUMN(NAME=~"gi_parametros_ext.tipo~") COLUMN(NAME=~"gi_parametros_ext.valor~")WHERE(    EXP1 =~"~~~"GI_PARAMETROS_EXT~~~".~~~"COD_PARAMETRO~~~"~"   OP =~"=~"    EXP2 =~":parametro~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"GI_PARAMETROS_EXT~~~".~~~"COLUMNA~~~"~"   OP =~"=~"    EXP2 =~":columna~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"substr(~~~"GI_PARAMETROS_EXT~~~".~~~"TIPO~~~",1,3)~"   OP =~"=~"    EXP2 =~":tipo~" ) ) ARG(NAME = ~"parametro~" TYPE = number)  ARG(NAME = ~"columna~" TYPE = number)  ARG(NAME = ~"tipo~" TYPE = string) " arguments=(("parametro", number),("columna", number),("tipo", string))  sort="tipo A " )
+text(band=header alignment="2" text="Valor"border="0" color="0" x="9" y="8" height="64" width="1294"  name=valor_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="c_cadena"border="0" color="0" x="1312" y="8" height="64" width="425"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="SQL"border="0" color="0" x="1746" y="8" height="64" width="2711"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="1294" format="[general]"  name=valor edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="Describe(~"evaluate('c_sql', ~" + String(getrow() -1) +~")~") + ' '"border="0" color="0" x="1312" y="8" height="76" width="425" format="[general]"  name=c_cadena  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="c_cadena + ' ' +  valor"border="0" color="0" x="1746" y="8" height="76" width="2711" format="[general]"  name=c_sql  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912"  height.autosize=yes)
+compute(band=summary alignment="0" expression=" c_sql "border="0" color="0" x="1746" y="12" height="524" width="2711" format="[general]"  name=c_sql_final  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912"  height.autosize=yes)
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,783 @@
+HA$PBExportHeader$md_lista_incidencia.srm
+forward
+global type md_lista_incidencia from md_consultas_estandar
+end type
+type m_-21 from menu within m_editar
+end type
+type m_agruparincidencia from menu within m_editar
+end type
+type m_desagruparincidencias from menu within m_editar
+end type
+type m_anularincidencias from menu within m_editar
+end type
+type m_deshaceranulacin from menu within m_editar
+end type
+type m_avisosasociados from menu within m_consultar
+end type
+type m_observaciones from menu within m_consultar
+end type
+type m_grfico from menu within m_consultar
+end type
+type m_localizaci$$HEX1$$f300$$ENDHEX$$n from menu within m_grfico
+end type
+type m_quitarblink from menu within m_grfico
+end type
+type m_selecciondecapas from menu within m_grfico
+end type
+type m_grfico from menu within m_consultar
+m_localizaci$$HEX1$$f300$$ENDHEX$$n m_localizaci$$HEX1$$f300$$ENDHEX$$n
+m_quitarblink m_quitarblink
+m_selecciondecapas m_selecciondecapas
+end type
+type m_maniobrarenoperacin from menu within m_consultar
+end type
+type m_operacion from menu within m_consultar
+end type
+type m_imprimir1 from menu within m_consultar
+end type
+type m_reportedeincidencias from menu within m_consultar
+end type
+type m_datosanulacin from menu within m_consultar
+end type
+type m_obligadas from menu within m_consultar
+end type
+type m_instalacion from menu within m_ordenar
+end type
+end forward
+
+global type md_lista_incidencia from md_consultas_estandar
+end type
+global md_lista_incidencia md_lista_incidencia
+
+type variables
+//
+end variables
+
+on md_lista_incidencia.create
+md_lista_incidencia=this
+call super::create
+end on
+
+on md_lista_incidencia.destroy
+call super::destroy
+end on
+
+on m_archivo.create
+call super::create
+this.Tag="ARCHIVO"
+end on
+
+event m_agregar::clicked;w_1234_consulta_incidencias.TriggerEvent("ue_arch_agregar")
+end event
+
+on m_agregar.create
+call super::create
+this.Microhelp="Ingresar una Incidencia"
+this.Enabled=true
+this.ToolBarItemVisible=true
+end on
+
+event m_eliminar::clicked;call super::clicked;w_1234_consulta_incidencias.TriggerEvent("ue_eliminar")
+end event
+
+on m_eliminar.create
+call super::create
+this.ToolBarItemVisible=true
+end on
+
+on m_cerrar.create
+call super::create
+this.ToolBarItemVisible=true
+end on
+
+on m_imprimir.create
+call super::create
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_seleccionarimpresora.create
+call super::create
+this.Tag="SELECCIONARIMPRESORA"
+this.ToolBarItemVisible=false
+end on
+
+on m_preferencias.create
+call super::create
+this.Tag="PREFERENCIAS"
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+on m_salir.create
+call super::create
+this.Tag="SALIR"
+this.Enabled=false
+this.ToolBarItemVisible=false
+end on
+
+type m_editar from md_consultas_estandar`m_editar within md_lista_incidencia
+m_-21 m_-21
+m_agruparincidencia m_agruparincidencia
+m_desagruparincidencias m_desagruparincidencias
+m_anularincidencias m_anularincidencias
+m_deshaceranulacin m_deshaceranulacin
+end type
+
+on m_editar.create
+call super::create
+this.Tag="EDITAR"
+this.m_-21=create m_-21
+this.m_agruparincidencia=create m_agruparincidencia
+this.m_desagruparincidencias=create m_desagruparincidencias
+this.m_anularincidencias=create m_anularincidencias
+this.m_deshaceranulacin=create m_deshaceranulacin
+this.Item[UpperBound(this.item)+1]=this.m_-21
+this.Item[UpperBound(this.item)+1]=this.m_agruparincidencia
+this.Item[UpperBound(this.item)+1]=this.m_desagruparincidencias
+this.Item[UpperBound(this.item)+1]=this.m_anularincidencias
+this.Item[UpperBound(this.item)+1]=this.m_deshaceranulacin
+end on
+
+on m_editar.destroy
+call super::destroy
+destroy(this.m_-21)
+destroy(this.m_agruparincidencia)
+destroy(this.m_desagruparincidencias)
+destroy(this.m_anularincidencias)
+destroy(this.m_deshaceranulacin)
+end on
+
+on m_deshacer.create
+call super::create
+this.Tag="DESHACER"
+end on
+
+on m_cortar.create
+call super::create
+this.Tag="CORTAR"
+end on
+
+on m_copiar.create
+call super::create
+this.Tag="COPIAR"
+end on
+
+on m_pegar.create
+call super::create
+this.Tag="PEGAR"
+end on
+
+event m_iralcomienzo::clicked;w_1234_consulta_incidencias.triggerevent("ue_ir_comienzo")
+end event
+
+on m_iralcomienzo.create
+call super::create
+this.Tag="IRALCOMIENZO"
+this.Enabled=false
+this.ToolBarItemSpace=3
+end on
+
+event m_iralfinal::clicked;w_1234_consulta_incidencias.triggerevent("ue_ir_final")
+end event
+
+on m_iralfinal.create
+call super::create
+this.Tag="IRALFINAL"
+end on
+
+event m_buscar::clicked;gl_instalacion_afectada=0
+w_1234_consulta_incidencias.li_primera_vez=0
+w_1234_consulta_incidencias.triggerevent("ue_armar_sql")
+end event
+
+on m_buscar.create
+call super::create
+this.Tag="BUSCAR"
+end on
+
+type m_consultar from md_consultas_estandar`m_consultar within md_lista_incidencia
+m_avisosasociados m_avisosasociados
+m_observaciones m_observaciones
+m_grfico m_grfico
+m_maniobrarenoperacin m_maniobrarenoperacin
+m_operacion m_operacion
+m_imprimir1 m_imprimir1
+m_reportedeincidencias m_reportedeincidencias
+m_datosanulacin m_datosanulacin
+m_obligadas m_obligadas
+end type
+
+on m_consultar.create
+call super::create
+this.Text="&Consultar"
+this.Tag="CONSULTAR"
+this.Visible=true
+this.Enabled=true
+this.ToolBarItemSpace=2
+this.m_avisosasociados=create m_avisosasociados
+this.m_observaciones=create m_observaciones
+this.m_grfico=create m_grfico
+this.m_maniobrarenoperacin=create m_maniobrarenoperacin
+this.m_operacion=create m_operacion
+this.m_imprimir1=create m_imprimir1
+this.m_reportedeincidencias=create m_reportedeincidencias
+this.m_datosanulacin=create m_datosanulacin
+this.m_obligadas=create m_obligadas
+this.Item[UpperBound(this.item)+1]=this.m_avisosasociados
+this.Item[UpperBound(this.item)+1]=this.m_observaciones
+this.Item[UpperBound(this.item)+1]=this.m_grfico
+this.Item[UpperBound(this.item)+1]=this.m_maniobrarenoperacin
+this.Item[UpperBound(this.item)+1]=this.m_operacion
+this.Item[UpperBound(this.item)+1]=this.m_imprimir1
+this.Item[UpperBound(this.item)+1]=this.m_reportedeincidencias
+this.Item[UpperBound(this.item)+1]=this.m_datosanulacin
+this.Item[UpperBound(this.item)+1]=this.m_obligadas
+end on
+
+on m_consultar.destroy
+call super::destroy
+destroy(this.m_avisosasociados)
+destroy(this.m_observaciones)
+destroy(this.m_grfico)
+destroy(this.m_maniobrarenoperacin)
+destroy(this.m_operacion)
+destroy(this.m_imprimir1)
+destroy(this.m_reportedeincidencias)
+destroy(this.m_datosanulacin)
+destroy(this.m_obligadas)
+end on
+
+on m_descripcin.create
+call super::create
+this.Text="&Descripci$$HEX1$$f300$$ENDHEX$$n~tCtrl+A"
+this.Tag="DESCRIPCION"
+this.Enabled=true
+this.Checked=false
+this.ToolBarItemOrder=1
+this.Shortcut=321
+end on
+
+on m_informacindeot.create
+call super::create
+this.Text="&Informaci$$HEX1$$f300$$ENDHEX$$n de OT~tCtrl+O"
+this.Tag="INFORMACIONOT"
+this.ToolBarItemOrder=2
+this.Shortcut=335
+end on
+
+on m_brigadistas.create
+call super::create
+this.Text="&Brigadistas~tCtrl+B"
+this.Tag="BRIGADISTAS"
+this.ToolBarItemOrder=3
+this.Shortcut=322
+end on
+
+on m_reclamaciones.create
+call super::create
+this.Text="&Avisos~tCtrl+R"
+this.Tag="RECLAMACIONES"
+this.ToolBarItemOrder=4
+this.Shortcut=338
+end on
+
+event m_situacinclimatolgica::clicked;w_1234_consulta_incidencias.TriggerEvent("ue_sit_clima")
+end event
+
+on m_situacinclimatolgica.create
+call super::create
+this.Text="Situaci$$HEX1$$f300$$ENDHEX$$n &Climatol$$HEX1$$f300$$ENDHEX$$gica~tCtrl+S"
+this.Tag="SITUACIONCLIMATOLOGICA"
+this.Visible=true
+this.Enabled=true
+this.ToolBarItemOrder=6
+this.ToolBarItemVisible=true
+this.Shortcut=339
+end on
+
+event m_suministrosimportantes::clicked;w_1234_consulta_incidencias.TriggerEvent("ue_sum_imp")
+end event
+
+on m_suministrosimportantes.create
+call super::create
+this.Text="S&uministros Importantes~tCtrl+I"
+this.Tag="SUMINISTROSIMPORTANTES"
+this.Visible=true
+this.Enabled=true
+this.ToolBarItemOrder=7
+this.ToolBarItemVisible=true
+this.Shortcut=329
+end on
+
+type m_ordenar from md_consultas_estandar`m_ordenar within md_lista_incidencia
+m_instalacion m_instalacion
+end type
+
+on m_ordenar.create
+call super::create
+this.Tag="ORDENAR"
+this.Visible=true
+this.Enabled=true
+this.m_instalacion=create m_instalacion
+this.Item[UpperBound(this.item)+1]=this.m_instalacion
+end on
+
+on m_ordenar.destroy
+call super::destroy
+destroy(this.m_instalacion)
+end on
+
+on m_duracin::clicked;call md_consultas_estandar`m_duracin::clicked;gu_comunic.is_comunic.intval9 = 1
+w_1234_consulta_incidencias.triggerevent("ue_criterio_orden")
+end on
+
+on m_duracin.create
+call super::create
+this.Microhelp="Permite ordenar la Lista por la Duraci$$HEX1$$f300$$ENDHEX$$n de los Avisos"
+this.Tag="DURACION"
+this.Visible=true
+this.Enabled=true
+this.ToolBarItemSpace=3
+end on
+
+on m_prioridad::clicked;call md_consultas_estandar`m_prioridad::clicked;gu_comunic.is_comunic.intval9 = 2
+w_1234_consulta_incidencias.triggerevent("ue_criterio_orden")
+end on
+
+on m_prioridad.create
+call super::create
+this.Microhelp="Permite ordenar la lista por la Prioridad de los Avisos"
+this.Tag="PRIORIDAD"
+end on
+
+on m_d::clicked;call md_consultas_estandar`m_d::clicked;gu_comunic.is_comunic.intval9 = 3
+w_1234_consulta_incidencias.triggerevent("ue_criterio_orden")
+end on
+
+on m_d.create
+call super::create
+this.Text="Direeccion de los &Avisos~tShift+F3"
+this.Microhelp="Permite ordenar la Llsta por la Direcci$$HEX1$$f300$$ENDHEX$$n de los Avisos"
+this.Shortcut=1138
+end on
+
+on m_importante::clicked;call md_consultas_estandar`m_importante::clicked;gu_comunic.is_comunic.intval9 = 3
+w_1234_consulta_incidencias.triggerevent("ue_criterio_orden")
+end on
+
+on m_importante.create
+call super::create
+this.Text="Estado &Operaciones~tShift+F4"
+this.Microhelp="Permite ordenar la lista de acuerdo al Estado en que se encuentre en Operaciones."
+this.Tag="IMPORTANTE"
+this.ToolBarItemName="oper.bmp"
+this.ToolBarItemText="Ord. Est. Oper."
+this.Visible=true
+this.Enabled=true
+this.Shortcut=1139
+end on
+
+on m_peligro::clicked;call md_consultas_estandar`m_peligro::clicked;gu_comunic.is_comunic.intval9 = 4
+w_1234_consulta_incidencias.triggerevent("ue_criterio_orden")
+end on
+
+on m_peligro.create
+call super::create
+this.Text="Estado &Mantenimiento~tShift+F5"
+this.Microhelp="Permite ordenar la lista de acuerdo al Estado en que se encuentre en Mantenimiento."
+this.Tag="PELIGRO"
+this.ToolBarItemName="mante.bmp"
+this.ToolBarItemText="Ord. Est. Mant."
+this.Visible=true
+this.Enabled=true
+this.Shortcut=1140
+end on
+
+on m_incidenciaasociada::clicked;call md_consultas_estandar`m_incidenciaasociada::clicked;gu_comunic.is_comunic.intval9 = 7
+w_1234_consulta_incidencias.triggerevent("ue_criterio_orden")
+end on
+
+on m_incidenciaasociada.create
+call super::create
+this.Text="F&echa de Resoluci$$HEX1$$f300$$ENDHEX$$n~tShift+F6"
+this.Microhelp="Permite ordenar la lista de acuerdo a la Fecha de Resoluci$$HEX1$$f300$$ENDHEX$$n de la Incidencia."
+this.Tag="INCIDENCIAASOCIADA"
+this.ToolBarItemName="alta_pro.bmp"
+this.ToolBarItemText="Ord. Fec. Res."
+this.Visible=true
+this.Enabled=true
+this.Shortcut=1141
+end on
+
+on m_fechaderesuelto::clicked;call md_consultas_estandar`m_fechaderesuelto::clicked;gu_comunic.is_comunic.intval9 = 8
+w_1234_consulta_incidencias.triggerevent("ue_criterio_orden")
+end on
+
+on m_fechaderesuelto.create
+call super::create
+this.Text="&Fecha de Detecci$$HEX1$$f300$$ENDHEX$$n~tShift+F7"
+this.Microhelp="Permite ordenar la lista de acuerdo a la Fecha de Detecci$$HEX1$$f300$$ENDHEX$$n de la Incidencia."
+this.Tag="FECHADERESUELTO"
+this.ToolBarItemText="Ord. Fec. Detec."
+this.Visible=true
+this.Enabled=true
+this.Shortcut=1142
+end on
+
+on m_ventana.create
+call super::create
+this.Tag="VENTANA"
+end on
+
+on m_cascada.create
+call super::create
+this.Tag="CASCADA"
+end on
+
+on m_mosaico.create
+call super::create
+this.Tag="MOSAICO"
+end on
+
+on m_organizar.create
+call super::create
+this.Tag="ORGANIZAR"
+end on
+
+event m_acercadelopensgi::clicked;call super::clicked;Open(w_acerca_de_sgi)
+end event
+
+type m_-21 from menu within m_editar
+end type
+
+on m_-21.create
+this.Text="-"
+end on
+
+type m_agruparincidencia from menu within m_editar
+end type
+
+event clicked;ParentWindow.triggerevent("ue_agrupacion")
+end event
+
+on m_agruparincidencia.create
+this.Text="A&grupar Incidencia"
+this.Microhelp="Agrupaci$$HEX1$$f300$$ENDHEX$$n de la Incidencia"
+this.ToolBarItemName="Import5!"
+this.ToolBarItemText="Agrupar Incidencia"
+this.ToolBarItemSpace=3
+this.Enabled=false
+end on
+
+type m_desagruparincidencias from menu within m_editar
+end type
+
+on m_desagruparincidencias.create
+this.Text="De&sagrupar Incidencias"
+this.Microhelp="Desagrupaci$$HEX1$$f300$$ENDHEX$$n de Incidencias"
+this.ToolBarItemName="Export5!"
+this.ToolBarItemText="Desagrupar Incidencia"
+this.Enabled=false
+end on
+
+event clicked;ParentWindow.triggerevent("ue_desagrupacion")
+end event
+
+type m_anularincidencias from menu within m_editar
+end type
+
+event clicked;parentwindow.triggerevent("ue_anular")
+end event
+
+on m_anularincidencias.create
+this.Text="Anula&r Incidencias"
+this.Microhelp="Anular Incidencias Seleccionadas"
+this.ToolBarItemName="DeleteRow!"
+this.ToolBarItemText="Anular Incidencias"
+this.Enabled=false
+end on
+
+type m_deshaceranulacin from menu within m_editar
+end type
+
+on m_deshaceranulacin.create
+this.Text="&Deshacer Anulaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Deshacer anulaci$$HEX1$$f300$$ENDHEX$$n "
+this.ToolBarItemName="Insert5!"
+this.ToolBarItemText="Deshacer anulaci$$HEX1$$f300$$ENDHEX$$n "
+this.Enabled=false
+end on
+
+event clicked;parentwindow.triggerevent("ue_desanular")
+end event
+
+type m_avisosasociados from menu within m_consultar
+end type
+
+event clicked;w_1234_consulta_incidencias.TriggerEvent("ue_avisos_asociados")
+end event
+
+on m_avisosasociados.create
+this.Text="A&visos Asociados~tCtrl+U"
+this.Microhelp="Avisos Asociados a la Incidencia"
+this.Tag="ASOCIARAVISOS"
+this.ToolBarItemName="Custom020!"
+this.ToolBarItemText="Avisos Asociados"
+this.ToolBarItemOrder=5
+this.Shortcut=341
+end on
+
+type m_observaciones from menu within m_consultar
+end type
+
+event clicked;w_1234_consulta_incidencias.TriggerEvent("ue_observaciones")
+end event
+
+on m_observaciones.create
+this.Text="&Observaciones~tCtrl+E"
+this.Microhelp="Observaci$$HEX1$$f300$$ENDHEX$$nes de la incidendcia"
+this.Tag="OBSERVACIONES"
+this.ToolBarItemName="ScriptYes!"
+this.ToolBarItemText="Observaciones"
+this.ToolBarItemOrder=8
+this.Shortcut=325
+end on
+
+on m_observaciones.destroy
+end on
+
+type m_grfico from menu within m_consultar
+m_localizaci$$HEX1$$f300$$ENDHEX$$n m_localizaci$$HEX1$$f300$$ENDHEX$$n
+m_quitarblink m_quitarblink
+m_selecciondecapas m_selecciondecapas
+end type
+
+on m_grfico.create
+this.Text="&Gr$$HEX1$$e100$$ENDHEX$$fica"
+this.Microhelp="Consulta gr$$HEX1$$e100$$ENDHEX$$fica"
+this.ToolBarItemText="Consulta gr$$HEX1$$e100$$ENDHEX$$fica"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=9
+this.m_localizaci$$HEX1$$f300$$ENDHEX$$n=create m_localizaci$$HEX1$$f300$$ENDHEX$$n
+this.m_quitarblink=create m_quitarblink
+this.m_selecciondecapas=create m_selecciondecapas
+this.Item[]={this.m_localizaci$$HEX1$$f300$$ENDHEX$$n, &
+this.m_quitarblink, &
+this.m_selecciondecapas}
+end on
+
+on m_grfico.destroy
+destroy(this.m_localizaci$$HEX1$$f300$$ENDHEX$$n)
+destroy(this.m_quitarblink)
+destroy(this.m_selecciondecapas)
+end on
+
+type m_localizaci$$HEX1$$f300$$ENDHEX$$n from menu within m_grfico
+end type
+
+event clicked;int li_retorno
+	setpointer(hourglass!)
+	if gl_instalacion_afectada=99999998 then
+			gnv_msg.f_mensaje("AI135","","",OK!)
+			gl_instalacion_afectada=0
+	end if	
+	if isvalid(onis) then 
+		onis.of_quita_blink()
+	if gl_instalacion_afectada>0 then 
+			li_retorno=onis.of_muestra_elemento(gl_instalacion_afectada,true)
+	      if li_retorno=1 then
+				li_retorno=onis.of_carga_simbologia()			
+		   	fg_mostrar(true)		
+			else
+		   	fg_mostrar(false)	
+				gnv_msg.f_mensaje("EX20","","",OK!)
+		   	fg_mostrar(true)		
+			end if	
+		else
+			fg_mostrar(true)		
+		end if	
+	end if
+
+	
+
+
+end event
+
+on m_localizaci$$HEX1$$f300$$ENDHEX$$n.create
+this.Text="&Localizaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Localizaci$$HEX1$$f300$$ENDHEX$$n de instalaciones asociadas a la incidencia"
+this.ToolBarItemName="Picture5!"
+this.ToolBarItemText="Localizaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=2
+this.ToolBarItemSpace=3
+end on
+
+type m_quitarblink from menu within m_grfico
+end type
+
+event clicked;int retorno
+setpointer(HourGlass!)
+if isvalid(onis) then 
+	onis.of_quita_blink()
+	fg_mostrar(true)
+end if
+
+
+
+	
+end event
+
+on m_quitarblink.create
+this.Text="&Quitar blink"
+this.Microhelp="Quitar blink"
+this.ToolBarItemName="desmar.bmp"
+this.ToolBarItemText="Quitar blink"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=2
+end on
+
+type m_selecciondecapas from menu within m_grfico
+end type
+
+event clicked;int retorno
+setpointer(HourGlass!)
+if isvalid(onis) then 
+if  (onis.of_Selecciona_capa()>0) then
+	setpointer(HourGlass!)
+	retorno=onis.of_trata_capa()
+	if retorno=0 then
+		fg_mostrar(false)		
+		gnv_msg.f_mensaje("EX21","","",OK!)
+	end if
+	fg_mostrar(true)
+end if
+end if
+	
+end event
+
+on m_selecciondecapas.create
+this.Text="&Seleccion de capas"
+this.Microhelp="Carga de capas"
+this.ToolBarItemName="capas2.bmp"
+this.ToolBarItemText="Carga de capas"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=2
+end on
+
+type m_maniobrarenoperacin from menu within m_consultar
+end type
+
+event clicked;w_1234_consulta_incidencias.triggerevent("ue_operacion_mantenimiento")
+end event
+
+on m_maniobrarenoperacin.create
+this.Text="&Maniobrar en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Maniobrar en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemName="Move!"
+this.ToolBarItemText="Maniobrar en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemOrder=10
+this.Enabled=false
+end on
+
+type m_operacion from menu within m_consultar
+end type
+
+event clicked;w_1234_consulta_incidencias.triggerevent("ue_operacion_consulta")
+end event
+
+on m_operacion.create
+this.Text="Con&sultar  en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Consultar en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemName="Globals!"
+this.ToolBarItemText="Consultar en Operaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemOrder=11
+this.Enabled=false
+end on
+
+type m_imprimir1 from menu within m_consultar
+end type
+
+event clicked;w_1234_consulta_incidencias.TriggerEvent ("ue_arch_imprimir")
+end event
+
+on m_imprimir1.create
+this.Text="&Imprimir"
+this.Microhelp="Imprimir listaI"
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Imprimir Lista"
+this.ToolBarItemOrder=12
+end on
+
+type m_reportedeincidencias from menu within m_consultar
+end type
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	20/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+w_1234_consulta_incidencias.TriggerEvent ("ue_imp_reporte_inc")
+//***************************************
+//**  OSGI 2001.1  	20/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_reportedeincidencias.create
+this.Text="In&forme de Incidencias"
+this.Microhelp="Imprimir Informe de Incidencias"
+this.ToolBarItemName="Report!"
+this.ToolBarItemText="Imprimir Informe de Incidencias"
+this.ToolBarItemOrder=13
+this.ToolBarItemSpace=1
+end on
+
+type m_datosanulacin from menu within m_consultar
+end type
+
+event clicked;parentwindow.triggerevent("ue_consultar_anulacion")
+end event
+
+on m_datosanulacin.create
+this.Text="Da&tos anulaci$$HEX1$$f300$$ENDHEX$$n"
+this.Microhelp="Datos de Anulaci$$HEX1$$f300$$ENDHEX$$n"
+this.ToolBarItemName="Help!"
+this.ToolBarItemText="Datos de Anulaci$$HEX1$$f300$$ENDHEX$$n "
+this.Enabled=false
+end on
+
+type m_obligadas from menu within m_consultar
+end type
+
+on m_obligadas.create
+this.Text="Obli&gadas"
+this.Microhelp="Consultar Incidencias Obligadas"
+this.Tag="OBLIGADAS"
+this.ToolBarItemName="RELOJ_OB3.bmp"
+this.ToolBarItemText="Consultar Incidencias Obligadas"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=17
+end on
+
+event clicked;if md_lista_incidencia.m_consultar.m_obligadas.checked = false then
+   md_lista_incidencia.m_consultar.m_obligadas.checked = true
+else
+	md_lista_incidencia.m_consultar.m_obligadas.checked = false
+end if
+end event
+
+type m_instalacion from menu within m_ordenar
+end type
+
+on clicked;gu_comunic.is_comunic.intval9 = 9
+w_1234_consulta_incidencias.triggerevent("ue_criterio_orden")
+end on
+
+on m_instalacion.create
+this.Text="&Instalacion~tShift+F8"
+this.Shortcut=1143
+end on
+

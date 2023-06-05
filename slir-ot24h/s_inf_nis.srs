@@ -1,0 +1,55 @@
+HA$PBExportHeader$s_inf_nis.srs
+global type s_inf_nis from structure
+	long		pnis_rad
+	string		ps_nombre
+	string		ps_ape1
+	string		ps_ape2
+	string		ps_doc_id
+	string		ps_tipo_doc
+	string		ps_co_pais
+	string		ps_tfno_cli
+	string		ps_duplicador
+	long		pl_num_puerta
+	integer		pi_ind_improcedente
+	integer		pi_ind_cli_imp
+	long		pi_cod_calle
+	long		pi_cod_loc
+	long		pi_cod_mun
+	long		pi_cod_prov
+	long		pi_cod_depto
+	string		ps_nom_pais
+	string		ps_nom_calle
+	string		ps_nom_prov
+	string		ps_nom_depto
+	string		ps_nom_munic
+	string		ps_nom_loc
+	long		pl_nro_aviso
+	integer		pi_nro_centro
+	integer		pi_nro_cmd
+	integer		pi_nro_mesa
+	string		ps_cgv
+	long		pl_nro_instalacion
+	long		pl_nro_incidencia
+	string		ps_desc_incidencia
+	datetime		pd_f_deteccion
+	long		pl_nro_orden
+	long		pl_nro_aviso_pendiente
+	long		pl_localidad_s_alim
+	long		pl_cant_localidad
+	integer		pi_suministro_en_corte
+	integer		pi_cod_hora
+	string		pmensaje
+	integer		pretorno
+	string		pprograma
+	string		pmensaje1
+	integer		pretorno1
+	string		pmensaje2
+	integer		pretorno2
+	string		pmensaje3
+	integer		pretorno3
+	string		pmensaje4
+	integer		pretorno4
+	string		pmensaje5
+	integer		pretorno5
+end type
+

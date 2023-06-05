@@ -1,0 +1,15 @@
+HA$PBExportHeader$d_7001_busca_padre.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=nro_instalacion dbname="nro_instalacion" )
+ retrieve="SELECT ~"SGD_INSTALACION~".~"NRO_INSTALACION~"
+	FROM ~"SGD_INSTALACION~"
+	START WITH ~"SGD_INSTALACION~".~"NRO_INSTALACION~" = :ll_cod_instalacion  AND ~"SGD_INSTALACION~".~"BDI_JOB~" = 0
+	CONNECT BY PRIOR ~"SGD_INSTALACION~".~"NRO_INST_PADRE~" = ~"SGD_INSTALACION~".~"NRO_INSTALACION~" AND ~"SGD_INSTALACION~".~"BDI_JOB~" = 0" arguments=(("ll_cod_instalacion", number)) )
+text(band=header alignment="0" text="Nro Instalacion"border="0" color="0" x="9" y="4" height="64" width="1152"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="64" width="1152" format="[general]"  name=nro_instalacion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

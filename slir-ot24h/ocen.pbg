@@ -1,0 +1,15 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "ocen.pbl" "";
+@end;
+@begin Objects
+ "u_2301_tabpage_ocen.sru" "ocen.pbl";
+ "d_descargo_ocen.srd" "ocen.pbl";
+ "d_ot_message.srd" "ocen.pbl";
+ "d_ot_servicio.srd" "ocen.pbl";
+ "w_7107_envio_estado_descargo_ocen.srw" "ocen.pbl";
+ "d_ot_ocen.srd" "ocen.pbl";
+ "n_cst_internet.sru" "ocen.pbl";
+ "d_datos_solicitud_mantenimiento.srd" "ocen.pbl";
+ "d_lista_servicios_ejecutores.srd" "ocen.pbl";
+@end;

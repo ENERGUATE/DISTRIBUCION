@@ -1,0 +1,18 @@
+HA$PBExportHeader$d_2005_lista_brigadista.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=364 color="536870912" )
+table(column=(type=number updatewhereclause=no name=pi_en_turno dbname="pi_en_turno" values="En Turno	1/En Turno	0" )
+ column=(type=number updatewhereclause=no name=pi_disponible dbname="pi_disponible" values="<Todos>	2/Disponible	1/No Disponible	0/" )
+ column=(type=datetime updatewhereclause=no name=pdt_fecha_turno dbname="pdt_fecha_turno" )
+ )
+rectangle(band=detail x="14" y="32" height="272" width="1061" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="8421504"  background.mode="1" background.color="553648127" )
+rectangle(band=detail x="18" y="36" height="272" width="1061" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="5" pen.color="16777215"  background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text=" Seleccionar "border="0" color="0" x="50" y="4" height="52" width="384"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=2 alignment="1" tabsequence=10 border="5" color="0" x="430" y="100" height="64" width="594" format="[general]"  name=pi_disponible ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=30 border="5" color="0" x="434" y="200" height="64" width="585" format=""  name=pdt_fecha_turno editmask.spin=yes editmask.mask="dd/mm/yyyy hh:mm" editmask.spinrange="~~" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=20 border="0" color="0" x="50" y="200" height="64" width="361" format="[general]"  name=pi_en_turno checkbox.text="En Turno" checkbox.on="1" checkbox.off="0" checkbox.lefttext=yes checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Disponible:"border="0" color="0" x="50" y="100" height="64" width="361"  name=pi_disponible_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

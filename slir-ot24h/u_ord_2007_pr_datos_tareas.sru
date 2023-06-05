@@ -1,0 +1,12 @@
+HA$PBExportHeader$u_ord_2007_pr_datos_tareas.sru
+forward
+global type u_ord_2007_pr_datos_tareas from u_ord_0000_generico_ordenes
+end type
+end forward
+
+global type u_ord_2007_pr_datos_tareas from u_ord_0000_generico_ordenes
+int Width=2391
+int Height=613
+end type
+global u_ord_2007_pr_datos_tareas u_ord_2007_pr_datos_tareas
+

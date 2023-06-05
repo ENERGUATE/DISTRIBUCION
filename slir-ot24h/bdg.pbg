@@ -1,0 +1,18 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "bdg.pbl" "";
+@end;
+@begin Objects
+ "s_bdg.srs" "bdg.pbl";
+ "m_avisos_distribucion.srm" "bdg.pbl";
+ "m_estadisticas_incidencia_sum.srm" "bdg.pbl";
+ "w_4003_estadisticas_incidencia_sum.srw" "bdg.pbl";
+ "m_estadistica_zona_geografica.srm" "bdg.pbl";
+ "w_4004_instalaciones_afectadas.srw" "bdg.pbl";
+ "w_lista_alarma.srw" "bdg.pbl";
+ "m_inst_afect.srm" "bdg.pbl";
+ "w_mant_alarmas.srw" "bdg.pbl";
+ "w_4001_estadisticas_zonas_geografica.srw" "bdg.pbl";
+ "u_gen_2001_pr_ingreso_usuario.sru" "bdg.pbl";
+ "w_4005_avisos_distribucion.srw" "bdg.pbl";
+@end;

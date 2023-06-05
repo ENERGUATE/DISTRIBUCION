@@ -1,0 +1,10 @@
+HA$PBExportHeader$d_brigadas_turno.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=136 color="536870912" )
+table(column=(type=char(30) updatewhereclause=no name=pi_turno dbname="pi_turno" )
+ )
+column(band=detail id=1 alignment="1" tabsequence=10 border="5" color="0" x="27" y="28" height="64" width="544" format="[general]"  name=pi_turno dddw.name=ddw_int_horarios_definidos dddw.displaycolumn=descripcion dddw.datacolumn=descripcion dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

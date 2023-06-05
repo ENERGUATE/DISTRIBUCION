@@ -1,0 +1,126 @@
+HA$PBExportHeader$m_no_operatividad.srm
+$PBExportComments$Menu principal de recepcion de avisos
+forward
+global type m_no_operatividad from menu
+end type
+type m_archivo from menu within m_no_operatividad
+end type
+type m_cerrar from menu within m_archivo
+end type
+type m_- from menu within m_archivo
+end type
+type m_grabar from menu within m_archivo
+end type
+type m_archivo from menu within m_no_operatividad
+m_cerrar m_cerrar
+m_- m_-
+m_grabar m_grabar
+end type
+global type m_no_operatividad from menu
+m_archivo m_archivo
+end type
+end forward
+
+shared variables
+
+end variables
+
+global type m_no_operatividad from menu
+m_archivo m_archivo
+end type
+global m_no_operatividad m_no_operatividad
+
+type variables
+
+end variables
+
+on m_no_operatividad.create
+m_no_operatividad=this
+call super::create
+this.text = "m_no_operatividad"
+this.m_archivo=create m_archivo
+this.Item[UpperBound(this.Item)+1]=this.m_archivo
+end on
+
+on m_no_operatividad.destroy
+call super::destroy
+destroy(this.m_archivo)
+end on
+
+type m_archivo from menu within m_no_operatividad
+m_cerrar m_cerrar
+m_- m_-
+m_grabar m_grabar
+end type
+
+on m_archivo.create
+call super::create
+this.tag = "ARCHIVO"
+this.text = "&Archivo"
+this.m_cerrar=create m_cerrar
+this.m_-=create m_-
+this.m_grabar=create m_grabar
+this.Item[UpperBound(this.Item)+1]=this.m_cerrar
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_grabar
+end on
+
+on m_archivo.destroy
+call super::destroy
+destroy(this.m_cerrar)
+destroy(this.m_-)
+destroy(this.m_grabar)
+end on
+
+type m_cerrar from menu within m_archivo
+end type
+
+event clicked;Close(ParentWindow)
+end event
+
+on m_cerrar.create
+call super::create
+this.tag = "CERRAR"
+this.text = "&Cerrar~tCtrl+F4"
+this.shortcut = 371
+this.microhelp = "Cerrar ventana actual"
+this.toolbaritemname = "RunWindow!"
+this.toolbaritemtext = "Cerrar"
+end on
+
+on m_cerrar.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_archivo
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_grabar from menu within m_archivo
+end type
+
+on m_grabar.create
+call super::create
+this.tag = "GRABAR"
+this.text = "&Grabar~tCtrl+G"
+this.shortcut = 327
+this.microhelp = "Grabar en la base de datos las modificaciones realizadas"
+this.toolbaritemname = "Update!"
+this.toolbaritemtext = "Grabar"
+end on
+
+on m_grabar.destroy
+call super::destroy
+end on
+
+event clicked;w_operatividad_activo.fw_grabar_operatividad()
+end event
+

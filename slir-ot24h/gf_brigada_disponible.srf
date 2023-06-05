@@ -1,0 +1,62 @@
+HA$PBExportHeader$gf_brigada_disponible.srf
+global type gf_brigada_disponible from function_object
+end type
+
+forward prototypes
+global function boolean gf_brigada_disponible (long pl_nro_brigada, datetime pdt_hora, ref datawindow pdw_horarios)
+end prototypes
+
+global function boolean gf_brigada_disponible (long pl_nro_brigada, datetime pdt_hora, ref datawindow pdw_horarios);//////////////////////////////
+//
+// gf_brigada_disponible
+//
+//	El objetivo es verificar si para una fecha y hora dada,
+//	una brigada esta disponible.
+// Las brigadas disponibles son las que:
+//		* En gi_brigadas_calendario tienen un registro que cumple
+//		  que para la fecha pasada como parametro esta dentro 
+//		  del rango definido en esta tabla
+//
+//
+//		Resp			Fecha 		Actuacion
+//		-------		-------		---------------
+//		AFE			19/05/99		Creacion	
+//		AFE			12/10/99		Modificacion EMDERSA: No se usa relacion de municipios
+////////////////////////////
+
+Long  ll_fila_calen, ll_fila_horarios 
+Datetime ldt_hora_desde, ldt_hora_hasta
+		
+// Verifico el horario de la brigada
+IF pdw_horarios.RowCount() = 0 THEN
+	Return False
+END IF
+
+ll_fila_horarios = 1
+
+IF pdw_horarios.dataobject = 'd_contratas_calendario_rango_fechas' THEN
+	return FALSE
+ELSE
+	ll_fila_calen = pdw_horarios.Find("nro_brigada=" + String(pl_nro_brigada), ll_fila_horarios, pdw_horarios.RowCount())
+	RETURN ll_fila_calen > 0
+END IF
+//DO WHILE ll_fila_calen > 0
+//	IF ll_fila_calen > 0 THEN
+//		ldt_hora_desde = pdw_horarios.GetItemDateTime(ll_fila_calen,"fecha_desde")
+//		ldt_hora_hasta = pdw_horarios.GetItemDateTime(ll_fila_calen,"fecha_hasta")
+//		
+//		IF ldt_hora_desde <= pdt_hora AND ldt_hora_hasta >= pdt_hora THEN
+//			Return true
+//		END IF
+//	END IF
+//	ll_fila_horarios ++
+//	// Prevengo loop infinito
+//	IF ll_fila_horarios > pdw_horarios.RowCount() THEN Return False
+//	
+//	ll_fila_calen = pdw_horarios.Find("nro_brigada=" + String(pl_nro_brigada), ll_fila_horarios, pdw_horarios.RowCount())
+//LOOP
+//
+//Return False
+//
+end function
+

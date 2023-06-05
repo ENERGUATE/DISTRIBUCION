@@ -1,0 +1,114 @@
+HA$PBExportHeader$fg_return_cad_mes.srf
+global type fg_return_cad_mes from function_object
+end type
+
+forward prototypes
+global function string fg_return_cad_mes (date arg_fecha_ini, date arg_fecha_fin)
+end prototypes
+
+global function string fg_return_cad_mes (date arg_fecha_ini, date arg_fecha_fin);////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fg_return_cad_fech
+// 
+// Objetivo: Retorna el rango de fecha espec$$HEX1$$ed00$$ENDHEX$$ficado por el usuario para la generaci$$HEX1$$f300$$ENDHEX$$n del informe
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//	Entrada:  arg_fecha_ini, arg_fecha_fin
+//				              
+//	Salida:   --
+//						
+// Devuelve:	
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	01/07/99		  JHC			Versi$$HEX1$$f300$$ENDHEX$$n Original
+//
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+integer li_mes, li_dia_1,li_dia_2, li_anno_1,li_anno_2,li_i
+string ls_mes,ls_mes_1,ls_mes_2,ls_cadena,ls_de_1 = "de", ls_de_2 = "de"
+date ld_fecha
+
+
+
+
+FOR li_i = 1 TO 2 
+	
+	IF li_i = 1 THEN
+		ld_fecha = arg_fecha_ini
+		li_dia_1 = day(ld_fecha)
+		li_mes = month(ld_fecha)
+		li_anno_1 = year(ld_fecha)
+	ELSE
+		ld_fecha = arg_fecha_fin
+		li_dia_2 = day(ld_fecha)
+		li_mes = month(ld_fecha)
+		li_anno_2 = year(ld_fecha)
+	END IF
+
+CHOOSE CASE li_mes
+	CASE 1
+		ls_mes = "Enero"
+	CASE 2
+		ls_mes = "Febrero"
+	CASE 3 
+		ls_mes = "Marzo"
+	CASE 4 
+		ls_mes = "Abril"
+	CASE 5
+		ls_mes = "Mayo"
+	CASE 6 
+		ls_mes = "Junio"
+	CASE 7
+		ls_mes = "Julio"
+	CASE 8
+		ls_mes = "Agosto"
+	CASE 9
+		ls_mes = "Septiembre"
+	CASE 10
+		ls_mes = "Octubre"
+	CASE 11
+		ls_mes = "Noviembre"
+	CASE 12
+		ls_mes = "Diciembre"
+END CHOOSE
+	
+	IF li_i = 1 THEN
+		ls_mes_1 = ls_mes
+	ELSE
+		ls_mes_2 = ls_mes
+	END IF
+	
+NEXT
+
+IF li_anno_1 >= 2000 THEN
+	ls_de_1 = "del a$$HEX1$$f100$$ENDHEX$$o"
+END IF
+IF li_anno_2 >= 2000 THEN
+	ls_de_2 = "del a$$HEX1$$f100$$ENDHEX$$o"
+END IF
+
+IF li_anno_1 = li_anno_2 THEN
+	IF(ls_mes_1 = ls_mes_2) THEN
+	  IF (li_dia_1 = li_dia_2) THEN
+		   ls_cadena = string(li_dia_1) + &
+						""+" de "+ls_mes_2+" "+ls_de_2+" "+string(li_anno_2)+""
+	  ELSE
+			ls_cadena = "Del "+string(li_dia_1) +" al "+string(li_dia_2) + &
+						""+" de "+ls_mes_2+" "+ls_de_2+" "+string(li_anno_2)+""
+	  END IF
+	ELSE
+		ls_cadena = "Del "+string(li_dia_1) +" de "+ls_mes_1+" al "+&
+					""+string(li_dia_2) +" de "+ls_mes_2+" "+ls_de_2+" "+string(li_anno_2)+""
+	END IF
+ELSE
+	ls_cadena = "Del "+string(li_dia_1) +" de "+ls_mes_1+" "+ls_de_1+" "+string(li_anno_1)+" al "+&
+					""+string(li_dia_2) +" de "+ls_mes_2+" "+ls_de_2+" "+string(li_anno_2)+""
+END IF
+
+RETURN (ls_cadena)
+
+end function
+

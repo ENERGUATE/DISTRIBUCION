@@ -1,0 +1,161 @@
+HA$PBExportHeader$fg_cursor_sql.srf
+global type fg_cursor_sql from function_object
+end type
+
+forward prototypes
+global function string fg_cursor_sql (readonly integer ai_cursor, readonly string as_select, readonly string as_from, readonly string as_where, readonly string as_orden)
+end prototypes
+
+global function string fg_cursor_sql (readonly integer ai_cursor, readonly string as_select, readonly string as_from, readonly string as_where, readonly string as_orden);///////////////////////////////////////////////////////
+//									
+// Funcion/Evento: fg_cursor_sql
+// 
+// Objetivo: Crea una cadena sql dependiendo del argumento
+//				 ai_cursor que recibe
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: integer ai_cursor,
+//					string as_1,
+//					string as_2,
+//					string as_3,
+//					string as_4,
+//					string as_5
+//    Salida : --
+//
+// Devuelve: string
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 25/04/2000   JPE
+//
+///////////////////////////////////////////////////////
+
+String ls_select, &
+		 ls_from, &
+		 ls_where, &
+		 ls_orden, &
+		 ls_return
+
+//******************************
+//**  CAMBIO SGI ULTIMO 2000  **
+//******************************
+//AGREGAR A LA OPCION 1 TIPO_AREA
+//AGREGAR A LA OPCION 2 TIPO_AREA
+//AGREGAR A LA OPCION 3 TIPO_AREA
+//******************************
+//**  CAMBIO SGI ULTIMO 2000  **
+//******************************
+
+
+CHOOSE CASE ai_cursor
+	CASE 1
+			ls_select = as_select + " "
+			ls_from = as_from + " "
+			ls_where = as_where + " AND SGD_INSTALACION.TIPO_INSTALACION <> " + String(fgci_tipo_transformador) + " "
+			ls_orden = as_orden + " "
+
+END CHOOSE
+
+If IsNull(ls_where) Then ls_where = " "
+If IsNull(ls_orden) Then ls_orden = " "
+
+ls_return = ls_select + ls_from + ls_where + ls_orden
+
+Return ls_return
+
+
+
+
+
+
+
+////	CASE 2
+////		ls_return = "SELECT SGD_INSTALACION.NRO_INSTALACION, " + &
+////			         "SGD_INSTALACION.NOM_INSTALACION, " + &
+////			         "SGD_INSTALACION.TIPO_INSTALACION, " + &
+////			         "SGD_INSTALACION.CO_NIVEL, " + &
+////			         "SGD_INSTALACION.TENSION, " + &
+////			         "SGD_INSTALACION.NRO_INST_PADRE, " + &
+////			         "SGD_INSTALACION.POT_INSTALADA, " + &
+////			         "SGD_INSTALACION.POT_CONTRATADA, " + &
+////			         "SGD_INSTALACION.KWH, " + &
+////			         "SGD_INSTALACION.CANT_CLI, " + &
+////		         	"SGD_INSTALACION.TIPO_CONEXION, " + &
+////		         	"SGD_INSTALACION.TIPO_CT, " + &
+////						"SGD_INSTALACION.CANT_CLI_AN,"  + &		
+////						"SGD_INSTALACION.CANT_CLI_BN,"  + &
+////						"SGD_INSTALACION.CANT_CLI_CN," + &
+////						"SGD_INSTALACION.CANT_CLI_A1N,"  + &
+////						"SGD_INSTALACION.CANT_CLI_B1N," + & 
+////						"SGD_INSTALACION.CANT_CLI_C1N,"  + &
+////						"SGD_INSTALACION.CANT_CLI_AB," + &
+////						"SGD_INSTALACION.CANT_CLI_AC," + &
+////						"SGD_INSTALACION.CANT_CLI_BC," + &
+////						"SGD_INSTALACION.CANT_CLI_ABC, "+ &
+////						"SGD_INSTALACION.CANT_CLI_DESC, " + &
+////						"SGD_INSTALACION.TIPO_AREA " + &
+////			         "FROM SGD_INSTALACION " + &
+////			         "WHERE SGD_INSTALACION.NRO_INST_PADRE = " + as_1 + " AND " + &
+////			         "SGD_INSTALACION.BDI_JOB = 0 AND " + &
+////			         "SGD_INSTALACION.TIPO_INSTALACION <> 7 AND " + &
+////			         "SGD_INSTALACION.TIPO_INSTALACION <> 4 "
+////						
+////						
+////	CASE 3						
+////		ls_return = "SELECT SGD_INSTALACION.NRO_INSTALACION,   " + &
+////						"SGD_INSTALACION.TIPO_INSTALACION, "  + &
+////						"SGD_INSTALACION.NRO_INST_PADRE, "  + &
+////						"SGD_INSTALACION.NOM_INSTALACION, "  + &
+////						"SGD_INSTALACION.POT_CONTRATADA, "  + &
+////						"SGD_INSTALACION.POT_INSTALADA, "  + &
+////						"SGD_INSTALACION.CANT_CLI, "  + &
+////						"SGD_INSTALACION.KWH, "  + &
+////						"SGD_INSTALACION.CO_NIVEL, " + &
+////						"SGD_INSTALACION.TIPO_CONEXION, " + &    
+////						"SGD_INSTALACION.TIPO_AREA " + &    
+////						"FROM SGD_INSTALACION " + &
+////						"WHERE SGD_INSTALACION.TIPO_INSTALACION <> 7 AND " + &
+////						"SGD_INSTALACION.TIPO_INSTALACION <> 4 AND " + &
+////						"SGD_INSTALACION.NRO_INSTALACION = " + as_1 + " and " + &
+////						"SGD_INSTALACION.BDI_JOB = 0 and " + &
+////						"SGD_INSTALACION.STAT_FLG = 0  " 						
+////						
+////	CASE 4
+////		ls_return = "SELECT GI_AVISOS.NRO_AVISO, " + &
+////						"GI_AVISOS.F_ALTA, " + &
+////						"GI_AVISOS.EST_AVISO, " + &
+////						"GI_AVISOS.NRO_CENTRO, " + &
+////						"GI_AVISOS.NRO_CMD, " + &
+////						"GI_AVISOS.NRO_MESA, " + &
+////						"GI_AVISOS.IND_CLI_IMP, " + &
+////						"GI_AVISOS.IND_PELIGRO, " + &
+////						"SGD_INSTALACION.TIPO_CONEXION, " + &
+////						"SGD_INSTALACION.TIPO_CT, " + &
+////						"SGD_INCIDENCIA.FASES_AFECTADAS, " + &
+////						"GI_AVISOS.NIS_RAD " + &
+////						"FROM GI_AVISOS, " + &
+////						"SGD_INSTALACION, " + &
+////						"SGD_INCIDENCIA " + &
+////						"WHERE ( SGD_INSTALACION.NRO_INSTALACION (+) = GI_AVISOS.NRO_INSTALACION) AND " + &
+////						"( SGD_INCIDENCIA.NRO_INCIDENCIA (+) = GI_AVISOS.NRO_INCIDENCIA) AND " + &
+////						"( GI_AVISOS.NRO_INSTALACION = " + as_1 + " ) AND " + &
+////						"(( GI_AVISOS.EST_AVISO < " + as_4 + " ) OR " + &
+////						"( GI_AVISOS.EST_AVISO = " + as_4 + " AND GI_AVISOS.NRO_INCIDENCIA = " + as_5 + ")) AND " + &
+////						"( GI_AVISOS.F_ALTA >= To_Date('" + as_2 + "', 'dd/mm/yyyy HH24:MI') ) AND " + &
+////						"( GI_AVISOS.F_ALTA <= To_Date('" + as_3 + "', 'dd/mm/yyyy HH24:MI') ) " + &
+////						"FOR UPDATE NOWAIT "		
+////
+//////						"WHERE ( GI_AVISOS.NRO_INSTALACION = " + String(ll_nro_instalacion) + " ) AND " + &
+//////						"(( GI_AVISOS.EST_AVISO <= " + String(fgci_aviso_asociado) + " ) OR " + &
+//////						"( GI_AVISOS.EST_AVISO = " + String(fgci_aviso_asociado) + " AND NRO_INCIDENCIA = " + String(pl_nro_incidencia) + ")) AND " + &
+//////						"( GI_AVISOS.F_ALTA >= To_Date('" + String(pdt_fecha_1, 'dd/mm/yyyy HH:MM') + "', 'dd/mm/yyyy HH24:MI') ) AND " + &
+//////						"( GI_AVISOS.F_ALTA <= To_Date('" + String(pdt_fecha_2, 'dd/mm/yyyy HH:MM') + "', 'dd/mm/yyyy HH24:MI') ) " + &
+//////						"FOR UPDATE NOWAIT "
+//////
+//END CHOOSE
+//
+//
+//Return ls_return
+end function
+

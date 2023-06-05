@@ -1,0 +1,46 @@
+HA$PBExportHeader$d_man_2020_mat_averiado.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=4 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=888 color="536870912" )
+table(column=(type=char(40) update=yes updatewhereclause=yes name=descripcion dbname="sgd_materiales.descripcion" )
+ column=(type=char(12) update=yes updatewhereclause=yes key=yes name=cod_material dbname="sgd_materiales.cod_material" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=activo dbname="sgd_materiales.activo" initial="N" values="	S/	N" )
+ column=(type=char(32759) updatewhereclause=no name=caract_tecnicas dbname="sgd_materiales_long.caract_tecnicas" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=aportacion_material dbname="sgd_materiales.aportacion_material" initial="E" values="Empresa	E/Contrato	C/" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=unidad_medida dbname="sgd_materiales.unidad_medida" initial="UNIDADES" values="Unidades	UNIDADES/Metros	METROS/Litros	LITROS/Kilometros	KILOMETROS/Kilogramos	KILOGRAMOS/" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=precio_minimo dbname="sgd_materiales.precio_minimo" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=inversion dbname="sgd_materiales.inversion" initial="N" values="	S/	N" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=precio_mercado dbname="sgd_materiales.precio_mercado" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=precio_venta dbname="sgd_materiales.precio_venta" )
+ retrieve="  SELECT ~"SGD_MATERIALES~".~"DESCRIPCION~",   
+         ~"SGD_MATERIALES~".~"COD_MATERIAL~",   
+         ~"SGD_MATERIALES~".~"ACTIVO~",   
+         ~"SGD_MATERIALES_LONG~".~"CARACT_TECNICAS~",   
+         ~"SGD_MATERIALES~".~"APORTACION_MATERIAL~",   
+         ~"SGD_MATERIALES~".~"UNIDAD_MEDIDA~",   
+         ~"SGD_MATERIALES~".~"PRECIO_MINIMO~",   
+         ~"SGD_MATERIALES~".~"INVERSION~",   
+         ~"SGD_MATERIALES~".~"PRECIO_MERCADO~",   
+         ~"SGD_MATERIALES~".~"PRECIO_VENTA~"  
+    FROM ~"SGD_MATERIALES~",   
+         ~"SGD_MATERIALES_LONG~"  
+   WHERE ( ~"SGD_MATERIALES~".~"COD_MATERIAL~" = ~"SGD_MATERIALES_LONG~".~"COD_MATERIAL~" (+) ) and  
+         ( ~"SGD_MATERIALES~".~"COD_MATERIAL~" = :codigo )    
+" update="SGD_MATERIALES" updatewhere=1 updatekeyinplace=no arguments=(("codigo", string)) )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="645" y="84" height="80" width="1097" format="[general]"  name=descripcion editmask.mask="!!!!!!!!!!!!!!!!!!!!" editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=30 border="5" color="0" x="645" y="340" height="80" width="526" format="[general]"  name=unidad_medida ddlb.limit=0 ddlb.sorted=yes ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="5" color="0" x="645" y="468" height="80" width="526" format="[general]"  name=aportacion_material ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Material aportado por:"border="0" color="0" x="18" y="476" height="64" width="613"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Unidad de medida:"border="0" color="0" x="18" y="348" height="64" width="613"  name=unidad_medida_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Carac. T$$HEX1$$e900$$ENDHEX$$cnicas:"border="0" color="0" x="18" y="220" height="64" width="613"  name=caract_tecnicas_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Descripcion:"border="0" color="0" x="18" y="92" height="64" width="613"  name=descripcion_t  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="0" x="645" y="212" height="80" width="1097" format="[general]"  name=caract_tecnicas edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Precio Compra:"border="0" color="0" x="46" y="636" height="64" width="535"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Precio Mercado:"border="0" color="0" x="626" y="636" height="64" width="535"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+text(band=detail alignment="0" text="Precio Venta:"border="0" color="0" x="1207" y="636" height="64" width="535"  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="8388608" x="101" y="744" height="80" width="352" format="[general]"  name=precio_minimo edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.nilisnull=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="8388608" x="686" y="744" height="80" width="352" format="[general]"  name=precio_mercado edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.displayonly=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="5" color="8388608" x="1271" y="744" height="80" width="352" format="[general]"  name=precio_venta edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.nilisnull=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

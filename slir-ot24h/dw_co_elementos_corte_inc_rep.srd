@@ -1,0 +1,44 @@
+HA$PBExportHeader$dw_co_elementos_corte_inc_rep.srd
+release 6;
+datawindow(units=2 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 500 print.margin.right = 500 print.margin.top = 500 print.margin.bottom = 500 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=260 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=187 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=matricula dbname="sgd_elementos_corte_inc.matricula" )
+ column=(type=number updatewhereclause=yes name=tipo dbname="sgd_elementos_corte_inc.tipo" values="FUSIBLE	1/INTERRUPTOR	2/SECCIONADOR	3/" )
+ column=(type=number updatewhereclause=yes key=yes name=codigo dbname="sgd_elementos_corte_inc.codigo" )
+ column=(type=number updatewhereclause=yes key=yes name=nro_incidencia dbname="sgd_elementos_corte_inc.nro_incidencia" )
+ column=(type=char(15) updatewhereclause=yes name=usuario dbname="sgd_elementos_corte_inc.usuario" )
+ column=(type=char(15) updatewhereclause=yes name=programa dbname="sgd_elementos_corte_inc.programa" )
+ column=(type=datetime updatewhereclause=yes name=f_actual dbname="sgd_elementos_corte_inc.f_actual" )
+ retrieve="  SELECT ~"SGD_ELEMENTOS_CORTE_INC~".~"MATRICULA~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"TIPO~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"CODIGO~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"NRO_INCIDENCIA~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"USUARIO~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"PROGRAMA~",   
+         ~"SGD_ELEMENTOS_CORTE_INC~".~"F_ACTUAL~"
+    FROM ~"SGD_ELEMENTOS_CORTE_INC~"  
+   WHERE ~"SGD_ELEMENTOS_CORTE_INC~".~"NRO_INCIDENCIA~" = :nro_incidencia  
+UNION  
+  SELECT ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"MATRICULA~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"TIPO~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"CODIGO~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"NRO_INCIDENCIA~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"USUARIO~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"PROGRAMA~",   
+         ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"F_ACTUAL~"
+    FROM ~"GI_HIST_ELEMENTOS_CORTE_INC~"  
+   WHERE ~"GI_HIST_ELEMENTOS_CORTE_INC~".~"NRO_INCIDENCIA~" = :nro_incidencia  " update="SGD_ELEMENTOS_CORTE_INC" updatewhere=0 updatekeyinplace=no arguments=(("nro_incidencia", number)) )
+roundrectangle(band=header ellipseheight="93" ellipsewidth="93"x="41" y="20" height="218" width="3916" brush.hatch="7" brush.color="553648127" pen.style="0" pen.width="10" pen.color="0"  background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Elemento de Corte"border="0" color="0" x="656" y="62" height="135" width="1239"  name=sgd_instalacion_nom_instalacion_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tipo"border="0" color="0" x="2500" y="62" height="135" width="291"  name=sgd_interrupcion_pot_instalada_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="10895" y="0" height="197" width="3093" format="[General]"  name=codigo edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="13989" y="0" height="197" width="3093" format="[General]"  name=nro_incidencia edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="17083" y="0" height="197" width="1083" format="[general]"  name=usuario edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="18166" y="0" height="197" width="1083" format="[general]"  name=programa edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="19250" y="0" height="197" width="427" format="[shortdate] [time]"  name=f_actual edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="739" y="0" height="197" width="1385" format="[general]"  name=matricula edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2520" y="11" height="197" width="937" format="[General]"  name=tipo ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

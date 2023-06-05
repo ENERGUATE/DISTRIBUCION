@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_bri_2272_pr_lista_historico_brigadista.sru
+forward
+global type u_bri_2272_pr_lista_historico_brigadista from u_gen_0000_lista
+end type
+end forward
+
+global type u_bri_2272_pr_lista_historico_brigadista from u_gen_0000_lista
+int Width=2615
+string DataObject="d_2272_lista_historico_brigadista"
+BorderStyle BorderStyle=StyleRaised!
+end type
+global u_bri_2272_pr_lista_historico_brigadista u_bri_2272_pr_lista_historico_brigadista
+

@@ -1,0 +1,32 @@
+HA$PBExportHeader$d_id0104_11.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=104 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=callejero_cod_calle dbname="callejero.cod_calle" )
+ column=(type=char(30) updatewhereclause=yes name=callejero_nom_calle dbname="callejero.nom_calle" )
+ column=(type=decimal(0) updatewhereclause=yes name=callejero_cod_local dbname="callejero.cod_local" )
+ column=(type=char(50) updatewhereclause=yes name=localidades_nom_local dbname="localidades.nom_local" )
+ retrieve="  SELECT ~"CALLEJERO~".~"COD_CALLE~",   
+         ~"CALLEJERO~".~"NOM_CALLE~",   
+         ~"CALLEJERO~".~"COD_LOCAL~",   
+         ~"LOCALIDADES~".~"NOM_LOCAL~"  
+    FROM ~"CALLEJERO~",   
+         ~"LOCALIDADES~"  
+   WHERE ( ( ~"CALLEJERO~".~"COD_PROV~" = ~"LOCALIDADES~".~"COD_PROV~" (+)) AND  
+         ( ~"CALLEJERO~".~"COD_DEPTO~" = ~"LOCALIDADES~".~"COD_DEPTO~" (+)) AND  
+         ( ~"CALLEJERO~".~"COD_MUNIC~" = ~"LOCALIDADES~".~"COD_MUNIC~" (+)) AND  
+         ( ~"CALLEJERO~".~"COD_LOCAL~" = ~"LOCALIDADES~".~"COD_LOCAL~" (+)) AND  
+         ( ~"CALLEJERO~".~"COD_PROV~" = :provincia ) AND  
+         ( ~"CALLEJERO~".~"COD_DEPTO~" = :depto ) AND  
+         ( ~"CALLEJERO~".~"COD_MUNIC~" = :municipio ) AND  
+         ( ~"CALLEJERO~".~"COD_CALLE~" <> 0 ) )   
+ORDER BY ~"CALLEJERO~".~"NOM_CALLE~" ASC   
+" arguments=(("provincia", number),("depto", number),("municipio", number))  sort="localidades_nom_local A callejero_nom_calle A " )
+text(band=header alignment="2" text="Calles"border="6" color="0" x="18" y="12" height="84" width="905"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Localidad / Barrio"border="6" color="0" x="942" y="12" height="84" width="905"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="4" height="72" width="905" format="[general]"  name=callejero_nom_calle edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="942" y="4" height="72" width="905" format="[general]"  name=localidades_nom_local edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,51 @@
+HA$PBExportHeader$fg_ext_parametros.srf
+global type fg_ext_parametros from function_object
+end type
+
+forward prototypes
+global function integer fg_ext_parametros (readonly integer ai_cod_parametro)
+end prototypes
+
+global function integer fg_ext_parametros (readonly integer ai_cod_parametro);//***************************************
+//**  OSGI 2001.1  	21/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+///////////////////////////////////////////////////////
+//
+// Funcion/Evento: fg_ext_parametros
+// 
+// Objetivo: Busca los parametros para identificar si los mismos est$$HEX1$$e100$$ENDHEX$$n activos o no.
+//
+// Responsable: JPE
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros:
+//    Entrada: integer ai_cod_parametro
+//
+//
+//    Salida : --
+//
+// Devuelve: integer
+//
+// Fecha        Responsable   Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ------       -----------   ---------
+// 21/03/2001   JPE
+//
+///////////////////////////////////////////////////////
+Integer li_valor_parametro
+
+
+
+SELECT "GI_PARAMETROS"."VALOR"  
+  INTO :li_valor_parametro  
+  FROM "GI_PARAMETROS"  
+ WHERE "GI_PARAMETROS"."COD_PARAMETRO" = :ai_cod_parametro   ;
+
+If sqlca.sqlcode <> 0 Then li_valor_parametro = 0
+
+Return li_valor_parametro
+//***************************************
+//**  OSGI 2001.1  	21/03/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end function
+

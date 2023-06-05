@@ -1,0 +1,18 @@
+HA$PBExportHeader$dw_valida_dias_fecha_serv_antig.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=gi_avisos_f_alta dbname="gi_avisos.f_alta" )
+ column=(type=decimal(0) updatewhereclause=yes name=gi_avisos_est_aviso dbname="gi_avisos.est_aviso" )
+ column=(type=number updatewhereclause=yes name=c_dias_antig dbname="c_dias_antig" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"gi_avisos_instalacion~" )  TABLE(NAME=~"gi_avisos~" ) COLUMN(NAME=~"gi_avisos.f_alta~") COLUMN(NAME=~"gi_avisos.est_aviso~") COMPUTE(NAME=~"to_number(Trunc(((sysdate-~~~"GI_AVISOS~~~".~~~"F_ALTA~~~")) ,0)) As c_dias_antig~")    JOIN (LEFT=~"gi_avisos_instalacion.nro_aviso~"    OP =~"=~"RIGHT=~"gi_avisos.nro_aviso~" )WHERE(    EXP1 =~"~~~"GI_AVISOS_INSTALACION~~~".~~~"NRO_INSTALACION~~~"~"   OP =~"=~"    EXP2 =~":al_nro_instalacion~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"GI_AVISOS~~~".~~~"EST_AVISO~~~"~"   OP =~"<=~"    EXP2 =~":ai_estado~" ) ) ORDER(NAME=~"gi_avisos.f_alta~" ASC=no) ARG(NAME = ~"al_nro_instalacion~" TYPE = number)  ARG(NAME = ~"ai_estado~" TYPE = number) " arguments=(("al_nro_instalacion", number),("ai_estado", number)) )
+text(band=header alignment="0" text="Gi Avisos F Alta"border="0" color="0" x="9" y="4" height="76" width="896"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="C Dias Antig"border="0" color="0" x="914" y="4" height="76" width="1367"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Gi Avisos Est Aviso"border="0" color="0" x="2290" y="4" height="76" width="1367"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="76" width="896" format="[shortdate] [time]"  name=gi_avisos_f_alta edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="914" y="0" height="76" width="1367" format="[general]"  name=c_dias_antig edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2290" y="0" height="76" width="1367" format="[general]"  name=gi_avisos_est_aviso edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

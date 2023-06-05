@@ -1,0 +1,65 @@
+HA$PBExportHeader$m_7102_mantenimiento_descargos.srm
+forward
+global type m_7102_mantenimiento_descargos from menu
+end type
+type m_asigna from menu within m_7102_mantenimiento_descargos
+end type
+type m_asigna from menu within m_7102_mantenimiento_descargos
+end type
+type m_desasigna from menu within m_7102_mantenimiento_descargos
+end type
+type m_desasigna from menu within m_7102_mantenimiento_descargos
+end type
+end forward
+
+global type m_7102_mantenimiento_descargos from menu
+m_asigna m_asigna
+m_desasigna m_desasigna
+end type
+global m_7102_mantenimiento_descargos m_7102_mantenimiento_descargos
+
+on m_7102_mantenimiento_descargos.create
+m_7102_mantenimiento_descargos=this
+this.m_asigna=create m_asigna
+this.m_desasigna=create m_desasigna
+this.Item[]={this.m_asigna, &
+this.m_desasigna}
+end on
+
+on m_7102_mantenimiento_descargos.destroy
+destroy(this.m_asigna)
+destroy(this.m_desasigna)
+end on
+
+type m_asigna from menu within m_7102_mantenimiento_descargos
+end type
+
+on m_asigna.create
+this.Text="Asignar Interrupci$$HEX1$$f300$$ENDHEX$$n"
+end on
+
+on m_asigna.destroy
+end on
+
+event clicked;//w_7104_solicitud_descargos lw_ventana 
+w_7106_solicitud_descargos lw_ventana 
+lw_ventana = parentwindow
+lw_ventana.tab_1.tabpage_interrupciones.tv_1.triggerevent('ue_asigna')
+end event
+
+type m_desasigna from menu within m_7102_mantenimiento_descargos
+end type
+
+on m_desasigna.create
+this.Text="Desasignar Interrupci$$HEX1$$f300$$ENDHEX$$n"
+end on
+
+on m_desasigna.destroy
+end on
+
+event clicked;w_7106_solicitud_descargos lw_ventana 
+lw_ventana = parentwindow
+
+lw_ventana.tab_1.tabpage_interrupciones.tv_1.triggerevent('ue_desasigna')
+end event
+

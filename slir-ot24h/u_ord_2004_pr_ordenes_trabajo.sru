@@ -1,0 +1,13 @@
+HA$PBExportHeader$u_ord_2004_pr_ordenes_trabajo.sru
+forward
+global type u_ord_2004_pr_ordenes_trabajo from u_avi_1001_pr_generico
+end type
+end forward
+
+global type u_ord_2004_pr_ordenes_trabajo from u_avi_1001_pr_generico
+int Width=2693
+int Height=473
+string DataObject="d_ord_2004_ordenes_trabajo"
+end type
+global u_ord_2004_pr_ordenes_trabajo u_ord_2004_pr_ordenes_trabajo
+

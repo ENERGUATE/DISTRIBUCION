@@ -1,0 +1,38 @@
+HA$PBExportHeader$d_bdg_alarmas.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=132 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=codigo dbname="gi_bdg_malarmas.codigo" )
+ column=(type=char(50) updatewhereclause=yes name=descripcion dbname="gi_bdg_malarmas.descripcion" )
+ column=(type=char(15) updatewhereclause=yes name=tipo_valor dbname="gi_bdg_malarmas.tipo_valor" )
+ column=(type=decimal(0) updatewhereclause=yes name=estado dbname="gi_bdg_malarmas.estado" )
+ column=(type=number updatewhereclause=yes name=valor dbname="gi_bdg_malarmas.valor" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=maximo dbname="gi_bdg_malarmas.maximo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=intermedio dbname="gi_bdg_malarmas.intermedio" )
+ column=(type=char(4000) updatewhereclause=yes name=icono_alarma dbname="icono_alarma" )
+ column=(type=char(1) updatewhereclause=yes name=bandera_alarma dbname="bandera_alarma" )
+ retrieve="  SELECT ~"GI_BDG_MALARMAS~".~"CODIGO~",   
+         ~"GI_BDG_MALARMAS~".~"DESCRIPCION~",   
+         ~"GI_BDG_MALARMAS~".~"TIPO_VALOR~",   
+         ~"GI_BDG_MALARMAS~".~"ESTADO~",   
+         0 VALOR,   
+         ~"GI_BDG_MALARMAS~".~"MAXIMO~",
+			~"GI_BDG_MALARMAS~".~"INTERMEDIO~",
+			Fgnu_Iconos_Alarmas_Bdg(~"GI_BDG_MALARMAS~".~"TIPO_VALOR~", ~"GI_BDG_MALARMAS~".~"ESTADO~") ICONO_ALARMA, 
+			' ' BANDERA_ALARMA
+ FROM ~"GI_BDG_MALARMAS~"   
+  " update="GI_BDG_MALARMAS" updatewhere=1 updatekeyinplace=no )
+rectangle(band=header x="0" y="0" height="84" width="1317" brush.hatch="6" brush.color="10641423" pen.style="0" pen.width="5" pen.color="27418639"  background.mode="2" background.color="-2120065009" )
+text(band=header alignment="2" text="Alarmas"border="0" color="0" x="128" y="4" height="64" width="773"  name=descripcion_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tipo Valor"border="0" color="0" x="2757" y="100" height="64" width="411"  name=tipo_valor_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Estado"border="0" color="0" x="2208" y="108" height="64" width="576"  name=estado_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Valor"border="0" color="0" x="969" y="4" height="64" width="229"  name=valor_t  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="16" height="64" width="82" format="[general]"  name=icono_alarma bitmapname=yes edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=detail x1="18" y1="104" x2="1367" y2="104" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="1073741824" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="1211" y="12" height="76" width="96" format="[general]"  name=bandera_alarma bitmapname=yes edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="114" y="16" height="64" width="823" format="[general]"  name=descripcion edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="983" y="16" height="64" width="215" format="[general]"  name=valor edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

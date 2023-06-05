@@ -1,0 +1,16 @@
+HA$PBExportHeader$ddw_material_averiado_shared.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(6) updatewhereclause=yes key=yes name=cod_objeto dbname="sgd_org_mat.cod_objeto" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=descripcion dbname="sgd_org_mat.descripcion" )
+ retrieve="  SELECT ~"SGD_ORG_MAT~".~"COD_OBJETO~",   
+         ~"SGD_ORG_MAT~".~"DESCRIPCION~"  
+    FROM ~"SGD_ORG_MAT~"  
+   WHERE ( ~"SGD_ORG_MAT~".~"COD_OBJETO~"  LIKE '0101%' ) AND ( ~"SGD_ORG_MAT~".~"COD_OBJETO~" <> '010100' )    
+	order by ~"SGD_ORG_MAT~".~"DESCRIPCION~"  " update="SGD_ORG_MAT" updatewhere=0 updatekeyinplace=no )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="0" y="8" height="76" width="2304" format="[general]" html.valueishtml="0"  name=descripcion visible="1" edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

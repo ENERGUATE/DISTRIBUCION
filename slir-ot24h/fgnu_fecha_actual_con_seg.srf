@@ -1,0 +1,40 @@
+HA$PBExportHeader$fgnu_fecha_actual_con_seg.srf
+global type fgnu_fecha_actual_con_seg from function_object
+end type
+
+forward prototypes
+global function datetime fgnu_fecha_actual_con_seg ()
+end prototypes
+
+global function datetime fgnu_fecha_actual_con_seg ();////////////////////////////////////////////////////////////////////
+//
+// Funci$$HEX1$$f300$$ENDHEX$$n: fgnu_fecha_actual
+// 
+// Objetivo: Devuelve la fecha y la hora actual con segundos
+//         
+//
+// Ambito:	Global
+//
+// Par$$HEX1$$e100$$ENDHEX$$metros: 
+//		Entrada:  --
+//		Salida:   --
+//						
+// Devuelve:	DateTime
+//
+//  Fecha	  Responsable	Actuaci$$HEX1$$f300$$ENDHEX$$n
+// ---------	-------		----------------------------------------
+//	
+//
+/////////////////////////////////////////////////////////////////////
+
+datetime ld_fecha
+string ls_hora
+ 
+SELECT sysdate INTO :ld_fecha FROM DUAL;
+
+ls_hora=String(Time(ld_fecha),"hh:mm:ss")
+ld_fecha=DateTime(Date(ld_fecha),Time(ls_hora))
+
+RETURN (ld_fecha)
+end function
+

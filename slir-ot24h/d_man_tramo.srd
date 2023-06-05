@@ -1,0 +1,68 @@
+HA$PBExportHeader$d_man_tramo.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=748 color="536870912" )
+table(column=(type=datetime update=yes updatewhereclause=yes name=fecha_ces dbname="sgd_tramo.fecha_ces" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=cedida_a dbname="sgd_tramo.cedida_a" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=estructura dbname="sgd_tramo.estructura" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=class_id dbname="sgd_tramo.class_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=fechaser dbname="sgd_tramo.fechaser" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=fabricante dbname="sgd_tramo.fabricante" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=matricula dbname="sgd_tramo.matricula" )
+ column=(type=char(6) update=yes updatewhereclause=yes name=modcons dbname="sgd_tramo.modcons" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=instalacion_origen dbname="sgd_tramo.instalacion_origen" )
+ column=(type=number update=yes updatewhereclause=yes name=impendancia dbname="sgd_tramo.impendancia" )
+ column=(type=number update=yes updatewhereclause=yes name=x dbname="sgd_tramo.x" )
+ column=(type=number update=yes updatewhereclause=yes name=r dbname="sgd_tramo.r" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=tip_canal dbname="sgd_tramo.tip_canal" )
+ column=(type=decimal(3) update=yes updatewhereclause=yes name=longitud dbname="sgd_tramo.longitud" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=tipo_tramo dbname="sgd_tramo.tipo_tramo" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=propiedad dbname="sgd_tramo.propiedad" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=codigo dbname="sgd_tramo.codigo" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_centro dbname="sgd_tramo.nro_centro" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_cmd dbname="sgd_tramo.nro_cmd" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=nro_mesa dbname="sgd_tramo.nro_mesa" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=usuario dbname="sgd_tramo.usuario" )
+ column=(type=datetime update=yes updatewhereclause=yes name=f_actual dbname="sgd_tramo.f_actual" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=programa dbname="sgd_tramo.programa" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=bdi_job dbname="sgd_tramo.bdi_job" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=statflg dbname="sgd_tramo.statflg" )
+ retrieve="  SELECT ~"SGD_TRAMO~".~"FECHA_CES~",   
+         ~"SGD_TRAMO~".~"CEDIDA_A~",   
+         ~"SGD_TRAMO~".~"ESTRUCTURA~",   
+         ~"SGD_TRAMO~".~"CLASS_ID~",   
+         ~"SGD_TRAMO~".~"FECHASER~",   
+         ~"SGD_TRAMO~".~"FABRICANTE~",   
+         ~"SGD_TRAMO~".~"MATRICULA~",   
+         ~"SGD_TRAMO~".~"MODCONS~",   
+         ~"SGD_TRAMO~".~"INSTALACION_ORIGEN~",   
+         ~"SGD_TRAMO~".~"IMPENDANCIA~",   
+         ~"SGD_TRAMO~".~"X~",   
+         ~"SGD_TRAMO~".~"R~",   
+         ~"SGD_TRAMO~".~"TIP_CANAL~",   
+         ~"SGD_TRAMO~".~"LONGITUD~",   
+         ~"SGD_TRAMO~".~"TIPO_TRAMO~",   
+         ~"SGD_TRAMO~".~"PROPIEDAD~",   
+         ~"SGD_TRAMO~".~"CODIGO~",   
+         ~"SGD_TRAMO~".~"NRO_CENTRO~",   
+         ~"SGD_TRAMO~".~"NRO_CMD~",   
+         ~"SGD_TRAMO~".~"NRO_MESA~",   
+         ~"SGD_TRAMO~".~"USUARIO~",   
+         ~"SGD_TRAMO~".~"F_ACTUAL~",   
+         ~"SGD_TRAMO~".~"PROGRAMA~",   
+         ~"SGD_TRAMO~".~"BDI_JOB~",   
+         ~"SGD_TRAMO~".~"STATFLG~"  
+    FROM ~"SGD_TRAMO~"  
+   WHERE ( ~"SGD_TRAMO~".~"CODIGO~" = :codigo ) AND  
+         ( BDI_JOB = (SELECT MAX(BDI_JOB) FROM SGD_TRAMO WHERE CODIGO= :codigo) )    
+" update="SGD_TRAMO" updatewhere=0 updatekeyinplace=yes arguments=(("codigo", number)) )
+column(band=detail id=14 alignment="1" tabsequence=10 border="5" color="0" x="745" y="120" height="64" width="558" format="0.00" html.valueishtml="0"  name=longitud visible="1" editmask.mask="##,###.###" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=20 border="5" color="0" x="745" y="348" height="64" width="558" format="[general]" html.valueishtml="0"  name=matricula visible="1" editmask.mask="!!!!!!!!!!!!" editmask.imemode=0 editmask.focusrectangle=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=15 alignment="1" tabsequence=30 border="5" color="0" x="745" y="564" height="64" width="558" format="[general]" html.valueishtml="0"  name=tipo_tramo visible="1" dddw.name=d_lista_tipo_tramo dddw.displaycolumn=descripcion dddw.datacolumn=valor dddw.percentwidth=100 dddw.lines=2 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Tipo Tramo" border="0" color="0" x="389" y="564" height="64" width="293" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="Matricula" border="0" color="0" x="389" y="348" height="64" width="293" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="Longitud" border="0" color="0" x="389" y="120" height="64" width="293" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )
