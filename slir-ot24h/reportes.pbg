@@ -7,12 +7,16 @@ Save Format v3.0(19990112)
  "u_gen_7001_pr_filtro_reporte_inc.sru" "reportes.pbl";
  "u_gen_7002_pr_filtro_reporte_avi.sru" "reportes.pbl";
  "w_reportes.srw" "reportes.pbl";
+ "m_rep_emer_2.srm" "reportes.pbl";
+ "m_reportes_2.srm" "reportes.pbl";
  "dddw_nombre_tablas.srd" "reportes.pbl";
  "d_clausula_where.srd" "reportes.pbl";
  "d_sentencia_select.srd" "reportes.pbl";
+ "w_reportes_avisos_incidencias_2.srw" "reportes.pbl";
  "d_lista_reporte.srd" "reportes.pbl";
  "d_lista_orden.srd" "reportes.pbl";
  "m_consulta_sql.srm" "reportes.pbl";
+ "w_reportes_avisos_incidencias.srw" "reportes.pbl";
  "d_lista_campos.srd" "reportes.pbl";
  "w_consulta_sql.srw" "reportes.pbl";
  "u_5001_nu_reportes.sru" "reportes.pbl";
@@ -28,5 +32,6 @@ Save Format v3.0(19990112)
  "d_bdg_7002_pr_filtro_reporte_avisos.srd" "reportes.pbl";
  "m_rep_emer.srm" "reportes.pbl";
  "m_reportes.srm" "reportes.pbl";
+ "m_consulta_sql_2.srm" "reportes.pbl";
  "u_pr_menu.sru" "reportes.pbl";
 @end;

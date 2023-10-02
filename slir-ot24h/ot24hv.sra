@@ -617,9 +617,9 @@ connect using sqlca2;
 connect using sqlca4;
 
 if sqlca4.SQLCode = 0 then
-  MessageBox("Atenci$$HEX1$$f300$$ENDHEX$$n", "Conexi$$HEX1$$f300$$ENDHEX$$n establecida a la B.D SGDCONEC.WORLD ")
+//  MessageBox("Atenci$$HEX1$$f300$$ENDHEX$$n", "Conexi$$HEX1$$f300$$ENDHEX$$n establecida a la B.D SGDCONEC.WORLD ")
 elseif sqlca4.SQLCode = -1 then
-   MessageBox("Error", "No hay conexion a la B.D. SGDCONEC.WORLD" + sqlca.SQLErrText  )
+//   MessageBox("Error", "No hay conexion a la B.D. SGDCONEC.WORLD" + sqlca.SQLErrText  )
 end if
 
 end subroutine

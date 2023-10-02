@@ -1,0 +1,136 @@
+HA$PBExportHeader$m_rep_emer_2.srm
+forward
+global type m_rep_emer_2 from menu
+end type
+type m_seleccionartodo from menu within m_rep_emer_2
+end type
+type m_deseleccionartodo from menu within m_rep_emer_2
+end type
+global type m_rep_emer_2 from menu
+m_seleccionartodo m_seleccionartodo
+m_deseleccionartodo m_deseleccionartodo
+end type
+end forward
+
+global type m_rep_emer_2 from menu
+m_seleccionartodo m_seleccionartodo
+m_deseleccionartodo m_deseleccionartodo
+end type
+global m_rep_emer_2 m_rep_emer_2
+
+on m_rep_emer_2.create
+m_rep_emer_2=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_seleccionartodo=create m_seleccionartodo
+this.m_deseleccionartodo=create m_deseleccionartodo
+this.Item[UpperBound(this.Item)+1]=this.m_seleccionartodo
+this.Item[UpperBound(this.Item)+1]=this.m_deseleccionartodo
+end on
+
+on m_rep_emer_2.destroy
+call super::destroy
+destroy(this.m_seleccionartodo)
+destroy(this.m_deseleccionartodo)
+end on
+
+type m_seleccionartodo from menu within m_rep_emer_2
+end type
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	04/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	04/05/2001  w_reportes.triggerevent("ue_seleccionar_todo")
+window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+activesheet.triggerevent("ue_seleccionar_todo")
+//***************************************
+//**  OSGI 2001.1  	04/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_seleccionartodo.create
+call super::create
+this.text = "Seleccionar Todo"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_seleccionartodo.destroy
+call super::destroy
+end on
+
+type m_deseleccionartodo from menu within m_rep_emer_2
+end type
+
+event clicked;//***************************************
+//**  OSGI 2001.1  	04/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+//**  OSGI 2001.1  	04/05/2001  w_reportes.triggerevent("ue_deseleccionar_todo")
+window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+activesheet.triggerevent("ue_deseleccionar_todo")
+//***************************************
+//**  OSGI 2001.1  	04/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//***************************************
+end event
+
+on m_deseleccionartodo.create
+call super::create
+this.text = "Deseleccionar Todo"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deseleccionartodo.destroy
+call super::destroy
+end on
+

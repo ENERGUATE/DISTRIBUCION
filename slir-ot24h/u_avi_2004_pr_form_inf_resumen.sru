@@ -3112,8 +3112,8 @@ IF  ll_aviso_pend = 0 THEN
 			
 			if li_activo = 0 then
 				
-				Messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n","Se van a insertar en la tabla "+ls_name_tabla+" los valores: "+string(is_avisos.gl_nro_aviso)+","+string(is_avisos.gl_nis_rad)+","+string(ld_coor_x)+&
-								","+string(ld_coor_y)+", '"+string(is_avisos.gd_f_alta)+"', "+"'OPEN'")
+			//	Messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n","Se van a insertar en la tabla "+ls_name_tabla+" los valores: "+string(is_avisos.gl_nro_aviso)+","+string(is_avisos.gl_nis_rad)+","+string(ld_coor_x)+&
+		//						","+string(ld_coor_y)+", '"+string(is_avisos.gd_f_alta)+"', "+"'OPEN'")
 			
 				ls_insert = "INSERT INTO "+ls_name_tabla+" "+&
 								"(NRO_AVISO, NIS_RAD, COORDENADA_X, COORDENADA_Y, F_ALTA_AVISO, ESTADO_AVISO)"+&
@@ -3123,13 +3123,11 @@ IF  ll_aviso_pend = 0 THEN
 				execute immediate :ls_insert using sqlca4; // ejecutar el insert
 				commit using sqlca4;
 				
-				if sqlca4.sqlcode = 0 then
-					messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n", "Se insertaron correctamente los datos en: "+ls_name_tabla)
-				else 
+			
 					if sqlca4.sqlcode<>0 then
 						messagebox("Error al insertar", sqlca4.sqlerrtext)
 					end if
-				end if
+
 				
 //				ls_query = "SELECT NRO_AVISO,  NIS_RAD, COORDENADA_X, COORDENADA_Y,F_ALTA_AVISO, ESTADO_AVISO FROM "+ ls_name_tabla +" WHERE NRO_AVISO = "+string(is_avisos.gl_nro_aviso) + " USING sqlca4;"
 //				
@@ -3161,15 +3159,10 @@ IF  ll_aviso_pend = 0 THEN
 
 				SELECT NRO_AVISO, NIS_RAD, COORDENADA_X, COORDENADA_Y, F_ALTA_AVISO, ESTADO_AVISO 
 				INTO :nro_aviso, :nis_rad, :coordenada_x, :coordenada_y, :f_alta, :estado
-				FROM AVISOS_INCIDENCIAS2
+				FROM AVISOS_INCIDENCIAS
 				WHERE NRO_AVISO =:is_avisos.gl_nro_aviso
 				USING sqlca4;
-				
-				if sqlca4.sqlcode = 0 then
-					MessageBox("Atenci$$HEX1$$f300$$ENDHEX$$n","Valores insertados: "+string(nro_aviso)+","+string(nis_rad)+","+&
-									string(coordenada_x)+","+string(coordenada_y)+","+string(f_alta)+","+estado)
-				end if
-				
+
 				
 			end if
 			

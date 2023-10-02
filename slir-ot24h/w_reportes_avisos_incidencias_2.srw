@@ -1,59 +1,59 @@
-HA$PBExportHeader$w_reportes.srw
+HA$PBExportHeader$w_reportes_avisos_incidencias_2.srw
 forward
-global type w_reportes from window
+global type w_reportes_avisos_incidencias_2 from window
 end type
-type cb_1 from commandbutton within w_reportes
+type cb_1 from commandbutton within w_reportes_avisos_incidencias_2
 end type
-type st_titulos from statictext within w_reportes
+type st_titulos from statictext within w_reportes_avisos_incidencias_2
 end type
-type mle_titulos from multilineedit within w_reportes
+type mle_titulos from multilineedit within w_reportes_avisos_incidencias_2
 end type
-type st_subtitulos from statictext within w_reportes
+type st_subtitulos from statictext within w_reportes_avisos_incidencias_2
 end type
-type mle_subtitulos from multilineedit within w_reportes
+type mle_subtitulos from multilineedit within w_reportes_avisos_incidencias_2
 end type
-type p_1 from picture within w_reportes
+type p_1 from picture within w_reportes_avisos_incidencias_2
 end type
-type st_titulo from statictext within w_reportes
+type st_titulo from statictext within w_reportes_avisos_incidencias_2
 end type
-type dw_funciones from u_pr_funcion within w_reportes
+type dw_funciones from u_pr_funcion within w_reportes_avisos_incidencias_2
 end type
-type st_3 from statictext within w_reportes
+type st_3 from statictext within w_reportes_avisos_incidencias_2
 end type
-type st_2 from statictext within w_reportes
+type st_2 from statictext within w_reportes_avisos_incidencias_2
 end type
-type st_1 from statictext within w_reportes
+type st_1 from statictext within w_reportes_avisos_incidencias_2
 end type
-type dw_lista_orden from u_lista_orden within w_reportes
+type dw_lista_orden from u_lista_orden within w_reportes_avisos_incidencias_2
 end type
-type sle_1 from singlelineedit within w_reportes
+type sle_1 from singlelineedit within w_reportes_avisos_incidencias_2
 end type
-type dw_lista_items from u_lista_reporte within w_reportes
+type dw_lista_items from u_lista_reporte within w_reportes_avisos_incidencias_2
 end type
-type uo_menu from u_pr_menu within w_reportes
+type uo_menu from u_pr_menu within w_reportes_avisos_incidencias_2
 end type
-type st_material from statictext within w_reportes
+type st_material from statictext within w_reportes_avisos_incidencias_2
 end type
-type st_causa from statictext within w_reportes
+type st_causa from statictext within w_reportes_avisos_incidencias_2
 end type
-type mle_1 from multilineedit within w_reportes
+type mle_1 from multilineedit within w_reportes_avisos_incidencias_2
 end type
-type dw_1 from datawindow within w_reportes
+type dw_1 from datawindow within w_reportes_avisos_incidencias_2
 end type
-type dw_ambito from u_cen_2001_pr_form_centro_cmd_mesa within w_reportes
+type dw_ambito from u_cen_2001_pr_form_centro_cmd_mesa within w_reportes_avisos_incidencias_2
 end type
-type dw_filtro_reporte from u_gen_7001_pr_filtro_reporte_inc within w_reportes
+type dw_filtro_reporte from u_gen_7001_pr_filtro_reporte_inc within w_reportes_avisos_incidencias_2
 end type
-type st_instalacion from statictext within w_reportes
+type st_instalacion from statictext within w_reportes_avisos_incidencias_2
 end type
 end forward
 
-global type w_reportes from window
+global type w_reportes_avisos_incidencias_2 from window
 integer width = 3625
 integer height = 2376
 boolean titlebar = true
 string title = "SLIR-Objeto de Creacion de Informes Dinamicos"
-string menuname = "m_reportes"
+string menuname = "m_reportes_2"
 boolean controlmenu = true
 boolean minbox = true
 boolean maxbox = true
@@ -93,7 +93,7 @@ dw_ambito dw_ambito
 dw_filtro_reporte dw_filtro_reporte
 st_instalacion st_instalacion
 end type
-global w_reportes w_reportes
+global w_reportes_avisos_incidencias_2 w_reportes_avisos_incidencias_2
 
 type variables
 u_generico_comunicaciones iu_comunic
@@ -201,6 +201,7 @@ string	ls_nombre				//Nombre del campo
 long ls_larg_gi_avisos
 //TDA
 long ls_larg_sgd_incidencia
+long ls_larg_gi_hist_incidencias 
 string ls_select_hist, ls_tabla_hist
 String ls_select_fnc_max, ls_select_fnc_min, ls_select_fnc,ls_armar_consult_max, ls_armar_consult, ls_armar_consult_min 	
 //NCA-FIN.DDAG-1679.15/05/2015.
@@ -695,56 +696,6 @@ choose case li_centro
 
 
 						end if
-					case "gi_avisos_2"
-						if dw_lista_orden.getitemnumber(li_count,"tipo")= 2 then
-								ls_tipoorden=" DESC"
-							else
-								ls_tipoorden=""
-						end if
-						if li_count=1 then
-							// validamos si el campo tiene un JOIN
-							
-							//ls_order = " ORDER BY gi_avisos." + dw_lista_orden.getitemstring(li_count,"campo")  + ls_tipoorden
-							
-						//\\// PM_U003 TIPOS VIA INCIDENCIA AMR 13/06/2002
-						// \/ Hay que colocar a la fuerza el campo para poder hacer el order by
-						//  ls_order = " ORDER BY "+dw_lista_orden.getitemstring(li_count,"tabla")+"." + dw_lista_orden.getitemstring(li_count,"campo")  + ls_tipoorden
-							
-						 IF gb_tipos_de_via THEN	
-							IF Upper(dw_lista_orden.getitemstring(li_count,"tabla")) = "TIPOS" THEN
-								ls_order = " ORDER BY "+ "NOM_CALLE "  + ls_tipoorden
-							ELSE
-								ls_order = " ORDER BY "+dw_lista_orden.getitemstring(li_count,"tabla")+"." + dw_lista_orden.getitemstring(li_count,"campo")  + ls_tipoorden
-							END IF
-						ELSE
-							ls_order = " ORDER BY "+dw_lista_orden.getitemstring(li_count,"tabla")+"." + dw_lista_orden.getitemstring(li_count,"campo")  + ls_tipoorden
-						END IF
-						// /\
-						//\\// PM_U003 TIPOS VIA INCIDENCIA AMR 13/06/2002
-
-						
-						else
-							// validamos si el campo tiene un JOIN
-							
-							//ls_order=ls_order + " , gi_avisos." + dw_lista_orden.getitemstring(li_count,"campo") + ls_tipoorden
-							
-							//\\// PM_U003 TIPOS VIA INCIDENCIA AMR 13/06/2002
-							// \/ Hay que colocar a la fuerza el campo para poder hacer el order by
-							//ls_order = ls_order +" , "+ dw_lista_orden.getitemstring(li_count,"tabla")+"." + dw_lista_orden.getitemstring(li_count,"campo")  + ls_tipoorden
-							IF gb_tipos_de_via THEN		
-								IF Upper(dw_lista_orden.getitemstring(li_count,"tabla")) = "TIPOS" THEN
-									ls_order = ls_order +" , "+ "NOM_CALLE "  + ls_tipoorden
-								ELSE
-									ls_order = ls_order +" , "+ dw_lista_orden.getitemstring(li_count,"tabla")+"." + dw_lista_orden.getitemstring(li_count,"campo")  + ls_tipoorden
-								END IF
-							ELSE				
-								ls_order = ls_order +" , "+ dw_lista_orden.getitemstring(li_count,"tabla")+"." + dw_lista_orden.getitemstring(li_count,"campo")  + ls_tipoorden
-							END IF
-							// /\
-							//\\// PM_U003 TIPOS VIA INCIDENCIA AMR 13/06/2002
-
-
-						end if
 					case "gi_brigada"
 						if dw_lista_orden.getitemnumber(li_count,"tipo")= 2 then
 								ls_tipoorden=" DESC"
@@ -836,19 +787,6 @@ int li_buscando
 					end if
 								
 				case "gi_avisos"
-					
-					li_buscando = dw_filtro_reporte.accepttext()
-					if li_buscando = -1 THEN 	return
-					ls_filtro=iu_5001_nu.fnu_filtro_aviso(dw_filtro_reporte)
-					if ls_filtro="cancel" then return
-					if ls_subselect<> ""then
-						ls_where = "(" + ls_where + ls_subselect + ls_from + " where " + ls_where + " " + ls_filtro + ") " + ls_filtro + ")"
-					else	
-						ls_where = ls_where + " " + ls_filtro
-							
-					end if
-					
-				  case "gi_avisos_2"
 					
 					li_buscando = dw_filtro_reporte.accepttext()
 					if li_buscando = -1 THEN 	return
@@ -965,71 +903,7 @@ int li_buscando
 							ls_select= ls_select + " UNION ALL " + ls_select_hist	
 			end choose
 	End if	 
-	If iu_comunic.is_comunic.accion_llamada = 'gi_avisos_2' Then		
-      ls_select_hist = ls_select		
-		ls_larg_gi_avisos = LEN('gi_avisos')	
-		ls_larg_sgd_incidencia = LEN('sgd_incidencia')
-
-			do while Pos(ls_select_hist, "gi_avisos") <> 0
-							ls_select_hist= Replace (ls_select_hist, Pos(ls_select_hist, "gi_avisos"), ls_larg_gi_avisos, 'gi_hist_avisos')		
-			loop	
-			//TDA
-			do while Pos(ls_select_hist, "sgd_incidencia") <> 0
-				ls_select_hist= Replace (ls_select_hist, Pos(ls_select_hist, "sgd_incidencia"), ls_larg_sgd_incidencia, 'gi_hist_incidencias')	
-			loop
-		///sigeme integracion de causa
-		if(Pos(ls_select, "nro_incidencia") <> 0 or Pos(ls_select, "nom_causa") <> 0)then
 		
-			 select
-			       replace(
-				  replace(
-				  replace(
-				  replace(
-					  replace(:ls_select,'nro_incidencia','inc.nro_incidencia')
-							,'nom_causa','ca.descripcion as nom_causa')
-						,'FROM','FROM  sgd_incidencia inc,gi_causa ca,')
-						,' WHERE',' WHERE gi_AVISOS.NRO_INCIDENCIA =inc.NRO_INCIDENCIA and ca.cod_causa = inc.cod_causa and ')
-			           , 'gi_avisos_2 ,','')
-						into :ls_select
-			 from DUAL;
-			 
-			 			 select
-			       replace(
-				  replace(
-				  replace(
-				  replace(
-					  replace(:ls_select_hist,'nro_incidencia','inc.nro_incidencia')
-							,'nom_causa','inc.nom_causa')
-						,'FROM','FROM  gi_hist_incidencias inc,')
-						,' WHERE',' WHERE gi_hist_avisos.nro_incidencia = inc.nro_incidencia and ')
-			           , 'gi_hist_avisos_2 ,','')
-						into :ls_select_hist
-			 from DUAL;
-	     end if
-
-		//////////////////////////////////////////////////////////////////
-			//Dependiendo de la funci$$HEX1$$f300$$ENDHEX$$n se arma el query con la tabla de historicos.			
-			ls_armar_consult = "WHERE " + ls_campo + " = " + "(SELECT " + ls_funcion + ls_campo + ")" + " FROM (" +""   
-			
-			choose Case ls_funcion
-					case  "MAX("
-							ls_armar_consult_max = "SELECT * FROM ("
-							ls_select_fnc_max = ls_armar_consult_max + ls_select + " UNION ALL " + ls_select_hist + ")" + ls_armar_consult + ls_select +"))"
-							
-							ls_select = ls_select_fnc_max 
-
-					case  "MIN("						
-						   ls_armar_consult_min = "SELECT * FROM ("
-							ls_select_fnc_min = ls_armar_consult_min + ls_select + " UNION ALL " + ls_select_hist + ")" + ls_armar_consult + ls_select +"))"
-							
-							ls_select = ls_select_fnc_min 
-	
-					case else 
-						 
-							ls_select= ls_select + " UNION ALL " + ls_select_hist	
-							
-			end choose
-	End if	 
 //NCA-FIN.DDAG-1679.15/05/2015.
 
 		//////////////////// COMPROBAMOS SI HAY ALGUN JOIN ///////////////
@@ -1040,7 +914,7 @@ int li_buscando
 				if ls_item2<>"" then lb_join=true
 			end if
 		next
-
+		//////////////////////////////////////////////////////////////////
 		iu_5001_nu.fnu_obtener_datos_2(ls_select,dw_1,lb_join)
 		sle_1.text=string(dw_1.rowcount())
 		//AHM (14/02/2008)
@@ -1051,17 +925,17 @@ int li_buscando
 		f_preparo_datawindow(dw_1,ls_array_campos[])
 		dw_1.visible=false
 //		m_reportes.m_reporte.m_guardar.toolbaritemvisible=true
-		m_reportes.m_reporte.m_guardar.enabled=true
-		m_reportes.m_reporte.m_imprimir.enabled=true
-		m_reportes.m_reporte.m_guardar.m_reporte2.enabled=true
+		m_reportes_2.m_reporte.m_guardar.enabled=true
+		m_reportes_2.m_reporte.m_imprimir.enabled=true
+		m_reportes_2.m_reporte.m_guardar.m_reporte2.enabled=true
 //		m_reportes.m_reporte.m_imprimir.toolbaritemvisible=true
 //		m_reportes.m_reporte.m_guardar.m_reporte2.toolbaritemvisible=true
 //		m_reportes.m_rep.m_presentacionpreliminar.toolbaritemvisible=true
-		m_reportes.m_rep.m_presentacionpreliminar.enabled=true
+		m_reportes_2.m_rep.m_presentacionpreliminar.enabled=true
 		IF dw_1.RowCount() > 0 THEN
-			m_reportes.m_rep.m_exportarinformeaexcel.enabled = TRUE
+			m_reportes_2.m_rep.m_exportarinformeaexcel.enabled = TRUE
 			This.str_print.PARM1=false
-			m_reportes.m_rep.m_presentacionpreliminar.enabled = true
+			m_reportes_2.m_rep.m_presentacionpreliminar.enabled = true
 			is_preferencia=fw_preparar_archivo()
 			setpointer(Arrow!)
 			//AHM (13/02/2008)
@@ -1086,9 +960,9 @@ int li_buscando
 			END IF
 			gnv_msg.f_mensaje("IA09","","",ok!)
 		ELSE
-			m_reportes.m_rep.m_exportarinformeaexcel.enabled = FALSE
+			m_reportes_2.m_rep.m_exportarinformeaexcel.enabled = FALSE
 			setpointer(Arrow!)
-			m_reportes.m_rep.m_presentacionpreliminar.enabled = false
+			m_reportes_2.m_rep.m_presentacionpreliminar.enabled = false
 			Messagebox("Atenci$$HEX1$$f300$$ENDHEX$$n","No se obtuvieron datos para el Informe",information!)
 			Return
 		END IF
@@ -1316,13 +1190,13 @@ if li_numfila>0 then
 				end if
 				if lb_fila_sel then
 					if gu_perfiles.of_acceso_perfil(gi_perfil,'REPORTES_P','ACC_MANTEN')=1 then 
-						m_reportes.m_rep.m_mostrar.enabled=true
-						m_reportes.m_rep.m_presentacionpreliminar.enabled=FALSE
-						m_reportes.m_rep.m_exportarinformeaexcel.enabled = FALSE
+						m_reportes_2.m_rep.m_mostrar.enabled=true
+						m_reportes_2.m_rep.m_presentacionpreliminar.enabled=FALSE
+						m_reportes_2.m_rep.m_exportarinformeaexcel.enabled = FALSE
 				  	end if
 				else
 					//m_reportes.m_rep.m_mostrar.enabled=false
-					m_reportes.m_rep.m_mostrar.enabled=true
+					m_reportes_2.m_rep.m_mostrar.enabled=true
 				end if
 			next
 		end if
@@ -1432,7 +1306,7 @@ ii_numfich = li_numfich
 					ll_pos=dw_1.Importstring(ls_campos)
 					f_deshabilitar()
 	//				m_reportes.m_rep.m_presentacionpreliminar.toolbaritemvisible=true
-					m_reportes.m_rep.m_presentacionpreliminar.enabled=true
+					m_reportes_2.m_rep.m_presentacionpreliminar.enabled=true
 				//***************************************
 				//**  OSGI 2001.1  	01/05/2001			**
 				//**  Jair Padilla / Soluziona PANAMA  **
@@ -1448,9 +1322,9 @@ ii_numfich = li_numfich
 				IF Not IsValid(This) Then Return
 				// Si no hay datos no se habilita la opci$$HEX1$$f300$$ENDHEX$$n de exportar a Excel (LFE)
 				IF dw_1.RowCount() > 0 THEN
-					m_reportes.m_rep.m_exportarinformeaexcel.enabled = TRUE
+					m_reportes_2.m_rep.m_exportarinformeaexcel.enabled = TRUE
 				ELSE
-					m_reportes.m_rep.m_exportarinformeaexcel.enabled = FALSE
+					m_reportes_2.m_rep.m_exportarinformeaexcel.enabled = FALSE
 				END IF
 			end if
 	else
@@ -1491,8 +1365,8 @@ setpointer(HourGlass!)
 is_tabla_consulta=iu_comunic.is_comunic.accion_llamada
 
 // Habilito las opciones de menu para importar archivos
-m_reportes.m_reporte.m_abrir1.m_reporte1.enabled = true
-m_reportes.m_reporte.m_abrir1.m_preferencia.enabled = true
+m_reportes_2.m_reporte.m_abrir1.m_reporte1.enabled = true
+m_reportes_2.m_reporte.m_abrir1.m_preferencia.enabled = true
 
 //Cargo segun sea la llamada, la dw de filtro
 choose case iu_comunic.is_comunic.accion_llamada
@@ -1514,8 +1388,6 @@ choose case iu_comunic.is_comunic.accion_llamada
 		//***************************************
 		
 	case "gi_avisos"		
-		dw_filtro_reporte.dataobject="d_bdg_7002_pr_filtro_reporte_avisos"
-	case "gi_avisos_2"		
 		dw_filtro_reporte.dataobject="d_bdg_7002_pr_filtro_reporte_avisos"
 //		dw_filtro_reporte.dataobject="u_gen_7002_pr_filtro_reporte_avi"
 		//close(w_qmenu2)
@@ -1614,6 +1486,28 @@ choose case iu_comunic.is_comunic.accion_llamada
 		dw_filtro_reporte.visible=true
 		dw_lista_items.fpr_lista_aviso()
 		
+		long ll_nuevo, ll_ultimo
+		// Agregando campo Nro. Incidencia
+		ll_ultimo = dw_lista_items.RowCount() + 1
+		ll_nuevo = dw_lista_items.InsertRow(0)
+		dw_lista_items.setitem(ll_nuevo,"nombre","Nro. Incidencia")
+		dw_lista_items.setitem(ll_nuevo,"campo","nro_incidencia")
+		dw_lista_items.setitem(ll_nuevo,"tabla","sgd_incidencia")
+		dw_lista_items.setitem(ll_nuevo,"join","gi_avisos.NRO_INCIDENCIA = sgd_incidencia.NRO_INCIDENCIA")
+		dw_lista_items.setitem(ll_nuevo,"campo_inc","nro_incidencia")
+		dw_lista_items.setitem(ll_nuevo,"tipo","S")
+		dw_lista_items.setitem(ll_nuevo,"habilitado","")
+		// Agregando campo Causa de la Incidencia
+		ll_ultimo = dw_lista_items.RowCount() + 1
+		ll_nuevo = dw_lista_items.InsertRow(0)
+		dw_lista_items.setitem(ll_nuevo,"nombre","Causa de la Incidencia")
+		dw_lista_items.setitem(ll_nuevo,"campo","descripcion")
+		dw_lista_items.setitem(ll_nuevo,"tabla","gi_causa")
+		dw_lista_items.setitem(ll_nuevo,"join","gi_causa.cod_causa = sgd_incidencia.cod_causa")
+		dw_lista_items.setitem(ll_nuevo,"campo_inc","descripcion as Causa_Incidencia")
+		dw_lista_items.setitem(ll_nuevo,"tipo","S")
+		dw_lista_items.setitem(ll_nuevo,"habilitado","")
+		
 		//Inserto una fila y conecto las DW de los datos por Z. Geo
       dw_filtro_reporte.settransobject(sqlca)
 		
@@ -1634,30 +1528,6 @@ choose case iu_comunic.is_comunic.accion_llamada
 		dw_filtro_reporte.object.ai_alimentacion.protect=1
 		dw_filtro_reporte.object.ai_alimentacion.background.color=gs_gris
 	
-	case "gi_avisos_2"
-		st_titulo.text="Informe de Avisos con Incidencia"
-		dw_filtro_reporte.visible=true
-		dw_lista_items.fpr_lista_aviso_2()
-		
-		//Inserto una fila y conecto las DW de los datos por Z. Geo
-      dw_filtro_reporte.settransobject(sqlca)
-		
-		//Conecto las D.D.D.W. DEL OBJETO "FILTRO DEL REPORTE",FILTRO SUS CAMPOS Y SETEO LOS MISMOS CON "TODOS"
-		dw_filtro_reporte.reset()
-		//dw_filtro_reporte.fnu_cargar_dddw()
-		fw_cargar_dddw_avisos()
-		dw_filtro_reporte.insertrow(0)
-		dw_filtro_reporte.setitem(1,"pa_periodo",fgnu_fecha_actual())
-		dw_filtro_reporte.setitem(1,"pa_rango",fgnu_fecha_actual())
-		dw_filtro_reporte.setitem(1,"pa_operador_fecha","=")
-		dw_filtro_reporte.setitem(1,"ai_estado",fgci_todos)
-		dw_filtro_reporte.setitem(1,"ai_alcance",fgci_todos)
-		dw_filtro_reporte.setitem(1,"ai_tipo",fgci_todos)
-		dw_filtro_reporte.setitem(1,"ai_alimentacion",fgci_todos)
-		dw_filtro_reporte.setitem(1,"ai_tipo_aviso",101)
-		dw_filtro_reporte.setitem(1,"rango",1)
-		dw_filtro_reporte.object.ai_alimentacion.protect=1
-		dw_filtro_reporte.object.ai_alimentacion.background.color=gs_gris
 case "gi_brigada"
 	
 		st_titulo.text="Informe de Brigadas"
@@ -1885,15 +1755,15 @@ for li_conta=1 to dw_lista_items.rowcount()
 	dw_lista_items.selectrow(li_conta,true)
 next
 if gu_perfiles.of_acceso_perfil(gi_perfil,'REPORTES_P','ACC_MANTEN')=1 then 
-	m_reportes.m_rep.m_mostrar.enabled=TRUE
+	m_reportes_2.m_rep.m_mostrar.enabled=TRUE
 end if
 ii_filas_seleccionadas=dw_lista_items.rowcount()
-m_reportes.m_reporte.m_guardar.m_preferencia1.enabled=true
-m_reportes.m_rep.m_mostrar.enabled=TRUE
+m_reportes_2.m_reporte.m_guardar.m_preferencia1.enabled=true
+m_reportes_2.m_rep.m_mostrar.enabled=TRUE
 
 end event
 
-event ue_deseleccionar_todo;int li_conta
+event ue_deseleccionar_todo();int li_conta
 long ll_fila
 
 for li_conta=1 to dw_lista_items.rowcount()
@@ -1910,10 +1780,10 @@ for li_conta=1 to dw_lista_items.rowcount()
 		ib_funcion=FALSE																	  // LFE	
 	end if																					  // LFE
 next
-m_reportes.m_rep.m_mostrar.enabled=false
+m_reportes_2.m_rep.m_mostrar.enabled=false
 //ii_filas_seleccionadas=dw_lista_items.rowcount()
 ii_filas_seleccionadas = 0  // no hay filas seleccionadas (LFE)
-m_reportes.m_reporte.m_guardar.m_preferencia1.enabled=false
+m_reportes_2.m_reporte.m_guardar.m_preferencia1.enabled=false
 
 end event
 
@@ -2272,7 +2142,7 @@ public function integer f_preparo_ventana ();///////////////////////////////////
 ///////////////////////////////////////////////////////
 uo_menu.visible=false
 timer(0)
-w_reportes.setredraw(false)
+w_reportes_avisos_incidencias_2.setredraw(false)
 
 st_1.visible=true
 st_2.visible=true
@@ -2288,17 +2158,17 @@ sle_1.text=""
 dw_1.reset()
 dw_lista_orden.reset()
 dw_1.visible=false
-m_reportes.m_reporte.m_guardar.enabled=false
-m_reportes.m_rep.m_mostrar.enabled=false
+m_reportes_2.m_reporte.m_guardar.enabled=false
+m_reportes_2.m_rep.m_mostrar.enabled=false
 //m_reportes.m_reporte.m_guardar.toolbaritemvisible=false
 //m_reportes.m_rep.m_mostrar.toolbaritemvisible=false
 //m_reportes.m_rep.m_presentacionpreliminar.toolbaritemvisible=false
-m_reportes.m_reporte.m_imprimir.enabled=false
-m_reportes.m_reporte.m_guardar.m_reporte2.enabled=false
-m_reportes.m_reporte.m_guardar.m_preferencia1.enabled=false
-m_reportes.m_rep.m_cancelar.enabled=true
-m_reportes.m_rep.m_presentacionpreliminar.enabled=false
-m_reportes.m_rep.m_exportarinformeaexcel.enabled = false
+m_reportes_2.m_reporte.m_imprimir.enabled=false
+m_reportes_2.m_reporte.m_guardar.m_reporte2.enabled=false
+m_reportes_2.m_reporte.m_guardar.m_preferencia1.enabled=false
+m_reportes_2.m_rep.m_cancelar.enabled=true
+m_reportes_2.m_rep.m_presentacionpreliminar.enabled=false
+m_reportes_2.m_rep.m_exportarinformeaexcel.enabled = false
 //m_reportes.m_reporte.m_imprimir.toolbaritemvisible=false
 //m_reportes.m_reporte.m_guardar.m_reporte2.toolbaritemvisible=false
 //m_reportes.m_reporte.m_guardar.m_preferencia1.toolbaritemvisible=false
@@ -2309,7 +2179,7 @@ dw_ambito.visible=false
 dw_filtro_reporte.reset()
 sle_1.visible=false
 st_titulo.text=""
-w_reportes.setredraw(true)
+w_reportes_avisos_incidencias_2.setredraw(true)
 return 1
 end function
 
@@ -2404,7 +2274,7 @@ public function integer f_interpretar_archivo (ref string ps_contenido);////////
 /// INTERPRETACION DE LOS ARCHIVOS DE PREFERENCIAS
 //////////////////////////////////////////////////////////////////////////////
 
-w_reportes.SETREDRAW(FALSE)
+w_reportes_avisos_incidencias_2.SETREDRAW(FALSE)
 
 //// DEFINICION DE VARIABLES
 string ls_tiporep,ls_campo, ls_funcion, ls_funpos , ls_campoorden, ls_tablas
@@ -2544,9 +2414,6 @@ END IF
 		CASE "gi_avisos"
 			dw_filtro_reporte.reset()
 			ll_recibo=dw_filtro_reporte.Importstring(ls_campo,1) 
-		CASE "gi_avisos_2"
-			dw_filtro_reporte.reset()
-			ll_recibo=dw_filtro_reporte.Importstring(ls_campo,1) 
 //			dw_filtro_reporte.setitem(1,"pa_periodo",today())
 			//INCLUIR MENSAGE
 		CASE "gi_brigada"
@@ -2560,7 +2427,7 @@ END IF
 //			dw_filtro_reporte.setitem(1,"pa_periodo",today())
 	//		//INCLUIR MENSAGE
 	END CHOOSE
-	w_reportes.setredraw(true)
+	w_reportes_avisos_incidencias_2.setredraw(true)
 //***************************************
 //**  OSGI 2001.1  	01/05/2001			**
 //**  Jair Padilla / Soluziona PANAMA  **
@@ -2608,10 +2475,10 @@ dw_ambito.visible=false
 sle_1.visible=false
 //p_1.visible=false
 
-m_reportes.m_reporte.m_imprimir.enabled=false
-m_reportes.m_reporte.m_guardar.m_reporte2.enabled=false
-m_reportes.m_reporte.m_guardar.m_preferencia1.enabled=false
-m_reportes.m_rep.m_cancelar.enabled=false
+m_reportes_2.m_reporte.m_imprimir.enabled=false
+m_reportes_2.m_reporte.m_guardar.m_reporte2.enabled=false
+m_reportes_2.m_reporte.m_guardar.m_preferencia1.enabled=false
+m_reportes_2.m_rep.m_cancelar.enabled=false
 
 //m_reportes.m_rep.m_seleccionartodo.enabled=false
 //m_reportes.m_reporte.m_imprimir.toolbaritemvisible=false
@@ -2744,22 +2611,6 @@ choose case is_tabla_consulta
 		dw_filtro_reporte.modify("pa_periodo.background.color=" + gs_gris)
 	   dw_filtro_reporte.modify("rango.background.color=" + gs_gris)
 		dw_filtro_reporte.modify("pa_rango.background.color=" + gs_gris)
-		
-		case "gi_avisos_2"
-		
-		dw_filtro_reporte.enabled=false
-		dw_filtro_reporte.modify("ai_estado.background.color=" + gs_gris)
-	   dw_filtro_reporte.modify("ai_tipo.background.color=" + gs_gris)
-	   dw_filtro_reporte.modify("ai_tipo_aviso.background.color=" + gs_gris)
-	   dw_filtro_reporte.modify("ai_alcance.background.color=" + gs_gris)
-	   dw_filtro_reporte.modify("ai_alimentacion.background.color=" + gs_gris)
-	   dw_filtro_reporte.modify("ai_duracion.background.color=" + gs_gris)
-	  	dw_filtro_reporte.modify("xx.background.color=" + gs_gris)
-	   dw_filtro_reporte.modify("ai_reg_seleccionados.background.color=" + gs_gris)
-	   dw_filtro_reporte.modify("pa_operador_fecha.background.color=" + gs_gris)
-		dw_filtro_reporte.modify("pa_periodo.background.color=" + gs_gris)
-	   dw_filtro_reporte.modify("rango.background.color=" + gs_gris)
-		dw_filtro_reporte.modify("pa_rango.background.color=" + gs_gris)
 // Fin. Sgo.
 	case "gi_brigada"
 		
@@ -2862,28 +2713,7 @@ choose case is_tabla_consulta
 			st_2.text = ""
 		End If 
 		//NCA-FIN.DDAG-1679.15/05/2015.
-		case "gi_avisos_2"
 		
-		dw_filtro_reporte.enabled=true
-		dw_filtro_reporte.modify("ai_estado.background.color=" + string(65536*255+256*255+255))
-	   dw_filtro_reporte.modify("ai_tipo.background.color=" + string(65536*255+256*255+255))
-	   dw_filtro_reporte.modify("ai_alcance.background.color=" + string(65536*255+256*255+255))
-	   dw_filtro_reporte.modify("ai_alimentacion.background.color=" + string(65536*255+256*255+255))
-	   dw_filtro_reporte.modify("ai_duracion.background.color=" + string(65536*255+256*255+255))
-	  	dw_filtro_reporte.modify("xx.background.color=" + string(65536*255+256*255+255))
-	   dw_filtro_reporte.modify("ai_reg_seleccionados.background.color=" + string(65536*255+256*255+255))
-	   dw_filtro_reporte.modify("pa_operador_fecha.background.color=" + string(65536*255+256*255+255))
-		dw_filtro_reporte.modify("pa_periodo.background.color=" + string(65536*255+256*255+255))
-	   dw_filtro_reporte.modify("rango.background.color=" + string(65536*255+256*255+255))
-		dw_filtro_reporte.modify("pa_rango.background.color=" + string(65536*255+256*255+255))
-	   dw_filtro_reporte.modify("ai_tipo_aviso.background.color=" + string(65536*255+256*255+255))
-      
-		//NCA-INICIO.DDAG-1679.15/05/2015.
-		If iu_comunic.is_comunic.accion_llamada = 'gi_avisos' Then	
-			dw_lista_orden.enabled = false
-			st_2.text = ""
-		End If 
-		//NCA-FIN.DDAG-1679.15/05/2015.
 	case "gi_brigada"
 		   
 		 dw_filtro_reporte.enabled=true
@@ -3127,14 +2957,14 @@ ELSE
 		
 	dw_1.Modify("create text(band=Header " + &
 	" color='534543' alignment='2' border='0'" + &
-	" x='600' y='1' height='90' width='2000' text='"+w_reportes.mle_titulos.text+"'" + &
+	" x='600' y='1' height='90' width='2000' text='"+w_reportes_avisos_incidencias_2.mle_titulos.text+"'" + &
 	" name=titulo background.mode='1' font.Face='Arial' font.height = '100' font.weight='700' font.underline='1'  background.color='" + gs_blanco + "')")
 // Modificado por Sgo. Unificaci$$HEX1$$f300$$ENDHEX$$n.
 //	" name=titulo background.mode='1' font.Face='Arial' font.height = '100' font.weight='700' font.underline='1'  background.color='" + String(RGB(255,255,255)) + "')")
 	
 	dw_1.Modify("create text(band=Header " + &
 	" color='534543' alignment='2' border='0'" + &
-	" x='600' y='100' height='90' width='2000' text='"+w_reportes.mle_subtitulos.text+"'" + &
+	" x='600' y='100' height='90' width='2000' text='"+w_reportes_avisos_incidencias_2.mle_subtitulos.text+"'" + &
 	" name=subtitulo background.mode='1' font.Face='Arial' font.height = '80' font.weight='700' font.underline='1'  background.color='" + gs_blanco + "')")
 // Modificado por Sgo. Unificaci$$HEX1$$f300$$ENDHEX$$n.
 //	" name=subtitulo background.mode='1' font.Face='Arial' font.height = '80' font.weight='700' font.underline='1'  background.color='" + String(RGB(255,255,255)) + "')")
@@ -3244,8 +3074,8 @@ end if
 return 1
 end function
 
-on w_reportes.create
-if this.MenuName = "m_reportes" then this.MenuID = create m_reportes
+on w_reportes_avisos_incidencias_2.create
+if this.MenuName = "m_reportes_2" then this.MenuID = create m_reportes_2
 this.cb_1=create cb_1
 this.st_titulos=create st_titulos
 this.mle_titulos=create mle_titulos
@@ -3292,7 +3122,7 @@ this.dw_filtro_reporte,&
 this.st_instalacion}
 end on
 
-on w_reportes.destroy
+on w_reportes_avisos_incidencias_2.destroy
 if IsValid(MenuID) then destroy(MenuID)
 destroy(this.cb_1)
 destroy(this.st_titulos)
@@ -3346,7 +3176,7 @@ iu_ds_reportes=Create ds_5001_reportes
 openwithparm(w_msg,"Iniciando Reporte")
 close(w_msg)
 iu_comunic.is_comunic = gu_comunic.is_comunic 
-m_reportes.m_rep.m_mostrar.enabled=false
+m_reportes_2.m_rep.m_mostrar.enabled=false
 
 ///quitar mas tarde todos estaban en false
 /*
@@ -3354,8 +3184,8 @@ m_reportes.m_rep.m_mostrar.ToolbarItemVisible=true
 m_reportes.m_rep.m_presentacionpreliminar.toolbaritemvisible=TRUE
 */
 
-m_reportes.m_rep.m_presentacionpreliminar.enabled=false
-m_reportes.m_rep.m_exportarinformeaexcel.enabled = false
+m_reportes_2.m_rep.m_presentacionpreliminar.enabled=false
+m_reportes_2.m_rep.m_exportarinformeaexcel.enabled = false
 
 
 
@@ -3393,7 +3223,7 @@ event timer;choose case ii_visual_nro
 end choose
 end event
 
-type cb_1 from commandbutton within w_reportes
+type cb_1 from commandbutton within w_reportes_avisos_incidencias_2
 integer x = 1577
 integer y = 184
 integer width = 402
@@ -3408,7 +3238,7 @@ string facename = "Arial"
 string text = "none"
 end type
 
-type st_titulos from statictext within w_reportes
+type st_titulos from statictext within w_reportes_avisos_incidencias_2
 boolean visible = false
 integer x = 59
 integer y = 908
@@ -3429,7 +3259,7 @@ borderstyle borderstyle = styleraised!
 boolean focusrectangle = false
 end type
 
-type mle_titulos from multilineedit within w_reportes
+type mle_titulos from multilineedit within w_reportes_avisos_incidencias_2
 boolean visible = false
 integer x = 347
 integer y = 908
@@ -3448,7 +3278,7 @@ integer limit = 38
 borderstyle borderstyle = stylelowered!
 end type
 
-type st_subtitulos from statictext within w_reportes
+type st_subtitulos from statictext within w_reportes_avisos_incidencias_2
 boolean visible = false
 integer x = 1687
 integer y = 912
@@ -3469,7 +3299,7 @@ borderstyle borderstyle = styleraised!
 boolean focusrectangle = false
 end type
 
-type mle_subtitulos from multilineedit within w_reportes
+type mle_subtitulos from multilineedit within w_reportes_avisos_incidencias_2
 boolean visible = false
 integer x = 2048
 integer y = 912
@@ -3488,7 +3318,7 @@ integer limit = 50
 borderstyle borderstyle = stylelowered!
 end type
 
-type p_1 from picture within w_reportes
+type p_1 from picture within w_reportes_avisos_incidencias_2
 integer x = 672
 integer y = 20
 integer width = 82
@@ -3497,7 +3327,7 @@ string picturename = "Custom020!"
 boolean focusrectangle = false
 end type
 
-type st_titulo from statictext within w_reportes
+type st_titulo from statictext within w_reportes_avisos_incidencias_2
 integer x = 41
 integer y = 888
 integer width = 3461
@@ -3516,7 +3346,7 @@ borderstyle borderstyle = styleraised!
 boolean focusrectangle = false
 end type
 
-type dw_funciones from u_pr_funcion within w_reportes
+type dw_funciones from u_pr_funcion within w_reportes_avisos_incidencias_2
 integer x = 41
 integer y = 104
 integer width = 590
@@ -3565,7 +3395,7 @@ dw_lista_items.drag(end!)
 
 end event
 
-type st_3 from statictext within w_reportes
+type st_3 from statictext within w_reportes_avisos_incidencias_2
 integer x = 41
 integer y = 8
 integer width = 590
@@ -3586,7 +3416,7 @@ borderstyle borderstyle = styleraised!
 boolean focusrectangle = false
 end type
 
-type st_2 from statictext within w_reportes
+type st_2 from statictext within w_reportes_avisos_incidencias_2
 integer x = 2094
 integer y = 8
 integer width = 1403
@@ -3607,7 +3437,7 @@ borderstyle borderstyle = styleraised!
 boolean focusrectangle = false
 end type
 
-type st_1 from statictext within w_reportes
+type st_1 from statictext within w_reportes_avisos_incidencias_2
 integer x = 635
 integer y = 8
 integer width = 1458
@@ -3628,7 +3458,7 @@ borderstyle borderstyle = styleraised!
 boolean focusrectangle = false
 end type
 
-type dw_lista_orden from u_lista_orden within w_reportes
+type dw_lista_orden from u_lista_orden within w_reportes_avisos_incidencias_2
 integer x = 2094
 integer y = 104
 integer width = 1403
@@ -3735,7 +3565,7 @@ end if
 
 end event
 
-type sle_1 from singlelineedit within w_reportes
+type sle_1 from singlelineedit within w_reportes_avisos_incidencias_2
 integer x = 1605
 integer y = 1676
 integer width = 183
@@ -3752,7 +3582,7 @@ boolean autohscroll = false
 borderstyle borderstyle = stylelowered!
 end type
 
-type dw_lista_items from u_lista_reporte within w_reportes
+type dw_lista_items from u_lista_reporte within w_reportes_avisos_incidencias_2
 event ue_dragend pbm_endragdrop
 event pasarmause pbm_mousemove
 integer x = 631
@@ -3811,19 +3641,19 @@ else
 end if
  
 if ii_filas_seleccionadas = 0 then
-	m_reportes.m_rep.m_mostrar.enabled=false
+	m_reportes_2.m_rep.m_mostrar.enabled=false
 //	m_reportes.m_rep.m_mostrar.ToolbarItemVisible=false
-	m_reportes.m_reporte.m_guardar.enabled=false    // LFE
-	m_reportes.m_reporte.m_guardar.m_preferencia1.enabled=false
+	m_reportes_2.m_reporte.m_guardar.enabled=false    // LFE
+	m_reportes_2.m_reporte.m_guardar.m_preferencia1.enabled=false
 //	m_reportes.m_reporte.m_guardar.m_preferencia1.toolbaritemvisible=false
 else
 	if gu_perfiles.of_acceso_perfil(gi_perfil,'REPORTES_P','ACC_MANTEN')=1 then 
-		m_reportes.m_rep.m_mostrar.enabled=true
+		m_reportes_2.m_rep.m_mostrar.enabled=true
 	end if
 //	m_reportes.m_rep.m_mostrar.ToolbarItemVisible=true
-    m_reportes.m_rep.m_mostrar.enabled=true
-	m_reportes.m_reporte.m_guardar.enabled=true    // LFE
-	m_reportes.m_reporte.m_guardar.m_preferencia1.enabled=true
+    m_reportes_2.m_rep.m_mostrar.enabled=true
+	m_reportes_2.m_reporte.m_guardar.enabled=true    // LFE
+	m_reportes_2.m_reporte.m_guardar.m_preferencia1.enabled=true
 //	m_reportes.m_reporte.m_guardar.m_preferencia1.toolbaritemvisible=true
 
 end if
@@ -3981,7 +3811,7 @@ lm_menu.popmenu(PointerX()+480, PointerY()+480)
 destroy lm_menu
 end event
 
-type uo_menu from u_pr_menu within w_reportes
+type uo_menu from u_pr_menu within w_reportes_avisos_incidencias_2
 integer x = 1024
 integer y = 400
 integer width = 1134
@@ -3997,7 +3827,7 @@ on uo_menu.destroy
 call u_pr_menu::destroy
 end on
 
-type st_material from statictext within w_reportes
+type st_material from statictext within w_reportes_avisos_incidencias_2
 boolean visible = false
 integer x = 1993
 integer y = 1444
@@ -4033,7 +3863,7 @@ IF Len(Trim(ls_codigo)) > 0 THEN
 end if
 end event
 
-type st_causa from statictext within w_reportes
+type st_causa from statictext within w_reportes_avisos_incidencias_2
 boolean visible = false
 integer x = 1993
 integer y = 1548
@@ -4059,7 +3889,7 @@ end type
 event doubleclicked;setpointer(HourGlass!)
 
 // GNU 13-1-2006. Mejora 1/342078
-gu_comunic2.is_comunic.programa_llamante= "w_reportes"
+gu_comunic2.is_comunic.programa_llamante= "w_reportes_avisos_incidencias_2"
 // FIN GNU
 
 Open(w_2301_sel_causa)
@@ -4071,7 +3901,7 @@ if gu_comunic2.is_comunic.longval4 > 0 then
 end if
 end event
 
-type mle_1 from multilineedit within w_reportes
+type mle_1 from multilineedit within w_reportes_avisos_incidencias_2
 boolean visible = false
 integer x = 2843
 integer width = 617
@@ -4086,7 +3916,7 @@ long textcolor = 33554432
 boolean vscrollbar = true
 end type
 
-type dw_1 from datawindow within w_reportes
+type dw_1 from datawindow within w_reportes_avisos_incidencias_2
 boolean visible = false
 integer y = 1152
 integer width = 2459
@@ -4097,14 +3927,14 @@ boolean vscrollbar = true
 boolean livescroll = true
 end type
 
-type dw_ambito from u_cen_2001_pr_form_centro_cmd_mesa within w_reportes
+type dw_ambito from u_cen_2001_pr_form_centro_cmd_mesa within w_reportes_avisos_incidencias_2
 integer x = 439
 integer y = 1292
 integer taborder = 100
 boolean border = false
 end type
 
-type dw_filtro_reporte from u_gen_7001_pr_filtro_reporte_inc within w_reportes
+type dw_filtro_reporte from u_gen_7001_pr_filtro_reporte_inc within w_reportes_avisos_incidencias_2
 integer x = 37
 integer y = 1036
 integer width = 3461
@@ -4144,7 +3974,7 @@ int li_tension, li_tipo, li_alcance
 DatawindowChild ldwch_alcance
 this.accepttext()
 IF ii_filas_seleccionadas > 0 THEN
-	m_reportes.m_reporte.m_guardar.m_preferencia1.enabled=true
+	m_reportes_2.m_reporte.m_guardar.m_preferencia1.enabled=true
 END IF
 
 ls_columna=this.getcolumnname()
@@ -4321,7 +4151,7 @@ IF ls_columna = 'rango' THEN
 END IF
 end event
 
-type st_instalacion from statictext within w_reportes
+type st_instalacion from statictext within w_reportes_avisos_incidencias_2
 boolean visible = false
 integer x = 1993
 integer y = 1644
@@ -4348,7 +4178,7 @@ event doubleclicked;string ls_nom_instalacion
 
 dw_filtro_reporte.SetItem(1,'ps_nom_instalacion','Todas')
 dw_filtro_reporte.SetItem(1,'nro_instalacion',fgci_todos)
-gu_comunic.is_comunic.programa_llamante = 'w_reportes'
+gu_comunic.is_comunic.programa_llamante = 'w_reportes_avisos_incidencias_2'
 openWithParm(w_2120_identificacion_instalacion,gu_comunic.is_comunic.programa_llamante)
 
 

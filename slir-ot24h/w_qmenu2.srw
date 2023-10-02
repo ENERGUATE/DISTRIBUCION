@@ -2,6 +2,16 @@ HA$PBExportHeader$w_qmenu2.srw
 forward
 global type w_qmenu2 from window
 end type
+type st_46 from statictext within w_qmenu2
+end type
+type st_45 from statictext within w_qmenu2
+end type
+type em_10 from editmask within w_qmenu2
+end type
+type p_11 from picture within w_qmenu2
+end type
+type st_44 from statictext within w_qmenu2
+end type
 type st_43 from statictext within w_qmenu2
 end type
 type st_42 from statictext within w_qmenu2
@@ -222,17 +232,24 @@ type r_26 from rectangle within w_qmenu2
 end type
 type r_27 from rectangle within w_qmenu2
 end type
+type r_28 from rectangle within w_qmenu2
+end type
 end forward
 
 global type w_qmenu2 from window
 integer x = 1326
 integer y = 652
-integer width = 4229
-integer height = 2616
+integer width = 4192
+integer height = 3360
 boolean titlebar = true
 string title = "Bienvenid@ (w_qmenu2)"
 boolean controlmenu = true
 long backcolor = 15793151
+st_46 st_46
+st_45 st_45
+em_10 em_10
+p_11 p_11
+st_44 st_44
 st_43 st_43
 st_42 st_42
 em_9 em_9
@@ -343,6 +360,7 @@ r_24 r_24
 r_25 r_25
 r_26 r_26
 r_27 r_27
+r_28 r_28
 end type
 global w_qmenu2 w_qmenu2
 
@@ -352,6 +370,11 @@ integer deftime
 end variables
 
 on w_qmenu2.create
+this.st_46=create st_46
+this.st_45=create st_45
+this.em_10=create em_10
+this.p_11=create p_11
+this.st_44=create st_44
 this.st_43=create st_43
 this.st_42=create st_42
 this.em_9=create em_9
@@ -462,7 +485,13 @@ this.r_24=create r_24
 this.r_25=create r_25
 this.r_26=create r_26
 this.r_27=create r_27
-this.Control[]={this.st_43,&
+this.r_28=create r_28
+this.Control[]={this.st_46,&
+this.st_45,&
+this.em_10,&
+this.p_11,&
+this.st_44,&
+this.st_43,&
 this.st_42,&
 this.em_9,&
 this.p_10,&
@@ -571,10 +600,16 @@ this.r_23,&
 this.r_24,&
 this.r_25,&
 this.r_26,&
-this.r_27}
+this.r_27,&
+this.r_28}
 end on
 
 on w_qmenu2.destroy
+destroy(this.st_46)
+destroy(this.st_45)
+destroy(this.em_10)
+destroy(this.p_11)
+destroy(this.st_44)
 destroy(this.st_43)
 destroy(this.st_42)
 destroy(this.em_9)
@@ -685,6 +720,7 @@ destroy(this.r_24)
 destroy(this.r_25)
 destroy(this.r_26)
 destroy(this.r_27)
+destroy(this.r_28)
 end on
 
 event open;int contador
@@ -1102,6 +1138,153 @@ event timer;//tiempo=tiempo - 1
 //end if
 end event
 
+type st_46 from statictext within w_qmenu2
+integer x = 155
+integer y = 2216
+integer width = 78
+integer height = 96
+integer textsize = -16
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Helvetica LT Std"
+long textcolor = 32768
+long backcolor = 33554431
+boolean enabled = false
+string text = ">"
+boolean focusrectangle = false
+end type
+
+type st_45 from statictext within w_qmenu2
+integer x = 247
+integer y = 2240
+integer width = 1033
+integer height = 80
+integer textsize = -10
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Helvetica LT Std"
+boolean underline = true
+long textcolor = 33554432
+long backcolor = 33554431
+string text = "Informe de Avisos con Incidencia"
+boolean focusrectangle = false
+end type
+
+event clicked;gu_comunic.is_comunic.accion_llamada="gi_avisos_2"	
+OpenSheet (w_reportes, w_genapp_frame,3, layered!)
+w_reportes.is_tabla_consulta="gi_avisos_2"
+w_reportes.postevent("ue_post_open")
+ 
+
+/*window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+IF activesheet = w_reportes THEN
+	w_reportes.iu_comunic.is_comunic.accion_llamada="gi_avisos"
+	gu_comunic.is_comunic.accion_llamada="gi_avisos"
+	w_reportes.is_tabla_consulta="gi_avisos"
+	w_reportes.postevent("ue_post_open")
+ELSE
+
+	close(activesheet)
+	gu_comunic.is_comunic.accion_llamada="gi_avisos"	
+	w_genapp_frame.TriggerEvent("ue_reportes")
+	w_reportes.is_tabla_consulta="gi_avisos"
+	w_reportes.postevent("ue_post_open")
+END IF*/
+
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//**
+end event
+
+type em_10 from editmask within w_qmenu2
+integer x = 1714
+integer y = 2644
+integer width = 421
+integer height = 124
+integer taborder = 50
+integer textsize = -12
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Helvetica LT Std"
+boolean underline = true
+long textcolor = 8388608
+long backcolor = 15780518
+boolean border = false
+alignment alignment = center!
+boolean displayonly = true
+string mask = "###,###"
+end type
+
+type p_11 from picture within w_qmenu2
+integer x = 1778
+integer y = 2336
+integer width = 302
+integer height = 256
+string pointer = "Help!"
+string picturename = "pict\reporte_new.png"
+boolean focusrectangle = false
+end type
+
+event clicked;gu_comunic.is_comunic.accion_llamada="gi_avisos_2"	
+OpenSheet (w_reportes, w_genapp_frame,3, layered!)
+w_reportes.is_tabla_consulta="gi_avisos_2"
+w_reportes.postevent("ue_post_open")
+ 
+
+/*window activesheet
+
+activesheet = w_genapp_frame.GetActiveSheet()
+
+IF activesheet = w_reportes THEN
+	w_reportes.iu_comunic.is_comunic.accion_llamada="gi_avisos"
+	gu_comunic.is_comunic.accion_llamada="gi_avisos"
+	w_reportes.is_tabla_consulta="gi_avisos"
+	w_reportes.postevent("ue_post_open")
+ELSE
+
+	close(activesheet)
+	gu_comunic.is_comunic.accion_llamada="gi_avisos"	
+	w_genapp_frame.TriggerEvent("ue_reportes")
+	w_reportes.is_tabla_consulta="gi_avisos"
+	w_reportes.postevent("ue_post_open")
+	
+END IF*/
+
+//***************************************
+//**  OSGI 2001.1  	01/05/2001			**
+//**  Jair Padilla / Soluziona PANAMA  **
+//**
+end event
+
+type st_44 from statictext within w_qmenu2
+integer x = 1714
+integer y = 2172
+integer width = 421
+integer height = 148
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Helvetica LT Std"
+long textcolor = 33554432
+long backcolor = 81324524
+boolean enabled = false
+string text = "Informe de Avisos con Incidencia"
+alignment alignment = center!
+boolean focusrectangle = false
+end type
+
 type st_43 from statictext within w_qmenu2
 integer x = 247
 integer y = 2012
@@ -1271,7 +1454,7 @@ end event
 type st_38 from statictext within w_qmenu2
 integer x = 3602
 integer y = 1488
-integer width = 422
+integer width = 421
 integer height = 148
 integer textsize = -8
 integer weight = 400
@@ -2925,7 +3108,7 @@ type gb_3 from groupbox within w_qmenu2
 integer x = 23
 integer y = 36
 integer width = 1445
-integer height = 2200
+integer height = 2800
 integer taborder = 10
 integer textsize = -10
 integer weight = 400
@@ -3002,7 +3185,7 @@ long linecolor = 10789024
 integer linethickness = 4
 long fillcolor = 16777215
 integer x = 55
-integer y = 2280
+integer y = 2896
 integer width = 4091
 integer height = 212
 end type
@@ -3034,7 +3217,7 @@ long fillcolor = 16777215
 integer x = 1541
 integer y = 36
 integer width = 2578
-integer height = 2200
+integer height = 2800
 end type
 
 type r_12 from rectangle within w_qmenu2
@@ -3195,6 +3378,16 @@ integer linethickness = 4
 long fillcolor = 15793151
 integer x = 3127
 integer y = 1468
+integer width = 430
+integer height = 632
+end type
+
+type r_28 from rectangle within w_qmenu2
+long linecolor = 15780518
+integer linethickness = 4
+long fillcolor = 15793151
+integer x = 1710
+integer y = 2152
 integer width = 430
 integer height = 632
 end type
