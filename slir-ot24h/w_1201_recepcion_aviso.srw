@@ -372,7 +372,9 @@ END IF
 
 end event
 
-event ue_grabar;	
+event ue_grabar;//no guardar
+return
+
 int  li_retorno,  li_nro_llamada
 long ll_nro_aviso, ll_aviso_pend, ldec_inst_sin_alim, pepe
 int li_co_alcance, li_tip_aviso
@@ -1113,7 +1115,9 @@ d_inf_resumen.fpr_c_cgv_y_cods(is_direccion)
 
 
 // Habilito la opci$$HEX1$$f300$$ENDHEX$$n grabar del men$$HEX1$$fa00$$ENDHEX$$
-md_ing_avisos.f_habilitar("GRABAR",true)
+//md_ing_avisos.f_habilitar("GRABAR",true)
+//sigeme
+md_ing_avisos.f_habilitar("GRABAR",false)
 
 
 // Leo Suministros_Imp por Nis_Rad			
@@ -1396,8 +1400,9 @@ d_inf_resumen.SetItem(1,"fecha_problema",ldt_f_problema)
 	gnu_u_transaction.uf_commit(THIS) 
 	
 	// Deshabilito la opci$$HEX1$$f300$$ENDHEX$$n de grabar del men$$HEX1$$fa00$$ENDHEX$$
-	md_ing_avisos.f_habilitar("GRABAR",true)
-	
+	//md_ing_avisos.f_habilitar("GRABAR",true)
+	//sigeme
+	md_ing_avisos.f_habilitar("GRABAR",false)
 
 	// Deshabilito resto de campos de la ventana
 	// GNU 21-12-2005. Incidencia referencia avisos
@@ -1425,7 +1430,9 @@ ELSE
 //	//DBE fin 03/03/2000
 //	
 	// Habilito la opci$$HEX1$$f300$$ENDHEX$$n de grabar del men$$HEX1$$fa00$$ENDHEX$$
-	md_ing_avisos.f_habilitar("GRABAR",True)
+	//md_ing_avisos.f_habilitar("GRABAR",True)
+	//sigeme
+	md_ing_avisos.f_habilitar("GRABAR",false)
 END IF
 
 // Invoco al procedimiento almacenado que me trae la informaci$$HEX1$$f300$$ENDHEX$$n
@@ -3133,7 +3140,9 @@ IF ls_colum_act = "tip_aviso" THEN
 //		st_avi_peligro.Show()
 
 		// Habilito la opci$$HEX1$$f300$$ENDHEX$$n grabar del men$$HEX1$$fa00$$ENDHEX$$
-		md_ing_avisos.f_habilitar("GRABAR",true)
+		//md_ing_avisos.f_habilitar("GRABAR",true)
+		//sigemee
+		md_ing_avisos.f_habilitar("GRABAR",false)
 	ELSE
 		p_avi_peligro.Hide()
 		st_avi_peligro.Hide()
@@ -3146,7 +3155,9 @@ IF ls_colum_act = "tip_aviso" THEN
 			IF fgci_grabar = 1 THEN
 
 				// Habilito la opci$$HEX1$$f300$$ENDHEX$$n grabar del men$$HEX1$$fa00$$ENDHEX$$
-				md_ing_avisos.f_habilitar("GRABAR",true)
+				//md_ing_avisos.f_habilitar("GRABAR",true)
+				//sigeme
+				md_ing_avisos.f_habilitar("GRABAR",false)
 			ELSE
 
 				// Deshabilito la opci$$HEX1$$f300$$ENDHEX$$n grabar del men$$HEX1$$fa00$$ENDHEX$$
@@ -3159,7 +3170,9 @@ IF ls_colum_act = "tip_aviso" THEN
 		ELSE
 
 			// Habilito la opci$$HEX1$$f300$$ENDHEX$$n grabar del men$$HEX1$$fa00$$ENDHEX$$
-			md_ing_avisos.f_habilitar("GRABAR",true)
+			//md_ing_avisos.f_habilitar("GRABAR",true)
+			//sigeme
+			md_ing_avisos.f_habilitar("GRABAR",false)
 		END IF
 	
 
@@ -4567,7 +4580,9 @@ ELSE
 
 		d_direccion.fpr_habilitar_campos(False, False)
 		// Habilito la opci$$HEX1$$f300$$ENDHEX$$n "grabar" del men$$HEX1$$fa00$$ENDHEX$$
-		md_ing_avisos.f_habilitar("GRABAR",True)
+		//md_ing_avisos.f_habilitar("GRABAR",True)
+		//sigeme
+		md_ing_avisos.f_habilitar("GRABAR",false)
 	END IF
 END IF
 gl_tipo_aviso = ll_valor_inicial
@@ -5037,7 +5052,9 @@ if is_direccion.gl_codmun > 0 AND ls_municipio <> '' then
 		sle_area.text = is_direccion.gs_area
 		
 		if fg_verifica_parametro('area_obligatoria') then
-			md_ing_avisos.f_habilitar("GRABAR",true)
+			//md_ing_avisos.f_habilitar("GRABAR",true)
+			//sigeme
+			md_ing_avisos.f_habilitar("GRABAR",false)
 		end if
 	end if
 
