@@ -10,6 +10,10 @@ type tab_1 from tab within w_frontend
 end type
 type tabpage_info from userobject within tab_1
 end type
+type st_8 from statictext within tabpage_info
+end type
+type stl_call_id from editmask within tabpage_info
+end type
 type p_corte from picture within tabpage_info
 end type
 type p_7 from picture within tabpage_info
@@ -135,6 +139,8 @@ end type
 type mle_obs from multilineedit within tabpage_info
 end type
 type tabpage_info from userobject within tab_1
+st_8 st_8
+stl_call_id stl_call_id
 p_corte p_corte
 p_7 p_7
 st_3 st_3
@@ -342,6 +348,7 @@ boolean multiple
 //tda
 int li_corte //ind sumnistro en corte
 end variables
+
 forward prototypes
 public function integer f_limpiar ()
 public function integer f_grabar (string tipo)
@@ -748,7 +755,9 @@ if validacion=0 then
 								end if
 						end if					
 						
-							
+					  string st_call_id
+					 
+					  st_call_id=f_truncar(tab_1.tabpage_info.stl_call_id.text,20) 
 							
 								INSERT INTO registro values (
 										:l_sig_id,
@@ -775,7 +784,7 @@ if validacion=0 then
 										:g_nombre,
 										:l_historico,
 										:l_cod_estado,
-										:l_varchar2)
+										:l_varchar2,:st_call_id)
 							USING SQLCA2;
 							
 							
@@ -1130,7 +1139,7 @@ else
 			
 		tab_1.tabpage_info.rb_int.enabled=false
 		tab_1.tabpage_info.rb_man.enabled=false		
-	
+		tab_1.tabpage_info.stl_call_id.text=""
 		tab_1.tabpage_info.st_13.text="Fecha/Hora de Resoluci$$HEX1$$f300$$ENDHEX$$n:"
 		tab_1.tabpage_info.sle_nis.text=string(l_nis_rad)
 		tab_1.tabpage_info.sle_cliente.text=l_nombre
@@ -1655,6 +1664,8 @@ string text = "Captura"
 long tabtextcolor = 33554432
 long tabbackcolor = 81324524
 long picturemaskcolor = 536870912
+st_8 st_8
+stl_call_id stl_call_id
 p_corte p_corte
 p_7 p_7
 st_3 st_3
@@ -1720,6 +1731,8 @@ mle_obs mle_obs
 end type
 
 on tabpage_info.create
+this.st_8=create st_8
+this.stl_call_id=create stl_call_id
 this.p_corte=create p_corte
 this.p_7=create p_7
 this.st_3=create st_3
@@ -1782,7 +1795,9 @@ this.rr_2=create rr_2
 this.gb_5=create gb_5
 this.st_17=create st_17
 this.mle_obs=create mle_obs
-this.Control[]={this.p_corte,&
+this.Control[]={this.st_8,&
+this.stl_call_id,&
+this.p_corte,&
 this.p_7,&
 this.st_3,&
 this.st_1,&
@@ -1847,6 +1862,8 @@ this.mle_obs}
 end on
 
 on tabpage_info.destroy
+destroy(this.st_8)
+destroy(this.stl_call_id)
 destroy(this.p_corte)
 destroy(this.p_7)
 destroy(this.st_3)
@@ -1911,12 +1928,48 @@ destroy(this.st_17)
 destroy(this.mle_obs)
 end on
 
+type st_8 from statictext within tabpage_info
+integer x = 814
+integer y = 1124
+integer width = 603
+integer height = 60
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Helvetica LT Std"
+long textcolor = 16777215
+long backcolor = 128
+boolean enabled = false
+string text = " Call_id"
+boolean focusrectangle = false
+end type
+
+type stl_call_id from editmask within tabpage_info
+integer x = 823
+integer y = 1184
+integer width = 595
+integer height = 100
+integer taborder = 80
+integer textsize = -10
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Helvetica LT Std"
+long textcolor = 33554432
+maskdatatype maskdatatype = stringmask!
+string mask = "xxxxxxxxxxxxxxxxxxxx"
+string minmax = "~~20"
+end type
+
 type p_corte from picture within tabpage_info
 boolean visible = false
 integer x = 2706
 integer y = 608
-integer width = 185
-integer height = 155
+integer width = 183
+integer height = 156
 string picturename = ".\pict\sumCorte.bmp"
 boolean focusrectangle = false
 end type
